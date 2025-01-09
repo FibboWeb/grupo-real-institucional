@@ -1,4 +1,4 @@
-export default function Author() {
+export default function PageCategory() {
   return (
     <div>
       <h1>Categoria</h1>
