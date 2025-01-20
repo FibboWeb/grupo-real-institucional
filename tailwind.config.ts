@@ -49,8 +49,14 @@ export default {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
-  			}
+  			},
+				'fb_green': 'var(--green)',
+				'fb_blue': 'var(--blue)',
+				'fb_blue_main': 'var(--blue-main)',			
   		},
+			transitionDuration: {
+				'fb_transition_ease': 'all 0.25s ease',
+			},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
