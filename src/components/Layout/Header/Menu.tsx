@@ -43,6 +43,10 @@ export default function Menu({ menuFetched }: MenuProps) {
     }
   };
 
+  const handleMouseEntered = (id: string | SetStateAction<null>) => {
+    setActiveMenu(id);
+  }
+
   const handleMouseLeave = () => {
     setActiveMenu(null); // Fecha o menu
   };
@@ -50,7 +54,7 @@ export default function Menu({ menuFetched }: MenuProps) {
   return (
     <>
       <div className='flex gap-3'>
-          <ul className='hidden xl:flex gap-4 font-bold text-lg items-center text-black lg:mr-8'>
+          <ul className='hidden xl:flex gap-1 font-bold text-lg items-center text-black lg:mr-6'>
                 <li className=''>
                   <button className='flex gap-3 bg-fb_green text-white items-center py-2 px-3 text-center rounded-md font-bold'>
                     Sustentabilidade
@@ -59,23 +63,24 @@ export default function Menu({ menuFetched }: MenuProps) {
                 </li>
             {
               menuItens.map((item) => (
-                <li className='flex gap-2 px-3 py-1' key={item.node.id}>
+                <li className='flex relative gap-2 px-3 py-1' key={item.node.id}>
                     <a href={item.node.url} className='text-fb_blue_main hover:text-fb_blue duration-300'>
                       {item.node.label}
                     </a>
                     {item.node?.childItems?.edges && item.node?.childItems?.edges.length > 0 && (
                       <div
-                        onMouseEnter={() => handleMouseEnter(item.node.id)}
+                        onMouseEnter={() => handleMouseEntered(item.node.id)}
                         onMouseLeave={handleMouseLeave}
-                        className="relative"
+                        className=""
                         >
-                        <span className="flex items-center cursor-pointer">
+                        <span className={`flex items-center cursor-pointer transition-all duration-300 ${activeMenu === item.node.id ? 'rotate-180 ' : ''}`}>
                           <ChevronDown />
                         </span>
-                        <ul className={`bg-white border border-black absolute top-full right-2/4 translate-y-20 sub-menu px-3 py-4 ${activeMenu === item.node.id ? 'block' : 'hidden'} transition-opacity duration-400 left-1/2 transform -translate-x-1/2`}>
+                        <ul className={`w-96 top-3/4 bg-white border absolute sub-menu px-3 py-4 ${activeMenu === item.node.id ? 'block' : 'hidden'} transition-opacity duration-400 left-1/2 transform -translate-x-1/2 rounded-md`}>
                           { item.node.childItems?.edges?.map((subMenu) => (
                           <li 
                             key={subMenu.node.id}
+                            className="py-2 px-3"
                           >
                             <a
                             className="text-fb_blue_main hover:text-fb_blue duration-300"
@@ -114,7 +119,7 @@ export default function Menu({ menuFetched }: MenuProps) {
                         <span className={`flex items-center cursor-pointer transition-all duration-300 ${activeMenu === item.node.id ? 'rotate-180' : ''}`}>
                           <ChevronDown />
                         </span>
-                        <ul className={`z-10 bg-white absolute top-full rounded-md shadow-custom_shadow right-0 text-center w-96 left-0 sub-menu px-3 py-4 ${activeMenu === item.node.id ? 'block opacity-100' : 'hidden opacity-0'} bg-accent-neutral transition-all duration-400 left-1/2 transform -translate-x-1/2`}>
+                        <ul className={`z-10 bg-white absolute top-full rounded-md shadow-custom_shadow right-0 text-center w-96 left-0 sub-menu px-3 py-4 ${activeMenu === item.node.id ? 'block opacity-100' : 'hidden opacity-0'} bg-accent-neutral transition-all duration-400 left-1/2 transform -translate-x-1/2 rounded-md`}>
                           { item.node.childItems?.edges?.map((subMenu) => (
                           <li 
                             key={subMenu.node.id}
