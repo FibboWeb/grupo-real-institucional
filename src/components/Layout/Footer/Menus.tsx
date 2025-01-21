@@ -3,11 +3,32 @@ import { useState } from "react";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 
-export function Menus( {menusList} ) {
+interface MenuItem {
+  node: {
+    id: string;
+    url: string;
+    label: string;
+  };
+}
+
+interface Menu {
+  props: {
+    name: string;
+    menuItems: {
+      edges: MenuItem[];
+    };
+  };
+}
+
+interface MenusProps {
+  menusList: Menu[];
+}
+
+export function Menus({ menusList }: MenusProps) {
+    const [isOpen, setIsOpen] = useState(false);
     return (
         <div className="container mx-auto w-100 flex lg:flex-row flex-col justify-between">
           {menusList.map((menu, index) => {
-            const [isOpen, setIsOpen] = useState(false);
             const menuItems = menu?.props?.menuItems?.edges || [];
             const menuName = menu?.props.name;
 
