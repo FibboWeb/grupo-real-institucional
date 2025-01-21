@@ -62,6 +62,9 @@ export default {
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
   		},
+			backgroundImage: {
+				'footer-image': "url('/images/bg-footer.webp')",
+			},
 			boxShadow: {
 				'custom_shadow': '0 0 4px 0 #00000040'
 			}
