@@ -29,7 +29,7 @@ async function Footer() {
                   <ul>
                     {menuItems.map((item: any) => (
                       <li key={item.node.id}>
-                        <Link href={item.node.url}>{item.node.label}</Link>
+                        <Link className="text-white font-bold hover:text-fb_blue duration-300" href={item.node.url}>{item.node.label}</Link>
                       </li>
                     ))}
                   </ul>
