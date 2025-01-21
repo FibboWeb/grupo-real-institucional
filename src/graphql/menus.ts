@@ -11,6 +11,15 @@ export const GET_MENU_BY_NAME = gql`
             id
             label
             url
+            childItems {
+              edges {
+                node {
+                  id
+                  label
+                  url
+                }
+              }
+            }
           }
         }
       }
