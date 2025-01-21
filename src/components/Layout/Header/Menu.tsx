@@ -1,16 +1,41 @@
 'use client'
 import { AlignJustify, ChevronDown } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import greenLeaf from '../../../../public/green-leaf.svg';
 
-export default function Menu({menuFetched}) {
+interface MenuProps {
+  menuFetched: {
+    props: {
+      menuItems: {
+        edges: {
+          node: {
+            id: string;
+            url: string;
+            label: string;
+            childItems?: {
+              edges: {
+                node: {
+                  id: string;
+                  url: string;
+                  label: string;
+                };
+              }[];
+            };
+          };
+        }[];
+      };
+    };
+  };
+}
+
+export default function Menu({ menuFetched }: MenuProps) {
 
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
-  const [activeMenu, setActiveMenu] = useState(null);
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const menuItens = menuFetched?.props?.menuItems?.edges || [];
 
-  const handleMouseEnter = (id) => {
+  const handleMouseEnter = (id: string | SetStateAction<null>) => {
     if (activeMenu === null) {
       return setActiveMenu(id); // Define o menu ativo
     } else {
@@ -38,7 +63,7 @@ export default function Menu({menuFetched}) {
                     <a href={item.node.url} className='text-fb_blue_main hover:text-fb_blue duration-300'>
                       {item.node.label}
                     </a>
-                    {item.node.childItems?.edges.length > 0 && (
+                    {item.node?.childItems?.edges && item.node?.childItems?.edges.length > 0 && (
                       <div
                         onMouseEnter={() => handleMouseEnter(item.node.id)}
                         onMouseLeave={handleMouseLeave}
@@ -74,25 +99,26 @@ export default function Menu({menuFetched}) {
             <AlignJustify size={40}/>
           </button>
         {menuOpen && (
-            <ul className='origin-top relative container top-5 flex flex-col gap-4 font-bold text-lg items-center text-black bg-white drop-shadow-md shadow-md rounded-md'>
+            <ul className='origin-top relative container top-5 flex flex-col justify-center gap-4 font-bold text-lg items-center text-black bg-white drop-shadow-md shadow-md rounded-md'>
               {
                 menuItens.map((item) => (
-                  <li className='flex gap-2 px-5 py-3' key={item.node.id}>
+                  <li className='flex relative gap-2 px-5 py-3' key={item.node.id}>
                       <a href={item.node.url} className='text-fb_blue_main hover:text-fb_blue duration-fb_transition_ease'>
                         {item.node.label}
                       </a>
-                      {item.node.childItems?.edges.length > 0 && (
+                      {item.node?.childItems?.edges && item.node.childItems?.edges.length > 0 && (
                       <div
                         onClick={() => handleMouseEnter(item.node.id)}
-                        className="relative"
+                        className="w-full"
                         >
-                        <span className="flex items-center cursor-pointer">
+                        <span className={`flex items-center cursor-pointer transition-all duration-300 ${activeMenu === item.node.id ? 'rotate-180' : ''}`}>
                           <ChevronDown />
                         </span>
-                        <ul className={`bg-white absolute top-full rounded-md shadow-custom_shadow right-0 min-w-96 left-0 sub-menu px-3 py-4 ${activeMenu === item.node.id ? 'block opacity-100' : 'hidden opacity-0'} bg-accent-neutral transition-opacity duration-400 left-1/2 transform -translate-x-1/2`}>
+                        <ul className={`z-10 bg-white absolute top-full rounded-md shadow-custom_shadow right-0 text-center w-96 left-0 sub-menu px-3 py-4 ${activeMenu === item.node.id ? 'block opacity-100' : 'hidden opacity-0'} bg-accent-neutral transition-all duration-400 left-1/2 transform -translate-x-1/2`}>
                           { item.node.childItems?.edges?.map((subMenu) => (
                           <li 
                             key={subMenu.node.id}
+                            className='px-5 py-3'
                           >
                             <a
                             className="text-fb_blue_main hover:text-fb_blue duration-300"
