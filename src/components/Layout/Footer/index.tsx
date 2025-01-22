@@ -44,7 +44,7 @@ async function Footer() {
               </div>
             </div>
             <div className="flex flex-wrap justify-center lg:flex-row gap-7 px-12">
-              <Link className="inline-block" href={"#"}>
+              <Link className="inline-block border-r-2 pr-4" href={"#"}>
                 <Image src={"/images/logo-grupo-real.webp"} width={120} height={48} alt="GrupoReal" />
               </Link>
               <Link className="inline-block" href={"#"}>
@@ -62,7 +62,7 @@ async function Footer() {
             <p className="text-white mt-1">
               © {new Date().getFullYear()} Grupo REAL. Todos os direitos reservados.
             </p>
-            <Link className="inline-flex mt-7" href={"https://fibboweb.com/"}>
+            <Link className="inline-flex mt-7" target="_blank" href={"https://fibboweb.com/"}>
               <Image
                 src={"/images/fibbo-logo.webp"}
                 width={105}
