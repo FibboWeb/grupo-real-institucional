@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import Accordion from "../../components/Layout/Accordion";
 import CardList from '@/components/Layout/CardList';
 
