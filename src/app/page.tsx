@@ -7,7 +7,7 @@ export default async function Home() {
   const fetchedLastPosts = queriedLastPosts.props.nodes;
 
   return (
-    <div className="fb_container overflow-hidden">
+    <div className="fb_container overflow-hidden my-12">
       <LastPosts fetchedLastPosts={fetchedLastPosts} />
     </div>
   );
