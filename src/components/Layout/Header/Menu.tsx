@@ -37,14 +37,14 @@ export default function Menu({ menuFetched }: MenuProps) {
 
   const handleMouseEnter = (id: string | SetStateAction<null>) => {
     if (activeMenu === null) {
-      return setActiveMenu(id); // Define o menu ativo
+      return setActiveMenu(id as string); // Define o menu ativo
     } else {
       return setActiveMenu(null)
     }
   };
 
   const handleMouseEntered = (id: string | SetStateAction<null>) => {
-    setActiveMenu(id);
+    setActiveMenu(id as string);
   }
 
   const handleMouseLeave = () => {
@@ -63,16 +63,13 @@ export default function Menu({ menuFetched }: MenuProps) {
                 </li>
             {
               menuItens.map((item) => (
-                <li className='flex relative gap-2 px-3 py-1' key={item.node.id}>
+                <li className='flex relative gap-2 px-3 py-1' key={item.node.id} onMouseEnter={() => handleMouseEntered(item.node.id)}
+                onMouseLeave={handleMouseLeave}>
                     <a href={item.node.url} className='text-fb_blue_main hover:text-fb_blue duration-300'>
                       {item.node.label}
                     </a>
                     {item.node?.childItems?.edges && item.node?.childItems?.edges.length > 0 && (
-                      <div
-                        onMouseEnter={() => handleMouseEntered(item.node.id)}
-                        onMouseLeave={handleMouseLeave}
-                        className=""
-                        >
+                      <div>
                         <span className={`flex items-center cursor-pointer transition-all duration-300 ${activeMenu === item.node.id ? 'rotate-180 ' : ''}`}>
                           <ChevronDown />
                         </span>
