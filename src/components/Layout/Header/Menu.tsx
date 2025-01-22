@@ -69,8 +69,7 @@ export default function Menu({ menuFetched }: MenuProps) {
                       {item.node.label}
                     </a>
                     {item.node?.childItems?.edges && item.node?.childItems?.edges.length > 0 && (
-                      <div
-                        >
+                      <div>
                         <span className={`flex items-center cursor-pointer transition-all duration-300 ${activeMenu === item.node.id ? 'rotate-180 ' : ''}`}>
                           <ChevronDown />
                         </span>
