@@ -27,7 +27,7 @@ async function Footer() {
                 <p>{menuName}</p>
                 {menuItems.length > 0 ? (
                   <ul>
-                    {menuItems.map((item: any) => (
+                    {menuItems.map((item) => (
                       <li key={item.node.id}>
                         <Link href={item.node.url}>{item.node.label}</Link>
                       </li>
