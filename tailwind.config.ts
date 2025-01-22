@@ -52,7 +52,8 @@ export default {
   			},
 				'fb_green': 'var(--green)',
 				'fb_blue': 'var(--blue)',
-				'fb_blue_main': 'var(--blue-main)',			
+				'fb_blue_main': 'var(--blue-main)',
+				'fb_gray': 'var(--gray)',			
   		},
 			transitionDuration: {
 				'fb_transition_ease': 'all 0.25s ease',

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import Footer from "../components/Layout/Footer";
-import "./globals.css";
+import "../styles/globals.css";
 import Header from "../components/Layout/Header";
 
 const poppins = Poppins({
@@ -22,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-lt-installed="true">
+    <html lang="en" data-lt-installed="true" suppressHydrationWarning={true}>
       <body
         className={`${poppins.className} antialiased w-screen`}
       >
