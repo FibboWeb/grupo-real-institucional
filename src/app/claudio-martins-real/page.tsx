@@ -4,7 +4,10 @@ import Accordion from "../../components/Layout/Accordion";
 export default function ClaudioRealMartins() {
   return (
     <div className="text-fb_text_gray fb_container mx-auto">
-      <h1>Cláudio Real Martins</h1>
+      <h1>Cláudio Martins Real</h1>
+      <Accordion faqHeading={{ tagName: "h5" }} title="Teste 123">
+        <p>Conteúdo</p>
+      </Accordion>
       <Accordion faqHeading={{ tagName: "h3" }} title="Lorem ipsum dolor sit amet">
         <p>Lorem ipsum dolor sit amet. Sed laboriosam dignissimos et quidem ullamAut dolores sed sunt fugiat sit voluptatem
             Quis. Aut corrupti quasEst quia qui quia dolor quo repudiandae voluptates? Est quibusdam facere cum alias vitaenon
