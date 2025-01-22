@@ -53,6 +53,7 @@ export default {
 				'fb_green': 'var(--green)',
 				'fb_blue': 'var(--blue)',
 				'fb_blue_main': 'var(--blue-main)',			
+				'fb_text_gray': 'var(--text-gray)',			
   		},
 			transitionDuration: {
 				'fb_transition_ease': 'all 0.25s ease',
