@@ -1,7 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export default function PageAboutUs() {
-  return (
-    <div>PageAbout</div>
-  )
+  return <div>PageAbout</div>;
 }

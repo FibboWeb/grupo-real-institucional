@@ -1,4 +1,4 @@
-"use server"
+"use server";
 import { getLastPosts } from "@/lib/getLastPosts";
 import LastPosts from "../components/Layout/LastPosts";
 

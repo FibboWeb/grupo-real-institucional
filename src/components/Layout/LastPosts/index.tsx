@@ -5,16 +5,14 @@ import "slick-carousel/slick/slick-theme.css";
 import Link from "next/link";
 import CardBlog from "../CardBlog";
 import type { Post } from "@/types/post";
-import "./lastPost.css"
+import "./lastPost.css";
 
 const Slider = dynamic(() => import("react-slick"), { ssr: false });
 interface LastPostsProps {
   fetchedLastPosts: Post[];
 }
 
-
-function LastPosts( { fetchedLastPosts } : LastPostsProps) {
-
+function LastPosts({ fetchedLastPosts }: LastPostsProps) {
   const settings = {
     slidesToShow: 3.2,
     slidesToScroll: 1,
@@ -58,7 +56,7 @@ function LastPosts( { fetchedLastPosts } : LastPostsProps) {
       },
     ],
   };
-  
+
   return (
     <div className="flex flex-col lg:flex-row gap-6">
       <div className="py-2">
@@ -75,7 +73,7 @@ function LastPosts( { fetchedLastPosts } : LastPostsProps) {
       <div className="last-post-slider overflow-hidden" style={{ width: "75%" }}>
         <Slider {...settings}>
           {fetchedLastPosts.map((post: Post) => (
-            <CardBlog 
+            <CardBlog
               key={post.id}
               postImage={post.featuredImage.node.sourceUrl}
               postImageAlt={post.featuredImage.node.altText}
