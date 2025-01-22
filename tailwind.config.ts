@@ -53,6 +53,7 @@ export default {
         fb_green: "var(--green)",
         fb_blue: "var(--blue)",
         fb_blue_main: "var(--blue-main)",
+        blue_button: "var(--blue-button)",
       },
       transitionDuration: {
         fb_transition_ease: "all 0.25s ease",
@@ -68,6 +69,7 @@ export default {
       },
       boxShadow: {
         custom_shadow: "0 0 4px 0 #00000040",
+        shadow_image_info_section: "0px 5px 15px 0px rgba(0, 0, 0, 0.35)",
       },
     },
   },
