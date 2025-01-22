@@ -37,7 +37,6 @@ body {
     --blue: #1986C1;
     --pf-blue: #0F4C75;
     --blue-main: #031D3A;
-    --text-gray: #333333;
     --green: #00A833;
     --red: #E20A17;
   }
@@ -77,7 +76,6 @@ body {
     @apply bg-background text-foreground;
   }
 }
-
 .fb_container {
   @apply w-[95%] mx-auto lg:w-5/6;
 }

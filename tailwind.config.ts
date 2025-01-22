@@ -52,8 +52,9 @@ export default {
   			},
 				'fb_green': 'var(--green)',
 				'fb_blue': 'var(--blue)',
-				'fb_blue_main': 'var(--blue-main)',			
+				'fb_blue_main': 'var(--blue-main)',
 				'fb_text_gray': 'var(--text-gray)',			
+				'fb_gray': 'var(--gray)',			
   		},
 			transitionDuration: {
 				'fb_transition_ease': 'all 0.25s ease',
@@ -65,6 +66,7 @@ export default {
   		},
 			backgroundImage: {
 				'footer-image': "url('/images/bg-footer.webp')",
+				'fb_gradient': 'linear-gradient(-35deg, #031D3A 0%, #126597 100%)',
 			},
 			boxShadow: {
 				'custom_shadow': '0 0 4px 0 #00000040'
