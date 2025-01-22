@@ -104,7 +104,7 @@ export default function Menu({ menuFetched }: MenuProps) {
             <AlignJustify size={40}/>
           </button>
         {menuOpen && (
-            <ul className='origin-top relative container top-5 flex flex-col justify-center gap-4 font-bold text-lg items-center text-black bg-white drop-shadow-md shadow-md rounded-md'>
+            <ul className='origin-top relative container top-5 left-40 flex flex-col justify-center gap-4 font-bold text-lg items-center text-black bg-white drop-shadow-md shadow-md rounded-md'>
               {
                 menuItens.map((item) => (
                   <li className='flex relative gap-2 px-5 py-3' key={item.node.id}>
