@@ -1,0 +1,5 @@
+@media(max-width: 1024px) {
+  .last-post-slider {
+    width: 100%!important;
+  }
+}

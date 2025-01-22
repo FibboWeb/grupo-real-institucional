@@ -1,0 +1,43 @@
+.accordion:last-child {
+    border: 1px solid transparent;
+}
+.accordion .accordionContent > * {
+    padding-bottom: 10px;
+}
+.accordion .accordionContent h2 {
+    font-size: 22px;
+    font-weight: 700;
+}
+.accordion .accordionContent h3 {
+    font-size: 20px;
+    font-weight: 700;
+}
+.accordion .accordionContent h4 {
+    font-size: 18px;
+    font-weight: 700;
+}
+.accordion .accordionContent h5 {
+    font-size: 16px;
+    font-weight: 700;
+}
+.accordion .accordionContent h6 {
+    font-size: 16px;
+    font-weight: 500;
+}
+.accordion .accordionContent a:hover {
+    color: var(--blue-main);
+}
+.accordion .accordionContent a {
+    color: var(--blue);
+    font-weight: 700;
+    transition: all 300ms;
+}
+.accordion .accordionContent ul, .accordion .accordionContent ol {
+    margin-left: 20px;
+}
+.accordion .accordionContent ul {
+    list-style: disc;
+}
+.accordion .accordionContent ol {
+    list-style: decimal;
+}
