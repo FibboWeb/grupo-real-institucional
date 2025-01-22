@@ -1,9 +1,14 @@
+"use server"
+import { getLastPosts } from "@/lib/getLastPosts";
 import LastPosts from "../components/Layout/LastPosts";
-export default function Home() {
+
+export default async function Home() {
+  const queriedLastPosts = await getLastPosts();
+  const fetchedLastPosts = queriedLastPosts.props.nodes;
+
   return (
-    <div>
-      <h1>Página inicial</h1>
-      <LastPosts />
+    <div className="fb_container overflow-hidden">
+      <LastPosts fetchedLastPosts={fetchedLastPosts} />
     </div>
   );
 }
