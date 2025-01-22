@@ -13,7 +13,6 @@ interface Post {
   title: string;
   content: string;
   date: string;
-  monthDate: string;
   author: {
     node: {
       name: string;
@@ -27,7 +26,7 @@ const fetchedLastPosts = queriedLastPosts.props.nodes;
 
 function LastPosts() {
   return (
-    <div className="container mx-auto w-100">
+    <div className="fb_container">
       {fetchedLastPosts.map((post: Post) => (
         <CardBlog
           key={post.id}
@@ -37,7 +36,6 @@ function LastPosts() {
           postTitle={post.title}
           postDescription={{ __html: post.content }}
           postDate={post.date}
-          postMonthDate={post.monthDate}
           postAuthor={post.author.node.name}
           postAuthorLink={post.author.node.slug}
         />

@@ -77,3 +77,6 @@ body {
     @apply bg-background text-foreground;
   }
 }
+.fb_container {
+  @apply w-[95%] mx-auto lg:w-5/6;
+}

@@ -21,7 +21,6 @@ function CardBlog({
     postTitle,
     postDescription,
     postDate,
-    postMonthDate,
     postAuthor,
     postAuthorLink 
 }: CardBlogProps) {
@@ -39,6 +38,15 @@ function CardBlog({
     return cleanedText;
   };
   
+  const formatDate = (date: string, type: "day" | "month") => {
+    const dateObj = new Date(date);
+    const currentDate = new Date();
+    if (type === "day") {
+      return dateObj.getDate();
+    } else if (type === "month") {
+      return dateObj.toLocaleString("default", { month: "short" }).replace(/\.$/, "");
+    }
+  };
   
 
   return (
@@ -52,8 +60,8 @@ function CardBlog({
           className="w-full h-56 object-cover rounded-t-2xl"
         />
         <div className="date-container absolute top-[39.2%] right-[6.5%] bg-white flex flex-col justify-end shadow-custom_shadow w-16 h-16 rounded-lg text-sm font-extrabold uppercase text-center">
-            <p className="post-date text-xl mb-[5px]">{postDate}</p>
-            <p className="post-date-month bg-fb_blue text-white rounded-b-lg">{postMonthDate}</p>
+            <p className="post-date text-xl mb-[5px]">{ postDate ? formatDate(postDate, "day") : "" }</p>
+            <p className="post-date-month bg-fb_blue text-white rounded-b-lg">{ postDate ? formatDate(postDate, "month") : "" }</p>
         </div>
       </Link>
       <div className="card-post-content p-6">
@@ -68,8 +76,8 @@ function CardBlog({
             <p className="author-name">{postAuthor}</p>
         </Link>
         <Link href={postLink ? postLink : "#"}>
-            <p className="text-lg leading-5 font-bold mt-4 text-fb_blue_main">{postTitle}</p>
-            <div className="post-description mt-2 text-[15px] leading-5 text-fb_gray">
+            <p className="text-lg leading-5 font-bold mt-4 text-fb_blue_main line-clamp-3 min-h-[60px]">{postTitle}</p>
+            <div className="post-description mt-2 text-[15px] min-h-16 leading-5 text-fb_gray">
               {postDescription && (
                 <p>{truncateDescription(postDescription.__html, 100)}</p>
               )}
