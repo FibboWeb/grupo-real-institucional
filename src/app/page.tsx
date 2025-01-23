@@ -5,10 +5,9 @@ import { nossasMarcasInfos, sectionValoresInfo, sliderCategoriasHome } from "@/c
 import Newsletter from "@/components/Layout/Newsletter";
 import InfoSection from "@/components/Layout/InfoSection";
 import ValuesSection from "@/components/ValuesSection";
+import { BusIcon } from "lucide-react";
 import { getLastPostsNoticias } from "@/lib/getLastPostsNoticias";
 import LastPostsNoticias from "../components/Layout/LastPostsNoticias";
-
-import { BusIcon } from "lucide-react";
 
 export default async function Home() {
   const queriedLastPostsNoticias = await getLastPostsNoticias();
