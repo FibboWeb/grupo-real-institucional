@@ -1,14 +1,14 @@
 "use server";
-import { getLastPosts } from "@/lib/getLastPosts";
-import LastPosts from "../components/Layout/LastPosts";
+import { getLastPostsNoticias } from "@/lib/getLastPostsNoticias";
+import LastPostsNoticias from "../components/Layout/LastPostsNoticias";
 
 export default async function Home() {
-  const queriedLastPosts = await getLastPosts();
-  const fetchedLastPosts = queriedLastPosts.props.nodes;
+  const queriedLastPostsNoticias = await getLastPostsNoticias();
+  const fetchedLastPostsNoticias = queriedLastPostsNoticias.props.nodes;
 
   return (
     <div className="fb_container my-12">
-      <LastPosts fetchedLastPosts={fetchedLastPosts} />
+      <LastPostsNoticias fetchedLastPosts={fetchedLastPostsNoticias} />
     </div>
   );
 }

@@ -99,7 +99,7 @@ function CardBlog({
             <Image src={"/author-icon.svg"} alt={"Post author link"} width={16} height={16} className="w-5 h-5" />
             <p className="author-name">{postAuthor}</p>
           </Link>
-          <Link href={`/blog/${postLink ? postLink : "#"}`} className="post-link">
+          <Link href={`/noticias/${postLink ? postLink : "#"}`} className="post-link">
             <p className="text-lg leading-5 font-bold mt-4 text-fb_blue_main line-clamp-3 min-h-[60px]">{postTitle}</p>
             <div className="post-description mt-2 text-[15px] min-h-16 leading-5 text-fb_gray">
               {postDescription && <p>{truncateDescription(postDescription.__html, 100)}</p>}
