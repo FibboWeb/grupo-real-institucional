@@ -7,6 +7,10 @@ import claudio2 from "../../../public/images/claudio-2.jpg";
 import claudio4 from "../../../public/images/claudio-4.jpg";
 import claudio5 from "../../../public/images/claudio-5.jpg";
 import Newsletter from "@/components/Layout/Newsletter";
+import InfoCardsSlider from "@/components/Layout/InfoCardsSlider";
+import Slider from "react-slick";
+import InfoCard from "@/components/Layout/InfoCardsSlider/InfoCard";
+
 
 export default function ClaudioMartinsReal() {
 
@@ -25,7 +29,7 @@ export default function ClaudioMartinsReal() {
       <div className="hero-section bg-fb_blue_main text-white -mt-[102px]">
         <div className="fb_container mx-auto py-[102px]">
           <h1 className="flex flex-col">
-            <strong className="text-2xl lg:text-4xl">Professor Doutor </strong> 
+            <strong className="text-2xl lg:text-4xl">Professor Doutor </strong>
             <strong className="text-4xl lg:text-6xl">Claudio Martins Real</strong>
           </h1>
           <strong className="text-2xl lg:text-4xl">Fundador do Grupo Real</strong>
@@ -61,6 +65,24 @@ export default function ClaudioMartinsReal() {
           imagePath={claudio1}
         />
       </CardSection>
+
+      <div className="py-5 lg:py-10 ps-5 overflow-hidden gap-7 flex flex-col">
+        <h2 className="text-2xl font-semibold text-center">Títulos</h2>
+          <InfoCardsSlider>
+            <InfoCard title="Presidente da Academia Sul-mato-grossense de Medicina Veterinária" svg={'/certified-clean.svg'}>
+              <p>Empossado  Primeiro Presidente da Academia Sul-mato-grossense de Medicina Veterinária  – 2018</p>
+            </InfoCard>
+            <InfoCard title="“Professor Emérito” da UFRGS" svg={'/certified-clean.svg'}>
+              <p>A indicação à honraria, iniciativa do diretor da Faculdade de Veterinária, Emerson Contesini, levou em conta a trajetória notável do homenageado como professor, pesquisador, empreendedor e pioneiro em atividades na UFRGS e em sociedades de classe, divulgando a alargando conhecimentos de sua área – 2015.</p>
+            </InfoCard>
+            <InfoCard title="“Cidadão Campo-grandense”" svg={'/certified-clean.svg'}>
+              <p>Concedido pelo Legislativo municipal de Campo Grande em reconhecimento aos relevantes serviços prestados em prol da melhoria da qualidade de vida do povo e do desenvolvimento da cidade – 2015.</p>
+            </InfoCard>
+            <InfoCard title="Personalidade Descendente" svg={'/certified-clean.svg'}>
+              <p>No Dia da Comunidade Portuguesa (10 de junho) foi homenageado como “<strong>Personalidade Descendente</strong>” em reconhecimento aos relevantes serviços prestados à sociedade campo-grandense – 2013.</p>
+            </InfoCard>
+          </InfoCardsSlider>
+      </div>
 
       <CardSection>
         <div className="w-full lg:w-5/12 pt-4 flex flex-col gap-y-4">
@@ -102,7 +124,7 @@ export default function ClaudioMartinsReal() {
           <p>Além da Láurea, já referida, obtida no Curso de Graduação em 1948, as seguintes:</p>
         </div>
         <div className="w-full lg:w-7/12">
-          <Accordion faqHeading={{ tagName: "h3" }} title="11 vezes Homenageado por turmas de Formandos Curso de Medicina Veterinária">
+          <Accordion faqHeading={{ tagName: "h3" }} title="11 vezes Homenageado por turmas de Formandos Curso de Medicina Veterinária" active={true}>
             <p>da Faculdade de Agronomia e Veterinária da UFRGS e por turmas de Formandos da UFMS.</p>
             <ul>
               <li>UFRGS – 1959, 54, 56, 61, 62, 63, 73, 75 e 76.</li>
@@ -173,7 +195,7 @@ export default function ClaudioMartinsReal() {
       </CardSection>
 
       <CardSection>
-        <Newsletter 
+        <Newsletter
           sectionTitle="Inscreva-se na nossa newsletter"
           sectionDescription="Receba novidades e informações exclusivas sobre nossos produtos e novidades diretamente no seu e-mail."
         />
