@@ -1,13 +1,13 @@
 "use server";
 import BannerCta from "@/components/BannerCTA";
 import SliderNavigational from "@/components/icons_slider";
-import { nossasMarcasInfos, sectionValoresInfo, sliderCategoriasHome } from "@/constants/home";
 import Newsletter from "@/components/Layout/Newsletter";
 import InfoSection from "@/components/Layout/InfoSection";
 import ValuesSection from "@/components/ValuesSection";
-import { BusIcon } from "lucide-react";
 import { getLastPostsNoticias } from "@/lib/getLastPostsNoticias";
 import LastPostsNoticias from "../components/Layout/LastPostsNoticias";
+import SliderTestimonials from "@/components/SliderTestimonials";
+import { nossasMarcasInfos, sectionValoresInfo, sliderCategoriasHome, testimoniaslInfo } from "@/constants/home";
 
 export default async function Home() {
   const queriedLastPostsNoticias = await getLastPostsNoticias();
@@ -55,6 +55,11 @@ export default async function Home() {
         <ValuesSection 
           values={sectionValoresInfo}
         />
+      </section>
+      <section>
+          <SliderTestimonials 
+            testimonial={testimoniaslInfo}
+          />
       </section>
       <section className="fb_container">
         <Newsletter 

@@ -45,7 +45,7 @@ function ValuesSection({ values }: ValuesSectionProps) {
               alt={value.title}
               width={600}
               height={475}
-              className="rounded-lg h-[475px] object-[inherit]"
+              className="rounded-lg h-[475px] object-fill object-center"
             />
           </div>
           <div className="w-full flex flex-col gap-6 lg:w-1/2">

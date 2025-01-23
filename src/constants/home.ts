@@ -15,6 +15,7 @@ import imgMarca03 from "../../public/images/veterinaria-e-fazendeiro-_1_.webp"
 import imgValor01 from "../../public/images/waves-fourteen-years.webp"
 import imgIcon02 from "../../public/images/ciclos_novo.webp"
 import imgValor02 from "../../public/images/imagem_ambiental.webp"
+import { name } from './../../node_modules/next/dist/compiled/webpack/bundle5';
 
 export const sliderCategoriasHome = [
   {
@@ -95,3 +96,26 @@ export const sectionValoresInfo = [
     ] as LoadNumbersProps[]
   }
 ];
+
+export const testimoniaslInfo = [
+  {
+    testimonial: "“Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+    name: "John Doe",
+    empresa: "ABC Company"
+  },
+  {
+    testimonial: "“Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+    name: "John Doe",
+    empresa: "ABC Company"
+  },
+  {
+    testimonial: "“Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+    name: "John Doe",
+    empresa: "ABC Company"
+  },
+  {
+    testimonial: "“Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+    name: "John Doe",
+    empresa: "ABC Company"
+  }
+]
