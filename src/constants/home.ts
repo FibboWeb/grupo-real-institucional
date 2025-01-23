@@ -1,3 +1,4 @@
+import { LoadNumbersProps } from '@/components/ValuesSection/LoadNumbers'
 import img01 from '../../public/icons-slider/linha-01.webp'
 import img02 from '../../public/icons-slider/linha-02.webp'
 import img03 from '../../public/icons-slider/linha-03.webp'
@@ -8,6 +9,12 @@ import img05 from '../../public/icons-slider/linha-05.webp'
 import imgMarca01 from "../../public/images/moca-e-cavalo.webp"
 import imgMarca02 from "../../public/images/mulher-segurando-cachorro.webp"
 import imgMarca03 from "../../public/images/veterinaria-e-fazendeiro-_1_.webp"
+
+
+// Sessões dos valores
+import imgValor01 from "../../public/images/waves-fourteen-years.webp"
+import imgIcon02 from "../../public/images/ciclos_novo.webp"
+import imgValor02 from "../../public/images/imagem_ambiental.webp"
 
 export const sliderCategoriasHome = [
   {
@@ -61,5 +68,30 @@ export const nossasMarcasInfos = [
     ctaLink: '#',
     imagePath: imgMarca03,
   },
-  
+
 ]
+
+export const sectionValoresInfo = [
+
+  { title: "Nossos números",
+    qtde: 10,
+    text: "Há 40 anos, iniciamos uma jornada sobre as terras férteis da agropecuária, movidos por um sonho audacioso: transformar o potencial do campo em realidade, com saúde, bem-estar e prosperidade.",
+    image: imgValor01,
+    session_numbers: [
+      { qtde: 200_000, text: "Clientes atendidos"},
+      { qtde: 200_000, text: "Clientes atendidos"},
+      { qtde: 200_000, text: "Clientes atendidos"},
+    ] as LoadNumbersProps[]
+  },
+  { title: "Tratar a natureza como ela merece.",
+    qtde: 10,
+    image: imgValor02,
+    border: false,
+    icon: imgIcon02,
+    session_numbers: [
+      { qtde: 200_000, text: "Clientes atendidos"},
+      { qtde: 200_000, text: "Clientes atendidos"},
+      { qtde: 200_000, text: "Clientes atendidos"},
+    ] as LoadNumbersProps[]
+  }
+];

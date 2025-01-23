@@ -3,16 +3,19 @@ import { getLastPosts } from "@/lib/getLastPosts";
 import LastPosts from "../components/Layout/LastPosts";
 import BannerCta from "@/components/BannerCTA";
 import SliderNavigational from "@/components/icons_slider";
-import { nossasMarcasInfos, sliderCategoriasHome } from "@/constants/home";
+import { nossasMarcasInfos, sectionValoresInfo, sliderCategoriasHome } from "@/constants/home";
 import Newsletter from "@/components/Layout/Newsletter";
 import InfoSection from "@/components/Layout/InfoSection";
+import ValuesSection from "@/components/ValuesSection";
+
+import { BusIcon } from "lucide-react";
 
 export default async function Home() {
   const queriedLastPosts = await getLastPosts();
   const fetchedLastPosts = queriedLastPosts.props.nodes;
 
   return (
-    <div className="flex flex-col gap-12">
+    <div className="flex flex-col gap-fb_space-section">
       <section className="max-w-full">
         <div className="fb_container overflow-hidden my-12">
           <LastPosts fetchedLastPosts={fetchedLastPosts} />
@@ -48,6 +51,11 @@ export default async function Home() {
         <div>
           <BannerCta />
         </div>
+      </section>
+      <section>
+        <ValuesSection 
+          values={sectionValoresInfo}
+        />
       </section>
       <section className="fb_container">
         <Newsletter 

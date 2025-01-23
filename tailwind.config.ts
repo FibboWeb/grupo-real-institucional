@@ -60,6 +60,9 @@ export default {
       transitionDuration: {
         fb_transition_ease: "all 0.25s ease",
       },
+      spacing: {
+        'fb_space-section': 'var(--fb_space-section)',
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
