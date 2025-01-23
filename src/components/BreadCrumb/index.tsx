@@ -1,3 +1,18 @@
+/**
+ * Componente `Breadcrumb`
+ *
+ * Este componente renderiza uma trilha de navegação (breadcrumb) baseada no caminho atual da URL.
+ *
+ * @param {ReactNode} [homeElement] - Elemento a ser exibido como o link inicial (home) do breadcrumb.
+ * @param {ReactNode} [separatorItem] - Elemento separador entre cada parte do breadcrumb.
+ * @param {string} [containerClasses] - Classes CSS para o container do breadcrumb.
+ * @param {string} [listClasses] - Classes CSS para cada item da lista do breadcrumb.
+ * @param {string} [activeClasses] - Classes CSS para o item ativo do breadcrumb.
+ * @param {boolean} [capitalizeLinks] - Indica se os links devem ser capitalizados.
+ * @param {string[]} [excludePaths] - Array de caminhos a serem excluídos da trilha de navegação.
+ *
+ * @returns {JSX.Element} O componente Breadcrumb renderizado.
+ */
 'use client'
 import React, { ReactNode } from 'react'
 import { usePathname } from 'next/navigation'
@@ -18,7 +33,7 @@ function Breadcrumb({homeElement, separatorItem, containerClasses, listClasses, 
     const pathNames = paths.split('/').filter( path => path && !excludePaths?.includes(path) );
     const separator = separatorItem || <span className='text-fb_gray_bread font-bold'>/</span>;
     const homePath = homeElement || 'Home';
-    
+
     return (
         <div>
             <nav className={containerClasses}>
@@ -57,6 +72,6 @@ function Breadcrumb({homeElement, separatorItem, containerClasses, listClasses, 
         </div>
     )
 }
-
 export default Breadcrumb
+
 
