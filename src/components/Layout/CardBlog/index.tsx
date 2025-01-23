@@ -1,3 +1,32 @@
+/**
+ * Componente `CardBlog`
+ *
+ * Este componente renderiza um card de uma postagem do blog.
+ *
+ * @example
+ * // Exemplo de uso do componente CardBlog
+ *  <CardBlog
+ *       postImage={postImage}
+ *       postImageAlt={postImageAlt}
+ *       postLink={postLink}
+ *       postTitle={postTitle}
+ *       postDescription={postDescription}
+ *       postDate={postDate}
+ *       postAuthor={postAuthor}
+ *       postAuthorLink={postAuthorLink}
+ *    />
+ *
+ * @param {string} postImage - URL da imagem da postagem.
+ * @param {string} postImageAlt - Texto alternativo para a imagem da postagem.
+ * @param {string} postLink - Link para a postagem.
+ * @param {string} postTitle - T tulo da postagem.
+ * @param {string} postDescription - Descrição da postagem em HTML.
+ * @param {string} postDate - Data da postagem.
+ * @param {string} postAuthor - Nome do autor da postagem.
+ * @param {string} postAuthorLink - Link para a p gina do autor da postagem.
+ *
+ * @returns {JSX.Element} O card da postagem renderizado.
+ */
 import Image from "next/image";
 import Link from "next/link";
 
