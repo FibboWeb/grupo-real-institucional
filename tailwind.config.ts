@@ -70,6 +70,7 @@ export default {
         "footer-image": "url('/images/bg-footer.webp')",
         "newsletter-image": "url('/images/bg-newsletter.webp')",
         fb_gradient: "linear-gradient(-235deg, #031D3A 0%, #126597 100%)",
+        "hero-image": "url('/images/bg-hero-section.webp')",
       },
       boxShadow: {
         custom_shadow: "0 0 4px 0 #00000040",
