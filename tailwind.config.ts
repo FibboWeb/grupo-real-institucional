@@ -68,7 +68,8 @@ export default {
       backgroundImage: {
         "footer-image": "url('/images/bg-footer.webp')",
         "newsletter-image": "url('/images/bg-newsletter.webp')",
-        fb_gradient: "linear-gradient(-35deg, #031D3A 0%, #126597 100%)",
+		    'fb_gradient': 'linear-gradient(-35deg, #031D3A 0%, #126597 100%)',
+        'banner-cta': "url('/images/banner-mais-background-blue-_1_.webp')"
       },
       boxShadow: {
         custom_shadow: "0 0 4px 0 #00000040",
