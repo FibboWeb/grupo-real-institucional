@@ -10,7 +10,7 @@ function InfoCardsSlider({ children }: { children: React.ReactNode }) {
     const settings = {
         slidesToShow: 3.2,
         slidesToScroll: 1,
-        infinite: false,
+        infinite: true,
         speed: 500,
         dots: true,
         responsive: [

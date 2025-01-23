@@ -6,17 +6,18 @@ import claudio1 from "../../../public/images/claudio-1.jpg";
 import claudio2 from "../../../public/images/claudio-2.jpg";
 import claudio4 from "../../../public/images/claudio-4.jpg";
 import claudio5 from "../../../public/images/claudio-5.jpg";
+import heroImage from "../../../public/images/claudio-martins-hero.webp";
 import Newsletter from "@/components/Layout/Newsletter";
 import InfoCardsSlider from "@/components/Layout/InfoCardsSlider";
-import Slider from "react-slick";
 import InfoCard from "@/components/Layout/InfoCardsSlider/InfoCard";
+import HeroSection from "@/components/Layout/HeroSection";
 
 
 export default function ClaudioMartinsReal() {
 
   function CardSection({ children }: { children: React.ReactNode }) {
     return (
-      <div className="faq-info text-fb_text_gray fb_container mx-auto py-4 lg:py-10">
+      <div className="text-fb_text_gray fb_container mx-auto py-4 lg:py-10">
         <div className="flex flex-wrap lg:flex-nowrap gap-5 lg:gap-10">
           {children}
         </div>
@@ -26,15 +27,15 @@ export default function ClaudioMartinsReal() {
 
   return (
     <>
-      <div className="hero-section bg-fb_blue_main text-white -mt-[102px]">
-        <div className="fb_container mx-auto py-[102px]">
-          <h1 className="flex flex-col">
+      <HeroSection imagePath={heroImage} imageMaxHeight={580} imageOnBottom={true}>
+        <div>
+          <h1 className="flex flex-col text-white">
             <strong className="text-2xl lg:text-4xl">Professor Doutor </strong>
             <strong className="text-4xl lg:text-6xl">Claudio Martins Real</strong>
           </h1>
-          <strong className="text-2xl lg:text-4xl">Fundador do Grupo Real</strong>
+          <strong className="text-2xl lg:text-4xl text-white">Fundador do Grupo Real</strong>
         </div>
-      </div>
+      </HeroSection>
 
       <CardSection>
         <InfoSection
@@ -66,7 +67,7 @@ export default function ClaudioMartinsReal() {
         />
       </CardSection>
 
-      <div className="py-5 lg:py-10 ps-5 overflow-hidden gap-7 flex flex-col">
+      <div className="py-5 lg:py-10 overflow-hidden gap-7 flex flex-col">
         <h2 className="text-2xl font-semibold text-center">Títulos</h2>
           <InfoCardsSlider>
             <InfoCard title="Presidente da Academia Sul-mato-grossense de Medicina Veterinária" svg={'/certified-clean.svg'}>
@@ -85,7 +86,7 @@ export default function ClaudioMartinsReal() {
       </div>
 
       <CardSection>
-        <div className="w-full lg:w-5/12 pt-4 flex flex-col gap-y-4">
+        <div className="w-full lg:w-5/12 pt-4 flex flex-col gap-y-4 justify-center">
           <h2 className="text-3xl font-semibold">Diplomas</h2>
           <p>O Professor Doutor Claudio Martins Real acumulou ao longo de sua trajetória acadêmica e profissional uma coleção notável de diplomas e reconhecimentos. Formado em Medicina Veterinária pela UFRGS, destacou-se por sua dedicação à pesquisa e ao ensino, além de ter sido o Professor Catedrático mais jovem do Brasil.</p>
         </div>
@@ -119,7 +120,7 @@ export default function ClaudioMartinsReal() {
       </CardSection>
 
       <CardSection>
-        <div className="w-full lg:w-5/12 pt-4 flex flex-col gap-y-4">
+        <div className="w-full lg:w-5/12 pt-4 flex flex-col justify-center gap-y-4">
           <h2 className="text-3xl font-semibold">Distinções Universitárias</h2>
           <p>Além da Láurea, já referida, obtida no Curso de Graduação em 1948, as seguintes:</p>
         </div>
