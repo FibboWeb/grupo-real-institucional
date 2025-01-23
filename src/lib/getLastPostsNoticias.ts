@@ -1,11 +1,11 @@
 "use server";
 import { client } from "@/lib/apollo-client";
-import { GET_LAST_POSTS } from "@/graphql/posts";
+import { GET_LAST_POSTS_NOTICIAS } from "@/graphql/posts";
 
-export async function getLastPosts() {
+export async function getLastPostsNoticias() {
   try {
     const fetchedPosts = await client.query({
-      query: GET_LAST_POSTS,
+      query: GET_LAST_POSTS_NOTICIAS,
     });
 
     return {

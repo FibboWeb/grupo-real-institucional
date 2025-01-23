@@ -7,12 +7,13 @@ import { nossasMarcasInfos, sectionValoresInfo, sliderCategoriasHome } from "@/c
 import Newsletter from "@/components/Layout/Newsletter";
 import InfoSection from "@/components/Layout/InfoSection";
 import ValuesSection from "@/components/ValuesSection";
-
 import { BusIcon } from "lucide-react";
+import { getLastPostsNoticias } from "@/lib/getLastPostsNoticias";
+import LastPostsNoticias from "../components/Layout/LastPostsNoticias";
 
 export default async function Home() {
-  const queriedLastPosts = await getLastPosts();
-  const fetchedLastPosts = queriedLastPosts.props.nodes;
+  const queriedLastPostsNoticias = await getLastPostsNoticias();
+  const fetchedLastPostsNoticias = queriedLastPostsNoticias.props.nodes;
 
   return (
     <div className="flex flex-col gap-fb_space-section">
