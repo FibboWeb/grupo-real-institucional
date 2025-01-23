@@ -36,7 +36,7 @@ interface LastPostsProps {
   fetchedLastPosts: Post[];
 }
 
-function LastPosts({ fetchedLastPosts }: LastPostsProps) {
+function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
   const settings = {
     slidesToShow: 3.2,
     slidesToScroll: 1,
@@ -120,4 +120,4 @@ function LastPosts({ fetchedLastPosts }: LastPostsProps) {
   );
 }
 
-export default LastPosts;
+export default LastPostsNoticias;

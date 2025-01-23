@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
-export const GET_LAST_POSTS = gql`
-  query GET_LAST_POSTS {
+export const GET_LAST_POSTS_NOTICIAS = gql`
+  query GET_LAST_POSTS_NOTICIAS {
     posts(first: 6, where: { orderby: { field: DATE, order: DESC } }) {
       nodes {
         id
