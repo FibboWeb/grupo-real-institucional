@@ -56,6 +56,7 @@ export default {
         blue_button: "var(--blue-button)",
         fb_text_gray: "var(--text-gray)",
         fb_gray: "var(--gray)",
+        fb_gray_bread: "var(--gray-bread)",
       },
       transitionDuration: {
         fb_transition_ease: "all 0.25s ease",

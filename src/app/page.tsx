@@ -1,24 +1,24 @@
 "use server";
-import { getLastPosts } from "@/lib/getLastPosts";
-import LastPosts from "../components/Layout/LastPosts";
 import BannerCta from "@/components/BannerCTA";
 import SliderNavigational from "@/components/icons_slider";
 import { nossasMarcasInfos, sectionValoresInfo, sliderCategoriasHome } from "@/constants/home";
 import Newsletter from "@/components/Layout/Newsletter";
 import InfoSection from "@/components/Layout/InfoSection";
 import ValuesSection from "@/components/ValuesSection";
+import { getLastPostsNoticias } from "@/lib/getLastPostsNoticias";
+import LastPostsNoticias from "../components/Layout/LastPostsNoticias";
 
 import { BusIcon } from "lucide-react";
 
 export default async function Home() {
-  const queriedLastPosts = await getLastPosts();
-  const fetchedLastPosts = queriedLastPosts.props.nodes;
+  const queriedLastPostsNoticias = await getLastPostsNoticias();
+  const fetchedLastPostsNoticias = queriedLastPostsNoticias.props.nodes;
 
   return (
     <div className="flex flex-col gap-fb_space-section">
       <section className="max-w-full">
         <div className="fb_container overflow-hidden my-12">
-          <LastPosts fetchedLastPosts={fetchedLastPosts} />
+          <LastPostsNoticias fetchedLastPosts={fetchedLastPostsNoticias} />
         </div>
       </section>
       <section className="fb_container">
