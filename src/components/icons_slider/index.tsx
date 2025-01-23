@@ -17,7 +17,7 @@ function SampleNextArrow(props: ArrowProps) {
   const { className, style, onClick } = props;
   return (
     <div className={className}>
-      <button onClick={onClick} style={style}>
+      <button className='relative -top-full' onClick={onClick} style={style}>
         <ArrowRight color='black'/>
       </button>
     </div>
@@ -27,8 +27,8 @@ function SampleNextArrow(props: ArrowProps) {
 function SamplePrevArrow(props: ArrowProps) {
   const { className, style, onClick } = props;
   return (
-    <div className={className}>
-      <button onClick={onClick} style={style}>
+    <div className={`${className}`}>
+      <button className='relative -top-full' onClick={onClick} style={style}>
         <ArrowLeft color='black'/>
       </button>
     </div>
@@ -86,7 +86,7 @@ export default function SliderNavigational({ categories }: SliderNavigationalPro
   return (
       <div>
         <div className="w-full flex flex-col gap-8">
-          <h2 className="text-5xl font-bold text-center">Linha Nutrição</h2>
+          <h2 className="text-5xl font-bold text-center text-fb_blue_main">Linha Nutrição</h2>
           <div className="container px-10 lg:w-2/4 lg:px-2 text-center mx-auto">
             <p>
               Oferecemos uma ampla gama de produtos de nutrição animal,
