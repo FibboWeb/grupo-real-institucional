@@ -33,7 +33,7 @@ function Newsletter({ sectionTitle, sectionDescription }: NewsletterProps) {
         <div className="max-w-[768px] flex flex-col justify-center items-center gap-y-8">
           <div className="flex flex-col gap-y-6">
             <div className="font-bold leading-10 text-5xl text-white text-center">
-              <h4>{sectionTitle}</h4>
+              <strong>{sectionTitle}</strong>
             </div>
             <div className="text-white text-center">
               <p>{sectionDescription}</p>

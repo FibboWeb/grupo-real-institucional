@@ -56,10 +56,10 @@ function InfoSection({
     <>
       <div className="w-full h-full container mx-auto">
         <div className={`flex ${desktopClass} ${MobileClass} sm:p-0 p-5`}>
-          <div className="flex-1 flex justify-center items-center rounded-2xl p-2">
+          <div className={`flex-1 flex ${reverseDesktop ? 'justify-start' : 'justify-end'} items-center rounded-2xl p-2`}>
             <Image src={imagePath} alt="" className="rounded-2xl shadow-shadow_image_info_section" />
           </div>
-          <div className={`flex flex-col flex-1 pb-12 pt-12 gap-6 ${paddingClass}`}>
+          <div className={`flex flex-col justify-center flex-1 pb-12 pt-12 gap-6 ${paddingClass}`}>
             <div>
               <h2 className="font-semibold text-3xl text-[var(--blue-main)]">{title}</h2>
               <div className="h-1 w-20 bg-[rgba(3,29,58,0.90)] mt-4 mb-4"></div>
@@ -75,7 +75,7 @@ function InfoSection({
             {ctaLink && (
               <div className="flex sm:justify-start justify-center">
                 <Link
-                  href={""}
+                  href={ctaLink}
                   className="inline-flex gap-4 bg-blue_button py-3 px-4 rounded text-white	text-base font-semibold uppercase"
                 >
                   <span>Ler mais</span>
