@@ -23,7 +23,7 @@ async function CategoryList({ blogContext }: CategoryListProps) {
             </Link>
             {category.children?.nodes.length > 0 && (
               <ul className="ml-8">
-                {category.children.nodes.map((child, index) => (
+                {category.children.nodes.map((child) => (
                   <li key={child.databaseId} className="subcategory-item mb-[2px]">
                     <Link
                       className="text-fb_gray_bread hover:text-fb_blue duration-300 font-semibold"
