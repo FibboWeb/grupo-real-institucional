@@ -10,7 +10,6 @@ import imgMarca01 from "../../public/images/moca-e-cavalo.webp"
 import imgMarca02 from "../../public/images/mulher-segurando-cachorro.webp"
 import imgMarca03 from "../../public/images/veterinaria-e-fazendeiro-_1_.webp"
 
-
 // Sessões dos valores
 import imgValor01 from "../../public/images/waves-fourteen-years.webp"
 import imgIcon02 from "../../public/images/ciclos_novo.webp"
@@ -69,11 +68,9 @@ export const nossasMarcasInfos = [
     ctaLink: '#',
     imagePath: imgMarca03,
   },
-
 ]
 
 export const sectionValoresInfo = [
-
   { title: "Nossos números",
     qtde: 10,
     text: "Há 40 anos, iniciamos uma jornada sobre as terras férteis da agropecuária, movidos por um sonho audacioso: transformar o potencial do campo em realidade, com saúde, bem-estar e prosperidade.",
