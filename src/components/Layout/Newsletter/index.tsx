@@ -4,11 +4,14 @@ import { useState } from "react";
 import PostDataNewsletter from "@/api/Newsletter/PostDataNewsletter";
 
 interface NewsletterProps {
-  sectionTitle: string;
-  sectionDescription: string;
+  sectionTitle?: string;
+  sectionDescription?: string;
 }
 
-function Newsletter({ sectionTitle, sectionDescription }: NewsletterProps) {
+function Newsletter({
+  sectionTitle = "Inscreva-se na nossa newsletter",
+  sectionDescription = "Receba novidades e informações exclusivas sobre nossos produtos e novidades diretamente no seu e-mail.",
+}: NewsletterProps) {
   const [email, setEmail] = useState("");
   const [response, setResponse] = useState<string | null>(null);
 
