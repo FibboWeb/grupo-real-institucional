@@ -1,4 +1,5 @@
 import { LoadNumbersProps } from '@/components/ValuesSection/LoadNumbers'
+
 import img01 from '@/public/icons-slider/linha-01.webp'
 import img02 from '@/public/icons-slider/linha-02.webp'
 import img03 from '@/public/icons-slider/linha-03.webp'
@@ -14,6 +15,12 @@ import imgMarca03 from "@/public/images/veterinaria-e-fazendeiro-_1_.webp"
 import imgValor01 from "@/public/images/waves-fourteen-years.webp"
 import imgIcon02 from "@/public/images/ciclos_novo.webp"
 import imgValor02 from "@/public/images/imagem_ambiental.webp"
+
+export const ctasLinksHero = [
+  { id: "1", anchor: "CONHEÇA NOSSAS MARCAS", link: "/learn-more", btn_background_color: 'bg-blue-600' },
+
+  { id: "2", anchor: "FALE CONOSCO", link: "/get-started", btn_background_color: 'bg-gray-400' },
+]
 
 export const sliderCategoriasHome = [
   {

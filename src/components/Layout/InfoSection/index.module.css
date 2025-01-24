@@ -2,3 +2,13 @@
   color: #031d3a;
   margin-bottom: 20px;
 }
+.containerContent ul,
+.containerContent ol {
+  margin-left: 20px;
+}
+.containerContent ul {
+  list-style: disc;
+}
+.containerContent ol {
+  list-style: decimal;
+}
