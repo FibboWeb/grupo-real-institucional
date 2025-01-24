@@ -1,21 +1,23 @@
-"use server"
-import { getLastPostsNoticias } from "@/lib/getLastPostsNoticias";
-import LastPostsNoticias from "../components/Layout/LastPostsNoticias";
+"use server";
 import BannerCta from "@/components/BannerCTA";
 import SliderNavigational from "@/components/icons_slider";
-import { nossasMarcasInfos, sliderCategoriasHome } from "@/constants/home";
 import Newsletter from "@/components/Layout/Newsletter";
 import InfoSection from "@/components/Layout/InfoSection";
+import ValuesSection from "@/components/ValuesSection";
+import { getLastPostsNoticias } from "@/lib/getLastPostsNoticias";
+import LastPostsNoticias from "../components/Layout/LastPostsNoticias";
+import SliderTestimonials from "@/components/SliderTestimonials";
+import { nossasMarcasInfos, sectionValoresInfo, sliderCategoriasHome, testimoniaslInfo } from "@/constants/home";
 
 export default async function Home() {
   const queriedLastPostsNoticias = await getLastPostsNoticias();
   const fetchedLastPostsNoticias = queriedLastPostsNoticias.props.nodes;
 
   return (
-    <div className="flex flex-col gap-12">
+    <div className="flex flex-col gap-fb_space-section">
       <section className="max-w-full">
         <div className="fb_container overflow-hidden my-12">
-          <LastPosts fetchedLastPosts={fetchedLastPosts} />
+          <LastPostsNoticias fetchedLastPosts={fetchedLastPostsNoticias} />
         </div>
       </section>
       <section className="fb_container">
@@ -48,6 +50,16 @@ export default async function Home() {
         <div>
           <BannerCta />
         </div>
+      </section>
+      <section>
+        <ValuesSection 
+          values={sectionValoresInfo}
+        />
+      </section>
+      <section>
+          <SliderTestimonials 
+            testimonial={testimoniaslInfo}
+          />
       </section>
       <section className="fb_container">
         <Newsletter 

@@ -4,7 +4,7 @@ function BannerCta() {
   return (
     <section className='relative fb_container rounded-lg h-auto'>
       <div className='bg-banner-cta h-[430px] lg:max-h-96 rounded-2xl bg-center bg-cover'>
-        <div className="absolute top-[calc(max(2rem,50%-52rem))] md:top-[calc(max(4rem,50%-52rem))] lg:top-[calc(max(3.5rem,50%-52rem))] left-[max(3.5rem,calc(50%-52rem))] overflow-hidden">
+        <div className="absolute top-[calc(max(.8rem, 50% - 52rem))] sm:top-[calc(max(2rem,50%-52rem))] md:top-[calc(max(4rem,50%-52rem))] lg:top-[calc(max(3.5rem,50%-52rem))] left-[max(3.5rem,calc(50%-52rem))] overflow-hidden">
           <div className='flex flex-col gap-8 h-auto'>
             <div className='flex flex-col gap-1.5'>
               <span className='w-fit bg-fb_blue rounded-full text-sm text-white py-1 px-2'>ARTIGOS CIENTÍFICOS</span>

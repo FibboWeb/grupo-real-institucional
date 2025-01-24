@@ -46,6 +46,25 @@ interface SliderNavigationalProps {
   categories: Category[];
 }
 
+/**
+ * SliderNavigational componente renderiza um slider navegacional.
+ *
+ * @param {Object} props - As propriedades do componente.
+ * @param {Category[]} props.categories - Um array com os objetos a serem renderizados.
+ * @param {props.categories.id} props.categories.id - Identificador do objeto.
+ * @param {props.categories.url} props.categories.url - URL da imagem da categoria.
+ * @param {props.categories.label} props.categories.label - Label da categoria.
+ *
+ * @returns {JSX.Element} Um slider que renderiza as imagens e links das categorias.
+ * 
+ * @example
+ * Exemplo de uso:
+ * <SliderNavigational categories={categories} />
+ *
+ * @description
+ * O slider e responsivo e tem vários pontos de quebra de acordo com o tamanho da tela.
+ * Setas direcionais personalizadas.
+ */
 export default function SliderNavigational({ categories }: SliderNavigationalProps) {
   const sliderRef = useRef(null);
 
@@ -119,6 +138,5 @@ export default function SliderNavigational({ categories }: SliderNavigationalPro
           </div>
         </div>
       </div>
-    </div>
   );
 }
