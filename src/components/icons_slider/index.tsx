@@ -1,9 +1,9 @@
-'use client'
-import { ArrowLeft, ArrowRight } from 'lucide-react';
-import Image, { StaticImageData } from 'next/image';
-import Link from 'next/link';
-import { useRef } from 'react';
-import Slider from 'react-slick';
+"use client";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
+import { useRef } from "react";
+import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 
@@ -50,7 +50,7 @@ export default function SliderNavigational({ categories }: SliderNavigationalPro
   const sliderRef = useRef(null);
 
   const settings = {
-    orientation: 'horizontal',
+    orientation: "horizontal",
     infinite: true,
     speed: 500,
     slidesToShow: 5,
@@ -119,5 +119,6 @@ export default function SliderNavigational({ categories }: SliderNavigationalPro
           </div>
         </div>
       </div>
+    </div>
   );
 }

@@ -1,6 +1,6 @@
 "use server"
-import { getLastPosts } from "@/lib/getLastPosts";
-import LastPosts from "../components/Layout/LastPosts";
+import { getLastPostsNoticias } from "@/lib/getLastPostsNoticias";
+import LastPostsNoticias from "../components/Layout/LastPostsNoticias";
 import BannerCta from "@/components/BannerCTA";
 import SliderNavigational from "@/components/icons_slider";
 import { nossasMarcasInfos, sliderCategoriasHome } from "@/constants/home";
@@ -8,8 +8,8 @@ import Newsletter from "@/components/Layout/Newsletter";
 import InfoSection from "@/components/Layout/InfoSection";
 
 export default async function Home() {
-  const queriedLastPosts = await getLastPosts();
-  const fetchedLastPosts = queriedLastPosts.props.nodes;
+  const queriedLastPostsNoticias = await getLastPostsNoticias();
+  const fetchedLastPostsNoticias = queriedLastPostsNoticias.props.nodes;
 
   return (
     <div className="flex flex-col gap-12">

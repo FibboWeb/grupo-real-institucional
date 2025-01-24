@@ -54,8 +54,9 @@ export default {
         fb_blue: "var(--blue)",
         fb_blue_main: "var(--blue-main)",
         blue_button: "var(--blue-button)",
-		fb_text_gray: 'var(--text-gray)',			
-		fb_gray: 'var(--gray)',
+        fb_text_gray: "var(--text-gray)",
+        fb_gray: "var(--gray)",
+        fb_gray_bread: "var(--gray-bread)",
       },
       transitionDuration: {
         fb_transition_ease: "all 0.25s ease",
