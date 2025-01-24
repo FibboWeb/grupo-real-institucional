@@ -8,9 +8,9 @@ async function Header() {
   const menuFetched = await getMenus("FB Menu Site");
 
   return (
-    <header className="sticky top-4 z-50 ">
+    <header className="fixed top-0 left-0 right-0 z-[100]">
       <div className="relative mx-auto fb_container my-4 bg-white lg:px-4 rounded-md flex justify-between items-center shadow-custom_shadow drop-shadow-md">
-        <div className="sticky top-0 flex justify-between items-center w-full">
+        <div className="top-0 flex justify-between items-center w-full">
           <div>
             <Link href="/" rel="Página inicial" title="Visite a página inicial" tabIndex={0}>
               <Image src={logo} alt="Logo da empresa" width={140} height={70} loading="eager" />
