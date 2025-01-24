@@ -1,25 +1,22 @@
 import React from "react";
 import Accordion from "../../components/Layout/Accordion";
-import CardList from '@/components/Layout/CardList';
+import CardList from "@/components/Layout/CardList";
 import InfoSection from "@/components/Layout/InfoSection";
 import claudio1 from "../../../public/images/claudio-1.jpg";
 import claudio2 from "../../../public/images/claudio-2.jpg";
 import claudio4 from "../../../public/images/claudio-4.jpg";
 import claudio5 from "../../../public/images/claudio-5.jpg";
-import heroImage from "../../../public/images/claudio-martins-hero.webp";
 import Newsletter from "@/components/Layout/Newsletter";
 import InfoCardsSlider from "@/components/Layout/InfoCardsSlider";
 import InfoCard from "@/components/Layout/InfoCardsSlider/InfoCard";
 import HeroSection from "@/components/Layout/HeroSection";
+import heroImage from "../../../public/images/claudio-martins-hero.webp";
 
 export default function ClaudioMartinsReal() {
-
   function CardSection({ children }: { children: React.ReactNode }) {
     return (
       <div className="text-fb_text_gray fb_container mx-auto py-4 lg:py-10">
-        <div className="flex flex-wrap lg:flex-nowrap gap-5 lg:gap-10">
-          {children}
-        </div>
+        <div className="flex flex-wrap lg:flex-nowrap gap-5 lg:gap-10">{children}</div>
       </div>
     );
   }
@@ -41,7 +38,9 @@ export default function ClaudioMartinsReal() {
           reverseDesktop={true}
           reverseMobile={false}
           title={"Uma Origem Promissora"}
-          content={"<p>O professor Doutor Claudio Martins Real nasceu em 11 de fevereiro de 1926, no município de Capão do Leão, na época, 4º Distrito de Pelotas. Formou-se em Medicina Veterinária na Escola de Agronomia e Medicina da UFRGS. Com 24 anos, tornou-se o Professor Catedrático mais jovem do País.</p>"}
+          content={
+            "<p>O professor Doutor Claudio Martins Real nasceu em 11 de fevereiro de 1926, no município de Capão do Leão, na época, 4º Distrito de Pelotas. Formou-se em Medicina Veterinária na Escola de Agronomia e Medicina da UFRGS. Com 24 anos, tornou-se o Professor Catedrático mais jovem do País.</p>"
+          }
           imagePath={claudio1}
         />
       </CardSection>
@@ -51,7 +50,9 @@ export default function ClaudioMartinsReal() {
           reverseDesktop={false}
           reverseMobile={false}
           title={"Pioneiro da Homeopatia Populacional"}
-          content={"<p>Por influência do pai, Francisco Real, tornou-se defensor e estudioso da Homeopatia, quebrando paradigma ao usar a terapêutica em rebanhos pela primeira vez. Foi, portanto, o precursor e criador do termo Homeopatia Populacional.</p>"}
+          content={
+            "<p>Por influência do pai, Francisco Real, tornou-se defensor e estudioso da Homeopatia, quebrando paradigma ao usar a terapêutica em rebanhos pela primeira vez. Foi, portanto, o precursor e criador do termo Homeopatia Populacional.</p>"
+          }
           imagePath={claudio2}
         />
       </CardSection>
@@ -61,36 +62,63 @@ export default function ClaudioMartinsReal() {
           reverseDesktop={true}
           reverseMobile={false}
           title={"A Fundação da Real H e o Legado em Continuidade"}
-          content={"<p>Trabalhou como professor até 1993, quando, após aposentar-se, fundou, junto com os filhos, a Real H. Até hoje o professor dedica-se com entusiasmo ao estudo da Homeopatia e da Medicina Veterinária.</p>"}
-
+          content={
+            "<p>Trabalhou como professor até 1993, quando, após aposentar-se, fundou, junto com os filhos, a Real H. Até hoje o professor dedica-se com entusiasmo ao estudo da Homeopatia e da Medicina Veterinária.</p>"
+          }
           imagePath={claudio1}
         />
       </CardSection>
 
-      <div className="py-5 lg:py-10 overflow-hidden gap-7 flex flex-col">
-        <h2 className="text-2xl font-semibold text-center">Títulos</h2>
-        <InfoCardsSlider>
-          <InfoCard title={"Presidente da Academia Sul-mato-grossense de Medicina Veterinária"} svg={'/certified-clean.svg'}>
-            <p>Empossado  Primeiro Presidente da Academia Sul-mato-grossense de Medicina Veterinária  - 2018</p>
-          </InfoCard>
-          <InfoCard title={"“Professor Emérito” da UFRGS"} svg={'/certified-clean.svg'}>
-            <p>A indicação à honraria, iniciativa do diretor da Faculdade de Veterinária, Emerson Contesini, levou em conta a trajetória notável do homenageado como professor, pesquisador, empreendedor e pioneiro em atividades na UFRGS e em sociedades de classe, divulgando a alargando conhecimentos de sua área - 2015.</p>
-          </InfoCard>
-          <InfoCard title={"“Cidadão Campo-grandense”"} svg={'/certified-clean.svg'}>
-            <p>Concedido pelo Legislativo municipal de Campo Grande em reconhecimento aos relevantes serviços prestados em prol da melhoria da qualidade de vida do povo e do desenvolvimento da cidade - 2015.</p>
-          </InfoCard>
-          <InfoCard title={"Personalidade Descendente"} svg={'/certified-clean.svg'}>
-            <p>No Dia da Comunidade Portuguesa (10 de junho) foi homenageado como “<strong>Personalidade Descendente</strong>” em reconhecimento aos relevantes serviços prestados à sociedade campo-grandense - 2013.</p>
-          </InfoCard>
-        </InfoCardsSlider>
-      </div>
-
+      <CardSection>
+        <div className="w-full lg:w-5/12 pt-4 flex flex-col gap-y-4">
+          <div className="py-5 lg:py-10 overflow-hidden gap-7 flex flex-col">
+            <h2 className="text-2xl font-semibold text-center">Títulos</h2>
+            <InfoCardsSlider>
+              <InfoCard
+                title={"Presidente da Academia Sul-mato-grossense de Medicina Veterinária"}
+                svg={"/certified-clean.svg"}
+              >
+                <p>Empossado Primeiro Presidente da Academia Sul-mato-grossense de Medicina Veterinária - 2018</p>
+              </InfoCard>
+              <InfoCard title={"“Professor Emérito” da UFRGS"} svg={"/certified-clean.svg"}>
+                <p>
+                  A indicação à honraria, iniciativa do diretor da Faculdade de Veterinária, Emerson Contesini, levou em
+                  conta a trajetória notável do homenageado como professor, pesquisador, empreendedor e pioneiro em
+                  atividades na UFRGS e em sociedades de classe, divulgando a alargando conhecimentos de sua área -
+                  2015.
+                </p>
+              </InfoCard>
+              <InfoCard title={"“Cidadão Campo-grandense”"} svg={"/certified-clean.svg"}>
+                <p>
+                  Concedido pelo Legislativo municipal de Campo Grande em reconhecimento aos relevantes serviços
+                  prestados em prol da melhoria da qualidade de vida do povo e do desenvolvimento da cidade - 2015.
+                </p>
+              </InfoCard>
+              <InfoCard title={"Personalidade Descendente"} svg={"/certified-clean.svg"}>
+                <p>
+                  No Dia da Comunidade Portuguesa (10 de junho) foi homenageado como “
+                  <strong>Personalidade Descendente</strong>” em reconhecimento aos relevantes serviços prestados à
+                  sociedade campo-grandense - 2013.
+                </p>
+              </InfoCard>
+            </InfoCardsSlider>
+          </div>
+        </div>
+      </CardSection>
       <CardSection>
         <div className="w-full lg:w-5/12 pt-4 flex flex-col gap-y-4 justify-center">
-          <h2 className="text-3xl font-semibold">Diplomas</h2>
-          <p>O Professor Doutor Claudio Martins Real acumulou ao longo de sua trajetória acadêmica e profissional uma coleção notável de diplomas e reconhecimentos. Formado em Medicina Veterinária pela UFRGS, destacou-se por sua dedicação à pesquisa e ao ensino, além de ter sido o Professor Catedrático mais jovem do Brasil.</p>
-        </div>
-        <div className="w-full lg:w-7/12">
+          <CardList svg={"/dog.svg"} title="Médico Veterinário">
+            <p>Diplomado pela Escola de Agronomia e Veterinária da Universidade Federal do Rio Grande do Sul, 1948.</p>
+          </CardList>
+          <CardList svg={"/degree.svg"} title="Diploma de Láurea em Veterinária">
+            <p>Obtido no Curso de Graduação da então Escola de Agronomia e Veterinária de Porto Alegre RS em 1948.</p>
+          </CardList>
+          <CardList svg={"/certified.svg"} title="Docente livre">
+            <p>
+              em Patologia e Clínica Médica dos Animais Domésticos – obtido em Concurso Público de Títulos e Provas,
+              1952, na mesma Instituição.
+            </p>
+          </CardList>
           <CardList svg={"/dog.svg"} title={"Médico Veterinário"}>
             <p>Diplomado pela Escola de Agronomia e Veterinária da Universidade Federal do Rio Grande do Sul, 1948.</p>
           </CardList>
@@ -98,7 +126,10 @@ export default function ClaudioMartinsReal() {
             <p>Obtido no Curso de Graduação da então Escola de Agronomia e Veterinária de Porto Alegre RS em 1948.</p>
           </CardList>
           <CardList svg={"/certified.svg"} title={"Docente livre"}>
-            <p>em Patologia e Clínica Médica dos Animais Domésticos - obtido em Concurso Público de Títulos e Provas, 1952, na mesma Instituição.</p>
+            <p>
+              em Patologia e Clínica Médica dos Animais Domésticos - obtido em Concurso Público de Títulos e Provas,
+              1952, na mesma Instituição.
+            </p>
           </CardList>
         </div>
       </CardSection>
@@ -125,21 +156,31 @@ export default function ClaudioMartinsReal() {
           <p>Além da Láurea, já referida, obtida no Curso de Graduação em 1948, as seguintes:</p>
         </div>
         <div className="w-full lg:w-7/12">
-          <Accordion faqHeading={{ tagName: "h3" }} title={"11 vezes Homenageado por turmas de Formandos Curso de Medicina Veterinária"} active={true}>
+          <Accordion
+            faqHeading={{ tagName: "h3" }}
+            title={"11 vezes Homenageado por turmas de Formandos Curso de Medicina Veterinária"}
+            active={true}
+          >
             <p>da Faculdade de Agronomia e Veterinária da UFRGS e por turmas de Formandos da UFMS.</p>
             <ul>
               <li>UFRGS - 1959, 54, 56, 61, 62, 63, 73, 75 e 76.</li>
               <li>UFMS - 1985 e 1986.</li>
             </ul>
           </Accordion>
-          <Accordion faqHeading={{ tagName: "h3" }} title={"03 vezes Homenageado de Honra da turma de formandos do Curso de Veterinária"}>
+          <Accordion
+            faqHeading={{ tagName: "h3" }}
+            title={"03 vezes Homenageado de Honra da turma de formandos do Curso de Veterinária"}
+          >
             <p>da Faculdade de Agronomia e Veterinária da UFRGS e por turmas de Formandos da UFMS.</p>
             <ul>
               <li>UFRGS - 1979.</li>
               <li>UFMS - 1982 e 1993.</li>
             </ul>
           </Accordion>
-          <Accordion faqHeading={{ tagName: "h3" }} title={"10 vezes Paraninfo de turma de formandos do Curso de Veterinária"}>
+          <Accordion
+            faqHeading={{ tagName: "h3" }}
+            title={"10 vezes Paraninfo de turma de formandos do Curso de Veterinária"}
+          >
             <p>da Faculdade de Agronomia e Veterinária da UFRGS.</p>
             <ul>
               <li>UFRGS - 1951, 53,64, 65, 66, 67, 69, 70, 72, 74.</li>
@@ -198,9 +239,11 @@ export default function ClaudioMartinsReal() {
       <CardSection>
         <Newsletter
           sectionTitle={"Inscreva-se na nossa newsletter"}
-          sectionDescription={"Receba novidades e informações exclusivas sobre nossos produtos e novidades diretamente no seu e-mail."}
+          sectionDescription={
+            "Receba novidades e informações exclusivas sobre nossos produtos e novidades diretamente no seu e-mail."
+          }
         />
       </CardSection>
     </>
-  )
+  );
 }

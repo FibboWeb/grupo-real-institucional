@@ -1,3 +1,7 @@
+.btn-container:hover {
+  border: 1px solid #1986c1;
+}
+
 .btn-container:hover .btn-logo {
   background-color: #cccccc;
 }
