@@ -56,9 +56,16 @@ export default {
         blue_button: "var(--blue-button)",
         fb_text_gray: "var(--text-gray)",
         fb_gray: "var(--gray)",
+        fb_gray_bread: "var(--gray-bread)",
+        fb_gradiente_opacity: "hsla(212, 90%, 12%, 0.8)",
+        "fb_dark-blue": "hsla(212, 90%, 12%, 1)",
+        "fb_light-blue": "hsla(206, 15%, 60%, 0)",
       },
       transitionDuration: {
         fb_transition_ease: "all 0.25s ease",
+      },
+      spacing: {
+        'fb_space-section': 'var(--fb_space-section)',
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -68,7 +75,9 @@ export default {
       backgroundImage: {
         "footer-image": "url('/images/bg-footer.webp')",
         "newsletter-image": "url('/images/bg-newsletter.webp')",
-        fb_gradient: "linear-gradient(-35deg, #031D3A 0%, #126597 100%)",
+		    'fb_gradient': 'linear-gradient(-35deg, #031D3A 0%, #126597 100%)',
+        'banner-cta': "url('/images/banner-mais-background-blue-_1_.webp')",
+        "hero-image": "url('/images/bg-hero-section.webp')",
       },
       boxShadow: {
         custom_shadow: "0 0 4px 0 #00000040",

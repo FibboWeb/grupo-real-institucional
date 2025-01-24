@@ -1,3 +1,32 @@
+/**
+ * Componente `CardBlog`
+ *
+ * Este componente renderiza um card de uma postagem do blog.
+ *
+ * @example
+ * // Exemplo de uso do componente CardBlog
+ *  <CardBlog
+ *       postImage={postImage}
+ *       postImageAlt={postImageAlt}
+ *       postLink={postLink}
+ *       postTitle={postTitle}
+ *       postDescription={postDescription}
+ *       postDate={postDate}
+ *       postAuthor={postAuthor}
+ *       postAuthorLink={postAuthorLink}
+ *    />
+ *
+ * @param {string} postImage - URL da imagem da postagem.
+ * @param {string} postImageAlt - Texto alternativo para a imagem da postagem.
+ * @param {string} postLink - Link para a postagem.
+ * @param {string} postTitle - T tulo da postagem.
+ * @param {string} postDescription - Descrição da postagem em HTML.
+ * @param {string} postDate - Data da postagem.
+ * @param {string} postAuthor - Nome do autor da postagem.
+ * @param {string} postAuthorLink - Link para a p gina do autor da postagem.
+ *
+ * @returns {JSX.Element} O card da postagem renderizado.
+ */
 import Image from "next/image";
 import Link from "next/link";
 
@@ -64,13 +93,13 @@ function CardBlog({
         </Link>
         <div className="card-post-content p-6">
           <Link
-            href={postAuthorLink ? postAuthorLink : "#"}
+            href={`/author/${postAuthorLink ? postAuthorLink : "#"}`}
             className="author-info flex gap-2 text-sm font-medium text-fb_gray"
           >
             <Image src={"/author-icon.svg"} alt={"Post author link"} width={16} height={16} className="w-5 h-5" />
             <p className="author-name">{postAuthor}</p>
           </Link>
-          <Link href={postLink ? postLink : "#"}>
+          <Link href={`/noticias/${postLink ? postLink : "#"}`} className="post-link">
             <p className="text-lg leading-5 font-bold mt-4 text-fb_blue_main line-clamp-3 min-h-[60px]">{postTitle}</p>
             <div className="post-description mt-2 text-[15px] min-h-16 leading-5 text-fb_gray">
               {postDescription && <p>{truncateDescription(postDescription.__html, 100)}</p>}
