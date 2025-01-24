@@ -1,7 +1,7 @@
-import { gql } from "@apollo/client";
+import { gql, useQuery, useMutation } from "@apollo/client";
 
-export const GET_LAST_POSTS = gql`
-  query GET_LAST_POSTS {
+export const GET_LAST_POSTS_NOTICIAS = gql`
+  query GET_LAST_POSTS_NOTICIAS {
     posts(first: 6, where: { orderby: { field: DATE, order: DESC } }) {
       nodes {
         id
@@ -18,6 +18,25 @@ export const GET_LAST_POSTS = gql`
           node {
             name
             slug
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const GET_POSTS_NOTICIAS_MOST_VIEWED = gql`
+  query GET_POSTS_MOST_VIEWED {
+    popularPosts(first: 5) {
+      nodes {
+        slug
+        viewCount
+        id
+        title
+        featuredImage {
+          node {
+            altText
+            sourceUrl
           }
         }
       }
