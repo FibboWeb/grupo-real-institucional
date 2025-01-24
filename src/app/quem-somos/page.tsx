@@ -20,6 +20,9 @@ import { members } from "./BoardCardsContents";
 import OurValues from "@/components/Layout/OurValuesSection/OurValues";
 import { OurValuesContent, content } from "./OurValuesContents";
 
+// Timeline
+import Timeline from "@/components/Layout/Timeline/Timeline";
+
 export default function PageAboutUs() {
   const ctaLinkString = "www.google.com";
   const conteudo =
@@ -84,6 +87,8 @@ export default function PageAboutUs() {
       />
 
       <BoardCards title="Diretoria" members={members} />
+
+      <Timeline />
     </section>
   );
 }
