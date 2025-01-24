@@ -9,6 +9,7 @@ import LastPostsNoticias from "../components/Layout/LastPostsNoticias";
 import SliderTestimonials from "@/components/SliderTestimonials";
 import { ctasLinksHero, nossasMarcasInfos, sectionValoresInfo, sliderCategoriasHome, testimoniaslInfo } from "@/constants/home";
 import VideoBackground from "@/components/Layout/HeroSection/VideoBackground";
+import Typewriter from "@/components/WriterWords";
 
 export default async function Home() {
   const queriedLastPostsNoticias = await getLastPostsNoticias();
@@ -18,7 +19,7 @@ export default async function Home() {
     <div className="flex flex-col gap-fb_space-section">
       <section>
         <VideoBackground src_video="/video/video-hero.mp4" ctaLinks={ctasLinksHero}>
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 text-center">Por um futuro sustentável para todos</h1>
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 text-center">Por um futuro s{ <Typewriter words={['ustentável', 'audável', 'eguro']} /> } <br /> para todos</h1>
           <p className="text-lg md:text-xl mb-6">O Grupo REAL reúne marcas que transformam desafios em oportunidades. Descubra nosso compromisso com a qualidade e sustentabilidade.</p>
         </VideoBackground>
       </section>
