@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import BtnCallToAction from "../Buttons/BtnCallToAction/BtnCallToAction";
 import ImageTeste from "../../../../public/images/image-hero-section-02.webp";
 import ArrowRightSVG from "../../../../public/images/arrow-right.svg";
 
@@ -21,19 +21,7 @@ export default function HeroSection({ children, ctaLink }: HeroSectionProps) {
                     {children}
                     {ctaLink && (
                       <div className="flex sm:justify-start justify-center">
-                        <Link
-                          href={ctaLink}
-                          className="inline-flex gap-4 bg-blue_button py-3 px-4 rounded text-white	text-base font-semibold uppercase"
-                        >
-                          <span>Ler mais</span>
-                          <Image
-                            src={ArrowRightSVG}
-                            alt="Arrow Icon"
-                            width={24}
-                            height={24}
-                            className="bg-white rounded-full p-1"
-                          />
-                        </Link>
+                        <BtnCallToAction ctaLink="#" content="Leia mais" icon={ArrowRightSVG} />
                       </div>
                     )}
                   </>
