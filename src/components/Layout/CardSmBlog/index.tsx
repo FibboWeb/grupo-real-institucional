@@ -28,7 +28,7 @@ function CardSmBlog(CardBlogProps: CardBlogProps) {
           className="text-fb_gray_bread hover:text-fb_blue duration-300 font-semibold"
           href={(CardBlogProps.blogContext || "") + (CardBlogProps.postLink || "")}
         >
-          <p>{CardBlogProps.postTitle || ""}</p>
+          <p className="line-clamp-4 min-h-[70px]">{CardBlogProps.postTitle || ""}</p>
         </Link>
       </div>
     </div>

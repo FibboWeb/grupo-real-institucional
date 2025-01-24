@@ -44,8 +44,8 @@ export default async function CategoriaPage({ params }: CategoriaPageProps) {
         </div>
       </div>
 
-      <div className="category-content flex w-full gap-4 xl:gap-24">
-        <div className="content-cards w-9/12 mb-7">
+      <div className="category-content flex flex-col  lg:items-start lg:flex-row  w-full gap-4 xl:gap-24">
+        <div className="content-cards w-full lg:w-9/12 mb-7">
           <h2 className="font-bold text-fb_blue_main text-3xl lg:text-4xl mb-4">Últimos Posts</h2>
           {/* <p className="text-sm text-fb_gray mb-4">Total de posts nesta categoria: {total}</p>{" "} */}
           <div className="grid-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 lg:gap-6">
@@ -67,21 +67,19 @@ export default async function CategoriaPage({ params }: CategoriaPageProps) {
               <p>Nenhum post encontrado.</p>
             )}
           </div>
+          <Pagination
+            blogContext="/noticias"
+            currentPage={currentPage}
+            totalPages={totalPages}
+            hasPrevious={hasPrevious}
+            hasMore={hasMore}
+            slug={slug}
+          />
         </div>
-        <div className="sidebar w-1/3">
+        <div className="sidebar w-full lg:w-1/3">
           <SidebarNoticias />
         </div>
       </div>
-
-      {/* Paginação */}
-      <Pagination
-        blogContext="/noticias"
-        currentPage={currentPage}
-        totalPages={totalPages}
-        hasPrevious={hasPrevious}
-        hasMore={hasMore}
-        slug={slug}
-      />
     </div>
   );
 }
