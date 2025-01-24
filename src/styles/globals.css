@@ -40,6 +40,7 @@ body {
     --green: #00a833;
     --red: #e20a17;
     --blue-button: #1986c1;
+    --text-dark: #343434;
   }
   .dark {
     --background: 0 0% 3.9%;
