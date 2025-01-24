@@ -61,6 +61,9 @@ export default {
       transitionDuration: {
         fb_transition_ease: "all 0.25s ease",
       },
+      spacing: {
+        'fb_space-section': 'var(--fb_space-section)',
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -69,8 +72,9 @@ export default {
       backgroundImage: {
         "footer-image": "url('/images/bg-footer.webp')",
         "newsletter-image": "url('/images/bg-newsletter.webp')",
-        fb_gradient: "linear-gradient(-235deg, #031D3A 0%, #126597 100%)",
+        "fb_gradient": "linear-gradient(-235deg, #031D3A 0%, #126597 100%)",
         "hero-image": "url('/images/bg-hero-section.webp')",
+        'banner-cta': "url('/images/banner-mais-background-blue-_1_.webp')"
       },
       boxShadow: {
         custom_shadow: "0 0 4px 0 #00000040",
