@@ -1,12 +1,24 @@
 import React from "react";
+
+// Hero section
 import HeroSection from "@/components/Layout/HeroSection";
 import childrenHeroSection from "./childrenHeroSection";
+
+// Depoiments
 import Depoiments from "@/components/Layout/Depoiments";
 import ClaudioImage from "../../../public/images/claudio-1.jpg";
+
+// Info sections
 import InfoSection from "@/components/Layout/InfoSection";
 import { infoSectionsContents } from "./infoSectionContents";
+
+// Board cards
 import BoardCards from "@/components/Layout/BoardCards/BoardCards";
 import { members } from "./BoardCardsContents";
+
+// Our values
+import OurValues from "@/components/Layout/OurValuesSection/OurValues";
+import { OurValuesContent, content } from "./OurValuesContents";
 
 export default function PageAboutUs() {
   const ctaLinkString = "www.google.com";
@@ -23,6 +35,9 @@ export default function PageAboutUs() {
         reverseDesktop={infoSectionsContents.marcas.reverseDesktop}
         reverseMobile={infoSectionsContents.marcas.revereverseMobile}
       />
+
+      <OurValues title="Nossas Atividades" contentPage={content} values={OurValuesContent} />
+
       <InfoSection
         title={infoSectionsContents.fundadores.title}
         content={infoSectionsContents.fundadores.content}
