@@ -11,12 +11,14 @@ function Accordion({
   title,
   faqHeading = { tagName: "h2" },
   children,
+  active = false,
 }: {
   title: string;
   faqHeading?: FaqHeading;
   children: React.ReactNode;
+  active?: boolean;
 }) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(active === undefined ? false : active);
 
   const TagName = faqHeading.tagName;
 
@@ -47,3 +49,4 @@ function Accordion({
 }
 
 export default Accordion;
+

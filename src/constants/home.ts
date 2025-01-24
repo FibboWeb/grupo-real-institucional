@@ -1,5 +1,4 @@
 import { LoadNumbersProps } from '@/components/ValuesSection/LoadNumbers'
-
 import img01 from '@/public/icons-slider/linha-01.webp'
 import img02 from '@/public/icons-slider/linha-02.webp'
 import img03 from '@/public/icons-slider/linha-03.webp'
@@ -21,6 +20,12 @@ export const ctasLinksHero = [
 
   { id: "2", anchor: "FALE CONOSCO", link: "/get-started", btn_background_color: 'bg-gray-400' },
 ]
+
+// Sessões dos valores
+import imgValor01 from "../../public/images/waves-fourteen-years.webp"
+import imgIcon02 from "../../public/images/ciclos_novo.webp"
+import imgValor02 from "../../public/images/imagem_ambiental.webp"
+import { name } from './../../node_modules/next/dist/compiled/webpack/bundle5';
 
 export const sliderCategoriasHome = [
   {
