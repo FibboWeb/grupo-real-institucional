@@ -1,8 +1,8 @@
 import { StaticImageData } from "next/image";
 import Image from "next/image";
-import Link from "next/link";
-import ArrowRightSVG from "../../../../public/images/arrow-right.svg";
 import style from "./index.module.css";
+import BtnCallToAction from "../Buttons/BtnCallToAction/BtnCallToAction";
+import ArrowRightSVG from "../../../../public/images/arrow-right.svg";
 
 interface InfoSectionProps {
   title: string;
@@ -54,9 +54,11 @@ function InfoSection({
   const paddingClass = reverseDesktop ? "sm:pl-12" : "sm:pr-12";
   return (
     <>
-      <div className="w-full h-full container mx-auto">
+      <div className="w-full h-full fb_container mx-auto">
         <div className={`flex ${desktopClass} ${MobileClass} sm:p-0 p-5`}>
-          <div className={`flex-1 flex ${reverseDesktop ? 'justify-start' : 'justify-end'} items-center rounded-2xl p-2`}>
+          <div
+            className={`flex-1 flex ${reverseDesktop ? "justify-start" : "justify-end"} items-center rounded-2xl p-2`}
+          >
             <Image src={imagePath} alt="" className="rounded-2xl shadow-shadow_image_info_section" />
           </div>
           <div className={`flex flex-col justify-center flex-1 pb-12 pt-12 gap-6 ${paddingClass}`}>
@@ -74,19 +76,7 @@ function InfoSection({
             </div>
             {ctaLink && (
               <div className="flex sm:justify-start justify-center">
-                <Link
-                  href={ctaLink}
-                  className="inline-flex gap-4 bg-blue_button py-3 px-4 rounded text-white	text-base font-semibold uppercase"
-                >
-                  <span>Ler mais</span>
-                  <Image
-                    src={ArrowRightSVG}
-                    alt="Arrow Icon"
-                    width={24}
-                    height={24}
-                    className="bg-white rounded-full p-1"
-                  />
-                </Link>
+                <BtnCallToAction ctaLink={ctaLink} content="Leia mais" icon={ArrowRightSVG} />
               </div>
             )}
           </div>
