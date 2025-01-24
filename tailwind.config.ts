@@ -10,6 +10,7 @@ export default {
   theme: {
     extend: {
       colors: {
+        backgroundPage: "var(--background-page)",
         textDark: "hsl(var(--text-dark))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
