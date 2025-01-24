@@ -40,6 +40,7 @@ interface CardBlogProps {
   postMonthDate?: string;
   postAuthor?: string;
   postAuthorLink?: string;
+  isSlider?: boolean;
 }
 
 function CardBlog({
@@ -51,6 +52,7 @@ function CardBlog({
   postDate,
   postAuthor,
   postAuthorLink,
+  isSlider,
 }: CardBlogProps) {
   const truncateDescription = (description: string, limit: number = 100) => {
     const plainText = description.replace(/<\/?[^>]+(>|$)/g, "");
@@ -75,7 +77,11 @@ function CardBlog({
 
   return (
     <div className="p-2">
-      <div className="post-card relative w-full lg:w-80 min-h-[440px] rounded-2xl shadow-custom_shadow transform hover:scale-[1.02] duration-300 bg-white">
+      <div
+        className={`post-card relative ${
+          isSlider ? "w-[320px] h-[440px]" : "w-full"
+        } rounded-2xl shadow-custom_shadow transform hover:scale-[1.02] duration-300 bg-white`}
+      >
         <Link href={postLink ? postLink : "#"}>
           <Image
             src={postImage ? postImage : "/images/capa-post-test.webp"}
