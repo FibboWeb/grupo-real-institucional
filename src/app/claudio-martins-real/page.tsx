@@ -12,7 +12,6 @@ import InfoCardsSlider from "@/components/Layout/InfoCardsSlider";
 import InfoCard from "@/components/Layout/InfoCardsSlider/InfoCard";
 import HeroSection from "@/components/Layout/HeroSection";
 
-
 export default function ClaudioMartinsReal() {
 
   function CardSection({ children }: { children: React.ReactNode }) {
@@ -63,6 +62,7 @@ export default function ClaudioMartinsReal() {
           reverseMobile={false}
           title={"A Fundação da Real H e o Legado em Continuidade"}
           content={"<p>Trabalhou como professor até 1993, quando, após aposentar-se, fundou, junto com os filhos, a Real H. Até hoje o professor dedica-se com entusiasmo ao estudo da Homeopatia e da Medicina Veterinária.</p>"}
+
           imagePath={claudio1}
         />
       </CardSection>
