@@ -1,6 +1,7 @@
 "use server";
 import { client } from "@/lib/apollo-client";
 import { GET_ALL_CATEGORIES } from "@/graphql/sidebar";
+import { GET_POSTS_NOTICIAS_MOST_VIEWED } from "@/graphql/posts";
 
 export async function getAllCategories() {
   try {
@@ -24,5 +25,18 @@ export async function getAllCategories() {
         categories: [],
       },
     };
+  }
+}
+// Função para buscar os posts e retornar os mais visualizados
+export async function getNoticiasPostsMostViewed() {
+  try {
+    const fetchedPosts = await client.query({
+      query: GET_POSTS_NOTICIAS_MOST_VIEWED,
+    });
+    let posts = fetchedPosts.data.popularPosts.nodes;
+    return posts;
+  } catch (error) {
+    console.error("Erro ao buscar posts:", error);
+    return [];
   }
 }

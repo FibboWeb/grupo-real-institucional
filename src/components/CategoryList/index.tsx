@@ -14,7 +14,7 @@ async function CategoryList({ blogContext }: CategoryListProps) {
       <p className="font-bold text-fb_blue_main text-xl lg:text-2xl mb-3">Categorias</p>
       <ul className="ml-5">
         {allCategories.map((category) => (
-          <li key={category.slug} className="category-item mb-[2px]">
+          <li key={category.databaseId} className="category-item mb-[2px]">
             <Link
               className="text-fb_gray_bread hover:text-fb_blue duration-300 font-semibold"
               href={`${blogContext}/categoria/${category.slug}`}
@@ -23,8 +23,8 @@ async function CategoryList({ blogContext }: CategoryListProps) {
             </Link>
             {category.children?.nodes.length > 0 && (
               <ul className="ml-8">
-                {category.children.nodes.map((child) => (
-                  <li key={child.slug} className="subcategory-item mb-[2px]">
+                {category.children.nodes.map((child, index) => (
+                  <li key={child.databaseId} className="subcategory-item mb-[2px]">
                     <Link
                       className="text-fb_gray_bread hover:text-fb_blue duration-300 font-semibold"
                       href={`${blogContext}/categoria/${category.slug}/${child.slug}`}

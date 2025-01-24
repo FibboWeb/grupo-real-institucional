@@ -50,9 +50,9 @@ export default async function CategoriaPage({ params }: CategoriaPageProps) {
           {/* <p className="text-sm text-fb_gray mb-4">Total de posts nesta categoria: {total}</p>{" "} */}
           <div className="grid-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 lg:gap-6">
             {posts.length > 0 ? (
-              posts.map((post: any) => (
+              posts.map((post: any, index) => (
                 <CardBlog
-                  key={post.id}
+                  key={index + 4}
                   postImage={post.featuredImage?.node.sourceUrl}
                   postImageAlt={post.featuredImage?.node.altText || "Imagem do post"}
                   postLink={post.slug}
@@ -75,6 +75,7 @@ export default async function CategoriaPage({ params }: CategoriaPageProps) {
 
       {/* Paginação */}
       <Pagination
+        blogContext="/noticias"
         currentPage={currentPage}
         totalPages={totalPages}
         hasPrevious={hasPrevious}

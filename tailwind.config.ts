@@ -69,8 +69,8 @@ export default {
       backgroundImage: {
         "footer-image": "url('/images/bg-footer.webp')",
         "newsletter-image": "url('/images/bg-newsletter.webp')",
-        "fb_category_image": "url('/images/bg-categories.webp')",
-        "fb_gradient": "linear-gradient(-235deg, #031D3A 0%, #126597 100%)",
+        fb_category_image: "url('/images/bg-categories.webp')",
+        fb_gradient: "linear-gradient(-235deg, #031D3A 0%, #126597 100%)",
       },
       boxShadow: {
         custom_shadow: "0 0 4px 0 #00000040",
