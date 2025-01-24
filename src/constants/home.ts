@@ -1,20 +1,19 @@
 import { LoadNumbersProps } from '@/components/ValuesSection/LoadNumbers'
-import img01 from '../../public/icons-slider/linha-01.webp'
-import img02 from '../../public/icons-slider/linha-02.webp'
-import img03 from '../../public/icons-slider/linha-03.webp'
-import img04 from '../../public/icons-slider/linha-04.webp'
-import img05 from '../../public/icons-slider/linha-05.webp'
+import img01 from '@/public/icons-slider/linha-01.webp'
+import img02 from '@/public/icons-slider/linha-02.webp'
+import img03 from '@/public/icons-slider/linha-03.webp'
+import img04 from '@/public/icons-slider/linha-04.webp'
+import img05 from '@/public/icons-slider/linha-05.webp'
 
 // Sessões das marcas
-import imgMarca01 from "../../public/images/moca-e-cavalo.webp"
-import imgMarca02 from "../../public/images/mulher-segurando-cachorro.webp"
-import imgMarca03 from "../../public/images/veterinaria-e-fazendeiro-_1_.webp"
-
+import imgMarca01 from "@/public/images/moca-e-cavalo.webp"
+import imgMarca02 from "@/public/images/mulher-segurando-cachorro.webp"
+import imgMarca03 from "@/public/images/veterinaria-e-fazendeiro-_1_.webp"
+''
 // Sessões dos valores
-import imgValor01 from "../../public/images/waves-fourteen-years.webp"
-import imgIcon02 from "../../public/images/ciclos_novo.webp"
-import imgValor02 from "../../public/images/imagem_ambiental.webp"
-import { name } from './../../node_modules/next/dist/compiled/webpack/bundle5';
+import imgValor01 from "@/public/images/waves-fourteen-years.webp"
+import imgIcon02 from "@/public/images/ciclos_novo.webp"
+import imgValor02 from "@/public/images/imagem_ambiental.webp"
 
 export const sliderCategoriasHome = [
   {

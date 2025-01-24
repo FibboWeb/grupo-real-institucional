@@ -8,6 +8,7 @@ import { getLastPostsNoticias } from "@/lib/getLastPostsNoticias";
 import LastPostsNoticias from "../components/Layout/LastPostsNoticias";
 import SliderTestimonials from "@/components/SliderTestimonials";
 import { nossasMarcasInfos, sectionValoresInfo, sliderCategoriasHome, testimoniaslInfo } from "@/constants/home";
+import HeroSection from "@/components/Layout/HeroSection";
 
 export default async function Home() {
   const queriedLastPostsNoticias = await getLastPostsNoticias();
@@ -15,6 +16,12 @@ export default async function Home() {
 
   return (
     <div className="flex flex-col gap-fb_space-section">
+      <section>
+        <HeroSection>
+          <video></video>
+          <p>Texto de teste</p>
+        </HeroSection>
+      </section>
       <section className="max-w-full">
         <div className="fb_container overflow-hidden my-12">
           <LastPostsNoticias fetchedLastPosts={fetchedLastPostsNoticias} />
