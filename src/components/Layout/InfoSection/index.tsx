@@ -1,8 +1,8 @@
 import { StaticImageData } from "next/image";
 import Image from "next/image";
-import Link from "next/link";
-import ArrowRightSVG from "../../../../public/images/arrow-right.svg";
 import style from "./index.module.css";
+import BtnCallToAction from "../Buttons/BtnCallToAction/BtnCallToAction";
+import ArrowRightSVG from "../../../../public/images/arrow-right.svg";
 
 interface InfoSectionProps {
   title: string;
@@ -59,7 +59,7 @@ function InfoSection({
   const paddingClass = reverseDesktop ? "sm:pl-12" : "sm:pr-12";
   return (
     <>
-      <div className="w-full h-full container mx-auto">
+      <div className="w-full h-full fb_container mx-auto">
         <div className={`flex ${desktopClass} ${MobileClass} sm:p-0 p-5`}>
           <div className={`flex-1 flex ${reverseDesktop ? 'justify-start' : 'justify-end'} items-center rounded-2xl p-2`}>
             {imagePath ? (
