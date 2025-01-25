@@ -11,6 +11,7 @@ interface InfoSectionProps {
   imagePath: StaticImageData;
   reverseMobile?: boolean;
   reverseDesktop?: boolean;
+  border?: boolean;
 }
 
 /**
@@ -48,6 +49,7 @@ function InfoSection({
   imagePath,
   reverseMobile = false,
   reverseDesktop = false,
+  border = true,
 }: InfoSectionProps) {
   const MobileClass = reverseMobile ? "flex-col" : "flex-col-reverse";
   const desktopClass = reverseDesktop ? "sm:flex-row" : "sm:flex-row-reverse";
@@ -59,7 +61,7 @@ function InfoSection({
           <div
             className={`flex-1 flex ${reverseDesktop ? "justify-start" : "justify-end"} items-center rounded-2xl p-2`}
           >
-            <Image src={imagePath} alt="" className="rounded-2xl shadow-shadow_image_info_section" />
+            <Image src={imagePath} alt="" className={`rounded-2xl ${border ? "shadow-shadow_image_info_section" : ""}`} />
           </div>
           <div className={`flex flex-col justify-center flex-1 pb-12 pt-12 gap-6 ${paddingClass}`}>
             <div>

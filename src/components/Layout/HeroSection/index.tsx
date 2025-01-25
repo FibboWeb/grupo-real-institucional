@@ -8,6 +8,7 @@ interface HeroSectionProps {
   imagePath?: StaticImageData;
   imageMaxHeight?: number;
   imageOnBottom?: boolean;
+  background?: StaticImageData;
 }
 
 export default function HeroSection({
@@ -16,10 +17,11 @@ export default function HeroSection({
   imagePath,
   imageMaxHeight,
   imageOnBottom = false,
+  background = imagePath
 }: HeroSectionProps) {
   return (
     <>
-      <div className="flex justify-center bg-hero-image w-full h-full bg-no-repeat bg-cover bg-center">
+      <div className={`flex justify-center bg-hero-image w-full h-full bg-no-repeat bg-cover bg-center`}>
         <div className="w-full h-full bg-[rgba(3,29,58,0.90)] ">
           <div className="fb_container mt-12 sm:mt-32 mb-12">
             <div className="flex flex-col py-12 gap-12 sm:flex-row sm:gap-2">
