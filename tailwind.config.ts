@@ -74,7 +74,9 @@ export default {
         "newsletter-image": "url('/images/bg-newsletter.webp')",
         "fb_gradient": "linear-gradient(-235deg, #031D3A 0%, #126597 100%)",
         "hero-image": "url('/images/bg-hero-section.webp')",
-        'banner-cta': "url('/images/banner-mais-background-blue-_1_.webp')"
+        'banner-cta': "url('/images/banner-mais-background-blue-_1_.webp')",
+        'hero-section-gray-palms': "url('/images/hero-section-gray-palms.jpg')",
+        'hero-section-gray': "url('/images/hero-section-gray.jpg')"
       },
       boxShadow: {
         custom_shadow: "0 0 4px 0 #00000040",

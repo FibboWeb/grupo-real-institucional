@@ -8,9 +8,11 @@ interface InfoSectionProps {
   title: string;
   content: string;
   ctaLink?: string;
-  imagePath: StaticImageData;
+  imagePath?: StaticImageData;
   reverseMobile?: boolean;
   reverseDesktop?: boolean;
+  border?: boolean;
+  video?: string;
 }
 
 /**
@@ -37,6 +39,7 @@ interface InfoSectionProps {
  * @param {StaticImageData} [props.imagePath] - Imagem principal do componente.
  * @param {boolean} [props.reverseMobile] - Controla a direção da coluna no componente na versão mobile
  * @param {boolean} [props.reverseDesktop] - Controla a direção do componente na versão desk
+ * @param {boolean} [props.border] - Controla a existencia de shadow
  *
  * @returns {JSX.Element} O botão renderizado.
  */
@@ -48,6 +51,8 @@ function InfoSection({
   imagePath,
   reverseMobile = false,
   reverseDesktop = false,
+  border = true,
+  video,
 }: InfoSectionProps) {
   const MobileClass = reverseMobile ? "flex-col" : "flex-col-reverse";
   const desktopClass = reverseDesktop ? "sm:flex-row" : "sm:flex-row-reverse";
@@ -57,7 +62,21 @@ function InfoSection({
       <div className="w-full h-full container mx-auto">
         <div className={`flex ${desktopClass} ${MobileClass} sm:p-0 p-5`}>
           <div className={`flex-1 flex ${reverseDesktop ? 'justify-start' : 'justify-end'} items-center rounded-2xl p-2`}>
-            <Image src={imagePath} alt="" className="rounded-2xl shadow-shadow_image_info_section" />
+            {imagePath ? (
+              <Image src={imagePath} alt="" className={`rounded-2xl ${border ? 'shadow-shadow_image_info_section' : ''}`} />
+            ) : (
+              video && (
+                <iframe
+                  width="100%"
+                  height="315"
+                  src={video}
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              )
+            )}
           </div>
           <div className={`flex flex-col justify-center flex-1 pb-12 pt-12 gap-6 ${paddingClass}`}>
             <div>
@@ -97,3 +116,4 @@ function InfoSection({
 }
 
 export default InfoSection;
+
