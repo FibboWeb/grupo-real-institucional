@@ -38,7 +38,7 @@ export default function HeroSection({
     <>
       <div
         className={[
-          backgroundClass + " flex justify-center bg-hero-image w-full h-full bg-no-repeat bg-cover bg-center relative",
+          backgroundClass + " flex justify-center w-full h-full bg-no-repeat bg-cover bg-center relative",
         ].join("")}
       >
         <div className={` ${shadow} absolute top-0 left-0 right-0 bottom-0 w-full h-inherit`}></div>
