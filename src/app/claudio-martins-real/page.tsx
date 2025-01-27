@@ -11,6 +11,7 @@ import InfoCardsSlider from "@/components/Layout/InfoCardsSlider";
 import InfoCard from "@/components/Layout/InfoCardsSlider/InfoCard";
 import HeroSection from "@/components/Layout/HeroSection";
 import HeroImage from "@/public/images/claudio-martins-hero.webp";
+import BtnCallToAction from "@/components/Layout/Buttons/BtnCallToAction/BtnCallToAction";
 
 export default function ClaudioMartinsReal() {
   function CardSection({ children }: { children: React.ReactNode }) {
@@ -30,6 +31,7 @@ export default function ClaudioMartinsReal() {
             <strong className="text-4xl lg:text-6xl">Claudio Martins Real</strong>
           </h1>
           <strong className="text-2xl lg:text-4xl text-white">Fundador do Grupo Real</strong>
+          <BtnCallToAction color={"fb_blue_button"} ctaLink={"#"} content={"Saber Mais"} />
         </div>
       </HeroSection>
 

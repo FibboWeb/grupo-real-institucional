@@ -11,6 +11,7 @@ import ArrowRightSVG from "@/public/icons/arrow-right.svg";
  * @property {number} [imageMaxHeight] - Maximum height for the image.
  * @property {boolean} [imageOnBottom=false] - Whether the image should be displayed at the bottom.
  * @property {string} [backgroundClass="bg-hero-image"] - Background class for styling the HeroSection.
+ * @property {string} [boxShadow=""] - Box shadow for the HeroSection.
  */
 interface HeroSectionProps {
   children: React.ReactNode;
@@ -19,6 +20,7 @@ interface HeroSectionProps {
   imageMaxHeight?: number;
   imageOnBottom?: boolean;
   backgroundClass?: string;
+  boxShadow?: string;
 }
 
 export default function HeroSection({
@@ -28,7 +30,10 @@ export default function HeroSection({
   imageMaxHeight,
   imageOnBottom = false,
   backgroundClass = "bg-hero-image",
+  boxShadow,
 }: HeroSectionProps) {
+  const shadow = boxShadow || backgroundClass == "bg-hero-image" ? 'bg-[rgba(3,29,58,0.90)]' : 'bg-[rgba(0,0,0,0.2)]';
+
   return (
     <>
       <div
@@ -36,7 +41,7 @@ export default function HeroSection({
           backgroundClass + " flex justify-center bg-hero-image w-full h-full bg-no-repeat bg-cover bg-center relative",
         ].join("")}
       >
-        <div className={`${backgroundClass =="bg-hero-image" ? 'bg-[rgba(3,29,58,0.90)]' : 'bg-[rgba(0,0,0,0.2)]' } absolute top-0 left-0 right-0 bottom-0 w-full h-inherit`}></div>
+        <div className={` ${shadow} absolute top-0 left-0 right-0 bottom-0 w-full h-inherit`}></div>
         <div className={`fb_container mt-32 relative`}>
           <div className={`flex flex-col gap-12 sm:flex-row sm:gap-2`}>
             <div className={`${imageOnBottom ? "mb-0" : "mb-12"} w-full`}>
@@ -68,4 +73,5 @@ export default function HeroSection({
     </>
   );
 }
+
 
