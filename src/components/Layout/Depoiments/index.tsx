@@ -9,7 +9,7 @@ export default function Depoiments({ image, content }: DepoimentsProps) {
   return (
     <>
       <div className="flex justify-center items-center py-8">
-        <div className="fb_container flex flex-col sm:flex-row sm:gap-12 gap-8 items-center p-5">
+        <div className="fb_container flex flex-col-reverse sm:flex-row sm:gap-12 gap-8 items-center p-5">
           <div className="w-full h-full">
             <div className="flex justify-center items-center">
               <Image src={image} alt="" height={282} className="rounded-2xl shadow-shadow_image_info_section" />

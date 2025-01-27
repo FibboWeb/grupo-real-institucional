@@ -75,7 +75,7 @@ function InfoSection({
               </div>
             </div>
             {ctaLink && (
-              <div className="flex sm:justify-start justify-center">
+              <div className="flex justify-start">
                 <BtnCallToAction ctaLink={ctaLink} content="Leia mais" icon={ArrowRightSVG} />
               </div>
             )}
