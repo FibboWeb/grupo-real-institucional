@@ -5,10 +5,11 @@ import CardBlog from "@/components/Layout/CardBlog";
 import Pagination from "@/components/Pagination";
 import SidebarNoticias from "@/components/Layout/SidebarNoticias";
 
+// Defina o tipo correto para os parâmetros
 interface CategoriaPageProps {
   params: {
-    categoria?: string[];
-    page?: string;
+    categoria?: string[]; // Para a rota dinâmica com parâmetros 'categoria'
+    page?: string; // Para a página de navegação
   };
 }
 
@@ -18,7 +19,6 @@ export default async function CategoriaPage({ params }: CategoriaPageProps) {
   const postsPerPage = 6;
   const currentPage = page ? parseInt(page) : 1;
 
-  // Chama a função para buscar as notícias
   const { category, posts, total, hasMore, hasPrevious, startCursor, endCursor } = await getCategoriesNoticias(
     slug,
     postsPerPage,
@@ -29,7 +29,7 @@ export default async function CategoriaPage({ params }: CategoriaPageProps) {
     notFound();
   }
 
-  const totalPages = Math.ceil(total / postsPerPage);
+  const totalPages = Math.ceil(total / postsPerPage); // Calcula o número total de páginas
   return (
     <div className="fb_container px-2 mb-12">
       <Breadcrumb
