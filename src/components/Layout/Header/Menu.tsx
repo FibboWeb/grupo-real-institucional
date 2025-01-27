@@ -3,6 +3,7 @@ import { AlignJustify, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { SetStateAction, useState } from "react";
 import greenLeaf from "../../../../public/green-leaf.svg";
+import menuItems from "@/lib/menuItems";
 
 interface MenuProps {
   menuFetched: {
@@ -32,7 +33,7 @@ interface MenuProps {
 export default function Menu({ menuFetched }: MenuProps) {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
-  const menuItens = menuFetched?.props?.menuItems?.edges || [];
+  // const menuItens = menuFetched?.props?.menuItems?.edges || [];
 
   const handleMouseEnter = (id: string | SetStateAction<null>) => {
     if (activeMenu === null) {
@@ -60,7 +61,7 @@ export default function Menu({ menuFetched }: MenuProps) {
               <Image src={greenLeaf.src} alt="Green Leaf" width={13} height={13} loading="eager" />
             </button>
           </li>
-          {menuItens.map((item) => (
+          {menuItems.map((item) => (
             <li
               className="flex relative gap-2 px-3 py-1"
               key={item.node.id}
@@ -100,7 +101,7 @@ export default function Menu({ menuFetched }: MenuProps) {
         </button>
         {menuOpen && (
           <ul className="origin-top relative container top-5 flex flex-col justify-center gap-4 font-bold text-lg items-center text-black bg-white drop-shadow-md shadow-md rounded-md">
-            {menuItens.map((item) => (
+            {menuItems.map((item) => (
               <li className="flex relative gap-2 px-5 py-3" key={item.node.id}>
                 <a href={item.node.url} className="text-fb_blue_main hover:text-fb_blue duration-fb_transition_ease">
                   {item.node.label}

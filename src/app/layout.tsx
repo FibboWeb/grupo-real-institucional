@@ -21,9 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-lt-installed="true" suppressHydrationWarning={true}>
-      <body
-        className={`${poppins.className} antialiased`}
-      >
+      <body className={`${poppins.className} antialiased`}>
         <Header />
         {children}
         <Footer />
