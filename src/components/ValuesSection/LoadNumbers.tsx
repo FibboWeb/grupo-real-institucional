@@ -47,7 +47,7 @@ export default function LoadNumbers({ arrayOfNumbers }: LoadNumbersInterface) {
           <span className="text-fb_blue_main font-bold text-3xl flex-nowrap">
             <IncrementingCounter maxNumber={number.qtde} speed={30} />
           </span>
-          <hr className="w-20 h-[6px] bg-blue_button rounded-full" />
+          <hr className="w-20 h-[6px] bg-fb_blue_button rounded-full" />
           <p className="text-center text-fb_blue_main font-semibold text-base">{number.text}</p>
         </div>
       ))}

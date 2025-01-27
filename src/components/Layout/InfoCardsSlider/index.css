@@ -1,9 +1,9 @@
 .slick-track {
-    display: flex !important;
+  display: flex !important;
 }
 
 .slick-slide {
-    height: inherit !important;
-    display: flex !important;
-    justify-content: center;
+  height: inherit !important;
+  display: flex !important;
+  justify-content: center;
 }
