@@ -36,7 +36,6 @@ export default async function PaginatedPosts({ params, searchParams }) {
   if (!authorSlug) {
     return <p>Nenhum autor especificado.</p>;
   }
-
   const author = await fetchAuthorData(authorSlug);
 
   if (!author) {
@@ -137,7 +136,7 @@ export default async function PaginatedPosts({ params, searchParams }) {
                 />
               ))
             )}
-            <div className="flex justify-center items-center mt-6 space-x-2">
+            <div className="flex justify-center  items-center mt-6 space-x-2">
               {page > 1 && (
                 <a
                   href={page === 2 ? `/author/${authorSlug}` : `/author/${authorSlug}?page=${page - 1}`}
