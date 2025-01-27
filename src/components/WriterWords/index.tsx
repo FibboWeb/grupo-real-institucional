@@ -1,10 +1,10 @@
-'use client'
+"use client";
 import React, { useState, useEffect } from "react";
 
 interface TypewriterProps {
   words: string[];
   typingSpeed?: number; // Velocidade de digitação em ms
-  pauseTime?: number;   // Tempo de pausa entre as palavras
+  pauseTime?: number; // Tempo de pausa entre as palavras
 }
 
 export default function Typewriter({ words, typingSpeed = 100, pauseTime = 800 }: TypewriterProps) {
@@ -20,7 +20,7 @@ export default function Typewriter({ words, typingSpeed = 100, pauseTime = 800 }
       if (!isDeleting) {
         // Adiciona uma letra por vez
         setDisplayedText((prev) => word.substring(0, prev.length + 1));
-        if (displayedText === word ) {
+        if (displayedText === word) {
           setTimeout(() => setIsDeleting(true), pauseTime); // Pausa antes de apagar
         }
       } else {
@@ -37,10 +37,5 @@ export default function Typewriter({ words, typingSpeed = 100, pauseTime = 800 }
     return () => clearTimeout(typingTimeout); // Cleanup do timeout
   }, [displayedText, isDeleting, currentWordIndex, words, typingSpeed, pauseTime]);
 
-  return (
-    <>
-      {displayedText}
-    </>
-  );
-
+  return <>{displayedText}</>;
 }
