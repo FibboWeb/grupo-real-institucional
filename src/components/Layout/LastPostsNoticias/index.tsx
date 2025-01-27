@@ -104,20 +104,21 @@ function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
       </div>
       <div className="last-post-slider" style={{ width: "75%" }}>
         <Slider {...settings}>
-          {fetchedLastPosts.map((post: Post) => (
-            <CardBlog
-              key={post.id}
-              postImage={post.featuredImage.node.sourceUrl}
-              postImageAlt={post.featuredImage.node.altText}
-              postLink={post.slug}
-              postTitle={post.title}
-              postDescription={{ __html: post.content }}
-              postDate={post.date}
-              postAuthor={post.author.node.name}
-              postAuthorLink={post.author.node.slug}
-              isSlider
-            />
-          ))}
+          {fetchedLastPosts &&
+            fetchedLastPosts.map((post: Post) => (
+              <CardBlog
+                key={post.id}
+                postImage={post.featuredImage.node.sourceUrl}
+                postImageAlt={post.featuredImage.node.altText}
+                postLink={post.slug}
+                postTitle={post.title}
+                postDescription={{ __html: post.content }}
+                postDate={post.date}
+                postAuthor={post.author.node.name}
+                postAuthorLink={post.author.node.slug}
+                isSlider
+              />
+            ))}
         </Slider>
       </div>
     </div>
