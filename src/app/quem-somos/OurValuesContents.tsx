@@ -1,7 +1,7 @@
-import PropositoIcon from "@/icons/icon-proposito.svg";
-import MissaoIcon from "@/icons/icon-missao.svg";
-import VisaoIcon from "@/icons/icon-visao.svg";
-import ValoresIcon from "@/icons/icon-valores.svg";
+import PropositoIcon from "@/public/icons/icon-proposito.svg";
+import MissaoIcon from "@/public/icons/icon-missao.svg";
+import VisaoIcon from "@/public/icons/icon-visao.svg";
+import ValoresIcon from "@/public/icons/icon-valores.svg";
 
 const OurValuesContent = [
   {
