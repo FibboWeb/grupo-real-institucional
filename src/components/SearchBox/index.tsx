@@ -6,11 +6,11 @@ function SearchBox() {
       <div className="flex items-center w-full">
         <form className="w-full" action="/busca" method="get">
           <input
-            className="bg-gray-200 text-slate-700 placeholder:text-slate-900 placeholder:font-light px-4 py-2 rounded-sm outline-none w-11/12"
+            className="bg-gray-200 text-slate-700  placeholder:text-slate-500 placeholder:font-light px-4 py-2 rounded-sm outline-none w-11/12"
             type="text"
             id="search"
             name="search"
-            placeholder="Buscar no blog..."
+            placeholder="Pesquisar no blog..."
           />
           <button className="absolute rounded-sm bg-fb_blue_button p-2 w-10 text-white" type="submit">
             <Search />
