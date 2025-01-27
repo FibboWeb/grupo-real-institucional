@@ -34,10 +34,14 @@ export default function Page() {
 
           <div className="h-[300px] w-full overflow-hidden rounded-lg">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3736.1191349351183!2d-54.57838328490694!3d-20.466643186298672!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9486e73745346597%3A0x43e4f30b749c7f07!2sAv.%20Zil%C3%A1%20Corr%C3%AAa%20Machado%2C%2012068%20-%20Parque%20Res.%20Maria%20Aparecida%20Pedrossian%2C%20Campo%20Grande%20-%20MS%2C%2079046-200!5e0!3m2!1sen!2sbr!4v1620147647000!5m2!1sen!2sbr"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3736.1675762436365!2d-54.646661684906895!3d-20.462989986300714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9486e6726b2b9f95%3A0x4b3d5f4c6b5b8b0a!2sReal%20Group!5e0!3m2!1sen!2sbr!4v1620147647000!5m2!1sen!2sbr"
               width="100%"
               height="100%"
-            ></iframe>
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           </div>
         </div>
       </div>
@@ -45,3 +49,4 @@ export default function Page() {
     </div>
   );
 }
+
