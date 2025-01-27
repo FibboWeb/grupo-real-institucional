@@ -37,11 +37,19 @@ interface InfoSectionProps {
  *    />
  *
  * @param {Object} props - Propriedades do componente.
+ * @param {string} [props.heroBgImage] - URL da imagem de background da seção.
+ * @param {string} [props.badge] - Texto do badge que aparece acima do título.
  * @param {string} props.title - O titulo do componente.
  * @param {string} props.content - conteúdo em html que será exibido no componente.
  * @param {string} [props.ctaLink] - Link para o botão de CTA.
  * @param {string} [props.youtubeEmbed] - Link para o embed do vídeo do youtube.
  * @param {StaticImageData} [props.imagePath] - Imagem principal do componente.
+ * @param {boolean} [props.imageMidFullContainer] - Se true, a imagem ocupará toda a largura da tela.
+ * @param {boolean} [props.reverseMobile] - Controla a direção da coluna no componente na versão mobile.
+ * @param {boolean} [props.reverseDesktop] - Controla a direção do componente na versão desk.
+ * @param {boolean} [props.border] - Se true, a imagem terá uma borda.
+ * @param {"fb_blue_button" | "fb_green_button"} [props.color] - Cor do botão de CTA.
+ * @param {string} [props.contentButton] - Texto do botão de CTA.
  * @param {boolean} [props.reverseMobile] - Controla a direção da coluna no componente na versão mobile
  * @param {boolean} [props.reverseDesktop] - Controla a direção do componente na versão desk
  *

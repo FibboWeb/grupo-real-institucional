@@ -2,6 +2,16 @@ import BtnCallToAction from "../Buttons/BtnCallToAction/BtnCallToAction";
 import Image, { StaticImageData } from "next/image";
 import ArrowRightSVG from "@/public/icons/arrow-right.svg";
 
+/**
+ * Props for the HeroSection component.
+ * 
+ * @property {React.ReactNode} children - The content to display inside the HeroSection.
+ * @property {string} [ctaLink] - Optional link for the call-to-action button.
+ * @property {StaticImageData} [imagePath] - Optional image to display in the HeroSection.
+ * @property {number} [imageMaxHeight] - Maximum height for the image.
+ * @property {boolean} [imageOnBottom=false] - Whether the image should be displayed at the bottom.
+ * @property {string} [backgroundClass="bg-hero-image"] - Background class for styling the HeroSection.
+ */
 interface HeroSectionProps {
   children: React.ReactNode;
   ctaLink?: string;
@@ -26,9 +36,7 @@ export default function HeroSection({
           backgroundClass + " flex justify-center bg-hero-image w-full h-full bg-no-repeat bg-cover bg-center relative",
         ].join("")}
       >
-        {/* {backgroundClass == "bg-hero-image" && ( */}
-          <div className={`${backgroundClass =="bg-hero-image" ? 'bg-[rgba(3,29,58,0.90)]' : 'bg-[rgba(0,0,0,0.2)]' } absolute top-0 left-0 right-0 bottom-0 w-full h-inherit`}></div>
-        {/* )} */}
+        <div className={`${backgroundClass =="bg-hero-image" ? 'bg-[rgba(3,29,58,0.90)]' : 'bg-[rgba(0,0,0,0.2)]' } absolute top-0 left-0 right-0 bottom-0 w-full h-inherit`}></div>
         <div className={`fb_container mt-32 relative`}>
           <div className={`flex flex-col gap-12 sm:flex-row sm:gap-2`}>
             <div className={`${imageOnBottom ? "mb-0" : "mb-12"} w-full`}>
@@ -60,3 +68,4 @@ export default function HeroSection({
     </>
   );
 }
+
