@@ -1,6 +1,6 @@
 import BtnCallToAction from "../Buttons/BtnCallToAction/BtnCallToAction";
 import Image, { StaticImageData } from "next/image";
-import ArrowRightSVG from "../../../../public/images/arrow-right.svg";
+import ArrowRightSVG from "@/public/icons/arrow-right.svg";
 
 interface HeroSectionProps {
   children: React.ReactNode;
@@ -17,12 +17,18 @@ export default function HeroSection({
   imagePath,
   imageMaxHeight,
   imageOnBottom = false,
-  backgroundClass = 'bg-hero-image'
+  backgroundClass = "bg-hero-image",
 }: HeroSectionProps) {
   return (
     <>
-      <div className={[backgroundClass + " flex justify-center bg-hero-image w-full h-full bg-no-repeat bg-cover bg-center"].join("")}>
-        <div className={[backgroundClass == "bg-hero-image" ? 'bg-[rgba(3,29,58,0.90)]' : '' +  "w-full h-full"].join("")}>
+      <div
+        className={[
+          backgroundClass + " flex justify-center bg-hero-image w-full h-full bg-no-repeat bg-cover bg-center",
+        ].join("")}
+      >
+        <div
+          className={[backgroundClass == "bg-hero-image" ? "bg-[rgba(3,29,58,0.90)]" : "" + "w-full h-full"].join("")}
+        >
           <div className="fb_container mt-12 sm:mt-32 mb-12">
             <div className="flex flex-col py-12 gap-12 sm:flex-row sm:gap-2">
               <div className={`${imageOnBottom ? "mb-0" : "mb-12"}`}>
@@ -42,9 +48,7 @@ export default function HeroSection({
                     )}
                   </div>
                   <div className="flex-1 flex justify-center items-center">
-                    {imagePath && (
-                      <Image src={imagePath} alt="imagem hero" height={imageMaxHeight} />
-                    )}
+                    {imagePath && <Image src={imagePath} alt="imagem hero" height={imageMaxHeight} />}
                   </div>
                 </div>
               </div>
@@ -55,4 +59,3 @@ export default function HeroSection({
     </>
   );
 }
-

@@ -2,7 +2,7 @@ import { StaticImageData } from "next/image";
 import Image from "next/image";
 import style from "./index.module.css";
 import BtnCallToAction from "../Buttons/BtnCallToAction/BtnCallToAction";
-import ArrowRightSVG from "../../../../public/images/arrow-right.svg";
+import ArrowRightSVG from "@/public/icons/arrow-right.svg";
 
 interface InfoSectionProps {
   title: string;
@@ -63,7 +63,11 @@ function InfoSection({
           <div
             className={`flex-1 flex ${reverseDesktop ? "justify-start" : "justify-end"} items-center rounded-2xl p-2`}
           >
-            <Image src={imagePath} alt="" className={`rounded-2xl ${border ? "shadow-shadow_image_info_section" : ""}`} />
+            <Image
+              src={imagePath}
+              alt=""
+              className={`rounded-2xl ${border ? "shadow-shadow_image_info_section" : ""}`}
+            />
           </div>
           <div className={`flex flex-col justify-center flex-1 pb-12 pt-12 gap-6 ${paddingClass}`}>
             <div>
