@@ -12,7 +12,7 @@ function SearchBox() {
             name="search"
             placeholder="Buscar no blog..."
           />
-          <button className="absolute rounded-sm bg-blue_button p-2 w-10 text-white" type="submit">
+          <button className="absolute rounded-sm bg-fb_blue_button p-2 w-10 text-white" type="submit">
             <Search />
           </button>
         </form>
