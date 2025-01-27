@@ -9,6 +9,7 @@ interface InfoSectionProps {
   content: string;
   ctaLink?: string;
   imagePath?: StaticImageData;
+  imageMidFullContainer?: boolean;
   youtubeEmbed?: string;
   reverseMobile?: boolean;
   reverseDesktop?: boolean;
@@ -54,6 +55,7 @@ function InfoSection({
   content,
   ctaLink,
   imagePath,
+  imageMidFullContainer = false,
   youtubeEmbed,
   reverseMobile = false,
   reverseDesktop = false,
@@ -69,15 +71,13 @@ function InfoSection({
   return (
     <div className={`${heroBgImage ? `${heroBgImage} relative bg-center bg-cover` : ""}`}>
       {heroBgImage && <div className="absolute top-0 left-0 w-full h-full bg-white opacity-85 z-0"></div>}
-      <div className="w-full h-full fb_container mx-auto relative">
-        <div className={`flex ${desktopClass} ${MobileClass} ${!heroBgImage ? "sm:p-0 p-5": "py-4 lg:py-10" }`}>
+      <div className={`w-full h-full ${!imageMidFullContainer ? "fb_container mx-auto" : "" } relative`}>
+        <div className={`flex flex-wrap lg:flex-nowrap ${desktopClass} ${MobileClass} ${imageMidFullContainer ? "" : (!heroBgImage ? "sm:p-0 p-5" : "py-2 lg:py-5")}`}>
           {youtubeEmbed ? (
-            <div className="flex-1 flex justify-center items-center p-2">
+            <div className="flex-1 flex justify-center items-center p-2 aspect-[16/9] w-full h-auto">
               <iframe
                 loading="lazy"
-                className="rounded-tl-[16px] rounded-br-[16px] overflow-hidden"
-                width="560"
-                height="315"
+                className="rounded-tl-[16px] rounded-br-[16px] overflow-hidden aspect-[16/9] w-full h-auto"
                 src={youtubeEmbed}
                 title="YouTube video player"
                 frameBorder="0"
@@ -86,16 +86,16 @@ function InfoSection({
               ></iframe>
             </div>
           ) : (
-            <div className={`flex-1 flex ${reverseDesktop ? "justify-start" : "justify-end"} items-center rounded-2xl p-2`}>
+            <div className={`flex-1 flex ${reverseDesktop ? "justify-start" : "justify-end"} items-center rounded-2xl ${!imageMidFullContainer ? "p-2" : 'h-fit w-full'}`}>
               <Image
                 src={imagePath}
                 alt=""
-                className={`rounded-2xl ${border ? "shadow-shadow_image_info_section" : ""}`}
+                className={`rounded-2xl ${border ? "shadow-shadow_image_info_section" : ""} ${imageMidFullContainer ? "h-full w-full" : ""}`}
               />
             </div>
           )}
           
-          <div className={`flex flex-col justify-center flex-1 pb-12 pt-12 gap-6 ${paddingClass}`}>
+          <div className={`flex flex-col justify-center flex-1 pb-12 pt-12 gap-6 ${paddingClass} ${imageMidFullContainer ? "fb_container mx-auto" : ""}`}>
             <div>
               {badge && colorButton == "fb_green_button" && (
                 <div className="flex gap-1 py-1">
