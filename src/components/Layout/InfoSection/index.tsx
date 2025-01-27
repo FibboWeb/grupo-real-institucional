@@ -12,6 +12,7 @@ interface InfoSectionProps {
   reverseMobile?: boolean;
   reverseDesktop?: boolean;
   border?: boolean;
+  color?: string;
 }
 
 /**
@@ -50,6 +51,7 @@ function InfoSection({
   reverseMobile = false,
   reverseDesktop = false,
   border = true,
+  color = "fb_blue_button",
 }: InfoSectionProps) {
   const MobileClass = reverseMobile ? "flex-col" : "flex-col-reverse";
   const desktopClass = reverseDesktop ? "sm:flex-row" : "sm:flex-row-reverse";
@@ -78,7 +80,7 @@ function InfoSection({
             </div>
             {ctaLink && (
               <div className="flex sm:justify-start justify-center">
-                <BtnCallToAction ctaLink={ctaLink} content="Leia mais" icon={ArrowRightSVG} />
+                <BtnCallToAction color={color} ctaLink={ctaLink} content="Leia mais" icon={ArrowRightSVG} />
               </div>
             )}
           </div>
