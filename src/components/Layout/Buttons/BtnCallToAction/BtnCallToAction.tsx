@@ -36,7 +36,7 @@ export default function BtnCallToAction({ ctaLink, content, icon, color = "fb_bl
           alt="Arrow Icon"
           width={24}
           height={24}
-          className="btn-logo bg-white group-hover:bg-[#cccccc] rounded-full p-1 transition-all duration-300"
+          className={`btn-logo ${color == "fb_blue_button" ? 'bg-white group-hover:bg-[#cccccc]' : 'filter-image' }  rounded-full p-1 transition-all duration-300`}
         />
       </Link>
     </>
