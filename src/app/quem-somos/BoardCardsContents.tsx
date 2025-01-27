@@ -1,7 +1,7 @@
-import PresidentImg from "@/images/presidente.webp";
-import DrMarioImg from "@/images/dr-mario.webp";
-import DrMarceloImg from "@/images/dr-marcelo.webp";
-import DonaClaudiaImg from "@/images/dona-claudia.webp";
+import PresidentImg from "@/public/images/presidente.webp";
+import DrMarioImg from "@/public/images/dr-mario.webp";
+import DrMarceloImg from "@/public/images/dr-marcelo.webp";
+import DonaClaudiaImg from "@/public/images/dona-claudia.webp";
 
 const members = [
   {
