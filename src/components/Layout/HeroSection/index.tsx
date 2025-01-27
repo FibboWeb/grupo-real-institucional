@@ -23,34 +23,35 @@ export default function HeroSection({
     <>
       <div
         className={[
-          backgroundClass + " flex justify-center bg-hero-image w-full h-full bg-no-repeat bg-cover bg-center",
+          backgroundClass + " flex justify-center bg-hero-image w-full h-full bg-no-repeat bg-cover bg-center relative",
         ].join("")}
       >
-        <div
-          className={[backgroundClass == "bg-hero-image" ? "bg-[rgba(3,29,58,0.90)]" : "" + "w-full h-full"].join("")}
-        >
-          <div className="fb_container mt-12 sm:mt-32 mb-12">
-            <div className="flex flex-col py-12 gap-12 sm:flex-row sm:gap-2">
-              <div className={`${imageOnBottom ? "mb-0" : "mb-12"} w-full`}>
-                <div
-                  className={`flex flex-col ${imageOnBottom ? "pt-14 lg:pt-0" : "py-12"} gap-12 sm:flex-row sm:gap-2  `}
-                >
-                  <div className="flex flex-1 flex-col justify-center gap-8">
-                    {children && (
-                      <>
-                        {children}
-                        {ctaLink && (
-                          <div className="flex sm:justify-start justify-center">
-                            <BtnCallToAction ctaLink={ctaLink} content="Leia mais" icon={ArrowRightSVG} />
-                          </div>
-                        )}
-                      </>
-                    )}
-                  </div>
-                  <div className="flex-1 flex justify-center items-center">
-                    {imagePath && <Image src={imagePath} alt="imagem hero" height={imageMaxHeight} />}
-                  </div>
+        {/* {backgroundClass == "bg-hero-image" && ( */}
+          <div className={`${backgroundClass =="bg-hero-image" ? 'bg-[rgba(3,29,58,0.90)]' : 'bg-[rgba(0,0,0,0.2)]' } absolute top-0 left-0 right-0 bottom-0 w-full h-inherit`}></div>
+        {/* )} */}
+        <div className={`fb_container mt-32 relative`}>
+          <div className={`flex flex-col gap-12 sm:flex-row sm:gap-2`}>
+            <div className={`${imageOnBottom ? "mb-0" : "mb-12"} w-full`}>
+              <div
+                className={`flex flex-col ${imageOnBottom ? "pt-14 lg:pt-0" : "py-12"} gap-12 sm:flex-row sm:gap-2  `}
+              >
+                <div className="flex flex-1 flex-col justify-center gap-8">
+                  {children && (
+                    <>
+                      {children}
+                      {ctaLink && (
+                        <div className="flex sm:justify-start justify-center">
+                          <BtnCallToAction ctaLink={ctaLink} content="Leia mais" icon={ArrowRightSVG} />
+                        </div>
+                      )}
+                    </>
+                  )}
                 </div>
+                {imagePath && (
+                  <div className="flex-1 flex justify-center items-center">
+                    <Image src={imagePath} alt="imagem hero" height={imageMaxHeight} />
+                  </div>
+                )}
               </div>
             </div>
           </div>

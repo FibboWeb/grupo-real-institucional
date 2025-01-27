@@ -1,14 +1,13 @@
 import React from "react";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import InfoSection from "@/components/Layout/InfoSection";
 import EticaLegalidade from "@/public/images/transparencia/etica-legalidade.webp";
 import EuReciclo from "@/public/images/transparencia/eu-reciclo.webp";
 import Lgpd from "@/public/images/transparencia/lgpd.webp";
 import TransparenciaEtica from "@/public/images/transparencia/transparencia-etica.webp";
-import ciclosClean from "@/public/images/ciclos-clean.webp";
+import CiclosClean from "@/public/images/ciclos-clean.webp";
 import HeroSection from "@/components/Layout/HeroSection";
 import BtnCallToAction from "@/components/Layout/Buttons/BtnCallToAction/BtnCallToAction";
-
 
 export default function CiclosTransparencia() {
 
@@ -26,7 +25,7 @@ export default function CiclosTransparencia() {
         <>
             <HeroSection backgroundClass={'bg-hero-green-leafs'} imageMaxHeight={420}>
                 <div>
-                    <Image src={ciclosClean} alt={"ciclo logo"} width={360}></Image>
+                    <Image src={CiclosClean} alt={"ciclo logo"} width={360}></Image>
                     <h1 className="flex flex-col text-white text-bold py-4">
                         <strong className="text-3xl lg:text-5xl">Clareza que inspira confiança. </strong>
                         <strong className="text-3xl lg:text-5xl">Ética que transforma tudo.</strong>

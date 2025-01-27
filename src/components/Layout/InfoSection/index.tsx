@@ -95,7 +95,7 @@ function InfoSection({
             </div>
           )}
           
-          <div className={`flex flex-col justify-center flex-1 pb-12 pt-12 gap-6 ${paddingClass} ${imageMidFullContainer ? "fb_container mx-auto p-0 lg:px-8" : ""}`}>
+          <div className={`flex flex-col justify-center flex-1 pb-12 pt-12 gap-6 ${paddingClass} ${imageMidFullContainer ? "fb_container mx-auto p-0 sm:px-8" : ""}`}>
             <div>
               {badge && color == "fb_green_button" && (
                 <div className="flex gap-1 py-1">
