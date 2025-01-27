@@ -12,6 +12,11 @@
 //   // };
 // }
 
+
+export default function Page() {
+  return <h1>Category Page</h1>;
+}
+
 // export default async function CategoriaPage({ params }: CategoriaPageProps) {
 // const { categoria, page } = await params;
 // const slug = categoria?.length > 0 ? categoria[categoria.length - 1] : "";
