@@ -31,7 +31,7 @@ export default function HeroSection({
         >
           <div className="fb_container mt-12 sm:mt-32 mb-12">
             <div className="flex flex-col py-12 gap-12 sm:flex-row sm:gap-2">
-              <div className={`${imageOnBottom ? "mb-0" : "mb-12"}`}>
+              <div className={`${imageOnBottom ? "mb-0" : "mb-12"} w-full`}>
                 <div
                   className={`flex flex-col ${imageOnBottom ? "pt-14 lg:pt-0" : "py-12"} gap-12 sm:flex-row sm:gap-2  `}
                 >

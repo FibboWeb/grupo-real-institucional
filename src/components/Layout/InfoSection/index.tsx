@@ -14,7 +14,7 @@ interface InfoSectionProps {
   reverseMobile?: boolean;
   reverseDesktop?: boolean;
   border?: boolean;
-  colorButton?: "fb_blue_button" | "fb_green_button";
+  color?: "fb_blue_button" | "fb_green_button";
   contentButton?: string;
 }
 
@@ -60,19 +60,19 @@ function InfoSection({
   reverseMobile = false,
   reverseDesktop = false,
   border = true,
-  colorButton = "fb_blue_button",
+  color = "fb_blue_button",
   contentButton = "Leia mais",
 }: InfoSectionProps) {
   const MobileClass = reverseMobile ? "flex-col" : "flex-col-reverse";
   const desktopClass = reverseDesktop ? "sm:flex-row" : "sm:flex-row-reverse";
   const paddingClass = reverseDesktop ? "sm:pl-12" : "sm:pr-12";
-  const divBar = colorButton == "fb_blue_button" ? "bg-[rgba(3,29,58,0.90)]" : "bg-fb_green";
+  const divBar = color == "fb_blue_button" ? "bg-[rgba(3,29,58,0.90)]" : "bg-fb_green";
 
   return (
     <div className={`${heroBgImage ? `${heroBgImage} relative bg-center bg-cover` : ""}`}>
       {heroBgImage && <div className="absolute top-0 left-0 w-full h-full bg-white opacity-85 z-0"></div>}
       <div className={`w-full h-full ${!imageMidFullContainer ? "fb_container mx-auto" : "" } relative`}>
-        <div className={`flex flex-wrap lg:flex-nowrap ${desktopClass} ${MobileClass} ${imageMidFullContainer ? "" : (!heroBgImage ? "sm:p-0 p-5" : "py-2 lg:py-5")}`}>
+        <div className={`flex flex-wrap lg:flex-nowrap ${desktopClass} ${MobileClass} ${imageMidFullContainer ? "" : "py-4 lg:py-8"}`}>
           {youtubeEmbed ? (
             <div className="flex-1 flex justify-center items-center p-2 aspect-[16/9] w-full h-auto">
               <iframe
@@ -90,14 +90,14 @@ function InfoSection({
               <Image
                 src={imagePath}
                 alt=""
-                className={`rounded-2xl ${border ? "shadow-shadow_image_info_section" : ""} ${imageMidFullContainer ? "h-full w-full" : ""}`}
+                className={`${border ? "shadow-shadow_image_info_section" : ""} ${imageMidFullContainer ? "h-full w-full" : "rounded-2xl"}`}
               />
             </div>
           )}
           
-          <div className={`flex flex-col justify-center flex-1 pb-12 pt-12 gap-6 ${paddingClass} ${imageMidFullContainer ? "fb_container mx-auto" : ""}`}>
+          <div className={`flex flex-col justify-center flex-1 pb-12 pt-12 gap-6 ${paddingClass} ${imageMidFullContainer ? "fb_container mx-auto p-0 lg:px-8" : ""}`}>
             <div>
-              {badge && colorButton == "fb_green_button" && (
+              {badge && color == "fb_green_button" && (
                 <div className="flex gap-1 py-1">
                   <Image src={'/icons/plant-sprout.svg'} width={"12"} height={"12"} alt="broto de planta"></Image>
                   <div className="text-xl text-fb_green text-uppercase font-semibold">{badge}</div>
@@ -116,7 +116,7 @@ function InfoSection({
             </div>
             {ctaLink && (
               <div className="flex sm:justify-start justify-center">
-                <BtnCallToAction color={colorButton} ctaLink={ctaLink} content={contentButton} />
+                <BtnCallToAction color={color} ctaLink={ctaLink} content={contentButton} />
               </div>
             )}
           </div>
