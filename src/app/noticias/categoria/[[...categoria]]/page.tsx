@@ -5,10 +5,11 @@ import CardBlog from "@/components/Layout/CardBlog";
 import Pagination from "@/components/Pagination";
 import SidebarNoticias from "@/components/Layout/SidebarNoticias";
 
+// Defina o tipo correto para os parâmetros
 interface CategoriaPageProps {
   params: {
-    categoria?: string[];
-    page?: string;
+    categoria?: string[]; // Para a rota dinâmica com parâmetros 'categoria'
+    page?: string; // Para a página de navegação
   };
 }
 
