@@ -17,8 +17,8 @@ function SampleNextArrow(props: ArrowProps) {
   const { className, style, onClick } = props;
   return (
     <div className={className}>
-      <button className='relative -top-full' onClick={onClick} style={style}>
-        <ArrowRight color='black'/>
+      <button className="relative -top-full" onClick={onClick} style={style}>
+        <ArrowRight color="black" />
       </button>
     </div>
   );
@@ -28,8 +28,8 @@ function SamplePrevArrow(props: ArrowProps) {
   const { className, style, onClick } = props;
   return (
     <div className={`${className}`}>
-      <button className='relative -top-full' onClick={onClick} style={style}>
-        <ArrowLeft color='black'/>
+      <button className="relative -top-full" onClick={onClick} style={style}>
+        <ArrowLeft color="black" />
       </button>
     </div>
   );
@@ -56,7 +56,7 @@ interface SliderNavigationalProps {
  * @param {props.categories.label} props.categories.label - Label da categoria.
  *
  * @returns {JSX.Element} Um slider que renderiza as imagens e links das categorias.
- * 
+ *
  * @example
  * Exemplo de uso:
  * <SliderNavigational categories={categories} />
@@ -103,40 +103,43 @@ export default function SliderNavigational({ categories }: SliderNavigationalPro
   };
 
   return (
-      <div>
-        <div className="w-full flex flex-col gap-8">
-          <h2 className="text-5xl font-bold text-center text-fb_blue_main">Linha Nutrição</h2>
-          <div className="container px-10 lg:w-2/4 lg:px-2 text-center mx-auto">
-            <p>
-              Oferecemos uma ampla gama de produtos de nutrição animal,
-              desenvolvidos para atender às necessidades específicas de cada segmento
-              do mercado.
-            </p>
-          </div>
-          <div className={`mx-auto container max-w-full overflow-hidden`}>
-            <Slider {...settings} ref={sliderRef} className='max-w-[80%] flex justify-center items-center mx-auto cursor-grab'>
-              {categories.map((category) => (
-                <div key={category.id} className="flex flex-col gap-6 w-56 h-56">
-                  <Link href={category.url} className='flex justify-center'>
-                    <Image
-                      alt={category.label}
-                      src={category.image_url}
-                      width={220}
-                      height={220}
-                      className={'h-56 bg-center object-cover rounded-2xl'}
-                    />
-                  </Link>
-                    <Link
-                      href={category.url}
-                      className="flex w-full justify-center hover:text-fb_blue text-fb_blue-main hover:no-underline mt-6"
-                    >
-                      <h3 className="text-lg font-semibold text-fb_blue-main text-center">{category.label}</h3>
-                    </Link>
-                </div>
-              ))}
-            </Slider>
-          </div>
+    <div>
+      <div className="w-full flex flex-col gap-8">
+        <h2 className="text-5xl font-bold text-center text-fb_blue_main">Linha Nutrição</h2>
+        <div className="container px-10 lg:w-2/4 lg:px-2 text-center mx-auto">
+          <p>
+            Oferecemos uma ampla gama de produtos de nutrição animal, desenvolvidos para atender às necessidades
+            específicas de cada segmento do mercado.
+          </p>
+        </div>
+        <div className={`mx-auto container max-w-full overflow-hidden`}>
+          <Slider
+            {...settings}
+            ref={sliderRef}
+            className="max-w-[80%] flex justify-center items-center mx-auto cursor-grab"
+          >
+            {categories.map((category) => (
+              <div key={category.id} className="flex flex-col gap-6 w-56 h-56">
+                <Link href={category.url} className="flex justify-center">
+                  <Image
+                    alt={category.label}
+                    src={category.image_url}
+                    width={220}
+                    height={220}
+                    className={"h-56 bg-center object-cover rounded-2xl"}
+                  />
+                </Link>
+                <Link
+                  href={category.url}
+                  className="flex w-full justify-center hover:text-fb_blue text-fb_blue-main hover:no-underline mt-6"
+                >
+                  <h3 className="text-lg font-semibold text-fb_blue-main text-center">{category.label}</h3>
+                </Link>
+              </div>
+            ))}
+          </Slider>
         </div>
       </div>
+    </div>
   );
 }
