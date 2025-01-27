@@ -81,7 +81,6 @@ export default {
         "fb_gradient": "linear-gradient(-35deg, #031D3A 0%, #126597 100%)",
         "banner-cta": "url('/images/banner-mais-background-blue-_1_.webp')",
         "hero-image": "url('/images/bg-hero-section.webp')",
-        "fb_category_image": "url('/images/banners/bg-categories.webp')",
         "hero-green-leafs": "url('/images/hero-green-leafs.jpg')",
         "hero-section-gray-palms": "url('/images/hero-section-gray-palms.jpg')",
         "hero-section-gray": "url('/images/hero-section-gray.jpg')",

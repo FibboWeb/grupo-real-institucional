@@ -31,7 +31,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 interface CardBlogProps {
-  blogContext?: string;
   postImage?: string;
   postImageAlt?: string;
   postLink?: string;
@@ -45,7 +44,6 @@ interface CardBlogProps {
 }
 
 function CardBlog({
-  blogContext,
   postImage,
   postImageAlt,
   postLink,
@@ -77,8 +75,6 @@ function CardBlog({
     }
   };
 
-  blogContext = blogContext ? blogContext : "/noticias";
-
   return (
     <div className="p-2">
       <div
@@ -86,7 +82,7 @@ function CardBlog({
           isSlider ? "w-[320px] h-[440px]" : "w-full"
         } rounded-2xl shadow-custom_shadow transform hover:scale-[1.02] duration-300 bg-white`}
       >
-        <Link href={`${blogContext}/${postLink ? postLink : ""}`}>
+        <Link href={postLink ? postLink : "#"}>
           <Image
             src={postImage ? postImage : "/images/capa-post-test.webp"}
             alt={postImageAlt ? postImageAlt : "Post featured"}
@@ -109,7 +105,7 @@ function CardBlog({
             <Image src={"/author-icon.svg"} alt={"Post author link"} width={16} height={16} className="w-5 h-5" />
             <p className="author-name">{postAuthor}</p>
           </Link>
-          <Link href={`${blogContext}/${postLink ? postLink : ""}`} className="post-link">
+          <Link href={`/noticias/${postLink ? postLink : "#"}`} className="post-link">
             <p className="text-lg leading-5 font-bold mt-4 text-fb_blue_main line-clamp-3 min-h-[60px]">{postTitle}</p>
             <div className="post-description mt-2 text-[15px] min-h-16 leading-5 text-fb_gray">
               {postDescription && <p>{truncateDescription(postDescription.__html, 100)}</p>}

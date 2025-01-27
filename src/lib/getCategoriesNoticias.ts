@@ -11,6 +11,7 @@ export async function getCategoriesNoticias(slug: string, postsPerPage: number, 
       after,
     },
   });
+  // console.log("Resposta do GraphQL:", data);
   const category = data?.category;
   const posts = category?.posts?.nodes || [];
   const total = category?.posts?.pageInfo?.offsetPagination?.total || 0;
