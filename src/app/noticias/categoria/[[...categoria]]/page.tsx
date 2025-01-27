@@ -14,22 +14,17 @@ interface CategoriaPageProps {
 }
 
 export default async function CategoriaPage({ params }: CategoriaPageProps) {
-  // Obtenha os parâmetros de forma síncrona
   const { categoria, page } = params;
-
-  // Definindo o slug com base na categoria
   const slug = categoria?.length > 0 ? categoria[categoria.length - 1] : "";
   const postsPerPage = 6;
   const currentPage = page ? parseInt(page) : 1;
 
-  // Agora usamos 'await' para chamar 'getCategoriesNoticias' de forma assíncrona
   const { category, posts, total, hasMore, hasPrevious, startCursor, endCursor } = await getCategoriesNoticias(
     slug,
     postsPerPage,
     currentPage,
   );
 
-  // Se não encontrar a categoria, redireciona para a página de erro
   if (!category) {
     notFound();
   }
