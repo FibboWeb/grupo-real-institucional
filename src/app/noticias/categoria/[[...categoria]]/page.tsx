@@ -12,6 +12,7 @@
 //   // };
 // }
 
+
 export default function Page() {
   return <h1>Category Page</h1>;
 }
@@ -83,3 +84,4 @@ export default function Page() {
 //   </div>
 // );
 // }
+
