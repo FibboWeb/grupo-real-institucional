@@ -16,7 +16,7 @@ async function Footer() {
       <div className="w-full bg-[rgba(3,29,58,0.85)] px-3 z-10 py-11">
         <div className="fb_container mx-auto">
           <Menus menusList={menusItems} />
-          <div className="container flex flex-col gap-6 lg:gap-0 lg:flex-row items-center justify-between mx-auto my-16">
+          <div className="container flex flex-col gap-6 lg:gap-0 lg:flex-row items-center justify-between mx-auto mt-16 mb-8">
             <div className="flex flex-col items-center lg:items-start">
               <div className="social-icons flex-row justify-center space-x-4 items-center mb-1">
                 <Link className="inline-block" href={"https://www.facebook.com/gruporealh"}>
@@ -43,7 +43,7 @@ async function Footer() {
                 <p className="text-lg text-white">de segunda à sexta-feira, das 8h às 18h</p>
               </div>
             </div>
-            <div className="flex flex-wrap justify-center lg:flex-row gap-7 px-12">
+            <div className="flex justify-center lg:flex-row lg:px-6">
               <Link className="inline-block border-r-2 pr-4" href={"#"}>
                 <Image src={"/images/logo-grupo-real.webp"} width={120} height={48} alt="GrupoReal" />
               </Link>
@@ -57,6 +57,29 @@ async function Footer() {
                 <Image src={"/images/logo-homeopet.webp"} width={120} height={48} alt="GrupoReal" />
               </Link>
             </div>
+          </div>
+          <div className="flex flex-row justify-center items-center mb-8 gap-5 lg:gap-10">
+            <Image
+              className="w-24 h-auto sm:w-28"
+              src={"/images/selo-gptw.webp"}
+              width={142}
+              height={111}
+              alt={"Selo GPTW"}
+            />
+            <Image
+              className="w-24 h-auto sm:w-28"
+              src={"/images/selo-gptw.webp"}
+              width={142}
+              height={111}
+              alt={"Selo GPTW"}
+            />
+            <Image
+              className="w-24 h-auto sm:w-28"
+              src={"/images/selo-gptw.webp"}
+              width={142}
+              height={111}
+              alt={"Selo GPTW"}
+            />
           </div>
           <div className="container flex flex-col justify-center items-center mx-auto border-t border-[#B3D5FF]">
             <p className="text-white mt-1">© {new Date().getFullYear()} Grupo REAL. Todos os direitos reservados.</p>
