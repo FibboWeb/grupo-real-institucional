@@ -78,6 +78,7 @@ export default {
         fb_gradient: "linear-gradient(-35deg, #031D3A 0%, #126597 100%)",
         "banner-cta": "url('/images/banner-mais-background-blue-_1_.webp')",
         "hero-image": "url('/images/bg-hero-section.webp')",
+        "partner-background": "url('/images/bg-ambiental.webp')",
       },
       boxShadow: {
         custom_shadow: "0 0 4px 0 #00000040",
