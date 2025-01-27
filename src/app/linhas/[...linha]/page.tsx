@@ -11,13 +11,9 @@ export default function PageLinhas() {
         <div>
           <Breadcrumb />
         </div>
-        <div>
-          {/* Grid de produtos */}
-        </div>
-        <div>
-          {/* Banners CTA */}
-        </div>
+        <div>{/* Grid de produtos */}</div>
+        <div>{/* Banners CTA */}</div>
       </div>
     </section>
-  )
+  );
 }
