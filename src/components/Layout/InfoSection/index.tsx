@@ -3,7 +3,7 @@ import style from "./index.module.css";
 import BtnCallToAction from "../Buttons/BtnCallToAction/BtnCallToAction";
 
 interface InfoSectionProps {
-  heroImage?: string;
+  heroBgImage?: string;
   badge?: string;
   title: string;
   content: string;
@@ -48,7 +48,7 @@ interface InfoSectionProps {
  */
 
 function InfoSection({
-  heroImage,
+  heroBgImage,
   badge,
   title,
   content,
@@ -67,10 +67,10 @@ function InfoSection({
   const divBar = colorButton == "fb_blue_button" ? "bg-[rgba(3,29,58,0.90)]" : "bg-fb_green";
 
   return (
-    <div className={`${heroImage ? `${heroImage} relative bg-center bg-cover` : ""}`}>
-      {heroImage && <div className="absolute top-0 left-0 w-full h-full bg-white opacity-85 z-0"></div>}
+    <div className={`${heroBgImage ? `${heroBgImage} relative bg-center bg-cover` : ""}`}>
+      {heroBgImage && <div className="absolute top-0 left-0 w-full h-full bg-white opacity-85 z-0"></div>}
       <div className="w-full h-full fb_container mx-auto relative">
-        <div className={`flex ${desktopClass} ${MobileClass} ${!heroImage ? "sm:p-0 p-5": "py-4 lg:py-10" }`}>
+        <div className={`flex ${desktopClass} ${MobileClass} ${!heroBgImage ? "sm:p-0 p-5": "py-4 lg:py-10" }`}>
           {youtubeEmbed ? (
             <div className="flex-1 flex justify-center items-center p-2">
               <iframe
