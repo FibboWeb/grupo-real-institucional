@@ -82,6 +82,7 @@ export default {
         "hero-green-leafs": "url('/images/hero-green-leafs.jpg')",
         "hero-section-gray-palms": "url('/images/hero-section-gray-palms.jpg')",
         "hero-section-gray": "url('/images/hero-section-gray.jpg')",
+        "green-featured": "url('/images/transparencia/green-bg-featured.webp')",
       },
       boxShadow: {
         custom_shadow: "0 0 4px 0 #00000040",

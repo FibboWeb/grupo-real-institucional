@@ -5,7 +5,7 @@ import BtnCallToAction from "../Buttons/BtnCallToAction/BtnCallToAction";
 interface InfoSectionProps {
   heroBgImage?: string;
   badge?: string;
-  title: string;
+  title?: string;
   content: string;
   ctaLink?: string;
   imagePath?: StaticImageData;
@@ -94,11 +94,11 @@ function InfoSection({
               ></iframe>
             </div>
           ) : (
-            <div className={`flex-1 flex ${reverseDesktop ? "justify-start" : "justify-end"} items-center rounded-2xl ${!imageMidFullContainer ? "p-2" : 'h-fit w-full'}`}>
+            <div className={`flex-1 flex ${reverseDesktop ? "justify-start" : "justify-end"} items-center rounded-2xl ${!imageMidFullContainer ? "p-2" : 'h-inherit w-full'}`}>
               <Image
                 src={imagePath}
                 alt=""
-                className={`${border ? "shadow-shadow_image_info_section" : ""} ${imageMidFullContainer ? "h-full w-full" : "rounded-2xl"}`}
+                className={`${border ? "shadow-shadow_image_info_section" : ""} ${imageMidFullContainer ? "h-full w-full object-cover" : "rounded-2xl"}`}
               />
             </div>
           )}
