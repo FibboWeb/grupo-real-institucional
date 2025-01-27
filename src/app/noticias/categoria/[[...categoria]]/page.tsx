@@ -2,30 +2,18 @@ import { getCategoriesNoticias } from "@/lib/getCategoriesNoticias";
 import { notFound } from "next/navigation";
 import Breadcrumb from "@/components/BreadCrumb";
 import CardBlog from "@/components/Layout/CardBlog";
-import Pagination from "@/components/Pagination";
 import SidebarNoticias from "@/components/Layout/SidebarNoticias";
 import Newsletter from "@/components/Layout/Newsletter";
 
-interface CategoriaPageProps {
-  params: {
-    categoria?: string[];
-    page?: string;
-  };
-}
-export default async function CategoriaPage({ params }: CategoriaPageProps) {
-  const { categoria, page } = await params;
+export default async function CategoriaPage({ params }) {
+  const { categoria } = await params;
+
   const slug = categoria?.length > 0 ? categoria[categoria.length - 1] : "";
-  const postsPerPage = 6;
-  const currentPage = page ? parseInt(page) : 1;
-  const { category, posts, total, hasMore, hasPrevious, startCursor, endCursor } = await getCategoriesNoticias(
-    slug,
-    postsPerPage,
-    currentPage,
-  );
+
+  const { category, posts } = await getCategoriesNoticias(slug);
   if (!category) {
     notFound();
   }
-  const totalPages = Math.ceil(total / postsPerPage);
   return (
     <div className="fb_container px-2 mb-12 mt-24">
       <Breadcrumb
@@ -63,14 +51,6 @@ export default async function CategoriaPage({ params }: CategoriaPageProps) {
               <p>Nenhum post encontrado.</p>
             )}
           </div>
-          <Pagination
-            blogContext="/noticias"
-            currentPage={currentPage}
-            totalPages={totalPages}
-            hasPrevious={hasPrevious}
-            hasMore={hasMore}
-            slug={slug}
-          />
         </div>
         <div className="sidebar w-full lg:w-1/3">
           <SidebarNoticias />
