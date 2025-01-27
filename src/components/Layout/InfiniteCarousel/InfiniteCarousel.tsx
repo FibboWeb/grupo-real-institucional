@@ -47,7 +47,7 @@ const InifiniteCarousel = ({
     speed: speedSlidesProp,
     slidesToShow: slidesToShowConfig,
     slidesToScroll: 1,
-    autoplay: false,
+    autoplay: true,
     autoplaySpeed: 0,
     cssEase: "linear",
     arrows: false,
