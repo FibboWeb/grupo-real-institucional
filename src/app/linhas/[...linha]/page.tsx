@@ -6,7 +6,7 @@ import image02 from "@/public/images/banners/carne-vermelha-cortada.webp";
 import image03 from "@/public/images/banners/cao-e-gato.webp";
 import GridProduct from "../(componentes)";
 
-export default function PageLinhas() {
+export default async function PageLinhas() {
   return (
     <section className="relative mt-36">
       <div className="fb_container flex flex-col gap-fb_space-section">

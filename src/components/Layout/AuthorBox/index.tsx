@@ -9,9 +9,9 @@ interface AuthorBoxProps {
 function AuthorBox({ authorName, authorBio }: AuthorBoxProps) {
   return (
     <>
-      <div className="author-card bg-white p-6 rounded-lg border border-blue_button mb-2 min-h-44">
+      <div className="author-card bg-white p-6 rounded-lg border border-fb_blue_button mb-2 min-h-44">
         <div className="flex flex-col lg:flex-row items-center gap-5">
-          <div className="flex items-center rounded-full border border-blue_button w-[80px] h-[80px] lg:w-[180px] lg:h-[85px]">
+          <div className="flex items-center rounded-full border border-fb_blue_button w-[80px] h-[80px] lg:w-[180px] lg:h-[85px]">
             <Image
               src={"/logo-real-h.png"}
               width={180}
@@ -26,7 +26,7 @@ function AuthorBox({ authorName, authorBio }: AuthorBoxProps) {
           </div>
         </div>
       </div>
-      <div className="rounded-lg h-12 bg-blue_button flex items-center justify-end gap-4 px-4">
+      <div className="rounded-lg h-12 bg-fb_blue_button flex items-center justify-end gap-4 px-4">
         <Link
           className="bg-white rounded-xl w-7 h-7 flex items-center justify-center"
           href={"https://www.facebook.com/gruporealh"}

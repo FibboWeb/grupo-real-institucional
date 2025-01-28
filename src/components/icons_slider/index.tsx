@@ -70,13 +70,13 @@ export default function SliderNavigational({ categories }: SliderNavigationalPro
 
   const settings = {
     orientation: "horizontal",
-    infinite: true,
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 1,
     useTransform: true,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
+    dots: true,
+    // nextArrow: <SampleNextArrow />,
+    // prevArrow: <SamplePrevArrow />,
     responsive: [
       {
         breakpoint: 1360,

@@ -4,8 +4,9 @@ import SidebarNoticias from "@/components/Layout/SidebarNoticias";
 import CardBlog from "@/components/Layout/CardBlogAPI";
 import AuthorBox from "@/components/Layout/AuthorBox";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import Link from "next/link";
 
-async function fetchPosts(authorId, page = 1, postsPerPage = 6) {
+async function fetchPosts(authorId: number, page = 1, postsPerPage = 6) {
   const res = await fetch(
     `https://realh.com.br/wp-json/wp/v2/posts?author=${authorId}&per_page=${postsPerPage}&page=${page}`,
     {
@@ -20,31 +21,21 @@ async function fetchPosts(authorId, page = 1, postsPerPage = 6) {
   const totalPages = res.headers.get("X-WP-TotalPages");
   return { posts: data, totalPosts: Number(totalPosts), totalPages: Number(totalPages) };
 }
+
 async function fetchAuthorData(authorSlug: string) {
   const authorRes = await fetch(`https://realh.com.br/wp-json/wp/v2/users?slug=${authorSlug}`);
   const authorData = await authorRes.json();
   return authorData.length > 0 ? authorData[0] : null;
 }
 
-export default async function PaginatedPosts({
-  params,
-  searchParams,
-}: {
-  params: { author?: string[] };
-  searchParams: { page?: string };
-}) {
+export default async function PaginatedPosts({ params, searchParams }) {
   const page = parseInt(searchParams.page || "1");
   const postsPerPage = 6;
+  const authorSlug = params.author[0];
 
-  const authorSlugs = params.author || [];
-
-  if (authorSlugs.length === 0) {
+  if (!authorSlug) {
     return <p>Nenhum autor especificado.</p>;
   }
-
-  const authorSlug = authorSlugs[authorSlugs.length - 1];
-
-  // Buscar os dados do autor
   const author = await fetchAuthorData(authorSlug);
 
   if (!author) {
@@ -53,7 +44,6 @@ export default async function PaginatedPosts({
 
   const authorName = author.name;
   const authorBio = author.description || "Biografia não disponível";
-
   const authorId = author.id;
 
   const { posts, totalPosts, totalPages } = await fetchPosts(authorId, page, postsPerPage);
@@ -65,9 +55,9 @@ export default async function PaginatedPosts({
 
     if (startPage > 1) {
       paginationLinks.push(
-        <a key={1} href={`/author/${authorSlug}`} className="px-4 py-2 border rounded hover:bg-gray-200">
+        <Link key={1} href={`/author/${authorSlug}`} className="px-4 py-2 border rounded hover:bg-gray-200">
           1
-        </a>,
+        </Link>,
       );
       if (startPage > 2) {
         paginationLinks.push(
@@ -80,13 +70,13 @@ export default async function PaginatedPosts({
 
     for (let i = startPage; i <= endPage; i++) {
       paginationLinks.push(
-        <a
+        <Link
           key={i}
           href={i === 1 ? `/author/${authorSlug}` : `/author/${authorSlug}?page=${i}`}
           className={`px-2 py-2 border rounded ${i === page ? "bg-blue-500 text-white" : "hover:bg-gray-200"}`}
         >
           {i}
-        </a>,
+        </Link>,
       );
     }
 
@@ -99,13 +89,13 @@ export default async function PaginatedPosts({
         );
       }
       paginationLinks.push(
-        <a
+        <Link
           key={totalPages}
           href={`/author/${authorSlug}?page=${totalPages}`}
           className="px-2 py-2 border rounded hover:bg-gray-200"
         >
           {totalPages}
-        </a>,
+        </Link>,
       );
     }
 
@@ -118,7 +108,7 @@ export default async function PaginatedPosts({
         activeClasses="text-fb_gray_bread"
         excludePaths={["author"]}
         containerClasses="flex py-5"
-        listClasses="mx-2 font-bold text-fb_gray_bread hover:text-fb_blue duration-300 "
+        listClasses="mx-2 font-bold text-fb_gray_bread hover:text-fb_blue duration-300"
         capitalizeLinks
       />
       <div className="author-hero mb-8">
@@ -133,7 +123,7 @@ export default async function PaginatedPosts({
             ) : (
               posts.map((post, index) => (
                 <CardBlog
-                  key={index + 4}
+                  key={index}
                   blogContext="/noticias"
                   postImage={post.featured_media ? post.featured_media.source_url : null}
                   postImageAlt={post.featured_media?.alt_text || "Imagem do post"}
@@ -146,7 +136,6 @@ export default async function PaginatedPosts({
                 />
               ))
             )}
-
             <div className="flex justify-center  items-center mt-6 space-x-2">
               {page > 1 && (
                 <a
