@@ -9,11 +9,11 @@ import "slick-carousel/slick/slick-theme.css";
 import "./index.css";
 
 type Post = {
-  icon: StaticImageData;
+  icon?: StaticImageData;
   title: string;
   content: string;
   img: StaticImageData;
-  link: string;
+  link?: string;
 };
 
 interface PostsByCategoryProps {
@@ -21,6 +21,8 @@ interface PostsByCategoryProps {
   subtitle: string;
   subtitleIcon: StaticImageData;
   posts: Post[];
+  centerTitle?: boolean;
+  clampPostContent?: boolean;
 }
 
 const settings = {
@@ -62,39 +64,47 @@ const settings = {
   ],
 };
 
-export default function PostsByCategory({ title, subtitle, subtitleIcon, posts }: PostsByCategoryProps) {
+export default function PostsByCategory({ title, subtitle, subtitleIcon, posts, centerTitle = false, clampPostContent = true }: PostsByCategoryProps) {
   return (
     <section>
       <div className="fb_container flex gap-8 flex-col py-12">
         <div>
-          <div className="flex flex-row gap-2">
+          <div className={`flex flex-row gap-2 ${centerTitle ? "justify-center" : "justify-start"}`}>
             <Image src={subtitleIcon} alt="" />
             <p className="text-xl text-fb_green font-bold">{subtitle}</p>
           </div>
-          <div>
+          <div className={`flex flex-row gap-2 ${centerTitle ? "justify-center" : "justify-start"}`}>
             <h2 className="text-3xl text-[#373737] font-bold leading-[48px]">{title}</h2>
           </div>
         </div>
 
         <Slider {...settings}>
           {posts.map((post, index) => (
-            <a href="#" key={index} className="max-w-[95%]">
+            <a href={post.link} key={index} className="max-w-[95%]">
               <div className="flex flex-col gap-7 border border-[#F7F6EE] border-t-[5px] border-t-fb_green rounded-2xl bg-[#F7F6EE] py-6 px-5 hover:border hover:border-t-[5px] hover:border-fb_green">
                 <div>
-                  <div>
-                    <Image src={post.icon} alt="" className="bg-fb_green p-4 rounded-full" width={80} />
-                  </div>
-                  <div>
+                  {post.icon ? (
+                    <div>
+                      <Image src={post.icon} alt="" className="bg-fb_green p-4 rounded-full" width={80} />
+                    </div>
+                  ): (
+                    <div>
+                      <Image src={post.img} alt="" className="rounded-lg w-full" />
+                    </div>
+                  )}
+                  <div className="pt-4">
                     <h3 className="text-[#373737] font-bold text-[28px]">{post.title}</h3>
                     <div className={`h-1 w-20 bg-fb_green mt-4 mb-4`}></div>
-                    <p className="text-[#666] font-medium text-lg leading-[27px] line-clamp-5 h-[142px]">
+                    <p className={`text-[#666] font-medium text-lg leading-[27px] ${clampPostContent ? "line-clamp-5" : ""} overflow-hidden`}>
                       {post.content}
                     </p>
                   </div>
                 </div>
-                <div>
-                  <Image src={post.img} alt="" className="rounded-lg w-full" />
-                </div>
+                {post.icon && (
+                  <div>
+                    <Image src={post.img} alt="" className="rounded-lg w-full" />
+                  </div>
+                )}
               </div>
             </a>
           ))}
