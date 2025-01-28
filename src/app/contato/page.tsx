@@ -39,7 +39,14 @@ export default function Page() {
         <div className="flex flex-col gap-4">
           <h2 className="mb-6 text-3xl font-bold text-navy-900">Como chegar?</h2>
           {locations.map((location) => {
-            return <Adress title={location.title} address={location.address} iframeSrc={location.iframeSrc} />;
+            return (
+              <Adress
+                key={location.title}
+                title={location.title}
+                address={location.address}
+                iframeSrc={location.iframeSrc}
+              />
+            );
           })}
         </div>
       </div>

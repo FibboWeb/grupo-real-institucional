@@ -1,8 +1,10 @@
-const menuItems = [
+import MenuNode, { MenuItems } from "@/components/Layout/Header/Menu";
+
+const menuItems: MenuItems[] = [
   {
     node: {
       id: "1",
-      url: "#",
+      url: "/institucional",
       label: "Institucional",
       childItems: {
         edges: [
@@ -27,29 +29,53 @@ const menuItems = [
   {
     node: {
       id: "2",
-      url: "#",
-      label: "Nossas Marcas",
+      url: "/produtos",
+      label: "Produtos",
       childItems: {
         edges: [
           {
             node: {
               id: "2-1",
-              url: "/cmr",
-              label: "Linha CMR",
+              url: "/real-h",
+              label: "Real H",
+              edges: [
+                {
+                  id: "2-1-1",
+                  url: "/linha-equino-h",
+                  label: "Linha Equino H",
+                },
+                {
+                  id: "2-2-1",
+                  url: "/linha-nutricao",
+                  label: "Linha Nutrição",
+                },
+              ],
             },
           },
           {
             node: {
               id: "2-2",
-              url: "/real-h",
-              label: "Linha Real H",
+              url: "/linha-cmr",
+              label: "Linha CMR",
+              edges: [
+                {
+                  id: "2-2-1",
+                  url: "/linha-md",
+                  label: "Linha MD",
+                },
+                {
+                  id: "2-2-2",
+                  url: "/linha-saude",
+                  label: "Linha Saúde",
+                },
+              ],
             },
           },
           {
             node: {
               id: "2-3",
               url: "/homeopet",
-              label: "Linha Homeopet",
+              label: "Homeopet",
             },
           },
         ],
@@ -59,7 +85,7 @@ const menuItems = [
   {
     node: {
       id: "3",
-      url: "#",
+      url: "/informacoes",
       label: "Informações",
       childItems: {
         edges: [
@@ -93,6 +119,14 @@ const menuItems = [
           },
         ],
       },
+    },
+  },
+  {
+    node: {
+      id: "4",
+      url: "/#nossas-marcas",
+      label: "Nossas Marcas",
+      childItems: null,
     },
   },
   {

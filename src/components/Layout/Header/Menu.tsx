@@ -5,31 +5,29 @@ import { SetStateAction, useState } from "react";
 import greenLeaf from "../../../../public/green-leaf.svg";
 import menuItems from "@/lib/menuItems";
 
-interface MenuProps {
-  menuFetched: {
-    props: {
-      menuItems: {
-        edges: {
-          node: {
-            id: string;
-            url: string;
-            label: string;
-            childItems?: {
-              edges: {
-                node: {
-                  id: string;
-                  url: string;
-                  label: string;
-                };
-              }[];
-            };
-          };
+export interface MenuNode {
+  id: string;
+  url: string;
+  label: string;
+  childItems?: {
+    edges: {
+      node: {
+        id: string;
+        url: string;
+        label: string;
+        edges?: {
+          id: string;
+          url: string;
+          label: string;
         }[];
       };
-    };
-  };
+    }[];
+  } | null;
 }
 
+export interface MenuItems {
+  node: MenuNode;
+}
 const menuSustentabilidade = [
   {
     link: "/ambiental",
@@ -45,7 +43,7 @@ const menuSustentabilidade = [
   },
 ];
 
-export default function Menu({ menuFetched }: MenuProps) {
+export default function Menu() {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   // const menuItens = menuFetched?.props?.menuItems?.edges || [];
@@ -115,17 +113,23 @@ export default function Menu({ menuFetched }: MenuProps) {
                     {item.node.childItems?.edges?.map((subMenu) => (
                       <li key={subMenu.node.id} className="py-2 px-3">
                         <a className="flex text-fb_blue_main hover:text-fb_blue duration-300" href={subMenu.node.url}>
-                          {subMenu.node.label} {subMenu.node?.edges && subMenu.node?.edges.length > 0 && (
+                          {subMenu.node.label}{" "}
+                          {subMenu.node?.edges && subMenu.node?.edges.length > 0 && (
                             <>
                               <span
                                 className={`flex items-center cursor-pointer transition-all duration-300 ${activeMenu === subMenu.node.id ? "rotate-180 " : ""}`}
                               >
                                 <ChevronDown />
                               </span>
-                              <ul className={`sub-sub-menu ${activeMenu === subMenu.node.id ? "block" : "hidden"} transition-opacity duration-400`}>
+                              <ul
+                                className={`sub-sub-menu ${activeMenu === subMenu.node.id ? "block" : "hidden"} transition-opacity duration-400`}
+                              >
                                 {subMenu.node?.edges?.map((subSubMenu) => (
                                   <li key={subSubMenu.id} className="py-2 px-3">
-                                    <a className="text-fb_blue_main hover:text-fb_blue duration-300" href={subSubMenu.url}>
+                                    <a
+                                      className="text-fb_blue_main hover:text-fb_blue duration-300"
+                                      href={subSubMenu.url}
+                                    >
                                       {subSubMenu.label}
                                     </a>
                                   </li>
@@ -134,7 +138,6 @@ export default function Menu({ menuFetched }: MenuProps) {
                             </>
                           )}
                         </a>
-
                       </li>
                     ))}
                   </ul>
