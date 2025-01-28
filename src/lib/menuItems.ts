@@ -16,7 +16,7 @@ const menuItems = [
           {
             node: {
               id: "1-2",
-              url: "/claudio-martins-real",
+              url: "/claudio-martins-real-curriculo",
               label: "Claudio Martins Real",
             },
           },
