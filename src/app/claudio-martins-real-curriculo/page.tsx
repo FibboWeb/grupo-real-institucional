@@ -140,6 +140,7 @@ export default function ClaudioMartinsReal() {
         </ul>"
         imagePath={Claudio4}
         ctaLink="#"
+        centerButton={true}
       />
 
       <CardSection>
@@ -209,6 +210,7 @@ export default function ClaudioMartinsReal() {
         </ul>"
         imagePath={Claudio6}
         ctaLink="#C"
+        centerButton={true}
       />
 
       <InfoSection
