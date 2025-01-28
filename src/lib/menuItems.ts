@@ -75,7 +75,7 @@ const menuItems: MenuItems[] = [
           {
             node: {
               id: "3-2",
-              url: "/artigos-cientificos",
+              url: "/noticias/categoria/artigos",
               label: "Artigos Científicos",
             },
           },
