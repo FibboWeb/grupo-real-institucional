@@ -9,3 +9,11 @@
 .slick-dots li.slick-active button:before {
   color: #00a833 !important;
 }
+
+@media screen and (max-width: 768px) {
+  .slick-slide.slick-active.slick-current > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
