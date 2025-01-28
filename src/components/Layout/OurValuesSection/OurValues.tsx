@@ -1,7 +1,7 @@
 import Image, { StaticImageData } from "next/image";
 import style from "./index.module.css";
 import BtnCallToAction from "../Buttons/BtnCallToAction/BtnCallToAction";
-import ArrowRightSVG from "../../../../public/images/arrow-right.svg";
+import ArrowRightSVG from "@/public/icons/arrow-right.svg";
 
 type Value = {
   img: StaticImageData;
@@ -29,7 +29,7 @@ export default function OurValues({ title, contentPage, values }: OurValuesProps
               }}
             />
           </div>
-          <div className="flex justify-center sm:justify-start">
+          <div className="flex justify-start">
             <BtnCallToAction ctaLink="" content="LER MAIS" icon={ArrowRightSVG} />
           </div>
         </div>

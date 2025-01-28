@@ -13,7 +13,7 @@ const infoSectionsContents = {
       "<p>O Grupo Real H é formado pelas marcas <a href='https://homeopet.com.br/' >Homeopet</a>, CMR e <a href='https://realh.com.br/'>Real H.</a> Todas carregam em seu DNA o pioneirismo na homeopatia veterinária.</p>",
     img: NossasMarcasImg,
     reverseDesktop: true,
-    revereverseMobile: true,
+    revereverseMobile: false,
   },
   fundadores: {
     title: "Fundadores",
@@ -22,7 +22,7 @@ const infoSectionsContents = {
     ctaLink: "https://realh.com.br/",
     img: FundadoresImg,
     reverseDesktop: true,
-    revereverseMobile: true,
+    revereverseMobile: false,
   },
   nutricao: {
     title: "Nutrição Para Grandes Animais",

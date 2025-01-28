@@ -2,15 +2,16 @@ import React from "react";
 import Accordion from "../../components/Layout/Accordion";
 import CardList from "@/components/Layout/CardList";
 import InfoSection from "@/components/Layout/InfoSection";
-import claudio1 from "../../../public/images/claudio-1.jpg";
-import claudio2 from "../../../public/images/claudio-2.jpg";
-import claudio4 from "../../../public/images/claudio-4.jpg";
-import claudio5 from "../../../public/images/claudio-5.jpg";
+import claudio1 from "@/public/images/claudio-1.jpg";
+import claudio2 from "@/public/images/claudio-2.jpg";
+import claudio4 from "@/public/images/claudio-4.jpg";
+import claudio5 from "@/public/images/claudio-5.jpg";
 import Newsletter from "@/components/Layout/Newsletter";
 import InfoCardsSlider from "@/components/Layout/InfoCardsSlider";
 import InfoCard from "@/components/Layout/InfoCardsSlider/InfoCard";
 import HeroSection from "@/components/Layout/HeroSection";
-import heroImage from "../../../public/images/claudio-martins-hero.webp";
+import HeroImage from "@/public/images/claudio-martins-hero.webp";
+import BtnCallToAction from "@/components/Layout/Buttons/BtnCallToAction/BtnCallToAction";
 
 export default function ClaudioMartinsReal() {
   function CardSection({ children }: { children: React.ReactNode }) {
@@ -23,13 +24,14 @@ export default function ClaudioMartinsReal() {
 
   return (
     <>
-      <HeroSection imagePath={heroImage} imageMaxHeight={580} imageOnBottom={true}>
+      <HeroSection imagePath={HeroImage} imageMaxHeight={580} imageOnBottom={true}>
         <div>
           <h1 className="flex flex-col text-white">
             <strong className="text-2xl lg:text-4xl">Professor Doutor </strong>
             <strong className="text-4xl lg:text-6xl">Claudio Martins Real</strong>
           </h1>
           <strong className="text-2xl lg:text-4xl text-white">Fundador do Grupo Real</strong>
+          <BtnCallToAction color={"fb_blue_button"} ctaLink={"#"} content={"Saber Mais"} />
         </div>
       </HeroSection>
 
