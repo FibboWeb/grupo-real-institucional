@@ -4,7 +4,7 @@ import ArrowRightSVG from "@/public/icons/arrow-right.svg";
 
 /**
  * Props for the HeroSection component.
- * 
+ *
  * @property {React.ReactNode} children - The content to display inside the HeroSection.
  * @property {string} [ctaLink] - Optional link for the call-to-action button.
  * @property {StaticImageData} [imagePath] - Optional image to display in the HeroSection.
@@ -32,7 +32,7 @@ export default function HeroSection({
   backgroundClass = "bg-hero-image",
   boxShadow,
 }: HeroSectionProps) {
-  const shadow = boxShadow || backgroundClass == "bg-hero-image" ? 'bg-[rgba(3,29,58,0.90)]' : 'bg-[rgba(0,0,0,0.2)]';
+  const shadow = boxShadow || backgroundClass == "bg-hero-image" ? "bg-[rgba(3,29,58,0.90)]" : "bg-[rgba(0,0,0,0.2)]";
 
   return (
     <>
@@ -73,5 +73,3 @@ export default function HeroSection({
     </>
   );
 }
-
-
