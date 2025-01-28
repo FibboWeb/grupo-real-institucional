@@ -38,18 +38,20 @@ const menuItems: MenuItems[] = [
               id: "2-1",
               url: "/linhas/real-h",
               label: "Linha Real H",
-              edges: [
-                {
-                  id: "2-1-1",
-                  url: "/linhas/cmr",
-                  label: "Linha CMR",
-                },
-                {
-                  id: "2-2-1",
-                  url: "/linhas/homeopet",
-                  label: "Linha Homeopet",
-                },
-              ],
+            },
+          },
+          {
+            node: {
+              id: "2-1-1",
+              url: "/linhas/cmr",
+              label: "Linha CMR",
+            },
+          },
+          {
+            node: {
+              id: "2-2-1",
+              url: "/linhas/homeopet",
+              label: "Linha Homeopet",
             },
           },
         ],
