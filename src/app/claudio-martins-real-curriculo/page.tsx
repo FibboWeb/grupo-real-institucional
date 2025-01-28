@@ -140,9 +140,10 @@ export default function ClaudioMartinsReal() {
       />
 
       <CardSection>
-        <div className="w-full lg:w-5/12 pt-4 flex flex-col justify-center gap-y-4">
+        <div className="w-full lg:w-5/12 pt-4 flex flex-col justify-center gap-y-4 items-start">
           <h2 className="text-3xl font-semibold">Distinções Universitárias</h2>
           <p>Além da Láurea, já referida, obtida no Curso de Graduação em 1948, as seguintes:</p>
+          <BtnCallToAction ctaLink="#" content="Ver Mais" />
         </div>
         <div className="w-full lg:w-7/12">
           <Accordion
@@ -201,7 +202,7 @@ export default function ClaudioMartinsReal() {
           <li>15 cursos frequentados (dois no exterior);</li>
           <li>Thieartzlich Hocshule, Hannover RFA - 1976.Michigan State University, USA - 1977.</li>
           <li>18 cursos ministrados;</li>
-          <li>Teses defendidas: Para o Concurso de Docência Livre “O Fígado na Intoxicação Aguda pelo Tetracloreto de Carbono” - 1951.</li>
+          <li>Teses defendidas:<br>Para o Concurso de Docência Livre<br>“O Fígado na Intoxicação Aguda pelo Tetracloreto de Carbono” - 1951.</li>
         </ul>"
         imagePath={Claudio4}
         ctaLink="#C"
