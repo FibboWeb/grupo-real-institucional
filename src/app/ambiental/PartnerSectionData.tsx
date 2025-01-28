@@ -1,9 +1,21 @@
+import { StaticImageData } from "next/image";
 import LeafIcon from "@/public/icons/LeafIcon.svg";
 import FazendoPiriquitoLogo from "@/public/images/fazenda-piriquitos.webp";
 import GeneticaAditivaLogo from "@/public/images/genetica-aditiva.webp";
 import FazendaSantaFe from "@/public/images/fazenda-santa-fe.webp";
 
-const PartnerData = {
+interface PartnerDataType {
+  title: string;
+  subtitle: string;
+  content: string;
+  btnLink: string;
+  btnContent;
+  btnIcon: StaticImageData;
+  btnColor: "fb_green_button" | "fb_blue_button";
+  partnesImages: StaticImageData[];
+}
+
+const PartnerData: PartnerDataType = {
   subtitle: "Parceria",
   title: "Fazendas Parceiras",
   content:
@@ -11,6 +23,7 @@ const PartnerData = {
   btnLink: "#",
   btnContent: "LER MAIS",
   btnIcon: LeafIcon,
+  btnColor: "fb_green_button",
   partnesImages: [FazendoPiriquitoLogo, GeneticaAditivaLogo, FazendaSantaFe],
 };
 

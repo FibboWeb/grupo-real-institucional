@@ -18,6 +18,7 @@ export default function PageAmbiental() {
         btnLink={PartnerData.btnLink}
         btnContent={PartnerData.btnContent}
         btnIcon={PartnerData.btnIcon}
+        btnColor={PartnerData.btnColor}
         partnesImages={PartnerData.partnesImages}
       />
     </section>

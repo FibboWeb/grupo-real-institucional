@@ -3,22 +3,24 @@ import PartnerLogo from "@/public/icons/partner-logo.svg";
 import BtnCallToAction from "../Buttons/BtnCallToAction/BtnCallToAction";
 
 interface PartnerSection {
-  subtitle: string;
   title: string;
+  subtitle: string;
   content: string;
   btnLink: string;
-  btnIcon: StaticImageData;
   btnContent;
+  btnIcon: StaticImageData;
+  btnColor: "fb_green_button" | "fb_blue_button";
   partnesImages: StaticImageData[];
 }
 
 export default function PartnerSection({
-  subtitle,
   title,
+  subtitle,
   content,
   btnLink,
   btnContent,
   btnIcon,
+  btnColor,
   partnesImages,
 }: PartnerSection) {
   return (
@@ -40,12 +42,14 @@ export default function PartnerSection({
           </div>
 
           <div className="flex justify-center sm:justify-start">
-            <BtnCallToAction ctaLink={btnLink} content={btnContent} icon={btnIcon} />
+            <BtnCallToAction ctaLink={btnLink} content={btnContent} icon={btnIcon} color={btnColor} />
           </div>
 
           <div className="flex flex-col sm:flex-row gap-5 sm:gap-20 items-center sm:justify-around">
             {partnesImages.map((partner, index) => (
-              <Image src={partner} alt="" key={index} />
+              <div>
+                <Image src={partner} alt="" key={index} />
+              </div>
             ))}
           </div>
         </div>
