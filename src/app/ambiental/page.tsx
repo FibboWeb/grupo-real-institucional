@@ -4,6 +4,8 @@ import BigNumbersSection from "@/components/Layout/BigNumbersSection/BigNumbersS
 import { BigNumbersItems } from "./BigNumbersItems";
 import PartnersSection from "@/components/Layout/PartnesSection/PartnersSection";
 import { PartnerData } from "./PartnerSectionData";
+import PostsByCategory from "@/components/Layout/PostsByCategory/PostsByCategory";
+import { ContentPostsByCategory } from "./PostsByCategoryContent";
 
 export default function PageAmbiental() {
   return (
@@ -20,6 +22,12 @@ export default function PageAmbiental() {
         btnIcon={PartnerData.btnIcon}
         btnColor={PartnerData.btnColor}
         partnesImages={PartnerData.partnesImages}
+      />
+      <PostsByCategory
+        title={ContentPostsByCategory.title}
+        subtitle={ContentPostsByCategory.subtitle}
+        subtitleIcon={ContentPostsByCategory.subtitleIcon}
+        posts={ContentPostsByCategory.posts}
       />
     </section>
   );
