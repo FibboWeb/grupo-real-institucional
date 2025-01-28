@@ -3,104 +3,24 @@ import Newsletter from "@/components/Layout/Newsletter";
 import SidebarNoticias from "@/components/Layout/SidebarNoticias";
 import CardBlog from "@/components/Layout/CardBlogAPI";
 import AuthorBox from "@/components/Layout/AuthorBox";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import Link from "next/link";
-
-async function fetchPosts(authorId: number, page = 1, postsPerPage = 6) {
-  const res = await fetch(
-    `https://realh.com.br/wp-json/wp/v2/posts?author=${authorId}&per_page=${postsPerPage}&page=${page}`,
-    {
-      next: { revalidate: 6 },
-    },
-  );
-  if (!res.ok) {
-    throw new Error("Erro ao buscar os posts");
-  }
-  const data = await res.json();
-  const totalPosts = res.headers.get("X-WP-Total");
-  const totalPages = res.headers.get("X-WP-TotalPages");
-  return { posts: data, totalPosts: Number(totalPosts), totalPages: Number(totalPages) };
-}
-
-async function fetchAuthorData(authorSlug: string) {
-  const authorRes = await fetch(`https://realh.com.br/wp-json/wp/v2/users?slug=${authorSlug}`);
-  const authorData = await authorRes.json();
-  return authorData.length > 0 ? authorData[0] : null;
-}
+import { fetchPosts, fetchAuthorData } from "@/lib/getAuthorPosts";
+import Pagination from "@/components/Pagination";
+import { notFound } from "next/navigation";
 
 export default async function PaginatedPosts({ params, searchParams }) {
   const page = parseInt(searchParams.page || "1");
   const postsPerPage = 6;
   const authorSlug = params.author[0];
-
-  if (!authorSlug) {
-    return <p>Nenhum autor especificado.</p>;
-  }
   const author = await fetchAuthorData(authorSlug);
-
-  if (!author) {
-    return <p>Autor não encontrado.</p>;
-  }
-
   const authorName = author.name;
   const authorBio = author.description || "Biografia não disponível";
   const authorId = author.id;
 
-  const { posts, totalPosts, totalPages } = await fetchPosts(authorId, page, postsPerPage);
+  if (!authorSlug) {
+    return notFound();
+  }
 
-  const generatePaginationLinks = () => {
-    const paginationLinks = [];
-    const startPage = Math.max(1, page - 2);
-    const endPage = Math.min(totalPages, page + 2);
-
-    if (startPage > 1) {
-      paginationLinks.push(
-        <Link key={1} href={`/author/${authorSlug}`} className="px-4 py-2 border rounded hover:bg-gray-200">
-          1
-        </Link>,
-      );
-      if (startPage > 2) {
-        paginationLinks.push(
-          <span key="ellipsis1" className="px-2 py-2">
-            ...
-          </span>,
-        );
-      }
-    }
-
-    for (let i = startPage; i <= endPage; i++) {
-      paginationLinks.push(
-        <Link
-          key={i}
-          href={i === 1 ? `/author/${authorSlug}` : `/author/${authorSlug}?page=${i}`}
-          className={`px-2 py-2 border rounded ${i === page ? "bg-blue-500 text-white" : "hover:bg-gray-200"}`}
-        >
-          {i}
-        </Link>,
-      );
-    }
-
-    if (endPage < totalPages) {
-      if (endPage < totalPages - 1) {
-        paginationLinks.push(
-          <span key="ellipsis2" className="px-2 py-2">
-            ...
-          </span>,
-        );
-      }
-      paginationLinks.push(
-        <Link
-          key={totalPages}
-          href={`/author/${authorSlug}?page=${totalPages}`}
-          className="px-2 py-2 border rounded hover:bg-gray-200"
-        >
-          {totalPages}
-        </Link>,
-      );
-    }
-
-    return paginationLinks;
-  };
+  const { posts, totalPages } = await fetchPosts(authorId, page, postsPerPage);
 
   return (
     <div className="fb_container px-2 mb-12 mt-24">
@@ -119,13 +39,13 @@ export default async function PaginatedPosts({ params, searchParams }) {
           <h2 className="font-bold text-fb_blue_main text-3xl lg:text-4xl mb-4">Últimos Posts</h2>
           <div className="grid-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 lg:gap-6">
             {posts.length === 0 ? (
-              <p>Nenhum post encontrado.</p>
+              <p>Nenhum post encontrado para este autor.</p>
             ) : (
               posts.map((post, index) => (
                 <CardBlog
                   key={index}
                   blogContext="/noticias"
-                  postImage={post.featured_media ? post.featured_media.source_url : null}
+                  postImage={post.featured_media}
                   postImageAlt={post.featured_media?.alt_text || "Imagem do post"}
                   postLink={post.slug}
                   postTitle={<span dangerouslySetInnerHTML={{ __html: post.title.rendered }} />}
@@ -136,26 +56,8 @@ export default async function PaginatedPosts({ params, searchParams }) {
                 />
               ))
             )}
-            <div className="flex justify-center  items-center mt-6 space-x-2">
-              {page > 1 && (
-                <a
-                  href={page === 2 ? `/author/${authorSlug}` : `/author/${authorSlug}?page=${page - 1}`}
-                  className="px-2 py-2 border rounded hover:bg-gray-200"
-                >
-                  <ChevronLeft />
-                </a>
-              )}
-              {generatePaginationLinks()}
-              {page < totalPages && (
-                <a
-                  href={`/author/${authorSlug}?page=${page + 1}`}
-                  className="px-2 py-2 border rounded hover:bg-gray-200"
-                >
-                  <ChevronRight />
-                </a>
-              )}
-            </div>
           </div>
+          <Pagination blogContext={"/author"} currentPage={page} totalPages={totalPages} slug={authorSlug} />
         </div>
         <div className="sidebar w-full lg:w-1/3">
           <SidebarNoticias />
