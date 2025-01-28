@@ -1,7 +1,6 @@
 import Image, { StaticImageData } from "next/image";
 import style from "./index.module.css";
 import BtnCallToAction from "../Buttons/BtnCallToAction/BtnCallToAction";
-import ArrowRightSVG from "@/public/icons/arrow-right.svg";
 
 interface InfoSectionProps {
   heroBgImage?: string;
@@ -17,6 +16,7 @@ interface InfoSectionProps {
   border?: boolean;
   color?: "fb_blue_button" | "fb_green_button";
   contentButton?: string;
+  centerButton?: boolean;
 }
 
 /**
@@ -35,6 +35,7 @@ interface InfoSectionProps {
  *      imagePath={ImageTeste} // imagem importada  do public
  *      ctaLink="#"
  *      youtubeEmbed="https://www.youtube.com/embed/VIDEO_ID"
+ *      centerButton={true}
  *    />
  *
  * @param {Object} props - Propriedades do componente.
@@ -51,8 +52,7 @@ interface InfoSectionProps {
  * @param {boolean} [props.border] - Se true, a imagem terá uma borda.
  * @param {"fb_blue_button" | "fb_green_button"} [props.color] - Cor do botão de CTA.
  * @param {string} [props.contentButton] - Texto do botão de CTA.
- * @param {boolean} [props.reverseMobile] - Controla a direção da coluna no componente na versão mobile
- * @param {boolean} [props.reverseDesktop] - Controla a direção do componente na versão desk
+ * @param {boolean} [props.centerButton=false] - Controla a centralização do botão de CTA.
  *
  * @returns {JSX.Element} O botão renderizado.
  */
@@ -71,11 +71,13 @@ function InfoSection({
   border = true,
   color = "fb_blue_button",
   contentButton = "Leia mais",
+  centerButton = false,
 }: InfoSectionProps) {
   const MobileClass = reverseMobile ? "flex-col" : "flex-col-reverse";
   const desktopClass = reverseDesktop ? "sm:flex-row" : "sm:flex-row-reverse";
   const paddingClass = reverseDesktop ? "sm:pl-12" : "sm:pr-12";
   const divBar = color == "fb_blue_button" ? "bg-[rgba(3,29,58,0.90)]" : "bg-fb_green";
+  const buttonAlignment = centerButton ? "justify-center" : "justify-start";
 
   return (
     <div className={`${heroBgImage ? `${heroBgImage} relative bg-center bg-cover` : ""}`}>
@@ -128,7 +130,7 @@ function InfoSection({
               </div>
             </div>
             {ctaLink && (
-              <div className="flex justify-start">
+              <div className={`flex ${buttonAlignment}`}>
                 <BtnCallToAction ctaLink={ctaLink} content={contentButton} color={color} />
               </div>
             )}
@@ -140,3 +142,4 @@ function InfoSection({
 }
 
 export default InfoSection;
+
