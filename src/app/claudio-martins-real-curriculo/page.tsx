@@ -8,10 +8,13 @@ import InfoCard from "@/components/Layout/InfoCardsSlider/InfoCard";
 import HeroSection from "@/components/Layout/HeroSection";
 import BtnCallToAction from "@/components/Layout/Buttons/BtnCallToAction/BtnCallToAction";
 
-import Claudio1 from "@/public/images/claudio-martins-real-curriculo/claudio-1.jpg";
-import Claudio2 from "@/public/images/claudio-martins-real-curriculo/claudio-2.jpg";
-import Claudio4 from "@/public/images/claudio-martins-real-curriculo/claudio-4.jpg";
-import Claudio5 from "@/public/images/claudio-martins-real-curriculo/claudio-5.jpg";
+import Claudio1 from "@/public/images/claudio-martins-real-curriculo/claudio-1.webp";
+import Claudio2 from "@/public/images/claudio-martins-real-curriculo/claudio-2.webp";
+import Claudio3 from "@/public/images/claudio-martins-real-curriculo/claudio-3.webp";
+import Claudio4 from "@/public/images/claudio-martins-real-curriculo/claudio-4.webp";
+import Claudio5 from "@/public/images/claudio-martins-real-curriculo/claudio-5.webp";
+import Claudio6 from "@/public/images/claudio-martins-real-curriculo/claudio-6.webp";
+import Claudio7 from "@/public/images/claudio-martins-real-curriculo/claudio-7.webp";
 import HeroImage from "@/public/images/claudio-martins-real-curriculo/claudio-martins-hero.webp";
 
 export default function ClaudioMartinsReal() {
@@ -65,7 +68,7 @@ export default function ClaudioMartinsReal() {
         content={
           "<p>Trabalhou como professor até 1993, quando, após aposentar-se, fundou, junto com os filhos, a Real H. Até hoje o professor dedica-se com entusiasmo ao estudo da Homeopatia e da Medicina Veterinária.</p>"
         }
-        imagePath={Claudio1}
+        imagePath={Claudio3}
       />
 
       <div className="w-full pt-4 flex flex-col gap-y-4">
@@ -109,7 +112,7 @@ export default function ClaudioMartinsReal() {
           <p>O Professor Doutor Claudio Martins Real acumulou ao longo de sua trajetória acadêmica e profissional uma coleção notável de diplomas e reconhecimentos. Formado em Medicina Veterinária pela UFRGS, destacou-se por sua dedicação à pesquisa e ao ensino, além de ter sido o Professor Catedrático mais jovem do Brasil.</p>
         </div>
 
-        <div className="w-full lg:w-5/12 pt-4 flex flex-col gap-y-4 justify-center">
+        <div className="w-full lg:w-7/12 pt-4 flex flex-col gap-y-4 justify-center">
           <CardList svg={"/dog.svg"} title="Médico Veterinário">
             <p>Diplomado pela Escola de Agronomia e Veterinária da Universidade Federal do Rio Grande do Sul, 1948.</p>
           </CardList>
@@ -204,7 +207,7 @@ export default function ClaudioMartinsReal() {
           <li>18 cursos ministrados;</li>
           <li>Teses defendidas:<br>Para o Concurso de Docência Livre<br>“O Fígado na Intoxicação Aguda pelo Tetracloreto de Carbono” - 1951.</li>
         </ul>"
-        imagePath={Claudio4}
+        imagePath={Claudio6}
         ctaLink="#C"
       />
 
@@ -217,7 +220,7 @@ export default function ClaudioMartinsReal() {
         <li>05 participações em Congressos Internacionais;</li>
         <li>34 trabalhos Originais Publicados, sobre: Clínica Médica, Clínica da Reprodução, Manejo, e em Terapêutica Homeopática, sendo dois em ”L'homeopathie Française”. Paris - 1954 e 1955.</li>
         </ul>"
-        imagePath={Claudio5}
+        imagePath={Claudio7}
       />
 
       <Newsletter

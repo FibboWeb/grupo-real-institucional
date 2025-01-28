@@ -35,7 +35,7 @@ const Slider = dynamic(() => import("react-slick"), { ssr: false });
 
 function InfoCardsSlider({ children }: { children: React.ReactNode }) {
   const settings = {
-    slidesToShow: 3.2,
+    slidesToShow: 3.55,
     slidesToScroll: 1,
     infinite: false,
     speed: 500,
