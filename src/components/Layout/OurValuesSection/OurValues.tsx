@@ -1,7 +1,7 @@
 import Image, { StaticImageData } from "next/image";
 import style from "./index.module.css";
 import BtnCallToAction from "../Buttons/BtnCallToAction/BtnCallToAction";
-import ArrowRightSVG from "../../../../public/images/arrow-right.svg";
+import ArrowRightSVG from "@/public/icons/arrow-right.svg";
 
 type Value = {
   img: StaticImageData;

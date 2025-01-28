@@ -36,11 +36,12 @@ body {
     /* colors */
     --background-page: #f6f6f6;
     --blue: #1986c1;
+    --blue-button: #1986c1;
     --pf-blue: #0f4c75;
     --blue-main: #031d3a;
     --green: #00a833;
+    --green-button: #00a833;
     --red: #e20a17;
-    --blue-button: #1986c1;
     --text-dark: #343434;
     --fb_space-section: 2.875rem;
     --gray-bread: #8e8e8e;

@@ -16,12 +16,11 @@ type ctaLinksProps = {
   btn_background_color?: string;
 };
 
-
 /**
  * O componente VideoBackground renderiza um fundo de vídeo em tela cheia com uma sobreposição de gradiente opcional,
  * e exibe os componentes filhos em primeiro plano. Ele também suporta renderização de call to action (CTA)
  * botões com links personalizáveis ​​e cores de fundo.
- * 
+ *
  * @example
  * Exemplo de uso:
  * <VideoBackground
@@ -59,15 +58,15 @@ const VideoBackground = ({ children, src_video, ctaLinks }: VideoBackgroundProps
                 {ctaLinks.map((cta, index) => (
                   <button
                     key={index}
-                    className={`group ${ (cta.btn_background_color === "bg-blue-600") ? `${cta.btn_background_color} hover:bg-white hover:text-fb_blue hover:outline-3 hover:outline-fb_blue` : `${cta.btn_background_color} hover:bg-blue-600` } flex flex-row items-center justify-center px-2 py-3 w-fit rounded`}
+                    className={`group ${cta.btn_background_color === "bg-blue-600" ? `${cta.btn_background_color} hover:bg-white hover:text-fb_blue hover:outline-3 hover:outline-fb_blue` : `${cta.btn_background_color} hover:bg-blue-600`} flex flex-row items-center justify-center px-2 py-3 w-fit rounded`}
                   >
-                    <Link
-                      href={cta.link}
-                      className={`font-semibold py-3 px-6 rounded-md transition flex-nowrap`}
-                    >
+                    <Link href={cta.link} className={`font-semibold py-3 px-6 rounded-md transition flex-nowrap`}>
                       {cta.anchor}
                     </Link>
-                    <ArrowRight size={24} className={`rounded-full font-bold ${(cta.btn_background_color.includes("bg-blue") ? `group-hover:bg-white group-hover:text-black` : `group-hover:bg-white group-hover:text-fb_blue` )}`}/>
+                    <ArrowRight
+                      size={24}
+                      className={`rounded-full font-bold ${cta.btn_background_color.includes("bg-blue") ? `group-hover:bg-white group-hover:text-black` : `group-hover:bg-white group-hover:text-fb_blue`}`}
+                    />
                   </button>
                 ))}
               </div>
