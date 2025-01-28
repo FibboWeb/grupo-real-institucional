@@ -1,105 +1,84 @@
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
-interface PaginationProps {
-  blogContext: string;
-  currentPage: number;
-  totalPages: number;
-  hasPrevious: boolean;
-  hasMore: boolean;
-  slug: string;
-}
+export default function Pagination({ currentPage, totalPages, slug, blogContext }) {
+  const generatePaginationLinks = () => {
+    const paginationLinks = [];
+    const startPage = Math.max(1, currentPage - 2);
+    const endPage = Math.min(totalPages, currentPage + 2);
 
-const Pagination = ({ blogContext, currentPage, totalPages, hasPrevious, hasMore, slug }: PaginationProps) => {
-  if (totalPages <= 1) return null;
-  const getPageNumbers = () => {
-    let pages = [];
-
-    if (totalPages <= 5) {
-      pages = [...Array(totalPages)].map((_, index) => index + 1);
-    } else {
-      pages = [1];
-      if (currentPage > 2) {
-        pages.push(currentPage - 1);
-      }
-
-      pages.push(currentPage);
-
-      if (currentPage < totalPages - 1) {
-        pages.push(currentPage + 1);
-      }
-      pages.push(totalPages);
-      if (pages[1] > 2) {
-        pages = [1, "...", ...pages.slice(1)];
-      }
-      if (pages[pages.length - 2] < totalPages - 1) {
-        pages = [...pages.slice(0, pages.length - 1), "...", totalPages];
+    if (startPage > 1) {
+      paginationLinks.push(
+        <Link key={1} href={`${blogContext}/${slug}`} className="px-3 py-2 border rounded hover:bg-gray-200">
+          1
+        </Link>,
+      );
+      if (startPage > 2) {
+        paginationLinks.push(
+          <span key="ellipsis1" className="px-2 py-2 hidden md:block">
+            ...
+          </span>,
+        );
       }
     }
-    pages = Array.from(new Set(pages));
 
-    return pages;
+    for (let i = startPage; i <= endPage; i++) {
+      paginationLinks.push(
+        <Link
+          key={i}
+          href={i === 1 ? `${blogContext}/${slug}` : `${blogContext}/${slug}?page=${i}`}
+          className={`px-3 py-2 border rounded ${i === currentPage ? "bg-blue-500 text-white" : "hover:bg-gray-200"}`}
+        >
+          {i}
+        </Link>,
+      );
+    }
+
+    if (endPage < totalPages) {
+      if (endPage < totalPages - 1) {
+        paginationLinks.push(
+          <span key="ellipsis2" className="px-2 py-2 hidden md:block">
+            ...
+          </span>,
+        );
+      }
+      paginationLinks.push(
+        <Link
+          key={totalPages}
+          href={`${blogContext}/${slug}?page=${totalPages}`}
+          className="px-3 py-2 border rounded hover:bg-gray-200"
+        >
+          {totalPages}
+        </Link>,
+      );
+    }
+
+    return paginationLinks;
   };
 
   return (
-    <div className="flex justify-center items-center mt-8 space-x-4">
-      <div>
-        {hasPrevious ? (
-          <Link href={`${blogContext}/categoria/${slug}${currentPage > 1 ? `?page=${currentPage - 1}` : ""}`}>
-            <button className="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition">
+    <div className="flex justify-center items-center mt-6 space-x-2">
+      {totalPages > 1 && (
+        <>
+          {currentPage > 1 && (
+            <Link
+              href={currentPage === 2 ? `${blogContext}/${slug}` : `${blogContext}/${slug}?page=${currentPage - 1}`}
+              className="px-2 py-2 border rounded hover:bg-gray-200 hidden md:block"
+            >
               <ChevronLeft />
-              <span className="sr-only">Anterior</span>
-            </button>
-          </Link>
-        ) : (
-          <button className="px-4 py-2 bg-gray-200 text-gray-700 rounded cursor-not-allowed opacity-50" disabled>
-            <ChevronLeft />
-            <span className="sr-only">Anterior</span>
-          </button>
-        )}
-      </div>
-      <div className="flex space-x-2">
-        {getPageNumbers().map((page, index) => {
-          if (page === "...") {
-            return (
-              <span key={index + page} className="px-4 py-2 text-gray-700">
-                ...
-              </span>
-            );
-          }
-          const pageUrl =
-            page === 1 ? `${blogContext}/categoria/${slug}` : `${blogContext}/categoria/${slug}?page=${page}`;
-
-          return (
-            <Link key={page} href={pageUrl}>
-              <button
-                className={`px-4 py-2 rounded transition ${
-                  currentPage === page ? "bg-blue-600 text-white" : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-                }`}
-              >
-                {page}
-              </button>
             </Link>
-          );
-        })}
-      </div>
-      <div>
-        {hasMore ? (
-          <Link href={`${blogContext}/categoria/${slug}?page=${currentPage + 1}`}>
-            <button className="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition">
+          )}
+          {generatePaginationLinks()}
+          {currentPage < totalPages && (
+            <Link
+              href={`${blogContext}/${slug}?page=${currentPage + 1}`}
+              className="px-2 py-2 border rounded hover:bg-gray-200 hidden md:block"
+            >
               <ChevronRight />
-              <span className="sr-only">Próximo</span>
-            </button>
-          </Link>
-        ) : (
-          <button className="px-4 py-2 bg-gray-200 text-gray-700 rounded cursor-not-allowed opacity-50" disabled>
-            <ChevronRight />
-            <span className="sr-only">Próximo</span>
-          </button>
-        )}
-      </div>
+            </Link>
+          )}
+        </>
+      )}
     </div>
   );
-};
-
-export default Pagination;
+}

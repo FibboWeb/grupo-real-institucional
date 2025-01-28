@@ -1,18 +1,3 @@
-/**
- * Componente `Breadcrumb`
- *
- * Este componente renderiza uma trilha de navegação (breadcrumb) baseada no caminho atual da URL.
- *
- * @param {ReactNode} [homeElement] - Elemento a ser exibido como o link inicial (home) do breadcrumb.
- * @param {ReactNode} [separatorItem] - Elemento separador entre cada parte do breadcrumb.
- * @param {string} [containerClasses] - Classes CSS para o container do breadcrumb.
- * @param {string} [listClasses] - Classes CSS para cada item da lista do breadcrumb.
- * @param {string} [activeClasses] - Classes CSS para o item ativo do breadcrumb.
- * @param {boolean} [capitalizeLinks] - Indica se os links devem ser capitalizados.
- * @param {string[]} [excludePaths] - Array de caminhos a serem excluídos da trilha de navegação.
- *
- * @returns {JSX.Element} O componente Breadcrumb renderizado.
- */
 "use client";
 import React, { ReactNode } from "react";
 import { usePathname } from "next/navigation";
@@ -26,6 +11,7 @@ type BreadCrumbProps = {
   activeClasses?: string;
   capitalizeLinks?: boolean;
   excludePaths?: string[];
+  itemName?: string[];
 };
 
 function Breadcrumb({
@@ -36,6 +22,7 @@ function Breadcrumb({
   activeClasses,
   capitalizeLinks,
   excludePaths,
+  itemName,
 }: BreadCrumbProps) {
   const paths = usePathname();
   const pathNames = paths.split("/").filter((path) => path && !excludePaths?.includes(path));
@@ -61,8 +48,10 @@ function Breadcrumb({
           {pathNames.length > 0 && separator}
           {pathNames.map((link, index) => {
             let href = `/${pathNames.slice(0, index + 1).join("/")}`;
+            let isLastItem = index === pathNames.length - 1;
             let itemClasses = index === pathNames.length - 1 ? `${listClasses} ${activeClasses}` : listClasses;
-            let itemLink = capitalizeLinks ? link[0].toUpperCase() + link.slice(1, link.length) : link;
+            let itemLink =
+              isLastItem && itemName ? itemName : capitalizeLinks ? link[0].toUpperCase() + link.slice(1) : link;
             return (
               <React.Fragment key={index}>
                 <li

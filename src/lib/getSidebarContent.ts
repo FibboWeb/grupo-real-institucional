@@ -27,7 +27,6 @@ export async function getAllCategories() {
     };
   }
 }
-// Função para buscar os posts e retornar os mais visualizados
 export async function getNoticiasPostsMostViewed() {
   try {
     const fetchedPosts = await client.query({
