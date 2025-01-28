@@ -41,7 +41,7 @@ export default async function Home() {
         <ValuesSection values={sectionValoresInfo1} />
       </section>
       <section className="max-w-full">
-        <div className="fb_container overflow-hidden my-12">
+        <div className="fb_container overflow-hidden">
           <LastPostsNoticias fetchedLastPosts={fetchedLastPostsNoticias} />
         </div>
       </section>

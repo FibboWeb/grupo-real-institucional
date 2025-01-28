@@ -1,6 +1,6 @@
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { Suspense } from "react";
 import { Button } from "../ui/button";
 import { ArrowRightCircle } from "lucide-react";
 
@@ -50,13 +50,15 @@ function InfoCards({ values }: ValuesSectionProps) {
           className={`flex flex-col justify-between gap-24 ${index % 2 === 0 ? "lg:flex-row-reverse" : "lg:flex-row"} items-center py-12`}
         >
           <div className={` ${value.border ? "shadow-custom_shadow w-full lg:w-1/2" : "w-full lg:w-1/2"} `}>
-            <Image
-              src={value.image}
-              alt={value.title}
-              width={600}
-              height={475}
-              className="rounded-lg h-[475px] object-fill object-center"
-            />
+            <Suspense fallback={<div className="w-full h-full bg-gray-300 animated-pulse rounded-lg"></div>}>
+              <Image
+                src={value.image}
+                alt={value.title}
+                width={600}
+                height={475}
+                className="rounded-lg h-[475px] object-fill object-center"
+              />
+            </Suspense>
           </div>
           <div className="w-full flex flex-col gap-6 lg:w-1/2">
               {value.icon && <Image src={value.icon} alt={value.title} width={225} height={140} className="object-cover"/>}
@@ -67,7 +69,7 @@ function InfoCards({ values }: ValuesSectionProps) {
             </div>
               {value.cta && (
                 <div className="flex gap-6 justify-start">
-                  <Button className="flex bg-fb_blue py-1 px-2">
+                  <Button className="flex py-3 px-4 bg-[#1986C1] hover:bg-white hover:text-fb_blue hover:outline hover:outline-1 hover:outline-fb_blue">
                     <Link
                       href={value.cta.link}
                     >
