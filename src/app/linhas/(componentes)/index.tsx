@@ -1,11 +1,8 @@
 'use server'
-import { getProducts } from '@/api/produtos/produtos'
 import CardProduct from '@/components/CardProdutos'
 import { mockProducts } from '@/constants/linhas'
 
 export default async function GridProduct() {
-  const products = await getProducts()
-  console.log(products)
   
   return (
     <>

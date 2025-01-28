@@ -34,8 +34,22 @@ const menuItems = [
           {
             node: {
               id: "2-1",
-              url: "/linha-nutricao",
-              label: "Linha Nutrição",
+              url: "/real-h",
+              label: "Real H",
+              childItems: {
+                edges: [
+                  {
+                    id: "2-1-1",
+                    url: "/linha-equino-h",
+                    label: "Linha Equino H",
+                  },
+                  {
+                    id: "2-2-1",
+                    url: "/linha-nutricao",
+                    label: "Linha Nutrição",
+                  }
+                ]
+              }
             },
           },
           {
@@ -43,6 +57,18 @@ const menuItems = [
               id: "2-2",
               url: "/linha-saude",
               label: "Linha Saúde",
+              edges: [
+                {
+                  id: "2-2-1",
+                  url: "/linha-equino-h",
+                  label: "Linha Equino H",
+                },
+                {
+                  id: "2-2-2",
+                  url: "/linha-saude",
+                  label: "Linha Saúde",
+                }
+              ]
             },
           },
           {
@@ -50,20 +76,6 @@ const menuItems = [
               id: "2-3",
               url: "/homeopet",
               label: "Homeopet",
-            },
-          },
-          {
-            node: {
-              id: "2-4",
-              url: "/linha-equino-h",
-              label: "Linha Equino H",
-            },
-          },
-          {
-            node: {
-              id: "2-5",
-              url: "/linha-md",
-              label: "Linha MD",
             },
           },
         ],
