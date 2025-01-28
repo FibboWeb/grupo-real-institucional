@@ -1,6 +1,7 @@
 import Image, { StaticImageData } from "next/image";
 import style from "./index.module.css";
 import BtnCallToAction from "../Buttons/BtnCallToAction/BtnCallToAction";
+import ArrowRightSVG from "@/public/icons/arrow-right.svg";
 
 interface InfoSectionProps {
   heroBgImage?: string;
@@ -79,8 +80,10 @@ function InfoSection({
   return (
     <div className={`${heroBgImage ? `${heroBgImage} relative bg-center bg-cover` : ""}`}>
       {heroBgImage && <div className="absolute top-0 left-0 w-full h-full bg-white opacity-85 z-0"></div>}
-      <div className={`w-full h-full ${!imageMidFullContainer ? "fb_container mx-auto" : "" } relative`}>
-        <div className={`flex flex-wrap lg:flex-nowrap ${desktopClass} ${MobileClass} ${imageMidFullContainer ? "" : "py-4 lg:py-8"}`}>
+      <div className={`w-full h-full ${!imageMidFullContainer ? "fb_container mx-auto" : ""} relative`}>
+        <div
+          className={`flex flex-wrap lg:flex-nowrap ${desktopClass} ${MobileClass} ${imageMidFullContainer ? "" : "py-4 lg:py-8"}`}
+        >
           {youtubeEmbed ? (
             <div className="flex-1 flex justify-center items-center p-2 aspect-[16/9] w-full h-auto">
               <iframe
@@ -102,12 +105,14 @@ function InfoSection({
               />
             </div>
           )}
-          
-          <div className={`flex flex-col justify-center flex-1 pb-12 pt-12 gap-6 ${paddingClass} ${imageMidFullContainer ? "fb_container mx-auto p-0 sm:px-8" : ""}`}>
+
+          <div
+            className={`flex flex-col justify-center flex-1 pb-12 pt-12 gap-6 ${paddingClass} ${imageMidFullContainer ? "fb_container mx-auto p-0 sm:px-8" : ""}`}
+          >
             <div>
               {badge && color == "fb_green_button" && (
                 <div className="flex gap-1 py-1">
-                  <Image src={'/icons/plant-sprout.svg'} width={"12"} height={"12"} alt="broto de planta"></Image>
+                  <Image src={"/icons/plant-sprout.svg"} width={"12"} height={"12"} alt="broto de planta"></Image>
                   <div className="text-xl text-fb_green text-uppercase font-semibold">{badge}</div>
                 </div>
               )}
@@ -123,8 +128,8 @@ function InfoSection({
               </div>
             </div>
             {ctaLink && (
-              <div className="flex sm:justify-start justify-center">
-                <BtnCallToAction color={color} ctaLink={ctaLink} content={contentButton} />
+              <div className="flex justify-start">
+                <BtnCallToAction ctaLink={ctaLink} content={contentButton} icon={ArrowRightSVG} />
               </div>
             )}
           </div>
@@ -135,4 +140,3 @@ function InfoSection({
 }
 
 export default InfoSection;
-

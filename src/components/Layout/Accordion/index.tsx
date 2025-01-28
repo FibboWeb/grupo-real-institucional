@@ -26,7 +26,9 @@ function Accordion({
     <div className={[styles.accordion, "w-full border-b border-gray-300 pt-2"].join(" ")}>
       <button
         className="w-full relative text-left pe-4 py-2 bg-transparent border-none outline-none cursor-pointer flex gap-4 items-center no-wrap"
-        onClick={() => { setIsOpen(!isOpen) }}
+        onClick={() => {
+          setIsOpen(!isOpen);
+        }}
         type="button"
       >
         <div className="rounded-full bg-fb_blue w-7 h-7 text-white shrink-0 flex justify-center items-center">
@@ -49,4 +51,3 @@ function Accordion({
 }
 
 export default Accordion;
-

@@ -74,6 +74,12 @@ export default function CiclosTransparencia() {
             </FeatureSection>
 
             <CardSection>
+                <FeatureSection badge={"Reconhecimento"} title={"Selo Empresa Amiga dos Animais"} content="O Grupo Real foi reconhecido, em 8 de julho de 2024, com o Selo Empresa Amiga dos Animais, uma honraria concedida pela Secretaria do Bem-Estar Animal (SUBEA) da Prefeitura de Campo Grande, MS. O selo, instituído pela Lei 6.472 de 26 de junho de 2020, destaca as ações de responsabilidade social realizadas por empresas privadas que contribuem ativamente para a defesa, saúde e qualidade de vida dos animais.">
+                    <InfoSection badge={"Social"} title={"Ciclos e o Esporte"} content={"<p>O Eixo Social do Ciclos Real H também se estende ao incentivo ao esporte como ferramenta de inclusão, superação e inspiração. Como parte desse compromisso, o Grupo patrocina Fernando Rufino, campeão mundial e paralímpico de paracanoagem, um verdadeiro exemplo de resiliência e conquista. Conhecido como “Cowboy de Aço”, Rufino carrega consigo valores de determinação e força que se alinham aos princípios do Grupo Real, servindo como inspiração para colaboradores e comunidades.</p>"} color={"fb_green_button"} imageMidFullContainer={true} ctaLink="#" contentButton={"Ler Mais"} />
+                </FeatureSection>
+            </CardSection>
+
+            <CardSection>
                 <InfoSection
                     badge={"Ética"}
                     border={false}
