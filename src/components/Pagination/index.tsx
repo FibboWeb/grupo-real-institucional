@@ -45,7 +45,7 @@ const Pagination = ({ blogContext, currentPage, totalPages, hasPrevious, hasMore
     <div className="flex justify-center items-center mt-8 space-x-4">
       <div>
         {hasPrevious ? (
-          <Link href={`${blogContext}/noticias/categoria/${slug}${currentPage > 1 ? `?page=${currentPage - 1}` : ""}`}>
+          <Link href={`${blogContext}/categoria/${slug}${currentPage > 1 ? `?page=${currentPage - 1}` : ""}`}>
             <button className="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition">
               <ChevronLeft />
               <span className="sr-only">Anterior</span>
@@ -68,9 +68,7 @@ const Pagination = ({ blogContext, currentPage, totalPages, hasPrevious, hasMore
             );
           }
           const pageUrl =
-            page === 1
-              ? `${blogContext}/noticias/categoria/${slug}`
-              : `${blogContext}/noticias/categoria/${slug}?page=${page}`;
+            page === 1 ? `${blogContext}/categoria/${slug}` : `${blogContext}/categoria/${slug}?page=${page}`;
 
           return (
             <Link key={page} href={pageUrl}>
@@ -87,7 +85,7 @@ const Pagination = ({ blogContext, currentPage, totalPages, hasPrevious, hasMore
       </div>
       <div>
         {hasMore ? (
-          <Link href={`${blogContext}/noticias/categoria/${slug}?page=${currentPage + 1}`}>
+          <Link href={`${blogContext}/categoria/${slug}?page=${currentPage + 1}`}>
             <button className="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition">
               <ChevronRight />
               <span className="sr-only">Próximo</span>
