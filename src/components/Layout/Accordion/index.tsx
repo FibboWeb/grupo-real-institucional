@@ -3,10 +3,24 @@ import { Minus, Plus } from "lucide-react";
 import React, { useState } from "react";
 import styles from "./index.module.css";
 
+/**
+ * Props do componente Accordion
+ * @prop {string} title - Título do accordion
+ * @prop {FaqHeading} [faqHeading={tagName: 'h2'}] - Tag para o título do accordion
+ * @prop {React.ReactNode} children - Conteúdo do accordion
+ * @prop {boolean} [active=false] - Se o accordion começa aberto ou fechado
+ */
 export interface FaqHeading {
   tagName: "h2" | "h3" | "h4" | "h5" | "h6";
 }
 
+/**
+ * Componente de accordion
+ * @example
+ * <Accordion title="Título do accordion">Conteúdo do accordion</Accordion>
+ * @example
+ * <Accordion title="Título do accordion" faqHeading={{tagName: 'h3'}} active={true}>Conteúdo do accordion</Accordion>
+ */
 function Accordion({
   title,
   faqHeading = { tagName: "h2" },
@@ -51,3 +65,4 @@ function Accordion({
 }
 
 export default Accordion;
+

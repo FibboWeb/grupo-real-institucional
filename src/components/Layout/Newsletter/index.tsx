@@ -31,7 +31,7 @@ function Newsletter({
   }
 
   return (
-    <div className="w-full h-full container mx-auto px-5 py-12 rounded-2xl">
+    <div className="w-full h-full fb_container mx-auto py-12 rounded-2xl">
       <div className="bg-newsletter-image bg-no-repeat bg-cover bg-center rounded-2xl my-0.5">
         <div className="w-full h-full flex flex-col justify-center items-center bg-[rgba(3,29,58,0.90)] rounded-2xl lg:p-16 py-16 px-6">
           <div className="max-w-[768px] flex flex-col justify-center items-center gap-y-8">

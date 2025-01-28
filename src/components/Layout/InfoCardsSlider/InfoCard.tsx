@@ -1,6 +1,24 @@
 import React from "react";
 import Image from "next/image";
 
+/**
+ * @description
+ * O componente InfoCard é um card que pode ser usado em um slider ou em uma lista
+ * de informações. Ele renderiza um svg, um título e um conteúdo.
+ *
+ * @prop {string} svg - URL do svg a ser renderizado.
+ * @prop {string} title - Título do card.
+ * @prop {FaqHeading} [faqHeading={tagName: 'h3'}] - Tag HTML para o título do card.
+ * @prop {React.ReactNode} children - Conteúdo do card.
+ *
+ * @example
+ * <InfoCard
+ *   svg="/path/to/svg"
+ *   title="Título do card"
+ * >
+ *   <p>Conteúdo do card</p>
+ * </InfoCard>
+ */
 export interface FaqHeading {
   tagName: "h2" | "h3" | "h4" | "h5" | "h6";
 }
@@ -36,3 +54,4 @@ function InfoCard({
 }
 
 export default InfoCard;
+
