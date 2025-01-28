@@ -87,8 +87,13 @@ export default {
         "hero-section-gray-palms": "url('/images/hero-section-gray-palms.jpg')",
         "hero-section-gray": "url('/images/hero-section-gray.jpg')",
         "green-featured": "url('/images/transparencia/green-bg-featured.webp')",
+        "ambiental-sustentaveis-bg": "url('/images/ambiental/bg-sustentaveis.webp')",
+        "bg-ciclos": "url('/images/ambiental/bg-ciclos.webp')",
+        "bg-investimento": "url('/images/ambiental/bg-investimento.webp')",
+        "bg-doacoes": "url('/images/ambiental/bg-doacoes.webp')",
       },
       boxShadow: {
+        custom_image: "0 0 10px rgba(0, 0, 0, 0.5)",
         custom_shadow: "0 0 4px 0 #00000040",
         shadow_image_info_section: "0px 5px 15px 0px rgba(0, 0, 0, 0.35)",
       },
