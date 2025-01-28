@@ -2,7 +2,7 @@ const menuItems = [
   {
     node: {
       id: "1",
-      url: "/institucional",
+      url: "#",
       label: "Institucional",
       childItems: {
         edges: [
@@ -27,43 +27,29 @@ const menuItems = [
   {
     node: {
       id: "2",
-      url: "/produtos",
-      label: "Produtos",
+      url: "#",
+      label: "Nossas Marcas",
       childItems: {
         edges: [
           {
             node: {
               id: "2-1",
-              url: "/linha-nutricao",
-              label: "Linha Nutrição",
+              url: "/cmr",
+              label: "Linha CMR",
             },
           },
           {
             node: {
               id: "2-2",
-              url: "/linha-saude",
-              label: "Linha Saúde",
+              url: "/real-h",
+              label: "Linha Real H",
             },
           },
           {
             node: {
               id: "2-3",
               url: "/homeopet",
-              label: "Homeopet",
-            },
-          },
-          {
-            node: {
-              id: "2-4",
-              url: "/linha-equino-h",
-              label: "Linha Equino H",
-            },
-          },
-          {
-            node: {
-              id: "2-5",
-              url: "/linha-md",
-              label: "Linha MD",
+              label: "Linha Homeopet",
             },
           },
         ],
@@ -73,7 +59,7 @@ const menuItems = [
   {
     node: {
       id: "3",
-      url: "/informacoes",
+      url: "#",
       label: "Informações",
       childItems: {
         edges: [
@@ -107,14 +93,6 @@ const menuItems = [
           },
         ],
       },
-    },
-  },
-  {
-    node: {
-      id: "4",
-      url: "/#nossas-marcas",
-      label: "Nossas Marcas",
-      childItems: null,
     },
   },
   {
