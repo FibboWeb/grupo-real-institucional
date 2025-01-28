@@ -1,8 +1,12 @@
+'use server'
+import { getProducts } from '@/api/produtos/produtos'
 import CardProduct from '@/components/CardProdutos'
-import Pagination from '@/components/Pagination'
 import { mockProducts } from '@/constants/linhas'
 
-function GridProduct() {
+export default async function GridProduct() {
+  const products = await getProducts()
+  console.log(products)
+  
   return (
     <>
       <div className='grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-6 items-center justify-center w-full'>
@@ -19,4 +23,3 @@ function GridProduct() {
   )
 }
 
-export default GridProduct

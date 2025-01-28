@@ -1,5 +1,9 @@
+.slick-dots li button {
+  color: #1986C1;
+}
+
 .slick-dots li button:before {
-  font-size: 6px;
+  font-size: 12px;
   line-height: 20px;
   position: absolute;
   top: 0;
@@ -10,12 +14,12 @@
   height: 40px;
   text-align: center;
   opacity: 0.25;
-  color: #000;
+  color: #1986C1;
   -webkit-font-smoothing: antialiased;
 }
 
-li.active {
-  color: var(--blue-main) !important;
+.slick-dots li.slick-active button:before {
+  color: var(--blue) !important;
 }
 
 & .slick-list {
@@ -30,12 +34,27 @@ li.active {
   }
 }
 
-.bg-custom-gradient:hover {
-  transition: background 5s ease-in-out;
+.bg-custom-gradient {
+  position: relative;
+  overflow: hidden;
+  transition: background 5s ease;
+}
+
+.bg-custom-gradient::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   background: linear-gradient(
     135deg,
     hsla(201, 77%, 43%, 1) 0%,
     hsla(201, 78%, 58%, 1) 50%,
     hsla(212, 90%, 12%, 1) 100%
   );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.bg-custom-gradient:hover::before {
+  opacity: 1;
 }
