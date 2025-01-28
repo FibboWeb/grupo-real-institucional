@@ -1,4 +1,6 @@
-const menuItems = [
+import MenuNode, { MenuItems } from "@/components/Layout/Header/Menu";
+
+const menuItems: MenuItems[] = [
   {
     node: {
       id: "1",
@@ -36,32 +38,30 @@ const menuItems = [
               id: "2-1",
               url: "/real-h",
               label: "Real H",
-              childItems: {
-                edges: [
-                  {
-                    id: "2-1-1",
-                    url: "/linha-equino-h",
-                    label: "Linha Equino H",
-                  },
-                  {
-                    id: "2-2-1",
-                    url: "/linha-nutricao",
-                    label: "Linha Nutrição",
-                  }
-                ]
-              }
+              edges: [
+                {
+                  id: "2-1-1",
+                  url: "/linha-equino-h",
+                  label: "Linha Equino H",
+                },
+                {
+                  id: "2-2-1",
+                  url: "/linha-nutricao",
+                  label: "Linha Nutrição",
+                }
+              ]
             },
           },
           {
             node: {
               id: "2-2",
-              url: "/linha-saude",
-              label: "Linha Saúde",
+              url: "/linha-cmr",
+              label: "Linha CMR",
               edges: [
                 {
                   id: "2-2-1",
-                  url: "/linha-equino-h",
-                  label: "Linha Equino H",
+                  url: "/linha-md",
+                  label: "Linha MD",
                 },
                 {
                   id: "2-2-2",
@@ -138,5 +138,6 @@ const menuItems = [
     },
   },
 ];
+
 
 export default menuItems;

@@ -6,7 +6,7 @@ import childrenHeroSection from "./childrenHeroSection";
 
 // Depoiments
 import Depoiments from "@/components/Layout/Depoiments";
-import ClaudioImage from "../../../public/images/claudio-1.jpg";
+import ClaudioImage from "@/public/images/claudio-martins-real-curriculo/claudio-1.webp";
 
 // Info sections
 import InfoSection from "@/components/Layout/InfoSection";
