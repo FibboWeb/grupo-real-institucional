@@ -76,7 +76,8 @@ export const mockProducts = [
     },
     categoria: "REBANHO",
     link: { link: "#" },
-  },{
+  },
+  {
     id: 7,
     nomeProduto: "REBANHO PEC",
     descricao: "Suplemento mineral adensado para bovinos de corte",
@@ -114,7 +115,8 @@ export const mockProducts = [
     },
     categoria: "REBANHO",
     link: { link: "#" },
-  },{
+  },
+  {
     id: 10,
     nomeProduto: "REBANHO PEC",
     descricao: "Suplemento mineral adensado para bovinos de corte",
@@ -127,4 +129,4 @@ export const mockProducts = [
     categoria: "REBANHO",
     link: { link: "#" },
   },
-]
+];

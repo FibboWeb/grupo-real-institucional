@@ -99,7 +99,9 @@ function InfoSection({
               ></iframe>
             </div>
           ) : (
-            <div className={`flex-1 flex ${reverseDesktop ? "justify-start" : "justify-end"} items-center rounded-2xl ${!imageMidFullContainer ? "p-2" : 'h-inherit w-full'}`}>
+            <div
+              className={`flex-1 flex ${reverseDesktop ? "justify-start" : "justify-end"} items-center rounded-2xl ${!imageMidFullContainer ? "p-2" : "h-inherit w-full"}`}
+            >
               <Image
                 src={imagePath}
                 alt=""
@@ -142,4 +144,3 @@ function InfoSection({
 }
 
 export default InfoSection;
-
