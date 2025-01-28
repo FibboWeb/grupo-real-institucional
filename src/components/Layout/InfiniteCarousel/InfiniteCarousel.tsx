@@ -9,8 +9,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Image, { StaticImageData } from "next/image";
 
 type Item = {
-  icon: StaticImageData;
-  content: string;
+  content: string | StaticImageData;
 };
 
 interface InifiniteCarouselProps {
@@ -86,15 +85,19 @@ const InifiniteCarousel = ({
       <Slider {...settings}>
         {items.map((item, index) => (
           <div key={index}>
-            <div className="flex flex-row gap-4 items-center">
-              {item.icon && (
+            <div className="flex flex-row justify-center items-center">
+              {/* Verifica se item.content é uma string */}
+              {typeof item.content === "string" ? (
+                // Renderiza o texto se for uma string
                 <div>
-                  <Image src={item.icon} alt="" width={24} />
+                  <p className="text-2xl text-white font-bold">{item.content}</p>
+                </div>
+              ) : (
+                // Caso contrário, renderiza a imagem
+                <div>
+                  <Image src={item.content} alt={`Image for ${item.content}`} width={24} height={24} />
                 </div>
               )}
-              <div>
-                <p className="text-2xl text-white font-bold">{item.content}</p>
-              </div>
             </div>
           </div>
         ))}
