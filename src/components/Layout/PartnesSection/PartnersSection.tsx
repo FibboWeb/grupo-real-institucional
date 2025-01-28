@@ -35,7 +35,9 @@ export default function PartnerSection({
               </div>
               <h2 className="text-3xl text-white font-bold">{title}</h2>
             </div>
-            <div className="h-1 w-20 bg-[rgba(0, 168, 51, 1)] mt-4 mb-4"></div>
+            <div className="flex justify-center">
+              <div className={`h-1 w-20 bg-[#00A833] mt-4 mb-4`}></div>
+            </div>
             <div>
               <p className="text-base text-white" dangerouslySetInnerHTML={{ __html: content }}></p>
             </div>

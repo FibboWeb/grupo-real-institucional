@@ -4,19 +4,19 @@ const InfiniteCarouselItems = [
     content: LeafIcon,
   },
   {
-    content: "Lorem ipsum dolor sit amet",
+    content: "palmeiras nao tem mundial",
   },
   {
     content: LeafIcon,
   },
   {
-    content: "Lorem ipsum dolor sit amet",
+    content: "vai corinthians",
   },
   {
     content: LeafIcon,
   },
   {
-    content: "Lorem ipsum dolor sit amet",
+    content: "neymar no santos",
   },
 ];
 export { InfiniteCarouselItems };
