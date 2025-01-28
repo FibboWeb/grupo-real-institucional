@@ -4,24 +4,36 @@ import Image from "next/image";
 interface AuthorBoxProps {
   authorName: string;
   authorBio: string;
+  isSinglePage?: boolean;
+  authorLink?: string;
 }
 
-function AuthorBox({ authorName, authorBio }: AuthorBoxProps) {
+function AuthorBox({ authorName, authorBio, isSinglePage, authorLink }: AuthorBoxProps) {
   return (
     <>
       <div className="author-card bg-white p-6 rounded-lg border border-fb_blue_button mb-2 min-h-44">
         <div className="flex flex-col lg:flex-row items-center gap-5">
-          <div className="flex items-center rounded-full border border-fb_blue_button w-[80px] h-[80px] lg:w-[180px] lg:h-[85px]">
+          <div
+            className={`flex items-center rounded-full border border-fb_blue_button  ${isSinglePage ? "h-[130px] lg:h-24 lg:w-[300px] p-2" : "p-3 h-[80px] w-[80px] lg:w-[180px]"}  lg:h-[85px]`}
+          >
             <Image
               src={"/logo-real-h.png"}
               width={180}
               height={100}
               alt={authorName}
-              className="h-9 rounded-full mr-4 "
+              className={`h-9 rounded-full object-contain ${isSinglePage ? "lg:w-[300px]" : "w-[80px] lg:w-[180px]"} `}
             />
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-center lg:text-left">{authorName}</h1>
+            {isSinglePage ? (
+              <Link href={`/author/${authorLink ? authorLink : "realh"}`}>
+                <h1 className="text-2xl font-bold text-center duration-300 hover:text-fb_blue lg:text-left">
+                  {authorName}
+                </h1>
+              </Link>
+            ) : (
+              <h1 className="text-2xl font-bold text-center lg:text-left">{authorName}</h1>
+            )}
             <p className="text-fb_gray_bread text-sm">{authorBio}</p>
           </div>
         </div>
