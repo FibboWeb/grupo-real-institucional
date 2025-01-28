@@ -42,14 +42,14 @@ const menuItems: MenuItems[] = [
           },
           {
             node: {
-              id: "2-1-1",
+              id: "2-2",
               url: "/linhas/cmr",
               label: "Linha CMR",
             },
           },
           {
             node: {
-              id: "2-2-1",
+              id: "2-3",
               url: "/linhas/homeopet",
               label: "Linha Homeopet",
             },
