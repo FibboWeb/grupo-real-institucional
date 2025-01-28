@@ -41,7 +41,7 @@ function ValuesSection({ values }: ValuesSectionProps) {
       {values.map((value, index) => (
         <div
           key={index}
-          className={`fb_container flex flex-col justify-between gap-24 ${(value.reverter && index % 2 === 0) ? "lg:flex-row-reverse" : "lg:flex-row"} items-center`}
+          className={`fb_container flex flex-col justify-between gap-24 ${(value.reverter && index % 2 === 0) ? "lg:flex-row" : "lg:flex-row-reverse"} items-center`}
         >
           <div className={` ${value.border ? "shadow-custom_shadow w-full lg:w-1/2" : "lg:w-1/2 w-full"} `}>
             <Image

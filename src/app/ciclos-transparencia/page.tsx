@@ -1,15 +1,22 @@
 import React from "react";
 import Image from "next/image";
 import InfoSection from "@/components/Layout/InfoSection";
+import HeroSection from "@/components/Layout/HeroSection";
+import BtnCallToAction from "@/components/Layout/Buttons/BtnCallToAction/BtnCallToAction";
+import FeatureSection from "@/components/Layout/FeatureSection";
+
 import EticaLegalidade from "@/public/images/transparencia/etica-legalidade.webp";
 import ManAndDog from "@/public/images/transparencia/man-and-dog.webp";
 import EuReciclo from "@/public/images/transparencia/eu-reciclo.webp";
 import Lgpd from "@/public/images/transparencia/lgpd.webp";
 import TransparenciaEtica from "@/public/images/transparencia/transparencia-etica.webp";
 import CiclosClean from "@/public/images/ciclos-clean.webp";
-import HeroSection from "@/components/Layout/HeroSection";
-import BtnCallToAction from "@/components/Layout/Buttons/BtnCallToAction/BtnCallToAction";
-import FeatureSection from "@/components/Layout/FeatureSection";
+
+import { InfiniteCarouselItems } from "./InfiniteCarouselItems";
+import InifiniteCarousel from "@/components/Layout/InfiniteCarousel/InfiniteCarousel";
+
+import PostsByCategory from "@/components/Layout/PostsByCategory/PostsByCategory";
+import { ContentPostsByCategory } from "./PostsByCategoryContent";
 
 export default function CiclosTransparencia() {
   function CardSection({ children }: { children: React.ReactNode }) {
@@ -23,15 +30,20 @@ export default function CiclosTransparencia() {
   return (
     <>
       <HeroSection backgroundClass={"bg-hero-green-leafs"} imageMaxHeight={420}>
-        <div>
-          <Image src={CiclosClean} alt={"ciclo logo"} width={360}></Image>
-          <h1 className="flex flex-col text-white text-bold py-4">
-            <strong className="text-3xl lg:text-5xl">Clareza que inspira confiança. </strong>
-            <strong className="text-3xl lg:text-5xl">Ética que transforma tudo.</strong>
-          </h1>
-          <BtnCallToAction color={"fb_green_button"} ctaLink={"#"} content={"Saber Mais"} />
+        <div className="flex flex-col gap-5">
+          <div>
+            <Image src={CiclosClean} alt={"ciclo logo"} width={360}></Image>
+            <h1 className="flex flex-col text-white text-bold py-4">
+              <strong className="text-3xl lg:text-5xl">Clareza que inspira confiança. </strong>
+              <strong className="text-3xl lg:text-5xl">Ética que transforma tudo.</strong>
+            </h1>
+          </div>
+          <div>
+            <BtnCallToAction color={"fb_green_button"} ctaLink={"#"} content={"Saiba Mais"} />
+          </div>
         </div>
       </HeroSection>
+      <InifiniteCarousel items={InfiniteCarouselItems} />
 
       <CardSection>
         <InfoSection
@@ -85,6 +97,17 @@ export default function CiclosTransparencia() {
         infoSectionCtaLink="#"
         infoSectionContentButton={"Ler Mais"}
       />
+
+      <section className="bg-[#F6F6F6] py-4 lg:py-8">
+        <PostsByCategory
+          title={ContentPostsByCategory.title}
+          subtitle={ContentPostsByCategory.subtitle}
+          subtitleIcon={ContentPostsByCategory.subtitleIcon}
+          centerTitle={true}
+          posts={ContentPostsByCategory.posts}
+          clampPostContent={false}
+        />
+      </section>
 
       <CardSection>
         <InfoSection
