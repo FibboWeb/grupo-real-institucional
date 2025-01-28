@@ -4,14 +4,14 @@ const menuItems: MenuItems[] = [
   {
     node: {
       id: "1",
-      url: "/institucional",
+      url: "#",
       label: "Institucional",
       childItems: {
         edges: [
           {
             node: {
               id: "1-1",
-              url: "/grupo-real",
+              url: "/quem-somos",
               label: "Grupo Real",
             },
           },
@@ -29,53 +29,27 @@ const menuItems: MenuItems[] = [
   {
     node: {
       id: "2",
-      url: "/produtos",
-      label: "Produtos",
+      url: "#",
+      label: "Nossas Marcas",
       childItems: {
         edges: [
           {
             node: {
               id: "2-1",
-              url: "/real-h",
-              label: "Real H",
+              url: "/linhas/real-h",
+              label: "Linha Real H",
               edges: [
                 {
                   id: "2-1-1",
-                  url: "/linha-equino-h",
-                  label: "Linha Equino H",
+                  url: "/linhas/cmr",
+                  label: "Linha CMR",
                 },
                 {
                   id: "2-2-1",
-                  url: "/linha-nutricao",
-                  label: "Linha Nutrição",
+                  url: "/linhas/homeopet",
+                  label: "Linha Homeopet",
                 },
               ],
-            },
-          },
-          {
-            node: {
-              id: "2-2",
-              url: "/linha-cmr",
-              label: "Linha CMR",
-              edges: [
-                {
-                  id: "2-2-1",
-                  url: "/linha-md",
-                  label: "Linha MD",
-                },
-                {
-                  id: "2-2-2",
-                  url: "/linha-saude",
-                  label: "Linha Saúde",
-                },
-              ],
-            },
-          },
-          {
-            node: {
-              id: "2-3",
-              url: "/homeopet",
-              label: "Homeopet",
             },
           },
         ],
@@ -85,7 +59,7 @@ const menuItems: MenuItems[] = [
   {
     node: {
       id: "3",
-      url: "/informacoes",
+      url: "#",
       label: "Informações",
       childItems: {
         edges: [
@@ -124,14 +98,6 @@ const menuItems: MenuItems[] = [
   {
     node: {
       id: "4",
-      url: "/#nossas-marcas",
-      label: "Nossas Marcas",
-      childItems: null,
-    },
-  },
-  {
-    node: {
-      id: "5",
       url: "/contato",
       label: "Contato",
       childItems: null,
