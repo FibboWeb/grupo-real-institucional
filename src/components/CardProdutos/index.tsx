@@ -26,7 +26,7 @@ type LinkProductProps = {
   link: string
 }
 
-function ImageProduct({src, width, height, alt}: ImageProductProps) {
+export function ImageProduct({src, width, height, alt}: ImageProductProps) {
   return (
     <div className="w-[355px] h-[355px] md:w-[227px] md:h-[227px] lg:w-full lg:h-full">
       <Suspense fallback={<div className="w-full h-full bg-gray-300 animated-pulse rounded-lg"></div>}>
@@ -42,7 +42,7 @@ function ImageProduct({src, width, height, alt}: ImageProductProps) {
   )
 }
 
-function BadgeCategorie({ children }: BadgeCategorieProps) {
+export function BadgeCategorie({ children }: BadgeCategorieProps) {
   return (
     <>
       <div className="bg-fb_blue text-white py-0.5 px-2 rounded-full w-fit">
@@ -53,7 +53,7 @@ function BadgeCategorie({ children }: BadgeCategorieProps) {
 
 }
 
-function TitleProduct({ nomeProduto }: TitleProductProps) {
+export function TitleProduct({ nomeProduto }: TitleProductProps) {
   return (
     <>
       <h2 className="font-bold text-xl">

@@ -48,7 +48,7 @@ const VideoBackground = ({ children, src_video, ctaLinks }: VideoBackgroundProps
         Seu navegador não suporta vídeos HTML5.
       </video>
       <div className="absolute inset-0 bg-fb_gradiente_opacity"></div>
-      <div className="relative z-10 text-center text-white w-3/5">
+      <div className="relative z-10 text-center text-white lg:w-4/5">
         {children}
 
         {ctaLinks &&
@@ -58,14 +58,14 @@ const VideoBackground = ({ children, src_video, ctaLinks }: VideoBackgroundProps
                 {ctaLinks.map((cta, index) => (
                   <button
                     key={index}
-                    className={`group ${cta.btn_background_color === "bg-blue-600" ? `${cta.btn_background_color} hover:bg-white hover:text-fb_blue hover:outline-3 hover:outline-fb_blue` : `${cta.btn_background_color} hover:bg-blue-600`} flex flex-row items-center justify-center px-2 py-3 w-fit rounded`}
+                    className={`transition duration-150 group ${cta.btn_background_color === "bg-blue-600" ? ` bg-white hover:bg-[#1986C1] text-fb_blue hover:text-white hover:outline-3 hover:outline-fb_blue` : `bg-[#1986C1] hover:bg-white hover:text-fb_blue`} flex flex-row items-center justify-center px-2 py-1 w-fit rounded`}
                   >
                     <Link href={cta.link} className={`font-semibold py-3 px-6 rounded-md transition flex-nowrap`}>
                       {cta.anchor}
                     </Link>
                     <ArrowRight
                       size={24}
-                      className={`rounded-full font-bold ${cta.btn_background_color.includes("bg-blue") ? `group-hover:bg-white group-hover:text-black` : `group-hover:bg-white group-hover:text-fb_blue`}`}
+                      className={`rounded-full font-bold text-fb_blue bg-[#CCCCCC] ${cta.btn_background_color.includes("bg-blue") ? `group-hover:bg-white group-hover:text-black` : `group-hover:bg-white group-hover:text-fb_blue`}`}
                     />
                   </button>
                 ))}

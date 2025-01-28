@@ -9,6 +9,10 @@ import img05 from "@/public/icons-slider/linha-05.webp";
 import imgMarca01 from "@/public/images/moca-e-cavalo.webp";
 import imgMarca02 from "@/public/images/mulher-segurando-cachorro.webp";
 import imgMarca03 from "@/public/images/veterinaria-e-fazendeiro-_1_.webp";
+import iconMarca01 from "@/public/images/logos/logo-real-h-colorido.webp"
+import iconMarca02 from "@/public/images/logos/homeopet-logo-colorido.webp"
+import iconMarca03 from "@/public/images/logos/logo-crm-colorido.webp"
+
 ("");
 // Sessões dos valores
 import imgValor01 from "@/public/images/waves-fourteen-years.webp";
@@ -23,6 +27,7 @@ export const ctasLinksHero = [
 
 // Sessões dos valores
 import { name } from "./../../node_modules/next/dist/compiled/webpack/bundle5";
+import { Anchor } from "lucide-react";
 
 export const sliderCategoriasHome = [
   {
@@ -60,28 +65,46 @@ export const sliderCategoriasHome = [
 export const nossasMarcasInfos = [
   {
     title: "Seu resultado é o nosso compromisso",
-    content:
+    icon: iconMarca01,
+    text:
       "Com quatro décadas de experiência, a REAL H se destaca no mercado de nutrição animal, oferecendo soluções eficazes e inovadoras.",
     ctaLink: "#",
-    imagePath: imgMarca01,
+    image: imgMarca01,
+    badge_text: "NUTRIÇÃO",
+    cta: {
+      link: "#",
+      anchor: "IR PARA A LOJA"
+    }
   },
   {
     title: "Cuidado de verdade pro seu pet é com a HomeoPet",
-    content:
+    icon: iconMarca02,
+    text:
       "Com 15 anos de experiência, a Homeopet se destaca por oferecer soluções seguras e eficazes para a saúde dos pequenos animais. Nosso compromisso é promover o bem-estar e a qualidade de vida dos pets.",
     ctaLink: "#",
-    imagePath: imgMarca02,
+    image: imgMarca02,
+    badge_text: "SAÚDE",
+    cta: {
+      link: "#",
+      anchor: "IR PARA A LOJA"
+    }
   },
   {
     title: "Aqui seu ganho é REAL",
-    content:
+    icon: iconMarca03,
+    text:
       "A CMR é uma marca que homenageia o legado do Prof. Dr. Claudio Martins Real. Com mais de 40 anos de experiência, oferecemos soluções que promovem a saúde e o bem-estar dos animais.",
     ctaLink: "#",
-    imagePath: imgMarca03,
+    image: imgMarca03,
+    badge_text: "SAÚDE",
+    cta: {
+      link: "#",
+      anchor: "IR PARA A LOJA"
+    }
   },
 ];
 
-export const sectionValoresInfo = [
+export const sectionValoresInfo1 = [
   {
     title: "Nossos números",
     qtde: 10,
@@ -92,7 +115,12 @@ export const sectionValoresInfo = [
       { qtde: 200_000, text: "Clientes atendidos" },
       { qtde: 200_000, text: "Clientes atendidos" },
     ] as LoadNumbersProps[],
-  },
+    reverter: true
+  }
+]
+
+export const sectionValoresInfo2 = [
+  
   {
     title: "Tratar a natureza como ela merece.",
     qtde: 10,

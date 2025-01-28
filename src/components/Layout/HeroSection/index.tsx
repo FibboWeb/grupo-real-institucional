@@ -4,7 +4,7 @@ import ArrowRightSVG from "@/public/icons/arrow-right.svg";
 
 /**
  * Props for the HeroSection component.
- * 
+ *
  * @property {React.ReactNode} children - The content to display inside the HeroSection.
  * @property {string} [ctaLink] - Optional link for the call-to-action button.
  * @property {StaticImageData} [imagePath] - Optional image to display in the HeroSection.
@@ -21,6 +21,9 @@ interface HeroSectionProps {
   imageOnBottom?: boolean;
   backgroundClass?: string;
   boxShadow?: string;
+  btnColor?: "fb_blue_button" | "fb_green_button";
+  btnIcon?: StaticImageData;
+  btnContent?: string;
 }
 
 export default function HeroSection({
@@ -31,8 +34,11 @@ export default function HeroSection({
   imageOnBottom = false,
   backgroundClass = "bg-hero-image",
   boxShadow,
+  btnColor,
+  btnIcon,
+  btnContent,
 }: HeroSectionProps) {
-  const shadow = boxShadow || backgroundClass == "bg-hero-image" ? 'bg-[rgba(3,29,58,0.90)]' : 'bg-[rgba(0,0,0,0.2)]';
+  const shadow = boxShadow || backgroundClass == "bg-hero-image" ? "bg-[rgba(3,29,58,0.90)]" : "bg-[rgba(0,0,0,0.2)]";
 
   return (
     <>
@@ -54,7 +60,7 @@ export default function HeroSection({
                       {children}
                       {ctaLink && (
                         <div className="flex sm:justify-start justify-center">
-                          <BtnCallToAction ctaLink={ctaLink} content="Leia mais" icon={ArrowRightSVG} />
+                          <BtnCallToAction ctaLink={ctaLink} content={btnContent} icon={btnIcon} color={btnColor} />
                         </div>
                       )}
                     </>
@@ -62,7 +68,7 @@ export default function HeroSection({
                 </div>
                 {imagePath && (
                   <div className="flex-1 flex justify-center items-center">
-                    <Image src={imagePath} alt="imagem hero" height={imageMaxHeight} />
+                    <Image src={imagePath} alt="imagem hero" height={imageMaxHeight} color={btnColor} />
                   </div>
                 )}
               </div>
@@ -73,5 +79,3 @@ export default function HeroSection({
     </>
   );
 }
-
-

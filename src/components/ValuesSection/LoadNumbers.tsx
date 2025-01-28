@@ -44,11 +44,11 @@ export default function LoadNumbers({ arrayOfNumbers }: LoadNumbersInterface) {
     <div className="flex h-full justify-between items-center gap-8">
       {arrayOfNumbers.map((number, index) => (
         <div key={index} className="flex flex-col gap-2 items-center justify-center">
-          <span className="text-fb_blue_main font-bold text-3xl flex-nowrap">
+          <span className="text-fb_blue_main text-center font-bold text-3xl flex-nowrap">
             <IncrementingCounter maxNumber={number.qtde} speed={30} />
           </span>
           <hr className="w-20 h-[6px] bg-fb_blue_button rounded-full" />
-          <p className="text-center text-fb_blue_main font-semibold text-base">{number.text}</p>
+          <p className="w-20 text-center text-fb_blue_main font-semibold text-base">{number.text}</p>
         </div>
       ))}
     </div>

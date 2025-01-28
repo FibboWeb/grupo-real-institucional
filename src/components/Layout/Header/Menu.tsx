@@ -95,7 +95,7 @@ export default function Menu({ menuFetched }: MenuProps) {
           ))}
         </ul>
       </div>
-      <div className="absolute top-1/4 left-0 right-0 w-100 xl:hidden">
+      <div className="absolute top-1/4 right-0 w-100 xl:hidden">
         <button className="float-end block mr-4" onClick={() => setMenuOpen(!menuOpen)}>
           <AlignJustify size={40} />
         </button>
