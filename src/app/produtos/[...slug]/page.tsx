@@ -11,6 +11,8 @@ import { Suspense } from 'react'
 import { FaWhatsapp } from 'react-icons/fa'
 import SliderProductsRecommended from '../(componentes)/SliderProductsRecommended'
 import Newsletter from '@/components/Layout/Newsletter'
+import { getProductPerSlug } from '@/lib/getProducts'
+import { redirect } from 'next/navigation'
 
 /**
  * PageProduct component
@@ -22,8 +24,12 @@ import Newsletter from '@/components/Layout/Newsletter'
  * @example
  * <PageProduct />
  */
-export default async function PageProduct() {
-
+export default async function PageProduct({ params }) {
+  const { slug } = await params
+  const product = await getProductPerSlug(slug)
+  if (!product) {
+    return redirect('/')
+  }
   const image = await fetch('https://realh.com.br/wp-json/wp/v2/media/40443')
 
   const imageUrl = await image.json();
@@ -69,7 +75,7 @@ export default async function PageProduct() {
               <BadgeCategorie>{mock[0].categoria}</BadgeCategorie>
             </div>
             <div>
-              <h1 className='font-bold text-3xl'>{mock[0].nomeProduto}</h1>
+              <h1 className='font-bold text-3xl'>{product.produto?.title?.rendered}</h1>
             </div>
             <div className="flex flex-col gap-8">
               <div className='flex flex-col w-full gap-2'>
