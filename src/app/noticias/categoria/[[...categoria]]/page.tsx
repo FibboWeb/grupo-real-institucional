@@ -1,19 +1,20 @@
-import { getCategoriesNoticias } from "@/lib/getCategoriesNoticias";
-import { notFound } from "next/navigation";
 import Breadcrumb from "@/components/BreadCrumb";
-import CardBlog from "@/components/Layout/CardBlog";
-import SidebarNoticias from "@/components/Layout/SidebarNoticias";
 import Newsletter from "@/components/Layout/Newsletter";
+import SidebarNoticias from "@/components/Layout/SidebarNoticias";
+import CardBlog from "@/components/Layout/CardBlogAPI";
+import { fetchPosts, fetchCategoryId } from "@/lib/getCategoriesNoticias";
+import Pagination from "@/components/Pagination";
+import { notFound } from "next/navigation";
 
-export default async function CategoriaPage({ params }) {
-  const { categoria } = await params;
-
-  const slug = categoria?.length > 0 ? categoria[categoria.length - 1] : "";
-
-  const { category, posts } = await getCategoriesNoticias(slug);
-  if (!category) {
-    notFound();
+export default async function CategoryPage({ params, searchParams }) {
+  const page = parseInt(searchParams.page || "1");
+  const postsPerPage = 6;
+  const categorySlug = await params.categoria[0];
+  const categoryId = await fetchCategoryId(categorySlug);
+  if (!categorySlug) {
+    return notFound();
   }
+  const { posts, totalPages } = await fetchPosts(categoryId, page, postsPerPage);
   return (
     <div className="fb_container px-2 mb-12 mt-24">
       <Breadcrumb
@@ -25,32 +26,33 @@ export default async function CategoriaPage({ params }) {
       />
       <div className="hero-category bg-fb_category_image bg-no-repeat bg-cover bg-center h-56 xl:h-60 rounded-2xl mb-12">
         <div className="w-full h-full bg-black bg-opacity-60 flex justify-center items-center rounded-2xl">
-          <h1 className="font-bold text-4xl lg:text-5xl text-white">{category.name}</h1>
+          <h1 className="font-bold text-4xl lg:text-5xl text-white">{categoryId.name}</h1>
         </div>
       </div>
-      <div className="category-content flex flex-col  lg:items-start lg:flex-row  w-full gap-4 xl:gap-24 mb-5">
+      <div className="category-content flex flex-col lg:items-start lg:flex-row w-full gap-4 xl:gap-24 mb-5">
         <div className="content-cards w-full lg:w-9/12 mb-7">
           <h2 className="font-bold text-fb_blue_main text-3xl lg:text-4xl mb-4">Últimos Posts</h2>
           <div className="grid-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 lg:gap-6">
-            {posts.length > 0 ? (
-              posts.map((post: any, index) => (
+            {posts.length === 0 ? (
+              <p>Nenhum post encontrado para esta categoria.</p>
+            ) : (
+              posts.map((post, index) => (
                 <CardBlog
-                  key={index + 4}
+                  key={index}
                   blogContext="/noticias"
-                  postImage={post.featuredImage?.node.sourceUrl}
-                  postImageAlt={post.featuredImage?.node.altText || "Imagem do post"}
+                  postImage={post.featured_media}
+                  postImageAlt={post.featured_media?.alt_text || "Imagem do post"}
                   postLink={post.slug}
-                  postTitle={post.title}
-                  postDescription={{ __html: post.content }}
+                  postTitle={<span dangerouslySetInnerHTML={{ __html: post.title.rendered }} />}
+                  postDescription={{ __html: post.content.rendered }}
                   postDate={post.date}
-                  postAuthor={post.author?.node.name}
-                  postAuthorLink={post.author?.node.slug}
+                  postAuthor={post.author_post_details.name}
+                  postAuthorLink={`author/${post.author_post_details.slug}`}
                 />
               ))
-            ) : (
-              <p>Nenhum post encontrado.</p>
             )}
           </div>
+          <Pagination blogContext={"/categoria"} currentPage={page} totalPages={totalPages} slug={categorySlug} />
         </div>
         <div className="sidebar w-full lg:w-1/3">
           <SidebarNoticias />

@@ -17,3 +17,21 @@
     align-items: center;
   }
 }
+.slick-list {
+  height: 100%;
+}
+.slick-track {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+.slick-track .slick-slide {
+  display: flex;
+  height: auto;
+}
+.slick-track .slick-slide a  {
+  height: 100%;
+}
+.slick-track .slick-slide a > div {
+  height: 100%;
+}
