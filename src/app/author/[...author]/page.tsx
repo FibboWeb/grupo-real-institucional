@@ -7,7 +7,7 @@ import { fetchPosts, fetchAuthorData } from "@/lib/getAuthorPosts";
 import Pagination from "@/components/Pagination";
 import { notFound } from "next/navigation";
 
-export default async function PaginatedPosts({ params, searchParams }) {
+export default async function AuthorPage({ params, searchParams }) {
   const page = parseInt(searchParams.page || "1");
   const postsPerPage = 6;
   const authorSlug = params.author[0];

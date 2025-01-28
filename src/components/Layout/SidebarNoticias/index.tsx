@@ -1,12 +1,12 @@
 import CategoryList from "@/components/CategoryList";
-import SearchBox from "@/components/SearchBox";
+// import SearchBox from "@/components/SearchBox";
 import PostsMosView from "@/components/PostsMosView";
 import BannerSidebar from "@/components/Layout/BannerSidebar";
 
 function SidebarNoticias() {
   return (
     <div className="sidebar-element p-1">
-      <SearchBox />
+      {/* <SearchBox /> */}
       <CategoryList blogContext="/noticias" />
       <PostsMosView />
       <div className="banners-section">

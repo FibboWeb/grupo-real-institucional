@@ -1,6 +1,6 @@
 export async function fetchPosts(authorId, page = 1, postsPerPage = 6) {
   const res = await fetch(
-    `https://realh.com.br/wp-json/wp/v2/posts?author=${authorId}&per_page=${postsPerPage}&page=${page}&_embed=wp:featuredmedia`,
+    `${process.env.WP_URL_API}posts?author=${authorId}&per_page=${postsPerPage}&page=${page}&_embed=wp:featuredmedia`,
     {
       next: { revalidate: 6 },
     },
@@ -26,7 +26,7 @@ export async function fetchPosts(authorId, page = 1, postsPerPage = 6) {
 }
 
 export async function fetchAuthorData(authorSlug) {
-  const authorRes = await fetch(`https://realh.com.br/wp-json/wp/v2/users?slug=${authorSlug}`);
+  const authorRes = await fetch(`${process.env.WP_URL_API}users?slug=${authorSlug}`);
   const authorData = await authorRes.json();
   return authorData.length > 0 ? authorData[0] : null;
 }

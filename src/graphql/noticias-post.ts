@@ -5,14 +5,11 @@ export const GET_POST_DETAILS = gql`
     post(id: $slug, idType: SLUG) {
       author {
         node {
-          avatar {
-            url
-          }
           id
-          nicename
-          firstName
           name
           slug
+          description
+          databaseId
         }
       }
       categories(first: 1) {

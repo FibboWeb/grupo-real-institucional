@@ -13,7 +13,7 @@ export async function getPostDetails(postSlug) {
       props: fetchedPostDetail.data,
     };
   } catch (error) {
-    console.error("Erro ao buscar o post:", error);
+    console.error("Erro ao buscar os detalhes do post:", error);
     return {
       props: {
         postDetails: [],

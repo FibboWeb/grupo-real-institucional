@@ -58,22 +58,26 @@ export default function Pagination({ currentPage, totalPages, slug, blogContext 
 
   return (
     <div className="flex justify-center items-center mt-6 space-x-2">
-      {currentPage > 1 && (
-        <a
-          href={currentPage === 2 ? `${blogContext}/${slug}` : `${blogContext}/${slug}?page=${currentPage - 1}`}
-          className="px-2 py-2 border rounded hover:bg-gray-200 hidden md:block"
-        >
-          <ChevronLeft />
-        </a>
-      )}
-      {generatePaginationLinks()}
-      {currentPage < totalPages && (
-        <a
-          href={`${blogContext}/${slug}?page=${currentPage + 1}`}
-          className="px-2 py-2 border rounded hover:bg-gray-200 hidden md:block"
-        >
-          <ChevronRight />
-        </a>
+      {totalPages > 1 && (
+        <>
+          {currentPage > 1 && (
+            <Link
+              href={currentPage === 2 ? `${blogContext}/${slug}` : `${blogContext}/${slug}?page=${currentPage - 1}`}
+              className="px-2 py-2 border rounded hover:bg-gray-200 hidden md:block"
+            >
+              <ChevronLeft />
+            </Link>
+          )}
+          {generatePaginationLinks()}
+          {currentPage < totalPages && (
+            <Link
+              href={`${blogContext}/${slug}?page=${currentPage + 1}`}
+              className="px-2 py-2 border rounded hover:bg-gray-200 hidden md:block"
+            >
+              <ChevronRight />
+            </Link>
+          )}
+        </>
       )}
     </div>
   );
