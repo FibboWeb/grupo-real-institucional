@@ -48,7 +48,7 @@ const VideoBackground = ({ children, src_video, ctaLinks }: VideoBackgroundProps
         Seu navegador não suporta vídeos HTML5.
       </video>
       <div className="absolute inset-0 bg-fb_gradiente_opacity"></div>
-      <div className="relative z-10 text-center text-white w-3/5">
+      <div className="relative z-10 text-center text-white lg:w-3/5">
         {children}
 
         {ctaLinks &&
