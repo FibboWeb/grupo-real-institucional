@@ -29,7 +29,7 @@ export default function OurValues({ title, contentPage, values }: OurValuesProps
               }}
             />
           </div>
-          <div className="flex justify-center sm:justify-start">
+          <div className="flex justify-start">
             <BtnCallToAction ctaLink="" content="LER MAIS" icon={ArrowRightSVG} />
           </div>
         </div>
