@@ -35,11 +35,11 @@ const menuSustentabilidade = [
   },
   {
     anchor: "Social",
-    link: "/social",
+    link: "/ciclos-social",
   },
   {
     anchor: "Transparência",
-    link: "/transparencia",
+    link: "/ciclos-transparencia",
   },
 ];
 
