@@ -92,10 +92,33 @@ export default {
         "bg-investimento": "url('/images/ambiental/bg-investimento.webp')",
         "bg-doacoes": "url('/images/ambiental/bg-doacoes.webp')",
       },
+
       boxShadow: {
         custom_image: "0 0 10px rgba(0, 0, 0, 0.5)",
         custom_shadow: "0 0 4px 0 #00000040",
         shadow_image_info_section: "0px 5px 15px 0px rgba(0, 0, 0, 0.35)",
+      },
+      keyframes: {
+        "accordion-down": {
+          from: {
+            height: "0",
+          },
+          to: {
+            height: "var(--radix-accordion-content-height)",
+          },
+        },
+        "accordion-up": {
+          from: {
+            height: "var(--radix-accordion-content-height)",
+          },
+          to: {
+            height: "0",
+          },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
