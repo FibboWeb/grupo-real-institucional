@@ -10,7 +10,7 @@ import { locations } from "@/constants/locations";
 export default function Page() {
   return (
     <>
-      <div className="fb_container mt-[96px] mx-autopy-12">
+      <div className="fb_container mt-[120px] mx-autopy-12">
         <div className="grid gap-8 mb-[76px] md:grid-cols-2">
           {/* Left Column - Contact Form */}
           <div>
