@@ -1,5 +1,9 @@
+.slick-dots li button {
+  color: #1986C1;
+}
+
 .slick-dots li button:before {
-  font-size: 6px;
+  font-size: 12px;
   line-height: 20px;
   position: absolute;
   top: 0;
@@ -10,12 +14,12 @@
   height: 40px;
   text-align: center;
   opacity: 0.25;
-  color: #000;
+  color: #1986C1;
   -webkit-font-smoothing: antialiased;
 }
 
-li.active {
-  color: var(--blue-main) !important;
+.slick-dots li.slick-active button:before {
+  color: var(--blue) !important;
 }
 
 & .slick-list {

@@ -104,7 +104,7 @@ export const nossasMarcasInfos = [
   },
 ];
 
-export const sectionValoresInfo = [
+export const sectionValoresInfo1 = [
   {
     title: "Nossos números",
     qtde: 10,
@@ -115,7 +115,12 @@ export const sectionValoresInfo = [
       { qtde: 200_000, text: "Clientes atendidos" },
       { qtde: 200_000, text: "Clientes atendidos" },
     ] as LoadNumbersProps[],
-  },
+    reverter: true
+  }
+]
+
+export const sectionValoresInfo2 = [
+  
   {
     title: "Tratar a natureza como ela merece.",
     qtde: 10,
