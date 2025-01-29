@@ -82,7 +82,6 @@ function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
       },
     ],
   };
-  console.log(fetchedLastPosts);
   return (
     <div className="flex flex-col lg:flex-row gap-6 xl:gap-10">
       <div className="py-2">

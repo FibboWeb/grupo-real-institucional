@@ -29,7 +29,7 @@ const menuItems: MenuItems[] = [
   {
     node: {
       id: "2",
-      url: "#",
+      url: "#slider-brand",
       label: "Nossas Marcas",
       childItems: {
         edges: [
@@ -75,7 +75,7 @@ const menuItems: MenuItems[] = [
           {
             node: {
               id: "3-2",
-              url: "/noticias/categoria/artigos",
+              url: "/categoria/artigos",
               label: "Artigos Científicos",
             },
           },
@@ -106,6 +106,5 @@ const menuItems: MenuItems[] = [
     },
   },
 ];
-
 
 export default menuItems;

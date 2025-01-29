@@ -90,3 +90,28 @@ export const GET_POSTS_LAST_NOTICIAS_PAGE = gql`
     }
   }
 `;
+
+export const GET_LAST_POSTS_EVENTOS = gql`
+  query GET_LAST_POSTS_EVENTOS {
+    posts(first: 6, where: { orderby: { field: DATE, order: DESC }, categoryId: 508 }) {
+      nodes {
+        id
+        title
+        slug
+        date
+        content
+        featuredImage {
+          node {
+            sourceUrl
+          }
+        }
+        author {
+          node {
+            name
+            slug
+          }
+        }
+      }
+    }
+  }
+`;

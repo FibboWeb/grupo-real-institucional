@@ -15,7 +15,6 @@ export default async function Noticias({ searchParams }) {
   const { posts, totalPages } = await fetchPosts(page, postsPerPage);
   const heroPostsFetched = await getLastPostsNoticias();
   const heroPosts = heroPostsFetched.props.nodes;
-  console.log(posts);
   return (
     <div className="page-noticias fb_container px-2 mb-12 mt-24">
       <Breadcrumb
