@@ -39,6 +39,7 @@ export default function PageAmbiental() {
         btnColor="fb_green_button"
         imagePath={HeroCiclos}
         btnContent="SAIBA MAIS"
+        imageMaxHeight={350}
       />
       <InfiniteCarousel items={InfiniteCarouselItems} />
       <InfoSection
