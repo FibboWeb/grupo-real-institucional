@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 const Slider = dynamic(() => import("react-slick"), { ssr: false });
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "./index.css";
 
 import Image, { StaticImageData } from "next/image";
 
@@ -22,7 +23,7 @@ interface InifiniteCarouselProps {
 const InifiniteCarousel = ({
   items,
   slidesToShowProp,
-  speedSlidesProp = 4500,
+  speedSlidesProp = 3500,
   color = "fb_green",
 }: InifiniteCarouselProps) => {
   let bgColor = color === "fb_green" ? "bg-fb_green" : "bg-fb_blue";
@@ -43,6 +44,7 @@ const InifiniteCarousel = ({
   }
 
   const settings = {
+    variableWidth: true,
     infinite: true,
     speed: speedSlidesProp,
     slidesToShow: slidesToShowConfig,
@@ -55,6 +57,8 @@ const InifiniteCarousel = ({
     touchMove: false,
     focusOnSelect: false,
     swipe: false,
+    pauseOnFocus: false,
+    pauseOnHover: false,
     responsive: [
       {
         breakpoint: 768,

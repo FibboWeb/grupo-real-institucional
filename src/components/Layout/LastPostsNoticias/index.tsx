@@ -94,31 +94,29 @@ function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
             </p>
           </div>
           <Link
-            className="flex flex-row gap-6 items-center font-bold bg-fb_blue_button rounded-sm px-4 py-3 text-[15px] w-max duration-300 hover:bg-white hover:text-fb_blue_button group"
+            className="flex flex-row gap-6 items-center font-bold bg-blue_button rounded-sm px-4 py-3 text-[15px] w-max duration-300 hover:bg-white hover:text-blue_button group"
             href="/blog"
           >
             IR PARA O BLOG
-            <ArrowRight className="bg-white rounded-full text-fb_blue_button border-fb_blue_button group-hover:bg-fb_blue_button duration-300 group-hover:text-white group-hover:border-white" />
+            <ArrowRight className="bg-white rounded-full text-blue_button border-blue_button group-hover:bg-blue_button duration-300 group-hover:text-white group-hover:border-white" />
           </Link>
         </div>
       </div>
       <div className="last-post-slider" style={{ width: "75%" }}>
         <Slider {...settings}>
-          {fetchedLastPosts &&
-            fetchedLastPosts.map((post: Post) => (
-              <CardBlog
-                key={post.id}
-                postImage={post.featuredImage.node.sourceUrl}
-                postImageAlt={post.featuredImage.node.altText}
-                postLink={post.slug}
-                postTitle={post.title}
-                postDescription={{ __html: post.content }}
-                postDate={post.date}
-                postAuthor={post.author.node.name}
-                postAuthorLink={post.author.node.slug}
-                isSlider
-              />
-            ))}
+          {fetchedLastPosts.map((post: Post) => (
+            <CardBlog
+              key={post.id}
+              postImage={post.featuredImage.node.sourceUrl}
+              postImageAlt={post.featuredImage.node.altText}
+              postLink={post.slug}
+              postTitle={post.title}
+              postDescription={{ __html: post.content }}
+              postDate={post.date}
+              postAuthor={post.author.node.name}
+              postAuthorLink={post.author.node.slug}
+            />
+          ))}
         </Slider>
       </div>
     </div>

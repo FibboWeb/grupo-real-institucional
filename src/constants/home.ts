@@ -12,6 +12,9 @@ import iconMarca01 from "@/public/images/logos/logo-real-h-colorido.webp";
 import imgMarca01 from "@/public/images/moca-e-cavalo.webp";
 import imgMarca02 from "@/public/images/mulher-segurando-cachorro.webp";
 import imgMarca03 from "@/public/images/veterinaria-e-fazendeiro-_1_.webp";
+import iconMarca01 from "@/public/images/logos/logo-real-h-colorido.webp";
+import iconMarca02 from "@/public/images/logos/homeopet-logo-colorido.webp";
+import iconMarca03 from "@/public/images/logos/logo-crm-colorido.webp";
 
 // Sessões dos valores
 import imgIcon02 from "@/public/images/ciclos_novo.webp";
