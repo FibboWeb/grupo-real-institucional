@@ -15,9 +15,13 @@ import iconMarca03 from "@/public/images/logos/logo-crm-colorido.webp";
 
 ("");
 // Sessões dos valores
-import imgValor01 from "@/public/images/waves-fourteen-years.webp";
+import imgValor01 from "@/public/images/home/40-anos-de-historia.webp";
 import imgIcon02 from "@/public/images/ciclos_novo.webp";
 import imgValor02 from "@/public/images/imagem_ambiental.webp";
+
+import avatar1 from "@/public/images/avatar/sr-claudecir.jpg"
+import avatar2 from "@/public/images/avatar/leonardo-pereira.jpg"
+import avatar3 from "@/public/images/avatar/leonardo-de-carvalho.jpg"
 
 export const ctasLinksHero = [
   { id: "1", anchor: "CONHEÇA NOSSAS MARCAS", link: "/learn-more", btn_background_color: "bg-blue-600" },
@@ -103,18 +107,17 @@ export const nossasMarcasInfos = [
 
 export const sectionValoresInfo1 = [
   {
-    title: "Nossos números",
+    title: "Construindo gerações reais",
     qtde: 10,
     text: "Há 40 anos, iniciamos uma jornada sobre as terras férteis da agropecuária, movidos por um sonho audacioso: transformar o potencial do campo em realidade, com saúde, bem-estar e prosperidade.",
     image: imgValor01,
-    session_numbers: [
-      { qtde: 200_000, text: "Clientes atendidos" },
-      { qtde: 200_000, text: "Clientes atendidos" },
-      { qtde: 200_000, text: "Clientes atendidos" },
-    ] as LoadNumbersProps[],
     reverter: true,
-  },
-];
+    cta: {
+      link: "/historia",
+      anchor: "CONFIRA OS DETALHES DO EVENTO"
+    }
+  }
+]
 
 export const sectionValoresInfo2 = [
   {
@@ -124,8 +127,8 @@ export const sectionValoresInfo2 = [
     border: false,
     icon: imgIcon02,
     session_numbers: [
-      { qtde: 200_000, text: "Clientes atendidos" },
-      { qtde: 200_000, text: "Clientes atendidos" },
+      { qtde: 330, text: "Empregos diretos" },
+      { qtde: 1_500, text: "Empregos indireto" },
       { qtde: 200_000, text: "Clientes atendidos" },
     ] as LoadNumbersProps[],
   },
@@ -134,26 +137,23 @@ export const sectionValoresInfo2 = [
 export const testimoniaslInfo = [
   {
     testimonial:
-      "“Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
-    name: "John Doe",
-    empresa: "ABC Company",
+      "Eu sempre digo para os meus amigos: siga as recomendações de um bom técnico. E quando a gente fala de nutrição a gente está falando da Real H",
+    name: "Sr. Claudecir Scarmagnani",
+    empresa: "Cliente desde 2001",
+    avatar: avatar1
   },
   {
     testimonial:
-      "“Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
-    name: "John Doe",
-    empresa: "ABC Company",
+      "Tudo que a gente precisou da Real até hoje, que foi solicitado, o pessoal sempre ajudou a gente, Dr. Claudio, pessoal da parte técnica, principalmente, estão mais amiúde aqui com a gente",
+    name: "Leonardo Pereira",
+    empresa: "Grupo ACP filhos e Netos",
+    avatar: avatar2
   },
   {
     testimonial:
-      "“Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
-    name: "John Doe",
-    empresa: "ABC Company",
-  },
-  {
-    testimonial:
-      "“Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
-    name: "John Doe",
-    empresa: "ABC Company",
-  },
+      "Trabalhar na Real H é gratificante, tenho orgulho de fazer parte deste time de alta performance, equipe motivada e unida para superar qualquer desafio",
+    name: "Leonardo de Carvalho",
+    empresa: "Gerente Comercial - desde 2007 ",
+    avatar: avatar3
+  }
 ];
