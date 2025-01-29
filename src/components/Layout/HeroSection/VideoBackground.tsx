@@ -64,6 +64,7 @@ const VideoBackground = ({ children, src_video, ctaLinks }: VideoBackgroundProps
                     content={ cta.anchor }
                     ctaLink={ cta.link }
                     icon={ArrowIcon}
+                    color={index === 0 ? "white" : "fb_blue_button"}
                   />
                 ))}
               </div>
