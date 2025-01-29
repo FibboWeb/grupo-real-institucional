@@ -33,6 +33,11 @@ export const GET_POSTS_NOTICIAS_MOST_VIEWED = gql`
         viewCount
         id
         title
+        categories(first: 1) {
+          nodes {
+            name
+          }
+        }
         featuredImage {
           node {
             altText

@@ -1,11 +1,7 @@
 import Link from "next/link";
 import { getAllCategories } from "@/lib/getSidebarContent";
 
-interface CategoryListProps {
-  blogContext: string;
-}
-
-async function CategoryList({ blogContext }: CategoryListProps) {
+async function CategoryList() {
   const fetchedCategories = await getAllCategories();
   const allCategories = fetchedCategories.props.categories;
 
@@ -17,7 +13,7 @@ async function CategoryList({ blogContext }: CategoryListProps) {
           <li key={category.databaseId} className="category-item mb-[2px]">
             <Link
               className="text-fb_gray_bread hover:text-fb_blue duration-300 font-semibold"
-              href={`${blogContext}/categoria/${category.slug}`}
+              href={`/categoria/${category.slug}`}
             >
               {category.name}
             </Link>
@@ -27,7 +23,7 @@ async function CategoryList({ blogContext }: CategoryListProps) {
                   <li key={child.databaseId} className="subcategory-item mb-[2px]">
                     <Link
                       className="text-fb_gray_bread hover:text-fb_blue duration-300 font-semibold"
-                      href={`${blogContext}/categoria/${category.slug}/${child.slug}`}
+                      href={`/categoria/${category.slug}/${child.slug}`}
                     >
                       {child.name}
                     </Link>

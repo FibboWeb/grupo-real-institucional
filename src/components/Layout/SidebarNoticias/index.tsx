@@ -7,7 +7,7 @@ function SidebarNoticias() {
   return (
     <div className="sidebar-element p-1">
       {/* <SearchBox /> */}
-      <CategoryList blogContext="/noticias" />
+      <CategoryList />
       <PostsMosView />
       <div className="banners-section">
         <p className="font-bold text-fb_blue_main text-xl lg:text-2xl mb-3">Ver na loja</p>

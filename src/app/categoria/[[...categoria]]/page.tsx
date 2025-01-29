@@ -10,7 +10,11 @@ export default async function CategoryPage({ params, searchParams }) {
   const page = parseInt(searchParams.page || "1");
   const postsPerPage = 6;
   const categorySlug = await params.categoria[0];
-  const categoryId = await fetchCategoryId(categorySlug);
+  const category = await fetchCategoryId(categorySlug);
+  const categoryId = category.categoryId;
+  const isArtigos = category.categoryName === "Artigos" ? true : false;
+  const isNoticias = categorySlug === "noticias" ? true : false;
+
   if (!categorySlug) {
     return notFound();
   }
@@ -20,13 +24,16 @@ export default async function CategoryPage({ params, searchParams }) {
       <Breadcrumb
         activeClasses="text-fb_gray_bread"
         excludePaths={["categoria"]}
+        itemName={category.categoryName}
         containerClasses="flex py-5"
         listClasses="mx-2 font-bold text-fb_gray_bread hover:text-fb_blue duration-300 "
         capitalizeLinks
       />
       <div className="hero-category bg-fb_category_image bg-no-repeat bg-cover bg-center h-56 xl:h-60 rounded-2xl mb-12">
         <div className="w-full h-full bg-black bg-opacity-60 flex justify-center items-center rounded-2xl">
-          <h1 className="font-bold text-4xl lg:text-5xl text-white">{categoryId.name}</h1>
+          <h1 className="font-bold text-4xl lg:text-5xl text-white">
+            {!isNoticias ? category.categoryName : "40 Anos"}
+          </h1>
         </div>
       </div>
       <div className="category-content flex flex-col lg:items-start lg:flex-row w-full gap-4 xl:gap-24 mb-5">
@@ -39,7 +46,7 @@ export default async function CategoryPage({ params, searchParams }) {
               posts.map((post, index) => (
                 <CardBlog
                   key={index}
-                  blogContext="/noticias"
+                  blogContext={isArtigos ? "/artigos" : "/noticias"}
                   postImage={post.featured_media}
                   postImageAlt={post.featured_media?.alt_text || "Imagem do post"}
                   postLink={post.slug}

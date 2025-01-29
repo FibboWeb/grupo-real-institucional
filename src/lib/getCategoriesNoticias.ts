@@ -7,7 +7,10 @@ export async function fetchCategoryId(slug) {
 
   const data = await res.json();
   if (data.length > 0) {
-    return data[0].id;
+    return {
+      categoryId: data[0].id,
+      categoryName: data[0].name,
+    };
   }
 
   throw new Error("Categoria não encontrada");
