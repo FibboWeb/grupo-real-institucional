@@ -29,7 +29,7 @@
   display: flex;
   height: auto;
 }
-.slick-track .slick-slide a  {
+.slick-track .slick-slide a {
   height: 100%;
 }
 .slick-track .slick-slide a > div {

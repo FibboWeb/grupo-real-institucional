@@ -85,14 +85,13 @@ export default function ClaudioMartinsReal() {
               <p>
                 A indicação à honraria, iniciativa do diretor da Faculdade de Veterinária, Emerson Contesini, levou em
                 conta a trajetória notável do homenageado como professor, pesquisador, empreendedor e pioneiro em
-                atividades na UFRGS e em sociedades de classe, divulgando a alargando conhecimentos de sua área -
-                2015.
+                atividades na UFRGS e em sociedades de classe, divulgando a alargando conhecimentos de sua área - 2015.
               </p>
             </InfoCard>
             <InfoCard title={"“Cidadão Campo-grandense”"} svg={"/certified-clean.svg"}>
               <p>
-                Concedido pelo Legislativo municipal de Campo Grande em reconhecimento aos relevantes serviços
-                prestados em prol da melhoria da qualidade de vida do povo e do desenvolvimento da cidade - 2015.
+                Concedido pelo Legislativo municipal de Campo Grande em reconhecimento aos relevantes serviços prestados
+                em prol da melhoria da qualidade de vida do povo e do desenvolvimento da cidade - 2015.
               </p>
             </InfoCard>
             <InfoCard title={"Personalidade Descendente"} svg={"/certified-clean.svg"}>
@@ -109,7 +108,11 @@ export default function ClaudioMartinsReal() {
       <CardSection>
         <div className="w-full lg:w-5/12 pt-4 flex flex-col gap-y-4 justify-center">
           <h2 className="text-3xl font-semibold">Diplomas</h2>
-          <p>O Professor Doutor Claudio Martins Real acumulou ao longo de sua trajetória acadêmica e profissional uma coleção notável de diplomas e reconhecimentos. Formado em Medicina Veterinária pela UFRGS, destacou-se por sua dedicação à pesquisa e ao ensino, além de ter sido o Professor Catedrático mais jovem do Brasil.</p>
+          <p>
+            O Professor Doutor Claudio Martins Real acumulou ao longo de sua trajetória acadêmica e profissional uma
+            coleção notável de diplomas e reconhecimentos. Formado em Medicina Veterinária pela UFRGS, destacou-se por
+            sua dedicação à pesquisa e ao ensino, além de ter sido o Professor Catedrático mais jovem do Brasil.
+          </p>
         </div>
 
         <div className="w-full lg:w-7/12 pt-4 flex flex-col gap-y-4 justify-center">

@@ -1,14 +1,13 @@
-'use client'
-import { mockProducts } from '@/constants/linhas';
-import Image from 'next/image';
-import React from 'react'
+"use client";
+import { mockProducts } from "@/constants/linhas";
+import Image from "next/image";
+import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
-import "./slider.css"
+import "./slider.css";
 
 export default function SliderProductsRecommended() {
-
   const settings = {
     orientation: "horizontal",
     startAt: 0,
@@ -47,17 +46,17 @@ export default function SliderProductsRecommended() {
     <Slider {...settings}>
       {mockProducts.map((item, index) => (
         <div key={index} className="flex flex-col gap-4">
-          <Image 
+          <Image
             src={item.imagem.src}
             width={284}
             height={item.imagem.height}
             alt={item.imagem.alt}
-            className='w-full h-full object-cover rounded-lg bg-[#E5E7E9]'
+            className="w-full h-full object-cover rounded-lg bg-[#E5E7E9]"
           />
-          <h2 className='text-2xl font-bold'>{item.nomeProduto}</h2>
+          <h2 className="text-2xl font-bold">{item.nomeProduto}</h2>
           <p>{item.descricao}</p>
         </div>
       ))}
     </Slider>
-  )
+  );
 }
