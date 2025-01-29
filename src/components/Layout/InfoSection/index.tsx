@@ -77,7 +77,7 @@ function InfoSection({
   const desktopClass = reverseDesktop ? "sm:flex-row" : "sm:flex-row-reverse";
   const paddingClass = reverseDesktop ? "sm:pl-12" : "sm:pr-12";
   const divBar = color == "fb_blue_button" ? "bg-[rgba(3,29,58,0.90)]" : "bg-fb_green";
-  const buttonAlignment = centerButton ? "justify-center" : "justify-start";
+  const buttonAlignment = centerButton ? "justify-center lg:justify-start" : "justify-start";
 
   return (
     <div className={`${heroBgImage ? `${heroBgImage} relative bg-center bg-cover` : ""}`}>

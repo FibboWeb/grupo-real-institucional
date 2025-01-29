@@ -36,10 +36,10 @@ export default function PageAmbiental() {
       <HeroSection
         children={HeroChildren()}
         backgroundClass="bg-hero-green-leafs"
-        ctaLink="#"
         btnColor="fb_green_button"
         imagePath={HeroCiclos}
         btnContent="SAIBA MAIS"
+        imageMaxHeight={350}
       />
       <InfiniteCarousel items={InfiniteCarouselItems} />
       <InfoSection
@@ -48,7 +48,6 @@ export default function PageAmbiental() {
         content="No dia-dia a preocupação com o meio ambiente no Grupo Real H pode ser vista nos campos do Brasil e do exterior. A homeopatia populacional desenvolvida pela empresa, pioneira e líder no segmento, ajuda produtores a cuidar da saúde de seus animais de maneira segura e natural, reduzindo drasticamente os impactos para a natureza."
         color="fb_green_button"
         imagePath={SustentaveisImg}
-        ctaLink="#"
         heroBgImage="bg-ambiental-sustentaveis-bg"
         border={false}
         reverseDesktop={true}
@@ -62,7 +61,6 @@ export default function PageAmbiental() {
         content="Ciclos Reciclagem reafirma nosso compromisso com a sustentabilidade. Um projeto que envolve nossos colaboradores e clientes e que já retirou do meio ambiente, em 18 anos, mais de 1,3 milhão de quilos de lixo."
         color="fb_green_button"
         imagePath={CiclosImg}
-        ctaLink="#"
         heroBgImage="bg-bg-ciclos"
         border={false}
       />
@@ -90,7 +88,6 @@ export default function PageAmbiental() {
         content="Ciclos Reciclagem reafirma nosso compromisso com a sustentabilidade. Um projeto que envolve nossos colaboradores e clientes e que já retirou do meio ambiente, em 18 anos, mais de 1,3 milhão de quilos de lixo."
         color="fb_green_button"
         youtubeEmbed="https://www.youtube.com/embed/Injvq5HndBE?si=K7zZQ__xhEed1YhJ"
-        ctaLink="#"
         heroBgImage="bg-bg-investimento"
         border={false}
       />
@@ -100,7 +97,6 @@ export default function PageAmbiental() {
         content="O Grupo Real H reforça seu compromisso com a sustentabilidade e a preservação da biodiversidade por meio de doações regulares de medicamentos para centros de reabilitação de animais silvestres. Essas contribuições visam apoiar o tratamento e a cura desses animais, desempenhando um papel crucial na recuperação das espécies e na manutenção do equilíbrio ecológico. "
         color="fb_green_button"
         imagePath={DoacoesImg}
-        ctaLink="#"
         heroBgImage="bg-bg-doacoes"
         border={false}
         reverseDesktop={true}
