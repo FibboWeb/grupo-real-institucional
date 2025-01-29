@@ -1,17 +1,15 @@
 import { LoadNumbersProps } from "@/components/ValuesSection/LoadNumbers";
-import img01 from "@/public/icons-slider/linha-01.webp";
-import img02 from "@/public/icons-slider/linha-02.webp";
-import img03 from "@/public/icons-slider/linha-03.webp";
-import img04 from "@/public/icons-slider/linha-04.webp";
-import img05 from "@/public/icons-slider/linha-05.webp";
+import img01 from "@/public/icons-slider/batoque-transportadora.png";
+import img02 from "@/public/icons-slider/real-h.png";
+import img03 from "@/public/icons-slider/logo-cmr-2.png";
+import img04 from "@/public/icons-slider/logo-homeo-pet.png";
+import img05 from "@/public/icons-slider/cmr-saude.png";
+import img06 from "@/public/icons-slider/ciclos-logo.png";
 
 // Sessões das marcas
 import imgMarca01 from "@/public/images/moca-e-cavalo.webp";
 import imgMarca02 from "@/public/images/mulher-segurando-cachorro.webp";
 import imgMarca03 from "@/public/images/veterinaria-e-fazendeiro-_1_.webp";
-import iconMarca01 from "@/public/images/logos/logo-real-h-colorido.webp";
-import iconMarca02 from "@/public/images/logos/homeopet-logo-colorido.webp";
-import iconMarca03 from "@/public/images/logos/logo-crm-colorido.webp";
 
 // Sessões dos valores
 import imgIcon02 from "@/public/images/ciclos_novo.webp";
@@ -23,41 +21,35 @@ import avatar2 from "@/public/images/avatar/leonardo-pereira.jpg";
 import avatar1 from "@/public/images/avatar/sr-claudecir.jpg";
 
 export const ctasLinksHero = [
-  { id: "1", anchor: "CONHEÇA NOSSAS MARCAS", link: "/learn-more", btn_background_color: "bg-blue-600" },
+  { id: "1", anchor: "CONHEÇA NOSSAS MARCAS", link: "#slider-brand", btn_background_color: "bg-blue-600" },
 
-  { id: "2", anchor: "FALE CONOSCO", link: "/get-started", btn_background_color: "bg-gray-400" },
+  { id: "2", anchor: "FALE CONOSCO", link: "/contato", btn_background_color: "bg-gray-400" },
 ];
 
 export const sliderCategoriasHome = [
   {
     id: "1",
-    label: "Linha Nutrição",
-    url: "/linhas/real-h/",
     image_url: img01,
   },
   {
     id: "2",
-    label: "Linha Saúde",
-    url: "/linhas/cmr/",
     image_url: img02,
   },
   {
     id: "3",
-    label: "Homeopet",
-    url: "/linhas/homeopet/",
     image_url: img03,
   },
   {
     id: "4",
-    label: "Linha Equino H",
-    url: "/linhas/real-h/",
     image_url: img04,
   },
   {
     id: "5",
-    label: "Linha MD",
-    url: "/linhas/cmr/",
     image_url: img05,
+  },
+  {
+    id: "6",
+    image_url: img06,
   },
 ];
 
@@ -70,7 +62,7 @@ export const nossasMarcasInfos = [
     image: imgMarca01,
     badge_text: "NUTRIÇÃO",
     cta: {
-      link: "#",
+      link: "/linhas/real-h",
       anchor: "IR PARA A LOJA",
     },
   },
@@ -82,7 +74,7 @@ export const nossasMarcasInfos = [
     image: imgMarca02,
     badge_text: "SAÚDE",
     cta: {
-      link: "#",
+      link: "/linhas/homeopet",
       anchor: "IR PARA A LOJA",
     },
   },
@@ -94,7 +86,7 @@ export const nossasMarcasInfos = [
     image: imgMarca03,
     badge_text: "SAÚDE",
     cta: {
-      link: "#",
+      link: "/linhas/cmr",
       anchor: "IR PARA A LOJA",
     },
   },

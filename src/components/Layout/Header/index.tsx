@@ -4,7 +4,6 @@ import Link from "next/link";
 import Menu from "./Menu";
 
 async function Header() {
-
   return (
     <header className="fixed top-0 left-0 right-0 z-[100]">
       <div className="relative mx-auto fb_container my-4 bg-white lg:px-4 rounded-md flex justify-between items-center shadow-custom_shadow drop-shadow-md">

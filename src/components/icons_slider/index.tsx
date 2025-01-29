@@ -37,8 +37,8 @@ function SamplePrevArrow(props: ArrowProps) {
 
 interface Category {
   id: string;
-  url: string;
-  label: string;
+  url?: string;
+  label?: string;
   image_url: StaticImageData;
 }
 
@@ -121,8 +121,10 @@ export default function SliderNavigational({ categories, title, text, isNoticias
             className={`${isNoticias ? "max-w-[100%]" : "max-w-[80%]"} flex justify-center items-center mx-auto cursor-grab`}
           >
             {categories.map((category) => (
-              <div key={category.id} className="flex flex-col gap-6 w-56 h-56">
-                <Link href={category.url} className="flex justify-center">
+              <div key={category.id} className="flex flex-col mx-auto gap-6 w-[140px] min-h-[140px] px-8">
+                  
+                {category.url && (
+                  <Link href={category.url} className="flex justify-center">
                   <Image
                     alt={category.label}
                     src={category.image_url}
@@ -130,13 +132,17 @@ export default function SliderNavigational({ categories, title, text, isNoticias
                     height={220}
                     className={"h-56 bg-center object-cover rounded-2xl"}
                   />
-                </Link>
-                <Link
+                </Link>) : (
+                  <Link
                   href={category.url}
-                  className="flex w-full justify-center hover:text-fb_blue text-fb_blue-main duration-300 hover:no-underline mt-6"
+                  className="flex w-full justify-center hover:text-fb_blue text-fb_blue-main hover:no-underline mt-6"
                 >
                   <h3 className="text-lg font-semibold text-fb_blue-main text-center">{category.label}</h3>
                 </Link>
+                )}
+                { category.label && (
+                  <h3 className="text-lg font-semibold hover:text-fb_blue text-fb_blue-main text-center">{category.label}</h3>
+                )}
               </div>
             ))}
           </Slider>

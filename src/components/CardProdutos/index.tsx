@@ -95,7 +95,10 @@ export default function CardProduct({ product }: { product: any[] }) {
             <div key={index} className="w-full lg:w-64 h-auto flex flex-col gap-8 items-center">
               <LinkProduct link={"#"}>
                 {/* Acessar as propriedades do item */}
-                <ImageProduct src={item?.imagem?.node?.link || placeholder} alt={item?.titulo ? item?.titulo : "Imagem do produto"} />
+                <ImageProduct
+                  src={item?.imagem?.node?.link || placeholder}
+                  alt={item?.titulo ? item?.titulo : "Imagem do produto"}
+                />
               </LinkProduct>
               <div className="w-4/5 md:w-full flex flex-col gap-2">
                 <LinkProduct link={item?.linkProduto ? item?.linkProduto : "#"}>
