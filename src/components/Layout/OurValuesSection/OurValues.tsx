@@ -13,9 +13,10 @@ interface OurValuesProps {
   title: string;
   contentPage: string;
   values: Value[];
+  ctaLink?: string;
 }
 
-export default function OurValues({ title, contentPage, values }: OurValuesProps) {
+export default function OurValues({ title, contentPage, values, ctaLink }: OurValuesProps) {
   return (
     <section className="fb_container sm:py-12 py-2">
       <div className="flex flex-col sm:flex-row gap-10 sm:gap-2 p-5">
@@ -30,7 +31,7 @@ export default function OurValues({ title, contentPage, values }: OurValuesProps
             />
           </div>
           <div className="flex justify-start">
-            <BtnCallToAction ctaLink="" content="LER MAIS" icon={ArrowRightSVG} />
+            {/* <BtnCallToAction ctaLink="" content="LER MAIS" icon={ArrowRightSVG} /> */}
           </div>
         </div>
         <div className="flex-1">

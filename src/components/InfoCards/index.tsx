@@ -3,6 +3,9 @@ import Link from "next/link";
 import React, { Suspense } from "react";
 import { Button } from "../ui/button";
 import { ArrowRightCircle } from "lucide-react";
+import BtnCallToAction from "../Layout/Buttons/BtnCallToAction/BtnCallToAction";
+import ArrowIcon from "@/public/icons/arrow-right.svg";
+
 
 type ValuesSectionProps = {
   values: {
@@ -55,7 +58,7 @@ function InfoCards({ values }: ValuesSectionProps) {
                 alt={value.title}
                 width={600}
                 height={475}
-                className="rounded-lg h-[475px] object-fill object-center"
+                className="rounded-lg h-auto object-cover object-top-center"
               />
             </Suspense>
           </div>
@@ -71,11 +74,12 @@ function InfoCards({ values }: ValuesSectionProps) {
               {value.text && <div className="w-full" dangerouslySetInnerHTML={{ __html: value.text }}></div>}
             </div>
             {value.cta && (
-              <div className="flex gap-6 justify-start">
-                <Button className="flex py-3 px-4 bg-[#1986C1] hover:bg-white hover:text-fb_blue hover:outline hover:outline-1 hover:outline-fb_blue">
-                  <Link href={value.cta.link}>{value.cta.anchor}</Link>
-                  <ArrowRightCircle />
-                </Button>
+              <div className="w-fit">
+                <BtnCallToAction 
+                  content={ value.cta.anchor }
+                  ctaLink={ value.cta.link }
+                  icon={ArrowIcon}
+                />
               </div>
             )}
           </div>

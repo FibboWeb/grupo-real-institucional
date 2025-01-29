@@ -1,6 +1,9 @@
 import Image, { StaticImageData } from "next/image";
 import React from "react";
 import LoadNumbers, { LoadNumbersProps } from "./LoadNumbers";
+import BtnCallToAction from "../Layout/Buttons/BtnCallToAction/BtnCallToAction";
+import ArrowIcon from "@/public/icons/arrow-right.svg";
+
 
 type ValuesSectionProps = {
   values: {
@@ -9,7 +12,11 @@ type ValuesSectionProps = {
     text?: string | React.ReactNode;
     image: StaticImageData;
     border?: boolean;
-    session_numbers: LoadNumbersProps[];
+    session_numbers?: LoadNumbersProps[];
+    cta?: {
+      link: string;
+      anchor: string;
+    }
     reverter?: boolean
   }[];
 };
@@ -41,15 +48,15 @@ function ValuesSection({ values }: ValuesSectionProps) {
       {values.map((value, index) => (
         <div
           key={index}
-          className={`fb_container flex flex-col justify-between gap-24 ${(value.reverter && index % 2 === 0) ? "lg:flex-row" : "lg:flex-row-reverse"} items-center`}
+          className={`fb_container flex flex-col justify-between gap-4 md:gap-24 ${(value.reverter && index % 2 === 0) ? "lg:flex-row" : "lg:flex-row-reverse"} items-center`}
         >
-          <div className={` ${value.border ? "shadow-custom_shadow w-full lg:w-1/2" : "lg:w-1/2 w-full"} `}>
+          <div className={` ${value.border ? "shadow-custom_shadow w-full lg:w-1/2" : "lg:w-1/2 w-full"} rounded-lg `}>
             <Image
               src={value.image}
               alt={value.title}
               width={600}
               height={475}
-              className="rounded-lg h-[475px] object-fill object-center"
+              className="rounded-lg h-auto object-cover object-center mx-auto md:mx-0"
             />
           </div>
           <div className="w-full flex flex-col gap-6 lg:w-1/2">
@@ -57,9 +64,20 @@ function ValuesSection({ values }: ValuesSectionProps) {
             {value.title && <h2 className="font-bold text-fb_blue_main text-3xl">{value.title}</h2>}
             <div className="w-full flex flex-col justify-between gap-6">
               {value.text && <div className="w-full" dangerouslySetInnerHTML={{ __html: value.text }}></div>}
-              <div className="min-h-28">
-                <LoadNumbers arrayOfNumbers={value.session_numbers} />
-              </div>
+              {value.session_numbers && (
+                <div className="min-h-28">
+                  <LoadNumbers arrayOfNumbers={value.session_numbers} />
+                </div>
+              )}
+              {value.cta && (
+                <div className="w-fit">
+                  <BtnCallToAction 
+                    content={ value.cta.anchor }
+                    ctaLink={ value.cta.link }
+                    icon={ArrowIcon}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>
