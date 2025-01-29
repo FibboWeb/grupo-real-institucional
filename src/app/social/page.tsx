@@ -126,7 +126,7 @@ export default function SocialPage() {
         badge="Prêmio Semestral"
         title="Reconhecimento ao Comprometimento dos Colaboradores"
         content="A <strong>Biblioteca Ciclos Conhecimento</strong>é mais uma iniciativa inovadora do Grupo Real, criada para incentivar a leitura, a educação e o reaproveitamento de recursos. Com um acervo composto por <strong>livros, revistas e DVDs</strong>, oriundos de descartes e <strong>doações</strong>, o espaço está disponível para todos os colaboradores e visitantes da empresa. Não é necessário cadastro ou autorização para utilizar o serviço, basta escolher o material desejado e aproveitar."
-        imagePath={ytVideoImgMock}
+        youtubeEmbed="https://www.youtube.com/embed/cDX6va8NGgQ"
         border={false}
         color="fb_green_button"
         ctaLink="#"
