@@ -89,7 +89,7 @@ const InifiniteCarousel = ({
               {/* Verifica se item.content é uma string */}
               {typeof item.content === "string" ? (
                 // Renderiza o texto se for uma string
-                <div>
+                <div className="w-full whitespace-nowrap">
                   <p className="text-2xl text-white font-bold">{item.content}</p>
                 </div>
               ) : (
