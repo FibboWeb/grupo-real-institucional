@@ -122,26 +122,29 @@ export default function SliderNavigational({ categories, title, text, isNoticias
           >
             {categories.map((category) => (
               <div key={category.id} className="flex flex-col mx-auto gap-6 w-[140px] min-h-[140px] px-8">
-                  
                 {category.url && (
                   <Link href={category.url} className="flex justify-center">
-                  <Image
-                    alt={category.label}
-                    src={category.image_url}
-                    width={220}
-                    height={220}
-                    className={"h-56 bg-center object-cover rounded-2xl"}
-                  />
-                </Link>) : (
-                  <Link
-                  href={category.url}
-                  className="flex w-full justify-center hover:text-fb_blue text-fb_blue-main hover:no-underline mt-6"
-                >
-                  <h3 className="text-lg font-semibold text-fb_blue-main text-center">{category.label}</h3>
-                </Link>
+                    <Image
+                      alt={category.label}
+                      src={category.image_url}
+                      width={220}
+                      height={220}
+                      className={"h-56 bg-center object-cover rounded-2xl"}
+                    />
+                  </Link>
                 )}
-                { category.label && (
-                  <h3 className="text-lg font-semibold hover:text-fb_blue text-fb_blue-main text-center">{category.label}</h3>
+                {!category.url && category.label && (
+                  <Link
+                    href={category.url}
+                    className="flex w-full justify-center hover:text-fb_blue text-fb_blue-main hover:no-underline mt-6"
+                  >
+                    <h3 className="text-lg font-semibold text-fb_blue-main text-center">{category.label}</h3>
+                  </Link>
+                )}
+                {category.label && (
+                  <h3 className="text-lg font-semibold hover:text-fb_blue text-fb_blue-main text-center">
+                    {category.label}
+                  </h3>
                 )}
               </div>
             ))}
