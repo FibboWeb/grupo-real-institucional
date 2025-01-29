@@ -37,8 +37,7 @@ function SamplePrevArrow(props: ArrowProps) {
 
 interface Category {
   id: string;
-  url: string;
-  label: string;
+  label?: string;
   image_url: StaticImageData;
 }
 
@@ -105,36 +104,31 @@ export default function SliderNavigational({ categories }: SliderNavigationalPro
   return (
     <div>
       <div className="w-full flex flex-col gap-8">
-        <h2 className="text-5xl font-bold text-center text-fb_blue_main">Linha Nutrição</h2>
+        <h2 className="text-5xl font-bold text-center text-fb_blue_main">Conheça todas as marcas do grupo Real</h2>
         <div className="container px-10 lg:w-2/4 lg:px-2 text-center mx-auto">
           <p>
             Oferecemos uma ampla gama de produtos de nutrição animal, desenvolvidos para atender às necessidades
             específicas de cada segmento do mercado.
           </p>
         </div>
-        <div className={`mx-auto container max-w-full overflow-hidden`}>
+        <div className={`mx-auto container max-w-full overflow-hidden h-[300px]`}>
           <Slider
             {...settings}
             ref={sliderRef}
             className="max-w-[80%] flex justify-center items-center mx-auto cursor-grab"
           >
             {categories.map((category) => (
-              <div key={category.id} className="flex flex-col gap-6 w-56 h-56">
-                <Link href={category.url} className="flex justify-center">
+              <div key={category.id} className="flex flex-col mx-auto gap-6 w-[140px] min-h-[140px] px-8">
                   <Image
                     alt={category.label}
                     src={category.image_url}
-                    width={220}
-                    height={220}
-                    className={"h-56 bg-center object-cover rounded-2xl"}
+                    width={140}
+                    height={140}
+                    className={"h-56 bg-center object-contain object-center rounded-2xl w-full"}
                   />
-                </Link>
-                <Link
-                  href={category.url}
-                  className="flex w-full justify-center hover:text-fb_blue text-fb_blue-main hover:no-underline mt-6"
-                >
-                  <h3 className="text-lg font-semibold text-fb_blue-main text-center">{category.label}</h3>
-                </Link>
+                  { category.label && (
+                    <h3 className="text-lg font-semibold hover:text-fb_blue text-fb_blue-main text-center">{category.label}</h3>
+                  )}
               </div>
             ))}
           </Slider>
