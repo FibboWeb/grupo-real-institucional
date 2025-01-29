@@ -6,24 +6,19 @@ export interface CardProductPropsAPI {
         node: {
           id: string;
           camposLinhas: {
-            gradeProdutos: (
-              | {
-                fundoTag: string | null;
-                linkProduto: string | null;
-                linkTag: string | null;
-                peso: string | null;
-                textoTag: string | null;
-                titulo: string | null;
-                imagem:
-                  | {
-                    node: {
-                      link: string;
-                    };
-                  }
-                  | null;
-              }
-              | null
-            );
+            gradeProdutos: {
+              fundoTag: string | null;
+              linkProduto: string | null;
+              linkTag: string | null;
+              peso: string | null;
+              textoTag: string | null;
+              titulo: string | null;
+              imagem: {
+                node: {
+                  link: string;
+                };
+              } | null;
+            } | null;
           };
         };
       }[];
