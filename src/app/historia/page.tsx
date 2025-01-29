@@ -6,6 +6,13 @@ export default async function Historia() {
   const queriedLastPostsEventos = await getLastPostsEventos();
   const fetchedLastPostsEventos = queriedLastPostsEventos.props.nodes;
   function CardSection({ children }: { children: React.ReactNode }) {
+    return (
+      <section className="max-w-full">
+        <div className="fb_container overflow-hidden">{children}</div>
+      </section>
+    );
+  }
+
   return (
     <div className="relative mt-36">
       <CardSection>
