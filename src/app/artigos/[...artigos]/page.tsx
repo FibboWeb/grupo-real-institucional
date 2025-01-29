@@ -22,7 +22,7 @@ export default async function ArtigosPage({ params }) {
       <Breadcrumb
         activeClasses="text-fb_gray_bread"
         containerClasses="flex py-5"
-        listClasses="mx-2 font-bold text-fb_gray_bread hover:text-fb_blue duration-300 "
+        listClasses="mx-2 font-bold text-fb_gray_bread hover:text-fb_blue duration-300"
         itemName={post.title}
         capitalizeLinks
       />

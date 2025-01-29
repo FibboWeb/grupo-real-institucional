@@ -9,11 +9,10 @@ import { notFound } from "next/navigation";
 export default async function CategoryPage({ params, searchParams }) {
   const page = parseInt(searchParams.page || "1");
   const postsPerPage = 6;
-  const categorySlug = await params.categoria[0];
+  const categorySlug = params.categoria[params.categoria.length - 1];
   const category = await fetchCategoryId(categorySlug);
   const categoryId = category.categoryId;
   const isArtigos = category.categoryName === "Artigos" ? true : false;
-  const isNoticias = categorySlug === "noticias" ? true : false;
 
   if (!categorySlug) {
     return notFound();
@@ -29,11 +28,11 @@ export default async function CategoryPage({ params, searchParams }) {
         listClasses="mx-2 font-bold text-fb_gray_bread hover:text-fb_blue duration-300 "
         capitalizeLinks
       />
-      <div className="hero-category bg-fb_category_image bg-no-repeat bg-cover bg-center h-56 xl:h-60 rounded-2xl mb-12">
-        <div className="w-full h-full bg-black bg-opacity-60 flex justify-center items-center rounded-2xl">
-          <h1 className="font-bold text-4xl lg:text-5xl text-white">
-            {!isNoticias ? category.categoryName : "40 Anos"}
-          </h1>
+      <div
+        className={`hero-category bg-fb_category_image bg-no-repeat bg-cover bg-center h-56 xl:h-60 rounded-2xl mb-12`}
+      >
+        <div className={`w-full h-full bg-black bg-opacity-40 flex justify-center items-center rounded-2xl`}>
+          <h1 className="font-bold text-4xl lg:text-5xl text-white">{category.categoryName}</h1>
         </div>
       </div>
       <div className="category-content flex flex-col lg:items-start lg:flex-row w-full gap-4 xl:gap-24 mb-5">
@@ -54,7 +53,7 @@ export default async function CategoryPage({ params, searchParams }) {
                   postDescription={{ __html: post.content.rendered }}
                   postDate={post.date}
                   postAuthor={post.author_post_details.name}
-                  postAuthorLink={`author/${post.author_post_details.slug}`}
+                  postAuthorLink={`${post.author_post_details.slug}`}
                 />
               ))
             )}

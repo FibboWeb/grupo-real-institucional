@@ -7,18 +7,30 @@ export async function fetchCategoryId(slug) {
 
   const data = await res.json();
   if (data.length > 0) {
+    const parentCategory = data[0];
+    const subcategoriesRes = await fetch(`${process.env.WP_URL_API}categories?parent=${parentCategory.id}`);
+
+    if (!subcategoriesRes.ok) {
+      throw new Error("Erro ao buscar subcategorias");
+    }
+
+    const subcategories = await subcategoriesRes.json();
+    const subcategoryIds = subcategories.map((sub) => sub.id);
+
     return {
-      categoryId: data[0].id,
-      categoryName: data[0].name,
+      categoryId: [parentCategory.id, ...subcategoryIds],
+      categoryName: parentCategory.name,
     };
   }
 
   throw new Error("Categoria não encontrada");
 }
 
-export async function fetchPosts(categoryId, page = 1, postsPerPage = 6) {
+export async function fetchPosts(categoryIds, page = 1, postsPerPage = 6) {
+  const categoryIdsString = Array.isArray(categoryIds) ? categoryIds.join(",") : categoryIds;
+
   const res = await fetch(
-    `${process.env.WP_URL_API}posts?categories=${categoryId}&per_page=${postsPerPage}&page=${page}&_embed=author,wp:featuredmedia`,
+    `${process.env.WP_URL_API}posts?categories=${categoryIdsString}&per_page=${postsPerPage}&page=${page}&_embed=author,wp:featuredmedia`,
     {
       next: { revalidate: 6 },
     },
