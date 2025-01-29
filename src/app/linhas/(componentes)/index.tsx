@@ -6,7 +6,6 @@ export default async function GridProduct({ slug }) {
   if (Array.isArray(slug)) {
     slug = slug[0]; // Pega o primeiro valor caso seja um array
   }
-  
   if (slug === "real-h") {
     products = await getProducts(["linha-nutricao", "linha-saude"]);
   } else if (slug === "cmr") {
