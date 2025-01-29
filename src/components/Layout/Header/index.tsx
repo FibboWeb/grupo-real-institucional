@@ -17,7 +17,7 @@ async function Header() {
               <Image src={logo} alt="Logo da empresa" width={140} height={70} loading="eager" />
             </Link>
           </div>
-          <Menu  />
+          <Menu />
         </div>
       </div>
     </header>

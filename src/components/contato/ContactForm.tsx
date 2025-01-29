@@ -52,7 +52,7 @@ const ContactForm = () => {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold">Formulário de Contato</h1>
+      <h1 className="text-3xl font-bold">Entre em contato conosco</h1>
       <p className="text-muted-foreground mb-4">Entre em contato com o Grupo Real.</p>
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Campo Nome */}

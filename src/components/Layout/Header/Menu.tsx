@@ -28,8 +28,6 @@ export interface MenuNode {
 export interface MenuItems {
   node: MenuNode;
 }
-
-
 const menuSustentabilidade = [
   {
     link: "/ambiental",
@@ -37,11 +35,11 @@ const menuSustentabilidade = [
   },
   {
     anchor: "Social",
-    link: "/social",
+    link: "/ciclos-social",
   },
   {
     anchor: "Transparência",
-    link: "/transparencia",
+    link: "/ciclos-transparencia",
   },
 ];
 
@@ -73,10 +71,6 @@ export default function Menu() {
 
   const handleMouseLeave = () => {
     setActiveMenu(null); // Fecha o menu
-  };
-
-  const handleMouseLeaveSubMenu = () => {
-    setActiveDropdown(null); // Fecha o menu
   };
 
   return (
@@ -126,33 +120,31 @@ export default function Menu() {
                     className={`w-96 top-3/4 bg-white border absolute sub-menu px-3 py-4 ${activeMenu === item.node.id ? "block" : "hidden"} transition-opacity duration-400 left-1/2 transform -translate-x-1/2 rounded-md`}
                   >
                     {item.node.childItems?.edges?.map((subMenu) => (
-                      <li 
-                          key={`${subMenu.node.id}-sub-menu`} 
-                          className="py-2 px-3"
-                          onMouseEnter={() => handleMouseEnterSubMenu(subMenu.node.id)}
-                          onMouseLeave={handleMouseLeaveSubMenu} 
-                          >
-                        <a className="relative flex text-fb_blue_main hover:text-fb_blue duration-300" href={subMenu.node.url}>
-                          {subMenu.node.label} {subMenu.node?.edges && subMenu.node?.edges.length > 0 && (
-                            <div className="relative">
+                      <li key={subMenu.node.id} className="py-2 px-3">
+                        <a className="flex text-fb_blue_main hover:text-fb_blue duration-300" href={subMenu.node.url}>
+                          {subMenu.node.label}{" "}
+                          {subMenu.node?.edges && subMenu.node?.edges.length > 0 && (
+                            <>
                               <span
-                                className={`flex items-center cursor-pointer transition-all duration-300 ${ activeDropdown === subMenu.node.id ? "rotate-180 " : ""}`}
+                                className={`flex items-center cursor-pointer transition-all duration-300 ${activeMenu === subMenu.node.id ? "rotate-180 " : ""}`}
                               >
                                 <ChevronDown />
                               </span>
-                              <ul className={`absolte sub-sub-menu ${activeDropdown === subMenu.node.id ? "block" : "hidden"} transition-opacity duration-400`}>
+                              <ul
+                                className={`sub-sub-menu ${activeMenu === subMenu.node.id ? "block" : "hidden"} transition-opacity duration-400`}
+                              >
                                 {subMenu.node?.edges?.map((subSubMenu) => (
-                                  <li 
-                                    key={subSubMenu.id}
-                                    className="py-2 px-3"
-                                  >
-                                    <a className="text-fb_blue_main hover:text-fb_blue duration-300" href={subSubMenu.url}>
+                                  <li key={subSubMenu.id} className="py-2 px-3">
+                                    <a
+                                      className="text-fb_blue_main hover:text-fb_blue duration-300"
+                                      href={subSubMenu.url}
+                                    >
                                       {subSubMenu.label}
                                     </a>
                                   </li>
                                 ))}
                               </ul>
-                            </div>
+                            </>
                           )}
                         </a>
                       </li>
