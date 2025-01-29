@@ -4,10 +4,10 @@ import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
 
-import placeholder from "@/public/images/img-teste.jpeg"
+import placeholder from "@/public/images/img-teste.jpeg";
 
 type ImageProductProps = {
-  src:  string | StaticImageData;
+  src: string | StaticImageData;
   width?: number;
   height?: number;
   alt: string;
@@ -65,7 +65,7 @@ export function TitleProduct({ nomeProduto }: TitleProductProps) {
 function DescriptionProduct({ descriptionProduct }: descriptionProductProps) {
   return (
     <>
-      <div className="text-base leading-5" dangerouslySetInnerHTML={{ __html: descriptionProduct}}/>
+      <div className="text-base leading-5" dangerouslySetInnerHTML={{ __html: descriptionProduct }} />
     </>
   );
 }
@@ -80,32 +80,38 @@ function LinkProduct({ children, link }: LinkProductProps) {
   );
 }
 
-export default function CardProduct({ product }: { product: any[] }) { // Ajustar a tipagem da prop
+export default function CardProduct({ product }: { product: any[] }) {
+  // Ajustar a tipagem da prop
 
-  const productList = product.flat()
+  const productList = product.flat();
   if (product) {
     return (
       <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-8">
-        {productList.map((item, index) => ( // Mapear o array de produtos
+        {productList.map(
+          (
+            item,
+            index, // Mapear o array de produtos
+          ) => (
             <div key={index} className="w-full lg:w-64 h-auto flex flex-col gap-8 items-center">
-            <LinkProduct link={"#"}>
-              {/* Acessar as propriedades do item */}
-              <ImageProduct src={item?.imagem?.node?.link || placeholder} alt="teste" /> 
-            </LinkProduct>
-            <div className="w-4/5 md:w-full flex flex-col gap-2">
-              <LinkProduct link={item?.linkProduto ? item?.linkProduto : "#"}>
-                <BadgeCategorie>{item?.titulo}</BadgeCategorie>
+              <LinkProduct link={"#"}>
+                {/* Acessar as propriedades do item */}
+                <ImageProduct src={item?.imagem?.node?.link || placeholder} alt="teste" />
               </LinkProduct>
-              <LinkProduct link={item?.linkProduto ? item?.linkProduto : "#"}>
-                <TitleProduct nomeProduto={item?.titulo} />
-                <DescriptionProduct descriptionProduct={item?.peso ? item?.peso : ""} />
-              </LinkProduct>
+              <div className="w-4/5 md:w-full flex flex-col gap-2">
+                <LinkProduct link={item?.linkProduto ? item?.linkProduto : "#"}>
+                  <BadgeCategorie>{item?.titulo}</BadgeCategorie>
+                </LinkProduct>
+                <LinkProduct link={item?.linkProduto ? item?.linkProduto : "#"}>
+                  <TitleProduct nomeProduto={item?.titulo} />
+                  <DescriptionProduct descriptionProduct={item?.peso ? item?.peso : ""} />
+                </LinkProduct>
+              </div>
             </div>
-          </div>
-        ))}
+          ),
+        )}
       </div>
     );
   } else {
-    NotFound
+    NotFound;
   }
 }

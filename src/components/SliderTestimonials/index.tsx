@@ -64,7 +64,9 @@ export default function SliderTestimonials({ testimonial }: testimonialCardProps
               <div key={index} className="w-1/2 cursor-grab">
                 <div className="flex flex-col gap-9 border border-[#CCCCCC] rounded-lg px-7 lg:px-14 pt-14 pb-8 group bg-custom-gradient duration-500 transition-colors">
                   <div className="w-full">
-                    <p className="text-base text-[#666666] transition-colors group-hover:text-white duration-200">{item.testimonial}</p>
+                    <p className="text-base text-[#666666] transition-colors group-hover:text-white duration-200">
+                      {item.testimonial}
+                    </p>
                   </div>
                   <div className="w-full flex justify-between">
                     <div>

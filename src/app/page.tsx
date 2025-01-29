@@ -51,9 +51,7 @@ export default async function Home() {
           <h2 className="text-center text-fb_blue_main text-4xl font-bold py-12">Nossas marcas</h2>
         </div>
         <div>
-            <InfoCards 
-              values={nossasMarcasInfos}
-            />
+          <InfoCards values={nossasMarcasInfos} />
         </div>
       </section>
       <section>

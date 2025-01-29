@@ -17,7 +17,7 @@ type ValuesSectionProps = {
       link: string;
       anchor: string;
     }
-    reverter?: boolean
+    reverter?: boolean;
   }[];
 };
 
