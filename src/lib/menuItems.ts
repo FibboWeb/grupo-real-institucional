@@ -1,15 +1,17 @@
-const menuItems = [
+import MenuNode, { MenuItems } from "@/components/Layout/Header/Menu";
+
+const menuItems: MenuItems[] = [
   {
     node: {
       id: "1",
-      url: "/institucional",
+      url: "#",
       label: "Institucional",
       childItems: {
         edges: [
           {
             node: {
               id: "1-1",
-              url: "/grupo-real",
+              url: "/quem-somos",
               label: "Grupo Real",
             },
           },
@@ -27,43 +29,29 @@ const menuItems = [
   {
     node: {
       id: "2",
-      url: "/produtos",
-      label: "Produtos",
+      url: "#",
+      label: "Nossas Marcas",
       childItems: {
         edges: [
           {
             node: {
               id: "2-1",
-              url: "/linha-nutricao",
-              label: "Linha Nutrição",
+              url: "/linhas/real-h",
+              label: "Linha Real H",
             },
           },
           {
             node: {
               id: "2-2",
-              url: "/linha-saude",
-              label: "Linha Saúde",
+              url: "/linhas/cmr",
+              label: "Linha CMR",
             },
           },
           {
             node: {
               id: "2-3",
-              url: "/homeopet",
-              label: "Homeopet",
-            },
-          },
-          {
-            node: {
-              id: "2-4",
-              url: "/linha-equino-h",
-              label: "Linha Equino H",
-            },
-          },
-          {
-            node: {
-              id: "2-5",
-              url: "/linha-md",
-              label: "Linha MD",
+              url: "/linhas/homeopet",
+              label: "Linha Homeopet",
             },
           },
         ],
@@ -73,7 +61,7 @@ const menuItems = [
   {
     node: {
       id: "3",
-      url: "/informacoes",
+      url: "#",
       label: "Informações",
       childItems: {
         edges: [
@@ -87,7 +75,7 @@ const menuItems = [
           {
             node: {
               id: "3-2",
-              url: "/artigos-cientificos",
+              url: "/noticias/categoria/artigos",
               label: "Artigos Científicos",
             },
           },
@@ -112,14 +100,6 @@ const menuItems = [
   {
     node: {
       id: "4",
-      url: "/#nossas-marcas",
-      label: "Nossas Marcas",
-      childItems: null,
-    },
-  },
-  {
-    node: {
-      id: "5",
       url: "/contato",
       label: "Contato",
       childItems: null,

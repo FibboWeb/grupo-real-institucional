@@ -1,5 +1,6 @@
 import CategoryList from "@/components/CategoryList";
 // import SearchBox from "@/components/SearchBox";
+// import SearchBox from "@/components/SearchBox";
 import PostsMosView from "@/components/PostsMosView";
 import BannerSidebar from "@/components/Layout/BannerSidebar";
 
