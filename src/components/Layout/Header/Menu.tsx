@@ -71,7 +71,7 @@ export default function Menu() {
   };
 
   const handleMouseLeave = () => {
-    setActiveMenu(null); // Fecha o menu
+    setActiveMenu(null);
   };
 
   return (
