@@ -7,10 +7,10 @@ import SocialShare from "@/components/SocialShare";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import "./post.css";
+import "../../noticias/[...post]/post.css";
 
-export default async function PostPage({ params }) {
-  const postSlug = params.post[0];
+export default async function ArtigosPage({ params }) {
+  const postSlug = await params.artigos[0];
   const fetchedPost = await getPostDetails(postSlug);
   const post = fetchedPost.props.post;
 
@@ -22,7 +22,7 @@ export default async function PostPage({ params }) {
       <Breadcrumb
         activeClasses="text-fb_gray_bread"
         containerClasses="flex py-5"
-        listClasses="mx-2 font-bold text-fb_gray_bread hover:text-fb_blue duration-300 "
+        listClasses="mx-2 font-bold text-fb_gray_bread hover:text-fb_blue duration-300"
         itemName={post.title}
         capitalizeLinks
       />
@@ -57,7 +57,7 @@ export default async function PostPage({ params }) {
                 ? post.featuredImage?.node.sourceUrl
                 : "/images/banners/bg-categories.webp"
             }
-            blogContext={"noticias/"}
+            blogContext={"artigos/"}
           />
           <AuthorBox
             authorName={post.author.node.name || "RealH"}
