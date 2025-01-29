@@ -1,6 +1,9 @@
 import { isArray } from "@apollo/client/utilities";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import BtnCallToAction from "../Buttons/BtnCallToAction/BtnCallToAction";
+import ArrowIcon from "@/public/icons/arrow-right.svg";
+
 
 type VideoBackgroundProps = {
   children: React.ReactNode;
@@ -56,18 +59,12 @@ const VideoBackground = ({ children, src_video, ctaLinks }: VideoBackgroundProps
             <div>
               <div className="flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-8">
                 {ctaLinks.map((cta, index) => (
-                  <button
-                    key={index}
-                    className={`transition duration-150 group ${cta.btn_background_color === "bg-blue-600" ? ` bg-white hover:bg-[#1986C1] text-fb_blue hover:text-white hover:outline-3 hover:outline-fb_blue` : `bg-[#1986C1] hover:bg-white hover:text-fb_blue`} flex flex-row items-center justify-center px-2 py-1 w-fit rounded`}
-                  >
-                    <Link href={cta.link} className={`font-semibold py-3 px-6 rounded-md transition flex-nowrap`}>
-                      {cta.anchor}
-                    </Link>
-                    <ArrowRight
-                      size={24}
-                      className={`rounded-full font-bold text-fb_blue bg-[#CCCCCC] ${cta.btn_background_color.includes("bg-blue") ? `group-hover:bg-white group-hover:text-black` : `group-hover:bg-white group-hover:text-fb_blue`}`}
-                    />
-                  </button>
+                  <BtnCallToAction 
+                    key={ index }
+                    content={ cta.anchor }
+                    ctaLink={ cta.link }
+                    icon={ArrowIcon}
+                  />
                 ))}
               </div>
             </div>
