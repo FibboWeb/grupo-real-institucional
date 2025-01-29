@@ -1,16 +1,22 @@
-import { StaticImageData } from "next/image";
-import Image from "next/image";
-import Link from "next/link";
-import ArrowRightSVG from "../../../../public/images/arrow-right.svg";
+import Image, { StaticImageData } from "next/image";
 import style from "./index.module.css";
+import BtnCallToAction from "../Buttons/BtnCallToAction/BtnCallToAction";
 
 interface InfoSectionProps {
-  title: string;
+  heroBgImage?: string;
+  badge?: string;
+  title?: string;
   content: string;
   ctaLink?: string;
-  imagePath: StaticImageData;
+  imagePath?: StaticImageData;
+  imageMidFullContainer?: boolean;
+  youtubeEmbed?: string;
   reverseMobile?: boolean;
   reverseDesktop?: boolean;
+  border?: boolean;
+  color?: "fb_blue_button" | "fb_green_button";
+  contentButton?: string;
+  centerButton?: boolean;
 }
 
 /**
@@ -28,42 +34,95 @@ interface InfoSectionProps {
  *      content="<p>conteudo em html</p>"
  *      imagePath={ImageTeste} // imagem importada  do public
  *      ctaLink="#"
+ *      youtubeEmbed="https://www.youtube.com/embed/VIDEO_ID"
+ *      centerButton={true}
  *    />
  *
  * @param {Object} props - Propriedades do componente.
+ * @param {string} [props.heroBgImage] - URL da imagem de background da seção.
+ * @param {string} [props.badge] - Texto do badge que aparece acima do título.
  * @param {string} props.title - O titulo do componente.
  * @param {string} props.content - conteúdo em html que será exibido no componente.
  * @param {string} [props.ctaLink] - Link para o botão de CTA.
+ * @param {string} [props.youtubeEmbed] - Link para o embed do vídeo do youtube.
  * @param {StaticImageData} [props.imagePath] - Imagem principal do componente.
- * @param {boolean} [props.reverseMobile] - Controla a direção da coluna no componente na versão mobile
- * @param {boolean} [props.reverseDesktop] - Controla a direção do componente na versão desk
+ * @param {boolean} [props.imageMidFullContainer] - Se true, a imagem ocupará toda a largura da tela.
+ * @param {boolean} [props.reverseMobile] - Controla a direção da coluna no componente na versão mobile.
+ * @param {boolean} [props.reverseDesktop] - Controla a direção do componente na versão desk.
+ * @param {boolean} [props.border] - Se true, a imagem terá uma borda.
+ * @param {"fb_blue_button" | "fb_green_button"} [props.color] - Cor do botão de CTA.
+ * @param {string} [props.contentButton] - Texto do botão de CTA.
+ * @param {boolean} [props.centerButton=false] - Controla a centralização do botão de CTA.
  *
  * @returns {JSX.Element} O botão renderizado.
  */
 
 function InfoSection({
+  heroBgImage,
+  badge,
   title,
   content,
   ctaLink,
   imagePath,
+  imageMidFullContainer = false,
+  youtubeEmbed,
   reverseMobile = false,
   reverseDesktop = false,
+  border = true,
+  color = "fb_blue_button",
+  contentButton = "Leia mais",
+  centerButton = false,
 }: InfoSectionProps) {
   const MobileClass = reverseMobile ? "flex-col" : "flex-col-reverse";
   const desktopClass = reverseDesktop ? "sm:flex-row" : "sm:flex-row-reverse";
   const paddingClass = reverseDesktop ? "sm:pl-12" : "sm:pr-12";
+  const divBar = color == "fb_blue_button" ? "bg-[rgba(3,29,58,0.90)]" : "bg-fb_green";
+  const buttonAlignment = centerButton ? "justify-center" : "justify-start";
+
   return (
-    <>
-      <div className="w-full h-full container mx-auto">
-        <div className={`flex ${desktopClass} ${MobileClass} sm:p-0 p-5`}>
-          <div className={`flex-1 flex ${reverseDesktop ? 'justify-start' : 'justify-end'} items-center rounded-2xl p-2`}>
-            <Image src={imagePath} alt="" className="rounded-2xl shadow-shadow_image_info_section" />
-          </div>
-          <div className={`flex flex-col justify-center flex-1 pb-12 pt-12 gap-6 ${paddingClass}`}>
+    <div className={`${heroBgImage ? `${heroBgImage} relative bg-center bg-cover` : ""}`}>
+      {heroBgImage && <div className="absolute top-0 left-0 w-full h-full bg-white opacity-85 z-0"></div>}
+      <div className={`w-full h-full ${!imageMidFullContainer ? "fb_container mx-auto" : ""} relative`}>
+        <div
+          className={`flex flex-wrap lg:flex-nowrap ${desktopClass} ${MobileClass} ${imageMidFullContainer ? "" : "py-4 lg:py-8"}`}
+        >
+          {youtubeEmbed ? (
+            <div className="flex-1 flex justify-center items-center p-2 aspect-[16/9] w-full h-auto">
+              <iframe
+                loading="lazy"
+                className="rounded-tl-[16px] rounded-br-[16px] overflow-hidden aspect-[16/9] w-full h-auto"
+                src={youtubeEmbed}
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
+          ) : (
+            <div
+              className={`flex-1 flex ${reverseDesktop ? "justify-start" : "justify-end"} items-center rounded-2xl ${!imageMidFullContainer ? "p-2" : "h-inherit w-full"}`}
+            >
+              <Image
+                src={imagePath}
+                alt=""
+                className={`${border ? "shadow-shadow_image_info_section" : ""} ${imageMidFullContainer ? "h-full w-full object-cover" : "rounded-2xl"}`}
+              />
+            </div>
+          )}
+
+          <div
+            className={`flex flex-col justify-center flex-1 pb-12 pt-12 gap-6 ${paddingClass} ${imageMidFullContainer ? "fb_container mx-auto p-0 sm:px-8" : ""}`}
+          >
             <div>
+              {badge && color == "fb_green_button" && (
+                <div className="flex gap-1 py-1">
+                  <Image src={"/icons/plant-sprout.svg"} width={"12"} height={"12"} alt="broto de planta"></Image>
+                  <div className="text-xl text-fb_green text-uppercase font-semibold">{badge}</div>
+                </div>
+              )}
               <h2 className="font-semibold text-3xl text-[var(--blue-main)]">{title}</h2>
-              <div className="h-1 w-20 bg-[rgba(3,29,58,0.90)] mt-4 mb-4"></div>
-              <div className="text-lg	font-normal	text-[var(--blue-main)]">
+              <div className={`h-1 w-20 ${divBar} mt-4 mb-4`}></div>
+              <div className="text-lg font-normal text-[var(--blue-main)]">
                 <div
                   className={style.containerContent}
                   dangerouslySetInnerHTML={{
@@ -73,26 +132,14 @@ function InfoSection({
               </div>
             </div>
             {ctaLink && (
-              <div className="flex sm:justify-start justify-center">
-                <Link
-                  href={ctaLink}
-                  className="inline-flex gap-4 bg-blue_button py-3 px-4 rounded text-white	text-base font-semibold uppercase"
-                >
-                  <span>Ler mais</span>
-                  <Image
-                    src={ArrowRightSVG}
-                    alt="Arrow Icon"
-                    width={24}
-                    height={24}
-                    className="bg-white rounded-full p-1"
-                  />
-                </Link>
+              <div className={`flex ${buttonAlignment}`}>
+                <BtnCallToAction ctaLink={ctaLink} content={contentButton} color={color} />
               </div>
             )}
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

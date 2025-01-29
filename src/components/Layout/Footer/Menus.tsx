@@ -25,7 +25,16 @@ interface MenusProps {
 }
 
 export function Menus({ menusList }: MenusProps) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [openMenuIndex, setOpenMenuIndex] = useState<number | null>(null);
+
+  const toggleMenu = (index: number) => {
+    if (openMenuIndex === index) {
+      setOpenMenuIndex(null);
+    } else {
+      setOpenMenuIndex(index);
+    }
+  };
+
   return (
     <div className="container mx-auto w-100 flex lg:flex-row flex-col justify-between">
       {menusList.map((menu, index) => {
@@ -35,21 +44,21 @@ export function Menus({ menusList }: MenusProps) {
         return (
           <div className="menu-section mt-2 lg:mt-0" key={index}>
             <p
-              className="flex text-xl justify-between text-fb_blue font-bold uppercase py-2 lg:p-0 w-full text-left lg:mb-2"
-              onClick={() => setIsOpen(!isOpen)}
+              className="flex text-xl justify-between text-fb_blue font-bold uppercase rounded-lg py-2 px-2 lg:px-0 lg:bg-transparent bg-[rgba(1,1,1,0.35)] lg:p-0 w-full text-left lg:mb-2"
+              onClick={() => toggleMenu(index)}
             >
               {menuName}
               <span
-                className={`flex items-center cursor-pointer lg:hidden transition-all duration-300 ${!isOpen ? "rotate-0" : "rotate-180"}`}
+                className={`flex items-center cursor-pointer lg:hidden transition-all duration-300 ${openMenuIndex === index ? "rotate-180" : "rotate-0"}`}
               >
                 <ChevronDown />
               </span>
             </p>
             <ul
-              className={`${isOpen ? "max-h-[500px]" : "max-h-0"} lg:max-h-full overflow-hidden transition-all duration-500 ease-in-out`}
+              className={`${openMenuIndex === index ? "max-h-[500px]" : "max-h-0"} lg:max-h-full overflow-hidden transition-all duration-500 ease-in-out`}
             >
               {menuItems.map((item) => (
-                <li className="mb-2" key={item.node.id}>
+                <li className="mb-2 px-5 lg:px-0" key={item.node.id}>
                   <Link className="text-lg text-white font-bold hover:text-fb_blue duration-300" href={item.node.url}>
                     {item.node.label}
                   </Link>

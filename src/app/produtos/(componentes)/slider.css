@@ -1,0 +1,11 @@
+& .slick-list {
+  margin: 0 -7px;
+
+  & .slick-slide > div {
+    padding: 10px 10px;
+  }
+  slick-arrow .slick-next,
+  .slick-prev {
+    display: none;
+  }
+}

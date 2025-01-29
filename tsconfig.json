@@ -5,7 +5,7 @@
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
-    "noImplicitAny": false, // Permite usar `any` sem erro
+    "noImplicitAny": false,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
@@ -22,7 +22,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "@/public/*": ["./public/*"]
-    },
+    }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "next.config.ts", "declarations.d.ts"],
   "exclude": ["node_modules"]

@@ -1,0 +1,74 @@
+.post-content h2 {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6 {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.post-content p {
+  margin-bottom: 20px;
+}
+
+.post-content div {
+  height: 100%;
+}
+
+.post-content a {
+  transition: all 0.25s ease;
+  color: var(--blue-button);
+}
+
+.post-content a:hover {
+  opacity: 0.8;
+}
+
+.post-content p:has(img) {
+  text-align: center;
+}
+
+.post-content .gizmo-bot-avatar {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  border: none;
+  border-radius: 0px !important;
+  width: 80%;
+}
+
+.post-content .gizmo-bot-avatar p {
+  width: 80%;
+}
+
+@media (min-width: 768px) {
+  .post-content .gizmo-bot-avatar {
+    width: 100%;
+  }
+
+  .post-content .gizmo-bot-avatar p {
+    width: 100%;
+  }
+}
+
+p:has(iframe) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-block: 15px;
+}
+
+.post-content iframe,
+.post-content img {
+  border-radius: 8px;
+  margin-block: 15px;
+}
+
+.post-content .emoji {
+  width: 60px;
+  height: 60px;
+}

@@ -10,6 +10,8 @@ export default {
   theme: {
     extend: {
       colors: {
+        backgroundPage: "var(--background-page)",
+        textDark: "hsl(var(--text-dark))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
@@ -51,9 +53,10 @@ export default {
           "5": "hsl(var(--chart-5))",
         },
         fb_green: "var(--green)",
+        fb_green_button: "var(--green-button)",
         fb_blue: "var(--blue)",
         fb_blue_main: "var(--blue-main)",
-        blue_button: "var(--blue-button)",
+        fb_blue_button: "var(--blue-button)",
         fb_text_gray: "var(--text-gray)",
         fb_gray: "var(--gray)",
         fb_gray_bread: "var(--gray-bread)",
@@ -65,7 +68,7 @@ export default {
         fb_transition_ease: "all 0.25s ease",
       },
       spacing: {
-        'fb_space-section': 'var(--fb_space-section)',
+        "fb_space-section": "var(--fb_space-section)",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -75,13 +78,49 @@ export default {
       backgroundImage: {
         "footer-image": "url('/images/bg-footer.webp')",
         "newsletter-image": "url('/images/bg-newsletter.webp')",
-		    'fb_gradient': 'linear-gradient(-35deg, #031D3A 0%, #126597 100%)',
-        'banner-cta': "url('/images/banner-mais-background-blue-_1_.webp')",
+        fb_gradient: "linear-gradient(-35deg, #031D3A 0%, #126597 100%)",
+        "banner-cta": "url('/images/banner-mais-background-blue-_1_.webp')",
         "hero-image": "url('/images/bg-hero-section.webp')",
+        "partner-background": "url('/images/bg-ambiental.webp')",
+        fb_category_image: "url('/images/banners/bg-categories.webp')",
+        "hero-green-leafs": "url('/images/hero-green-leafs.jpg')",
+        "hero-section-gray-palms": "url('/images/hero-section-gray-palms.jpg')",
+        "hero-section-gray": "url('/images/hero-section-gray.jpg')",
+        "green-featured": "url('/images/transparencia/green-bg-featured.webp')",
+        "ambiental-sustentaveis-bg": "url('/images/ambiental/bg-sustentaveis.webp')",
+        "bg-ciclos": "url('/images/ambiental/bg-ciclos.webp')",
+        "bg-investimento": "url('/images/ambiental/bg-investimento.webp')",
+        "bg-doacoes": "url('/images/ambiental/bg-doacoes.webp')",
+        fb_category_noticias: "url('/images/banners/banner-category-40-anos.webp')",
+        "hero-page-historia": "url('/images/historia/hero-historia.webp')",
       },
+
       boxShadow: {
+        custom_image: "0 0 10px rgba(0, 0, 0, 0.5)",
         custom_shadow: "0 0 4px 0 #00000040",
         shadow_image_info_section: "0px 5px 15px 0px rgba(0, 0, 0, 0.35)",
+      },
+      keyframes: {
+        "accordion-down": {
+          from: {
+            height: "0",
+          },
+          to: {
+            height: "var(--radix-accordion-content-height)",
+          },
+        },
+        "accordion-up": {
+          from: {
+            height: "var(--radix-accordion-content-height)",
+          },
+          to: {
+            height: "0",
+          },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
