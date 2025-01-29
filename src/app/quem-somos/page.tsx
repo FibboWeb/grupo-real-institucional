@@ -32,13 +32,13 @@ export default function PageAboutUs() {
     "“Aquilo que eu aprendi na juventude, vendo meu pai curar pessoas, hoje nós estamos aplicando nos rebanhos”, Claudio Martins Real, Presidente e Fundador da Real H. ";
   return (
     <section className="flex flex-col">
-      <HeroSection children={childrenHeroSection()} ctaLink={ctaLinkString} />
+      <HeroSection children={childrenHeroSection()} backgroundClass="bg-hero-quem-somos" />
       <section className="bg-backgroundPage pb-8 flex flex-col gap-5">
         <Depoiments content={conteudo} image={ClaudioImage} />
         <InfoSection
           title={infoSectionsContents.marcas.title}
           content={infoSectionsContents.marcas.content}
-          imagePath={infoSectionsContents.marcas.img}
+          youtubeEmbed="https://www.youtube.com/embed/ED_3lipxogY?si=-E2bf9nqCad3h8AV"
           reverseDesktop={infoSectionsContents.marcas.reverseDesktop}
           reverseMobile={infoSectionsContents.marcas.revereverseMobile}
         />
@@ -48,7 +48,6 @@ export default function PageAboutUs() {
         <InfoSection
           title={infoSectionsContents.fundadores.title}
           content={infoSectionsContents.fundadores.content}
-          ctaLink={infoSectionsContents.fundadores.ctaLink}
           imagePath={infoSectionsContents.fundadores.img}
           reverseDesktop={infoSectionsContents.fundadores.reverseDesktop}
           reverseMobile={infoSectionsContents.fundadores.revereverseMobile}

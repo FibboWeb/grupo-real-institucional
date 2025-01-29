@@ -6,7 +6,7 @@ export default function Timeline() {
       </div>
       <div>
         <iframe
-          src="https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1DgW4F78YaSwTeIKowg9WLKKe6Z0yqZow5CwGMDS2FDU&font=Default&lang=pt-br&initial_zoom=2&height=650"
+          src="https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1U1FKOpiZr_PwCJZ7hlca9nqWG0imRzZb976SPAR77WI&font=Default&lang=en&initial_zoom=2&height=650"
           width="100%"
           height="650"
           allowFullScreen

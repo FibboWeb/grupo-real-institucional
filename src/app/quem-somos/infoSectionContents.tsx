@@ -19,7 +19,6 @@ const infoSectionsContents = {
     title: "Fundadores",
     content:
       "<p>O  professor doutor Claudio Martins Real, com mais de 70 anos de experiência em veterinária, é um pioneiro da homeopatia no Brasil, presidente e fundador  da Real H, junto com os filhos Mário Renck Real e Marcelo Renck Real.</p><p>A empresa iniciou suas atividades em  fevereiro de 1985, no município de Ribas do Rio Pardo (MS), como loja de produtos veterinários.  Em 1986 o  Professor Doutor Claudio Martins Real  iniciou estudos e pesquisas sobre a mortandade de bovinos adultos. Na época o Mato Grosso do Sul enfrentava uma grande mortandade de vacas que dizimou milhares de cabeças no rebanho bovino. O fato causou graves prejuízos aos pecuaristas e a economia do Estado. Sendo assim, o cientista Claudio Real direcionou o foco de suas pesquisas em descobrir as verdadeiras causas e solucionar a mortalidade.</p>",
-    ctaLink: "https://realh.com.br/",
     img: FundadoresImg,
     reverseDesktop: true,
     revereverseMobile: false,
