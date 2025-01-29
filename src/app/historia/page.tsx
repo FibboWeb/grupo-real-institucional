@@ -18,12 +18,13 @@ export default async function Historia() {
     return (
         <div className='relative mt-36'>
             <CardSection>
-                    <Breadcrumb
-                        activeClasses="text-fb_gray_bread"
-                        containerClasses="flex py-5"
-                        listClasses="mx-2 font-bold text-fb_gray_bread hover:text-fb_blue duration-300 "
-                        capitalizeLinks
-                    />
+                <Breadcrumb
+                    activeClasses="text-fb_gray_bread"
+                    containerClasses="flex py-5"
+                    listClasses="mx-2 font-bold text-fb_gray_bread hover:text-fb_blue duration-300 "
+                    capitalizeLinks
+                    itemName={["40 anos"]}
+                />
             </CardSection>
             <CardSection>
                 <div className={`hero-category bg-hero-page-historia bg-no-repeat bg-cover bg-center h-56 xl:h-60 rounded-2xl`}></div>
