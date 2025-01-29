@@ -63,16 +63,25 @@ export default function SliderTestimonials({ testimonial }: testimonialCardProps
               <div key={index} className="w-1/2 cursor-grab">
                 <div className="flex flex-col gap-9 border border-[#CCCCCC] rounded-lg px-14 pt-14 pb-8 group bg-custom-gradient duration-500 transition-colors">
                   <div className="w-full">
-                    <p className="text-base text-[#666666] transition-colors group-hover:text-white duration-200">{item.testimonial}</p>
+                    <p className="text-base text-[#666666] transition-colors group-hover:text-white duration-200">
+                      {item.testimonial}
+                    </p>
                   </div>
                   <div className="w-full flex justify-between">
                     <div>
-                      <p className="text-3xl font-bold transition-colors group-hover:text-white duration-200">{item.name}</p>
-                      <p className="text-lg text-fb_blue transition-colors group-hover:text-white duration-200">{item.empresa}</p>
+                      <p className="text-3xl font-bold transition-colors group-hover:text-white duration-200">
+                        {item.name}
+                      </p>
+                      <p className="text-lg text-fb_blue transition-colors group-hover:text-white duration-200">
+                        {item.empresa}
+                      </p>
                     </div>
                     <div className="flex">
                       <Image alt="" src={"/author-icon.svg"} width={75} height={75} className="rounded-full" />
-                      <Quote size={24} className="text-white transition-colors group-hover:text-gray static bottom-0 duration-200" />
+                      <Quote
+                        size={24}
+                        className="text-white transition-colors group-hover:text-gray static bottom-0 duration-200"
+                      />
                     </div>
                   </div>
                 </div>

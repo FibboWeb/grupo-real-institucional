@@ -15,7 +15,7 @@ type ValuesSectionProps = {
     cta: {
       link: string;
       anchor: string;
-    }
+    };
   }[];
 };
 
@@ -41,7 +41,7 @@ type ValuesSectionProps = {
  * O componente renderiza uma seção com múltiplos valores, com um título, um ícone, um texto, uma imagem e um componente LoadNumbers.
  */
 function InfoCards({ values }: ValuesSectionProps) {
-  console.log(values)
+  console.log(values);
   return (
     <div className="w-full max-h-full">
       {values.map((value, index) => (
@@ -61,24 +61,24 @@ function InfoCards({ values }: ValuesSectionProps) {
             </Suspense>
           </div>
           <div className="w-full flex flex-col gap-6 lg:w-1/2">
-              {value.icon && <Image src={value.icon} alt={value.title} width={225} height={140} className="object-cover"/>}
-              {value.badge_text && <span className="bg-fb_blue text-white py-0.5 px-2 rounded-full w-fit">{value.badge_text}</span> }
-              {value.title && <h2 className="font-bold text-fb_blue_main text-3xl">{value.title}</h2>}
+            {value.icon && (
+              <Image src={value.icon} alt={value.title} width={225} height={140} className="object-cover" />
+            )}
+            {value.badge_text && (
+              <span className="bg-fb_blue text-white py-0.5 px-2 rounded-full w-fit">{value.badge_text}</span>
+            )}
+            {value.title && <h2 className="font-bold text-fb_blue_main text-3xl">{value.title}</h2>}
             <div className="w-full flex flex-col justify-between gap-6">
               {value.text && <div className="w-full" dangerouslySetInnerHTML={{ __html: value.text }}></div>}
             </div>
-              {value.cta && (
-                <div className="flex gap-6 justify-start">
-                  <Button className="flex py-3 px-4 bg-[#1986C1] hover:bg-white hover:text-fb_blue hover:outline hover:outline-1 hover:outline-fb_blue">
-                    <Link
-                      href={value.cta.link}
-                    >
-                      {value.cta.anchor}
-                    </Link>
-                    <ArrowRightCircle />
-                  </Button>
-                </div>
-              )}
+            {value.cta && (
+              <div className="flex gap-6 justify-start">
+                <Button className="flex py-3 px-4 bg-[#1986C1] hover:bg-white hover:text-fb_blue hover:outline hover:outline-1 hover:outline-fb_blue">
+                  <Link href={value.cta.link}>{value.cta.anchor}</Link>
+                  <ArrowRightCircle />
+                </Button>
+              </div>
+            )}
           </div>
         </div>
       ))}
