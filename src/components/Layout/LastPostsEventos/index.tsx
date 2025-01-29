@@ -89,9 +89,7 @@ function LastPostsEventos({ fetchedLastPosts }: LastPostsProps) {
         <div className="flex flex-col justify-between w-full lg:w-80 rounded-2xl bg-fb_gradient text-white min-h-80 lg:min-h-[440px] p-12">
           <div className="content">
             <h2 className="text-3xl font-bold">Eventos</h2>
-            <p className="pt-6">
-              Fique por dentro de tudo o que acontece nos eventos do Grupo Real...
-            </p>
+            <p className="pt-6">Fique por dentro de tudo o que acontece nos eventos do Grupo Real...</p>
           </div>
           <Link
             className="flex flex-row gap-6 items-center font-bold bg-fb_blue_button rounded-sm px-4 py-3 text-[15px] w-max duration-300 hover:bg-white hover:text-fb_blue_button group"

@@ -9,9 +9,9 @@ import img05 from "@/public/icons-slider/linha-05.webp";
 import imgMarca01 from "@/public/images/moca-e-cavalo.webp";
 import imgMarca02 from "@/public/images/mulher-segurando-cachorro.webp";
 import imgMarca03 from "@/public/images/veterinaria-e-fazendeiro-_1_.webp";
-import iconMarca01 from "@/public/images/logos/logo-real-h-colorido.webp"
-import iconMarca02 from "@/public/images/logos/homeopet-logo-colorido.webp"
-import iconMarca03 from "@/public/images/logos/logo-crm-colorido.webp"
+import iconMarca01 from "@/public/images/logos/logo-real-h-colorido.webp";
+import iconMarca02 from "@/public/images/logos/homeopet-logo-colorido.webp";
+import iconMarca03 from "@/public/images/logos/logo-crm-colorido.webp";
 
 ("");
 // Sessões dos valores
@@ -70,41 +70,38 @@ export const nossasMarcasInfos = [
   {
     title: "Seu resultado é o nosso compromisso",
     icon: iconMarca01,
-    text:
-      "Com quatro décadas de experiência, a REAL H se destaca no mercado de nutrição animal, oferecendo soluções eficazes e inovadoras.",
+    text: "Com quatro décadas de experiência, a REAL H se destaca no mercado de nutrição animal, oferecendo soluções eficazes e inovadoras.",
     ctaLink: "#",
     image: imgMarca01,
     badge_text: "NUTRIÇÃO",
     cta: {
       link: "#",
-      anchor: "IR PARA A LOJA"
-    }
+      anchor: "IR PARA A LOJA",
+    },
   },
   {
     title: "Cuidado de verdade pro seu pet é com a HomeoPet",
     icon: iconMarca02,
-    text:
-      "Com 15 anos de experiência, a Homeopet se destaca por oferecer soluções seguras e eficazes para a saúde dos pequenos animais. Nosso compromisso é promover o bem-estar e a qualidade de vida dos pets.",
+    text: "Com 15 anos de experiência, a Homeopet se destaca por oferecer soluções seguras e eficazes para a saúde dos pequenos animais. Nosso compromisso é promover o bem-estar e a qualidade de vida dos pets.",
     ctaLink: "#",
     image: imgMarca02,
     badge_text: "SAÚDE",
     cta: {
       link: "#",
-      anchor: "IR PARA A LOJA"
-    }
+      anchor: "IR PARA A LOJA",
+    },
   },
   {
     title: "Aqui seu ganho é REAL",
     icon: iconMarca03,
-    text:
-      "A CMR é uma marca que homenageia o legado do Prof. Dr. Claudio Martins Real. Com mais de 40 anos de experiência, oferecemos soluções que promovem a saúde e o bem-estar dos animais.",
+    text: "A CMR é uma marca que homenageia o legado do Prof. Dr. Claudio Martins Real. Com mais de 40 anos de experiência, oferecemos soluções que promovem a saúde e o bem-estar dos animais.",
     ctaLink: "#",
     image: imgMarca03,
     badge_text: "SAÚDE",
     cta: {
       link: "#",
-      anchor: "IR PARA A LOJA"
-    }
+      anchor: "IR PARA A LOJA",
+    },
   },
 ];
 
@@ -123,7 +120,6 @@ export const sectionValoresInfo1 = [
 ]
 
 export const sectionValoresInfo2 = [
-  
   {
     title: "Tratar a natureza como ela merece.",
     qtde: 10,
