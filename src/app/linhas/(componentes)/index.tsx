@@ -2,11 +2,11 @@ import CardProduct from "@/components/CardProdutos";
 import { getProducts } from "@/lib/getProducts";
 import { notFound } from "next/navigation";
 export default async function GridProduct({ slug }) {
-  let products
+  let products;
   if (Array.isArray(slug)) {
     slug = slug[0]; // Pega o primeiro valor caso seja um array
   }
-  
+
   if (slug === "real-h") {
     products = await getProducts(["linha-nutricao", "linha-saude"]);
   } else if (slug === "cmr") {
