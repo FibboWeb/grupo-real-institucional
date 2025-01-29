@@ -3,6 +3,7 @@ import logo from "@/public/logo-real-h.png";
 import Link from "next/link";
 import Menu from "./Menu";
 import { getMenus } from "@/lib/getMenus";
+import menuItems from "@/lib/menuItems";
 
 async function Header() {
   const menuFetched = await getMenus("FB Menu Site");
