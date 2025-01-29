@@ -6,7 +6,6 @@ import { ArrowRightCircle } from "lucide-react";
 import BtnCallToAction from "../Layout/Buttons/BtnCallToAction/BtnCallToAction";
 import ArrowIcon from "@/public/icons/arrow-right.svg";
 
-
 type ValuesSectionProps = {
   values: {
     title: string;
@@ -71,15 +70,11 @@ function InfoCards({ values }: ValuesSectionProps) {
             )}
             {value.title && <h2 className="font-bold text-fb_blue_main text-3xl">{value.title}</h2>}
             <div className="w-full flex flex-col justify-between gap-6">
-              {value.text && <div className="w-full" dangerouslySetInnerHTML={{ __html: value.text }}></div>}
+              {value.text && <div className="w-full" dangerouslySetInnerHTML={{ __html: value.text }} />}
             </div>
             {value.cta && (
               <div className="w-fit">
-                <BtnCallToAction 
-                  content={ value.cta.anchor }
-                  ctaLink={ value.cta.link }
-                  icon={ArrowIcon}
-                />
+                <BtnCallToAction content={value.cta.anchor} ctaLink={value.cta.link} icon={ArrowIcon} />
               </div>
             )}
           </div>

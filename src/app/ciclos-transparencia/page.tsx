@@ -38,9 +38,7 @@ export default function CiclosTransparencia() {
               <strong className="text-3xl lg:text-5xl">Ética que transforma tudo.</strong>
             </h1>
           </div>
-          <div>
-            {/* <BtnCallToAction color={"fb_green_button"} ctaLink={"#"} content={"Saiba Mais"} /> */}
-          </div>
+          <div>{/* <BtnCallToAction color={"fb_green_button"} ctaLink={"#"} content={"Saiba Mais"} /> */}</div>
         </div>
       </HeroSection>
       <InifiniteCarousel items={InfiniteCarouselItems} />

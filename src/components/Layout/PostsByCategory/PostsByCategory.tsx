@@ -64,7 +64,14 @@ const settings = {
   ],
 };
 
-export default function PostsByCategory({ title, subtitle, subtitleIcon, posts, centerTitle = false, clampPostContent = true }: PostsByCategoryProps) {
+export default function PostsByCategory({
+  title,
+  subtitle,
+  subtitleIcon,
+  posts,
+  centerTitle = false,
+  clampPostContent = true,
+}: PostsByCategoryProps) {
   return (
     <section>
       <div className="fb_container flex gap-8 flex-col py-12">
@@ -87,7 +94,7 @@ export default function PostsByCategory({ title, subtitle, subtitleIcon, posts, 
                     <div>
                       <Image src={post.icon} alt="" className="bg-fb_green p-4 rounded-full" width={80} />
                     </div>
-                  ): (
+                  ) : (
                     <div>
                       <Image src={post.img} alt="" className="rounded-lg w-full" />
                     </div>
@@ -95,7 +102,9 @@ export default function PostsByCategory({ title, subtitle, subtitleIcon, posts, 
                   <div className="pt-4">
                     <h3 className="text-[#373737] font-bold text-[28px]">{post.title}</h3>
                     <div className={`h-1 w-20 bg-fb_green mt-4 mb-4`}></div>
-                    <p className={`text-[#666] font-medium text-lg leading-[27px] ${clampPostContent ? "line-clamp-5" : ""} overflow-hidden`}>
+                    <p
+                      className={`text-[#666] font-medium text-lg leading-[27px] ${clampPostContent ? "line-clamp-5" : ""} overflow-hidden`}
+                    >
                       {post.content}
                     </p>
                   </div>

@@ -34,7 +34,6 @@ export default function SocialPage() {
       <HeroSection
         children={HeroChildren()}
         backgroundClass="bg-hero-green-leafs"
-        ctaLink="#"
         btnColor="fb_green_button"
         imagePath={HeroCiclos}
         btnContent="SAIBA MAIS"
@@ -48,7 +47,6 @@ export default function SocialPage() {
         imagePath={EixoSocialImg}
         border={false}
         color="fb_green_button"
-        ctaLink="#"
         reverseDesktop={true}
       />
       <InfoSection
@@ -58,7 +56,6 @@ export default function SocialPage() {
         imagePath={CompromissoEducacaoImg}
         border={false}
         color="fb_green_button"
-        ctaLink="#"
         reverseDesktop={false}
         heroBgImage="bg-bg-ciclos"
       />
@@ -71,7 +68,6 @@ export default function SocialPage() {
         infoSectionBadge="Social"
         infoSectionTitle="Ciclos e o Esporte"
         infoSectionContent="O Eixo Social do <strong>Ciclos Real H</strong> também se estende ao incentivo ao esporte como ferramenta de inclusão, superação e inspiração. Como parte desse compromisso, o Grupo patrocina <strong>Fernando Rufino</strong>, campeão mundial e paralímpico de paracanoagem, um verdadeiro exemplo de resiliência e conquista. Conhecido como “Cowboy de Aço”, Rufino carrega consigo valores de determinação e força que se alinham aos princípios do <strong>Grupo Real</strong>, servindo como inspiração para colaboradores e comunidades."
-        infoSectionCtaLink="#"
         infoSectionColor="fb_green_button"
         infoSectionContentButton="Leia mais"
         infoSectionReverseDesktop={true}
@@ -108,7 +104,6 @@ export default function SocialPage() {
         imagePath={ReconhecimentoImg}
         border={false}
         color="fb_green_button"
-        ctaLink="#"
         reverseDesktop={false}
         heroBgImage="bg-bg-ciclos"
       />
@@ -119,7 +114,6 @@ export default function SocialPage() {
         imagePath={EixoSocialImg}
         border={false}
         color="fb_green_button"
-        ctaLink="#"
         reverseDesktop={true}
       />
       <InfoSection
@@ -129,7 +123,6 @@ export default function SocialPage() {
         youtubeEmbed="https://www.youtube.com/embed/cDX6va8NGgQ"
         border={false}
         color="fb_green_button"
-        ctaLink="#"
         reverseDesktop={false}
         heroBgImage="bg-bg-ciclos"
       />

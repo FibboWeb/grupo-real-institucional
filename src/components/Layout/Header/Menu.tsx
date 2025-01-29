@@ -170,18 +170,13 @@ export default function Menu() {
                 onMouseEnter={() => handleMouseEntered("sustentabilidade")}
                 onMouseLeave={handleMouseLeave}
               >
-                <button className="flex gap-3 bg-fb_green text-white items-center py-2 px-3 text-center rounded-md font-bold relative">
+                <button
+                  onClick={() => handleMouseEnter("sustentabilidade")}
+                  className="flex gap-3 bg-fb_green text-white items-center py-2 px-3 text-center rounded-md font-bold relative"
+                >
                   Sustentabilidade
                   <Image src={greenLeaf.src} alt="Green Leaf" width={13} height={13} loading="eager" />
-                  <div
-                    onClick={() => handleMouseEnter("sustentabilidade")}
-                    className="w-fit right-0 top-1/4 items-center"
-                  >
-                    <span
-                      className={`flex items-center cursor-pointer transition-all duration-300 ${activeMenu === "sustentabilidade" ? "rotate-180" : ""}`}
-                    >
-                      <ChevronDown />
-                    </span>
+                  <div className="w-fit right-0 top-1/4 items-center">
                     <ul
                       className={`w-96 top-3/4 bg-white z-50 border absolute sub-menu px-3 py-4 ${activeMenu === "sustentabilidade" ? "block" : "hidden"} transition-opacity duration-400  transform left-1/2 -translate-x-2/4 rounded-md`}
                     >
@@ -197,25 +192,29 @@ export default function Menu() {
                 </button>
               </li>
               {menuItems.map((item) => (
-                <li className="flex relative gap-2" key={item.node.id}>
-                  <a
-                    href={item.node.url}
-                    className="w-full inline-block text-fb_blue_main hover:text-fb_blue duration-fb_transition_ease px-10 py-3"
-                  >
-                    {item.node.label}
-                  </a>
-                  {item.node?.childItems?.edges && item.node.childItems?.edges.length > 0 && (
-                    <div
-                      onClick={() => handleMouseEnter(item.node.id)}
-                      className="w-fit absolute right-0 top-1/4 items-center"
+                <li className="flex w-full items-center text-center justify-center relative gap-2" key={item.node.id}>
+                  {!item.node.url.includes("") || !item.node.url.includes("#") ? (
+                    <a
+                      href={item.node.url === "#" ? "" : item.node.url} // Corrigindo o href
+                      className="w-full inline-block text-fb_blue_main hover:text-fb_blue duration-fb_transition_ease px-10 py-3"
                     >
-                      <span
-                        className={`flex items-center cursor-pointer transition-all duration-300 ${activeMenu === item.node.id ? "rotate-180" : ""}`}
-                      >
-                        <ChevronDown />
-                      </span>
+                      {item.node.label}
+                    </a>
+                  ) : (
+                    <p
+                      className="w-full text-fb_blue_main hover:text-fb_blue duration-fb_transition_ease px-10 py-3"
+                      onClick={() => handleMouseEnter(item.node.id)}
+                    >
+                      {item.node.label}
+                    </p>
+                  )}
+
+                  {item.node.url && item.node.childItems?.edges && item.node.childItems?.edges.length > 0 && (
+                    <>
                       <ul
-                        className={`z-10 bg-white absolute top-full rounded-md shadow-custom_shadow text-center w-80 md:w-96 sub-menu px-3 py-4 ${activeMenu === item.node.id ? "block opacity-100" : "hidden opacity-0"} bg-accent-neutral transition-all duration-400 transform left-1/2 -translate-x-3/4 rounded-md`}
+                        className={`z-10 bg-white absolute top-full rounded-md shadow-custom_shadow text-center w-80 md:w-96 sub-menu px-3 py-4 ${
+                          activeMenu === item.node.id ? "block opacity-100" : "hidden opacity-0"
+                        } bg-accent-neutral transition-all duration-400 transform left-1/2 -translate-x-2/4 rounded-md`}
                       >
                         {item.node.childItems?.edges?.map((subMenu) => (
                           <li key={subMenu.node.id} className="px-5 py-3">
@@ -225,7 +224,7 @@ export default function Menu() {
                           </li>
                         ))}
                       </ul>
-                    </div>
+                    </>
                   )}
                 </li>
               ))}
