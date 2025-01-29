@@ -32,14 +32,14 @@ type LinkProductProps = {
 
 export function ImageProduct({ src, width, height, alt }: ImageProductProps) {
   return (
-    <div className="w-[355px] h-[355px] md:w-[227px] md:h-[227px] lg:w-full lg:h-full">
-      <Suspense fallback={<div className="w-full h-full bg-gray-300 animated-pulse rounded-lg"></div>}>
+    <div className="w-[300px] min-h-[355px] md:w-[225px] md:h-[355px] lg:w-full lg:h-full">
+      <Suspense fallback={<div className="w-full h-full bg-gray-700 animated-pulse rounded-lg"></div>}>
         <Image
           alt={alt}
           src={src ? src : placeholder}
           width={width ? width : 355}
           height={height ? height : 355}
-          className="rounded-lg bg-[#E5E7E9] w-[355px] h-[355px] md:w-[227px] md:h-[227px] mx-auto lg:w-full lg:mx-0 object-cover"
+          className="rounded-lg bg-[#E5E7E9] w-[300px] h-[355px] md:w-[284px] md:h-[355px] lg:w-full lg:h-full lg:mx-0 object-cover"
         />
       </Suspense>
     </div>
@@ -88,7 +88,7 @@ export default function CardProduct({ product }: { product: any[] }) { // Ajusta
       <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-8">
         {productList.map((item, index) => ( // Mapear o array de produtos
             <div key={index} className="w-full lg:w-64 h-auto flex flex-col gap-8 items-center">
-            <LinkProduct link={"#"}>
+            <LinkProduct link={item?.linkProduto ? item?.linkProduto : "#"}>
               {/* Acessar as propriedades do item */}
               <ImageProduct src={item?.imagem?.node?.link || placeholder} alt="teste" /> 
             </LinkProduct>
