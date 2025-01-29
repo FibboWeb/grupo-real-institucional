@@ -28,6 +28,7 @@ export interface MenuNode {
 export interface MenuItems {
   node: MenuNode;
 }
+
 const menuSustentabilidade = [
   {
     link: "/ambiental",
@@ -35,7 +36,7 @@ const menuSustentabilidade = [
   },
   {
     anchor: "Social",
-    link: "/ciclos-social",
+    link: "/social",
   },
   {
     anchor: "Transparência",
@@ -46,6 +47,7 @@ const menuSustentabilidade = [
 export default function Menu() {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   // const menuItens = menuFetched?.props?.menuItems?.edges || [];
 
   const handleMouseEnter = (id: string | SetStateAction<null>) => {
@@ -56,12 +58,20 @@ export default function Menu() {
     }
   };
 
+  const handleMouseEnterSubMenu = (id: string | SetStateAction<null>) => {
+    if (activeDropdown === null) {
+      return setActiveDropdown(id as string); // Define o menu ativo
+    } else {
+      return setActiveDropdown(null);
+    }
+  };
+
   const handleMouseEntered = (id: string | SetStateAction<null>) => {
     setActiveMenu(id as string);
   };
 
   const handleMouseLeave = () => {
-    setActiveMenu(null); // Fecha o menu
+    setActiveMenu(null);
   };
 
   return (
@@ -101,7 +111,7 @@ export default function Menu() {
                 {item.node.label}
               </a>
               {item.node?.childItems?.edges && item.node?.childItems?.edges.length > 0 && (
-                <div>
+                <div className="">
                   <span
                     className={`flex items-center cursor-pointer transition-all duration-300 ${activeMenu === item.node.id ? "rotate-180 " : ""}`}
                   >
@@ -147,8 +157,8 @@ export default function Menu() {
           ))}
         </ul>
       </div>
-      <div className="flex flex-end">
-        <div className="absolute top-1/4 right-0 w-full xl:hidden">
+      <div className="flex flex-end xl:hidden">
+        <div className="absolute top-1/4 right-0 w-full">
           <button className="float-end block mr-4" onClick={() => setMenuOpen(!menuOpen)}>
             <AlignJustify size={40} />
           </button>
