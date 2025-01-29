@@ -44,6 +44,9 @@ interface Category {
 
 interface SliderNavigationalProps {
   categories: Category[];
+  title?: string;
+  text?: string;
+  isNoticias?: boolean;
 }
 
 /**
@@ -65,7 +68,7 @@ interface SliderNavigationalProps {
  * O slider e responsivo e tem vários pontos de quebra de acordo com o tamanho da tela.
  * Setas direcionais personalizadas.
  */
-export default function SliderNavigational({ categories }: SliderNavigationalProps) {
+export default function SliderNavigational({ categories, title, text, isNoticias }: SliderNavigationalProps) {
   const sliderRef = useRef(null);
 
   const settings = {
@@ -105,18 +108,17 @@ export default function SliderNavigational({ categories }: SliderNavigationalPro
   return (
     <div>
       <div className="w-full flex flex-col gap-8">
-        <h2 className="text-5xl font-bold text-center text-fb_blue_main">Linha Nutrição</h2>
-        <div className="container px-10 lg:w-2/4 lg:px-2 text-center mx-auto">
-          <p>
-            Oferecemos uma ampla gama de produtos de nutrição animal, desenvolvidos para atender às necessidades
-            específicas de cada segmento do mercado.
-          </p>
-        </div>
-        <div className={`mx-auto container max-w-full overflow-hidden`}>
+        <h2 className={`${isNoticias ? "text-3xl" : "text-4xl"} font-bold text-center text-fb_blue_main`}>{title}</h2>
+        {text && (
+          <div className="container px-10 lg:w-2/4 lg:px-2 text-center mx-auto">
+            <p>{text}</p>
+          </div>
+        )}
+        <div className={`mx-auto ${isNoticias ? " " : "container"} max-w-full overflow-hidden`}>
           <Slider
             {...settings}
             ref={sliderRef}
-            className="max-w-[80%] flex justify-center items-center mx-auto cursor-grab"
+            className={`${isNoticias ? "max-w-[100%]" : "max-w-[80%]"} flex justify-center items-center mx-auto cursor-grab`}
           >
             {categories.map((category) => (
               <div key={category.id} className="flex flex-col gap-6 w-56 h-56">
@@ -131,7 +133,7 @@ export default function SliderNavigational({ categories }: SliderNavigationalPro
                 </Link>
                 <Link
                   href={category.url}
-                  className="flex w-full justify-center hover:text-fb_blue text-fb_blue-main hover:no-underline mt-6"
+                  className="flex w-full justify-center hover:text-fb_blue text-fb_blue-main duration-300 hover:no-underline mt-6"
                 >
                   <h3 className="text-lg font-semibold text-fb_blue-main text-center">{category.label}</h3>
                 </Link>

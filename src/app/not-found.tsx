@@ -1,7 +1,6 @@
 import Link from "next/link";
-import BtnCallToAction from "@/components/Layout/Buttons/BtnCallToAction/BtnCallToAction";
-import { ArrowRight } from "lucide-react";
 import Newsletter from "@/components/Layout/Newsletter";
+import { ArrowRight } from "lucide-react";
 
 export default function NotFound() {
   return (

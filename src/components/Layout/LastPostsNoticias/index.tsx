@@ -82,7 +82,7 @@ function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
       },
     ],
   };
-
+  console.log(fetchedLastPosts);
   return (
     <div className="flex flex-col lg:flex-row gap-6 xl:gap-10">
       <div className="py-2">
@@ -108,6 +108,7 @@ function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
             fetchedLastPosts.map((post: Post) => (
               <CardBlog
                 key={post.id}
+                blogContext={post.categories.nodes[0].name.toLowerCase() === "artigos" ? "/artigos" : "/noticias"}
                 postImage={post.featuredImage.node.sourceUrl}
                 postImageAlt={post.featuredImage.node.altText}
                 postLink={post.slug}
