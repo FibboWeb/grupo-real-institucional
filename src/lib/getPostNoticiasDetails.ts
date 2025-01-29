@@ -8,7 +8,6 @@ export async function getPostDetails(postSlug) {
       query: GET_POST_DETAILS,
       variables: { slug: postSlug },
     });
-
     return {
       props: fetchedPostDetail.data,
     };

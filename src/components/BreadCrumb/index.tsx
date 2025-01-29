@@ -31,10 +31,10 @@ function Breadcrumb({
 
   return (
     <div>
-      <nav className={containerClasses}>
+      <nav className={!containerClasses ? "flex py-5" : containerClasses}>
         <ul className="flex flex-wrap" itemScope itemType="https://schema.org/BreadcrumbList">
           <li
-            className={listClasses}
+            className={!listClasses ? "mx-2 font-bold text-fb_gray_bread hover:text-fb_blue duration-300" : listClasses}
             itemProp="itemListElement"
             itemScope
             itemType="https://schema.org/ListItem"
@@ -48,10 +48,16 @@ function Breadcrumb({
           {pathNames.length > 0 && separator}
           {pathNames.map((link, index) => {
             let href = `/${pathNames.slice(0, index + 1).join("/")}`;
+
+            if (link.toLowerCase() === "artigos" && index !== pathNames.length - 1) {
+              href = `/categoria/${link}`;
+            }
+
             let isLastItem = index === pathNames.length - 1;
             let itemClasses = index === pathNames.length - 1 ? `${listClasses} ${activeClasses}` : listClasses;
             let itemLink =
               isLastItem && itemName ? itemName : capitalizeLinks ? link[0].toUpperCase() + link.slice(1) : link;
+
             return (
               <React.Fragment key={index}>
                 <li
@@ -81,4 +87,5 @@ function Breadcrumb({
     </div>
   );
 }
+
 export default Breadcrumb;
