@@ -1,5 +1,5 @@
 import Breadcrumb from "@/components/BreadCrumb";
-import LastPostsEventos from "@/components/Layout/LastPostsEventos"
+import LastPostsEventos from "@/components/Layout/LastPostsEventos";
 import { getLastPostsEventos } from "@/lib/getLastPostsEventos";
 
 export default async function Historia() {
@@ -41,3 +41,4 @@ export default async function Historia() {
         </div>
     )
     };
+ 
