@@ -147,8 +147,8 @@ export default function Menu() {
           ))}
         </ul>
       </div>
-      <div className="flex flex-end">
-        <div className="absolute top-1/4 right-0 w-full xl:hidden">
+      <div className="flex flex-end xl:hidden">
+        <div className="absolute top-1/4 right-0 w-full">
           <button className="float-end block mr-4" onClick={() => setMenuOpen(!menuOpen)}>
             <AlignJustify size={40} />
           </button>
