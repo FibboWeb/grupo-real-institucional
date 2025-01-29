@@ -91,7 +91,8 @@ export default {
         "bg-ciclos": "url('/images/ambiental/bg-ciclos.webp')",
         "bg-investimento": "url('/images/ambiental/bg-investimento.webp')",
         "bg-doacoes": "url('/images/ambiental/bg-doacoes.webp')",
-        fb_category_noticias: "url('/images/banners/banner-category-40-anos.webp')",
+        "fb_category_noticias": "url('/images/banners/banner-category-40-anos.webp')",
+        "hero-page-historia": "url('/images/historia/hero-historia.webp')"
       },
 
       boxShadow: {
