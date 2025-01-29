@@ -94,7 +94,7 @@ function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
               Fique por dentro de tudo o que acontece no mundo da pecuária. Notícias, eventos, dicas e muito mais...
             </p>
           </div>
-          <BtnCallToAction content={"IR PARA O BLOG"} ctaLink={"/blog"} icon={ArrowIcon} />
+          <BtnCallToAction content={"IR PARA O BLOG"} ctaLink={"/noticias"} icon={ArrowIcon} />
         </div>
       </div>
       <div className="last-post-slider" style={{ width: "75%" }}>
