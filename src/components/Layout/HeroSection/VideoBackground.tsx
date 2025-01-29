@@ -4,7 +4,6 @@ import Link from "next/link";
 import BtnCallToAction from "../Buttons/BtnCallToAction/BtnCallToAction";
 import ArrowIcon from "@/public/icons/arrow-right.svg";
 
-
 type VideoBackgroundProps = {
   children: React.ReactNode;
   src_video?: string;
@@ -59,12 +58,7 @@ const VideoBackground = ({ children, src_video, ctaLinks }: VideoBackgroundProps
             <div>
               <div className="flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-8">
                 {ctaLinks.map((cta, index) => (
-                  <BtnCallToAction 
-                    key={ index }
-                    content={ cta.anchor }
-                    ctaLink={ cta.link }
-                    icon={ArrowIcon}
-                  />
+                  <BtnCallToAction key={index} content={cta.anchor} ctaLink={cta.link} icon={ArrowIcon} />
                 ))}
               </div>
             </div>

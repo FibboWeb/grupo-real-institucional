@@ -1,3 +1,4 @@
+"use server";
 import BannerLines from "@/components/BannerCTA/BannerLines";
 import Breadcrumb from "@/components/BreadCrumb";
 
@@ -5,8 +6,9 @@ import image01 from "@/public/images/banners/boi-no-pasto.webp";
 import image02 from "@/public/images/banners/carne-vermelha-cortada.webp";
 import image03 from "@/public/images/banners/cao-e-gato.webp";
 import GridProduct from "../(componentes)";
+export default async function PageLinhas({ params, searchParams }) {
+  const { slug } = await params;
 
-export default async function PageLinhas() {
   return (
     <section className="relative mt-36">
       <div className="fb_container flex flex-col gap-fb_space-section">
@@ -26,8 +28,8 @@ export default async function PageLinhas() {
             </p>
           </BannerLines>
         </div>
-        <div className="my-6">
-          <GridProduct />
+        <div className="my-6 flex justify-center items-center">
+          <GridProduct slug={slug} />
         </div>
         <div className="flex flex-col lg:flex-row lg:flex-nowrap gap-8 mb-20">
           <BannerLines title="Linha Nutrição" imgBackground={image02.src}>

@@ -1,12 +1,9 @@
-import Image from "next/image";
 import logo from "@/public/logo-real-h.png";
+import Image from "next/image";
 import Link from "next/link";
 import Menu from "./Menu";
-import { getMenus } from "@/lib/getMenus";
-import menuItems from "@/lib/menuItems";
 
 async function Header() {
-  const menuFetched = await getMenus("FB Menu Site");
 
   return (
     <header className="fixed top-0 left-0 right-0 z-[100]">

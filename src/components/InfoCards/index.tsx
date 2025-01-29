@@ -70,7 +70,7 @@ function InfoCards({ values }: ValuesSectionProps) {
             )}
             {value.title && <h2 className="font-bold text-fb_blue_main text-3xl">{value.title}</h2>}
             <div className="w-full flex flex-col justify-between gap-6">
-              {value.text && <div className="w-full" dangerouslySetInnerHTML={{ __html: value.text }}></div>}
+              {value.text && <div className="w-full" dangerouslySetInnerHTML={{ __html: value.text }} />}
             </div>
             {value.cta && (
               <div className="w-fit">

@@ -68,7 +68,7 @@ const menuItems: MenuItems[] = [
           {
             node: {
               id: "3-1",
-              url: "/noticias",
+              url: "/categoria/noticias",
               label: "Notícias",
             },
           },
