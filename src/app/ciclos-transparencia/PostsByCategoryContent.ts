@@ -28,8 +28,7 @@ const ContentPostsByCategory: PostsByCategoryProps = {
   posts: [
     {
       title: "Selo GPTW",
-      content:
-        "Somos certificados pela GPTW como um ótimo lugar para se trabalhar",
+      content: "Somos certificados pela GPTW como um ótimo lugar para se trabalhar",
       img: GptwWhite,
     },
     {
@@ -43,7 +42,7 @@ const ContentPostsByCategory: PostsByCategoryProps = {
       content:
         "Desde 2020 o Grupo Real H faz parte das empresas com o selo Eu Reciclo, gerando impactos positivos da compensação ambiental das embalagens geradas pela empresa. As ações contribuem para a preservação do meio ambiente, além de impulsionar o desenvolvimento social e financeiro.",
       img: EuRecicloSelo,
-    }
+    },
   ],
 };
 

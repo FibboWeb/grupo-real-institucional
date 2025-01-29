@@ -93,6 +93,8 @@ export default {
         "bg-doacoes": "url('/images/ambiental/bg-doacoes.webp')",
         fb_category_noticias: "url('/images/banners/banner-category-40-anos.webp')",
         fb_gradient_posts: "linear-gradient(0deg, rgba(0,0,0,0.5018382352941176) 0%, rgba(255,255,255,0) 100%)",
+        "hero-page-historia": "url('/images/historia/hero-historia.webp')",
+        "hero-quem-somos": "url('/images/quem-somos/hero-quem-somos.webp')",
       },
 
       boxShadow: {

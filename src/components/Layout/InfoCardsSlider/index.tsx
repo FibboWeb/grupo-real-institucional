@@ -84,4 +84,3 @@ function InfoCardsSlider({ children }: { children: React.ReactNode }) {
 }
 
 export default InfoCardsSlider;
-

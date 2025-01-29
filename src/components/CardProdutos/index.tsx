@@ -1,11 +1,15 @@
-import Image from "next/image";
+import NotFound from "@/app/not-found";
+import { CardProductPropsAPI } from "@/types/produto";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
 
+import placeholder from "@/public/images/img-teste.jpeg";
+
 type ImageProductProps = {
-  src: string;
-  width: number;
-  height: number;
+  src: string | StaticImageData;
+  width?: number;
+  height?: number;
   alt: string;
 };
 
@@ -32,9 +36,9 @@ export function ImageProduct({ src, width, height, alt }: ImageProductProps) {
       <Suspense fallback={<div className="w-full h-full bg-gray-300 animated-pulse rounded-lg"></div>}>
         <Image
           alt={alt}
-          src={src}
-          width={width}
-          height={height}
+          src={src ? src : placeholder}
+          width={width ? width : 355}
+          height={height ? height : 355}
           className="rounded-lg bg-[#E5E7E9] w-[355px] h-[355px] md:w-[227px] md:h-[227px] mx-auto lg:w-full lg:mx-0 object-cover"
         />
       </Suspense>
@@ -61,7 +65,7 @@ export function TitleProduct({ nomeProduto }: TitleProductProps) {
 function DescriptionProduct({ descriptionProduct }: descriptionProductProps) {
   return (
     <>
-      <p className="text-base leading-5">{descriptionProduct}</p>
+      <div className="text-base leading-5" dangerouslySetInnerHTML={{ __html: descriptionProduct }} />
     </>
   );
 }
@@ -76,32 +80,38 @@ function LinkProduct({ children, link }: LinkProductProps) {
   );
 }
 
-type CardProductProps = {
-  produto: {
-    id: number;
-    nomeProduto: string;
-    descricao: string;
-    imagem: { src: string; alt: string; width: number; height: number };
-    categoria: string;
-    link: { link: string };
-  };
-};
+export default function CardProduct({ product }: { product: any[] }) {
+  // Ajustar a tipagem da prop
 
-export default function CardProduct({ produto }: CardProductProps) {
-  return (
-    <div className="w-full lg:w-64 h-auto flex flex-col gap-8 items-center">
-      <LinkProduct link={"#"}>
-        <ImageProduct {...produto.imagem} />
-      </LinkProduct>
-      <div className="w-4/5 md:w-full flex flex-col gap-2">
-        <LinkProduct link={produto.categoria}>
-          <BadgeCategorie>{produto.categoria}</BadgeCategorie>
-        </LinkProduct>
-        <LinkProduct link={produto.link.link}>
-          <TitleProduct nomeProduto={produto.nomeProduto} />
-          <DescriptionProduct descriptionProduct={produto.descricao} />
-        </LinkProduct>
+  const productList = product.flat();
+  if (product) {
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-8">
+        {productList.map(
+          (
+            item,
+            index, // Mapear o array de produtos
+          ) => (
+            <div key={index} className="w-full lg:w-64 h-auto flex flex-col gap-8 items-center">
+              <LinkProduct link={"#"}>
+                {/* Acessar as propriedades do item */}
+                <ImageProduct src={item?.imagem?.node?.link || placeholder} alt="teste" />
+              </LinkProduct>
+              <div className="w-4/5 md:w-full flex flex-col gap-2">
+                <LinkProduct link={item?.linkProduto ? item?.linkProduto : "#"}>
+                  <BadgeCategorie>{item?.titulo}</BadgeCategorie>
+                </LinkProduct>
+                <LinkProduct link={item?.linkProduto ? item?.linkProduto : "#"}>
+                  <TitleProduct nomeProduto={item?.titulo} />
+                  <DescriptionProduct descriptionProduct={item?.peso ? item?.peso : ""} />
+                </LinkProduct>
+              </div>
+            </div>
+          ),
+        )}
       </div>
-    </div>
-  );
+    );
+  } else {
+    NotFound;
+  }
 }

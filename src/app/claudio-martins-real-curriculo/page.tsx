@@ -37,7 +37,7 @@ export default function ClaudioMartinsReal() {
             </h1>
             <strong className="text-2xl lg:text-4xl text-white">Fundador do Grupo Real</strong>
           </div>
-          <BtnCallToAction color={"fb_blue_button"} ctaLink={"#"} content={"Saber Mais"} />
+          {/* <BtnCallToAction color={"fb_blue_button"} ctaLink={"#"} content={"Saber Mais"} /> */}
         </div>
       </HeroSection>
 
@@ -85,14 +85,13 @@ export default function ClaudioMartinsReal() {
               <p>
                 A indicação à honraria, iniciativa do diretor da Faculdade de Veterinária, Emerson Contesini, levou em
                 conta a trajetória notável do homenageado como professor, pesquisador, empreendedor e pioneiro em
-                atividades na UFRGS e em sociedades de classe, divulgando a alargando conhecimentos de sua área -
-                2015.
+                atividades na UFRGS e em sociedades de classe, divulgando a alargando conhecimentos de sua área - 2015.
               </p>
             </InfoCard>
             <InfoCard title={"“Cidadão Campo-grandense”"} svg={"/certified-clean.svg"}>
               <p>
-                Concedido pelo Legislativo municipal de Campo Grande em reconhecimento aos relevantes serviços
-                prestados em prol da melhoria da qualidade de vida do povo e do desenvolvimento da cidade - 2015.
+                Concedido pelo Legislativo municipal de Campo Grande em reconhecimento aos relevantes serviços prestados
+                em prol da melhoria da qualidade de vida do povo e do desenvolvimento da cidade - 2015.
               </p>
             </InfoCard>
             <InfoCard title={"Personalidade Descendente"} svg={"/certified-clean.svg"}>
@@ -109,7 +108,11 @@ export default function ClaudioMartinsReal() {
       <CardSection>
         <div className="w-full lg:w-5/12 pt-4 flex flex-col gap-y-4 justify-center">
           <h2 className="text-3xl font-semibold">Diplomas</h2>
-          <p>O Professor Doutor Claudio Martins Real acumulou ao longo de sua trajetória acadêmica e profissional uma coleção notável de diplomas e reconhecimentos. Formado em Medicina Veterinária pela UFRGS, destacou-se por sua dedicação à pesquisa e ao ensino, além de ter sido o Professor Catedrático mais jovem do Brasil.</p>
+          <p>
+            O Professor Doutor Claudio Martins Real acumulou ao longo de sua trajetória acadêmica e profissional uma
+            coleção notável de diplomas e reconhecimentos. Formado em Medicina Veterinária pela UFRGS, destacou-se por
+            sua dedicação à pesquisa e ao ensino, além de ter sido o Professor Catedrático mais jovem do Brasil.
+          </p>
         </div>
 
         <div className="w-full lg:w-7/12 pt-4 flex flex-col gap-y-4 justify-center">
@@ -139,7 +142,7 @@ export default function ClaudioMartinsReal() {
           <li>Professor Catedrático interino na Cadeira de Patologia e Clínica dos Animais Domésticos da Escola de Agronomia e Veterinária de 1950 a 1968.</li>
         </ul>"
         imagePath={Claudio4}
-        ctaLink="#"
+        // ctaLink="#"
         centerButton={true}
       />
 
@@ -147,7 +150,9 @@ export default function ClaudioMartinsReal() {
         <div className="w-full lg:w-5/12 pt-4 flex flex-col justify-center gap-y-4 items-start">
           <h2 className="text-3xl font-semibold">Distinções Universitárias</h2>
           <p>Além da Láurea, já referida, obtida no Curso de Graduação em 1948, as seguintes:</p>
-          <BtnCallToAction ctaLink="#" content="Ver Mais" />
+          <div className="flex justify-center lg:justify-start w-full">
+            {/* <BtnCallToAction ctaLink="#" content="Ver Mais" /> */}
+          </div>
         </div>
         <div className="w-full lg:w-7/12">
           <Accordion
@@ -209,7 +214,7 @@ export default function ClaudioMartinsReal() {
           <li>Teses defendidas:<br>Para o Concurso de Docência Livre<br>“O Fígado na Intoxicação Aguda pelo Tetracloreto de Carbono” - 1951.</li>
         </ul>"
         imagePath={Claudio6}
-        ctaLink="#C"
+        // ctaLink="#"
         centerButton={true}
       />
 

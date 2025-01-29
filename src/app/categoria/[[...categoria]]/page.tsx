@@ -1,11 +1,6 @@
 import Breadcrumb from "@/components/BreadCrumb";
-import Newsletter from "@/components/Layout/Newsletter";
-import SidebarNoticias from "@/components/Layout/SidebarNoticias";
-import CardBlog from "@/components/Layout/CardBlogAPI";
-import { fetchPosts, fetchCategoryId } from "@/lib/getCategoriesNoticias";
-import Pagination from "@/components/Pagination";
-import { notFound } from "next/navigation";
 
+<<<<<<<< HEAD:src/app/categoria/[[...categoria]]/page.tsx
 export default async function CategoryPage({ params, searchParams }) {
   const page = parseInt(searchParams.page || "1");
   const postsPerPage = 6;
@@ -18,8 +13,11 @@ export default async function CategoryPage({ params, searchParams }) {
     return notFound();
   }
   const { posts, totalPages } = await fetchPosts(categoryId, page, postsPerPage);
+========
+export default function PageCategory() {
+>>>>>>>> 3f21c44c93960ff1455cc52e2b93d8e223837622:src/app/noticias/categoria/[[...categoria]]/page.tsx
   return (
-    <div className="fb_container px-2 mb-12 mt-24">
+    <div>
       <Breadcrumb
         activeClasses="text-fb_gray_bread"
         excludePaths={["categoria"]}
@@ -28,6 +26,7 @@ export default async function CategoryPage({ params, searchParams }) {
         listClasses="mx-2 font-bold text-fb_gray_bread hover:text-fb_blue duration-300 "
         capitalizeLinks
       />
+<<<<<<<< HEAD:src/app/categoria/[[...categoria]]/page.tsx
       <div
         className={`hero-category bg-fb_category_image bg-no-repeat bg-cover bg-center h-56 xl:h-60 rounded-2xl mb-12`}
       >
@@ -65,6 +64,9 @@ export default async function CategoryPage({ params, searchParams }) {
         </div>
       </div>
       <Newsletter />
+========
+      <h1>Categoria</h1>
+>>>>>>>> 3f21c44c93960ff1455cc52e2b93d8e223837622:src/app/noticias/categoria/[[...categoria]]/page.tsx
     </div>
   );
 }

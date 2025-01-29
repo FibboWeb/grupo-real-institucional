@@ -6,7 +6,7 @@ interface PartnerSection {
   title: string;
   subtitle: string;
   content: string;
-  btnLink: string;
+  btnLink?: string;
   btnContent;
   btnIcon: StaticImageData;
   btnColor: "fb_green_button" | "fb_blue_button";
@@ -43,9 +43,9 @@ export default function PartnerSection({
             </div>
           </div>
 
-          <div className="flex justify-center sm:justify-start">
+          {/* <div className="flex justify-center sm:justify-start">
             <BtnCallToAction ctaLink={btnLink} content={btnContent} icon={btnIcon} color={btnColor} />
-          </div>
+          </div> */}
 
           <div className="flex flex-col sm:flex-row gap-5 sm:gap-20 items-center sm:justify-around">
             {partnesImages.map((partner, index) => (

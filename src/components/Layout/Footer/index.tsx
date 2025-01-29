@@ -43,7 +43,7 @@ async function Footer() {
                 <p className="text-lg text-white">de segunda à sexta-feira, das 8h às 18h</p>
               </div>
             </div>
-            <div className="flex justify-center lg:flex-row lg:px-6">
+            <div className="flex items-center justify-center lg:flex-row lg:px-6">
               <Link className="inline-block border-r-2 pr-4" href={"#"}>
                 <Image src={"/images/logo-grupo-real.webp"} width={120} height={48} alt="GrupoReal" />
               </Link>
@@ -54,31 +54,38 @@ async function Footer() {
                 <Image src={"/images/logo-cmr.webp"} width={120} height={48} alt="GrupoReal" />
               </Link>
               <Link className="inline-block" href={"#"}>
-                <Image src={"/images/logo-homeopet.webp"} width={120} height={48} alt="GrupoReal" />
+                <Image src={"/images/logo-homeopet.webp"} width={160} height={64} alt="GrupoReal" />
               </Link>
             </div>
           </div>
           <div className="flex flex-row justify-center items-center mb-8 gap-5 lg:gap-10">
             <Image
-              className="w-24 h-auto sm:w-28"
-              src={"/images/selo-gptw.webp"}
-              width={142}
-              height={111}
+              className="max-sm:w-16"
+              src={"/images/selos/selo-gptw.webp"}
+              width={102}
+              height={80}
               alt={"Selo GPTW"}
             />
             <Image
-              className="w-24 h-auto sm:w-28"
-              src={"/images/selo-gptw.webp"}
-              width={142}
-              height={111}
-              alt={"Selo GPTW"}
+              className="max-sm:w-12"
+              src={"/images/selos/assinatura.png"}
+              width={80}
+              height={80}
+              alt={"Selo Assinatura Vertical"}
             />
             <Image
-              className="w-24 h-auto sm:w-28"
-              src={"/images/selo-gptw.webp"}
-              width={142}
-              height={111}
-              alt={"Selo GPTW"}
+              className="max-sm:w-12"
+              src={"/images/selos/assinatura2.png"}
+              width={80}
+              height={80}
+              alt={"Selo Assinatura Vertical 2"}
+            />
+            <Image
+              className="max-sm:w-[90px]"
+              src={"/images/selos/selo-fiems.png"}
+              width={193}
+              height={80}
+              alt={"Selo Fiems"}
             />
           </div>
           <div className="container flex flex-col justify-center items-center mx-auto border-t border-[#B3D5FF]">

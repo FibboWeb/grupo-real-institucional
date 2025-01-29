@@ -44,6 +44,11 @@ export const GET_POSTS_NOTICIAS_MOST_VIEWED = gql`
             name
           }
         }
+        categories(first: 1) {
+          nodes {
+            name
+          }
+        }
         featuredImage {
           node {
             altText
