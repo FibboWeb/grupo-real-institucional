@@ -39,7 +39,7 @@ export default function CiclosTransparencia() {
             </h1>
           </div>
           <div>
-            <BtnCallToAction color={"fb_green_button"} ctaLink={"#"} content={"Saiba Mais"} />
+            {/* <BtnCallToAction color={"fb_green_button"} ctaLink={"#"} content={"Saiba Mais"} /> */}
           </div>
         </div>
       </HeroSection>
@@ -56,7 +56,7 @@ export default function CiclosTransparencia() {
             "<p>No <strong>Grupo Real</strong>, a transparência representa também valores como honestidade e ética. A empresa adota práticas rigorosas para garantir que todas as decisões sejam tomadas de forma justa. Através de comitês independentes para assuntos como assédio e proteção de dados, auditorias regulares e políticas claras, o <strong>Grupo Real H</strong> assegura a conformidade com leis e regulamentos, promovendo uma <strong>gestão sustentável e responsável</strong>.</p>"
           }
           imagePath={TransparenciaEtica}
-          ctaLink={"#"}
+          // ctaLink={"#"}
           color={"fb_green_button"}
           contentButton={"Ler Mais"}
         />
@@ -75,7 +75,7 @@ export default function CiclosTransparencia() {
           }
           imagePath={EuReciclo}
           imageMidFullContainer={true}
-          ctaLink={"#"}
+          // ctaLink={"#"}
           color={"fb_green_button"}
           contentButton={"Ler Mais"}
         />
@@ -94,7 +94,7 @@ export default function CiclosTransparencia() {
         }
         infoSectionColor={"fb_green_button"}
         infoSectionImageMidFullContainer={true}
-        infoSectionCtaLink="#"
+        // infoSectionCtaLink="#"
         infoSectionContentButton={"Ler Mais"}
       />
 
@@ -121,7 +121,7 @@ export default function CiclosTransparencia() {
           }
           imagePath={EticaLegalidade}
           imageMidFullContainer={true}
-          ctaLink={"#"}
+          // ctaLink={"#"}
           color={"fb_green_button"}
           contentButton={"Ler Mais"}
         />

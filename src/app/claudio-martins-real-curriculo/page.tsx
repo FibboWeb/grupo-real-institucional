@@ -37,7 +37,7 @@ export default function ClaudioMartinsReal() {
             </h1>
             <strong className="text-2xl lg:text-4xl text-white">Fundador do Grupo Real</strong>
           </div>
-          <BtnCallToAction color={"fb_blue_button"} ctaLink={"#"} content={"Saber Mais"} />
+          {/* <BtnCallToAction color={"fb_blue_button"} ctaLink={"#"} content={"Saber Mais"} /> */}
         </div>
       </HeroSection>
 
@@ -139,7 +139,7 @@ export default function ClaudioMartinsReal() {
           <li>Professor Catedrático interino na Cadeira de Patologia e Clínica dos Animais Domésticos da Escola de Agronomia e Veterinária de 1950 a 1968.</li>
         </ul>"
         imagePath={Claudio4}
-        ctaLink="#"
+        // ctaLink="#"
         centerButton={true}
       />
 
@@ -147,7 +147,9 @@ export default function ClaudioMartinsReal() {
         <div className="w-full lg:w-5/12 pt-4 flex flex-col justify-center gap-y-4 items-start">
           <h2 className="text-3xl font-semibold">Distinções Universitárias</h2>
           <p>Além da Láurea, já referida, obtida no Curso de Graduação em 1948, as seguintes:</p>
-          <BtnCallToAction ctaLink="#" content="Ver Mais" />
+          <div className="flex justify-center lg:justify-start w-full">
+            {/* <BtnCallToAction ctaLink="#" content="Ver Mais" /> */}
+          </div>
         </div>
         <div className="w-full lg:w-7/12">
           <Accordion
@@ -209,7 +211,7 @@ export default function ClaudioMartinsReal() {
           <li>Teses defendidas:<br>Para o Concurso de Docência Livre<br>“O Fígado na Intoxicação Aguda pelo Tetracloreto de Carbono” - 1951.</li>
         </ul>"
         imagePath={Claudio6}
-        ctaLink="#C"
+        // ctaLink="#"
         centerButton={true}
       />
 
