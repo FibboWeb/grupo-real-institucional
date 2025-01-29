@@ -11,7 +11,12 @@ export default async function PageLinhas() {
     <section className="relative mt-36">
       <div className="fb_container flex flex-col gap-fb_space-section">
         <div>
-          <Breadcrumb />
+          <Breadcrumb
+            activeClasses="text-fb_gray_bread"
+            containerClasses="flex py-5"
+            listClasses="mx-2 font-bold text-fb_gray_bread hover:text-fb_blue duration-300"
+            capitalizeLinks
+          />
         </div>
         <div>
           <BannerLines title="Linha Nutrição" imgBackground={image01.src}>

@@ -5,7 +5,6 @@ import { mockProducts } from "@/constants/linhas";
 
 export default async function GridProduct() {
   const products = await getProducts();
-  console.log(products);
 
   return (
     <>
