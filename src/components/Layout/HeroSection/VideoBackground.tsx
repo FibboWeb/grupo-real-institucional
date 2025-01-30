@@ -58,7 +58,13 @@ const VideoBackground = ({ children, src_video, ctaLinks }: VideoBackgroundProps
             <div>
               <div className="flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-8">
                 {ctaLinks.map((cta, index) => (
-                  <BtnCallToAction key={index} content={cta.anchor} ctaLink={cta.link} icon={ArrowIcon} />
+                  <BtnCallToAction 
+                    key={ index }
+                    content={ cta.anchor }
+                    ctaLink={ cta.link }
+                    icon={ArrowIcon}
+                    color={index === 0 ? "white" : "fb_blue_button"}
+                  />
                 ))}
               </div>
             </div>

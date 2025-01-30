@@ -30,7 +30,6 @@ import CardBlog from "../CardBlog";
 import type { Post } from "@/types/post";
 import { ArrowRight } from "lucide-react";
 import "./lastPost.css";
-import ArrowIcon from "@/public/icons/arrow-right.svg";
 import BtnCallToAction from "../Buttons/BtnCallToAction/BtnCallToAction";
 
 const Slider = dynamic(() => import("react-slick"), { ssr: false });
@@ -94,7 +93,7 @@ function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
               Fique por dentro de tudo o que acontece no mundo da pecuária. Notícias, eventos, dicas e muito mais...
             </p>
           </div>
-          <BtnCallToAction content={"IR PARA O BLOG"} ctaLink={"/noticias"} icon={ArrowIcon} />
+          <BtnCallToAction ctaLink="/blog" content="IR PARA O BLOG" color="fb_blue_button" />
         </div>
       </div>
       <div className="last-post-slider" style={{ width: "75%" }}>

@@ -30,6 +30,7 @@ import CardBlog from "../CardBlog";
 import type { Post } from "@/types/post";
 import { ArrowRight } from "lucide-react";
 import "./lastPost.css";
+import BtnCallToAction from "../Buttons/BtnCallToAction/BtnCallToAction";
 
 const Slider = dynamic(() => import("react-slick"), { ssr: false });
 interface LastPostsProps {
@@ -91,13 +92,7 @@ function LastPostsEventos({ fetchedLastPosts }: LastPostsProps) {
             <h2 className="text-3xl font-bold">Eventos</h2>
             <p className="pt-6">Fique por dentro de tudo o que acontece nos eventos do Grupo Real...</p>
           </div>
-          <Link
-            className="flex flex-row gap-6 items-center font-bold bg-fb_blue_button rounded-sm px-4 py-3 text-[15px] w-max duration-300 hover:bg-white hover:text-fb_blue_button group"
-            href="/categoria/eventos"
-          >
-            IR PARA EVENTOS
-            <ArrowRight className="bg-white rounded-full text-fb_blue_button border-fb_blue_button group-hover:bg-fb_blue_button duration-300 group-hover:text-white group-hover:border-white" />
-          </Link>
+          <BtnCallToAction ctaLink="/categoria/eventos" color="fb_blue_button" content="IR PARA EVENTOS" />
         </div>
       </div>
       <div className="last-post-slider" style={{ width: "75%" }}>
