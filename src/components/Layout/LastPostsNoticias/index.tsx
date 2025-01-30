@@ -30,6 +30,7 @@ import CardBlog from "../CardBlog";
 import type { Post } from "@/types/post";
 import { ArrowRight } from "lucide-react";
 import "./lastPost.css";
+import BtnCallToAction from "../Buttons/BtnCallToAction/BtnCallToAction";
 
 const Slider = dynamic(() => import("react-slick"), { ssr: false });
 interface LastPostsProps {
@@ -82,7 +83,6 @@ function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
       },
     ],
   };
-
   return (
     <div className="flex flex-col lg:flex-row gap-6 xl:gap-10">
       <div className="py-2">
@@ -93,30 +93,29 @@ function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
               Fique por dentro de tudo o que acontece no mundo da pecuária. Notícias, eventos, dicas e muito mais...
             </p>
           </div>
-          <Link
-            className="flex flex-row gap-6 items-center font-bold bg-blue_button rounded-sm px-4 py-3 text-[15px] w-max duration-300 hover:bg-white hover:text-blue_button group"
-            href="/blog"
-          >
-            IR PARA O BLOG
-            <ArrowRight className="bg-white rounded-full text-blue_button border-blue_button group-hover:bg-blue_button duration-300 group-hover:text-white group-hover:border-white" />
-          </Link>
+          <div className="w-fit">
+            <BtnCallToAction ctaLink="/noticias" content="IR PARA O BLOG" color="fb_blue_button" />
+          </div>
         </div>
       </div>
       <div className="last-post-slider" style={{ width: "75%" }}>
         <Slider {...settings}>
-          {fetchedLastPosts.map((post: Post) => (
-            <CardBlog
-              key={post.id}
-              postImage={post.featuredImage.node.sourceUrl}
-              postImageAlt={post.featuredImage.node.altText}
-              postLink={post.slug}
-              postTitle={post.title}
-              postDescription={{ __html: post.content }}
-              postDate={post.date}
-              postAuthor={post.author.node.name}
-              postAuthorLink={post.author.node.slug}
-            />
-          ))}
+          {fetchedLastPosts &&
+            fetchedLastPosts.map((post: Post) => (
+              <CardBlog
+                key={post.id}
+                blogContext={post.categories.nodes[0].name.toLowerCase() === "artigos" ? "/artigos" : "/noticias"}
+                postImage={post.featuredImage.node.sourceUrl}
+                postImageAlt={post.featuredImage.node.altText}
+                postLink={post.slug}
+                postTitle={post.title}
+                postDescription={{ __html: post.content }}
+                postDate={post.date}
+                postAuthor={post.author.node.name}
+                postAuthorLink={post.author.node.slug}
+                isSlider
+              />
+            ))}
         </Slider>
       </div>
     </div>

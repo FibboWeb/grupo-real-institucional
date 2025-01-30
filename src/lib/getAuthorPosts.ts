@@ -16,9 +16,13 @@ export async function fetchPosts(authorId, page = 1, postsPerPage = 6) {
 
   const postsWithImages = data.map((post) => {
     const postImage = post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || null;
+    const postCategories = post._embedded?.["categories"] || [];
+
+    const isArtigos = postCategories.some((category) => category.name === "Artigos");
     return {
       ...post,
       featured_media: postImage,
+      isArtigos,
     };
   });
 

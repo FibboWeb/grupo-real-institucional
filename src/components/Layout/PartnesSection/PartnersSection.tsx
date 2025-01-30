@@ -31,9 +31,9 @@ export default function PartnerSection({
             <div className="flex flex-col items-center">
               <div className="flex flex-row gap-2">
                 <Image src={PartnerLogo} alt="" />
-                <p className="text-xl text-white font-bold">{subtitle}</p>
+                <p className="text-xl text-white font-bold text-center">{subtitle}</p>
               </div>
-              <h2 className="text-3xl text-white font-bold">{title}</h2>
+              <h2 className="text-3xl text-white font-bold text-center">{title}</h2>
             </div>
             <div className="flex justify-center">
               <div className={`h-1 w-20 bg-[#00A833] mt-4 mb-4`}></div>

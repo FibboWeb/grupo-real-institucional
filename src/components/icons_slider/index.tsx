@@ -37,12 +37,18 @@ function SamplePrevArrow(props: ArrowProps) {
 
 interface Category {
   id: string;
+  url?: string;
   label?: string;
   image_url: StaticImageData;
+  width_card?: number;
+  height_card?: number;
 }
 
 interface SliderNavigationalProps {
   categories: Category[];
+  title?: string;
+  text?: string;
+  isNoticias?: boolean;
 }
 
 /**
@@ -64,7 +70,7 @@ interface SliderNavigationalProps {
  * O slider e responsivo e tem vários pontos de quebra de acordo com o tamanho da tela.
  * Setas direcionais personalizadas.
  */
-export default function SliderNavigational({ categories }: SliderNavigationalProps) {
+export default function SliderNavigational({ categories, title, text, isNoticias }: SliderNavigationalProps) {
   const sliderRef = useRef(null);
 
   const settings = {
@@ -73,6 +79,7 @@ export default function SliderNavigational({ categories }: SliderNavigationalPro
     slidesToShow: 5,
     slidesToScroll: 1,
     useTransform: true,
+    autoPlay: true,
     dots: true,
     // nextArrow: <SampleNextArrow />,
     // prevArrow: <SamplePrevArrow />,
@@ -104,31 +111,47 @@ export default function SliderNavigational({ categories }: SliderNavigationalPro
   return (
     <div>
       <div className="w-full flex flex-col gap-8">
-        <h2 className="text-5xl font-bold text-center text-fb_blue_main">Conheça todas as marcas do grupo Real</h2>
-        <div className="container px-10 lg:w-2/4 lg:px-2 text-center mx-auto">
-          <p>
-            Oferecemos uma ampla gama de produtos de nutrição animal, desenvolvidos para atender às necessidades
-            específicas de cada segmento do mercado.
-          </p>
-        </div>
-        <div className={`mx-auto container max-w-full overflow-hidden h-[300px]`}>
+        <h2 className={`${isNoticias ? "text-3xl" : "text-4xl"} fb_container font-bold text-center text-fb_blue_main`}>{title}</h2>
+        {text && (
+          <div className="container px-10 lg:w-2/4 lg:px-2 text-center mx-auto">
+            <p>{text}</p>
+          </div>
+        )}
+        <div className={`mx-auto ${isNoticias ? "" : "container h-[300px]"} max-w-full overflow-hidden`}>
           <Slider
             {...settings}
             ref={sliderRef}
-            className="max-w-[80%] flex justify-center items-center mx-auto cursor-grab"
+            className={`${isNoticias ? "max-w-[100%]" : "max-w-[80%]"} flex justify-center items-center mx-auto cursor-grab`}
           >
             {categories.map((category) => (
               <div key={category.id} className="flex flex-col mx-auto gap-6 w-[140px] min-h-[140px] px-8">
+                {category.url && (
+                  <Link href={category.url} className="flex justify-center">
+                    <Image
+                      alt={category.label}
+                      src={category.image_url}
+                      width={category.width_card ? category.width_card : 220}
+                      height={category.height_card ? category.height_card : 220}
+                      className={` ${isNoticias ? "h-56" : ""} object-contain rounded-2xl w-full`}
+                    />
+                  </Link>
+                )} {
                   <Image
-                    alt={category.label}
-                    src={category.image_url}
-                    width={140}
-                    height={140}
-                    className={"h-56 bg-center object-contain object-center rounded-2xl w-full"}
-                  />
-                  { category.label && (
-                    <h3 className="text-lg font-semibold hover:text-fb_blue text-fb_blue-main text-center">{category.label}</h3>
-                  )}
+                      alt={category.label}
+                      src={category.image_url}
+                      width={category.width_card ? category.width_card : 220}
+                      height={category.height_card ? category.height_card : 220}
+                      className={"h-56 object-contain object-center rounded-2xl w-4/5"}
+                    />
+                }
+                {category.url && category.label && (
+                  <Link
+                    href={category.url}
+                    className="flex w-full justify-center hover:text-fb_blue text-fb_blue-main hover:no-underline mt-6"
+                  >
+                    <h3 className="text-lg font-semibold text-fb_blue-main text-center">{category.label}</h3>
+                  </Link>
+                )}
               </div>
             ))}
           </Slider>

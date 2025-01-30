@@ -1,5 +1,5 @@
 "use client";
-import { useRef } from "react";
+import { Suspense, useRef } from "react";
 import Image, { StaticImageData } from "next/image";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
@@ -58,41 +58,42 @@ export default function SliderTestimonials({ testimonial }: testimonialCardProps
   return (
     <div className="fb_container ">
       {Array.isArray(testimonial) ? (
-        <div className="gap-5">
+        <div>
           <Slider {...settings} ref={sliderRef}>
             {testimonial.map((item, index) => (
               <div key={index} className="w-1/2 cursor-grab">
-                <div className="flex flex-col gap-9 border border-[#CCCCCC] rounded-lg px-7 lg:px-14 pt-14 pb-8 group bg-custom-gradient duration-500 transition-colors">
+                <div className="flex flex-col justify-between min-h-[300px] border border-[#CCCCCC] rounded-lg px-7 lg:px-14 pt-14 pb-8 group bg-custom-gradient duration-500 transition-colors">
                   <div className="w-full">
                     <p className="text-base text-[#666666] transition-colors group-hover:text-white duration-200">
                       {item.testimonial}
                     </p>
                   </div>
-                  <div className="w-full flex justify-between">
+                  <div className="w-fit flex min-h-[100px] justify-between">
                     <div>
-                      <p className="text-2xl lg:text-3xl font-bold transition-colors group-hover:text-white duration-200">
+                      <p className="text-xl lg:text-3xl font-bold transition-colors group-hover:text-white duration-200">
                         {item.name}
                       </p>
-                      <p className="text-lg text-fb_blue transition-colors group-hover:text-white duration-200">
+                      <p className="text-base md:text-lg text-fb_blue transition-colors group-hover:text-white duration-200">
                         {item.empresa}
                       </p>
                     </div>
-                    <div className="flex">
-                      <Image
-                        alt=""
-                        src={item.avatar ? item.avatar : "/author-icon.svg"}
-                        width={100}
-                        height={75}
-                        className="object-cover rounded-full"
-                      />
+                    <div className="flex h-auto rounded-full relative">
+                      <Suspense fallback={<div className="w-[100px] h-[100px] bg-gray-700 animated-pulse rounded-full"></div>}>
+                        <Image
+                          alt={`Foto do ${item.name}`}
+                          src={item.avatar ? item.avatar : "/author-icon.svg"}
+                          width={100}
+                          height={100}
+                          className="object-cover rounded-full"
+                        />
+                      </Suspense>
                       <Quote
                         size={24}
-                        className="text-white transition-colors group-hover:text-gray static bottom-0 duration-200"
+                        className="text-fb_blue transition-colors group-hover:text-gray absolute bottom-0 -right-4 duration-200"
                       />
                     </div>
                   </div>
                 </div>
-                <div></div>
               </div>
             ))}
           </Slider>

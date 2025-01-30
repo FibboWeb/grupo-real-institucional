@@ -18,6 +18,8 @@ const formatNumber = (num: number): string => {
     return `+ ${(num / 1_000_000).toFixed(0)} Milhões${num >= 2_000_000 ? "s" : ""}`;
   } else if (num >= 1_000) {
     return `+ ${(num / 1_000).toFixed(0)} Mil`;
+  } else if (num <= 100) {
+    return `${num} Anos`;
   }
   return num.toString();
 };
@@ -41,14 +43,14 @@ const IncrementingCounter = ({ maxNumber, speed = 100 }: { maxNumber: number; sp
 
 export default function LoadNumbers({ arrayOfNumbers }: LoadNumbersInterface) {
   return (
-    <div className="flex h-full justify-between items-center gap-8">
+    <div className="flex h-full w-full justify-between items-baseline gap-8">
       {arrayOfNumbers.map((number, index) => (
         <div key={index} className="flex flex-col gap-2 items-center justify-center">
           <span className="text-fb_blue_main text-center font-bold text-3xl flex-nowrap">
             <IncrementingCounter maxNumber={number.qtde} speed={30} />
           </span>
           <hr className="w-20 h-[6px] bg-fb_blue_button rounded-full" />
-          <p className="w-20 text-center text-fb_blue_main font-semibold text-base">{number.text}</p>
+          <p className="min-w-50 text-center text-fb_blue_main font-semibold text-base">{number.text}</p>
         </div>
       ))}
     </div>

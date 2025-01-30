@@ -68,7 +68,7 @@ const menuItems: MenuItems[] = [
           {
             node: {
               id: "3-1",
-              url: "/categoria/noticias",
+              url: "/noticias",
               label: "Notícias",
             },
           },
@@ -89,7 +89,7 @@ const menuItems: MenuItems[] = [
           {
             node: {
               id: "3-4",
-              url: "https://homeopet.com.br/",
+              url: "https://homeopet.com.br/fique-por-dentro",
               label: "DR Homeopet",
             },
           },

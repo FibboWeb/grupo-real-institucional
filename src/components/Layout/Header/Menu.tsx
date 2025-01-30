@@ -163,7 +163,7 @@ export default function Menu() {
             <AlignJustify size={40} />
           </button>
           {menuOpen && (
-            <ul className="origin-top relative container top-5 flex flex-col justify-center gap-4 font-bold text-lg items-center text-black bg-white drop-shadow-md shadow-md rounded-md">
+            <ul className="origin-top relative container top-5 flex flex-col justify-center gap-6 lg:gap-3 font-bold text-lg items-center text-black bg-white drop-shadow-md shadow-md rounded-md py-4">
               <li
                 className=""
                 id="sustentabilidade"
@@ -202,13 +202,20 @@ export default function Menu() {
                     </a>
                   ) : (
                     <p
-                      className="w-full text-fb_blue_main hover:text-fb_blue duration-fb_transition_ease px-10 py-3"
+                      className="w-full flex justify-center text-center text-fb_blue_main hover:text-fb_blue duration-fb_transition_ease px-10 py-3"
                       onClick={() => handleMouseEnter(item.node.id)}
                     >
                       {item.node.label}
+                      {item.node.label === "Nossas Marcas" && (
+                        <span
+                          className={`flex items-center cursor-pointer transition-all duration-300 ${activeMenu === item.node.id ? "rotate-180 " : ""}`}
+                        >
+                          <ChevronDown />
+                        </span>
+                      )}
                     </p>
                   )}
-
+                  
                   {item.node.url && item.node.childItems?.edges && item.node.childItems?.edges.length > 0 && (
                     <>
                       <ul
