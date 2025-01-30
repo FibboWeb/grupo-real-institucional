@@ -4,6 +4,7 @@ import Footer from "../components/Layout/Footer";
 import "../styles/globals.css";
 import Header from "../components/Layout/Header";
 import WhatsappButton from "@/components/Layout/WhatsappButton";
+import { GoogleTagHead, GoogleTagBody } from "@/components/GoogleTag";
 
 const poppins = Poppins({
   weight: ["300", "400", "500", "600", "700"],
@@ -32,7 +33,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" data-lt-installed="true" suppressHydrationWarning={true}>
+      <head>
+        <GoogleTagHead />
+      </head>
       <body className={`${poppins.className} antialiased`}>
+        <GoogleTagBody />
         <Header />
         {children}
         <Footer />
