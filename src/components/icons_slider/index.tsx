@@ -144,6 +144,8 @@ export default function SliderNavigational({ categories, title, text, isNoticias
                       className={"h-56 object-contain object-center rounded-2xl w-4/5"}
                     />
                   )}
+                )
+                }
                 {category.url && category.label && (
                   <Link
                     href={category.url}
