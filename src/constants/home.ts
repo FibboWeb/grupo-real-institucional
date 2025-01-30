@@ -72,6 +72,10 @@ export const sliderCategoriasHome = [
     width_card: 140,
     height_card: 140,
   },
+  {
+    id: "6",
+    image_url: img06,
+  },
 ];
 
 export const nossasMarcasInfos = [
