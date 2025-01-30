@@ -57,7 +57,7 @@ function InfoCards({ values }: ValuesSectionProps) {
                 alt={value.title}
                 width={600}
                 height={475}
-                className="rounded-lg h-auto object-cover object-top-center"
+                className="rounded-lg h-auto object-cover object-top-center w-full"
               />
             </Suspense>
           </div>

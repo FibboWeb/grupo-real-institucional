@@ -202,13 +202,20 @@ export default function Menu() {
                     </a>
                   ) : (
                     <p
-                      className="w-full text-fb_blue_main hover:text-fb_blue duration-fb_transition_ease px-10 py-3"
+                      className="w-full flex justify-center text-center text-fb_blue_main hover:text-fb_blue duration-fb_transition_ease px-10 py-3"
                       onClick={() => handleMouseEnter(item.node.id)}
                     >
                       {item.node.label}
+                      {item.node.label === "Nossas Marcas" && (
+                        <span
+                          className={`flex items-center cursor-pointer transition-all duration-300 ${activeMenu === item.node.id ? "rotate-180 " : ""}`}
+                        >
+                          <ChevronDown />
+                        </span>
+                      )}
                     </p>
                   )}
-
+                  
                   {item.node.url && item.node.childItems?.edges && item.node.childItems?.edges.length > 0 && (
                     <>
                       <ul

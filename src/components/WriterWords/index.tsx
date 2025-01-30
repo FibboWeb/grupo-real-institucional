@@ -7,7 +7,7 @@ interface TypewriterProps {
   pauseTime?: number; // Tempo de pausa entre as palavras
 }
 
-export default function Typewriter({ words, typingSpeed = 100, pauseTime = 800 }: TypewriterProps) {
+export default function Typewriter({ words, typingSpeed = 100, pauseTime = 3000 }: TypewriterProps) {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);

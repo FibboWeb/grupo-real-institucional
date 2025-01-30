@@ -93,7 +93,9 @@ function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
               Fique por dentro de tudo o que acontece no mundo da pecuária. Notícias, eventos, dicas e muito mais...
             </p>
           </div>
-          <BtnCallToAction ctaLink="/blog" content="IR PARA O BLOG" color="fb_blue_button" />
+          <div className="w-fit">
+            <BtnCallToAction ctaLink="/noticias" content="IR PARA O BLOG" color="fb_blue_button" />
+          </div>
         </div>
       </div>
       <div className="last-post-slider" style={{ width: "75%" }}>

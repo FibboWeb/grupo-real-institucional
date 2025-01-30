@@ -16,7 +16,7 @@ import imgMarca03 from "@/public/images/veterinaria-e-fazendeiro-_1_.webp";
 
 // Sessões dos valores
 import imgIcon02 from "@/public/images/ciclos_novo.webp";
-import imgValor01 from "@/public/images/home/40-anos-de-historia.webp";
+import imgValor01 from "@/public/images/home/40-anos-de-historia.png";
 import imgValor02 from "@/public/images/imagem_ambiental.webp";
 
 import avatar3 from "@/public/images/avatar/leonardo-de-carvalho.jpg";
