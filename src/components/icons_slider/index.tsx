@@ -135,7 +135,7 @@ export default function SliderNavigational({ categories, title, text, isNoticias
                       className={` ${isNoticias ? "h-56" : ""} object-contain rounded-2xl w-full`}
                     />
                   </Link>
-                )} {(
+                )} { !isNoticias && (
                   <Image
                       alt={category.label}
                       src={category.image_url}
@@ -143,8 +143,7 @@ export default function SliderNavigational({ categories, title, text, isNoticias
                       height={category.height_card ? category.height_card : 220}
                       className={"h-56 object-contain object-center rounded-2xl w-4/5"}
                     />
-                  )}
-                )
+                )}
                 {category.url && category.label && (
                   <Link
                     href={category.url}
