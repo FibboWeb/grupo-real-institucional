@@ -10,7 +10,7 @@ type ValuesSectionProps = {
   values: {
     title: string;
     icon?: StaticImageData;
-    text?: string | React.ReactNode;
+    text?: string;
     image: StaticImageData;
     border?: boolean;
     badge_text?: string;

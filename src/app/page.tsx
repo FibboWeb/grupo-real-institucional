@@ -27,8 +27,9 @@ export default async function Home() {
       <section>
         <VideoBackground src_video="/video/drone-fabrica.mp4" ctaLinks={ctasLinksHero}>
           <div className="fb_container">
-            <h1 className="text-4xl md:text-6xl font-bold mb-4 text-center">
-              Por um futuro s{<Typewriter words={["ustentável", "audável", "eguro"]} />} <br /> para todos
+            <h1 className="text-3xl md:text-6xl font-bold mb-4 text-center">
+              Por um futuro s{<Typewriter words={["ustentável", "audável", "eguro"]} />}
+              <span> para todos</span>
             </h1>
             <p className="text-lg md:text-xl mb-6">
               O Grupo REAL reúne marcas que transformam desafios em oportunidades. Descubra nosso compromisso com a
@@ -57,9 +58,8 @@ export default async function Home() {
       <section>
         <SliderNavigational
           categories={sliderCategoriasHome}
-          title="Linha Nutrição"
-          text="Oferecemos uma ampla gama de produtos de nutrição animal, desenvolvidos para atender às necessidades
-            específicas de cada segmento do mercado."
+          title="Conheça todas as marcas do grupo Real"
+          text="Oferecemos uma ampla gama de produtos de nutrição animal, desenvolvidos para atender às necessidades específicas de cada segmento do mercado."
         />
       </section>
       <section>
@@ -71,7 +71,7 @@ export default async function Home() {
         <ValuesSection values={sectionValoresInfo2} />
       </section>
       <section className="flex flex-col gap-8">
-        <h2 className="text-center text-fb_blue_main text-4xl font-bold">O que nossos clientes dizem</h2>
+        <h2 className="text-center text-fb_blue_main text-4xl font-bold">Depoimentos</h2>
         <SliderTestimonials testimonial={testimoniaslInfo} />
       </section>
       <section>

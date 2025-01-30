@@ -33,26 +33,44 @@ export const sliderCategoriasHome = [
   {
     id: "1",
     image_url: img01,
+    label: "Batoque Transportadora",
+    width_card: 140,
+    height_card: 140,
   },
   {
     id: "2",
     image_url: img02,
+    label: "Real H",
+    width_card: 140,
+    height_card: 140,
   },
   {
     id: "3",
     image_url: img03,
+    label: "CMR",
+    width_card: 140,
+    height_card: 140,
   },
   {
     id: "4",
     image_url: img04,
+    label: "HomeoPet",
+    width_card: 140,
+    height_card: 140,
   },
   {
     id: "5",
     image_url: img05,
+    label: "CMR Saude",
+    width_card: 140,
+    height_card: 140,
   },
   {
     id: "6",
     image_url: img06,
+    label: "Ciclos",
+    width_card: 140,
+    height_card: 140,
   },
 ];
 
@@ -117,9 +135,9 @@ export const sectionValoresInfo2 = [
     border: false,
     icon: imgIcon02,
     session_numbers: [
-      { qtde: 330, text: "Empregos diretos" },
-      { qtde: 1_500, text: "Empregos indireto" },
-      { qtde: 200_000, text: "Clientes atendidos" },
+      { qtde: 1_000, text: "De resíduos retiradosdo meio ambiente" },
+      { qtde: 2_000, text: "de investimento em placas para a geração de energia fotovoltaica" },
+      { qtde: 18, text: "Um projeto que envolve nossos colaboradores e clientes" },
     ] as LoadNumbersProps[],
   },
 ];

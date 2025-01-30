@@ -93,7 +93,7 @@ export default function CardProduct({ product }: { product: any[] }) {
             index, // Mapear o array de produtos
           ) => (
             <div key={index} className="w-full lg:w-64 h-auto flex flex-col gap-8 items-center">
-              <LinkProduct link={"#"}>
+              <LinkProduct link={item?.linkProduto ? item?.linkProduto : "#"}>
                 {/* Acessar as propriedades do item */}
                 <ImageProduct
                   src={item?.imagem?.node?.link || placeholder}
