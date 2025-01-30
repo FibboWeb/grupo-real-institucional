@@ -145,7 +145,6 @@ export default function SliderNavigational({ categories, title, text, isNoticias
                     />
                   )}
                 )
-                }
                 {category.url && category.label && (
                   <Link
                     href={category.url}
