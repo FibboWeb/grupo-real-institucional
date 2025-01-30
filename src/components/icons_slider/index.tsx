@@ -132,10 +132,10 @@ export default function SliderNavigational({ categories, title, text, isNoticias
                       src={category.image_url}
                       width={category.width_card ? category.width_card : 220}
                       height={category.height_card ? category.height_card : 220}
-                      className={` ${isNoticias ? "h-56" : ""} bg-center object-cover rounded-2xl`}
+                      className={` ${isNoticias ? "h-56" : ""} object-contain rounded-2xl w-full`}
                     />
                   </Link>
-                )} { !isNoticias && (
+                )} {
                   <Image
                       alt={category.label}
                       src={category.image_url}
