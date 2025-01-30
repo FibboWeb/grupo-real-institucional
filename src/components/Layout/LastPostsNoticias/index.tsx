@@ -30,6 +30,7 @@ import CardBlog from "../CardBlog";
 import type { Post } from "@/types/post";
 import { ArrowRight } from "lucide-react";
 import "./lastPost.css";
+import BtnCallToAction from "../Buttons/BtnCallToAction/BtnCallToAction";
 
 const Slider = dynamic(() => import("react-slick"), { ssr: false });
 interface LastPostsProps {
