@@ -37,21 +37,21 @@ const menuItems: MenuItems[] = [
             node: {
               id: "2-1",
               url: "/linhas/real-h",
-              label: "REAL H NUTRIÇÃO",
+              label: "Real H Nutrição",
             },
           },
           {
             node: {
               id: "2-2",
               url: "/linhas/cmr",
-              label: "CMR SAÚDE",
+              label: "CMR Saúde",
             },
           },
           {
             node: {
               id: "2-3",
               url: "/linhas/homeopet",
-              label: "HOMEOPET",
+              label: "Homeopet",
             },
           },
         ],
