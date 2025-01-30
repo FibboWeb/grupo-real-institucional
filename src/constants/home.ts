@@ -1,68 +1,58 @@
 import { LoadNumbersProps } from "@/components/ValuesSection/LoadNumbers";
-import img01 from "@/public/icons-slider/linha-01.webp";
-import img02 from "@/public/icons-slider/linha-02.webp";
-import img03 from "@/public/icons-slider/linha-03.webp";
-import img04 from "@/public/icons-slider/linha-04.webp";
-import img05 from "@/public/icons-slider/linha-05.webp";
+import img01 from "@/public/icons-slider/batoque-transportadora.png";
+import img02 from "@/public/icons-slider/real-h.png";
+import img03 from "@/public/icons-slider/logo-cmr-2.png";
+import img04 from "@/public/icons-slider/logo-homeo-pet.png";
+import img05 from "@/public/icons-slider/cmr-saude.png";
+import img06 from "@/public/icons-slider/ciclos-logo.png";
 
 // Sessões das marcas
+import iconMarca02 from "@/public/images/logos/homeopet-logo-colorido.webp";
+import iconMarca03 from "@/public/images/logos/logo-crm-colorido.webp";
+import iconMarca01 from "@/public/images/logos/logo-real-h-colorido.webp";
 import imgMarca01 from "@/public/images/moca-e-cavalo.webp";
 import imgMarca02 from "@/public/images/mulher-segurando-cachorro.webp";
 import imgMarca03 from "@/public/images/veterinaria-e-fazendeiro-_1_.webp";
-import iconMarca01 from "@/public/images/logos/logo-real-h-colorido.webp";
-import iconMarca02 from "@/public/images/logos/homeopet-logo-colorido.webp";
-import iconMarca03 from "@/public/images/logos/logo-crm-colorido.webp";
 
-("");
 // Sessões dos valores
-import imgValor01 from "@/public/images/home/40-anos-de-historia.webp";
 import imgIcon02 from "@/public/images/ciclos_novo.webp";
+import imgValor01 from "@/public/images/home/40-anos-de-historia.webp";
 import imgValor02 from "@/public/images/imagem_ambiental.webp";
 
-import avatar1 from "@/public/images/avatar/sr-claudecir.jpg"
-import avatar2 from "@/public/images/avatar/leonardo-pereira.jpg"
-import avatar3 from "@/public/images/avatar/leonardo-de-carvalho.jpg"
+import avatar3 from "@/public/images/avatar/leonardo-de-carvalho.jpg";
+import avatar2 from "@/public/images/avatar/leonardo-pereira.jpg";
+import avatar1 from "@/public/images/avatar/sr-claudecir.jpg";
 
 export const ctasLinksHero = [
-  { id: "1", anchor: "CONHEÇA NOSSAS MARCAS", link: "/learn-more", btn_background_color: "bg-blue-600" },
+  { id: "1", anchor: "CONHEÇA NOSSAS MARCAS", link: "#slider-brand", btn_background_color: "bg-blue-600" },
 
-  { id: "2", anchor: "FALE CONOSCO", link: "/get-started", btn_background_color: "bg-gray-400" },
+  { id: "2", anchor: "FALE CONOSCO", link: "/contato", btn_background_color: "bg-gray-400" },
 ];
-
-// Sessões dos valores
-import { name } from "./../../node_modules/next/dist/compiled/webpack/bundle5";
-import { Anchor } from "lucide-react";
 
 export const sliderCategoriasHome = [
   {
     id: "1",
-    label: "Linha Nutrição",
-    url: "/linhas/linha-nutricao/",
     image_url: img01,
   },
   {
     id: "2",
-    label: "Linha Saúde",
-    url: "/linhas/linha-saude/",
     image_url: img02,
   },
   {
     id: "3",
-    label: "Homeopet",
-    url: "/linhas/homeopet/",
     image_url: img03,
   },
   {
     id: "4",
-    label: "Linha Equino H",
-    url: "/linhas/linha-equino-h/",
     image_url: img04,
   },
   {
     id: "5",
-    label: "Linha MD",
-    url: "/linhas/linha-md/",
     image_url: img05,
+  },
+  {
+    id: "6",
+    image_url: img06,
   },
 ];
 
@@ -75,7 +65,7 @@ export const nossasMarcasInfos = [
     image: imgMarca01,
     badge_text: "NUTRIÇÃO",
     cta: {
-      link: "#",
+      link: "/linhas/real-h",
       anchor: "IR PARA A LOJA",
     },
   },
@@ -87,7 +77,7 @@ export const nossasMarcasInfos = [
     image: imgMarca02,
     badge_text: "SAÚDE",
     cta: {
-      link: "#",
+      link: "/linhas/homeopet",
       anchor: "IR PARA A LOJA",
     },
   },
@@ -99,7 +89,7 @@ export const nossasMarcasInfos = [
     image: imgMarca03,
     badge_text: "SAÚDE",
     cta: {
-      link: "#",
+      link: "/linhas/cmr",
       anchor: "IR PARA A LOJA",
     },
   },
@@ -114,10 +104,10 @@ export const sectionValoresInfo1 = [
     reverter: true,
     cta: {
       link: "/historia",
-      anchor: "CONFIRA OS DETALHES DO EVENTO"
-    }
-  }
-]
+      anchor: "CONFIRA OS DETALHES DO EVENTO",
+    },
+  },
+];
 
 export const sectionValoresInfo2 = [
   {
@@ -140,20 +130,20 @@ export const testimoniaslInfo = [
       "Eu sempre digo para os meus amigos: siga as recomendações de um bom técnico. E quando a gente fala de nutrição a gente está falando da Real H",
     name: "Sr. Claudecir Scarmagnani",
     empresa: "Cliente desde 2001",
-    avatar: avatar1
+    avatar: avatar1,
   },
   {
     testimonial:
       "Tudo que a gente precisou da Real até hoje, que foi solicitado, o pessoal sempre ajudou a gente, Dr. Claudio, pessoal da parte técnica, principalmente, estão mais amiúde aqui com a gente",
     name: "Leonardo Pereira",
     empresa: "Grupo ACP filhos e Netos",
-    avatar: avatar2
+    avatar: avatar2,
   },
   {
     testimonial:
       "Trabalhar na Real H é gratificante, tenho orgulho de fazer parte deste time de alta performance, equipe motivada e unida para superar qualquer desafio",
     name: "Leonardo de Carvalho",
     empresa: "Gerente Comercial - desde 2007 ",
-    avatar: avatar3
-  }
+    avatar: avatar3,
+  },
 ];

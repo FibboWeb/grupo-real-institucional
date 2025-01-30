@@ -4,7 +4,6 @@ import LoadNumbers, { LoadNumbersProps } from "./LoadNumbers";
 import BtnCallToAction from "../Layout/Buttons/BtnCallToAction/BtnCallToAction";
 import ArrowIcon from "@/public/icons/arrow-right.svg";
 
-
 type ValuesSectionProps = {
   values: {
     title: string;
@@ -16,7 +15,7 @@ type ValuesSectionProps = {
     cta?: {
       link: string;
       anchor: string;
-    }
+    };
     reverter?: boolean;
   }[];
 };
@@ -48,7 +47,7 @@ function ValuesSection({ values }: ValuesSectionProps) {
       {values.map((value, index) => (
         <div
           key={index}
-          className={`fb_container flex flex-col justify-between gap-4 md:gap-24 ${(value.reverter && index % 2 === 0) ? "lg:flex-row" : "lg:flex-row-reverse"} items-center`}
+          className={`fb_container flex flex-col justify-between gap-4 md:gap-24 ${value.reverter && index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} items-center`}
         >
           <div className={` ${value.border ? "shadow-custom_shadow w-full lg:w-1/2" : "lg:w-1/2 w-full"} rounded-lg `}>
             <Image
@@ -71,11 +70,7 @@ function ValuesSection({ values }: ValuesSectionProps) {
               )}
               {value.cta && (
                 <div className="w-fit">
-                  <BtnCallToAction 
-                    content={ value.cta.anchor }
-                    ctaLink={ value.cta.link }
-                    icon={ArrowIcon}
-                  />
+                  <BtnCallToAction content={value.cta.anchor} ctaLink={value.cta.link} icon={ArrowIcon} />
                 </div>
               )}
             </div>

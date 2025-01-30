@@ -37,13 +37,16 @@ function SamplePrevArrow(props: ArrowProps) {
 
 interface Category {
   id: string;
-  url: string;
-  label: string;
+  url?: string;
+  label?: string;
   image_url: StaticImageData;
 }
 
 interface SliderNavigationalProps {
   categories: Category[];
+  title?: string;
+  text?: string;
+  isNoticias?: boolean;
 }
 
 /**
@@ -65,7 +68,7 @@ interface SliderNavigationalProps {
  * O slider e responsivo e tem vários pontos de quebra de acordo com o tamanho da tela.
  * Setas direcionais personalizadas.
  */
-export default function SliderNavigational({ categories }: SliderNavigationalProps) {
+export default function SliderNavigational({ categories, title, text, isNoticias }: SliderNavigationalProps) {
   const sliderRef = useRef(null);
 
   const settings = {
@@ -105,36 +108,44 @@ export default function SliderNavigational({ categories }: SliderNavigationalPro
   return (
     <div>
       <div className="w-full flex flex-col gap-8">
-        <h2 className="text-5xl font-bold text-center text-fb_blue_main">Linha Nutrição</h2>
-        <div className="container px-10 lg:w-2/4 lg:px-2 text-center mx-auto">
-          <p>
-            Oferecemos uma ampla gama de produtos de nutrição animal, desenvolvidos para atender às necessidades
-            específicas de cada segmento do mercado.
-          </p>
-        </div>
-        <div className={`mx-auto container max-w-full overflow-hidden`}>
+        <h2 className={`${isNoticias ? "text-3xl" : "text-4xl"} font-bold text-center text-fb_blue_main`}>{title}</h2>
+        {text && (
+          <div className="container px-10 lg:w-2/4 lg:px-2 text-center mx-auto">
+            <p>{text}</p>
+          </div>
+        )}
+        <div className={`mx-auto ${isNoticias ? " " : "container"} max-w-full overflow-hidden`}>
           <Slider
             {...settings}
             ref={sliderRef}
-            className="max-w-[80%] flex justify-center items-center mx-auto cursor-grab"
+            className={`${isNoticias ? "max-w-[100%]" : "max-w-[80%]"} flex justify-center items-center mx-auto cursor-grab`}
           >
             {categories.map((category) => (
-              <div key={category.id} className="flex flex-col gap-6 w-56 h-56">
-                <Link href={category.url} className="flex justify-center">
-                  <Image
-                    alt={category.label}
-                    src={category.image_url}
-                    width={220}
-                    height={220}
-                    className={"h-56 bg-center object-cover rounded-2xl"}
-                  />
-                </Link>
-                <Link
-                  href={category.url}
-                  className="flex w-full justify-center hover:text-fb_blue text-fb_blue-main hover:no-underline mt-6"
-                >
-                  <h3 className="text-lg font-semibold text-fb_blue-main text-center">{category.label}</h3>
-                </Link>
+              <div key={category.id} className="flex flex-col mx-auto gap-6 w-[140px] min-h-[140px] px-8">
+                {category.url && (
+                  <Link href={category.url} className="flex justify-center">
+                    <Image
+                      alt={category.label}
+                      src={category.image_url}
+                      width={220}
+                      height={220}
+                      className={"h-56 bg-center object-cover rounded-2xl"}
+                    />
+                  </Link>
+                )}
+                {!category.url && category.label && (
+                  <Link
+                    href={category.url}
+                    className="flex w-full justify-center hover:text-fb_blue text-fb_blue-main hover:no-underline mt-6"
+                  >
+                    <h3 className="text-lg font-semibold text-fb_blue-main text-center">{category.label}</h3>
+                  </Link>
+                )}
+                {category.label && (
+                  <h3 className="text-lg font-semibold hover:text-fb_blue text-fb_blue-main text-center">
+                    {category.label}
+                  </h3>
+                )}
               </div>
             ))}
           </Slider>

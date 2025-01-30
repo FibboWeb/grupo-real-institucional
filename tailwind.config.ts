@@ -78,7 +78,7 @@ export default {
       backgroundImage: {
         "footer-image": "url('/images/bg-footer.webp')",
         "newsletter-image": "url('/images/bg-newsletter.webp')",
-        fb_gradient: "linear-gradient(-35deg, #031D3A 0%, #126597 100%)",
+        fb_gradient: "linear-gradient(-240deg, #031D3A 0%, #126597 100%)",
         "banner-cta": "url('/images/banner-mais-background-blue-_1_.webp')",
         "hero-image": "url('/images/bg-hero-section.webp')",
         "partner-background": "url('/images/bg-ambiental.webp')",
@@ -91,7 +91,8 @@ export default {
         "bg-ciclos": "url('/images/ambiental/bg-ciclos.webp')",
         "bg-investimento": "url('/images/ambiental/bg-investimento.webp')",
         "bg-doacoes": "url('/images/ambiental/bg-doacoes.webp')",
-        "fb_category_noticias": "url('/images/banners/banner-category-40-anos.webp')",
+        fb_category_noticias: "url('/images/banners/banner-category-40-anos.webp')",
+        fb_gradient_posts: "linear-gradient(0deg, rgba(0,0,0,0.5018382352941176) 0%, rgba(255,255,255,0) 100%)",
         "hero-page-historia": "url('/images/historia/hero-historia.webp')",
         "hero-quem-somos": "url('/images/quem-somos/hero-quem-somos.webp')",
       },

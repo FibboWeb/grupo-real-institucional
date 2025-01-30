@@ -29,7 +29,7 @@ const menuItems: MenuItems[] = [
   {
     node: {
       id: "2",
-      url: "#",
+      url: "#slider-brand",
       label: "Nossas Marcas",
       childItems: {
         edges: [
@@ -37,21 +37,21 @@ const menuItems: MenuItems[] = [
             node: {
               id: "2-1",
               url: "/linhas/real-h",
-              label: "Linha Real H",
+              label: "REAL H NUTRIÇÃO",
             },
           },
           {
             node: {
               id: "2-2",
               url: "/linhas/cmr",
-              label: "Linha CMR",
+              label: "CMR SAÚDE",
             },
           },
           {
             node: {
               id: "2-3",
               url: "/linhas/homeopet",
-              label: "Linha Homeopet",
+              label: "HOMEOPET",
             },
           },
         ],
@@ -75,7 +75,7 @@ const menuItems: MenuItems[] = [
           {
             node: {
               id: "3-2",
-              url: "/noticias/categoria/artigos",
+              url: "/categoria/artigos",
               label: "Artigos Científicos",
             },
           },
@@ -106,6 +106,5 @@ const menuItems: MenuItems[] = [
     },
   },
 ];
-
 
 export default menuItems;

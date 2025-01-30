@@ -4,7 +4,6 @@ import Link from "next/link";
 import BtnCallToAction from "../Buttons/BtnCallToAction/BtnCallToAction";
 import ArrowIcon from "@/public/icons/arrow-right.svg";
 
-
 type VideoBackgroundProps = {
   children: React.ReactNode;
   src_video?: string;
