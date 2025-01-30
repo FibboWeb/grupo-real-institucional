@@ -62,14 +62,14 @@ export default function SliderTestimonials({ testimonial }: testimonialCardProps
           <Slider {...settings} ref={sliderRef}>
             {testimonial.map((item, index) => (
               <div key={index} className="w-1/2 cursor-grab">
-                <div className="flex flex-col justify-between min-h-[300px] border border-[#CCCCCC] rounded-lg px-7 lg:px-14 pt-14 pb-8 group bg-custom-gradient duration-500 transition-colors">
+                <div className="flex flex-col justify-between min-h-[300px] border border-[#CCCCCC] rounded-lg px-5 lg:px-10 pt-14 pb-8 group bg-custom-gradient duration-500 transition-colors">
                   <div className="w-full">
                     <p className="text-base text-[#666666] transition-colors group-hover:text-white duration-200">
                       {item.testimonial}
                     </p>
                   </div>
-                  <div className="w-fit flex min-h-[100px] justify-between">
-                    <div>
+                  <div className="flex min-h-[100px] justify-between">
+                    <div className="w-fit">
                       <p className="text-xl lg:text-3xl font-bold transition-colors group-hover:text-white duration-200">
                         {item.name}
                       </p>
