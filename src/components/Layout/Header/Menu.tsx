@@ -163,7 +163,7 @@ export default function Menu() {
             <AlignJustify size={40} />
           </button>
           {menuOpen && (
-            <ul className="origin-top relative container top-5 flex flex-col justify-center gap-4 font-bold text-lg items-center text-black bg-white drop-shadow-md shadow-md rounded-md">
+            <ul className="origin-top relative container top-5 flex flex-col justify-center gap-6 lg:gap-3 font-bold text-lg items-center text-black bg-white drop-shadow-md shadow-md rounded-md py-4">
               <li
                 className=""
                 id="sustentabilidade"

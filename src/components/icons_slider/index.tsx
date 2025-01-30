@@ -40,6 +40,8 @@ interface Category {
   url?: string;
   label?: string;
   image_url: StaticImageData;
+  width_card?: number;
+  height_card?: number;
 }
 
 interface SliderNavigationalProps {
@@ -77,6 +79,7 @@ export default function SliderNavigational({ categories, title, text, isNoticias
     slidesToShow: 5,
     slidesToScroll: 1,
     useTransform: true,
+    autoPlay: true,
     dots: true,
     // nextArrow: <SampleNextArrow />,
     // prevArrow: <SamplePrevArrow />,
@@ -114,7 +117,7 @@ export default function SliderNavigational({ categories, title, text, isNoticias
             <p>{text}</p>
           </div>
         )}
-        <div className={`mx-auto ${isNoticias ? " " : "container"} max-w-full overflow-hidden`}>
+        <div className={`mx-auto ${isNoticias ? " " : "container h-[300px]"} max-w-full overflow-hidden`}>
           <Slider
             {...settings}
             ref={sliderRef}
@@ -127,24 +130,27 @@ export default function SliderNavigational({ categories, title, text, isNoticias
                     <Image
                       alt={category.label}
                       src={category.image_url}
-                      width={220}
-                      height={220}
-                      className={"h-56 bg-center object-cover rounded-2xl"}
+                      width={category.width_card ? category.width_card : 220}
+                      height={category.height_card ? category.height_card : 220}
+                      className={` ${isNoticias ? "h-56" : ""} object-contain rounded-2xl w-full`}
                     />
                   </Link>
-                )}
-                {!category.url && category.label && (
+                )} {
+                  <Image
+                      alt={category.label}
+                      src={category.image_url}
+                      width={category.width_card ? category.width_card : 220}
+                      height={category.height_card ? category.height_card : 220}
+                      className={"h-56 object-contain object-center rounded-2xl w-4/5"}
+                    />
+                }
+                {category.url && category.label && (
                   <Link
                     href={category.url}
                     className="flex w-full justify-center hover:text-fb_blue text-fb_blue-main hover:no-underline mt-6"
                   >
                     <h3 className="text-lg font-semibold text-fb_blue-main text-center">{category.label}</h3>
                   </Link>
-                )}
-                {category.label && (
-                  <h3 className="text-lg font-semibold hover:text-fb_blue text-fb_blue-main text-center">
-                    {category.label}
-                  </h3>
                 )}
               </div>
             ))}

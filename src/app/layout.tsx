@@ -11,7 +11,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Página inicial - Gurpo real H",
+  title: "Página inicial - Grupo real H",
   description: "40 anos construindo gerações reais.",
 };
 

@@ -18,6 +18,8 @@ const formatNumber = (num: number): string => {
     return `+ ${(num / 1_000_000).toFixed(0)} Milhões${num >= 2_000_000 ? "s" : ""}`;
   } else if (num >= 1_000) {
     return `+ ${(num / 1_000).toFixed(0)} Mil`;
+  } else if (num <= 100) {
+    return `${num} Anos`;
   }
   return num.toString();
 };
@@ -48,7 +50,7 @@ export default function LoadNumbers({ arrayOfNumbers }: LoadNumbersInterface) {
             <IncrementingCounter maxNumber={number.qtde} speed={30} />
           </span>
           <hr className="w-20 h-[6px] bg-fb_blue_button rounded-full" />
-          <p className="w-20 text-center text-fb_blue_main font-semibold text-base">{number.text}</p>
+          <p className="min-w-50 text-center text-fb_blue_main font-semibold text-base">{number.text}</p>
         </div>
       ))}
     </div>

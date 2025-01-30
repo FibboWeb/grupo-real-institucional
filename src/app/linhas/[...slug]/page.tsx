@@ -10,8 +10,8 @@ export default async function PageLinhas({ params, searchParams }) {
   const { slug } = await params;
 
   return (
-    <section className="relative mt-36">
-      <div className="fb_container flex flex-col gap-fb_space-section">
+    <section className="relative mt-24">
+      <div className="fb_container flex flex-col">
         <div>
           <Breadcrumb
             activeClasses="text-fb_gray_bread"

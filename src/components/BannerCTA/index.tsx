@@ -19,7 +19,7 @@ function BannerCta() {
               </p>
             </div>
             <div className="rounded-sm">
-              <BtnCallToAction ctaLink="#" content="VER TODOS OS ARTIGOS" color="white"></BtnCallToAction>
+              <BtnCallToAction ctaLink="/categoria/artigos" content="VER TODOS OS ARTIGOS" color="white"></BtnCallToAction>
             </div>
           </div>
       </div>
