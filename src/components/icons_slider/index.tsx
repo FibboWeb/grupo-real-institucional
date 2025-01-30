@@ -124,7 +124,7 @@ export default function SliderNavigational({ categories, title, text, isNoticias
             className={`${isNoticias ? "max-w-[100%]" : "max-w-[80%]"} flex justify-center items-center mx-auto cursor-grab`}
           >
             {categories.map((category) => (
-              <div key={category.id} className="flex flex-col mx-auto gap-6 w-[140px] min-h-[140px] px-8">
+              <div key={category.id} className={`${!isNoticias ? "w-[140px] min-h-[140px]" : ""}flex flex-col mx-auto gap-6 px-8`}>
                 {category.url && (
                   <Link href={category.url} className="flex justify-center">
                     <Image
@@ -132,10 +132,10 @@ export default function SliderNavigational({ categories, title, text, isNoticias
                       src={category.image_url}
                       width={category.width_card ? category.width_card : 220}
                       height={category.height_card ? category.height_card : 220}
-                      className={` ${isNoticias ? "h-56" : ""} object-contain rounded-2xl w-full`}
+                      className={` ${isNoticias ? "h-56" : ""} bg-center object-cover rounded-2xl`}
                     />
                   </Link>
-                )} {
+                )} { !isNoticias && (
                   <Image
                       alt={category.label}
                       src={category.image_url}
@@ -143,6 +143,7 @@ export default function SliderNavigational({ categories, title, text, isNoticias
                       height={category.height_card ? category.height_card : 220}
                       className={"h-56 object-contain object-center rounded-2xl w-4/5"}
                     />
+                )
                 }
                 {category.url && category.label && (
                   <Link
