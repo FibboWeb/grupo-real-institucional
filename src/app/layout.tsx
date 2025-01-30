@@ -13,6 +13,16 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Página inicial - Grupo real H",
   description: "40 anos construindo gerações reais.",
+  verification: {
+    google: "kYyHL7QQ_V8N1msmt0rXzo3aBZEmIYZ1xLjm28gHFqQ",
+  },
+  openGraph: {
+    title: "Página inicial - Grupo real H",
+    description: "40 anos construindo gerações reais.",
+    images: ["/favicon.ico"],
+    locale: "pt_BR",
+    siteName: "Grupo real H",
+  }
 };
 
 export default function RootLayout({
@@ -21,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-lt-installed="true" suppressHydrationWarning={true}>
+    <html lang="pt-BR" data-lt-installed="true" suppressHydrationWarning={true}>
       <body className={`${poppins.className} antialiased`}>
         <Header />
         {children}
