@@ -5,11 +5,10 @@ import { Menus } from "./Menus";
 
 async function Footer() {
   const menuInstitucional = await getMenus("Institucional");
-  const menuProdutos = await getMenus("Produtos");
   const menuNossasMarcas = await getMenus("Nossas Marcas");
   const menuInformacoes = await getMenus("Informacoes");
 
-  const menusItems = [menuInstitucional, menuProdutos, menuNossasMarcas, menuInformacoes];
+  const menusItems = [menuInstitucional, menuNossasMarcas, menuInformacoes];
 
   return (
     <footer className="w-full bg-footer-image bg-no-repeat bg-cover bg-center">

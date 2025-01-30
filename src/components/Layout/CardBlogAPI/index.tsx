@@ -1,20 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ReactNode } from "react";
-
-interface CardBlogProps {
-  blogContext?: string;
-  postImage?: string;
-  postImageAlt?: string;
-  postLink?: string;
-  postTitle?: ReactNode;
-  postDescription?: { __html: string };
-  postDate?: string;
-  postMonthDate?: string;
-  postAuthor?: string;
-  postAuthorLink?: string;
-  isSlider?: boolean;
-}
+import { CardBlogProps } from "@/types/post";
 
 function CardBlog({
   blogContext,

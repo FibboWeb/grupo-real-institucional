@@ -55,7 +55,13 @@ export default async function PageProduct({ params }) {
     <div className="relative mt-36">
       <div className="fb_container gap-fb_space-section">
         <div>
-          <Breadcrumb />
+          <Breadcrumb
+            activeClasses="text-fb_gray_bread"
+            excludePaths={["produtos"]}
+            containerClasses="flex py-5"
+            listClasses="mx-2 font-bold text-fb_gray_bread hover:text-fb_blue duration-300"
+            capitalizeLinks
+          />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 fb_container gap-8">
           <div className="mx-auto">

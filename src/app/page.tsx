@@ -55,7 +55,12 @@ export default async function Home() {
         </div>
       </section>
       <section>
-        <SliderNavigational categories={sliderCategoriasHome} />
+        <SliderNavigational
+          categories={sliderCategoriasHome}
+          title="Linha Nutrição"
+          text="Oferecemos uma ampla gama de produtos de nutrição animal, desenvolvidos para atender às necessidades
+            específicas de cada segmento do mercado."
+        />
       </section>
       <section>
         <div>
