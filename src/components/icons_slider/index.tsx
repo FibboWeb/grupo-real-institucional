@@ -111,13 +111,13 @@ export default function SliderNavigational({ categories, title, text, isNoticias
   return (
     <div>
       <div className="w-full flex flex-col gap-8">
-        <h2 className={`${isNoticias ? "text-3xl" : "text-4xl"} font-bold text-center text-fb_blue_main`}>{title}</h2>
+        <h2 className={`${isNoticias ? "text-3xl" : "text-4xl"} fb_container font-bold text-center text-fb_blue_main`}>{title}</h2>
         {text && (
           <div className="container px-10 lg:w-2/4 lg:px-2 text-center mx-auto">
             <p>{text}</p>
           </div>
         )}
-        <div className={`mx-auto ${isNoticias ? " " : "container h-[300px]"} max-w-full overflow-hidden`}>
+        <div className={`mx-auto ${isNoticias ? "" : "container h-[300px]"} max-w-full overflow-hidden`}>
           <Slider
             {...settings}
             ref={sliderRef}

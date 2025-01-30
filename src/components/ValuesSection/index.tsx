@@ -55,7 +55,7 @@ function ValuesSection({ values }: ValuesSectionProps) {
               alt={value.title}
               width={600}
               height={475}
-              className="rounded-lg h-auto object-cover object-center mx-auto md:mx-0"
+              className="rounded-lg h-auto object-cover object-center mx-auto md:mx-0 w-full"
             />
           </div>
           <div className="w-full flex flex-col gap-6 lg:w-1/2">

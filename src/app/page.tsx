@@ -26,9 +26,9 @@ export default async function Home() {
     <div className="flex flex-col gap-fb_space-section">
       <section>
         <VideoBackground src_video="/video/drone-fabrica.mp4" ctaLinks={ctasLinksHero}>
-          <div className="fb_container">
-            <h1 className="text-3xl md:text-6xl font-bold mb-4 text-center">
-              Por um futuro s{<Typewriter words={["ustentável", "audável", "eguro"]} />}
+          <div className="">
+            <h1 className="text-3xl md:text-5xl font-bold mb-4 text-center">
+              Por um futuro <br className="block md:hidden"/>s{<Typewriter words={["ustentável", "audável", "eguro"]} />} <br className="block md:hidden"/>
               <span> para todos</span>
             </h1>
             <p className="text-lg md:text-xl mb-6">

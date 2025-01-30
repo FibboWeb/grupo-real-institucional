@@ -68,7 +68,7 @@ export default function SliderTestimonials({ testimonial }: testimonialCardProps
                       {item.testimonial}
                     </p>
                   </div>
-                  <div className="w-full flex min-h-[100px] justify-between">
+                  <div className="w-fit flex min-h-[100px] justify-between">
                     <div>
                       <p className="text-xl lg:text-3xl font-bold transition-colors group-hover:text-white duration-200">
                         {item.name}
