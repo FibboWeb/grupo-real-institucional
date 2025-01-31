@@ -1,15 +1,28 @@
-import { fetchPosts, getLastPostsNoticias } from "@/lib/getPostsNoticiasPage";
-import { sliderCategoriasNoticias } from "@/constants/noticiaspage";
 import Breadcrumb from "@/components/BreadCrumb";
-import Newsletter from "@/components/Layout/Newsletter";
-import SidebarNoticias from "@/components/Layout/SidebarNoticias";
+import CardPostHero from "@/components/CardPostHero";
 import SliderNavigational from "@/components/icons_slider";
 import CardBlog from "@/components/Layout/CardBlogAPI";
-import CardPostHero from "@/components/CardPostHero";
+import Newsletter from "@/components/Layout/Newsletter";
+import SidebarNoticias from "@/components/Layout/SidebarNoticias";
 import Pagination from "@/components/Pagination";
+import { sliderCategoriasNoticias } from "@/constants/noticiaspage";
+import { fetchPosts, getLastPostsNoticias } from "@/lib/getPostsNoticiasPage";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Notícias - Grupo real H",
+  description: "40 anos construindo gerações reais.",
+  openGraph: {
+    title: "Notícias - Grupo real H",
+    description: "40 anos trazendo informações sobre a saúde do campo e construindo gerações reais.",
+    images: ["/favicon.ico"],
+    locale: "pt_BR",
+    siteName: "Grupo real H",
+  }
+};
 
 export default async function Noticias({ searchParams }) {
-  const page = searchParams.page ? parseInt(searchParams.page, 10) : 1;
+  const page = (await searchParams).page ? parseInt(searchParams.page, 10) : 1;
   const postsPerPage = 6;
 
   const { posts, totalPages } = await fetchPosts(page, postsPerPage);

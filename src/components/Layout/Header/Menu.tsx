@@ -107,18 +107,33 @@ export default function Menu() {
               onMouseEnter={() => handleMouseEntered(item.node.id)}
               onMouseLeave={handleMouseLeave}
             >
-              <a href={item.node.url} className="text-fb_blue_main hover:text-fb_blue duration-300">
-                {item.node.label}
-              </a>
+              {!item.node.url.includes("") || !item.node.url.includes("#") ? (
+                    <a
+                      href={item.node.url === "#" ? "" : item.node.url} // Corrigindo o href
+                      className="w-full text-fb_blue_main hover:text-fb_blue duration-fb_transition_ease py-3"
+                    >
+                      {item.node.label}
+                    </a>
+                  ) : (
+                    <p
+                      className="flex text-fb_blue_main hover:text-fb_blue duration-300"
+                      onClick={() => handleMouseEnter(item.node.id)}
+                    >
+                      {item.node.label}
+                      {(item.node.label === "Nossas Marcas" || "Institucional" || "Informações") && (
+                        <span
+                          className={`flex items-center transition-all duration-300 ${activeMenu === item.node.id ? "rotate-180 " : ""}`}
+                        >
+                          <ChevronDown />
+                        </span>
+                      )}
+                    </p>
+                  )}
               {item.node?.childItems?.edges && item.node?.childItems?.edges.length > 0 && (
                 <div className="">
-                  <span
-                    className={`flex items-center cursor-pointer transition-all duration-300 ${activeMenu === item.node.id ? "rotate-180 " : ""}`}
-                  >
-                    <ChevronDown />
-                  </span>
+
                   <ul
-                    className={`w-96 top-3/4 bg-white border absolute sub-menu px-3 py-4 ${activeMenu === item.node.id ? "block" : "hidden"} transition-opacity duration-400 left-1/2 transform -translate-x-1/2 rounded-md`}
+                    className={`origin-top transition-hidden duration-500 ease-out w-96 top-3/4 bg-white border absolute sub-menu px-3 py-4 ${activeMenu === item.node.id ? "block" : "hidden"} transition-opacity duration-400 left-1/2 transform -translate-x-1/2 rounded-md`}
                   >
                     {item.node.childItems?.edges?.map((subMenu) => (
                       <li key={subMenu.node.id} className="py-2 px-3">
@@ -167,8 +182,8 @@ export default function Menu() {
               <li
                 className=""
                 id="sustentabilidade"
-                onMouseEnter={() => handleMouseEntered("sustentabilidade")}
-                onMouseLeave={handleMouseLeave}
+                // onMouseEnter={() => handleMouseEntered("sustentabilidade")}
+                // onMouseLeave={handleMouseLeave}
               >
                 <button
                   onClick={() => handleMouseEnter("sustentabilidade")}
@@ -178,7 +193,7 @@ export default function Menu() {
                   <Image src={greenLeaf.src} alt="Green Leaf" width={13} height={13} loading="eager" />
                   <div className="w-fit right-0 top-1/4 items-center">
                     <ul
-                      className={`w-96 top-3/4 bg-white z-50 border absolute sub-menu px-3 py-4 ${activeMenu === "sustentabilidade" ? "block" : "hidden"} transition-opacity duration-400  transform left-1/2 -translate-x-2/4 rounded-md`}
+                      className={`w-96 top-3/4 bg-white z-50 border absolute sub-menu px-3 py-4 ${activeMenu === "sustentabilidade" ? "block" : "hidden"} transition-opacity duration-400 shadow-custom_shadow  transform left-1/2 -translate-x-2/4 rounded-md`}
                     >
                       {menuSustentabilidade.map((subMenu) => (
                         <li key={subMenu.anchor} className="py-2 px-3">
@@ -206,7 +221,7 @@ export default function Menu() {
                       onClick={() => handleMouseEnter(item.node.id)}
                     >
                       {item.node.label}
-                      {item.node.label === "Nossas Marcas" && (
+                      {(item.node.label === "Nossas Marcas" || "Institucional" || "Informações ") && (
                         <span
                           className={`flex items-center cursor-pointer transition-all duration-300 ${activeMenu === item.node.id ? "rotate-180 " : ""}`}
                         >
