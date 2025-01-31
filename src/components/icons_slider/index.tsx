@@ -140,7 +140,7 @@ export default function SliderNavigational({ categories, title, text, isNoticias
                       className={` ${isNoticias ? "h-56 object-cover" : ""} object-contain rounded-2xl w-full`}
                     />
                   </Link>
-                )}{" "}
+                )}
                 {!isNoticias && (
                   <Image
                     alt={category.label || "imagem da categoria"}
