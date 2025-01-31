@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 
 export const GET_PRODUCT_BY_LINES = gql`
   query ProdutosPorLinhas($nameIn: [String]) {
-    linhas(where: { nameIn: $nameIn }) {
+    linhas(where: { nameIn: $nameIn } first: 20) {
       edges {
         node {
           id
@@ -51,4 +51,19 @@ export const query = gql`
       title
     }
   }
+`;
+
+export const GET_SEO_LINES = gql`
+query getSEOLines {
+  linhaBy(slug: "linha-nutricao") {
+    id
+    title(format: RENDERED)
+    content(format: RENDERED)
+    featuredImage {
+      node {
+        link
+      }
+    }
+  }
+}
 `;

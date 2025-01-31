@@ -2,10 +2,73 @@
 import BannerLines from "@/components/BannerCTA/BannerLines";
 import Breadcrumb from "@/components/BreadCrumb";
 
+import { fetchYoastData } from "@/lib/getSEOLines";
 import image01 from "@/public/images/banners/boi-no-pasto.webp";
-import image02 from "@/public/images/banners/carne-vermelha-cortada.webp";
 import image03 from "@/public/images/banners/cao-e-gato.webp";
+import image02 from "@/public/images/banners/carne-vermelha-cortada.webp";
+import { Metadata } from "next";
 import GridProduct from "../(componentes)";
+import { notFound } from "next/navigation";
+
+type Props = {
+  params: Promise<{ slug: string }>
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}
+
+/**
+ * Generates metadata for a linhas page, including:
+ * - title
+ * - description
+ * - robots (index, follow, max-snippet, max-image-preview)
+ * - openGraph (images)
+ * - alternates (canonical)
+ *
+ * Extends parent metadata with openGraph images and alternates canonical URL
+ *
+ * @param {Props} _props - not used
+ * @returns {Metadata} generated metadata
+ */
+
+export async function generateMetadata(
+  { params }: Props,
+): Promise<Metadata> {
+  // read route params
+  const slug = (await params).slug
+  
+  let lineInfo
+  // fetch data
+  if (slug[0] === "real-h") {
+    lineInfo = await fetchYoastData("linha-nutricao");
+  } else if (slug[0] === "cmr") {
+    lineInfo = await fetchYoastData("linha-saude");
+  } else if (slug[0] === "homeopet") {
+    lineInfo = await fetchYoastData("linha-homeo-pet"); 
+  }
+
+  if (!lineInfo) {
+    notFound()
+  }
+ 
+  return {
+    title: lineInfo.title,
+    description: lineInfo.description,
+    robots: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+    },
+    openGraph: {
+      title: lineInfo.title,
+      description: lineInfo.description,
+      images: [ lineInfo.og_image ? lineInfo.og_image[0].url : '' ],
+    },
+    alternates: {
+      canonical: `https://gruporealbr.com.br/linhas/${slug[0]}`,
+    },
+  }
+}
+
 export default async function PageLinhas({ params, searchParams }) {
   const { slug } = await params;
 
@@ -18,10 +81,11 @@ export default async function PageLinhas({ params, searchParams }) {
             containerClasses="flex py-5"
             listClasses="mx-2 font-bold text-fb_gray_bread hover:text-fb_blue duration-300"
             capitalizeLinks
+            excludePaths={["linhas"]}
           />
         </div>
         <div>
-          <BannerLines title="Linha Nutrição" imgBackground={image01.src}>
+          <BannerLines slug_context={slug ? slug[0] : ""} title="Linha Nutrição" imgBackground={image01.src}>
             <p>
               A <strong>Real H</strong>, empresa de <strong>Nutrição e Saúde Animal</strong>
               há <strong>40 anos</strong> ao lado do produtor
