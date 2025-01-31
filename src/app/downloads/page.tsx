@@ -11,7 +11,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import Newsletter from "@/components/Layout/Newsletter";
 
 import { getDownloads } from "@/lib/getDownloads";
-import { Metadata } from "next";
 
 const categories = [
   "CMR Saúde Animal",
