@@ -19,6 +19,7 @@ const categories = [
   "Homeopet",
   "Institucional",
   "Grupo Real Nutrição e Saúde Animal",
+  "Grupo Real Nutrição e Saúde Animal",
 ];
 
 export default function DownloadsPage() {
