@@ -42,7 +42,7 @@ const ContentPostsByCategory: PostsByCategoryProps = {
       icon: CiclosEnergiaSolarIcon,
       title: "Ciclos Energia Solar",
       content:
-        "A Real H investiu cerca de R$ 2 milhões para a implantação de placas para a geração de energia fotovoltaicas em suas unidades industriais.",
+        "A Grupo Real investiu cerca de R$ 2 milhões para a implantação de placas para a geração de energia fotovoltaicas em suas unidades industriais.",
       img: ImgExample2,
       link: "#",
     },
@@ -66,7 +66,7 @@ const ContentPostsByCategory: PostsByCategoryProps = {
       icon: CiclosEnergiaSolarIcon,
       title: "Ciclos Energia Solar",
       content:
-        "A Real H investiu cerca de R$ 2 milhões para a implantação de placas para a geração de energia fotovoltaicas em suas unidades industriais.",
+        "A Grupo Real investiu cerca de R$ 2 milhões para a implantação de placas para a geração de energia fotovoltaicas em suas unidades industriais.",
       img: ImgExample2,
       link: "#",
     },

@@ -29,7 +29,7 @@ export default function Page() {
 
             <Button
               className="mb-8 h-[48px] px-10 bg-green-600 hover:bg-green-700"
-              onClick={() => window.open("https://wa.me/556730289000")}
+              onClick={() => window.open("https://wa.me/558001009000")}
             >
               <FaWhatsapp className="mr-2 h-5 w-5" />
               SOLICITE UM ORÇAMENTO

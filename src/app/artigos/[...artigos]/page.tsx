@@ -12,7 +12,7 @@ import { fetchYoastSEO } from "@/lib/getCategorias";
 import { Metadata } from "next";
 
 type Props = {
-  params: Promise<{ post: string }>
+  params: Promise<{ artigos: string }>
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
 
@@ -34,7 +34,7 @@ export async function generateMetadata(
   { params }: Props,
 ): Promise<Metadata> {
   // read route params
-  const slug = (await params).post
+  const slug = (await params).artigos
 
   // fetch data
   const infos = await fetchYoastSEO(slug, "posts");
@@ -64,7 +64,7 @@ export async function generateMetadata(
 }
 
 export default async function ArtigosPage({ params }) {
-  const postSlug = await params.artigos[0];
+  const postSlug = (await params).artigos[0];
   const fetchedPost = await getPostDetails(postSlug);
   const post = fetchedPost.props.post;
 

@@ -11,13 +11,32 @@ import { Card, CardContent } from "@/components/ui/card";
 import Newsletter from "@/components/Layout/Newsletter";
 
 import { getDownloads } from "@/lib/getDownloads";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Downloads - Grupo Real",
+  description: "40 anos construindo gerações reais.",
+  openGraph: {
+    title: "Downloads - Grupo Real",
+    description: "40 anos construindo gerações reais.",
+    images: ["/favicon.ico"],
+    locale: "pt_BR",
+    siteName: "Grupo Real",
+  },
+  alternates: {
+    canonical: "https://gruporealbr.com.br/downloads",
+    languages: {
+      pt: "https://gruporealbr.com.br",
+    }
+  }
+};
 
 const categories = [
   "CMR Saúde Animal",
   "Grupo Real (Institucional)",
   "Homeopet",
   "Institucional",
-  "Real H Nutrição e Saúde Animal",
+  "Grupo Real Nutrição e Saúde Animal",
 ];
 
 export default function DownloadsPage() {

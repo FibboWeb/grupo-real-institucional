@@ -16,6 +16,25 @@ import Claudio5 from "@/public/images/claudio-martins-real-curriculo/claudio-5.w
 import Claudio6 from "@/public/images/claudio-martins-real-curriculo/claudio-6.webp";
 import Claudio7 from "@/public/images/claudio-martins-real-curriculo/claudio-7.webp";
 import HeroImage from "@/public/images/claudio-martins-real-curriculo/claudio-martins-hero.webp";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Professor Doutor Claudio Martins - Grupo Real",
+  description: "40 anos construindo gerações reais.",
+  openGraph: {
+    title: "Professor Doutor Claudio Martins - Grupo Real",
+    description: "40 anos construindo gerações reais.",
+    images: ["/favicon.ico"],
+    locale: "pt_BR",
+    siteName: "Grupo Real",
+  },
+  alternates: {
+    canonical: "https://gruporealbr.com.br/claudio-martins-real-curriculo",
+    languages: {
+      pt: "https://gruporealbr.com.br",
+    }
+  }
+};
 
 export default function ClaudioMartinsReal() {
   function CardSection({ children }: { children: React.ReactNode }) {
@@ -64,9 +83,9 @@ export default function ClaudioMartinsReal() {
       <InfoSection
         reverseDesktop={true}
         reverseMobile={false}
-        title={"A Fundação da Real H e o Legado em Continuidade"}
+        title={"A Fundação da Grupo Real e o Legado em Continuidade"}
         content={
-          "<p>Trabalhou como professor até 1993, quando, após aposentar-se, fundou, junto com os filhos, a Real H. Até hoje o professor dedica-se com entusiasmo ao estudo da Homeopatia e da Medicina Veterinária.</p>"
+          "<p>Trabalhou como professor até 1993, quando, após aposentar-se, fundou, junto com os filhos, a Grupo Real. Até hoje o professor dedica-se com entusiasmo ao estudo da Homeopatia e da Medicina Veterinária.</p>"
         }
         imagePath={Claudio3}
       />

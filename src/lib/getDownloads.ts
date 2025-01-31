@@ -38,7 +38,7 @@ export async function getDownloads() {
             mediaItemUrl: Logo40Anos.src,
           },
         },
-        categories: ["Institucional", "Real H Nutrição e Saúde Animal"],
+        categories: ["Institucional", "Grupo Real Nutrição e Saúde Animal"],
         id: "cG9zdDo0MTI1OQ==",
         title: "Logo 40 Anos",
         featuredImage: {
@@ -118,7 +118,7 @@ export async function getDownloads() {
             mediaItemUrl: LogoCMRColorida.src,
           },
         },
-        categories: ["Grupo Real (Institucional)", "Real H Nutrição e Saúde Animal"],
+        categories: ["Grupo Real (Institucional)", "Grupo Real Nutrição e Saúde Animal"],
         id: "cG9zdDozMjQ1OA==",
         title: "Logo CMR Colorida Fundo Transparente",
         featuredImage: {
@@ -136,7 +136,7 @@ export async function getDownloads() {
         },
         categories: ["Grupo Real (Institucional)"],
         id: "cG9zdDoyNzg3Mg==",
-        title: "Logo Real H Colorida Fundo Branco",
+        title: "Logo Grupo Real Colorida Fundo Branco",
         featuredImage: {
           node: {
             sourceUrl: RealHImage.src,
@@ -150,9 +150,9 @@ export async function getDownloads() {
             mediaItemUrl: LogoRealhTransparente.src,
           },
         },
-        categories: ["Grupo Real (Institucional)", "Real H Nutrição e Saúde Animal"],
+        categories: ["Grupo Real (Institucional)", "Grupo Real Nutrição e Saúde Animal"],
         id: "cG9zdDoyNzg3MA==",
-        title: "Logo Real H Colorida Fundo Transparente",
+        title: "Logo Grupo Real Colorida Fundo Transparente",
         featuredImage: {
           node: {
             sourceUrl: RealHImage.src,
@@ -166,9 +166,9 @@ export async function getDownloads() {
             mediaItemUrl: ManualdaMarcaRealH,
           },
         },
-        categories: ["Grupo Real (Institucional)", "Real H Nutrição e Saúde Animal"],
+        categories: ["Grupo Real (Institucional)", "Grupo Real Nutrição e Saúde Animal"],
         id: "cG9zdDoyNzg2Ng==",
-        title: "Manual da Marca Real H",
+        title: "Manual da Marca Grupo Real",
         featuredImage: {
           node: {
             sourceUrl: RealHImage.src,

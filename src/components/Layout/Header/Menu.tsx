@@ -2,7 +2,7 @@
 import { AlignJustify, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { SetStateAction, useState } from "react";
-import greenLeaf from "../../../../public/green-leaf.svg";
+import greenLeaf from "@/public/green-leaf.svg";
 import menuItems from "@/lib/menuItems";
 
 export interface MenuNode {
@@ -84,12 +84,12 @@ export default function Menu() {
             onMouseEnter={() => handleMouseEntered("sustentabilidade")}
             onMouseLeave={handleMouseLeave}
           >
-            <button className="flex gap-3 bg-fb_green text-white items-center py-2 px-3 text-center rounded-md font-bold relative">
+            <button onMouseEnter={() => handleMouseEntered("sustentabilidade")}  className="flex gap-3 bg-fb_green text-white items-center py-2 px-3 text-center rounded-md font-bold relative">
               Sustentabilidade
               <Image src={greenLeaf.src} alt="Green Leaf" width={13} height={13} loading="eager" />
             </button>
             <ul
-              className={`w-96 top-3/4 bg-white border absolute sub-menu px-3 py-4 ${activeMenu === "sustentabilidade" ? "block" : "hidden"} transition-opacity duration-400 rounded-md`}
+              className={`w-96 top-3/4 bg-white border absolute sub-menu px-3 py-4 ${activeMenu === "sustentabilidade" ? "block opacity-100 visible" : "opacity-0 height-0 invisible overflow-hidden"} transition-opacity duration-300 rounded-md`}
             >
               {menuSustentabilidade.map((subMenu) => (
                 <li key={subMenu.anchor} className="py-2 px-3">
@@ -133,7 +133,7 @@ export default function Menu() {
                 <div className="">
 
                   <ul
-                    className={`origin-top transition-hidden duration-500 ease-out w-96 top-3/4 bg-white border absolute sub-menu px-3 py-4 ${activeMenu === item.node.id ? "block" : "hidden"} transition-opacity duration-400 left-1/2 transform -translate-x-1/2 rounded-md`}
+                    className={`w-96 top-3/4 bg-white border absolute sub-menu px-3 py-4 ${activeMenu === item.node.id ? "block opacity-100 visible" : "opacity-0 height-0 invisible overflow-hidden"} transition-opacity duration-300 left-1/2 transform -translate-x-1/2 rounded-md`}
                   >
                     {item.node.childItems?.edges?.map((subMenu) => (
                       <li key={subMenu.node.id} className="py-2 px-3">
@@ -147,7 +147,7 @@ export default function Menu() {
                                 <ChevronDown />
                               </span>
                               <ul
-                                className={`sub-sub-menu ${activeMenu === subMenu.node.id ? "block" : "hidden"} transition-opacity duration-400`}
+                                className={`sub-sub-menu ${activeMenu === subMenu.node.id ? "block opacity-100 visible" : "opacity-0 height-0 invisible overflow-hidden"} transition-opacity duration-300`}
                               >
                                 {subMenu.node?.edges?.map((subSubMenu) => (
                                   <li key={subSubMenu.id} className="py-2 px-3">
@@ -193,7 +193,7 @@ export default function Menu() {
                   <Image src={greenLeaf.src} alt="Green Leaf" width={13} height={13} loading="eager" />
                   <div className="w-fit right-0 top-1/4 items-center">
                     <ul
-                      className={`w-96 top-3/4 bg-white z-50 border absolute sub-menu px-3 py-4 ${activeMenu === "sustentabilidade" ? "block" : "hidden"} transition-opacity duration-400 shadow-custom_shadow  transform left-1/2 -translate-x-2/4 rounded-md`}
+                      className={`w-96 top-3/4 bg-white z-50 border absolute sub-menu px-3 py-4 ${activeMenu === "sustentabilidade" ? "block opacity-100 visible" : "opacity-0 height-0 invisible overflow-hidden"} transition-opacity duration-300 shadow-custom_shadow  transform left-1/2 -translate-x-2/4 rounded-md`}
                     >
                       {menuSustentabilidade.map((subMenu) => (
                         <li key={subMenu.anchor} className="py-2 px-3">
@@ -236,7 +236,7 @@ export default function Menu() {
                       <ul
                         className={`z-10 bg-white absolute top-full rounded-md shadow-custom_shadow text-center w-80 md:w-96 sub-menu px-3 py-4 ${
                           activeMenu === item.node.id ? "block opacity-100" : "hidden opacity-0"
-                        } bg-accent-neutral transition-all duration-400 transform left-1/2 -translate-x-2/4 rounded-md`}
+                        } bg-accent-neutral transition-all duration-300 transform left-1/2 -translate-x-2/4 rounded-md`}
                       >
                         {item.node.childItems?.edges?.map((subMenu) => (
                           <li key={subMenu.node.id} className="px-5 py-3">

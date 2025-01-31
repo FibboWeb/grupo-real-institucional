@@ -1,7 +1,7 @@
 // Hero
 import HeroSection from "@/components/Layout/HeroSection";
-import HeroChildren from "./HeroChildren";
 import HeroCiclos from "@/public/images/imagem_hero_ciclos.webp";
+import HeroChildren from "./HeroChildren";
 
 // infinite carousel
 import InfiniteCarousel from "@/components/Layout/InfiniteCarousel/InfiniteCarousel";
@@ -20,13 +20,32 @@ import Newsletter from "@/components/Layout/Newsletter";
 import BigNumbersSection from "@/components/Layout/BigNumbersSection/BigNumbersSection";
 import { BigNumbersItems } from "./BigNumbersItems";
 // images
-import EixoSocialImg from "@/public/images/social/eixo-social.webp";
-import CompromissoEducacaoImg from "@/public/images/social/compromisso-educacao.webp";
-import CiclosEsportImg from "@/public/images/social/ciclos-e-o-esporte.webp";
 import CartaoMultibeneficioImg from "@/public/images/social/cartao-multibeneficio.webp";
+import CiclosEsportImg from "@/public/images/social/ciclos-e-o-esporte.webp";
 import SolidariedadeImg from "@/public/images/social/ciclos-e-solidarieadewebp.webp";
+import CompromissoEducacaoImg from "@/public/images/social/compromisso-educacao.webp";
+import EixoSocialImg from "@/public/images/social/eixo-social.webp";
 import ReconhecimentoImg from "@/public/images/social/reconhecimento.webp";
-import ytVideoImgMock from "@/public/images/social/yt-video.png";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Ciclos: Social - Grupo Real",
+  description: "40 anos construindo gerações reais.",
+  openGraph: {
+    title: "Ciclos: Social - Grupo Real",
+    description: "40 anos construindo gerações reais.",
+    images: ["/favicon.ico"],
+    locale: "pt_BR",
+    siteName: "Grupo real",
+  },
+  alternates: {
+    canonical: "https://gruporealbr.com.br/social",
+    languages: {
+      pt: "https://gruporealbr.com.br",
+    }
+  }
+};
+
 
 export default function SocialPage() {
   return (
@@ -42,7 +61,7 @@ export default function SocialPage() {
       <InfiniteCarousel items={InfiniteCarouselItems} />
       <InfoSection
         badge="Social"
-        title="Eixo Social do Ciclos Real H: Compromisso com Pessoas e Comunidades"
+        title="Eixo Social do Ciclos Grupo Real: Compromisso com Pessoas e Comunidades"
         content="O Ciclos, <strong>Programa de Sustentabilidade</strong> do Grupo Real, é uma iniciativa estruturada que integra ações voltadas para os pilares social, ambiental e de transparência. Dentro desse contexto, o <strong>Eixo Social</strong> desempenha um papel fundamental ao colocar as pessoas no centro das estratégias da empresa, reforçando o compromisso com a valorização humana, a integração e o apoio à sociedade em momentos cruciais."
         imagePath={EixoSocialImg}
         border={false}
@@ -67,7 +86,7 @@ export default function SocialPage() {
         infoSectionImagePath={CiclosEsportImg}
         infoSectionBadge="Social"
         infoSectionTitle="Ciclos e o Esporte"
-        infoSectionContent="O Eixo Social do <strong>Ciclos Real H</strong> também se estende ao incentivo ao esporte como ferramenta de inclusão, superação e inspiração. Como parte desse compromisso, o Grupo patrocina <strong>Fernando Rufino</strong>, campeão mundial e paralímpico de paracanoagem, um verdadeiro exemplo de resiliência e conquista. Conhecido como “Cowboy de Aço”, Rufino carrega consigo valores de determinação e força que se alinham aos princípios do <strong>Grupo Real</strong>, servindo como inspiração para colaboradores e comunidades."
+        infoSectionContent="O Eixo Social do <strong>Ciclos Grupo Real</strong> também se estende ao incentivo ao esporte como ferramenta de inclusão, superação e inspiração. Como parte desse compromisso, o Grupo patrocina <strong>Fernando Rufino</strong>, campeão mundial e paralímpico de paracanoagem, um verdadeiro exemplo de resiliência e conquista. Conhecido como “Cowboy de Aço”, Rufino carrega consigo valores de determinação e força que se alinham aos princípios do <strong>Grupo Real</strong>, servindo como inspiração para colaboradores e comunidades."
         infoSectionColor="fb_green_button"
         infoSectionContentButton="Leia mais"
         infoSectionReverseDesktop={true}
@@ -109,7 +128,7 @@ export default function SocialPage() {
       />
       <InfoSection
         badge="Prêmio Semestral"
-        title="Eixo Social do Ciclos Real H: Compromisso com Pessoas e Comunidades"
+        title="Eixo Social do Ciclos Grupo Real: Compromisso com Pessoas e Comunidades"
         content="O Ciclos, <strong>Programa de Sustentabilidade</strong> do Grupo Real, é uma iniciativa estruturada que integra ações voltadas para os pilares social, ambiental e de transparência. Dentro desse contexto, o <strong>Eixo Social</strong> desempenha um papel fundamental ao colocar as pessoas no centro das estratégias da empresa, reforçando o compromisso com a valorização humana, a integração e o apoio à sociedade em momentos cruciais."
         imagePath={EixoSocialImg}
         border={false}

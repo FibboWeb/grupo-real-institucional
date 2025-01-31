@@ -6,6 +6,46 @@ import AuthorBox from "@/components/Layout/AuthorBox";
 import { fetchPosts, fetchAuthorData } from "@/lib/getAuthorPosts";
 import Pagination from "@/components/Pagination";
 import { notFound } from "next/navigation";
+import { fetchYoastSEO } from "@/lib/getCategorias";
+import { Metadata } from "next";
+
+type Props = {
+  params: Promise<{ author: string }>
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}
+
+export async function generateMetadata(
+  { params }: Props,
+  searchParams
+): Promise<Metadata> {
+  const slug = (await params).author[(await params).author.length - 1]
+  
+  let infos
+  infos = await fetchYoastSEO(slug, "users");
+
+  if(!infos) {
+    notFound()
+  }
+ 
+  return {
+    title: infos.title,
+    description: infos.description,
+    robots: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+    },
+    openGraph: {
+      title: infos.title,
+      description: infos.description,
+      images: [ infos.og_image ? infos.og_image[0].url : '' ],
+    },
+    alternates: {
+      canonical: `https://gruporealbr.com.br/author/${slug}`,
+    },
+  }
+}
 
 export default async function AuthorPage({ params, searchParams }) {
   const page = parseInt(searchParams.page || "1");

@@ -6,20 +6,39 @@ import Newsletter from "@/components/Layout/Newsletter";
 import SidebarNoticias from "@/components/Layout/SidebarNoticias";
 import Pagination from "@/components/Pagination";
 import { sliderCategoriasNoticias } from "@/constants/noticiaspage";
+import { fetchYoastSEO } from "@/lib/getCategorias";
 import { fetchPosts, getLastPostsNoticias } from "@/lib/getPostsNoticiasPage";
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 
-export const metadata: Metadata = {
-  title: "Notícias - Grupo real H",
-  description: "40 anos construindo gerações reais.",
-  openGraph: {
-    title: "Notícias - Grupo real H",
-    description: "40 anos trazendo informações sobre a saúde do campo e construindo gerações reais.",
-    images: ["/favicon.ico"],
-    locale: "pt_BR",
-    siteName: "Grupo real H",
+export async function generateMetadata() {
+  let infos
+  infos = await fetchYoastSEO("noticias", "categories");
+  console.log(infos)
+
+  if(!infos) {
+    notFound()
   }
-};
+ 
+  return {
+    title: infos.title,
+    description: infos.description,
+    robots: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+    },
+    openGraph: {
+      title: infos.title,
+      description: infos.description,
+      images: [ infos.og_image ? infos.og_image[0].url : '' ],
+    },
+    alternates: {
+      canonical: `https://gruporealbr.com.br/noticias`,
+    },
+  }
+}
 
 export default async function Noticias({ searchParams }) {
   const page = (await searchParams).page ? parseInt(searchParams.page, 10) : 1;

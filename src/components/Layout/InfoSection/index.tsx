@@ -100,7 +100,7 @@ function InfoSection({
             </div>
           ) : (
             <div
-              className={`flex ${reverseDesktop ? "justify-start" : "justify-end"} items-center rounded-2xl ${!imageMidFullContainer ? "p-2" : "h-inherit w-full"}`}
+              className={`w-full md:flex-1 flex ${reverseDesktop ? "justify-start" : "justify-end"} items-center rounded-2xl ${!imageMidFullContainer ? "p-2" : "h-inherit w-full"}`}
             >
               <Image
                 src={imagePath}

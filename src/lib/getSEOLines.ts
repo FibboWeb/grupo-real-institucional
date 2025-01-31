@@ -51,21 +51,3 @@ export async function getInfoLine(slug) {
       return null;
   }
 }
-
-// export async function getSEOLines(linha): Promise<any> {
-//   try {
-//     const seo = await client.query({
-//       query: GET_SEO_LINES,
-//       variables: { slug: linha },
-//     });
-// console.log(seo)
-
-//     return {
-//       data: seo.data.linhaBy,
-//       loading: false, // or some other value that makes sense for your app
-//       networkStatus: 7,
-//     };
-//   } catch (error) {
-//     return error;
-//   }
-// }
