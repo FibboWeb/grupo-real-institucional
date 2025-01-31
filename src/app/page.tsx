@@ -67,7 +67,7 @@ export default async function Home() {
           <BannerCta />
         </div>
       </section>
-      <section>
+      <section className="container">
         <ValuesSection values={sectionValoresInfo2} />
       </section>
       <section className="flex flex-col gap-8">

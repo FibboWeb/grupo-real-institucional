@@ -1,22 +1,40 @@
-import React from "react";
-import Image from "next/image";
-import InfoSection from "@/components/Layout/InfoSection";
-import HeroSection from "@/components/Layout/HeroSection";
-import BtnCallToAction from "@/components/Layout/Buttons/BtnCallToAction/BtnCallToAction";
 import FeatureSection from "@/components/Layout/FeatureSection";
+import HeroSection from "@/components/Layout/HeroSection";
+import InfoSection from "@/components/Layout/InfoSection";
+import Image from "next/image";
+import React from "react";
 
+import CiclosClean from "@/public/images/ciclos-clean.webp";
 import EticaLegalidade from "@/public/images/transparencia/etica-legalidade.webp";
-import ManAndDog from "@/public/images/transparencia/man-and-dog.webp";
 import EuReciclo from "@/public/images/transparencia/eu-reciclo.webp";
 import Lgpd from "@/public/images/transparencia/lgpd.webp";
+import ManAndDog from "@/public/images/transparencia/man-and-dog.webp";
 import TransparenciaEtica from "@/public/images/transparencia/transparencia-etica.webp";
-import CiclosClean from "@/public/images/ciclos-clean.webp";
 
-import { InfiniteCarouselItems } from "./InfiniteCarouselItems";
 import InifiniteCarousel from "@/components/Layout/InfiniteCarousel/InfiniteCarousel";
+import { InfiniteCarouselItems } from "./InfiniteCarouselItems";
 
 import PostsByCategory from "@/components/Layout/PostsByCategory/PostsByCategory";
+import { Metadata } from "next";
 import { ContentPostsByCategory } from "./PostsByCategoryContent";
+
+export const metadata: Metadata = {
+  title: "Ciclos: Transparência - Grupo Real",
+  description: "40 anos construindo gerações reais.",
+  openGraph: {
+    title: "Ciclos: Transparência - Grupo Real",
+    description: "40 anos construindo gerações reais.",
+    images: ["/favicon.ico"],
+    locale: "pt_BR",
+    siteName: "Grupo Real",
+  },
+  alternates: {
+    canonical: "https://gruporealbr.com.br/ciclos-transparencia",
+    languages: {
+      pt: "https://gruporealbr.com.br",
+    }
+  }
+};
 
 export default function CiclosTransparencia() {
   function CardSection({ children }: { children: React.ReactNode }) {
@@ -51,7 +69,7 @@ export default function CiclosTransparencia() {
           reverseMobile={false}
           title={"Transparência"}
           content={
-            "<p>No <strong>Grupo Real</strong>, a transparência representa também valores como honestidade e ética. A empresa adota práticas rigorosas para garantir que todas as decisões sejam tomadas de forma justa. Através de comitês independentes para assuntos como assédio e proteção de dados, auditorias regulares e políticas claras, o <strong>Grupo Real H</strong> assegura a conformidade com leis e regulamentos, promovendo uma <strong>gestão sustentável e responsável</strong>.</p>"
+            "<p>No <strong>Grupo Real</strong>, a transparência representa também valores como honestidade e ética. A empresa adota práticas rigorosas para garantir que todas as decisões sejam tomadas de forma justa. Através de comitês independentes para assuntos como assédio e proteção de dados, auditorias regulares e políticas claras, o <strong>Grupo Real</strong> assegura a conformidade com leis e regulamentos, promovendo uma <strong>gestão sustentável e responsável</strong>.</p>"
           }
           imagePath={TransparenciaEtica}
           // ctaLink={"#"}

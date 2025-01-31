@@ -40,7 +40,7 @@ export const sliderCategoriasHome = [
   {
     id: "2",
     image_url: img02,
-    label: "Real H",
+    label: "Grupo Real",
     width_card: 140,
     height_card: 140,
   },
@@ -82,7 +82,7 @@ export const nossasMarcasInfos = [
   {
     title: "Seu resultado é o nosso compromisso",
     icon: iconMarca01,
-    text: "Com quatro décadas de experiência, a REAL H se destaca no mercado de nutrição animal, oferecendo soluções eficazes e inovadoras.",
+    text: "Com quatro décadas de experiência, a Grupo Real se destaca no mercado de nutrição animal, oferecendo soluções eficazes e inovadoras.",
     ctaLink: "#",
     image: imgMarca01,
     badge_text: "NUTRIÇÃO",
@@ -149,7 +149,7 @@ export const sectionValoresInfo2 = [
 export const testimoniaslInfo = [
   {
     testimonial:
-      "Eu sempre digo para os meus amigos: siga as recomendações de um bom técnico. E quando a gente fala de nutrição a gente está falando da Real H",
+      "Eu sempre digo para os meus amigos: siga as recomendações de um bom técnico. E quando a gente fala de nutrição a gente está falando da Grupo Real",
     name: "Sr. Claudecir Scarmagnani",
     empresa: "Cliente desde 2001",
     avatar: avatar1,
@@ -163,7 +163,7 @@ export const testimoniaslInfo = [
   },
   {
     testimonial:
-      "Trabalhar na Real H é gratificante, tenho orgulho de fazer parte deste time de alta performance, equipe motivada e unida para superar qualquer desafio",
+      "Trabalhar na Grupo Real é gratificante, tenho orgulho de fazer parte deste time de alta performance, equipe motivada e unida para superar qualquer desafio",
     name: "Leonardo de Carvalho",
     empresa: "Gerente Comercial - desde 2007 ",
     avatar: avatar3,

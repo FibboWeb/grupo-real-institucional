@@ -25,7 +25,7 @@ export const sliderCategoriasNoticias = [
   },
   {
     id: "4",
-    label: "Ciclos Real H",
+    label: "Ciclos Grupo Real",
     url: "/categoria/noticias/ciclos-real-h",
     image_url: img04,
   },

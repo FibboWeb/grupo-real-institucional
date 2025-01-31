@@ -29,6 +29,25 @@ import HeroCiclos from "@/public/images/imagem_hero_ciclos.webp";
 import SustentaveisImg from "@/public/images/ambiental/produtosSustentaveisImg.webp";
 import CiclosImg from "@/public/images/ambiental/ciclosReciclagem.webp";
 import DoacoesImg from "@/public/images/ambiental/doacoes.webp";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Ciclos: Ambiental - Grupo Real",
+  description: "40 anos construindo gerações reais.",
+  openGraph: {
+    title: "Ciclos: Ambiental - Grupo Real",
+    description: "40 anos construindo gerações reais.",
+    images: ["/favicon.ico"],
+    locale: "pt_BR",
+    siteName: "Grupo Real",
+  },
+  alternates: {
+    canonical: "https://gruporealbr.com.br/ambiental",
+    languages: {
+      pt: "https://gruporealbr.com.br/",
+    }
+  }
+};
 
 export default function PageAmbiental() {
   return (
@@ -45,7 +64,7 @@ export default function PageAmbiental() {
       <InfoSection
         badge="Ambiental"
         title="Produtos Sustentáveis"
-        content="No dia-dia a preocupação com o meio ambiente no Grupo Real H pode ser vista nos campos do Brasil e do exterior. A homeopatia populacional desenvolvida pela empresa, pioneira e líder no segmento, ajuda produtores a cuidar da saúde de seus animais de maneira segura e natural, reduzindo drasticamente os impactos para a natureza."
+        content="No dia-dia a preocupação com o meio ambiente no Grupo Real pode ser vista nos campos do Brasil e do exterior. A homeopatia populacional desenvolvida pela empresa, pioneira e líder no segmento, ajuda produtores a cuidar da saúde de seus animais de maneira segura e natural, reduzindo drasticamente os impactos para a natureza."
         color="fb_green_button"
         imagePath={SustentaveisImg}
         heroBgImage="bg-ambiental-sustentaveis-bg"
@@ -94,7 +113,7 @@ export default function PageAmbiental() {
       <InfoSection
         badge="Ambiental"
         title="Doações de Medicamentos para Reabilitação de Animais Silvestres"
-        content="O Grupo Real H reforça seu compromisso com a sustentabilidade e a preservação da biodiversidade por meio de doações regulares de medicamentos para centros de reabilitação de animais silvestres. Essas contribuições visam apoiar o tratamento e a cura desses animais, desempenhando um papel crucial na recuperação das espécies e na manutenção do equilíbrio ecológico. "
+        content="O Grupo Real reforça seu compromisso com a sustentabilidade e a preservação da biodiversidade por meio de doações regulares de medicamentos para centros de reabilitação de animais silvestres. Essas contribuições visam apoiar o tratamento e a cura desses animais, desempenhando um papel crucial na recuperação das espécies e na manutenção do equilíbrio ecológico. "
         color="fb_green_button"
         imagePath={DoacoesImg}
         heroBgImage="bg-bg-doacoes"

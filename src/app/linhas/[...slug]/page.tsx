@@ -69,7 +69,7 @@ export async function generateMetadata(
   }
 }
 
-export default async function PageLinhas({ params, searchParams }) {
+export default async function PageLinhas({ params }) {
   const { slug } = await params;
 
   return (
@@ -87,7 +87,7 @@ export default async function PageLinhas({ params, searchParams }) {
         <div>
           <BannerLines slug_context={slug ? slug[0] : ""} title="Linha Nutrição" imgBackground={image01.src}>
             <p>
-              A <strong>Real H</strong>, empresa de <strong>Nutrição e Saúde Animal</strong>
+              A <strong>Grupo Real</strong>, empresa de <strong>Nutrição e Saúde Animal</strong>
               há <strong>40 anos</strong> ao lado do produtor
             </p>
           </BannerLines>
@@ -98,13 +98,13 @@ export default async function PageLinhas({ params, searchParams }) {
         <div className="flex flex-col lg:flex-row lg:flex-nowrap gap-8 mb-20">
           <BannerLines title="Linha Nutrição" imgBackground={image02.src}>
             <p>
-              A <strong>Real H</strong>, empresa de <strong>Nutrição e Saúde Animal</strong>
+              A <strong>Grupo Real</strong>, empresa de <strong>Nutrição e Saúde Animal</strong>
               há <strong>40 anos</strong> ao lado do produtor
             </p>
           </BannerLines>
           <BannerLines title="Linha Nutrição" imgBackground={image03.src}>
             <p>
-              A <strong>Real H</strong>, empresa de <strong>Nutrição e Saúde Animal</strong>
+              A <strong>Grupo Real</strong>, empresa de <strong>Nutrição e Saúde Animal</strong>
               há <strong>40 anos</strong> ao lado do produtor
             </p>
           </BannerLines>

@@ -25,11 +25,30 @@ import Timeline from "@/components/Layout/Timeline/Timeline";
 
 // Newsletter
 import Newsletter from "@/components/Layout/Newsletter";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Quem Somos - Grupo Real",
+  description: "40 anos construindo gerações reais.",
+  openGraph: {
+    title: "Quem Somos - Grupo Real",
+    description: "40 anos construindo gerações reais.",
+    images: ["/favicon.ico"],
+    locale: "pt_BR",
+    siteName: "Grupo real",
+  },
+  alternates: {
+    canonical: "https://gruporealbr.com.br/quem-somos",
+    languages: {
+      pt: "https://gruporealbr.com.br/",
+    }
+  }
+};
 
 export default function PageAboutUs() {
   const ctaLinkString = "www.google.com";
   const conteudo =
-    "“Aquilo que eu aprendi na juventude, vendo meu pai curar pessoas, hoje nós estamos aplicando nos rebanhos”, Claudio Martins Real, Presidente e Fundador da Real H. ";
+    "“Aquilo que eu aprendi na juventude, vendo meu pai curar pessoas, hoje nós estamos aplicando nos rebanhos”, Claudio Martins Real, Presidente e Fundador da Grupo Real. ";
   return (
     <section className="flex flex-col">
       <HeroSection children={childrenHeroSection()} backgroundClass="bg-hero-quem-somos" />
