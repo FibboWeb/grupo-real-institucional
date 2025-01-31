@@ -1,6 +1,7 @@
 import Breadcrumb from "@/components/BreadCrumb";
 import LastPostsEventos from "@/components/Layout/LastPostsEventos";
 import { getLastPostsEventos } from "@/lib/getLastPostsEventos";
+import Image from "next/image";
 
 export default async function Historia() {
     const queriedLastPostsEventos = await getLastPostsEventos();
@@ -26,7 +27,15 @@ export default async function Historia() {
                     />
             </CardSection>
             <CardSection>
-                <div className={`hero-category bg-hero-page-historia bg-no-repeat bg-cover bg-center h-56 xl:h-60 rounded-2xl`}></div>
+                <div className={`hero-category bg-no-repeat bg-cover bg-center h-56 xl:h-72 rounded-2xl`}>
+                    <Image 
+                        alt="Real H"
+                        src="/images/historia/hero-historia.webp"
+                        width={1520}
+                        height={320}
+                        fetchPriority="high"
+                    />
+                </div>
             </CardSection>
             <CardSection>
                 <div className="flex flex-col py-4 lg:py-8">

@@ -23,6 +23,12 @@ export const metadata: Metadata = {
     images: ["/favicon.ico"],
     locale: "pt_BR",
     siteName: "Grupo real H",
+  },
+  alternates: {
+    canonical: "https://gruporealbr.com.br/",
+    languages: {
+      pt: "https://gruporealbr.com.br/",
+    }
   }
 };
 

@@ -25,14 +25,15 @@ function CardPostHero({
         href={blogContext ? `${blogContext}/${postLink}` : `/noticias/${postLink}`}
         className="flex flex-col justify-end absolute bottom-0 left-0 right-0 h-full px-9 py-6 rounded-2xl bg-fb_gradient_posts"
       >
+
         <div className="badge">
-          <Link
+          <p
             className="text-white px-4 py-0 bg-fb_blue_button
-            rounded-full text-sm"
-            href={`/categoria/${postCategoryLink || "#"}`}
+            rounded-full text-sm w-fit"
+            // href={`/categoria/${postCategoryLink || "#"}`}
           >
             {postCategory}
-          </Link>
+          </p>
         </div>
         <p className="text-lg font-bold text-white mt-2">{postTitle}</p>
       </Link>

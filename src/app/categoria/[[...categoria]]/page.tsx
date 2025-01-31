@@ -1,10 +1,49 @@
 import Breadcrumb from "@/components/BreadCrumb";
+import CardBlog from "@/components/Layout/CardBlogAPI";
 import Newsletter from "@/components/Layout/Newsletter";
 import SidebarNoticias from "@/components/Layout/SidebarNoticias";
-import CardBlog from "@/components/Layout/CardBlogAPI";
-import { fetchPosts, fetchCategoryId } from "@/lib/getCategoriesNoticias";
 import Pagination from "@/components/Pagination";
+import { fetchYoastSEO } from "@/lib/getCategorias";
+import { fetchCategoryId, fetchPosts } from "@/lib/getCategoriesNoticias";
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
+
+type Props = {
+  params: Promise<{ categoria: string }>
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}
+
+export async function generateMetadata(
+  { params }: Props,
+  searchParams
+): Promise<Metadata> {
+  // read route params
+  const slug = (await params).categoria[(await params).categoria.length - 1]
+  
+  let lineInfo
+  // fetch data
+  lineInfo = await fetchYoastSEO(slug, "categories"); // Removido string vazia
+ 
+  return {
+    title: lineInfo.title,
+    description: lineInfo.description,
+    robots: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+    },
+    openGraph: {
+      title: lineInfo.title,
+      description: lineInfo.description,
+      images: [ lineInfo.og_image ? lineInfo.og_image[0].url : '' ],
+    },
+    alternates: {
+      canonical: `https://gruporealbr.com.br/linhas/${slug}`,
+    },
+  }
+}
+
 
 export default async function CategoryPage({ params, searchParams }) {
   const page = parseInt(searchParams.page || "1");

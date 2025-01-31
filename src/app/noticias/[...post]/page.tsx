@@ -8,6 +8,60 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import "./post.css";
+import { Metadata } from "next";
+import { fetchYoastSEO } from "@/lib/getCategorias";
+
+type Props = {
+  params: Promise<{ post: string }>
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}
+
+/**
+ * Generates metadata for a linhas page, including:
+ * - title
+ * - description
+ * - robots (index, follow, max-snippet, max-image-preview)
+ * - openGraph (images)
+ * - alternates (canonical)
+ *
+ * Extends parent metadata with openGraph images and alternates canonical URL
+ *
+ * @param {Props} _props - not used
+ * @returns {Metadata} generated metadata
+ */
+
+export async function generateMetadata(
+  { params }: Props,
+): Promise<Metadata> {
+  // read route params
+  const slug = (await params).post
+
+  // fetch data
+  const infos = await fetchYoastSEO(slug, "posts");
+
+  if (!infos) {
+    notFound()
+  }
+ 
+  return {
+    title: infos.title,
+    description: infos.description,
+    robots: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+    },
+    openGraph: {
+      title: infos.title,
+      description: infos.description,
+      images: [ infos.og_image ? infos.og_image[0].url : '' ],
+    },
+    alternates: {
+      canonical: `https://gruporealbr.com.br/noticias/${slug[0]}`,
+    },
+  }
+}
 
 export default async function PostPage({ params }) {
   const postSlug = params.post[0];

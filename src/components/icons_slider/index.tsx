@@ -143,7 +143,7 @@ export default function SliderNavigational({ categories, title, text, isNoticias
                 )}{" "}
                 {!isNoticias && (
                   <Image
-                    alt={category.label}
+                    alt={category.label || "imagem da categoria"}
                     src={category.image_url}
                     width={category.width_card ? category.width_card : 220}
                     height={category.height_card ? category.height_card : 220}
