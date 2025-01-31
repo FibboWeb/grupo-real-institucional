@@ -15,14 +15,12 @@ type Props = {
 
 export async function generateMetadata(
   { params }: Props,
-  searchParams
 ): Promise<Metadata> {
-  // read route params
   const slug = (await params).categoria[(await params).categoria.length - 1]
   
   let lineInfo
-  // fetch data
-  lineInfo = await fetchYoastSEO(slug, "categories"); // Removido string vazia
+  lineInfo = await fetchYoastSEO(slug, "categories");
+
  
   return {
     title: lineInfo.title,

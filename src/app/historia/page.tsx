@@ -1,7 +1,26 @@
 import Breadcrumb from "@/components/BreadCrumb";
 import LastPostsEventos from "@/components/Layout/LastPostsEventos";
 import { getLastPostsEventos } from "@/lib/getLastPostsEventos";
+import { Metadata } from "next";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+    title: "40 Anos de história - Grupo Real",
+    description: "40 anos construindo gerações reais.",
+    openGraph: {
+      title: "40 Anos de história - Grupo Real",
+      description: "40 anos construindo gerações reais.",
+      images: ["/favicon.ico"],
+      locale: "pt_BR",
+      siteName: "Grupo Real",
+    },
+    alternates: {
+      canonical: "https://gruporealbr.com.br/historia",
+      languages: {
+        pt: "https://gruporealbr.com.br",
+      }
+    }
+  };
 
 export default async function Historia() {
     const queriedLastPostsEventos = await getLastPostsEventos();
@@ -29,7 +48,7 @@ export default async function Historia() {
             <CardSection>
                 <div className={`hero-category bg-no-repeat bg-cover bg-center h-56 xl:h-72 rounded-2xl`}>
                     <Image 
-                        alt="Real H"
+                        alt="Grupo Real"
                         src="/images/historia/hero-historia.webp"
                         width={1520}
                         height={320}

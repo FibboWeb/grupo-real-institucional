@@ -40,7 +40,7 @@ const ContentPostsByCategory: PostsByCategoryProps = {
     {
       title: "Selo Eu Reciclo",
       content:
-        "Desde 2020 o Grupo Real H faz parte das empresas com o selo Eu Reciclo, gerando impactos positivos da compensação ambiental das embalagens geradas pela empresa. As ações contribuem para a preservação do meio ambiente, além de impulsionar o desenvolvimento social e financeiro.",
+        "Desde 2020 o Grupo Real faz parte das empresas com o selo Eu Reciclo, gerando impactos positivos da compensação ambiental das embalagens geradas pela empresa. As ações contribuem para a preservação do meio ambiente, além de impulsionar o desenvolvimento social e financeiro.",
       img: EuRecicloSelo,
     },
   ],

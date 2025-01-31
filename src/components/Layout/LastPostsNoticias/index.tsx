@@ -22,15 +22,13 @@
  */
 
 "use client";
-import dynamic from "next/dynamic";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Link from "next/link";
-import CardBlog from "../CardBlog";
 import type { Post } from "@/types/post";
-import { ArrowRight } from "lucide-react";
-import "./lastPost.css";
+import dynamic from "next/dynamic";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 import BtnCallToAction from "../Buttons/BtnCallToAction/BtnCallToAction";
+import CardBlog from "../CardBlog";
+import "./lastPost.css";
 
 const Slider = dynamic(() => import("react-slick"), { ssr: false });
 interface LastPostsProps {
@@ -73,6 +71,13 @@ function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
           slidesToShow: 2.5,
           slidesToScroll: 2,
         },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2.13,
+          slidesToScroll: 2,  
+        }
       },
       {
         breakpoint: 580,

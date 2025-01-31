@@ -43,7 +43,7 @@ const IncrementingCounter = ({ maxNumber, speed = 100 }: { maxNumber: number; sp
 
 export default function LoadNumbers({ arrayOfNumbers }: LoadNumbersInterface) {
   return (
-    <div className="flex h-full w-full justify-between items-baseline gap-8">
+    <div className="flex h-full w-full justify-between items-baseline gap-5 md:gap-8">
       {arrayOfNumbers.map((number, index) => (
         <div key={index} className="flex flex-col gap-2 items-center justify-center">
           <span className="text-fb_blue_main text-center font-bold text-3xl flex-nowrap">
