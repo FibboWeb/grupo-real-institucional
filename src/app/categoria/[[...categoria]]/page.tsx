@@ -21,7 +21,6 @@ export async function generateMetadata(
   let lineInfo
   lineInfo = await fetchYoastSEO(slug, "categories");
 
- 
   return {
     title: lineInfo.title,
     description: lineInfo.description,
