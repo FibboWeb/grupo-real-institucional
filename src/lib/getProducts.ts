@@ -4,7 +4,6 @@ import { GET_PRODUCT_BY_LINES, query } from "@/graphql/linhas";
 import { CardProductPropsAPI } from "@/types/produto";
 import { client } from "./apollo-client";
 
-
 /**
  * Fetches a list of products from the API based on the provided category ID, page number, and the number of products per page.
  *
