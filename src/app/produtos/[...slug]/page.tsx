@@ -66,10 +66,6 @@ export default async function PageProduct({ params }) {
     return notFound();
   }
 
-  const tagValues = product[0]?.class_list.filter((valor: string) => {
-    return valor.startsWith("tag-");
-  });
-
   return (
     <div className="relative mt-24">
       <div className="fb_container gap-fb_space-section">
@@ -96,9 +92,6 @@ export default async function PageProduct({ params }) {
             </Suspense>
           </div>
           <div className="mx-auto flex flex-col gap-2">
-            <div>
-              <BadgeCategorie>{tagValues? tagValues[0].slice(4).charAt(0).toUpperCase() + tagValues[0].slice(5) : ""}</BadgeCategorie>
-            </div>
             <div>
               <h1 className="font-bold text-3xl">{product[0]?.title?.rendered}</h1>
             </div>
