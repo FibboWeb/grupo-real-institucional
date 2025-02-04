@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 
 export const GET_PRODUCT_BY_LINES = gql`
   query ProdutosPorLinhas($nameIn: [String]) {
-    linhas(where: { nameIn: $nameIn } first: 20) {
+    linhas(where: { nameIn: $nameIn } first: 12) {
       edges {
         node {
           id

@@ -36,7 +36,7 @@ export default async function Historia() {
     }
 
     return (
-        <div className='relative mt-36'>
+        <div className='relative mt-24'>
             <CardSection>
                     <Breadcrumb
                         activeClasses="text-fb_gray_bread"
@@ -46,13 +46,15 @@ export default async function Historia() {
                     />
             </CardSection>
             <CardSection>
-                <div className={`hero-category bg-no-repeat bg-cover bg-center h-56 xl:h-72 rounded-2xl`}>
+                <div className={`hero-category bg-no-repeat bg-center bg-cover h-auto xl:h-72`}>
                     <Image 
                         alt="Grupo Real"
                         src="/images/historia/hero-historia.webp"
                         width={1520}
                         height={320}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         fetchPriority="high"
+                        className="h-[250px] md:h-64 xl:h-72 rounded-2xl object-cover object-center"
                     />
                 </div>
             </CardSection>

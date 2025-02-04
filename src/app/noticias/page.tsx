@@ -14,7 +14,7 @@ import { notFound } from "next/navigation";
 export async function generateMetadata() {
   let infos
   infos = await fetchYoastSEO("noticias", "categories");
-  console.log(infos)
+
 
   if(!infos) {
     notFound()
@@ -41,7 +41,7 @@ export async function generateMetadata() {
 }
 
 export default async function Noticias({ searchParams }) {
-  const page = (await searchParams).page ? parseInt(searchParams.page, 10) : 1;
+  const page = (await searchParams).page ? parseInt((await searchParams).page, 10) : 1;
   const postsPerPage = 6;
 
   const { posts, totalPages } = await fetchPosts(page, postsPerPage);
@@ -68,7 +68,7 @@ export default async function Noticias({ searchParams }) {
           <div className="flex flex-col w-full lg:w-1/2 lg:h-[450px]">
             {heroPosts.length > 0 && (
               <CardPostHero
-                postImage={heroPosts[0].featuredImage?.node?.sourceUrl}
+                postImage={heroPosts[0].featuredImage?.node?.sourceUr || "/images/banners/bg-categories.webp"}
                 postImageAlt={heroPosts[0].featured_media?.alt_text || "Imagem do post"}
                 postLink={heroPosts[0].slug}
                 postCategory={heroPosts[0].categories.nodes[0].name}

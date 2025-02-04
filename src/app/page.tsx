@@ -67,10 +67,10 @@ export default async function Home() {
           <BannerCta />
         </div>
       </section>
-      <section className="container">
+      <section className="fb_container">
         <ValuesSection values={sectionValoresInfo2} />
       </section>
-      <section className="flex flex-col gap-8">
+      <section className="flex flex-col gap-4">
         <h2 className="text-center text-fb_blue_main text-4xl font-bold">Depoimentos</h2>
         <SliderTestimonials testimonial={testimoniaslInfo} />
       </section>

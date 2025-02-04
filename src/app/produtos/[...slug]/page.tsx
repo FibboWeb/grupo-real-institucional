@@ -12,7 +12,42 @@ import { FaWhatsapp } from "react-icons/fa";
 import SliderProductsRecommended from "../(componentes)/SliderProductsRecommended";
 import Newsletter from "@/components/Layout/Newsletter";
 import { getProductPerSlug } from "@/lib/getProducts";
-import { redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
+import { fetchYoastSEO } from "@/lib/getCategorias";
+import { Metadata } from "next";
+
+type Props = {
+  params: Promise<{ slug: string }>
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}
+
+
+export async function generateMetadata(
+  { params }: Props,
+): Promise<Metadata> {
+  // read route params
+  const slug = (await params).slug
+  const infos = await fetchYoastSEO(slug, "produtos");
+ 
+  return {
+    title: infos.title,
+    description: infos.description,
+    robots: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+    },
+    openGraph: {
+      title: infos.title,
+      description: infos.description,
+      images: [ infos.og_image ? infos.og_image[0].url : '' ],
+    },
+    alternates: {
+      canonical: `https://gruporealbr.com.br/produtos/${slug}`,
+    },
+  }
+}
 
 /**
  * PageProduct component
@@ -27,32 +62,16 @@ import { redirect } from "next/navigation";
 export default async function PageProduct({ params }) {
   const { slug } = await params;
   const product = await getProductPerSlug(slug);
-  if (!product) {
-    return redirect("/");
+  if (product.length <= 0) {
+    return notFound();
   }
-  const image = await fetch("https://realh.com.br/wp-json/wp/v2/media/40443");
 
-  const imageUrl = await image.json();
-  const mock = [
-    {
-      id: 10,
-      nomeProduto: "REBANHO PEC",
-      short_descricao: "Suplemento mineral adensado para bovinos de corte",
-      long_descricao:
-        "Oferece tecnologia 3D (sincronismo de proteína e energia no rúmen, por meio da degradação de proteína).",
-      imagem: {
-        src: "https://realh.com.br/wp-content/uploads/2024/10/REBANHO-PEC-min.png",
-        alt: "Imagem do produto",
-        width: 284,
-        height: 355,
-      },
-      categoria: "REBANHO",
-      link: { link: "#" },
-    },
-  ];
+  const tagValues = product[0]?.class_list.filter((valor: string) => {
+    return valor.startsWith("tag-");
+  });
 
   return (
-    <div className="relative mt-36">
+    <div className="relative mt-24">
       <div className="fb_container gap-fb_space-section">
         <div>
           <Breadcrumb
@@ -63,34 +82,34 @@ export default async function PageProduct({ params }) {
             capitalizeLinks
           />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 fb_container gap-8">
-          <div className="mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="w-full">
             <Suspense fallback={<div className="w-full h-full bg-gray-300 animated-pulse rounded-lg"></div>}>
               <Image
-                src={imageUrl.source_url}
-                width={400}
-                height={400}
-                alt={mock[0].imagem.alt}
-                className="rounded-lg bg-[#E5E7E9] object-cover"
+                src={product[0]._embedded["wp:featuredmedia"][0].link}
+                width={500}
+                height={500}
+                sizes="(max-width: 768px) 100vw, 768px"
+                alt={`$Imagem do produto ${product[0]?.title?.rendered}`}
+                className="rounded-lg bg-[#E5E7E9] object-cover mx-auto"
               />
             </Suspense>
           </div>
           <div className="mx-auto flex flex-col gap-2">
             <div>
-              <BadgeCategorie>{mock[0].categoria}</BadgeCategorie>
+              <BadgeCategorie>{tagValues? tagValues[0].slice(4).charAt(0).toUpperCase() + tagValues[0].slice(5) : ""}</BadgeCategorie>
             </div>
             <div>
-              <h1 className="font-bold text-3xl">{product.produto?.title?.rendered}</h1>
+              <h1 className="font-bold text-3xl">{product[0]?.title?.rendered}</h1>
             </div>
             <div className="flex flex-col gap-8">
               <div className="flex flex-col w-full gap-2">
-                <h2 className="text-xl font-bold leading-7">{mock[0].short_descricao}</h2>
-                <p className="text-base leading-6">{mock[0].long_descricao}</p>
+                <h2 className="text-xl font-bold leading-7">{product[0]?.acf?.subtitulo}</h2>
               </div>
               <div>
                 <Button className="w-full lg:w-auto h-12 px-10 bg-fb_green hover:bg-green-700">
                   <Link
-                    href="https://wa.me/556730289000"
+                    href="https://wa.me/5508001009000"
                     target="_blank"
                     rel="noopener noreferrer"
                     title="Solicite um orçamento pelo whatsapp"
@@ -104,25 +123,22 @@ export default async function PageProduct({ params }) {
               <div className="flex flex-col gap-4">
                 <div className="flex flex-col gap-4">
                   <h3 className="text-xl font-bold">Para que serve?</h3>
-                  <p>Indicado para animais nas fases de cria, recria e engorda, principalmente no período da seca.</p>
+                  <p>{product[0]?.acf?.pra_que_serve}</p>
                 </div>
                 <div>
                   <Accordion title="Modo de usar" faqHeading={{ tagName: "h3" }} active={true}>
                     <p>
-                      Produto de pronto uso que deve estar sempre disponível no cocho, devendo ser fornecido puro aos
-                      animais; Consumo é estimado em 60 g/100 Kg/ Peso corporal (PC).
+                      {product[0]?.acf?.modo_de_usar}
                     </p>
                   </Accordion>
                   <Accordion title="Indicações" faqHeading={{ tagName: "h3" }}>
                     <p>
-                      Produto de pronto uso que deve estar sempre disponível no cocho, devendo ser fornecido puro aos
-                      animais; Consumo é estimado em 60 g/100 Kg/ Peso corporal (PC).
+                      {product[0]?.acf?.vantagens_do_uso}
                     </p>
                   </Accordion>
                   <Accordion title="Dúvidas" faqHeading={{ tagName: "h3" }}>
                     <p>
-                      Produto de pronto uso que deve estar sempre disponível no cocho, devendo ser fornecido puro aos
-                      animais; Consumo é estimado em 60 g/100 Kg/ Peso corporal (PC).
+                      {product[0]?.acf?.duvidas}
                     </p>
                   </Accordion>
                 </div>
@@ -136,7 +152,7 @@ export default async function PageProduct({ params }) {
               <h2 className="text-3xl font-bold text-fb_blue_main">Produtos similares</h2>
               <hr className="w-20 h-[6px] bg-fb_blue_main rounded-full" />
             </div>
-            <div className="w-full">
+            <div className="w-full my-6">
               <SliderProductsRecommended />
             </div>
           </div>
