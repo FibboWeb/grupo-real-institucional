@@ -1,10 +1,12 @@
 import NotFound from "@/app/not-found";
-import { CardProductPropsAPI } from "@/types/produto";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
 
+import ArrowIcon from "@/public/icons/arrow-right.svg";
 import placeholder from "@/public/images/img-teste.jpeg";
+import BtnCallToAction from "../Layout/Buttons/BtnCallToAction/BtnCallToAction";
+
 
 type ImageProductProps = {
   src: string | StaticImageData;
@@ -49,7 +51,7 @@ export function ImageProduct({ src, width, height, alt }: ImageProductProps) {
 export function BadgeCategorie({ children }: BadgeCategorieProps) {
   return (
     <>
-      <div className="bg-fb_blue text-white py-0.5 px-2 rounded-full w-fit">{children}</div>
+      <div className="bg-fb_blue text-white py-0.5 px-2 rounded-full w-fit line-clamp-1">{children}</div>
     </>
   );
 }
@@ -57,7 +59,7 @@ export function BadgeCategorie({ children }: BadgeCategorieProps) {
 export function TitleProduct({ nomeProduto }: TitleProductProps) {
   return (
     <>
-      <h2 className="font-bold text-xl">{nomeProduto}</h2>
+      <h2 className="font-bold text-xl line-clamp-1">{nomeProduto}</h2>
     </>
   );
 }
@@ -65,7 +67,7 @@ export function TitleProduct({ nomeProduto }: TitleProductProps) {
 function DescriptionProduct({ descriptionProduct }: descriptionProductProps) {
   return (
     <>
-      <div className="text-base leading-5" dangerouslySetInnerHTML={{ __html: descriptionProduct }} />
+      <div className="text-base leading-5 line-clamp-3" dangerouslySetInnerHTML={{ __html: descriptionProduct }} />
     </>
   );
 }
@@ -81,6 +83,7 @@ function LinkProduct({ children, link }: LinkProductProps) {
 }
 
 export default function CardProduct({ product }: { product: any[] }) {
+
   // Ajustar a tipagem da prop
 
   const productList = product.flat();
@@ -92,7 +95,7 @@ export default function CardProduct({ product }: { product: any[] }) {
             item,
             index, // Mapear o array de produtos
           ) => (
-            <div key={index} className="w-full lg:w-64 h-auto flex flex-col gap-8 items-center">
+            <div key={index} className="w-full lg:w-64 h-[580px] flex flex-col gap-8 items-center relative">
               <LinkProduct link={item?.linkProduto ? item?.linkProduto : "#"}>
                 {/* Acessar as propriedades do item */}
                 <ImageProduct
@@ -108,6 +111,15 @@ export default function CardProduct({ product }: { product: any[] }) {
                   <TitleProduct nomeProduto={item?.titulo} />
                   <DescriptionProduct descriptionProduct={item?.peso ? item?.peso : ""} />
                 </LinkProduct>
+              </div>
+              <div className="absolute bottom-0">
+              <BtnCallToAction 
+                    key={ index }
+                    content={ "Ver detalhes" }
+                    ctaLink={ "/produtos/uremax-leite" }
+                    icon={ArrowIcon}
+                    color={index === 0 ? "white" : "fb_blue_button"}
+                  />
               </div>
             </div>
           ),

@@ -7,8 +7,9 @@ import image01 from "@/public/images/banners/boi-no-pasto.webp";
 import image03 from "@/public/images/banners/cao-e-gato.webp";
 import image02 from "@/public/images/banners/carne-vermelha-cortada.webp";
 import { Metadata } from "next";
-import GridProduct from "../(componentes)";
 import { notFound } from "next/navigation";
+import GridProduct from "../(componentes)";
+import { fetchYoastSEO } from "@/lib/getCategorias";
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -33,16 +34,16 @@ export async function generateMetadata(
   { params }: Props,
 ): Promise<Metadata> {
   // read route params
-  const slug = (await params).slug
+  let slug = (await params).slug
   
   let lineInfo
   // fetch data
   if (slug[0] === "real-h") {
-    lineInfo = await fetchYoastData("linha-nutricao");
+    lineInfo = await fetchYoastSEO("linha-nutricao","linhas");
   } else if (slug[0] === "cmr") {
-    lineInfo = await fetchYoastData("linha-saude");
+    lineInfo = await fetchYoastSEO("linha-saude","linhas");
   } else if (slug[0] === "homeopet") {
-    lineInfo = await fetchYoastData("linha-homeo-pet"); 
+    lineInfo = await fetchYoastSEO("linha-homeo-pet","linhas"); 
   }
 
   if (!lineInfo) {
@@ -69,7 +70,7 @@ export async function generateMetadata(
   }
 }
 
-export default async function PageLinhas({ params }) {
+export default async function PageLinhas({ params, searchParams }) {
   const { slug } = await params;
 
   return (
@@ -85,14 +86,14 @@ export default async function PageLinhas({ params }) {
           />
         </div>
         <div>
-          <BannerLines slug_context={slug ? slug[0] : ""} title="Linha Nutrição" imgBackground={image01.src}>
+          <BannerLines slug_context={slug[0]} title="Linha Nutrição" imgBackground={image01.src}>
             <p>
               A <strong>Grupo Real</strong>, empresa de <strong>Nutrição e Saúde Animal</strong>
               há <strong>40 anos</strong> ao lado do produtor
             </p>
           </BannerLines>
         </div>
-        <div className="my-6 flex justify-center items-center">
+        <div className="my-16 flex justify-center items-center">
           <GridProduct slug={slug} />
         </div>
         <div className="flex flex-col lg:flex-row lg:flex-nowrap gap-8 mb-20">

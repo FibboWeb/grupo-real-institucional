@@ -79,10 +79,9 @@ export default function SliderNavigational({ categories, title, text, isNoticias
     slidesToShow: 5,
     slidesToScroll: 1,
     useTransform: true,
-    autoPlay: true,
+    autoplay: (isNoticias ? false : true),
+    autoplaySpeed: 4500,
     dots: true,
-    // nextArrow: <SampleNextArrow />,
-    // prevArrow: <SamplePrevArrow />,
     responsive: [
       {
         breakpoint: 1360,

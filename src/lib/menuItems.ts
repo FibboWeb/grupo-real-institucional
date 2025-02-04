@@ -37,7 +37,7 @@ const menuItems: MenuItems[] = [
             node: {
               id: "2-1",
               url: "/linhas/real-h",
-              label: "Grupo Real Nutrição",
+              label: "Real H Nutrição Animal",
             },
           },
           {
