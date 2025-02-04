@@ -86,47 +86,48 @@ export default function CardProduct({ product }: { product: any[] }) {
 
   // Ajustar a tipagem da prop
 
-  const productList = product.flat();
-  if (product) {
-    return (
-      <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-8">
-        {productList.map(
-          (
-            item,
-            index, // Mapear o array de produtos
-          ) => (
-            <div key={index} className="w-full lg:w-64 h-[580px] flex flex-col gap-8 items-center relative">
-              <LinkProduct link={item?.linkProduto ? item?.linkProduto : "#"}>
-                {/* Acessar as propriedades do item */}
-                <ImageProduct
-                  src={item?.imagem?.node?.link || placeholder}
-                  alt={item?.titulo ? item?.titulo : "Imagem do produto"}
-                />
-              </LinkProduct>
-              <div className="w-4/5 md:w-full flex flex-col gap-2">
-                <LinkProduct link={item?.linkProduto ? item?.linkProduto : "#"}>
-                  <BadgeCategorie>{item?.textoTag}</BadgeCategorie>
-                </LinkProduct>
-                <LinkProduct link={item?.linkProduto ? item?.linkProduto : "#"}>
-                  <TitleProduct nomeProduto={item?.titulo} />
-                  <DescriptionProduct descriptionProduct={item?.peso ? item?.peso : ""} />
-                </LinkProduct>
-              </div>
-              <div className="absolute bottom-0">
-              <BtnCallToAction 
-                    key={ index }
-                    content={ "Ver detalhes" }
-                    ctaLink={ "/produtos/uremax-leite" }
-                    icon={ArrowIcon}
-                    color={index === 0 ? "white" : "fb_blue_button"}
-                  />
-              </div>
-            </div>
-          ),
-        )}
-      </div>
-    );
-  } else {
-    NotFound;
+  if (!product || product.length === 0) {
+    return <NotFound />;
   }
+
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-8">
+      {product.map((item, index) => {
+        const imageUrl = item._embedded?.["wp:featuredmedia"]?.[0]?.source_url || placeholder;
+        const title = item.title?.rendered || "Produto sem nome";
+        const description = item.acf?.pra_que_serve || "";
+        const link = item.link || "#";
+        const tags = item.class_list
+                      .filter(item => item.startsWith('tag-')) // Filtra os itens que começam com "tag-"
+                      .map(item => item.replace('tag-', '')) // Remove "tag-" e mantém apenas o conteúdo
+                      .map(tag => tag.charAt(0).toUpperCase() + tag.slice(1));
+
+        return (
+          <div key={index} className="w-full lg:w-64 h-[580px] flex flex-col gap-8 items-center relative">
+            <LinkProduct link={link}>
+              <ImageProduct src={imageUrl} alt={title} />
+            </LinkProduct>
+            <div className="w-4/5 md:w-full flex flex-col gap-2">
+              <LinkProduct link={link}>
+                <BadgeCategorie>{ tags[0] || "Sem categoria"}</BadgeCategorie>
+              </LinkProduct>
+              <LinkProduct link={link}>
+                <TitleProduct nomeProduto={title} />
+                <DescriptionProduct descriptionProduct={description} />
+              </LinkProduct>
+            </div>
+            <div className="absolute bottom-0">
+              <BtnCallToAction 
+                key={index}
+                content="Ver detalhes"
+                ctaLink={link}
+                icon={ArrowIcon}
+                color={index === 0 ? "white" : "fb_blue_button"}
+              />
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
 }

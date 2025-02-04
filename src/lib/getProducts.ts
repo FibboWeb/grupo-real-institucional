@@ -4,43 +4,73 @@ import { GET_PRODUCT_BY_LINES, query } from "@/graphql/linhas";
 import { CardProductPropsAPI } from "@/types/produto";
 import { client } from "./apollo-client";
 
-// export async function getProducts(categories: string[], offset = 12, page = 1, productsPerPage = 12): Promise<CardProductPropsAPI> {
-//   console.log(categories)
-//   try {
-//         const res = await fetch("https://realh.com.br/wp-json/wp/v2/linhas?slug=linha-homeo-pet,linha-saude&per_page=12", {
-//           next: { revalidate: 6 },
-//         });
-//         const linhas = await res.json();
-//         const products = linhas.flatMap(linha => linha.acf?.grade_produtos || [])
-//         console.log(products)
-//         return products
-//   } catch (error) {
-    
-//   }
-// }
 
-export async function getProducts(categories: string[]): Promise<CardProductPropsAPI> {
-  try {
-    const ProductsBylines = await client.query({
-      query: GET_PRODUCT_BY_LINES,
-      variables: { nameIn: categories },
-    });
+/**
+ * Fetches a list of products from the API based on the provided category ID, page number, and the number of products per page.
+ *
+ * @param {number} id_categoria - The ID of the product category to fetch products from.
+ * @param {number} page - The page number of the products to fetch.
+ * @param {number} [productsPerPage=12] - The number of products to fetch per page. Defaults to 12.
+*/
+export async function getProducts(id_categoria: number, page, productsPerPage = 12): Promise<any> {
 
-    return {
-      data: ProductsBylines.data.linhas,
-      loading: false,
-      networkStatus: 7,
-    };
-  } catch (error) {
-    console.error("Erro ao buscar produtos:", error);
-    return {
-      data: null,
-      loading: false,
-      networkStatus: 8,
-    };
+  const res = await fetch(
+    `${process.env.WP_URL_API}produtos?categoria_produto=${id_categoria}&per_page=${productsPerPage}&page=${page}&_embed=wp:featuredmedia`,
+    {
+      next: { revalidate: 6 },
+    },
+  );
+  if (!res.ok) {
+    throw new Error("Erro ao buscar os produtos");
   }
+
+  const products = await res.json();
+  const totalPosts = res.headers.get("X-WP-Total");
+  const totalPages = res.headers.get("X-WP-TotalPages");
+
+  // console.log(products, totalPosts, totalPages)
+
+  return {
+    products,
+    totalPages,
+    totalPosts
+  }
+  // try {
+  //       const res = await fetch(`https://realh.com.br/wp-json/wp/v2/produtos?categoria_produto=${id}&per_page=${productsPerPage}&page=${page}&_embed=wp:featuredmedia`, {
+  //         next: { revalidate: 6 },
+  //       });
+  //       const products = await res.json();
+  //       console.log(products)
+  //       const totalPages = res.headers.get("X-WP-TotalPages");
+  //       const totlaProducts = res.headers.get("X-WP-Total");
+  //       console.log(totalPages, totlaProducts)
+  //       return { products, totalPages, totlaProducts };
+  // } catch (error) {
+    
+  // }
 }
 
+// export async function getProducts(categories: string[]): Promise<CardProductPropsAPI> {
+//   try {
+//     const ProductsBylines = await client.query({
+//       query: GET_PRODUCT_BY_LINES,
+//       variables: { nameIn: categories },
+//     });
+
+//     return {
+//       data: ProductsBylines.data.linhas,
+//       loading: false,
+//       networkStatus: 7,
+//     };
+//   } catch (error) {
+//     console.error("Erro ao buscar produtos:", error);
+//     return {
+//       data: null,
+//       loading: false,
+//       networkStatus: 8,
+//     };
+//   }
+// }
 
 export async function getProductPerSlug(slug: string): Promise<any> {
   try {
