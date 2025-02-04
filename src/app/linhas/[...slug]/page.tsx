@@ -10,6 +10,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import GridProduct from "../(componentes)";
 import { fetchYoastSEO } from "@/lib/getCategorias";
+import Newsletter from "@/components/Layout/Newsletter";
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -112,6 +113,11 @@ export default async function PageLinhas({ params, searchParams }) {
               há <strong>40 anos</strong> ao lado do produtor
             </p>
           </BannerLines>
+        </div>
+        <div>
+          <Newsletter
+            
+          />
         </div>
       </div>
     </section>
