@@ -43,14 +43,14 @@ const IncrementingCounter = ({ maxNumber, speed = 100 }: { maxNumber: number; sp
 
 export default function LoadNumbers({ arrayOfNumbers }: LoadNumbersInterface) {
   return (
-    <div className="flex h-full w-full justify-between items-baseline gap-5 md:gap-8">
+    <div className="flex h-full w-full justify-between items-start gap-2 md:gap-8">
       {arrayOfNumbers.map((number, index) => (
-        <div key={index} className="flex flex-col gap-2 items-center justify-center">
-          <span className="text-fb_blue_main text-center font-bold text-3xl flex-nowrap">
+        <div key={index} className="flex flex-col gap-2 items-center justify-center w">
+          <span className="text-fb_blue_main text-center font-bold text-2xl md:text-3xl flex-nowrap">
             <IncrementingCounter maxNumber={number.qtde} speed={30} />
           </span>
           <hr className="w-20 h-[6px] bg-fb_blue_button rounded-full" />
-          <p className="min-w-50 text-center text-fb_blue_main font-semibold text-base">{number.text}</p>
+          <p className="min-w-50 w-full text-center text-fb_blue_main font-semibold text-sm md:text-base">{number.text}</p>
         </div>
       ))}
     </div>
