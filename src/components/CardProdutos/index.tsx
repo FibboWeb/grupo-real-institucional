@@ -96,7 +96,7 @@ export default function CardProduct({ product }: { product: any[] }) {
         const imageUrl = item._embedded?.["wp:featuredmedia"]?.[0]?.source_url || placeholder;
         const title = item.title?.rendered || "Produto sem nome";
         const description = item.acf?.pra_que_serve || "";
-        const link = item.link || "#";
+        const link = item.slug || "#";
         const tags = item.class_list
                       .filter(item => item.startsWith('tag-')) // Filtra os itens que começam com "tag-"
                       .map(item => item.replace('tag-', '')) // Remove "tag-" e mantém apenas o conteúdo
@@ -120,7 +120,7 @@ export default function CardProduct({ product }: { product: any[] }) {
               <BtnCallToAction 
                 key={index}
                 content="Ver detalhes"
-                ctaLink={link}
+                ctaLink={`/produtos/${link}`}
                 icon={ArrowIcon}
                 color={index === 0 ? "white" : "fb_blue_button"}
               />
