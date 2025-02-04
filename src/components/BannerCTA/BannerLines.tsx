@@ -53,25 +53,27 @@ export default async function BannerLines({
   let infos
   // fetch data
   if (slug_context === "real-h") {
-    infos = await getInfoLine("linha-nutricao");
+    infos = await getInfoLine(slug_context);
   } else if (slug_context === "cmr") {
-    infos = await getInfoLine("linha-saude");
+    infos = await getInfoLine(slug_context);
   } else if (slug_context === "homeopet") {
     infos = await getInfoLine("linha-homeo-pet");
   }
+
+  console.log("infos buscada",infos)
 
   return (
     <div className="relative w-full h-[300px] rounded-lg items-center">
       <div className="absolute inset-0 bg-gradient-to-r from-fb_dark-blue to-fb_light-blue rounded-lg"></div>
       <Image
         alt=""
-        src={infos?.banner ? infos.banner : imgBackground}
+        src={infos?.banner ? infos : imgBackground}
         width={1000}
         height={300}
         className="w-full h-full object-cover rounded-lg border-none bg-cover"
       />
       <div className="absolute inset-0 flex flex-col gap-6 justify-center mx-auto w-full text-white pl-8">
-        <h1 className="text-5xl md:text-4xl font-bold">{infos ? infos.title : title}</h1>
+        <h1 className="text-5xl md:text-4xl font-bold">{infos ? infos.yoast_head_json.title : title}</h1>
         <div className="w-full md:w-2/5 min-h-[72px]">{infos ? infos.description : children}</div>
         <div className="w-fit">
           <BtnCallToAction 

@@ -26,9 +26,10 @@ export async function fetchYoastData(slug) {
 
 
 export async function getInfoLine(slug) {
+    console.log("slug",slug)
 
     if(slug !== undefined && slug !== null) {
-        const url = `https://realh.com.br/wp-json/wp/v2/linhas?slug=${slug}`;
+        const url = `https://realh.com.br/wp-json/wp/v2/categoria_produto?slug=${slug}&_embed=wp:post_type`;
       
         try {
             const response = await fetch(url);
@@ -36,17 +37,8 @@ export async function getInfoLine(slug) {
                 throw new Error(`Erro ao buscar os dados: ${response.statusText}`);
               }
             const data = await response.json();
-            const meta = {
-              title: data[0].yoast_head_json.title,
-              description: data[0].yoast_head_json.description,
-              banner: data[0].yoast_head_json.og_image[0].url
-            }
 
-            if (meta && meta !== null) {
-                return meta
-            } else {
-                throw new Error("Dados não encontrados ou estrutura inesperada.");
-            }
+            return data[0];
         } catch (error) {
             console.log("Erro:", error.message);
             return null;
