@@ -10,6 +10,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import GridProduct from "../(componentes)";
 import { fetchYoastSEO } from "@/lib/getCategorias";
+import Newsletter from "@/components/Layout/Newsletter";
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -71,7 +72,10 @@ export async function generateMetadata(
 }
 
 export default async function PageLinhas({ params, searchParams }) {
-  const { slug } = await params;
+  // read route params 'slug'
+  const slug = (await params).slug
+  // read query params
+  const page = parseInt((await searchParams).page || "1");
 
   return (
     <section className="relative mt-24">
@@ -94,7 +98,7 @@ export default async function PageLinhas({ params, searchParams }) {
           </BannerLines>
         </div>
         <div className="my-16 flex justify-center items-center">
-          <GridProduct slug={slug} />
+          <GridProduct slug={slug} searchParams={page} />
         </div>
         <div className="flex flex-col lg:flex-row lg:flex-nowrap gap-8 mb-20">
           <BannerLines title="Linha Nutrição" imgBackground={image02.src}>
@@ -109,6 +113,11 @@ export default async function PageLinhas({ params, searchParams }) {
               há <strong>40 anos</strong> ao lado do produtor
             </p>
           </BannerLines>
+        </div>
+        <div>
+          <Newsletter
+            
+          />
         </div>
       </div>
     </section>

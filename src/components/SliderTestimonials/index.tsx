@@ -27,6 +27,8 @@ const settings = {
   useTransform: true,
   dots: true,
   arrows: false,
+  autoplay: true,
+  autoplaySpeed: 4500,
   responsive: [
     {
       breakpoint: 1360,
