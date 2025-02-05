@@ -85,7 +85,6 @@ function LinkProduct({ children, link }: LinkProductProps) {
 export default function CardProduct({ product }: { product: any[] }) {
 
   // Ajustar a tipagem da prop
-
   if (!product || product.length === 0) {
     return <NotFound />;
   }
@@ -114,7 +113,7 @@ export default function CardProduct({ product }: { product: any[] }) {
               <LinkProduct link={link}>
                 <TitleProduct nomeProduto={title} />
                 <DescriptionProduct descriptionProduct={description} />
-              </LinkProduct>
+              </LinkProduct> 
             </div>
             <div className="absolute bottom-0">
               <BtnCallToAction 

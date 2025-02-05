@@ -37,7 +37,6 @@ export async function getInfoLine(slug) {
                 throw new Error(`Erro ao buscar os dados: ${response.statusText}`);
               }
             const data = await response.json();
-
             return data[0];
         } catch (error) {
             console.log("Erro:", error.message);

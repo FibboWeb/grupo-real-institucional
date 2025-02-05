@@ -35,7 +35,4 @@ export default async function GridProduct({ slug, searchParams }) {
       </div>
     </div>
   );
-
 }
-
-
