@@ -9,6 +9,7 @@ async function page({ params, searchParams }: any) {
 
   const page = parseInt((await searchParams).page || "1");
   const searchString = (await searchParams).search;
+  console.log(searchString)
 
   const { data, totalPosts, totalPages, categoriesName } = await search(searchString);
 
