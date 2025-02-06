@@ -4,6 +4,7 @@ import Image from "next/image";
 import { SetStateAction, useState } from "react";
 import greenLeaf from "@/public/green-leaf.svg";
 import menuItems from "@/lib/menuItems";
+import { Search } from "../Search";
 
 export interface MenuNode {
   id: string;
