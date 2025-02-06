@@ -88,3 +88,7 @@ body {
 .fb_container {
   @apply w-[95%] mx-auto lg:w-5/6;
 }
+
+.fb_grid-products {
+  @apply w-[95%] mx-auto lg:w-5/6;
+}

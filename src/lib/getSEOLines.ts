@@ -26,7 +26,6 @@ export async function fetchYoastData(slug) {
 
 
 export async function getInfoLine(slug) {
-    console.log("slug",slug)
 
     if(slug !== undefined && slug !== null) {
         const url = `https://realh.com.br/wp-json/wp/v2/categoria_produto?slug=${slug}&_embed=wp:post_type`;
