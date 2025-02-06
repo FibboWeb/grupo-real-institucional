@@ -7,8 +7,6 @@ import { search } from "@/lib/search";
 
 async function page({ params, searchParams }: any) {
 
-  console.log("Parametro recebido:" ,await searchParams.search)
-
   const page = parseInt((await searchParams).page || "1");
   const searchString = (await searchParams).search;
 
