@@ -5,7 +5,7 @@ import SidebarNoticias from "@/components/Layout/SidebarNoticias";
 import Pagination from "@/components/Pagination";
 import { fetchQuerySearch } from "@/lib/search";
 
-async function page({ params, searchParams }: any) {
+export default async function page({ params, searchParams }: any) {
 
   const page = parseInt((await searchParams).page || "1");
   const searchString = (await searchParams).search;
@@ -77,4 +77,4 @@ async function page({ params, searchParams }: any) {
   );
 }
 
-export default page;
+

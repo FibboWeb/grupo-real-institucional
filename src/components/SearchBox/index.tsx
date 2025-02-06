@@ -12,7 +12,7 @@ function SearchBox() {
   return (
     <div className="search-block w-full mb-8">
       <div className="flex items-center w-full">
-        <form className="w-full">
+        <form className="w-full" action={`/busca?search${searchString}`} method="get">
 
           <input
             id="search"
@@ -29,7 +29,7 @@ function SearchBox() {
               }
             }}
           />
-          <button className="absolute rounded-sm bg-fb_blue_button p-2 w-10 text-white" type="submit">
+          <button onClick={() => window.location.href = `/busca?search=${searchString}`} className="absolute rounded-sm bg-fb_blue_button p-2 w-10 text-white">
             <Search />
           </button>
         </form>

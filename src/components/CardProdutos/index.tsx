@@ -41,7 +41,7 @@ export function ImageProduct({ src, width, height, alt }: ImageProductProps) {
           src={src ? src : placeholder}
           width={width ? width : 355}
           height={height ? height : 355}
-          className="rounded-lg bg-[#E5E7E9] w-[300px] h-[355px] md:w-[284px] md:h-[355px] lg:w-full lg:h-full lg:mx-0 object-cover"
+          className="rounded-lg bg-[#E5E7E9] w-full h-[355px] md:w-[284px] md:h-[355px] lg:w-full lg:h-full lg:mx-0 object-cover"
         />
       </Suspense>
     </div>
