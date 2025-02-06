@@ -88,18 +88,6 @@ export const nossasMarcasInfos = [
     },
   },
   {
-    title: "Cuidado de verdade pro seu pet é com a HomeoPet",
-    icon: iconMarca02,
-    text: "Com 15 anos de experiência, a Homeopet se destaca por oferecer soluções seguras e eficazes para a saúde dos pequenos animais. Nosso compromisso é promover o bem-estar e a qualidade de vida dos pets.",
-    ctaLink: "#",
-    image: imgMarca02,
-    badge_text: "SAÚDE",
-    cta: {
-      link: "/linhas/homeopet",
-      anchor: "IR PARA A LOJA",
-    },
-  },
-  {
     title: "Aqui seu ganho é REAL",
     icon: iconMarca03,
     text: "A CMR é uma marca que homenageia o legado do Prof. Dr. Claudio Martins Real. Com mais de 40 anos de experiência, oferecemos soluções que promovem a saúde e o bem-estar dos animais.",
@@ -108,6 +96,19 @@ export const nossasMarcasInfos = [
     badge_text: "SAÚDE",
     cta: {
       link: "/linhas/cmr",
+      anchor: "IR PARA A LOJA",
+    },
+    bg_image: "cmr-saude",
+  },
+  {
+    title: "Cuidado de verdade pro seu pet é com a HomeoPet",
+    icon: iconMarca02,
+    text: "Com 15 anos de experiência, a Homeopet se destaca por oferecer soluções seguras e eficazes para a saúde dos pequenos animais. Nosso compromisso é promover o bem-estar e a qualidade de vida dos pets.",
+    ctaLink: "#",
+    image: imgMarca02,
+    badge_text: "SAÚDE",
+    cta: {
+      link: "/linhas/homeopet",
       anchor: "IR PARA A LOJA",
     },
   },

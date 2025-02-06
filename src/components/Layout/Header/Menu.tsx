@@ -1,14 +1,16 @@
 "use client";
-import { AlignJustify, ChevronDown } from "lucide-react";
+import { AlignJustify, ChevronDown, SearchIcon } from "lucide-react";
 import Image from "next/image";
 import { SetStateAction, useState } from "react";
 import greenLeaf from "@/public/green-leaf.svg";
 import menuItems from "@/lib/menuItems";
+import { Search } from "../Search";
 
 export interface MenuNode {
   id: string;
   url: string;
   label: string;
+  target?: string;
   childItems?: {
     edges: {
       node: {
@@ -48,11 +50,10 @@ export default function Menu() {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  // const menuItens = menuFetched?.props?.menuItems?.edges || [];
 
   const handleMouseEnter = (id: string | SetStateAction<null>) => {
     if (activeMenu === null) {
-      return setActiveMenu(id as string); // Define o menu ativo
+      return setActiveMenu(id as string);
     } else {
       return setActiveMenu(null);
     }
@@ -60,7 +61,7 @@ export default function Menu() {
 
   const handleMouseEnterSubMenu = (id: string | SetStateAction<null>) => {
     if (activeDropdown === null) {
-      return setActiveDropdown(id as string); // Define o menu ativo
+      return setActiveDropdown(id as string);
     } else {
       return setActiveDropdown(null);
     }
@@ -77,7 +78,7 @@ export default function Menu() {
   return (
     <>
       <div className="flex gap-3">
-        <ul className="hidden xl:flex gap-1 font-bold text-lg items-center text-black lg:mr-6">
+        <ul className="hidden xl:flex gap-1 font-bold text-lg items-center text-black">
           <li
             className=""
             id="sustentabilidade"
@@ -102,14 +103,16 @@ export default function Menu() {
           </li>
           {menuItems.map((item) => (
             <li
-              className="flex relative gap-2 px-3 py-1"
+              className="flex relative gap-2 px-2 py-1"
               key={item.node.id}
               onMouseEnter={() => handleMouseEntered(item.node.id)}
               onMouseLeave={handleMouseLeave}
             >
               {!item.node.url.includes("") || !item.node.url.includes("#") ? (
                     <a
-                      href={item.node.url === "#" ? "" : item.node.url} // Corrigindo o href
+                      href={item.node.url === "#" ? "" : item.node.url}
+                      target={item.node.target || "_self"}
+                      title={item.node.label}
                       className="w-full text-fb_blue_main hover:text-fb_blue duration-fb_transition_ease py-3"
                     >
                       {item.node.label}
@@ -130,7 +133,7 @@ export default function Menu() {
                     </p>
                   )}
               {item.node?.childItems?.edges && item.node?.childItems?.edges.length > 0 && (
-                <div className="">
+                <div className={`${activeMenu === item.node.id ? "block opacity-100 visible" : "opacity-0 height-0 invisible overflow-hidden"}`}>
 
                   <ul
                     className={`w-96 top-3/4 bg-white border absolute sub-menu px-3 py-4 ${activeMenu === item.node.id ? "block opacity-100 visible" : "opacity-0 height-0 invisible overflow-hidden"} transition-opacity duration-300 left-1/2 transform -translate-x-1/2 rounded-md`}
@@ -182,8 +185,6 @@ export default function Menu() {
               <li
                 className=""
                 id="sustentabilidade"
-                // onMouseEnter={() => handleMouseEntered("sustentabilidade")}
-                // onMouseLeave={handleMouseLeave}
               >
                 <button
                   onClick={() => handleMouseEnter("sustentabilidade")}
@@ -210,7 +211,8 @@ export default function Menu() {
                 <li className="flex w-full items-center text-center justify-center relative gap-2" key={item.node.id}>
                   {!item.node.url.includes("") || !item.node.url.includes("#") ? (
                     <a
-                      href={item.node.url === "#" ? "" : item.node.url} // Corrigindo o href
+                      href={item.node.url === "#" ? "" : item.node.url}
+                      target={item.node.target || "_self"}
                       className="w-full inline-block text-fb_blue_main hover:text-fb_blue duration-fb_transition_ease px-10 py-3"
                     >
                       {item.node.label}

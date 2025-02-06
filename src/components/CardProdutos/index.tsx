@@ -89,6 +89,10 @@ export default function CardProduct({ product }: { product: any[] }) {
     return <NotFound />;
   }
 
+  if (!product || product.length === 0) {
+    return <NotFound />;
+  }
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-8">
       {product.map((item, index) => {
@@ -113,7 +117,7 @@ export default function CardProduct({ product }: { product: any[] }) {
               <LinkProduct link={link}>
                 <TitleProduct nomeProduto={title} />
                 <DescriptionProduct descriptionProduct={description} />
-              </LinkProduct> 
+              </LinkProduct>
             </div>
             <div className="absolute bottom-0">
               <BtnCallToAction 

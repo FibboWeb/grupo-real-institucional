@@ -1,20 +1,19 @@
 import BannerLines from "@/components/BannerCTA/BannerLines";
 import Breadcrumb from "@/components/BreadCrumb";
-import { BadgeCategorie } from "@/components/CardProdutos";
 import Accordion from "@/components/Layout/Accordion";
+import Newsletter from "@/components/Layout/Newsletter";
 import { Button } from "@/components/ui/button";
+import { fetchYoastSEO } from "@/lib/getCategorias";
+import { getProductPerSlug } from "@/lib/getProducts";
 import image03 from "@/public/images/banners/cao-e-gato.webp";
 import image02 from "@/public/images/banners/carne-vermelha-cortada.webp";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 import SliderProductsRecommended from "../(componentes)/SliderProductsRecommended";
-import Newsletter from "@/components/Layout/Newsletter";
-import { getProductPerSlug } from "@/lib/getProducts";
-import { notFound, redirect } from "next/navigation";
-import { fetchYoastSEO } from "@/lib/getCategorias";
-import { Metadata } from "next";
 
 type Props = {
   params: Promise<{ slug: string }>

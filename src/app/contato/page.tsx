@@ -1,11 +1,29 @@
-"use client";
-
 import ContactForm from "@/components/contato/ContactForm";
 import Newsletter from "@/components/Layout/Newsletter";
 import { Button } from "@/components/ui/button";
 import { FaWhatsapp } from "react-icons/fa";
 import Adress from "./Adress";
 import { locations } from "@/constants/locations";
+import Link from "next/link";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Entre em contato conosco - Grupo Real",
+  description: "40 anos construindo gerações reais.",
+  openGraph: {
+    title: "Entre em contato conosco - Grupo Real",
+    description: "40 anos construindo gerações reais.",
+    images: ["/favicon.ico"],
+    locale: "pt_BR",
+    siteName: "Grupo Real",
+  },
+  alternates: {
+    canonical: "https://gruporealbr.com.br/contato",
+    languages: {
+      pt: "https://gruporealbr.com.br/",
+    }
+  }
+};
 
 export default function Page() {
   return (
@@ -29,10 +47,15 @@ export default function Page() {
 
             <Button
               className="mb-8 h-[48px] px-10 bg-green-600 hover:bg-green-700"
-              onClick={() => window.open("https://wa.me/558001009000")}
             >
-              <FaWhatsapp className="mr-2 h-5 w-5" />
-              SOLICITE UM ORÇAMENTO
+              <Link
+                href="https://wa.me/558001009000"
+                className="flex"
+                target="_blank"
+              >
+                <FaWhatsapp className="mr-2 h-5 w-5" />
+                  SOLICITE UM ORÇAMENTO
+              </Link>
             </Button>
           </div>
         </div>
