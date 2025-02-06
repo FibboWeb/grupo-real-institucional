@@ -60,10 +60,8 @@ export default async function BannerLines({
     infos = await getInfoLine("linha-homeo-pet");
   }
 
-  console.log("infos buscada",infos)
-
   return (
-    <div className="relative w-full h-[300px] rounded-lg items-center">
+    <div className="relative w-full h-[320px] rounded-lg items-center">
       <div className="absolute inset-0 bg-gradient-to-r from-fb_dark-blue to-fb_light-blue rounded-lg"></div>
       <Image
         alt=""

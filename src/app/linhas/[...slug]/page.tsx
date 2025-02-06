@@ -79,7 +79,7 @@ export default async function PageLinhas({ params, searchParams }) {
 
   return (
     <section className="relative mt-24">
-      <div className="fb_container flex flex-col">
+      <div className="fb_grid-products flex flex-col">
         <div>
           <Breadcrumb
             activeClasses="text-fb_gray_bread"

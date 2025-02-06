@@ -144,7 +144,7 @@ export default async function PageProduct({ params }) {
               <h2 className="text-3xl font-bold text-fb_blue_main">Produtos similares</h2>
               <hr className="w-20 h-[6px] bg-fb_blue_main rounded-full" />
             </div>
-            <div className="w-full my-6">
+            <div className="w-full my-6 hidden">
               <SliderProductsRecommended />
             </div>
           </div>
