@@ -17,6 +17,7 @@ import {
 } from "@/constants/home";
 import { getLastPostsNoticias } from "@/lib/getLastPostsNoticias";
 import LastPostsNoticias from "../components/Layout/LastPostsNoticias";
+import BtnCallToAction from "@/components/Layout/Buttons/BtnCallToAction/BtnCallToAction";
 
 export default async function Home() {
   const queriedLastPostsNoticias = await getLastPostsNoticias();
@@ -74,6 +75,15 @@ export default async function Home() {
         <h2 className="text-center text-fb_blue_main text-4xl font-bold">Depoimentos</h2>
         <SliderTestimonials testimonial={testimoniaslInfo} />
       </section>
+      <div className="fb_container flex flex-col justify-center items-center my-2 gap-4">
+        <h3 className="text-xl md:text-3xl font-bold text-center" >Acesse o portal do agro do Grupo Real!</h3>
+        <BtnCallToAction
+          ctaLink="https://realh-crmagro.viasoftcloud.com.br/crm-web/login.xhtml"
+          content="Login"
+          color="fb_green_button"
+          classCssForBTN="text-white w-fit hover:text-black"
+        />
+      </div>
       <section>
         <Newsletter
           sectionTitle="Inscreva-se na nossa newsletter"
