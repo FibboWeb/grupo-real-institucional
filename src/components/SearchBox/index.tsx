@@ -10,7 +10,7 @@ function SearchBox() {
   };
 
   return (
-    <div className="search-block w-full mb-8">
+    <div className="search-block w-full mb-8 hidden">
       <div className="flex items-center w-full">
         <form className="w-full" action="/busca" method="get">
 

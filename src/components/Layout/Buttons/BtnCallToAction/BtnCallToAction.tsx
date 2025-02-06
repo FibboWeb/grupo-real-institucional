@@ -3,15 +3,18 @@ import Link from "next/link";
 import "./index.css";
 import WhiteLeafIcon from "@/public/icons/white-leaf.svg";
 import ArrowIcon from "@/public/icons/arrow-right.svg";
+import { cn } from "@/lib/utils";
+import React from "react";
 
 interface BtnCallToActionProps {
   ctaLink: string;
   content: string;
-  icon?: StaticImageData;
+  icon?: StaticImageData | React.ReactNode;
   color?: "fb_blue_button" | "fb_green_button" | "white";
+  classCssForBTN?: string;
 }
 
-export default function BtnCallToAction({ ctaLink, content, icon, color = "fb_blue_button" }: BtnCallToActionProps) {
+export default function BtnCallToAction({ ctaLink, content, icon, color = "fb_blue_button", classCssForBTN }: BtnCallToActionProps) {
   let text;
   let textHover = color == "fb_blue_button" ? "hover:text-fb_blue_button" : "hover:text-fb_green_button";
   let bg = color == "fb_blue_button" ? "bg-fb_blue_button" : "bg-fb_green_button";
@@ -50,7 +53,8 @@ export default function BtnCallToAction({ ctaLink, content, icon, color = "fb_bl
     <>
       <Link
         href={ctaLink}
-        className={`${text} ${textHover} ${bg} ${bgHover} ${border} group btn-container inline-flex items-center gap-4 py-3 px-4 rounded text-base font-semibold uppercase border border-solid transition-all duration-300`}
+        className={cn([`${text} ${textHover} ${bg} ${bgHover} ${border} group btn-container inline-flex items-center gap-4 py-3 px-4 rounded text-base font-semibold uppercase border border-solid transition-all duration-300`, `${classCssForBTN}`])}
+        target={!ctaLink.includes("gruporealbr.com.br") ? "_blank" : "_self"}
       >
         <span>{content}</span>
         <div className="shrink-0">

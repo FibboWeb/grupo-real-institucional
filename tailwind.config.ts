@@ -89,7 +89,7 @@ export default {
         "green-featured": "url('/images/transparencia/green-bg-featured.webp')",
         "ambiental-sustentaveis-bg": "url('/images/ambiental/bg-sustentaveis.webp')",
         "bg-ciclos": "url('/images/ambiental/bg-ciclos.webp')",
-        "cmr-saude": "url('/images/ambiental/bg-ciclos.webp')",
+        "cmr-saude": "url('/images/home/bg-cmr.webp')",
         "bg-investimento": "url('/images/ambiental/bg-investimento.webp')",
         "bg-doacoes": "url('/images/ambiental/bg-doacoes.webp')",
         fb_category_noticias: "url('/images/banners/banner-category-40-anos.webp')",
