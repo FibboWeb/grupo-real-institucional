@@ -9,29 +9,40 @@
 */
 export async function getProducts(id_categoria: number, page, productsPerPage = 12): Promise<any> {
 
-  try {
-    const res = await fetch(
-      `${process.env.WP_URL_API}produtos?categoria_produto=${id_categoria}&per_page=${productsPerPage}&page=${page}&_embed=wp:featuredmedia`,
-      {
-        next: { revalidate: 6 },
-      },
-    );
-    if (!res.ok) {
-      throw new Error("Erro ao buscar os produtos");
-    }
-    const products = await res.json();
-    const totalPosts = res.headers.get("X-WP-Total");
-    const totalPages = res.headers.get("X-WP-TotalPages");
-  
-    return {
-      products,
-      totalPages,
-      totalPosts
-    }
-  } catch (error) {
-    throw new Error("Erro ao buscar os produtos");  
+  const res = await fetch(
+    `${process.env.WP_URL_API}produtos?categoria_produto=${id_categoria}&per_page=${productsPerPage}&page=${page}&_embed=wp:featuredmedia`,
+    {
+      next: { revalidate: 6 },
+    },
+  );
+  if (!res.ok) {
+    throw new Error("Erro ao buscar os produtos");
   }
 
+  const products = await res.json();
+  const totalPosts = res.headers.get("X-WP-Total");
+  const totalPages = res.headers.get("X-WP-TotalPages");
+
+  // console.log(products, totalPosts, totalPages)
+
+  return {
+    products,
+    totalPages,
+    totalPosts
+  }
+  // try {
+  //       const res = await fetch(`https://realh.com.br/wp-json/wp/v2/produtos?categoria_produto=${id}&per_page=${productsPerPage}&page=${page}&_embed=wp:featuredmedia`, {
+  //         next: { revalidate: 6 },
+  //       });
+  //       const products = await res.json();
+  //       console.log(products)
+  //       const totalPages = res.headers.get("X-WP-TotalPages");
+  //       const totlaProducts = res.headers.get("X-WP-Total");
+  //       console.log(totalPages, totlaProducts)
+  //       return { products, totalPages, totlaProducts };
+  // } catch (error) {
+    
+  // }
 }
 
 // export async function getProducts(categories: string[]): Promise<CardProductPropsAPI> {

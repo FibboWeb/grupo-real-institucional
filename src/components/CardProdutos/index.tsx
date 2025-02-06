@@ -85,6 +85,9 @@ function LinkProduct({ children, link }: LinkProductProps) {
 export default function CardProduct({ product }: { product: any[] }) {
 
   // Ajustar a tipagem da prop
+  if (!product || product.length === 0) {
+    return <NotFound />;
+  }
 
   if (!product || product.length === 0) {
     return <NotFound />;

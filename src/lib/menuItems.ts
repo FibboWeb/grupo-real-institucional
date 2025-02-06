@@ -105,6 +105,15 @@ const menuItems: MenuItems[] = [
       childItems: null,
     },
   },
+  {
+    node: {
+      id: "5",
+      url: "https://realh.gupy.io/",
+      label: "Trabalhe Conosco",
+      target: "_blank",
+      childItems: null,
+    },
+  },
 ];
 
 export default menuItems;

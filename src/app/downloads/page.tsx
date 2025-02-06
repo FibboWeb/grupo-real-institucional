@@ -1,65 +1,41 @@
-"use client";
-import { useState, useEffect } from "react";
-import { ChevronRight, Download } from "lucide-react";
-import Link from "next/link";
-import Image from "next/image";
 import DownloadsBanner from "@/public/images/downloads/downloads-banner.jpg";
-import LogoRealH from "@/public/images/downloads/logo-realh.png";
-
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import Image from "next/image";
 import Newsletter from "@/components/Layout/Newsletter";
+import Breadcrumb from "@/components/BreadCrumb";
+import { ListCardDownload } from "@/components/CardDowload";
+import { Metadata } from "next";
 
-import { getDownloads } from "@/lib/getDownloads";
-
-const categories = [
-  "CMR Saúde Animal",
-  "Grupo Real (Institucional)",
-  "Homeopet",
-  "Institucional",
-  "Grupo Real Nutrição e Saúde Animal",
-  "Grupo Real Nutrição e Saúde Animal",
-];
-
-export default function DownloadsPage() {
-  const [downloads, setDownloads] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("");
-
-  useEffect(() => {
-    async function fetchDownloads() {
-      const downloadsData = await getDownloads();
-      setDownloads(downloadsData.props);
-    }
-
-    fetchDownloads();
-  }, []);
-
-  async function handleFilter(category) {
-    setSelectedCategory(category);
-    if (category) {
-      const clearDownloads = await getDownloads();
-      const filteredDownloads = clearDownloads.props.filter((item) => item.categories.includes(category));
-      setDownloads(filteredDownloads);
-    } else {
-      async function resetDownloads() {
-        const downloadsData = await getDownloads();
-        setDownloads(downloadsData.props);
-      }
-      resetDownloads();
+export const metadata: Metadata = {
+  title: "Downloads de catálogo e logos - Grupo Real",
+  description: "40 anos construindo gerações reais.",
+  openGraph: {
+    title: "Downloads de catálogo e logos - Grupo Real",
+    description: "40 anos construindo gerações reais.",
+    images: ["/favicon.ico"],
+    locale: "pt_BR",
+    siteName: "Grupo Real",
+  },
+  alternates: {
+    canonical: "https://gruporealbr.com.br/downloads",
+    languages: {
+      pt: "https://gruporealbr.com.br/",
     }
   }
+};
+
+export default function DownloadsPage() {
 
   return (
     <div className="fb_container mt-[96px] min-h-screen mb-10">
       {/* Breadcrumb */}
       <div>
-        <div className="flex items-center gap-2 text-sm text-gray-600">
-          <Link href="/" className="hover:text-gray-900">
-            Home
-          </Link>
-          <ChevronRight className="h-4 w-4" />
-          <span className="text-gray-900">Downloads</span>
-        </div>
+          <Breadcrumb
+            activeClasses="text-fb_gray_bread"
+            excludePaths={["produtos"]}
+            containerClasses="flex py-5"
+            listClasses="mx-2 font-bold text-fb_gray_bread hover:text-fb_blue duration-300"
+            capitalizeLinks
+          />
       </div>
       {/* Hero Section */}
       <div className="relative h-[200px] w-full">
@@ -71,62 +47,7 @@ export default function DownloadsPage() {
 
       {/* Main Content */}
       <div className="container mx-auto py-8">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
-          {/* Categories Sidebar */}
-          <div className="space-y-4">
-            <h2 className="text-xl font-semibold">Categorias</h2>
-            <ul className="space-y-2">
-              <li>
-                <Button
-                  variant="ghost"
-                  className={`w-full justify-start text-gray-600 hover:text-gray-900 ${
-                    selectedCategory === "" ? "font-bold" : ""
-                  }`}
-                  onClick={() => handleFilter("")}
-                >
-                  Todas
-                </Button>
-              </li>
-              {categories.map((category) => (
-                <li key={category}>
-                  <Button
-                    variant="ghost"
-                    className={`w-full justify-start text-gray-600 hover:text-gray-900 ${
-                      selectedCategory === category ? "font-bold" : ""
-                    }`}
-                    onClick={() => handleFilter(category)}
-                  >
-                    {category}
-                  </Button>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Downloads Grid */}
-          <div className="col-span-3 grid grid-cols-1 gap-6 sm:grid-cols-2">
-            {downloads.map((item) => (
-              <Card key={item.id} className="overflow-hidden">
-                <CardContent className="p-0">
-                  <div className="relative h-[140px]">
-                    <Image
-                      src={item.featuredImage?.node?.sourceUrl || LogoRealH}
-                      alt={item.title}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="flex flex-col min-h-[140px] gap-5 p-4">
-                    <a href={item.camposBanners.node.mediaItemUrl} download target="_blank" rel="noopener noreferrer">
-                      <Download color="#1986C1" className="h-10 w-10" />
-                      <h3 className="font-medium text-2xl">{item.title}</h3>
-                    </a>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
+          <ListCardDownload />
       </div>
       <Newsletter />
     </div>

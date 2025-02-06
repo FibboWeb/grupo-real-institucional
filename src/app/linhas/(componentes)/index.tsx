@@ -2,6 +2,7 @@ import CardProduct from "@/components/CardProdutos";
 import Pagination from "@/components/Pagination";
 import { getProducts } from "@/lib/getProducts";
 import { notFound } from "next/navigation";
+
 export default async function GridProduct({ slug, searchParams }) {
   let pageNumber = searchParams
   let products: any;

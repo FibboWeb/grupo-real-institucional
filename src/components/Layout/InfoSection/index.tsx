@@ -5,6 +5,7 @@ import BtnCallToAction from "../Buttons/BtnCallToAction/BtnCallToAction";
 interface InfoSectionProps {
   heroBgImage?: string;
   badge?: string;
+  badgeIcon?: StaticImageData | string;
   title?: string;
   content: string;
   ctaLink?: string;
@@ -41,6 +42,7 @@ interface InfoSectionProps {
  * @param {Object} props - Propriedades do componente.
  * @param {string} [props.heroBgImage] - URL da imagem de background da seção.
  * @param {string} [props.badge] - Texto do badge que aparece acima do título.
+ * @param {StaticImageData} [props.badgeIcon] - Icone do badge.
  * @param {string} props.title - O titulo do componente.
  * @param {string} props.content - conteúdo em html que será exibido no componente.
  * @param {string} [props.ctaLink] - Link para o botão de CTA.
@@ -60,6 +62,7 @@ interface InfoSectionProps {
 function InfoSection({
   heroBgImage,
   badge,
+  badgeIcon = "/icons/plant-sprout.svg",
   title,
   content,
   ctaLink,
@@ -116,7 +119,7 @@ function InfoSection({
             <div>
               {badge && color == "fb_green_button" && (
                 <div className="flex gap-1 py-1">
-                  <Image src={"/icons/plant-sprout.svg"} width={"12"} height={"12"} alt="broto de planta"></Image>
+                  <Image src={badgeIcon} width={"12"} height={"12"} alt="broto de planta"></Image>
                   <div className="text-xl text-fb_green text-uppercase font-semibold">{badge}</div>
                 </div>
               )}

@@ -46,7 +46,7 @@ export default async function Home() {
           <LastPostsNoticias fetchedLastPosts={fetchedLastPostsNoticias} />
         </div>
       </section>
-      <section className="fb_container">
+      <section className="">
         {/* Nossas marcas */}
         <div className="w-full">
           <h2 className="text-center text-fb_blue_main text-4xl font-bold py-12">Nossas marcas</h2>

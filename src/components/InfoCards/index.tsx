@@ -18,6 +18,7 @@ type ValuesSectionProps = {
       link: string;
       anchor: string;
     };
+    bg_image?: string;
   }[];
 };
 
@@ -46,37 +47,39 @@ function InfoCards({ values }: ValuesSectionProps) {
   return (
     <div className="w-full max-h-full">
       {values.map((value, index) => (
-        <div
-          key={index}
-          className={`flex flex-col justify-between gap-24 ${index % 2 === 0 ? "lg:flex-row-reverse" : "lg:flex-row"} items-center py-12`}
-        >
-          <div className={` ${value.border ? "shadow-custom_shadow w-full lg:w-1/2" : "w-full lg:w-1/2"} `}>
-            <Suspense fallback={<div className="w-full h-full bg-gray-300 animated-pulse rounded-lg"></div>}>
-              <Image
-                src={value.image}
-                alt={value.title}
-                width={600}
-                height={475}
-                className="rounded-lg h-auto object-scale-down md:object-cover object-center w-full"
-              />
-            </Suspense>
-          </div>
-          <div className="w-full flex flex-col gap-6 lg:w-1/2">
-            {value.icon && (
-              <Image src={value.icon} alt={value.title} width={225} height={140} className="object-cover" />
-            )}
-            {value.badge_text && (
-              <span className="bg-fb_blue text-white py-0.5 px-2 rounded-full w-fit">{value.badge_text}</span>
-            )}
-            {value.title && <h2 className="font-bold text-fb_blue_main text-3xl">{value.title}</h2>}
-            <div className="w-full flex flex-col justify-between gap-6">
-              {value.text && <div className="w-full" dangerouslySetInnerHTML={{ __html: value.text }} />}
+        <div key={index} className={value.bg_image? `bg-${value.bg_image} relative bg-center bg-cover` : ''}>
+          {value.bg_image && <div className="absolute top-0 left-0 w-full h-full bg-white opacity-85 z-0"></div>}
+          <div
+            className={`fb_container flex flex-col justify-between relative gap-24 ${index % 2 === 0 ? "lg:flex-row-reverse" : "lg:flex-row"} items-center py-12`}
+          >
+            <div className={` ${value.border ? "shadow-custom_shadow w-full lg:w-1/2" : "w-full lg:w-1/2"} `}>
+              <Suspense fallback={<div className="w-full h-full bg-gray-300 animated-pulse rounded-lg"></div>}>
+                <Image
+                  src={value.image}
+                  alt={value.title}
+                  width={600}
+                  height={475}
+                  className="rounded-lg h-auto object-scale-down md:object-cover object-center w-full"
+                />
+              </Suspense>
             </div>
-            {value.cta && (
-              <div className="w-fit">
-                <BtnCallToAction content={value.cta.anchor} ctaLink={value.cta.link} icon={ArrowIcon} />
+            <div className="w-full flex flex-col gap-6 lg:w-1/2">
+              {value.icon && (
+                <Image src={value.icon} alt={value.title} width={225} height={140} className="object-cover" />
+              )}
+              {value.badge_text && (
+                <span className="bg-fb_blue text-white py-0.5 px-2 rounded-full w-fit">{value.badge_text}</span>
+              )}
+              {value.title && <h2 className="font-bold text-fb_blue_main text-3xl">{value.title}</h2>}
+              <div className="w-full flex flex-col justify-between gap-6">
+                {value.text && <div className="w-full" dangerouslySetInnerHTML={{ __html: value.text }} />}
               </div>
-            )}
+              {value.cta && (
+                <div className="w-fit">
+                  <BtnCallToAction content={value.cta.anchor} ctaLink={value.cta.link} icon={ArrowIcon} />
+                </div>
+              )}
+            </div>
           </div>
         </div>
       ))}
