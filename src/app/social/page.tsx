@@ -20,7 +20,7 @@ import Newsletter from "@/components/Layout/Newsletter";
 import BigNumbersSection from "@/components/Layout/BigNumbersSection/BigNumbersSection";
 import { BigNumbersItems } from "./BigNumbersItems";
 // images
-import CartaoMultibeneficioImg from "@/public/images/social/cartao-multibeneficio.webp";
+import CartaoMultibeneficioImg from "@/public/images/social/carta-caju.webp";
 import CiclosEsportImg from "@/public/images/social/ciclos-e-o-esporte.webp";
 import SolidariedadeImg from "@/public/images/social/ciclos-e-solidarieadewebp.webp";
 import CompromissoEducacaoImg from "@/public/images/social/compromisso-educacao.webp";
@@ -107,7 +107,7 @@ export default function SocialPage() {
         imagePath={CartaoMultibeneficioImg}
         border={false}
         color="fb_green_button"
-        reverseDesktop={false}
+        reverseDesktop={true}
       />
 
       <InfoSection
@@ -149,7 +149,9 @@ export default function SocialPage() {
         readMore={true}
       />
 
-      <Newsletter />
+      <div className="fb_container">
+        <Newsletter />
+      </div>
     </>
   );
 }
