@@ -1,0 +1,24 @@
+.hidden-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 10;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.containerContent p {
+    margin-bottom: 20px;
+}
+
+.containerContent ul,
+.containerContent ol {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.containerContent ul {
+    list-style: disc;
+}
+
+.containerContent ol {
+    list-style: decimal;
+}
