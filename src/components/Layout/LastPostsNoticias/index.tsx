@@ -45,9 +45,17 @@ function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
     dots: true,
     responsive: [
       {
+        breakpoint: 1800,
+        settings: {
+          slidesToShow: 3.95,
+          slidesToScroll: 1,
+          dots: true,
+        },
+      },
+      {
         breakpoint: 1660,
         settings: {
-          slidesToShow: 2.45,
+          slidesToShow: 3.2,
           slidesToScroll: 1,
           dots: true,
         },
@@ -55,7 +63,7 @@ function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
       {
         breakpoint: 1400,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 2.8,
           slidesToScroll: 2,
         },
       },
@@ -74,7 +82,21 @@ function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
         },
       },
       {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 2.2,
+          slidesToScroll: 1,
+        },
+      },
+      {
         breakpoint: 580,
+        settings: {
+          slidesToShow: 1.2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 320,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -151,21 +173,21 @@ function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
   // };
   return (
     <div className="flex flex-col lg:flex-row gap-6 xl:gap-10">
-      <div className="last-post-slider sm:w-3/4" style={{ width: "98%" }}>
-        <Slider {...settings}>
         <div className="py-2">
-        <div className="flex flex-col justify-between w-full lg:w-80 h-[440px] rounded-2xl bg-fb_gradient text-white p-12">
-          <div className="content">
-            <h2 className="text-3xl font-bold">Notícias</h2>
-            <p className="pt-6">
-              Fique por dentro de tudo o que acontece no mundo da pecuária. Notícias, eventos, dicas e muito mais...
-            </p>
-          </div>
-          <div className="w-fit">
-            <BtnCallToAction ctaLink="/noticias" content="IR PARA O BLOG" color="fb_blue_button" />
+          <div className="flex flex-col justify-between w-full lg:w-80 min-h-[440px] rounded-2xl bg-fb_gradient text-white p-12">
+            <div className="content">
+              <h2 className="text-3xl font-bold">Notícias</h2>
+              <p className="pt-6">
+                Fique por dentro de tudo o que acontece no mundo da pecuária. Notícias, eventos, dicas e muito mais...
+              </p>
+            </div>
+            <div className="w-fit">
+              <BtnCallToAction ctaLink="/noticias" content="IR PARA O BLOG" color="fb_blue_button" />
+            </div>
           </div>
         </div>
-      </div>
+      <div className="last-post-slider sm:w-3/4" style={{ width: "98%" }}>
+        <Slider {...settings}>
           {fetchedLastPosts &&
             fetchedLastPosts.map((post: Post) => (
               <CardBlog
