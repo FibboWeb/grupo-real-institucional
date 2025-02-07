@@ -36,6 +36,7 @@ interface LastPostsProps {
 }
 
 function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
+
   const settings = {
     slidesToShow: 3.2,
     slidesToScroll: 1,
@@ -44,24 +45,17 @@ function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
     dots: true,
     responsive: [
       {
-        breakpoint: 1800,
+        breakpoint: 1660,
         settings: {
-          slidesToShow: 3.75,
+          slidesToShow: 2.45,
           slidesToScroll: 1,
           dots: true,
         },
       },
       {
-        breakpoint: 1660,
+        breakpoint: 1400,
         settings: {
-          slidesToShow: 3.25,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 1440,
-        settings: {
-          slidesToShow: 3.3,
+          slidesToShow: 2,
           slidesToScroll: 2,
         },
       },
@@ -80,28 +74,81 @@ function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
         },
       },
       {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 2.13,
-          slidesToScroll: 2,  
-        }
-      },
-      {
-        breakpoint: 425,
+        breakpoint: 580,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
         },
       },
-      {
-        breakpoint: 320,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        }
-      }
     ],
   };
+
+  // const settings = {
+  //   slidesToShow: 3.2,
+  //   slidesToScroll: 1,
+  //   infinite: false,
+  //   speed: 500,
+  //   dots: true,
+  //   responsive: [
+  //     {
+  //       breakpoint: 1800,
+  //       settings: {
+  //         slidesToShow: 3.75,
+  //         slidesToScroll: 1,
+  //         dots: true,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 1660,
+  //       settings: {
+  //         slidesToShow: 3.25,
+  //         slidesToScroll: 1,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 1440,
+  //       settings: {
+  //         slidesToShow: 3.3,
+  //         slidesToScroll: 2,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 1200,
+  //       settings: {
+  //         slidesToShow: 1.5,
+  //         slidesToScroll: 2,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 1024,
+  //       settings: {
+  //         slidesToShow: 2.5,
+  //         slidesToScroll: 2,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 768,
+  //       settings: {
+  //         slidesToShow: 2.13,
+  //         slidesToScroll: 2,  
+  //       }
+  //     },
+  //     {
+  //       breakpoint: 425,
+  //       settings: {
+  //         slidesToShow: 1,
+  //         slidesToScroll: 1,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 320,
+  //       settings: {
+  //         slidesToShow: 1,
+  //         slidesToScroll: 1,
+  //       }
+  //     }
+  //   ],
+  // };
   return (
     <div className="flex flex-col lg:flex-row gap-6 xl:gap-10">
       <div className="last-post-slider sm:w-3/4" style={{ width: "98%" }}>

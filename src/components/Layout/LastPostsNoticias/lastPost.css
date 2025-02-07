@@ -21,3 +21,9 @@
 .last-post-slider .slick-dots li button:before {
   font-size: 12px !important;
 }
+
+@media screen and (max-width:375px){
+  .post-card {
+    width:269px;
+  }
+}

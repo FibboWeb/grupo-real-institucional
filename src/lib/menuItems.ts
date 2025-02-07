@@ -22,6 +22,13 @@ const menuItems: MenuItems[] = [
               label: "Claudio Martins Real",
             },
           },
+          {
+            node: {
+              id: "1-3",
+              url: "/downloads",
+              label: "Downloads",
+            },
+          },
         ],
       },
     },
