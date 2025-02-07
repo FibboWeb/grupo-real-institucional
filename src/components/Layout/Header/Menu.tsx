@@ -79,7 +79,7 @@ export default function Menu() {
       <div className="flex gap-3">
         <ul className="hidden xl:flex gap-1 font-bold text-lg items-center text-black">
           <li
-            className=""
+            className="py-2 px-3"
             id="sustentabilidade"
             onMouseEnter={() => handleMouseEntered("sustentabilidade")}
             onMouseLeave={handleMouseLeave}
@@ -89,7 +89,7 @@ export default function Menu() {
               <Image src={greenLeaf.src} alt="Green Leaf" width={13} height={13} loading="eager" />
             </button>
             <ul
-              className={`w-96 top-3/4 bg-white border absolute sub-menu px-3 py-4 ${activeMenu === "sustentabilidade" ? "block opacity-100 visible" : "opacity-0 height-0 invisible overflow-hidden"} transition-opacity duration-300 rounded-md`}
+              className={`w-96 top-3/4 bg-white border absolute sub-menu px-3 py-4 ${activeMenu === "sustentabilidade" ? "block opacity-100 visible" : "opacity-0 h-0 invisible overflow-hidden"} transition-opacity duration-300 rounded-md`}
             >
               {menuSustentabilidade.map((subMenu) => (
                 <li key={subMenu.anchor} className="py-2 px-3">
@@ -102,7 +102,7 @@ export default function Menu() {
           </li>
           {menuItems.map((item) => (
             <li
-              className="flex relative gap-2 px-2 py-1"
+              className="flex relative gap-2 px-2 py-1 hover:cursor-pointer"
               key={item.node.id}
               onMouseEnter={() => handleMouseEntered(item.node.id)}
               onMouseLeave={handleMouseLeave}
@@ -135,7 +135,7 @@ export default function Menu() {
                 <div className={`${activeMenu === item.node.id ? "block opacity-100 visible" : "opacity-0 height-0 invisible overflow-hidden"}`}>
 
                   <ul
-                    className={`w-96 top-3/4 bg-white border absolute sub-menu px-3 py-4 ${activeMenu === item.node.id ? "block opacity-100 visible" : "opacity-0 height-0 invisible overflow-hidden"} transition-opacity duration-300 left-1/2 transform -translate-x-1/2 rounded-md`}
+                    className={`w-96 top-10 bg-white border absolute sub-menu px-3 py-4 ${activeMenu === item.node.id ? "block opacity-100 visible" : "opacity-0 h-0 w-0 max-w-0 min-w-0 max-h-0 min-h-0 invisible overflow-hidden"} transition-opacity duration-300 left-1/2 transform -translate-x-1/2 rounded-md`}
                   >
                     {item.node.childItems?.edges?.map((subMenu) => (
                       <li key={subMenu.node.id} className="py-2 px-3">
