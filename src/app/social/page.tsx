@@ -20,7 +20,7 @@ import Newsletter from "@/components/Layout/Newsletter";
 import BigNumbersSection from "@/components/Layout/BigNumbersSection/BigNumbersSection";
 import { BigNumbersItems } from "./BigNumbersItems";
 // images
-import CartaoMultibeneficioImg from "@/public/images/social/cartao-multibeneficio.webp";
+import CartaoMultibeneficioImg from "@/public/images/social/carta-caju.webp";
 import CiclosEsportImg from "@/public/images/social/ciclos-e-o-esporte.webp";
 import SolidariedadeImg from "@/public/images/social/ciclos-e-solidarieadewebp.webp";
 import CompromissoEducacaoImg from "@/public/images/social/compromisso-educacao.webp";
@@ -101,7 +101,7 @@ export default function SocialPage() {
         imagePath={CartaoMultibeneficioImg}
         border={false}
         color="fb_green_button"
-        reverseDesktop={false}
+        reverseDesktop={true}
       />
 
       <InfoSection
@@ -123,17 +123,8 @@ export default function SocialPage() {
         imagePath={ReconhecimentoImg}
         border={false}
         color="fb_green_button"
-        reverseDesktop={false}
-        heroBgImage="bg-bg-ciclos"
-      />
-      <InfoSection
-        badge="Prêmio Semestral"
-        title="Eixo Social do Ciclos Grupo Real: Compromisso com Pessoas e Comunidades"
-        content="O Ciclos, <strong>Programa de Sustentabilidade</strong> do Grupo Real, é uma iniciativa estruturada que integra ações voltadas para os pilares social, ambiental e de transparência. Dentro desse contexto, o <strong>Eixo Social</strong> desempenha um papel fundamental ao colocar as pessoas no centro das estratégias da empresa, reforçando o compromisso com a valorização humana, a integração e o apoio à sociedade em momentos cruciais."
-        imagePath={EixoSocialImg}
-        border={false}
-        color="fb_green_button"
         reverseDesktop={true}
+        heroBgImage="bg-bg-ciclos"
       />
       <InfoSection
         badge="Prêmio Semestral"
@@ -146,7 +137,9 @@ export default function SocialPage() {
         heroBgImage="bg-bg-ciclos"
       />
 
-      <Newsletter />
+      <div className="fb_container">
+        <Newsletter />
+      </div>
     </>
   );
 }
