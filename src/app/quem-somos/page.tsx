@@ -70,6 +70,7 @@ export default function PageAboutUs() {
           imagePath={infoSectionsContents.fundadores.img}
           reverseDesktop={infoSectionsContents.fundadores.reverseDesktop}
           reverseMobile={infoSectionsContents.fundadores.revereverseMobile}
+          readMore={infoSectionsContents.fundadores.readMore}
         />
 
         <InfoSection
