@@ -57,7 +57,7 @@ export default async function BannerLines({
   } else if (slug_context === "cmr") {
     infos = await getInfoLine(slug_context);
   } else if (slug_context === "homeopet") {
-    infos = await getInfoLine("linha-homeo-pet");
+    infos = await getInfoLine(slug_context);
   }
 
   return (
