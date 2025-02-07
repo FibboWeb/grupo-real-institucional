@@ -98,7 +98,7 @@ export const nossasMarcasInfos = [
       link: "/linhas/cmr",
       anchor: "IR PARA A LOJA",
     },
-    bg_image: "cmr-saude",
+    bg_image: "fb_gray_main",
   },
   {
     title: "Cuidado de verdade pro seu pet é com a HomeoPet",

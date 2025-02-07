@@ -12,9 +12,10 @@ interface BtnCallToActionProps {
   icon?: StaticImageData | React.ReactNode;
   color?: "fb_blue_button" | "fb_green_button" | "white";
   classCssForBTN?: string;
+  showIcon?: boolean;
 }
 
-export default function BtnCallToAction({ ctaLink, content, icon, color = "fb_blue_button", classCssForBTN }: BtnCallToActionProps) {
+export default function BtnCallToAction({ ctaLink, content, icon, color = "fb_blue_button", classCssForBTN, showIcon = true }: BtnCallToActionProps) {
   let text;
   let textHover = color == "fb_blue_button" ? "hover:text-fb_blue_button" : "hover:text-fb_green_button";
   let bg = color == "fb_blue_button" ? "bg-fb_blue_button" : "bg-fb_green_button";
@@ -57,15 +58,17 @@ export default function BtnCallToAction({ ctaLink, content, icon, color = "fb_bl
         target={!ctaLink.includes("gruporealbr.com.br") ? "_blank" : "_self"}
       >
         <span>{content}</span>
-        <div className="shrink-0">
-          <Image
-            src={iconBtn}
-            alt="Arrow Icon"
-            width={24}
-            height={24}
-            className={`btn-logo ${color == "white" ? "bg-[#cccccc] group-hover:bg-white" : "filter-image"} ${color == "fb_blue_button" ? "bg-white group-hover:bg-[#cccccc]" : "filter-image"}  rounded-full p-1 transition-all duration-300`}
-          />
-        </div>
+        { showIcon && (
+          <div className="shrink-0">
+            <Image
+              src={iconBtn}
+              alt="Arrow Icon"
+              width={24}
+              height={24}
+              className={`btn-logo ${color == "white" ? "bg-[#cccccc] group-hover:bg-white" : "filter-image"} ${color == "fb_blue_button" ? "bg-white group-hover:bg-[#cccccc]" : "filter-image"}  rounded-full p-1 transition-all duration-300`}
+            />
+          </div>  
+        )}
       </Link>
     </>
   );
