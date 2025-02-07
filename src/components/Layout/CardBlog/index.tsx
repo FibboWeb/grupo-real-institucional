@@ -30,6 +30,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { CardBlogProps } from "@/types/post";
+import "./index.css";
 
 function CardBlog({
   blogContext,

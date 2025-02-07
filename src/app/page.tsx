@@ -18,6 +18,8 @@ import {
 import { getLastPostsNoticias } from "@/lib/getLastPostsNoticias";
 import LastPostsNoticias from "../components/Layout/LastPostsNoticias";
 import BtnCallToAction from "@/components/Layout/Buttons/BtnCallToAction/BtnCallToAction";
+import WhiteLeafIcon from "@/public/icons/white-leaf.svg";
+
 
 export default async function Home() {
   const queriedLastPostsNoticias = await getLastPostsNoticias();
@@ -79,12 +81,13 @@ export default async function Home() {
         <h3 className="text-xl md:text-3xl font-bold text-center" >Acesse o portal do agro do Grupo Real!</h3>
         <BtnCallToAction
           ctaLink="https://realh-crmagro.viasoftcloud.com.br/crm-web/login.xhtml"
-          content="Login"
-          color="fb_green_button"
+          content="Acesso Restrito"
+          color="fb_blue_button"
           classCssForBTN="text-white w-fit hover:text-black"
+          showIcon={false}
         />
       </div>
-      <section>
+      <section className="fb_container">
         <Newsletter
           sectionTitle="Inscreva-se na nossa newsletter"
           sectionDescription="Receba novidades e informações exclusivas sobre nossos produtos e novidades diretamente no seu e-mail."

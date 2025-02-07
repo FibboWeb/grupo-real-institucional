@@ -90,7 +90,7 @@ export default function CiclosTransparencia() {
             "<p>O <strong>Grupo Real</strong> reafirma seu compromisso com a sustentabilidade por meio de ações voltadas para o <strong>Eixo de Transparência do Programa Ciclos</strong>. Um dos exemplos mais significativos é sua parceria com o programa “eureciclo”, que promove a compensação ambiental das embalagens utilizadas em seus produtos, gerando <strong>impacto positivo tanto para o meio ambiente</strong> quanto para o desenvolvimento social e financeiro de comunidades em todo o país.</p>"
           }
           imagePath={EuReciclo}
-          imageMidFullContainer={true}
+          imageMidFullContainer={false}
           // ctaLink={"#"}
           color={"fb_green_button"}
           contentButton={"Ler Mais"}
@@ -136,7 +136,7 @@ export default function CiclosTransparencia() {
             "<p>O <strong>Eixo de Transparência do Ciclos</strong>, o Programa de Sustentabilidade do Grupo Real, reflete o compromisso da empresa com a ética, a <strong>legalidade e a responsabilidade social</strong> em todas as suas ações. Esse pilar é sustentado por iniciativas como o Comitê de Ética e os Canais de Ética, que promovem a transparência nas operações e <strong>fortalecem a confiança de colaboradores, clientes e parceiros</strong>.</p>"
           }
           imagePath={EticaLegalidade}
-          imageMidFullContainer={true}
+          imageMidFullContainer={false}
           // ctaLink={"#"}
           color={"fb_green_button"}
           contentButton={"Ler Mais"}

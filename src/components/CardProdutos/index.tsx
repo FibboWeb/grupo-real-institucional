@@ -6,6 +6,7 @@ import { Suspense } from "react";
 import ArrowIcon from "@/public/icons/arrow-right.svg";
 import placeholder from "@/public/images/img-teste.jpeg";
 import BtnCallToAction from "../Layout/Buttons/BtnCallToAction/BtnCallToAction";
+import { cn } from "@/lib/utils";
 
 
 type ImageProductProps = {
@@ -30,6 +31,7 @@ type descriptionProductProps = {
 type LinkProductProps = {
   children: React.ReactNode;
   link: string;
+  classLink?: string;
 };
 
 export function ImageProduct({ src, width, height, alt }: ImageProductProps) {
@@ -72,10 +74,10 @@ function DescriptionProduct({ descriptionProduct }: descriptionProductProps) {
   );
 }
 
-function LinkProduct({ children, link }: LinkProductProps) {
+function LinkProduct({ children, link, classLink }: LinkProductProps) {
   return (
     <>
-      <Link href={link} className="hover:text-fb_blue duration-300">
+      <Link target="_self" href={link} className={cn(['', classLink])}>
         {children}
       </Link>
     </>
@@ -119,13 +121,14 @@ export default function CardProduct({ product }: { product: any[] }) {
                 <DescriptionProduct descriptionProduct={description} />
               </LinkProduct>
             </div>
-            <div className="absolute bottom-0">
+            <div className="absolute bottom-0 w-full mx-auto">
               <BtnCallToAction 
                 key={index}
                 content="Ver detalhes"
                 ctaLink={`/produtos/${link}`}
                 icon={ArrowIcon}
-                color={index === 0 ? "white" : "fb_blue_button"}
+                color="fb_blue_button"
+                classCssForBTN="w-full flex items-center justify-center"
               />
             </div>
           </div>
