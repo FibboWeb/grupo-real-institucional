@@ -1,6 +1,7 @@
 import Image, { StaticImageData } from "next/image";
 import PartnerLogo from "@/public/icons/partner-logo.svg";
 import BtnCallToAction from "../Buttons/BtnCallToAction/BtnCallToAction";
+import ReadMoreText from "@/components/ReadMoreText";
 
 interface PartnerSection {
   title: string;
@@ -38,8 +39,8 @@ export default function PartnerSection({
             <div className="flex justify-center">
               <div className={`h-1 w-20 bg-[#00A833] mt-4 mb-4`}></div>
             </div>
-            <div>
-              <p className="text-base text-white" dangerouslySetInnerHTML={{ __html: content }}></p>
+            <div className="text-base text-white">
+              <ReadMoreText htmlContent={content} readMore={true} color={"fb_green_button"}></ReadMoreText>
             </div>
           </div>
 
