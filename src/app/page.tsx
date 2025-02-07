@@ -78,7 +78,7 @@ export default async function Home() {
         <SliderTestimonials testimonial={testimoniaslInfo} />
       </section>
       <div className="fb_container flex flex-col justify-center items-center my-2 gap-4">
-        <h3 className="text-xl md:text-3xl font-bold text-center" >Acesse o portal do agro do Grupo Real!</h3>
+        <h3 className="text-xl md:text-3xl font-bold text-center" >Acesse nosso CMR de vendas</h3>
         <BtnCallToAction
           ctaLink="https://realh-crmagro.viasoftcloud.com.br/crm-web/login.xhtml"
           content="Acesso Restrito"

@@ -61,6 +61,7 @@ export default {
         fb_gray: "var(--gray)",
         fb_gray_bread: "var(--gray-bread)",
         fb_gray_main: "#031D3A",
+        fb_gray_background: "var(--background-section)",
         fb_gradiente_opacity: "hsla(212, 90%, 12%, 0.8)",
         "fb_dark-blue": "hsla(212, 90%, 12%, 1)",
         "fb_light-blue": "hsla(206, 15%, 60%, 0)",

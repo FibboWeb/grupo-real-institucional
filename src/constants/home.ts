@@ -10,14 +10,14 @@ import img06 from "@/public/icons-slider/ciclos-logo.png";
 import iconMarca02 from "@/public/images/logos/homeopet-logo-colorido.webp";
 import iconMarca03 from "@/public/images/logos/logo-crm-colorido.webp";
 import iconMarca01 from "@/public/images/logos/logo-real-h-colorido.webp";
-import imgMarca01 from "@/public/images/moca-e-cavalo.webp";
+import imgMarca01 from "@/public/images/home/brand-section/saco-de-nutricao-animal.webp";
+import imgMarca03 from "@/public/images/home/brand-section/bezerro-tomando-dia-100.webp";
 import imgMarca02 from "@/public/images/mulher-segurando-cachorro.webp";
-import imgMarca03 from "@/public/images/veterinaria-e-fazendeiro-_1_.webp";
 
 // Sessões dos valores
 import imgIcon02 from "@/public/images/ciclos_novo.webp";
 import imgValor01 from "@/public/images/home/40-anos-de-historia.png";
-import imgValor02 from "@/public/images/imagem_ambiental.webp";
+import imgValor02 from "@/public/images/home/value-section/nova-imagem-ciclos.webp";
 
 import avatar3 from "@/public/images/avatar/leonardo-de-carvalho.jpg";
 import avatar2 from "@/public/images/avatar/leonardo-pereira.jpg";
@@ -98,7 +98,8 @@ export const nossasMarcasInfos = [
       link: "/linhas/cmr",
       anchor: "IR PARA A LOJA",
     },
-    bg_image: "fb_gray_main",
+    bg_image: "fb_gray_background",
+    border: true,
   },
   {
     title: "Cuidado de verdade pro seu pet é com a HomeoPet",
@@ -134,7 +135,7 @@ export const sectionValoresInfo2 = [
     qtde: 10,
     image: imgValor02,
     border: false,
-    icon: imgIcon02,
+    // icon: imgIcon02,
     session_numbers: [
       { qtde: 1_000, text: "De resíduos retiradosdo meio ambiente" },
       { qtde: 2_000, text: "de investimento em placas para a geração de energia fotovoltaica" },
