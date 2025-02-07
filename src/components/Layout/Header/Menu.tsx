@@ -135,7 +135,7 @@ export default function Menu() {
                 <div className={`${activeMenu === item.node.id ? "block opacity-100 visible" : "opacity-0 height-0 invisible overflow-hidden"}`}>
 
                   <ul
-                    className={`w-96 top-10 bg-white border absolute sub-menu px-3 py-4 ${activeMenu === item.node.id ? "block opacity-100 visible" : "opacity-0 h-0 w-0 max-w-0 min-w-0 max-h-0 min-h-0 invisible overflow-hidden"} transition-opacity duration-300 left-1/2 transform -translate-x-1/2 rounded-md`}
+                    className={`w-96 top-3/4 z-10 bg-white border absolute sub-menu px-3 py-4 ${activeMenu === item.node.id ? "block opacity-100 visible" : "opacity-0 h-0 w-0 max-w-0 min-w-0 max-h-0 min-h-0 invisible overflow-hidden"} transition-opacity duration-300 left-1/2 transform -translate-x-1/2 rounded-md`}
                   >
                     {item.node.childItems?.edges?.map((subMenu) => (
                       <li key={subMenu.node.id} className="py-2 px-3">
