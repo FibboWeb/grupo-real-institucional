@@ -1,8 +1,8 @@
 import NossasMarcasImg from "../../../public/images/nossas-marcas.webp";
-import FundadoresImg from "../../../public/images/fundadores.webp";
-import NutricaoImg from "../../../public/images/nutricao.webp";
-import GrandeAnimaisImg from "../../../public/images/grandes-animais.webp";
-import HomeoPetImg from "../../../public/images/home-pet.webp";
+import FundadoresImg from "@/public/images/quem-somos/fabrica-de-cima.png";
+import NutricaoImg from "@/public/images/quem-somos/sacos-de-racao.png";
+import GrandeAnimaisImg from "@/public/images/quem-somos/dosando-remedio.png";
+import HomeoPetImg from "@/public/images/quem-somos/homeopet-quem-somos.png";
 import LaboratorioImg from "../../../public/images/laboratorio.webp";
 import RedeAtendimentoImg from "../../../public/images/rede-de-atendimento.webp";
 

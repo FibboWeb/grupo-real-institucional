@@ -46,7 +46,6 @@ export const metadata: Metadata = {
 };
 
 export default function PageAboutUs() {
-  const ctaLinkString = "www.google.com";
   const conteudo =
     "“Aquilo que eu aprendi na juventude, vendo meu pai curar pessoas, hoje nós estamos aplicando nos rebanhos”, Claudio Martins Real, Presidente e Fundador da Grupo Real. ";
   return (

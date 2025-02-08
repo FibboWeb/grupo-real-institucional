@@ -102,7 +102,7 @@ export default function Menu() {
           </li>
           {menuItems.map((item) => (
             <li
-              className="flex relative gap-2 px-2 py-1 hover:cursor-pointer"
+              className="flex relative gap-2 px-1 py-1 hover:cursor-pointer"
               key={item.node.id}
               onMouseEnter={() => handleMouseEntered(item.node.id)}
               onMouseLeave={handleMouseLeave}
