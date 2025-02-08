@@ -43,6 +43,7 @@ function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
     infinite: false,
     speed: 500,
     dots: true,
+    className: "tester",
     responsive: [
       {
         breakpoint: 1800,

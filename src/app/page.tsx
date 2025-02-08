@@ -19,7 +19,7 @@ import { getLastPostsNoticias } from "@/lib/getLastPostsNoticias";
 import LastPostsNoticias from "../components/Layout/LastPostsNoticias";
 import BtnCallToAction from "@/components/Layout/Buttons/BtnCallToAction/BtnCallToAction";
 import WhiteLeafIcon from "@/public/icons/white-leaf.svg";
-import { CarouselShadcn2, ShadcnCarroussel } from "@/components/Slider-shadcn";
+import { CarouselEmbla, CarouselShadcn2, ShadcnCarroussel } from "@/components/Slider-shadcn";
 
 
 export default async function Home() {
@@ -57,6 +57,9 @@ export default async function Home() {
       </section>
       <section>
         <CarouselShadcn2 itens={fetchedLastPostsNoticias}/>
+      </section>
+      <section>
+        <CarouselEmbla itens={fetchedLastPostsNoticias}/>
       </section>
       <section className="">
         {/* Nossas marcas */}
