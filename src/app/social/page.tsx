@@ -1,7 +1,5 @@
 // Hero
-import HeroSection from "@/components/Layout/HeroSection";
-import HeroCiclos from "@/public/images/imagem_hero_ciclos.webp";
-import HeroChildren from "./HeroChildren";
+import { ChildrenHeroSection } from "./HeroChildren";
 
 // infinite carousel
 import InfiniteCarousel from "@/components/Layout/InfiniteCarousel/InfiniteCarousel";
@@ -46,18 +44,10 @@ export const metadata: Metadata = {
   }
 };
 
-
 export default function SocialPage() {
   return (
     <>
-      <HeroSection
-        children={HeroChildren()}
-        backgroundClass="bg-hero-green-leafs"
-        btnColor="fb_green_button"
-        imagePath={HeroCiclos}
-        btnContent="SAIBA MAIS"
-        imageMaxHeight={450}
-      />
+      <ChildrenHeroSection />
       <InfiniteCarousel items={InfiniteCarouselItems} />
       <InfoSection
         badge="Social"
