@@ -31,6 +31,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CardBlogProps } from "@/types/post";
 import "./index.css";
+import { cn } from "@/lib/utils";
 
 function CardBlog({
   blogContext,
@@ -43,6 +44,7 @@ function CardBlog({
   postAuthor,
   postAuthorLink,
   isSlider,
+  classCss
 }: CardBlogProps) {
   const truncateDescription = (description: string, limit: number = 100) => {
     const plainText = description.replace(/<\/?[^>]+(>|$)/g, "");
@@ -68,7 +70,7 @@ function CardBlog({
   blogContext = blogContext ? blogContext : "/noticias";
 
   return (
-    <div className="p-2">
+    <div className={cn("p-2", classCss)}>
       <div
         className={`post-card relative ${
           isSlider ? "w-[320px] h-[440px]" : "w-full"
