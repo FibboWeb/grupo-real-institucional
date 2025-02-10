@@ -36,6 +36,7 @@ interface LastPostsProps {
 }
 
 function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
+
   const settings = {
     slidesToShow: 3.2,
     slidesToScroll: 1,
@@ -44,9 +45,17 @@ function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
     dots: true,
     responsive: [
       {
+        breakpoint: 1800,
+        settings: {
+          slidesToShow: 3.95,
+          slidesToScroll: 1,
+          dots: true,
+        },
+      },
+      {
         breakpoint: 1660,
         settings: {
-          slidesToShow: 2.45,
+          slidesToShow: 3.2,
           slidesToScroll: 1,
           dots: true,
         },
@@ -54,7 +63,7 @@ function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
       {
         breakpoint: 1400,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 2.8,
           slidesToScroll: 2,
         },
       },
@@ -73,11 +82,11 @@ function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
         },
       },
       {
-        breakpoint: 768,
+        breakpoint: 800,
         settings: {
-          slidesToShow: 2.13,
-          slidesToScroll: 2,  
-        }
+          slidesToShow: 2.2,
+          slidesToScroll: 1,
+        },
       },
       {
         breakpoint: 580,
@@ -86,24 +95,98 @@ function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
           slidesToScroll: 1,
         },
       },
+      {
+        breakpoint: 320,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
     ],
   };
+
+  // const settings = {
+  //   slidesToShow: 3.2,
+  //   slidesToScroll: 1,
+  //   infinite: false,
+  //   speed: 500,
+  //   dots: true,
+  //   responsive: [
+  //     {
+  //       breakpoint: 1800,
+  //       settings: {
+  //         slidesToShow: 3.75,
+  //         slidesToScroll: 1,
+  //         dots: true,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 1660,
+  //       settings: {
+  //         slidesToShow: 3.25,
+  //         slidesToScroll: 1,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 1440,
+  //       settings: {
+  //         slidesToShow: 3.3,
+  //         slidesToScroll: 2,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 1200,
+  //       settings: {
+  //         slidesToShow: 1.5,
+  //         slidesToScroll: 2,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 1024,
+  //       settings: {
+  //         slidesToShow: 2.5,
+  //         slidesToScroll: 2,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 768,
+  //       settings: {
+  //         slidesToShow: 2.13,
+  //         slidesToScroll: 2,  
+  //       }
+  //     },
+  //     {
+  //       breakpoint: 425,
+  //       settings: {
+  //         slidesToShow: 1,
+  //         slidesToScroll: 1,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 320,
+  //       settings: {
+  //         slidesToShow: 1,
+  //         slidesToScroll: 1,
+  //       }
+  //     }
+  //   ],
+  // };
   return (
     <div className="flex flex-col lg:flex-row gap-6 xl:gap-10">
-      <div className="py-2">
-        <div className="flex flex-col justify-between w-full lg:w-80 rounded-2xl bg-fb_gradient text-white min-h-80 lg:min-h-[440px] p-12">
-          <div className="content">
-            <h2 className="text-3xl font-bold">Notícias</h2>
-            <p className="pt-6">
-              Fique por dentro de tudo o que acontece no mundo da pecuária. Notícias, eventos, dicas e muito mais...
-            </p>
-          </div>
-          <div className="w-fit">
-            <BtnCallToAction ctaLink="/noticias" content="IR PARA O BLOG" color="fb_blue_button" />
+        <div className="py-2">
+          <div className="flex flex-col justify-between w-full lg:w-80 min-h-[440px] rounded-2xl bg-fb_gradient text-white p-12">
+            <div className="content">
+              <h2 className="text-3xl font-bold">Notícias</h2>
+              <p className="pt-6">
+                Fique por dentro de tudo o que acontece no mundo da pecuária. Notícias, eventos, dicas e muito mais...
+              </p>
+            </div>
+            <div className="w-fit">
+              <BtnCallToAction ctaLink="/noticias" content="IR PARA O BLOG" color="fb_blue_button" />
+            </div>
           </div>
         </div>
-      </div>
-      <div className="last-post-slider" style={{ width: "75%" }}>
+      <div className="last-post-slider sm:w-3/4" style={{ width: "98%" }}>
         <Slider {...settings}>
           {fetchedLastPosts &&
             fetchedLastPosts.map((post: Post) => (

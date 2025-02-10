@@ -1,20 +1,19 @@
 import BannerLines from "@/components/BannerCTA/BannerLines";
 import Breadcrumb from "@/components/BreadCrumb";
-import { BadgeCategorie } from "@/components/CardProdutos";
 import Accordion from "@/components/Layout/Accordion";
+import Newsletter from "@/components/Layout/Newsletter";
 import { Button } from "@/components/ui/button";
+import { fetchYoastSEO } from "@/lib/getCategorias";
+import { getProductPerSlug } from "@/lib/getProducts";
 import image03 from "@/public/images/banners/cao-e-gato.webp";
 import image02 from "@/public/images/banners/carne-vermelha-cortada.webp";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 import SliderProductsRecommended from "../(componentes)/SliderProductsRecommended";
-import Newsletter from "@/components/Layout/Newsletter";
-import { getProductPerSlug } from "@/lib/getProducts";
-import { notFound, redirect } from "next/navigation";
-import { fetchYoastSEO } from "@/lib/getCategorias";
-import { Metadata } from "next";
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -68,11 +67,12 @@ export default async function PageProduct({ params }) {
 
   return (
     <div className="relative mt-24">
-      <div className="fb_container gap-fb_space-section">
+      <div className="fb_container gap-fb_space-section flex flex-col">
         <div>
           <Breadcrumb
             activeClasses="text-fb_gray_bread"
             excludePaths={["produtos"]}
+            itemName={product[0]?.title?.rendered}
             containerClasses="flex py-5"
             listClasses="mx-2 font-bold text-fb_gray_bread hover:text-fb_blue duration-300"
             capitalizeLinks
@@ -102,7 +102,7 @@ export default async function PageProduct({ params }) {
               <div>
                 <Button className="w-full lg:w-auto h-12 px-10 bg-fb_green hover:bg-green-700">
                   <Link
-                    href="https://wa.me/5508001009000"
+                    href={`https://wa.me/5508001009000?text=Ol%C3%A1%20estou%20entrando%20em%20contato%20para%20falar%20referente%20ao%20produto%20${product[0]?.title?.rendered}%2C%20que%20vi%20no%20site.%20Link%20do%20produto%20 https://gruporealbr.com.br/produtos/${product[0]?.slug}  `}
                     target="_blank"
                     rel="noopener noreferrer"
                     title="Solicite um orçamento pelo whatsapp"
@@ -119,33 +119,39 @@ export default async function PageProduct({ params }) {
                   <p>{product[0]?.acf?.pra_que_serve}</p>
                 </div>
                 <div>
-                  <Accordion title="Modo de usar" faqHeading={{ tagName: "h3" }} active={true}>
+                  {product[0]?.acf?.modo_de_usar && (
+                    <Accordion title="Modo de usar" faqHeading={{ tagName: "h3" }} active={true}>
                     <p>
                       {product[0]?.acf?.modo_de_usar}
                     </p>
                   </Accordion>
-                  <Accordion title="Indicações" faqHeading={{ tagName: "h3" }}>
+                  )}
+                  {product[0]?.acf?.vantagens_do_uso && (
+                    <Accordion title="Vantagens de uso" faqHeading={{ tagName: "h3" }} active={true}>
                     <p>
                       {product[0]?.acf?.vantagens_do_uso}
                     </p>
                   </Accordion>
-                  <Accordion title="Dúvidas" faqHeading={{ tagName: "h3" }}>
+                  )}
+                  {product[0]?.acf?.duvidas && (
+                    <Accordion title="Dúvidas" faqHeading={{ tagName: "h3" }} active={true}>
                     <p>
                       {product[0]?.acf?.duvidas}
                     </p>
                   </Accordion>
+                  )}
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div>
+        <div className="hidden">
           <div className="w-full flex flex-col gap-8 my-8">
             <div className="flex flex-col gap-4">
               <h2 className="text-3xl font-bold text-fb_blue_main">Produtos similares</h2>
               <hr className="w-20 h-[6px] bg-fb_blue_main rounded-full" />
             </div>
-            <div className="w-full my-6">
+            <div className="w-full my-6 ">
               <SliderProductsRecommended />
             </div>
           </div>

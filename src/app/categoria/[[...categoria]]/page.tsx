@@ -43,9 +43,9 @@ export async function generateMetadata(
 
 
 export default async function CategoryPage({ params, searchParams }) {
-  const page = parseInt(searchParams.page || "1");
+  const page = parseInt((await searchParams).page || "1");
   const postsPerPage = 6;
-  const categorySlug = params.categoria[params.categoria.length - 1];
+  const categorySlug = (await params).categoria[(await params).categoria.length - 1];
   const category = await fetchCategoryId(categorySlug);
   const categoryId = category.categoryId;
   const isArtigos = category.categoryName === "Artigos" ? true : false;

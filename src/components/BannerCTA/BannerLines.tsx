@@ -57,13 +57,13 @@ export default async function BannerLines({
   } else if (slug_context === "cmr") {
     infos = await getInfoLine(slug_context);
   } else if (slug_context === "homeopet") {
-    infos = await getInfoLine("linha-homeo-pet");
+    infos = await getInfoLine(slug_context);
   }
 
   console.log("infos buscada",infos)
 
   return (
-    <div className="relative w-full h-[300px] rounded-lg items-center">
+    <div className="relative w-full h-[320px] rounded-lg items-center">
       <div className="absolute inset-0 bg-gradient-to-r from-fb_dark-blue to-fb_light-blue rounded-lg"></div>
       <Image
         alt=""

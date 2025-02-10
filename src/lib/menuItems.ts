@@ -22,6 +22,13 @@ const menuItems: MenuItems[] = [
               label: "Claudio Martins Real",
             },
           },
+          {
+            node: {
+              id: "1-3",
+              url: "/downloads",
+              label: "Downloads",
+            },
+          },
         ],
       },
     },
@@ -102,6 +109,15 @@ const menuItems: MenuItems[] = [
       id: "4",
       url: "/contato",
       label: "Contato",
+      childItems: null,
+    },
+  },
+  {
+    node: {
+      id: "5",
+      url: "https://realh.gupy.io/",
+      label: "Trabalhe Conosco",
+      target: "_blank",
       childItems: null,
     },
   },

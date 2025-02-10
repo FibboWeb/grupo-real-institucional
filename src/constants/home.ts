@@ -10,14 +10,14 @@ import img06 from "@/public/icons-slider/ciclos-logo.png";
 import iconMarca02 from "@/public/images/logos/homeopet-logo-colorido.webp";
 import iconMarca03 from "@/public/images/logos/logo-crm-colorido.webp";
 import iconMarca01 from "@/public/images/logos/logo-real-h-colorido.webp";
-import imgMarca01 from "@/public/images/moca-e-cavalo.webp";
+import imgMarca01 from "@/public/images/home/brand-section/saco-de-nutricao-animal.webp";
+import imgMarca03 from "@/public/images/home/brand-section/bezerro-tomando-dia-100.webp";
 import imgMarca02 from "@/public/images/mulher-segurando-cachorro.webp";
-import imgMarca03 from "@/public/images/veterinaria-e-fazendeiro-_1_.webp";
 
 // Sessões dos valores
 import imgIcon02 from "@/public/images/ciclos_novo.webp";
 import imgValor01 from "@/public/images/home/40-anos-de-historia.png";
-import imgValor02 from "@/public/images/imagem_ambiental.webp";
+import imgValor02 from "@/public/images/home/value-section/nova-imagem-ciclos.webp";
 
 import avatar3 from "@/public/images/avatar/leonardo-de-carvalho.jpg";
 import avatar2 from "@/public/images/avatar/leonardo-pereira.jpg";
@@ -34,43 +34,43 @@ export const sliderCategoriasHome = [
     id: "1",
     image_url: img01,
     label: "Batoque Transportadora",
-    width_card: 140,
-    height_card: 140,
+    width_card: 180,
+    height_card: 180,
   },
   {
     id: "2",
     image_url: img02,
     label: "Grupo Real",
-    width_card: 140,
-    height_card: 140,
+    width_card: 180,
+    height_card: 180,
   },
   {
     id: "3",
     image_url: img03,
     label: "CMR",
-    width_card: 140,
-    height_card: 140,
+    width_card: 180,
+    height_card: 180,
   },
   {
     id: "4",
     image_url: img04,
     label: "HomeoPet",
-    width_card: 140,
-    height_card: 140,
+    width_card: 180,
+    height_card: 180,
   },
   {
     id: "5",
     image_url: img05,
     label: "CMR Saude",
-    width_card: 140,
-    height_card: 140,
+    width_card: 180,
+    height_card: 180,
   },
   {
     id: "6",
     image_url: img06,
     label: "Ciclos",
-    width_card: 140,
-    height_card: 140,
+    width_card: 180,
+    height_card: 180,
   },
 ];
 
@@ -88,18 +88,6 @@ export const nossasMarcasInfos = [
     },
   },
   {
-    title: "Cuidado de verdade pro seu pet é com a HomeoPet",
-    icon: iconMarca02,
-    text: "Com 15 anos de experiência, a Homeopet se destaca por oferecer soluções seguras e eficazes para a saúde dos pequenos animais. Nosso compromisso é promover o bem-estar e a qualidade de vida dos pets.",
-    ctaLink: "#",
-    image: imgMarca02,
-    badge_text: "SAÚDE",
-    cta: {
-      link: "/linhas/homeopet",
-      anchor: "IR PARA A LOJA",
-    },
-  },
-  {
     title: "Aqui seu ganho é REAL",
     icon: iconMarca03,
     text: "A CMR é uma marca que homenageia o legado do Prof. Dr. Claudio Martins Real. Com mais de 40 anos de experiência, oferecemos soluções que promovem a saúde e o bem-estar dos animais.",
@@ -108,6 +96,20 @@ export const nossasMarcasInfos = [
     badge_text: "SAÚDE",
     cta: {
       link: "/linhas/cmr",
+      anchor: "IR PARA A LOJA",
+    },
+    bg_image: "fb_gray_background",
+    border: true,
+  },
+  {
+    title: "Cuidado de verdade pro seu pet é com a HomeoPet",
+    icon: iconMarca02,
+    text: "Com 15 anos de experiência, a Homeopet se destaca por oferecer soluções seguras e eficazes para a saúde dos pequenos animais. Nosso compromisso é promover o bem-estar e a qualidade de vida dos pets.",
+    ctaLink: "#",
+    image: imgMarca02,
+    badge_text: "SAÚDE",
+    cta: {
+      link: "/linhas/homeopet",
       anchor: "IR PARA A LOJA",
     },
   },
@@ -133,7 +135,7 @@ export const sectionValoresInfo2 = [
     qtde: 10,
     image: imgValor02,
     border: false,
-    icon: imgIcon02,
+    // icon: imgIcon02,
     session_numbers: [
       { qtde: 1_000, text: "De resíduos retiradosdo meio ambiente" },
       { qtde: 2_000, text: "de investimento em placas para a geração de energia fotovoltaica" },

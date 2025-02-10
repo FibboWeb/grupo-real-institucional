@@ -6,6 +6,7 @@ import { Suspense } from "react";
 import ArrowIcon from "@/public/icons/arrow-right.svg";
 import placeholder from "@/public/images/img-teste.jpeg";
 import BtnCallToAction from "../Layout/Buttons/BtnCallToAction/BtnCallToAction";
+import { cn } from "@/lib/utils";
 
 
 type ImageProductProps = {
@@ -30,11 +31,12 @@ type descriptionProductProps = {
 type LinkProductProps = {
   children: React.ReactNode;
   link: string;
+  classLink?: string;
 };
 
 export function ImageProduct({ src, width, height, alt }: ImageProductProps) {
   return (
-    <div className="w-[300px] min-h-[355px] md:w-[225px] md:h-[355px] lg:w-full lg:h-full">
+    <div className="w-[264px] min-h-[355px] md:w-[284px] md:h-[355px] lg:w-full lg:h-full">
       <Suspense fallback={<div className="w-full h-full bg-gray-700 animated-pulse rounded-lg"></div>}>
         <Image
           alt={alt}
@@ -72,10 +74,10 @@ function DescriptionProduct({ descriptionProduct }: descriptionProductProps) {
   );
 }
 
-function LinkProduct({ children, link }: LinkProductProps) {
+function LinkProduct({ children, link, classLink }: LinkProductProps) {
   return (
     <>
-      <Link href={link} className="hover:text-fb_blue duration-300">
+      <Link target="_self" href={link} className={cn(['', classLink])}>
         {children}
       </Link>
     </>
@@ -89,8 +91,12 @@ export default function CardProduct({ product }: { product: any[] }) {
     return <NotFound />;
   }
 
+  if (!product || product.length === 0) {
+    return <NotFound />;
+  }
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-8">
+    <div className="w-full flex flex-wrap gap-10 md:gap-20 lg:gap-6 place-content-center">
       {product.map((item, index) => {
         const imageUrl = item._embedded?.["wp:featuredmedia"]?.[0]?.source_url || placeholder;
         const title = item.title?.rendered || "Produto sem nome";
@@ -102,26 +108,27 @@ export default function CardProduct({ product }: { product: any[] }) {
                       .map(tag => tag.charAt(0).toUpperCase() + tag.slice(1));
 
         return (
-          <div key={index} className="w-full lg:w-64 h-[580px] flex flex-col gap-8 items-center relative">
-            <LinkProduct link={link}>
+          <div key={index} className="w-full md:w-64 h-[580px] flex flex-col gap-8 items-center relative">
+            <LinkProduct link={`/produtos/${link}`}>
               <ImageProduct src={imageUrl} alt={title} />
             </LinkProduct>
             <div className="w-4/5 md:w-full flex flex-col gap-2">
-              <LinkProduct link={link}>
+              <LinkProduct link={`/produtos/${link}`}>
                 <BadgeCategorie>{ tags[0] || "Sem categoria"}</BadgeCategorie>
               </LinkProduct>
-              <LinkProduct link={link}>
+              <LinkProduct link={`/produtos/${link}`}>
                 <TitleProduct nomeProduto={title} />
                 <DescriptionProduct descriptionProduct={description} />
-              </LinkProduct> 
+              </LinkProduct>
             </div>
-            <div className="absolute bottom-0">
+            <div className="absolute bottom-0 w-full mx-auto">
               <BtnCallToAction 
                 key={index}
                 content="Ver detalhes"
                 ctaLink={`/produtos/${link}`}
                 icon={ArrowIcon}
-                color={index === 0 ? "white" : "fb_blue_button"}
+                color="fb_blue_button"
+                classCssForBTN="w-full flex items-center justify-center"
               />
             </div>
           </div>

@@ -1,10 +1,12 @@
 import Image, { StaticImageData } from "next/image";
 import style from "./index.module.css";
 import BtnCallToAction from "../Buttons/BtnCallToAction/BtnCallToAction";
+import ReadMoreText from "@/components/ReadMoreText";
 
 interface InfoSectionProps {
   heroBgImage?: string;
   badge?: string;
+  badgeIcon?: StaticImageData | string;
   title?: string;
   content: string;
   ctaLink?: string;
@@ -14,9 +16,10 @@ interface InfoSectionProps {
   reverseMobile?: boolean;
   reverseDesktop?: boolean;
   border?: boolean;
-  color?: "fb_blue_button" | "fb_green_button";
+  color?: "fb_blue_button" | "fb_green_button" | "white";
   contentButton?: string;
   centerButton?: boolean;
+  readMore?: boolean;
 }
 
 /**
@@ -36,11 +39,13 @@ interface InfoSectionProps {
  *      ctaLink="#"
  *      youtubeEmbed="https://www.youtube.com/embed/VIDEO_ID"
  *      centerButton={true}
+ *      readMore={false}
  *    />
  *
  * @param {Object} props - Propriedades do componente.
  * @param {string} [props.heroBgImage] - URL da imagem de background da seção.
  * @param {string} [props.badge] - Texto do badge que aparece acima do título.
+ * @param {StaticImageData} [props.badgeIcon] - Icone do badge.
  * @param {string} props.title - O titulo do componente.
  * @param {string} props.content - conteúdo em html que será exibido no componente.
  * @param {string} [props.ctaLink] - Link para o botão de CTA.
@@ -53,6 +58,7 @@ interface InfoSectionProps {
  * @param {"fb_blue_button" | "fb_green_button"} [props.color] - Cor do botão de CTA.
  * @param {string} [props.contentButton] - Texto do botão de CTA.
  * @param {boolean} [props.centerButton=false] - Controla a centralização do botão de CTA.
+ * @param {boolean} [props.readMore=false] - Controla se o botão de ler mais será exibido.
  *
  * @returns {JSX.Element} O botão renderizado.
  */
@@ -60,6 +66,7 @@ interface InfoSectionProps {
 function InfoSection({
   heroBgImage,
   badge,
+  badgeIcon = "/icons/plant-sprout.svg",
   title,
   content,
   ctaLink,
@@ -72,6 +79,7 @@ function InfoSection({
   color = "fb_blue_button",
   contentButton = "Leia mais",
   centerButton = false,
+  readMore = false,
 }: InfoSectionProps) {
   const MobileClass = reverseMobile ? "flex-col" : "flex-col-reverse";
   const desktopClass = reverseDesktop ? "sm:flex-row" : "sm:flex-row-reverse";
@@ -100,7 +108,7 @@ function InfoSection({
             </div>
           ) : (
             <div
-              className={`w-full md:flex-1 flex ${reverseDesktop ? "justify-start" : "justify-end"} items-center rounded-2xl ${!imageMidFullContainer ? "p-2" : "h-inherit w-full"}`}
+              className={`sticky w-full md:flex-1 flex ${reverseDesktop ? "justify-start" : "justify-end"} items-center rounded-2xl ${!imageMidFullContainer ? "p-2" : "h-inherit w-full"}`}
             >
               <Image
                 src={imagePath}
@@ -116,24 +124,19 @@ function InfoSection({
             <div>
               {badge && color == "fb_green_button" && (
                 <div className="flex gap-1 py-1">
-                  <Image src={"/icons/plant-sprout.svg"} width={"12"} height={"12"} alt="broto de planta"></Image>
+                  <Image src={badgeIcon} width={"12"} height={"12"} alt="broto de planta"></Image>
                   <div className="text-xl text-fb_green text-uppercase font-semibold">{badge}</div>
                 </div>
               )}
               <h2 className="font-semibold text-3xl text-[var(--blue-main)]">{title}</h2>
               <div className={`h-1 w-20 ${divBar} mt-4 mb-4`}></div>
               <div className="text-lg font-normal text-[var(--blue-main)]">
-                <div
-                  className={style.containerContent}
-                  dangerouslySetInnerHTML={{
-                    __html: content,
-                  }}
-                />
+                <ReadMoreText htmlContent={content} readMore={readMore} centerButton={centerButton} color={color} />
               </div>
             </div>
-            {ctaLink && (
+            {ctaLink && !readMore && (
               <div className={`flex ${buttonAlignment}`}>
-                <BtnCallToAction ctaLink={ctaLink} content={contentButton} color={color} />
+                <BtnCallToAction ctaLink={ctaLink} content={readMore ? "Leia mais" : contentButton} color={color} />
               </div>
             )}
           </div>
@@ -144,3 +147,4 @@ function InfoSection({
 }
 
 export default InfoSection;
+
