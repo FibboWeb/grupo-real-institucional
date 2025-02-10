@@ -31,11 +31,12 @@ type Props = {
  */
 
 export async function generateMetadata(
-  { params }: Props,
+  { params, searchParams }: Props,
 ): Promise<Metadata> {
   // read route params
   const slug = (await params).artigos
-
+  const pageParam = (await searchParams).page;
+  const page = parseInt(Array.isArray(pageParam) ? pageParam[0] : pageParam || "1");
   // fetch data
   const infos = await fetchYoastSEO(slug, "posts");
 
@@ -44,7 +45,7 @@ export async function generateMetadata(
   }
  
   return {
-    title: infos.title,
+    title: `${infos.title}${page === 1 ? "" : ` - Página ${page}`}`,
     description: infos.description,
     robots: {
       index: true,
@@ -53,12 +54,12 @@ export async function generateMetadata(
       "max-image-preview": "large",
     },
     openGraph: {
-      title: infos.title,
+      title: `${infos.title}${page === 1 ? "" : ` - Página ${page}`}`,
       description: infos.description,
       images: [ infos.og_image ? infos.og_image[0].url : '' ],
     },
     alternates: {
-      canonical: `https://gruporealbr.com.br/artigos/${slug[0]}`,
+      canonical: `https://gruporealbr.com.br/artigos/${slug[0]}${(page === 1) ? "" : `?page=${page}`}`,
     },
   }
 }

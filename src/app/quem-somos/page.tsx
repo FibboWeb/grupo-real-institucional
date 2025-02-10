@@ -114,7 +114,7 @@ export default function PageAboutUs() {
         <Timeline />
       </section>
 
-      <section className="bg-backgroundPage pt-10 pb-20">
+      <section className="fb_container pt-10 pb-20">
         <Newsletter />
       </section>
     </section>

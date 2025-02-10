@@ -19,7 +19,9 @@ export async function generateMetadata(
   searchParams
 ): Promise<Metadata> {
   const slug = (await params).author[(await params).author.length - 1]
-  
+  const pageParam = (await searchParams).page;
+  const page = parseInt(Array.isArray(pageParam) ? pageParam[0] : pageParam || "1");
+
   let infos
   infos = await fetchYoastSEO(slug, "users");
 
@@ -28,7 +30,7 @@ export async function generateMetadata(
   }
  
   return {
-    title: infos.title,
+    title: `${infos.title}${page === 1 ? "" : ` - Página ${page}`}`,
     description: infos.description,
     robots: {
       index: true,
@@ -37,12 +39,12 @@ export async function generateMetadata(
       "max-image-preview": "large",
     },
     openGraph: {
-      title: infos.title,
+      title: `${infos.title}${page === 1 ? "" : ` - Página ${page}`}`,
       description: infos.description,
       images: [ infos.og_image ? infos.og_image[0].url : '' ],
     },
     alternates: {
-      canonical: `https://gruporealbr.com.br/author/${slug}`,
+      canonical: `https://gruporealbr.com.br/author/${slug}${(page === 1) ? "" : `?page=${page}`}`,
     },
   }
 }
