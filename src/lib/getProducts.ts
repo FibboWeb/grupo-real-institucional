@@ -8,7 +8,7 @@
  * @param {number} [productsPerPage=12] - The number of products to fetch per page. Defaults to 12.
 */
 export async function getProducts(id_categoria: number, page, productsPerPage = 12): Promise<any> {
-
+  
   const res = await fetch(
     `${process.env.WP_URL_API}produtos?categoria_produto=${id_categoria}&per_page=${productsPerPage}&page=${page}&_embed=wp:featuredmedia`,
     {
