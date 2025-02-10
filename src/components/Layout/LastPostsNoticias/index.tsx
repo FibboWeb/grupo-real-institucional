@@ -37,17 +37,124 @@ interface LastPostsProps {
 
 function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
 
+  // const settings = {
+  //   slidesToShow: 5.7,
+  //   slidesToScroll: 1,
+  //   infinite: false,
+  //   speed: 500,
+  //   dots: true,
+  //   className: "tester",
+  //   responsive: [
+  //     {
+  //       breakpoint: 2100,
+  //       settings: {
+  //         slidesToShow: 4.5,
+  //         slidesToScroll: 1,
+  //       }
+  //     },
+  //     {
+  //       breakpoint: 1920,
+  //       settings: {
+  //         slidesToShow: 4.2,
+  //         slidesToScroll: 1,
+  //         dots: true,
+  //       }
+  //     },
+  //     {
+  //       breakpoint: 1800,
+  //       settings: {
+  //         slidesToShow: 3.95,
+  //         slidesToScroll: 1,
+  //         dots: true,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 1660,
+  //       settings: {
+  //         slidesToShow: 4,
+  //         slidesToScroll: 1,
+  //         dots: true,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 1400,
+  //       settings: {
+  //         slidesToShow: 3.1,
+  //         slidesToScroll: 2,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 1280,
+  //       settings: {
+  //         slidesToShow: 2.7,
+  //         slidesToScroll: 2,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 1200,
+  //       settings: {
+  //         slidesToShow: 2,
+  //         slidesToScroll: 2,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 1024,
+  //       settings: {
+  //         slidesToShow: 2.5,
+  //         slidesToScroll: 2,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 800,
+  //       settings: {
+  //         slidesToShow: 2.2,
+  //         slidesToScroll: 1,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 580,
+  //       settings: {
+  //         slidesToShow: 1.2,
+  //         slidesToScroll: 1,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 320,
+  //       settings: {
+  //         slidesToShow: 1,
+  //         slidesToScroll: 1,
+  //       },
+  //     },
+  //   ],
+  // };
+
   const settings = {
-    slidesToShow: 3.2,
+    slidesToShow: 5.7,
     slidesToScroll: 1,
-    infinite: false,
+    infinite: true,
     speed: 500,
     dots: true,
+    autoplay: true,
     responsive: [
+      {
+        breakpoint: 2100,
+        settings: {
+          slidesToShow: 4.5,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 1920,
+        settings: {
+          slidesToShow: 4.2,
+          slidesToScroll: 1,
+          dots: true,
+        }
+      },
       {
         breakpoint: 1800,
         settings: {
-          slidesToShow: 3.95,
+          slidesToShow: 3.75,
           slidesToScroll: 1,
           dots: true,
         },
@@ -55,15 +162,14 @@ function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
       {
         breakpoint: 1660,
         settings: {
-          slidesToShow: 3.2,
+          slidesToShow: 3.25,
           slidesToScroll: 1,
-          dots: true,
         },
       },
       {
-        breakpoint: 1400,
+        breakpoint: 1440,
         settings: {
-          slidesToShow: 2.8,
+          slidesToShow: 3.3,
           slidesToScroll: 2,
         },
       },
@@ -82,16 +188,23 @@ function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
         },
       },
       {
-        breakpoint: 800,
+        breakpoint: 768,
         settings: {
-          slidesToShow: 2.2,
-          slidesToScroll: 1,
-        },
+          slidesToShow: 2.13,
+          slidesToScroll: 2,  
+        }
       },
       {
         breakpoint: 580,
         settings: {
-          slidesToShow: 1.2,
+          slidesToShow: 1.3,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 425,
+        settings: {
+          slidesToShow: 1,
           slidesToScroll: 1,
         },
       },
@@ -100,80 +213,15 @@ function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-        },
-      },
+        }
+      }
     ],
   };
-
-  // const settings = {
-  //   slidesToShow: 3.2,
-  //   slidesToScroll: 1,
-  //   infinite: false,
-  //   speed: 500,
-  //   dots: true,
-  //   responsive: [
-  //     {
-  //       breakpoint: 1800,
-  //       settings: {
-  //         slidesToShow: 3.75,
-  //         slidesToScroll: 1,
-  //         dots: true,
-  //       },
-  //     },
-  //     {
-  //       breakpoint: 1660,
-  //       settings: {
-  //         slidesToShow: 3.25,
-  //         slidesToScroll: 1,
-  //       },
-  //     },
-  //     {
-  //       breakpoint: 1440,
-  //       settings: {
-  //         slidesToShow: 3.3,
-  //         slidesToScroll: 2,
-  //       },
-  //     },
-  //     {
-  //       breakpoint: 1200,
-  //       settings: {
-  //         slidesToShow: 1.5,
-  //         slidesToScroll: 2,
-  //       },
-  //     },
-  //     {
-  //       breakpoint: 1024,
-  //       settings: {
-  //         slidesToShow: 2.5,
-  //         slidesToScroll: 2,
-  //       },
-  //     },
-  //     {
-  //       breakpoint: 768,
-  //       settings: {
-  //         slidesToShow: 2.13,
-  //         slidesToScroll: 2,  
-  //       }
-  //     },
-  //     {
-  //       breakpoint: 425,
-  //       settings: {
-  //         slidesToShow: 1,
-  //         slidesToScroll: 1,
-  //       },
-  //     },
-  //     {
-  //       breakpoint: 320,
-  //       settings: {
-  //         slidesToShow: 1,
-  //         slidesToScroll: 1,
-  //       }
-  //     }
-  //   ],
-  // };
   return (
     <div className="flex flex-col lg:flex-row gap-6 xl:gap-10">
-        <div className="py-2">
+      <div className="last-post-slider sm:w-3/4" style={{ width: "98%" }}>
+        <Slider {...settings}>
+        <div className="py-2 md:hidden">
           <div className="flex flex-col justify-between w-full lg:w-80 min-h-[440px] rounded-2xl bg-fb_gradient text-white p-12">
             <div className="content">
               <h2 className="text-3xl font-bold">Notícias</h2>
@@ -186,8 +234,6 @@ function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
             </div>
           </div>
         </div>
-      <div className="last-post-slider sm:w-3/4" style={{ width: "98%" }}>
-        <Slider {...settings}>
           {fetchedLastPosts &&
             fetchedLastPosts.map((post: Post) => (
               <CardBlog
