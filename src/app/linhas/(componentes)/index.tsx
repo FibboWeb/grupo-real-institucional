@@ -38,5 +38,3 @@ export default async function GridProduct({ slug, searchParams }) {
   );
 
 }
-
-
