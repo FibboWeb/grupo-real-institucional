@@ -4,7 +4,7 @@ import Accordion from "@/components/Layout/Accordion";
 import Newsletter from "@/components/Layout/Newsletter";
 import { Button } from "@/components/ui/button";
 import { fetchYoastSEO } from "@/lib/getCategorias";
-import { getProductPerSlug } from "@/lib/getProducts";
+import { getProductPerSlug, getProducts } from "@/lib/getProducts";
 import image03 from "@/public/images/banners/cao-e-gato.webp";
 import image02 from "@/public/images/banners/carne-vermelha-cortada.webp";
 import { Metadata } from "next";
@@ -61,6 +61,8 @@ export async function generateMetadata(
 export default async function PageProduct({ params }) {
   const { slug } = await params;
   const product = await getProductPerSlug(slug);
+  console.log(product[0]);
+  const productsRecommendations = await getProducts(product[0].categoria_produto, 1, 8);
   if (product.length <= 0) {
     return notFound();
   }
@@ -145,14 +147,16 @@ export default async function PageProduct({ params }) {
             </div>
           </div>
         </div>
-        <div className="hidden">
+        <div className="">
           <div className="w-full flex flex-col gap-8 my-8">
             <div className="flex flex-col gap-4">
               <h2 className="text-3xl font-bold text-fb_blue_main">Produtos similares</h2>
               <hr className="w-20 h-[6px] bg-fb_blue_main rounded-full" />
             </div>
             <div className="w-full my-6 ">
-              <SliderProductsRecommended />
+              <SliderProductsRecommended
+                products={productsRecommendations.products}
+              />
             </div>
           </div>
         </div>
