@@ -131,11 +131,18 @@ function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
   const settings = {
     slidesToShow: 5.7,
     slidesToScroll: 1,
-    infinite: true,
+    infinite: false,
     speed: 500,
     dots: true,
     autoplay: true,
     responsive: [
+      {
+        breakpoint: 2300, 
+        settings: {
+          slidesToShow: 5.2,
+          slidesToScroll: 1,
+        }
+      },
       {
         breakpoint: 2100,
         settings: {
@@ -162,7 +169,7 @@ function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
       {
         breakpoint: 1660,
         settings: {
-          slidesToShow: 3.25,
+          slidesToShow: 3.55,
           slidesToScroll: 1,
         },
       },
