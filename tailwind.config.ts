@@ -85,6 +85,7 @@ export default {
         "hero-image": "url('/images/bg-hero-section.webp')",
         "partner-background": "url('/images/bg-ambiental.webp')",
         fb_category_image: "url('/images/banners/bg-categories.webp')",
+        "hero-section-ambiental": "url('/images/hero-green-leafs.jpg')",
         "hero-green-leafs": "url('/images/social/hero-section.webp')",
         "hero-section-gray-palms": "url('/images/hero-section-gray-palms.jpg')",
         "hero-section-gray": "url('/images/hero-section-gray.jpg')",

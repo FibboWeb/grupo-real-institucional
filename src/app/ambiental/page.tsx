@@ -54,7 +54,7 @@ export default function PageAmbiental() {
     <>
       <HeroSection
         children={HeroChildren()}
-        backgroundClass="bg-hero-green-leafs"
+        backgroundClass="bg-hero-section-ambiental"
         btnColor="fb_green_button"
         imagePath={HeroCiclos}
         btnContent="SAIBA MAIS"
