@@ -50,9 +50,9 @@ export async function generateMetadata(
 }
 
 export default async function AuthorPage({ params, searchParams }) {
-  const page = parseInt(searchParams.page || "1");
+  const page = parseInt((await searchParams).page || "1");
   const postsPerPage = 6;
-  const authorSlug = params.author[0];
+  const authorSlug = (await params).author[0];
   const author = await fetchAuthorData(authorSlug);
   const authorName = author.name;
   const authorBio = author.description || "Biografia não disponível";
