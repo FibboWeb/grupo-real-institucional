@@ -156,6 +156,7 @@ export default async function PageProduct({ params }) {
             <div className="w-full my-6 ">
               <SliderProductsRecommended
                 products={productsRecommendations.products}
+                currentProductSlug={slug}
               />
             </div>
           </div>

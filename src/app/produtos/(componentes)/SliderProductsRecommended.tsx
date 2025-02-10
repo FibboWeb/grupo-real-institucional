@@ -1,14 +1,12 @@
 "use client";
-import { mockProducts } from "@/constants/linhas";
 import Image from "next/image";
-import React from "react";
+import Link from "next/link";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import "./slider.css";
-import Link from "next/link";
 
-export default function SliderProductsRecommended({ products }) {
+export default function SliderProductsRecommended({ products, currentProductSlug }) {
   const settings = {
     orientation: "horizontal",
     startAt: 0,
@@ -43,21 +41,28 @@ export default function SliderProductsRecommended({ products }) {
     ],
   };
 
+  // Filtra os produtos para remover o produto atual
+  const filteredProducts = products.filter((item) => item.slug !== currentProductSlug);
+
   return (
     <Slider {...settings}>
-      {products.map((item, index) => (
+      {filteredProducts.map((item, index) => (
         <div key={index} className="flex flex-col gap-4">
           <Link
             href={`/produtos/${item.slug}`}
             title={`Ir para a página do produto ${item.title.rendered}`}
           >
-          <Image
-            src={item._embedded["wp:featuredmedia"][0]?.source_url}
-            width={284}
-            height={284}
-            alt={item._embedded["wp:featuredmedia"][0]?.alt ? item._embedded["wp:featuredmedia"][0]?.alt : "Imagem do produto"}
-            className="w-full h-full object-cover rounded-lg bg-[#E5E7E9]"
-          />
+            <Image
+              src={item._embedded["wp:featuredmedia"][0]?.source_url}
+              width={284}
+              height={284}
+              alt={
+                item._embedded["wp:featuredmedia"][0]?.alt
+                  ? item._embedded["wp:featuredmedia"][0]?.alt
+                  : "Imagem do produto"
+              }
+              className="w-full h-full object-cover rounded-lg bg-[#E5E7E9]"
+            />
           </Link>
           <Link
             href={`/produtos/${item.slug}`}
@@ -66,11 +71,9 @@ export default function SliderProductsRecommended({ products }) {
           >
             <h2 className="text-2xl font-bold">{item.title.rendered}</h2>
           </Link>
-          {
-            item.content && item.content.rendered !== "" && (
-              <div className="line-clamp-6" dangerouslySetInnerHTML={{ __html: item.content.rendered }}/>
-            )
-          }
+          {item.content && item.content.rendered !== "" && (
+            <div className="line-clamp-6" dangerouslySetInnerHTML={{ __html: item.content.rendered }} />
+          )}
         </div>
       ))}
     </Slider>
