@@ -73,6 +73,7 @@ export default function CiclosTransparencia() {
           }
           imagePath={TransparenciaEtica}
           // ctaLink={"#"}
+          imageMidFullContainer={true}
           color={"fb_green_button"}
           contentButton={"Ler Mais"}
         />

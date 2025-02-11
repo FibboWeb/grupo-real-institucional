@@ -46,7 +46,7 @@ export default function HeroSection({
   return (
     <>
       <div
-        className={cn([`flex justify-center w-full h-full bg-no-repeat bg-cover bg-center relative ${backgroundClass}`, heroCssExtra])}
+        className={cn([`flex justify-center w-full h-full bg-no-repeat bg-cover bg-bottom relative ${backgroundClass}`, heroCssExtra])}
       >
         <div className={` ${shadow} absolute top-0 left-0 right-0 bottom-0 w-full h-inherit`}></div>
         <div className={`fb_container mt-32 relative`}>
