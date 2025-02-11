@@ -330,7 +330,7 @@ export default function ClaudioMartinsReal() {
         <Newsletter
           sectionTitle={"Inscreva-se na nossa newsletter"}
           sectionDescription={
-            "Receba novidades e informações exclusivas sobre nossos produtos e novidades diretamente no seu e-mail."
+            "Receba novidades as informações exclusivas sobre nossos produtos e novidades diretamente no seu e-mail."
           }
         />
       </div>
