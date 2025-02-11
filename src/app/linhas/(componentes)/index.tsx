@@ -4,7 +4,7 @@ import { getProducts } from "@/lib/getProducts";
 import { notFound } from "next/navigation";
 
 export default async function GridProduct({ slug, searchParams }) {
-  let pageNumber = searchParams
+  let pageNumber = searchParams;
   let products: any;
   let totalPages: number;
   let totalProducts: number;
@@ -21,7 +21,7 @@ export default async function GridProduct({ slug, searchParams }) {
   } else if (slug === "cmr") {
     idConsultado = idCMR;
     ({ products, totalPages, totalProducts } = await getProducts(idConsultado, pageNumber));
-  } else if (slug === "homeopet"){
+  } else if (slug === "homeopet") {
     idConsultado = idHomeopet;
     ({ products, totalPages, totalProducts } = await getProducts(idConsultado, pageNumber));
   } else {
@@ -36,5 +36,4 @@ export default async function GridProduct({ slug, searchParams }) {
       </div>
     </div>
   );
-
 }

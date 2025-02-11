@@ -25,7 +25,6 @@ function CardPostHero({
         href={blogContext ? `${blogContext}/${postLink}` : `/noticias/${postLink}`}
         className="flex flex-col justify-end absolute bottom-0 left-0 right-0 h-full px-9 py-6 rounded-2xl bg-fb_gradient_posts"
       >
-
         <div className="badge">
           <p
             className="text-white px-4 py-0 bg-fb_blue_button

@@ -26,13 +26,22 @@ export function ChildrenHeroSection() {
       <div className="fb_container">
         <div className="fb_container flex flex-col justify-around lg:flex-row justify-self-center items-center absolute bottom-0 gap-6">
           <div className="order-1 min-w-[180px]">
-            <Image src={CiclosClean} alt="" width={280} height={108} className="object-cover"/>
+            <Image src={CiclosClean} alt="" width={280} height={108} className="object-cover" />
           </div>
-          <div className="order-3 lg:order-2 flex flex-col-reverse lg:flex-row items-center justify-center float-end" id="image">
+          <div
+            className="order-3 lg:order-2 flex flex-col-reverse lg:flex-row items-center justify-center float-end"
+            id="image"
+          >
             <div className="flex w-full h-[379px] lg:w-[404px] xl:w-[522px] lg:h-[379px]">
-              <Image src={MaoSaindoDaterraImg} className="object-cover" alt="logo mao saindo da terra" width={522} height={379} />
+              <Image
+                src={MaoSaindoDaterraImg}
+                className="object-cover"
+                alt="logo mao saindo da terra"
+                width={522}
+                height={379}
+              />
             </div>
-        </div>
+          </div>
           <div className="order-2 lg:order-3" id="text">
             <h1 className="text-4xl flex flex-col gap-2 w-full">
               <p className="font-semibold text-[#374D25] py-1 px-2 w-fit">TRATANDO A </p>
@@ -40,8 +49,8 @@ export function ChildrenHeroSection() {
               <p className="break-words font-medium text-[#374D25] py-1 px-2">COMO ELA MERECE</p>
             </h1>
           </div>
+        </div>
       </div>
     </div>
-  </div>
-  )
+  );
 }

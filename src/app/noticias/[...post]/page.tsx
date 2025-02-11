@@ -12,9 +12,9 @@ import { Metadata } from "next";
 import { fetchYoastSEO } from "@/lib/getCategorias";
 
 type Props = {
-  params: Promise<{ post: string }>
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
-}
+  params: Promise<{ post: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
 
 /**
  * Generates metadata for a linhas page, including:
@@ -30,19 +30,17 @@ type Props = {
  * @returns {Metadata} generated metadata
  */
 
-export async function generateMetadata(
-  { params }: Props,
-): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // read route params
-  const slug = (await params).post
+  const slug = (await params).post;
 
   // fetch data
   const infos = await fetchYoastSEO(slug, "posts");
 
   if (!infos) {
-    notFound()
+    notFound();
   }
- 
+
   return {
     title: infos.title,
     description: infos.description,
@@ -55,12 +53,12 @@ export async function generateMetadata(
     openGraph: {
       title: infos.title,
       description: infos.description,
-      images: [ infos.og_image ? infos.og_image[0].url : '' ],
+      images: [infos.og_image ? infos.og_image[0].url : ""],
     },
     alternates: {
       canonical: `https://gruporealbr.com.br/noticias/${slug[0]}`,
     },
-  }
+  };
 }
 
 export default async function PostPage({ params }) {

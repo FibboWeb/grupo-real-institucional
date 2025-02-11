@@ -50,7 +50,9 @@ export default function LoadNumbers({ arrayOfNumbers }: LoadNumbersInterface) {
             <IncrementingCounter maxNumber={number.qtde} speed={30} />
           </span>
           <hr className="w-20 h-[6px] bg-fb_blue_button rounded-full" />
-          <p className="min-w-50 w-full text-center text-fb_blue_main font-semibold text-sm md:text-base">{number.text}</p>
+          <p className="min-w-50 w-full text-center text-fb_blue_main font-semibold text-sm md:text-base">
+            {number.text}
+          </p>
         </div>
       ))}
     </div>

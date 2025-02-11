@@ -84,7 +84,10 @@ export default function Menu() {
             onMouseEnter={() => handleMouseEntered("sustentabilidade")}
             onMouseLeave={handleMouseLeave}
           >
-            <button onMouseEnter={() => handleMouseEntered("sustentabilidade")}  className="flex gap-3 bg-fb_green text-white items-center py-2 px-3 text-center rounded-md font-bold relative">
+            <button
+              onMouseEnter={() => handleMouseEntered("sustentabilidade")}
+              className="flex gap-3 bg-fb_green text-white items-center py-2 px-3 text-center rounded-md font-bold relative"
+            >
               Sustentabilidade
               <Image src={greenLeaf.src} alt="Green Leaf" width={13} height={13} loading="eager" />
             </button>
@@ -108,32 +111,33 @@ export default function Menu() {
               onMouseLeave={handleMouseLeave}
             >
               {!item.node.url.includes("") || !item.node.url.includes("#") ? (
-                    <a
-                      href={item.node.url === "#" ? "" : item.node.url}
-                      target={item.node.target || "_self"}
-                      title={item.node.label}
-                      className="w-full text-fb_blue_main hover:text-fb_blue duration-fb_transition_ease py-3"
+                <a
+                  href={item.node.url === "#" ? "" : item.node.url}
+                  target={item.node.target || "_self"}
+                  title={item.node.label}
+                  className="w-full text-fb_blue_main hover:text-fb_blue duration-fb_transition_ease py-3"
+                >
+                  {item.node.label}
+                </a>
+              ) : (
+                <p
+                  className="flex text-fb_blue_main hover:text-fb_blue duration-300"
+                  onClick={() => handleMouseEnter(item.node.id)}
+                >
+                  {item.node.label}
+                  {(item.node.label === "Nossas Marcas" || "Institucional" || "Informações") && (
+                    <span
+                      className={`flex items-center transition-all duration-300 ${activeMenu === item.node.id ? "rotate-180 " : ""}`}
                     >
-                      {item.node.label}
-                    </a>
-                  ) : (
-                    <p
-                      className="flex text-fb_blue_main hover:text-fb_blue duration-300"
-                      onClick={() => handleMouseEnter(item.node.id)}
-                    >
-                      {item.node.label}
-                      {(item.node.label === "Nossas Marcas" || "Institucional" || "Informações") && (
-                        <span
-                          className={`flex items-center transition-all duration-300 ${activeMenu === item.node.id ? "rotate-180 " : ""}`}
-                        >
-                          <ChevronDown />
-                        </span>
-                      )}
-                    </p>
+                      <ChevronDown />
+                    </span>
                   )}
+                </p>
+              )}
               {item.node?.childItems?.edges && item.node?.childItems?.edges.length > 0 && (
-                <div className={`${activeMenu === item.node.id ? "block opacity-100 visible" : "opacity-0 height-0 invisible overflow-hidden"}`}>
-
+                <div
+                  className={`${activeMenu === item.node.id ? "block opacity-100 visible" : "opacity-0 height-0 invisible overflow-hidden"}`}
+                >
                   <ul
                     className={`w-96 top-3/4 z-10 bg-white border absolute sub-menu px-3 py-4 ${activeMenu === item.node.id ? "block opacity-100 visible" : "opacity-0 h-0 w-0 max-w-0 min-w-0 max-h-0 min-h-0 invisible overflow-hidden"} transition-opacity duration-300 left-1/2 transform -translate-x-1/2 rounded-md`}
                   >
@@ -181,10 +185,7 @@ export default function Menu() {
           </button>
           {menuOpen && (
             <ul className="origin-top relative container top-5 flex flex-col justify-center gap-6 lg:gap-3 font-bold text-lg items-center text-black bg-white drop-shadow-md shadow-md rounded-md py-4">
-              <li
-                className=""
-                id="sustentabilidade"
-              >
+              <li className="" id="sustentabilidade">
                 <button
                   onClick={() => handleMouseEnter("sustentabilidade")}
                   className="flex gap-3 bg-fb_green text-white items-center py-2 px-3 text-center rounded-md font-bold relative"
@@ -231,7 +232,7 @@ export default function Menu() {
                       )}
                     </p>
                   )}
-                  
+
                   {item.node.url && item.node.childItems?.edges && item.node.childItems?.edges.length > 0 && (
                     <>
                       <ul
