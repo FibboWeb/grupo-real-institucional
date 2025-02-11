@@ -15,7 +15,6 @@ type BannerLinesProps = {
   id?: string;
 };
 
-
 /**
  * @description
  * O componente BannerLines é um banner que renderiza um título, uma descrição e um botão de chamada para ação.
@@ -49,8 +48,7 @@ export default async function BannerLines({
   className,
   id,
 }: BannerLinesProps) {
-
-  let infos
+  let infos;
   // fetch data
   if (slug_context === "real-h") {
     infos = await getInfoLine(slug_context);
@@ -60,7 +58,7 @@ export default async function BannerLines({
     infos = await getInfoLine(slug_context);
   }
 
-  console.log("infos buscada",infos)
+  console.log("infos buscada", infos);
 
   return (
     <div className="relative w-full h-[320px] rounded-lg items-center">
@@ -76,11 +74,7 @@ export default async function BannerLines({
         <h1 className="text-5xl md:text-4xl font-bold">{infos ? infos.yoast_head_json.title : title}</h1>
         <div className="w-full md:w-2/5 min-h-[72px]">{infos ? infos.description : children}</div>
         <div className="w-fit">
-          <BtnCallToAction 
-            content="Ler mais"
-            color="fb_blue_button"
-            ctaLink=""
-          />
+          <BtnCallToAction content="Ler mais" color="fb_blue_button" ctaLink="" />
         </div>
       </div>
     </div>

@@ -22,7 +22,7 @@ const infoSectionsContents = {
     img: FundadoresImg,
     reverseDesktop: true,
     revereverseMobile: false,
-    readMore: true
+    readMore: true,
   },
   nutricao: {
     title: "Nutrição Para Grandes Animais",

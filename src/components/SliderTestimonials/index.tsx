@@ -80,7 +80,9 @@ export default function SliderTestimonials({ testimonial }: testimonialCardProps
                       </p>
                     </div>
                     <div className="flex h-auto rounded-full relative">
-                      <Suspense fallback={<div className="w-[100px] h-[100px] bg-gray-700 animated-pulse rounded-full"></div>}>
+                      <Suspense
+                        fallback={<div className="w-[100px] h-[100px] bg-gray-700 animated-pulse rounded-full"></div>}
+                      >
                         <Image
                           alt={`Foto do ${item.name}`}
                           src={item.avatar ? item.avatar : "/author-icon.svg"}
@@ -89,7 +91,6 @@ export default function SliderTestimonials({ testimonial }: testimonialCardProps
                           className="object-cover rounded-full"
                         />
                       </Suspense>
-                      
                     </div>
                   </div>
                 </div>

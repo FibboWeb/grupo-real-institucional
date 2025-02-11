@@ -4,11 +4,12 @@ import Newsletter from "@/components/Layout/Newsletter";
 import SidebarNoticias from "@/components/Layout/SidebarNoticias";
 import Pagination from "@/components/Pagination";
 import { search } from "@/lib/search";
+import { log } from "console";
 
-async function page({ params, searchParams }: any) {
+async function page({ searchParams }: { searchParams: { search?: string; page?: string } }) {
   const page = parseInt((await searchParams).page || "1");
-  const searchString = (await searchParams).search;
-
+  const searchString = (await searchParams).search || ""
+  console.log("search:", searchString);
   const { data, totalPosts, totalPages, categoriesName } = await search(searchString);
 
   return (
@@ -19,7 +20,7 @@ async function page({ params, searchParams }: any) {
             <Breadcrumb
               activeClasses="text-fb_gray_bread"
               excludePaths={["categoria"]}
-              itemName={searchString}
+              // itemName={searchString[0]}
               containerClasses="flex py-5"
               listClasses="mx-2 font-bold text-fb_gray_bread hover:text-fb_blue duration-300 "
               capitalizeLinks

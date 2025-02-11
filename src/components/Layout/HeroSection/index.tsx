@@ -25,7 +25,7 @@ interface HeroSectionProps {
   btnColor?: "fb_blue_button" | "fb_green_button";
   btnIcon?: StaticImageData;
   btnContent?: string;
-  heroCssExtra?: string
+  heroCssExtra?: string;
 }
 
 export default function HeroSection({
@@ -39,14 +39,17 @@ export default function HeroSection({
   btnColor,
   btnIcon,
   btnContent,
-  heroCssExtra
+  heroCssExtra,
 }: HeroSectionProps) {
   const shadow = boxShadow || backgroundClass == "bg-hero-image" ? "bg-[rgba(3,29,58,0.90)]" : "bg-[rgba(0,0,0,0.2)]";
 
   return (
     <>
       <div
-        className={cn([`flex justify-center w-full h-full bg-no-repeat bg-cover bg-center relative ${backgroundClass}`, heroCssExtra])}
+        className={cn([
+          `flex justify-center w-full h-full bg-no-repeat bg-cover bg-center relative ${backgroundClass}`,
+          heroCssExtra,
+        ])}
       >
         <div className={` ${shadow} absolute top-0 left-0 right-0 bottom-0 w-full h-inherit`}></div>
         <div className={`fb_container mt-32 relative`}>

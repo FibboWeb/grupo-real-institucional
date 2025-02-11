@@ -32,8 +32,8 @@ export const metadata: Metadata = {
     canonical: "https://gruporealbr.com.br/claudio-martins-real-curriculo",
     languages: {
       pt: "https://gruporealbr.com.br",
-    }
-  }
+    },
+  },
 };
 
 export default function ClaudioMartinsReal() {

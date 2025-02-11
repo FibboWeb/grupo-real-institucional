@@ -45,8 +45,8 @@ export const metadata: Metadata = {
     canonical: "https://gruporealbr.com.br/ambiental",
     languages: {
       pt: "https://gruporealbr.com.br/",
-    }
-  }
+    },
+  },
 };
 
 export default function PageAmbiental() {

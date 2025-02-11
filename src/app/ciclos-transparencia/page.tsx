@@ -32,8 +32,8 @@ export const metadata: Metadata = {
     canonical: "https://gruporealbr.com.br/ciclos-transparencia",
     languages: {
       pt: "https://gruporealbr.com.br",
-    }
-  }
+    },
+  },
 };
 
 export default function CiclosTransparencia() {
@@ -86,7 +86,9 @@ export default function CiclosTransparencia() {
           reverseDesktop={false}
           reverseMobile={false}
           title={"Programa “eureciclo”"}
-          content={'<p>O <strong>Grupo Real</strong> reafirma seu compromisso com a sustentabilidade por meio de a&ccedil;&otilde;es voltadas para o Eixo de Transpar&ecirc;ncia do Programa Ciclos. Um dos exemplos mais significativos &eacute; sua parceria com o programa <strong>"eureciclo"</strong>, que promove a compensa&ccedil;&atilde;o ambiental das embalagens utilizadas em seus produtos, gerando impacto positivo tanto para o meio ambiente quanto para o desenvolvimento social e financeiro de comunidades em todo o pa&iacute;s.</p><p>Essa parceria vai al&eacute;m da simples compensa&ccedil;&atilde;o de res&iacute;duos. Ao investir diretamente na cadeia de reciclagem, o Grupo Real fortalece cooperativas de catadores e operadores de reciclagem, promovendo a economia circular e oferecendo melhores condi&ccedil;&otilde;es para os trabalhadores envolvidos. Essa iniciativa demonstra a responsabilidade do Grupo com o cumprimento da Pol&iacute;tica Nacional de Res&iacute;duos S&oacute;lidos, garantindo seguran&ccedil;a jur&iacute;dica e transpar&ecirc;ncia em suas opera&ccedil;&otilde;es.</p><p>O Relat&oacute;rio de Impacto eureciclo &eacute; uma ferramenta poderosa que tangibiliza os resultados das a&ccedil;&otilde;es realizadas pelo Grupo Real, evidenciando o impacto socioambiental e os avan&ccedil;os obtidos. Mais do que uma exig&ecirc;ncia legal, o relat&oacute;rio &eacute; uma prova do compromisso do Grupo em criar um futuro sustent&aacute;vel, equilibrando a preserva&ccedil;&atilde;o do meio ambiente e o desenvolvimento socioecon&ocirc;mico.</p><p>Desde 2020, a parceria com o programa eureciclo permite que o Grupo Real n&atilde;o apenas reduza sua pegada ambiental, mas tamb&eacute;m lidere iniciativas transformadoras, posicionando-se como uma protagonista em sustentabilidade.</p>'}
+          content={
+            '<p>O <strong>Grupo Real</strong> reafirma seu compromisso com a sustentabilidade por meio de a&ccedil;&otilde;es voltadas para o Eixo de Transpar&ecirc;ncia do Programa Ciclos. Um dos exemplos mais significativos &eacute; sua parceria com o programa <strong>"eureciclo"</strong>, que promove a compensa&ccedil;&atilde;o ambiental das embalagens utilizadas em seus produtos, gerando impacto positivo tanto para o meio ambiente quanto para o desenvolvimento social e financeiro de comunidades em todo o pa&iacute;s.</p><p>Essa parceria vai al&eacute;m da simples compensa&ccedil;&atilde;o de res&iacute;duos. Ao investir diretamente na cadeia de reciclagem, o Grupo Real fortalece cooperativas de catadores e operadores de reciclagem, promovendo a economia circular e oferecendo melhores condi&ccedil;&otilde;es para os trabalhadores envolvidos. Essa iniciativa demonstra a responsabilidade do Grupo com o cumprimento da Pol&iacute;tica Nacional de Res&iacute;duos S&oacute;lidos, garantindo seguran&ccedil;a jur&iacute;dica e transpar&ecirc;ncia em suas opera&ccedil;&otilde;es.</p><p>O Relat&oacute;rio de Impacto eureciclo &eacute; uma ferramenta poderosa que tangibiliza os resultados das a&ccedil;&otilde;es realizadas pelo Grupo Real, evidenciando o impacto socioambiental e os avan&ccedil;os obtidos. Mais do que uma exig&ecirc;ncia legal, o relat&oacute;rio &eacute; uma prova do compromisso do Grupo em criar um futuro sustent&aacute;vel, equilibrando a preserva&ccedil;&atilde;o do meio ambiente e o desenvolvimento socioecon&ocirc;mico.</p><p>Desde 2020, a parceria com o programa eureciclo permite que o Grupo Real n&atilde;o apenas reduza sua pegada ambiental, mas tamb&eacute;m lidere iniciativas transformadoras, posicionando-se como uma protagonista em sustentabilidade.</p>'
+          }
           imagePath={EuReciclo}
           imageMidFullContainer={false}
           color={"fb_green_button"}

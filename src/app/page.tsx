@@ -20,7 +20,6 @@ import LastPostsNoticias from "../components/Layout/LastPostsNoticias";
 import BtnCallToAction from "@/components/Layout/Buttons/BtnCallToAction/BtnCallToAction";
 import WhiteLeafIcon from "@/public/icons/white-leaf.svg";
 
-
 export default async function Home() {
   const queriedLastPostsNoticias = await getLastPostsNoticias();
   const fetchedLastPostsNoticias = queriedLastPostsNoticias.props.nodes;
@@ -31,7 +30,8 @@ export default async function Home() {
         <VideoBackground src_video="/video/drone-fabrica.mp4" ctaLinks={ctasLinksHero}>
           <div className="">
             <h1 className="text-3xl md:text-5xl font-bold mb-4 text-center">
-              Por um futuro <br className="block md:hidden"/>s{<Typewriter words={["ustentável", "audável", "eguro"]} />} <br className="block md:hidden"/>
+              Por um futuro <br className="block md:hidden" />s
+              {<Typewriter words={["ustentável", "audável", "eguro"]} />} <br className="block md:hidden" />
               <span> para todos</span>
             </h1>
             <p className="text-lg md:text-xl mb-6">
@@ -78,7 +78,7 @@ export default async function Home() {
         <SliderTestimonials testimonial={testimoniaslInfo} />
       </section>
       <div className="fb_container flex flex-col justify-center items-center my-2 gap-4">
-        <h3 className="text-xl md:text-3xl font-bold text-center" >Acesse nosso CMR de vendas</h3>
+        <h3 className="text-xl md:text-3xl font-bold text-center">Acesse nosso CMR de vendas</h3>
         <BtnCallToAction
           ctaLink="https://realh-crmagro.viasoftcloud.com.br/crm-web/login.xhtml"
           content="Acesso Restrito"

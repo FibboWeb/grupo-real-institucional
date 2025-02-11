@@ -15,7 +15,15 @@ interface BtnCallToActionProps {
   showIcon?: boolean;
 }
 
-export default function BtnCallToAction({ ctaLink, content, icon, color = "fb_blue_button", onClick, classCssForBTN, showIcon = true  }: BtnCallToActionProps) {
+export default function BtnCallToAction({
+  ctaLink,
+  content,
+  icon,
+  color = "fb_blue_button",
+  onClick,
+  classCssForBTN,
+  showIcon = true,
+}: BtnCallToActionProps) {
   let text;
   let textHover;
   let bg;
@@ -28,7 +36,7 @@ export default function BtnCallToAction({ ctaLink, content, icon, color = "fb_bl
     bg = "bg-white";
     bgHover = "hover:bg-fb_blue_button";
     border = "border-fb_blue_button";
-  } else if (color== "fb_blue_button") {
+  } else if (color == "fb_blue_button") {
     text = "text-white";
     textHover = "hover:text-fb_blue_button";
     bg = "bg-fb_blue_button";
@@ -55,7 +63,10 @@ export default function BtnCallToAction({ ctaLink, content, icon, color = "fb_bl
       {ctaLink ? (
         <Link
           href={ctaLink}
-          className={cn([`${text} ${textHover} ${bg} ${bgHover} ${border} group btn-container inline-flex items-center gap-4 py-3 px-4 rounded text-base font-semibold uppercase border border-solid transition-all duration-300`, `${classCssForBTN}`])}
+          className={cn([
+            `${text} ${textHover} ${bg} ${bgHover} ${border} group btn-container inline-flex items-center gap-4 py-3 px-4 rounded text-base font-semibold uppercase border border-solid transition-all duration-300`,
+            `${classCssForBTN}`,
+          ])}
         >
           <span>{content}</span>
           <div className="shrink-0">
@@ -74,20 +85,19 @@ export default function BtnCallToAction({ ctaLink, content, icon, color = "fb_bl
           className={`${text} ${textHover} ${bg} ${bgHover} ${border} group btn-container inline-flex items-center gap-4 py-3 px-4 rounded text-base font-semibold uppercase border border-solid transition-all duration-300`}
         >
           <span>{content}</span>
-          { showIcon && (
-          <div className="shrink-0">
-            <Image
-              src={iconBtn}
-              alt="Arrow Icon"
-              width={24}
-              height={24}
-              className={`btn-logo ${color == "white" ? "bg-[#cccccc] group-hover:bg-white" : "filter-image"} ${color == "fb_blue_button" ? "bg-white group-hover:bg-[#cccccc]" : "filter-image"}  rounded-full p-1 transition-all duration-300`}
-            />
-            </div>  
+          {showIcon && (
+            <div className="shrink-0">
+              <Image
+                src={iconBtn}
+                alt="Arrow Icon"
+                width={24}
+                height={24}
+                className={`btn-logo ${color == "white" ? "bg-[#cccccc] group-hover:bg-white" : "filter-image"} ${color == "fb_blue_button" ? "bg-white group-hover:bg-[#cccccc]" : "filter-image"}  rounded-full p-1 transition-all duration-300`}
+              />
+            </div>
           )}
         </button>
       )}
     </>
   );
 }
-

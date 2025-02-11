@@ -12,20 +12,20 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 type Props = {
-  params: Promise<{ slug: string }>
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
-}
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
 
-export async function generateMetadata({ params, searchParams}: Props,) {
-  let infos
+export async function generateMetadata({ params, searchParams }: Props) {
+  let infos;
   infos = await fetchYoastSEO("noticias", "categories");
   const pageParam = (await searchParams).page;
   const page = parseInt(Array.isArray(pageParam) ? pageParam[0] : pageParam || "1");
 
-  if(!infos) {
-    notFound()
+  if (!infos) {
+    notFound();
   }
- 
+
   return {
     title: `${infos.title}${page === 1 ? "" : ` - Página ${page}`}`,
     description: infos.description,
@@ -38,12 +38,12 @@ export async function generateMetadata({ params, searchParams}: Props,) {
     openGraph: {
       title: `${infos.title}${page === 1 ? "" : ` - Página ${page}`}`,
       description: infos.description,
-      images: [ infos.og_image ? infos.og_image[0].url : '' ],
+      images: [infos.og_image ? infos.og_image[0].url : ""],
     },
     alternates: {
-      canonical: `https://gruporealbr.com.br/noticias${(page === 1) ? "" : `?page=${page}`}`,
+      canonical: `https://gruporealbr.com.br/noticias${page === 1 ? "" : `?page=${page}`}`,
     },
-  }
+  };
 }
 
 export default async function Noticias({ searchParams }) {
