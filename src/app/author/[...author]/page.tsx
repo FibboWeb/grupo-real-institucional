@@ -14,12 +14,15 @@ type Props = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
-export async function generateMetadata({ params }: Props, searchParams): Promise<Metadata> {
-  const slug = (await params).author[(await params).author.length - 1];
+export async function generateMetadata(
+  { params }: Props,
+  searchParams
+): Promise<Metadata> {
+  const slug = (await params).author[(await params).author.length - 1]
   const pageParam = (await searchParams).page;
   const page = parseInt(Array.isArray(pageParam) ? pageParam[0] : pageParam || "1");
 
-  let infos;
+  let infos
   infos = await fetchYoastSEO(slug, "users");
 
   if (!infos) {
@@ -41,7 +44,7 @@ export async function generateMetadata({ params }: Props, searchParams): Promise
       images: [infos.og_image ? infos.og_image[0].url : ""],
     },
     alternates: {
-      canonical: `https://gruporealbr.com.br/author/${slug}${page === 1 ? "" : `?page=${page}`}`,
+      canonical: `https://gruporealbr.com.br/author/${slug}${(page === 1) ? "" : `?page=${page}`}`,
     },
   };
 }
