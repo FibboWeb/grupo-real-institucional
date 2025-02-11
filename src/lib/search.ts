@@ -1,5 +1,3 @@
-import { error } from "console";
-
 export async function search(search: string, page = 1) {
   const encodedString = encodeURI(search);
   console.log(encodedString);
@@ -7,6 +5,8 @@ export async function search(search: string, page = 1) {
     const response = await fetch(
       `${process.env.WP_URL_API}posts?search=${encodedString}&per_page=10&page=${page}&_embed=wp:featuredmedia,wp:term=1,author`,
     );
+    console.log(response.url)
+    console.log(response.ok)
     const categoriesName = [];
     const totalPages = response.headers.get("X-WP-TotalPages");
     const totalPosts = response.headers.get("X-WP-Total");
