@@ -11,17 +11,23 @@ import { fetchPosts, getLastPostsNoticias } from "@/lib/getPostsNoticiasPage";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-export async function generateMetadata() {
+type Props = {
+  params: Promise<{ slug: string }>
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}
+
+export async function generateMetadata({ params, searchParams}: Props,) {
   let infos
   infos = await fetchYoastSEO("noticias", "categories");
-
+  const pageParam = (await searchParams).page;
+  const page = parseInt(Array.isArray(pageParam) ? pageParam[0] : pageParam || "1");
 
   if(!infos) {
     notFound()
   }
  
   return {
-    title: infos.title,
+    title: `${infos.title}${page === 1 ? "" : ` - Página ${page}`}`,
     description: infos.description,
     robots: {
       index: true,
@@ -30,12 +36,12 @@ export async function generateMetadata() {
       "max-image-preview": "large",
     },
     openGraph: {
-      title: infos.title,
+      title: `${infos.title}${page === 1 ? "" : ` - Página ${page}`}`,
       description: infos.description,
       images: [ infos.og_image ? infos.og_image[0].url : '' ],
     },
     alternates: {
-      canonical: `https://gruporealbr.com.br/noticias`,
+      canonical: `https://gruporealbr.com.br/noticias${(page === 1) ? "" : `?page=${page}`}`,
     },
   }
 }

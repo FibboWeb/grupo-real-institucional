@@ -32,11 +32,12 @@ type Props = {
  */
 
 export async function generateMetadata(
-  { params }: Props,
+  { params, searchParams}: Props,
 ): Promise<Metadata> {
   // read route params
   let slug = (await params).slug
-  
+  const pageParam = (await searchParams).page;
+  const page = parseInt(Array.isArray(pageParam) ? pageParam[0] : pageParam || "1");
   let lineInfo
   // fetch data
   if (slug[0] === "real-h") {
@@ -52,7 +53,7 @@ export async function generateMetadata(
   }
  
   return {
-    title: lineInfo.title,
+    title: `${lineInfo.title}${page === 1 ? "" : ` - Página ${page}`}`,
     description: lineInfo.description,
     robots: {
       index: true,
@@ -61,12 +62,12 @@ export async function generateMetadata(
       "max-image-preview": "large",
     },
     openGraph: {
-      title: lineInfo.title,
+      title: `${lineInfo.title}${page === 1 ? "" : ` - Página ${page}`}`,
       description: lineInfo.description,
       images: [ lineInfo.og_image ? lineInfo.og_image[0].url : '' ],
     },
     alternates: {
-      canonical: `https://gruporealbr.com.br/linhas/${slug[0]}`,
+      canonical: `https://gruporealbr.com.br/linhas/${slug[0]}${(page === 1) ? "" : `?page=${page}`}`,
     },
   }
 }
