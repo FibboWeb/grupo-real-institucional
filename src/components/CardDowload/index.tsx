@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import LogoRealH from "@/public/logo-real-h.png";
@@ -8,7 +8,6 @@ import { Card, CardContent } from "../ui/card";
 import { Download } from "lucide-react";
 
 export function ListCardDownload() {
-
   const categories = [
     "CMR Saúde Animal",
     "Grupo Real (Institucional)",
@@ -20,7 +19,7 @@ export function ListCardDownload() {
 
   const [downloads, setDownloads] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
-  
+
   useEffect(() => {
     async function fetchDownloads() {
       const downloadsData = await getDownloads();
@@ -29,21 +28,21 @@ export function ListCardDownload() {
 
     fetchDownloads();
   }, []);
-  
-    async function handleFilter(category) {
-      setSelectedCategory(category);
-      if (category) {
-        const clearDownloads = await getDownloads();
-        const filteredDownloads = clearDownloads.props.filter((item) => item.categories.includes(category));
-        setDownloads(filteredDownloads);
-      } else {
-        async function resetDownloads() {
-          const downloadsData = await getDownloads();
-          setDownloads(downloadsData.props);
-        }
-        resetDownloads();
+
+  async function handleFilter(category) {
+    setSelectedCategory(category);
+    if (category) {
+      const clearDownloads = await getDownloads();
+      const filteredDownloads = clearDownloads.props.filter((item) => item.categories.includes(category));
+      setDownloads(filteredDownloads);
+    } else {
+      async function resetDownloads() {
+        const downloadsData = await getDownloads();
+        setDownloads(downloadsData.props);
       }
+      resetDownloads();
     }
+  }
 
   return (
     <div className="flex flex-col md:flex-row gap-6">
@@ -102,5 +101,5 @@ export function ListCardDownload() {
         ))}
       </div>
     </div>
-  )
+  );
 }

@@ -40,8 +40,8 @@ export const metadata: Metadata = {
     canonical: "https://gruporealbr.com.br/social",
     languages: {
       pt: "https://gruporealbr.com.br",
-    }
-  }
+    },
+  },
 };
 
 export default function SocialPage() {

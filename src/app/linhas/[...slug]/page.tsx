@@ -13,9 +13,9 @@ import { fetchYoastSEO } from "@/lib/getCategorias";
 import Newsletter from "@/components/Layout/Newsletter";
 
 type Props = {
-  params: Promise<{ slug: string }>
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
-}
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
 
 /**
  * Generates metadata for a linhas page, including:
@@ -31,27 +31,25 @@ type Props = {
  * @returns {Metadata} generated metadata
  */
 
-export async function generateMetadata(
-  { params, searchParams}: Props,
-): Promise<Metadata> {
+export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
   // read route params
-  let slug = (await params).slug
+  let slug = (await params).slug;
   const pageParam = (await searchParams).page;
   const page = parseInt(Array.isArray(pageParam) ? pageParam[0] : pageParam || "1");
-  let lineInfo
+  let lineInfo;
   // fetch data
   if (slug[0] === "real-h") {
-    lineInfo = await fetchYoastSEO("linha-nutricao","linhas");
+    lineInfo = await fetchYoastSEO("linha-nutricao", "linhas");
   } else if (slug[0] === "cmr") {
-    lineInfo = await fetchYoastSEO("linha-saude","linhas");
+    lineInfo = await fetchYoastSEO("linha-saude", "linhas");
   } else if (slug[0] === "homeopet") {
-    lineInfo = await fetchYoastSEO("linha-homeo-pet","linhas"); 
+    lineInfo = await fetchYoastSEO("linha-homeo-pet", "linhas");
   }
 
   if (!lineInfo) {
-    notFound()
+    notFound();
   }
- 
+
   return {
     title: `${lineInfo.title}${page === 1 ? "" : ` - Página ${page}`}`,
     description: lineInfo.description,
@@ -64,17 +62,17 @@ export async function generateMetadata(
     openGraph: {
       title: `${lineInfo.title}${page === 1 ? "" : ` - Página ${page}`}`,
       description: lineInfo.description,
-      images: [ lineInfo.og_image ? lineInfo.og_image[0].url : '' ],
+      images: [lineInfo.og_image ? lineInfo.og_image[0].url : ""],
     },
     alternates: {
-      canonical: `https://gruporealbr.com.br/linhas/${slug[0]}${(page === 1) ? "" : `?page=${page}`}`,
+      canonical: `https://gruporealbr.com.br/linhas/${slug[0]}${page === 1 ? "" : `?page=${page}`}`,
     },
-  }
+  };
 }
 
 export default async function PageLinhas({ params, searchParams }) {
   // read route params 'slug'
-  const slug = (await params).slug
+  const slug = (await params).slug;
   // read query params
   const page = parseInt((await searchParams).page || "1");
 
@@ -116,9 +114,7 @@ export default async function PageLinhas({ params, searchParams }) {
           </BannerLines>
         </div>
         <div>
-          <Newsletter
-            
-          />
+          <Newsletter />
         </div>
       </div>
     </section>

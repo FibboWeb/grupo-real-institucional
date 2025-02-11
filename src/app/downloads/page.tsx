@@ -19,23 +19,22 @@ export const metadata: Metadata = {
     canonical: "https://gruporealbr.com.br/downloads",
     languages: {
       pt: "https://gruporealbr.com.br/",
-    }
-  }
+    },
+  },
 };
 
 export default function DownloadsPage() {
-
   return (
     <div className="fb_container mt-[96px] min-h-screen mb-10">
       {/* Breadcrumb */}
       <div>
-          <Breadcrumb
-            activeClasses="text-fb_gray_bread"
-            excludePaths={["produtos"]}
-            containerClasses="flex py-5"
-            listClasses="mx-2 font-bold text-fb_gray_bread hover:text-fb_blue duration-300"
-            capitalizeLinks
-          />
+        <Breadcrumb
+          activeClasses="text-fb_gray_bread"
+          excludePaths={["produtos"]}
+          containerClasses="flex py-5"
+          listClasses="mx-2 font-bold text-fb_gray_bread hover:text-fb_blue duration-300"
+          capitalizeLinks
+        />
       </div>
       {/* Hero Section */}
       <div className="relative h-[200px] w-full">
@@ -47,7 +46,7 @@ export default function DownloadsPage() {
 
       {/* Main Content */}
       <div className="container mx-auto py-8">
-          <ListCardDownload />
+        <ListCardDownload />
       </div>
       <Newsletter />
     </div>

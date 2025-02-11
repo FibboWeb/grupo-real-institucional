@@ -9,18 +9,16 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 type Props = {
-  params: Promise<{ categoria: string }>
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
-}
+  params: Promise<{ categoria: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
 
-export async function generateMetadata(
-  { params, searchParams }: Props,
-): Promise<Metadata> {
-  const slug = (await params).categoria[(await params).categoria.length - 1]
+export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
+  const slug = (await params).categoria[(await params).categoria.length - 1];
   const pageParam = (await searchParams).page;
   const page = parseInt(Array.isArray(pageParam) ? pageParam[0] : pageParam || "1");
-  
-  let lineInfo
+
+  let lineInfo;
   lineInfo = await fetchYoastSEO(slug, "categories");
 
   return {
@@ -35,14 +33,13 @@ export async function generateMetadata(
     openGraph: {
       title: `${lineInfo.title}${page === 1 ? "" : ` - Página ${page}`}`,
       description: lineInfo.description,
-      images: [ lineInfo.og_image ? lineInfo.og_image[0].url : '' ],
+      images: [lineInfo.og_image ? lineInfo.og_image[0].url : ""],
     },
     alternates: {
-      canonical: `https://gruporealbr.com.br/linhas/${slug}${(page === 1) ? "" : `?page=${page}`}`,
+      canonical: `https://gruporealbr.com.br/categoria/${slug}${page === 1 ? "" : `?page=${page}`}`,
     },
-  }
+  };
 }
-
 
 export default async function CategoryPage({ params, searchParams }) {
   const page = parseInt((await searchParams).page || "1");

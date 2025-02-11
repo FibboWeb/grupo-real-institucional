@@ -129,8 +129,8 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       transitionProperty: {
-        'height': 'height',
-      }
+        height: "height",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
