@@ -22,6 +22,20 @@ const menuItems: MenuItems[] = [
               label: "Claudio Martins Real",
             },
           },
+          {
+            node: {
+              id: "1-3",
+              url: "/downloads",
+              label: "Downloads",
+            },
+          },
+          {
+            node: {
+              id: "5",
+              url: "https://realh.gupy.io/",
+              label: "Trabalhe Conosco",
+            },
+          },
         ],
       },
     },
@@ -37,7 +51,7 @@ const menuItems: MenuItems[] = [
             node: {
               id: "2-1",
               url: "/linhas/real-h",
-              label: "Real H Nutrição",
+              label: "Real H Nutrição Animal",
             },
           },
           {

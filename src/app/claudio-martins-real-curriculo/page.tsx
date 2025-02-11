@@ -16,6 +16,25 @@ import Claudio5 from "@/public/images/claudio-martins-real-curriculo/claudio-5.w
 import Claudio6 from "@/public/images/claudio-martins-real-curriculo/claudio-6.webp";
 import Claudio7 from "@/public/images/claudio-martins-real-curriculo/claudio-7.webp";
 import HeroImage from "@/public/images/claudio-martins-real-curriculo/claudio-martins-hero.webp";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Professor Doutor Claudio Martins - Grupo Real",
+  description: "40 anos construindo gerações reais.",
+  openGraph: {
+    title: "Professor Doutor Claudio Martins - Grupo Real",
+    description: "40 anos construindo gerações reais.",
+    images: ["/favicon.ico"],
+    locale: "pt_BR",
+    siteName: "Grupo Real",
+  },
+  alternates: {
+    canonical: "https://gruporealbr.com.br/claudio-martins-real-curriculo",
+    languages: {
+      pt: "https://gruporealbr.com.br",
+    },
+  },
+};
 
 export default function ClaudioMartinsReal() {
   function CardSection({ children }: { children: React.ReactNode }) {
@@ -64,9 +83,9 @@ export default function ClaudioMartinsReal() {
       <InfoSection
         reverseDesktop={true}
         reverseMobile={false}
-        title={"A Fundação da Real H e o Legado em Continuidade"}
+        title={"A Fundação da Grupo Real e o Legado em Continuidade"}
         content={
-          "<p>Trabalhou como professor até 1993, quando, após aposentar-se, fundou, junto com os filhos, a Real H. Até hoje o professor dedica-se com entusiasmo ao estudo da Homeopatia e da Medicina Veterinária.</p>"
+          "<p>Trabalhou como professor até 1993, quando, após aposentar-se, fundou, junto com os filhos, a Grupo Real. Até hoje o professor dedica-se com entusiasmo ao estudo da Homeopatia e da Medicina Veterinária.</p>"
         }
         imagePath={Claudio3}
       />
@@ -140,9 +159,31 @@ export default function ClaudioMartinsReal() {
           <li>Professor Catedrático de Patologia e Clínica Médica na Faculdade de Veterinária, 1949-1981. Sendo que no período de 1949 - 1950 foi Professor Assistente da disciplina.</li>
           <li>Professor Assistente, em tempo integral, na Cadeira de Patologia Clinica Médica dos Animais Domésticos na Escola de Agronomia e Veterinária de Porto Alegre de 1949 a 1950.</li>
           <li>Professor Catedrático interino na Cadeira de Patologia e Clínica dos Animais Domésticos da Escola de Agronomia e Veterinária de 1950 a 1968.</li>
-        </ul>"
+          <li>Professor Catedr&aacute;tico efetivo na mesma disciplina, a partir de 1968.</li>
+          <li>Professor respons&aacute;vel pelas disciplinas de &ldquo;Patologia e Cl&iacute;nica M&eacute;dica I, II, II&rdquo; a partir de 1972.</li>
+          <li>Professor respons&aacute;vel pela disciplina de &ldquo;Patologia e Cl&iacute;nica da Reprodu&ccedil;&atilde;o&rdquo; de 1973 a 1981.</li>
+          <li>Em P&oacute;s-Gradua&ccedil;&atilde;o respons&aacute;vel pelas disciplinas de &ldquo;Patologia e Cl&iacute;nica da Reprodu&ccedil;&atilde;o&rdquo; 1975 a 1979.</li>
+          <li>Em P&oacute;s-Gradua&ccedil;&atilde;o Professor respons&aacute;vel pela disciplina da &ldquo;Patologia e Cl&iacute;nica M&eacute;dica I&rdquo; e II, &ldquo;Patologia e Cl&iacute;nica da Reprodu&ccedil;&atilde;o I e II&rdquo;, &ldquo;Problemas de Cl&iacute;nica de Grandes Animais&rdquo; &ndash; 1977.</li>
+          <li>UFPR &ndash; Universidade Federal do Paran&aacute;</li>
+          <li>Disciplina de &ldquo;Fisiopatologia da Reprodu&ccedil;&atilde;o&rdquo; -1978</li>
+          <li>FUNBA &ndash; Funda&ccedil;&atilde;o Universidade de Bag&eacute;/RS</li>
+          <li>Ministrou a disciplina &ldquo;Patologia e Cl&iacute;nica da Reprodu&ccedil;&atilde;o das F&ecirc;meas&rdquo; no curso de Tecnologia da Reprodu&ccedil;&atilde;o realizado no curso de veterin&aacute;ria da Funda&ccedil;&atilde;o Universidade de Bag&eacute;, convenio FUNBA/PRODERS, Bag&eacute; &ndash; RS &ndash; 1981.</li>
+          <li>UFMS &ndash; Universidade Federal do Mato Grosso do Sul.</li>
+          <li>Professor Titular de &ldquo;Patologia e Cl&iacute;nica M&eacute;dica&rdquo; do Curso de Veterin&aacute;ria 1981-1993.</li>
+          <li>Ministrou em Curso Especial de Ver&atilde;o a disciplina &ldquo;Cl&iacute;nica M&eacute;dica dos Animais Dom&eacute;sticos II&rdquo;. 1981 &ndash; 1982.</li>
+          <li>Ministrou em Curso regular as disciplinas de &ldquo;Cl&iacute;nica M&eacute;dica dos animais Dom&eacute;sticos I&rdquo; e a &ldquo;Cl&iacute;nica M&eacute;dica dos Animais Dom&eacute;sticos IV&rdquo; &ndash; 1982.</li>
+          <li>Professor da disciplina de &ldquo;Cl&iacute;nica M&eacute;dica e Terap&ecirc;utica dos Animais Dom&eacute;sticos I&rdquo;. 1984.</li>
+        </ul>
+        <p>E ainda respons&aacute;vel por:</p>
+        <ul>
+          <li>Disciplina de Endocrinologia Cl&iacute;nica &ndash; Curso de Especializa&ccedil;&atilde;o &ndash; 1981</li>
+          <li>Disciplina de Fisiopatologia da Reprodu&ccedil;&atilde;o II na gradua&ccedil;&atilde;o &ndash; 1990</li>
+          <li>APH/IFL Associa&ccedil;&atilde;o Paulista de Homeopatia, SP e Instituto Fran&ccedil;ois Lamasson.</li>
+          <li>Aulas de Homeopatia para M&eacute;dicos Veterin&aacute;rios &ndash; 1986 &ndash; 1993.</li>
+        </ul>
+        "
+        readMore={true}
         imagePath={Claudio4}
-        // ctaLink="#"
         centerButton={true}
       />
 
@@ -207,14 +248,29 @@ export default function ClaudioMartinsReal() {
         reverseDesktop={true}
         reverseMobile={false}
         title={"Cursos Teses e Orientação de Teses"}
-        content="<ul>
-          <li>15 cursos frequentados (dois no exterior);</li>
-          <li>Thieartzlich Hocshule, Hannover RFA - 1976.Michigan State University, USA - 1977.</li>
-          <li>18 cursos ministrados;</li>
-          <li>Teses defendidas:<br>Para o Concurso de Docência Livre<br>“O Fígado na Intoxicação Aguda pelo Tetracloreto de Carbono” - 1951.</li>
-        </ul>"
+        content="<p>15 cursos frequentados (dois no exterior):</p>
+<ul>
+<li>Thieartzlich Hocshule, Hannover RFA &ndash; 1976.</li>
+<li>Michigan State University, USA &ndash; 1977.</li>
+</ul>
+<p>18 cursos ministrados;</p>
+<p><strong>Teses defendidas:</strong></p>
+<p>Para o Concurso de Doc&ecirc;ncia Livre<br />&ldquo;O F&iacute;gado na Intoxica&ccedil;&atilde;o Aguda pelo Tetracloreto de Carbono&rdquo; &ndash; 1951.</p>
+<p>Para o Concurso de C&aacute;tedra<br />&ldquo;Contribui&ccedil;&atilde;o ao Estudo da Esterilidade da Vaca Leiteira no Rio Grande do Sul&rdquo; &ndash; 1954.</p>
+<p>12 orienta&ccedil;&otilde;es de teses de P&oacute;s Gradua&ccedil;&atilde;o (pesquisas);</p>
+<p>190 confer&ecirc;ncias e Palestras proferidas.</p>
+<p><strong>P&uacute;blico Alvo:</strong></p>
+<p>M&eacute;dicos Veterin&aacute;rios, M&eacute;dicos, Zootecnistas, alunos e pecuaristas.</p>
+<p><strong>Locais:</strong></p>
+<p>Congressos Profissionais, Universidades, Associa&ccedil;&otilde;es de Classe, Semanas acad&ecirc;micas, Associa&ccedil;&otilde;es de Criadores, Sindicatos e Federa&ccedil;&otilde;es.</p>
+<p><strong>Assuntos:</strong></p>
+<p>&Eacute;tica Profissional, Homeopatia Veterin&aacute;ria, Cl&iacute;nica M&eacute;dica, Manejo Reprodutivo, Fertilidade em Gado de Corte e de Leite, Cruzamento Industrial, Desmame Interrompido, Mortandade de Vacas (Centro-Oeste), Doen&ccedil;as Metab&oacute;licas, Doen&ccedil;as Carenciais, Mineraliza&ccedil;&atilde;o de Bovinos, Rela&ccedil;&atilde;o C&aacute;lcio-F&oacute;sforo nos resultados Zoot&eacute;cnicos, Homeopatia Populacional.</p>
+<p><strong>No Exterior:</strong></p>
+<p>Na XXVIII Exposi&ccedil;&atilde;o Internacional do Prado, Uruguay, 1979, sobre o uso da &ldquo;T&eacute;cnica do Desmame Interrompido&rdquo;.</p>
+<p>No II Congresso de Veterin&aacute;rios da L&iacute;ngua Portuguesa, Lisboa, Portugal, 1980, sobre &ldquo;Desmame Interrompido&rdquo;.</p>
+<p>No V Congresso Internacional de M&eacute;dicos Veterin&aacute;rios Homeopatas Paris, Fran&ccedil;a, 1996, sobre &ldquo;Homeopatia Populacional&rdquo;. Congresso promovido pela IAVH.</p>"
         imagePath={Claudio6}
-        // ctaLink="#"
+        readMore={true}
         centerButton={true}
       />
 

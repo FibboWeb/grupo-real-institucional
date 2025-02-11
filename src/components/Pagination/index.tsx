@@ -20,7 +20,7 @@ export default function Pagination({ currentPage, totalPages, slug, blogContext 
         <Link
           key={1}
           href={isFirstPath ? `${slug}` : `${blogContext}/${slug}`}
-          className="px-3 py-2 border border-fb_blue_button rounded duration-300 hover:bg-fb_blue_button hover:text-white text-fb_blue_button"
+          className="px-3 py-1 border border-fb_blue_button rounded duration-300 hover:bg-fb_blue_button hover:text-white text-fb_blue_button"
         >
           1
         </Link>,

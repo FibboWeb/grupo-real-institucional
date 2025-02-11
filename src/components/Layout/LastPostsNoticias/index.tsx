@@ -22,15 +22,13 @@
  */
 
 "use client";
-import dynamic from "next/dynamic";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Link from "next/link";
-import CardBlog from "../CardBlog";
 import type { Post } from "@/types/post";
-import { ArrowRight } from "lucide-react";
-import "./lastPost.css";
+import dynamic from "next/dynamic";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 import BtnCallToAction from "../Buttons/BtnCallToAction/BtnCallToAction";
+import CardBlog from "../CardBlog";
+import "./lastPost.css";
 
 const Slider = dynamic(() => import("react-slick"), { ssr: false });
 interface LastPostsProps {
@@ -38,25 +36,146 @@ interface LastPostsProps {
 }
 
 function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
+  // const settings = {
+  //   slidesToShow: 5.7,
+  //   slidesToScroll: 1,
+  //   infinite: false,
+  //   speed: 500,
+  //   dots: true,
+  //   className: "tester",
+  //   responsive: [
+  //     {
+  //       breakpoint: 2100,
+  //       settings: {
+  //         slidesToShow: 4.5,
+  //         slidesToScroll: 1,
+  //       }
+  //     },
+  //     {
+  //       breakpoint: 1920,
+  //       settings: {
+  //         slidesToShow: 4.2,
+  //         slidesToScroll: 1,
+  //         dots: true,
+  //       }
+  //     },
+  //     {
+  //       breakpoint: 1800,
+  //       settings: {
+  //         slidesToShow: 3.95,
+  //         slidesToScroll: 1,
+  //         dots: true,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 1660,
+  //       settings: {
+  //         slidesToShow: 4,
+  //         slidesToScroll: 1,
+  //         dots: true,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 1400,
+  //       settings: {
+  //         slidesToShow: 3.1,
+  //         slidesToScroll: 2,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 1280,
+  //       settings: {
+  //         slidesToShow: 2.7,
+  //         slidesToScroll: 2,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 1200,
+  //       settings: {
+  //         slidesToShow: 2,
+  //         slidesToScroll: 2,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 1024,
+  //       settings: {
+  //         slidesToShow: 2.5,
+  //         slidesToScroll: 2,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 800,
+  //       settings: {
+  //         slidesToShow: 2.2,
+  //         slidesToScroll: 1,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 580,
+  //       settings: {
+  //         slidesToShow: 1.2,
+  //         slidesToScroll: 1,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 320,
+  //       settings: {
+  //         slidesToShow: 1,
+  //         slidesToScroll: 1,
+  //       },
+  //     },
+  //   ],
+  // };
+
   const settings = {
-    slidesToShow: 3.2,
+    slidesToShow: 5.7,
     slidesToScroll: 1,
     infinite: false,
     speed: 500,
     dots: true,
+    autoplay: true,
     responsive: [
       {
-        breakpoint: 1660,
+        breakpoint: 2300,
         settings: {
-          slidesToShow: 2.45,
+          slidesToShow: 5.2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 2100,
+        settings: {
+          slidesToShow: 4.5,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 1920,
+        settings: {
+          slidesToShow: 4.2,
           slidesToScroll: 1,
           dots: true,
         },
       },
       {
-        breakpoint: 1400,
+        breakpoint: 1800,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 3.75,
+          slidesToScroll: 1,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 1660,
+        settings: {
+          slidesToShow: 3.55,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 1440,
+        settings: {
+          slidesToShow: 3.3,
           slidesToScroll: 2,
         },
       },
@@ -75,9 +194,30 @@ function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
         },
       },
       {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2.13,
+          slidesToScroll: 2,
+        },
+      },
+      {
         breakpoint: 580,
         settings: {
-          slidesToShow: 1.2,
+          slidesToShow: 1.3,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 425,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 320,
+        settings: {
+          slidesToShow: 1,
           slidesToScroll: 1,
         },
       },
@@ -85,21 +225,21 @@ function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
   };
   return (
     <div className="flex flex-col lg:flex-row gap-6 xl:gap-10">
-      <div className="py-2">
-        <div className="flex flex-col justify-between w-full lg:w-80 rounded-2xl bg-fb_gradient text-white min-h-80 lg:min-h-[440px] p-12">
-          <div className="content">
-            <h2 className="text-3xl font-bold">Notícias</h2>
-            <p className="pt-6">
-              Fique por dentro de tudo o que acontece no mundo da pecuária. Notícias, eventos, dicas e muito mais...
-            </p>
-          </div>
-          <div className="w-fit">
-            <BtnCallToAction ctaLink="/noticias" content="IR PARA O BLOG" color="fb_blue_button" />
-          </div>
-        </div>
-      </div>
-      <div className="last-post-slider" style={{ width: "75%" }}>
+      <div className="last-post-slider sm:w-3/4" style={{ width: "98%" }}>
         <Slider {...settings}>
+          <div className="py-2 md:hidden">
+            <div className="flex flex-col justify-between w-full lg:w-80 min-h-[440px] rounded-2xl bg-fb_gradient text-white p-12">
+              <div className="content">
+                <h2 className="text-3xl font-bold">Notícias</h2>
+                <p className="pt-6">
+                  Fique por dentro de tudo o que acontece no mundo da pecuária. Notícias, eventos, dicas e muito mais...
+                </p>
+              </div>
+              <div className="w-fit">
+                <BtnCallToAction ctaLink="/noticias" content="IR PARA O BLOG" color="fb_blue_button" />
+              </div>
+            </div>
+          </div>
           {fetchedLastPosts &&
             fetchedLastPosts.map((post: Post) => (
               <CardBlog

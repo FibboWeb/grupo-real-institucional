@@ -1,6 +1,6 @@
 export const locations = [
   {
-    title: "Real H Matriz Fábrica",
+    title: "Grupo Real Matriz Fábrica",
     address: `CNPJ 00.988.303/0001-64
 IE-28.227.819-2
 Avenida Zilá Correa Machado, nº 12.068
@@ -11,7 +11,7 @@ Campo Grande MS`,
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3736.1191349351183!2d-54.57838328490694!3d-20.466643186298672!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9486e73745346597%3A0x43e4f30b749c7f07!2sAv.%20Zil%C3%A1%20Corr%C3%AAa%20Machado%2C%2012068%20-%20Parque%20Res.%20Maria%20Aparecida%20Pedrossian%2C%20Campo%20Grande%20-%20MS%2C%2079046-200!5e0!3m2!1sen!2sbr!4v1620147647000!5m2!1sen!2sbr",
   },
   {
-    title: "Real H Filial Cuiabá-MT",
+    title: "Grupo Real Filial Cuiabá-MT",
     address: `CMR -> Laboratórios Veterinários LTDA
 CNPJ: 12.933.715/0003-48
 

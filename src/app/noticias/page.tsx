@@ -1,15 +1,53 @@
-import { fetchPosts, getLastPostsNoticias } from "@/lib/getPostsNoticiasPage";
-import { sliderCategoriasNoticias } from "@/constants/noticiaspage";
 import Breadcrumb from "@/components/BreadCrumb";
-import Newsletter from "@/components/Layout/Newsletter";
-import SidebarNoticias from "@/components/Layout/SidebarNoticias";
+import CardPostHero from "@/components/CardPostHero";
 import SliderNavigational from "@/components/icons_slider";
 import CardBlog from "@/components/Layout/CardBlogAPI";
-import CardPostHero from "@/components/CardPostHero";
+import Newsletter from "@/components/Layout/Newsletter";
+import SidebarNoticias from "@/components/Layout/SidebarNoticias";
 import Pagination from "@/components/Pagination";
+import { sliderCategoriasNoticias } from "@/constants/noticiaspage";
+import { fetchYoastSEO } from "@/lib/getCategorias";
+import { fetchPosts, getLastPostsNoticias } from "@/lib/getPostsNoticiasPage";
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
+
+type Props = {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+
+export async function generateMetadata({ params, searchParams }: Props) {
+  let infos;
+  infos = await fetchYoastSEO("noticias", "categories");
+  const pageParam = (await searchParams).page;
+  const page = parseInt(Array.isArray(pageParam) ? pageParam[0] : pageParam || "1");
+
+  if (!infos) {
+    notFound();
+  }
+
+  return {
+    title: `${infos.title}${page === 1 ? "" : ` - Página ${page}`}`,
+    description: infos.description,
+    robots: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+    },
+    openGraph: {
+      title: `${infos.title}${page === 1 ? "" : ` - Página ${page}`}`,
+      description: infos.description,
+      images: [infos.og_image ? infos.og_image[0].url : ""],
+    },
+    alternates: {
+      canonical: `https://gruporealbr.com.br/noticias${page === 1 ? "" : `?page=${page}`}`,
+    },
+  };
+}
 
 export default async function Noticias({ searchParams }) {
-  const page = searchParams.page ? parseInt(searchParams.page, 10) : 1;
+  const page = (await searchParams).page ? parseInt((await searchParams).page, 10) : 1;
   const postsPerPage = 6;
 
   const { posts, totalPages } = await fetchPosts(page, postsPerPage);
@@ -36,7 +74,7 @@ export default async function Noticias({ searchParams }) {
           <div className="flex flex-col w-full lg:w-1/2 lg:h-[450px]">
             {heroPosts.length > 0 && (
               <CardPostHero
-                postImage={heroPosts[0].featuredImage?.node?.sourceUrl}
+                postImage={heroPosts[0].featuredImage?.node?.sourceUr || "/images/banners/bg-categories.webp"}
                 postImageAlt={heroPosts[0].featured_media?.alt_text || "Imagem do post"}
                 postLink={heroPosts[0].slug}
                 postCategory={heroPosts[0].categories.nodes[0].name}

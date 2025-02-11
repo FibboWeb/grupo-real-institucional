@@ -12,18 +12,24 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Página inicial - Grupo real H",
+  title: "Página inicial - Grupo Real",
   description: "40 anos construindo gerações reais.",
   verification: {
     google: "kYyHL7QQ_V8N1msmt0rXzo3aBZEmIYZ1xLjm28gHFqQ",
   },
   openGraph: {
-    title: "Página inicial - Grupo real H",
+    title: "Página inicial - Grupo Real",
     description: "40 anos construindo gerações reais.",
     images: ["/favicon.ico"],
     locale: "pt_BR",
-    siteName: "Grupo real H",
-  }
+    siteName: "Grupo Real",
+  },
+  alternates: {
+    canonical: "https://gruporealbr.com.br/",
+    languages: {
+      pt: "https://gruporealbr.com.br/",
+    },
+  },
 };
 
 export default function RootLayout({

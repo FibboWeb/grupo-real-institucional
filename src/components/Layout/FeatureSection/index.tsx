@@ -19,6 +19,7 @@ interface FeatureSectionProps {
   infoSectionBorder?: boolean;
   infoSectionColor?: "fb_blue_button" | "fb_green_button";
   infoSectionContentButton?: string;
+  infoSectionReadMore?: boolean;
 }
 
 export default function FeatureSection({
@@ -39,6 +40,7 @@ export default function FeatureSection({
   infoSectionBorder = true,
   infoSectionColor = "fb_blue_button",
   infoSectionContentButton = "Leia mais",
+  infoSectionReadMore = false,
 }: FeatureSectionProps) {
   return (
     <div className="relative">
@@ -94,6 +96,7 @@ export default function FeatureSection({
               border={infoSectionBorder}
               color={infoSectionColor}
               contentButton={infoSectionContentButton}
+              readMore={infoSectionReadMore}
             />
           </div>
         </div>

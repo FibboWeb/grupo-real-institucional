@@ -27,7 +27,7 @@ interface PostsByCategoryProps {
 
 const settings = {
   infinite: true,
-  speed: 800,
+  speed: 1000,
   slidesToShow: 3,
   slidesToScroll: 3,
   autoplay: false,

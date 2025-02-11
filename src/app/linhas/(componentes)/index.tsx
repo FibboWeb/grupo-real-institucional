@@ -1,33 +1,39 @@
 import CardProduct from "@/components/CardProdutos";
+import Pagination from "@/components/Pagination";
 import { getProducts } from "@/lib/getProducts";
 import { notFound } from "next/navigation";
-export default async function GridProduct({ slug }) {
-  let products
+
+export default async function GridProduct({ slug, searchParams }) {
+  let pageNumber = searchParams;
+  let products: any;
+  let totalPages: number;
+  let totalProducts: number;
   if (Array.isArray(slug)) {
     slug = slug[0]; // Pega o primeiro valor caso seja um array
   }
+  let idConsultado: number;
+  const idReal = 735;
+  const idCMR = 763;
+  const idHomeopet = 764;
   if (slug === "real-h") {
-    products = await getProducts(["linha-nutricao", "linha-saude"]);
+    idConsultado = idReal;
+    ({ products, totalPages, totalProducts } = await getProducts(idConsultado, pageNumber));
   } else if (slug === "cmr") {
-    products = await getProducts(["linha-saude", "linha-md"]);
+    idConsultado = idCMR;
+    ({ products, totalPages, totalProducts } = await getProducts(idConsultado, pageNumber));
+  } else if (slug === "homeopet") {
+    idConsultado = idHomeopet;
+    ({ products, totalPages, totalProducts } = await getProducts(idConsultado, pageNumber));
   } else {
-    products = await getProducts(["linha-homeo-pet", ""]); // Removido string vazia
+    return notFound();
   }
-  if (products) {
-    return (
-      <>
-        <div className="w-full">
-          {products.data?.edges.map((edge, index) => (
-            <div key={index} className="mb-8 min-h-[520px] items-center">
-              {/* Passando os detalhes do produto para o componente CardProduct */}
-              <CardProduct product={[edge.node.camposLinhas.gradeProdutos]} />
-            </div>
-          ))}
-        </div>
-        <div>{/* <Pagination /> */}</div>
-      </>
-    );
-  } else {
-    notFound();
-  }
+
+  return (
+    <div className="w-full flex flex-wrap">
+      <CardProduct product={products} />
+      <div className="w-full justify-center items-center">
+        <Pagination blogContext={`/linhas`} currentPage={pageNumber} totalPages={totalPages} slug={slug} />
+      </div>
+    </div>
+  );
 }

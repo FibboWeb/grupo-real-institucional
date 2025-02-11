@@ -2,7 +2,7 @@ export async function fetchPosts(authorId, page = 1, postsPerPage = 6) {
   const res = await fetch(
     `${process.env.WP_URL_API}posts?author=${authorId}&per_page=${postsPerPage}&page=${page}&_embed=wp:featuredmedia`,
     {
-      next: { revalidate: 6 },
+      next: { revalidate: 3600 },
     },
   );
 

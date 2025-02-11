@@ -2,7 +2,7 @@ import React from "react";
 
 // Hero section
 import HeroSection from "@/components/Layout/HeroSection";
-import childrenHeroSection from "./childrenHeroSection";
+import childrenHeroSection, { childrenHeroSectionContent } from "./childrenHeroSection";
 
 // Depoiments
 import Depoiments from "@/components/Layout/Depoiments";
@@ -25,14 +25,32 @@ import Timeline from "@/components/Layout/Timeline/Timeline";
 
 // Newsletter
 import Newsletter from "@/components/Layout/Newsletter";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Quem Somos - Grupo Real",
+  description: "40 anos construindo gerações reais.",
+  openGraph: {
+    title: "Quem Somos - Grupo Real",
+    description: "40 anos construindo gerações reais.",
+    images: ["/favicon.ico"],
+    locale: "pt_BR",
+    siteName: "Grupo real",
+  },
+  alternates: {
+    canonical: "https://gruporealbr.com.br/quem-somos",
+    languages: {
+      pt: "https://gruporealbr.com.br/",
+    },
+  },
+};
 
 export default function PageAboutUs() {
-  const ctaLinkString = "www.google.com";
   const conteudo =
-    "“Aquilo que eu aprendi na juventude, vendo meu pai curar pessoas, hoje nós estamos aplicando nos rebanhos”, Claudio Martins Real, Presidente e Fundador da Real H. ";
+    "“Aquilo que eu aprendi na juventude, vendo meu pai curar pessoas, hoje nós estamos aplicando nos rebanhos”, Claudio Martins Real, Presidente e Fundador da Grupo Real. ";
   return (
     <section className="flex flex-col">
-      <HeroSection children={childrenHeroSection()} backgroundClass="bg-hero-quem-somos" />
+      <HeroSection children={childrenHeroSectionContent()} backgroundClass="bg-hero-quem-somos" />
       <section className="bg-backgroundPage pb-8 flex flex-col gap-5">
         <Depoiments content={conteudo} image={ClaudioImage} />
         <InfoSection
@@ -51,6 +69,7 @@ export default function PageAboutUs() {
           imagePath={infoSectionsContents.fundadores.img}
           reverseDesktop={infoSectionsContents.fundadores.reverseDesktop}
           reverseMobile={infoSectionsContents.fundadores.revereverseMobile}
+          readMore={infoSectionsContents.fundadores.readMore}
         />
 
         <InfoSection
@@ -95,7 +114,7 @@ export default function PageAboutUs() {
         <Timeline />
       </section>
 
-      <section className="bg-backgroundPage pt-10 pb-20">
+      <section className="fb_container pt-10 pb-20">
         <Newsletter />
       </section>
     </section>

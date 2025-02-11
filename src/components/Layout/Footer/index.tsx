@@ -1,6 +1,6 @@
-import Link from "next/link";
-import Image from "next/image";
 import { getMenus } from "@/lib/getMenus";
+import Image from "next/image";
+import Link from "next/link";
 import { Menus } from "./Menus";
 
 async function Footer() {
@@ -57,7 +57,7 @@ async function Footer() {
               </Link>
             </div>
           </div>
-          <div className="flex flex-row justify-center items-center mb-8 gap-5 lg:gap-10">
+          <div className="flex flex-row flex-wrap justify-center items-center mb-8 gap-5 lg:gap-10">
             <Image
               className="max-sm:w-16"
               src={"/images/selos/selo-gptw.webp"}

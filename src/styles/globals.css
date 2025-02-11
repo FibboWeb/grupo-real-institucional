@@ -45,6 +45,7 @@ body {
     --text-dark: #343434;
     --fb_space-section: 2.875rem;
     --gray-bread: #8e8e8e;
+    --background-section: hsla(212, 89%, 12%, 0.05);
   }
 
   .dark {
@@ -86,5 +87,9 @@ body {
 }
 
 .fb_container {
+  @apply w-[95%] mx-auto lg:w-5/6;
+}
+
+.fb_grid-products {
   @apply w-[95%] mx-auto lg:w-5/6;
 }

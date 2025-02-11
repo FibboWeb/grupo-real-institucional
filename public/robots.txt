@@ -1,0 +1,14 @@
+# *
+User-agent: *
+Disallow: /api*
+Disallow: /private*
+Disallow: /server-sitemap.xml
+Allow: /
+
+# Host
+Host: https://gruporealbr.com.br
+
+# Sitemaps
+Sitemap: https://gruporealbr.com.br/sitemap.xml
+Sitemap: https://gruporealbr.com.br/sitemap/produtos.xml
+Sitemap: https://gruporealbr.com.br/sitemap/posts.xml

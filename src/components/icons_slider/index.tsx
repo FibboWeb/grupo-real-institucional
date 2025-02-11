@@ -79,10 +79,9 @@ export default function SliderNavigational({ categories, title, text, isNoticias
     slidesToShow: 5,
     slidesToScroll: 1,
     useTransform: true,
-    autoPlay: true,
+    autoplay: isNoticias ? false : true,
+    autoplaySpeed: 4500,
     dots: true,
-    // nextArrow: <SampleNextArrow />,
-    // prevArrow: <SamplePrevArrow />,
     responsive: [
       {
         breakpoint: 1360,
@@ -111,7 +110,9 @@ export default function SliderNavigational({ categories, title, text, isNoticias
   return (
     <div>
       <div className="w-full flex flex-col gap-8">
-        <h2 className={`${isNoticias ? "text-3xl" : "text-4xl"} fb_container font-bold text-center text-fb_blue_main`}>{title}</h2>
+        <h2 className={`${isNoticias ? "text-3xl" : "text-4xl"} fb_container font-bold text-center text-fb_blue_main`}>
+          {title}
+        </h2>
         {text && (
           <div className="container px-10 lg:w-2/4 lg:px-2 text-center mx-auto">
             <p>{text}</p>
@@ -124,7 +125,10 @@ export default function SliderNavigational({ categories, title, text, isNoticias
             className={`${isNoticias ? "max-w-[100%]" : "max-w-[80%]"} flex justify-center items-center mx-auto cursor-grab`}
           >
             {categories.map((category) => (
-              <div key={category.id} className={`${!isNoticias ? "w-[140px] min-h-[140px]" : ""}flex flex-col mx-auto gap-6 px-8`}>
+              <div
+                key={category.id}
+                className={`${!isNoticias ? "w-[140px] min-h-[140px]" : ""}flex flex-col justify-center items-center mx-auto gap-6 px-8`}
+              >
                 {category.url && (
                   <Link href={category.url} className="flex justify-center">
                     <Image
@@ -132,19 +136,19 @@ export default function SliderNavigational({ categories, title, text, isNoticias
                       src={category.image_url}
                       width={category.width_card ? category.width_card : 220}
                       height={category.height_card ? category.height_card : 220}
-                      className={` ${isNoticias ? "h-56" : ""} bg-center object-cover rounded-2xl`}
+                      className={` ${isNoticias ? "h-56 object-cover" : ""} object-contain rounded-2xl w-full`}
                     />
                   </Link>
-                )} { !isNoticias && (
+                )}
+                {!isNoticias && (
                   <Image
-                      alt={category.label}
-                      src={category.image_url}
-                      width={category.width_card ? category.width_card : 220}
-                      height={category.height_card ? category.height_card : 220}
-                      className={"h-56 object-contain object-center rounded-2xl w-4/5"}
-                    />
-                )
-                }
+                    alt={category.label || "imagem da categoria"}
+                    src={category.image_url}
+                    width={category.width_card ? category.width_card : 220}
+                    height={category.height_card ? category.height_card : 220}
+                    className={"h-56 object-contain object-center bg-center rounded-2xl mx-auto"}
+                  />
+                )}
                 {category.url && category.label && (
                   <Link
                     href={category.url}

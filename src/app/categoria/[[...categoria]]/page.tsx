@@ -1,15 +1,50 @@
 import Breadcrumb from "@/components/BreadCrumb";
+import CardBlog from "@/components/Layout/CardBlogAPI";
 import Newsletter from "@/components/Layout/Newsletter";
 import SidebarNoticias from "@/components/Layout/SidebarNoticias";
-import CardBlog from "@/components/Layout/CardBlogAPI";
-import { fetchPosts, fetchCategoryId } from "@/lib/getCategoriesNoticias";
 import Pagination from "@/components/Pagination";
+import { fetchYoastSEO } from "@/lib/getCategorias";
+import { fetchCategoryId, fetchPosts } from "@/lib/getCategoriesNoticias";
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+type Props = {
+  params: Promise<{ categoria: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+
+export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
+  const slug = (await params).categoria[(await params).categoria.length - 1];
+  const pageParam = (await searchParams).page;
+  const page = parseInt(Array.isArray(pageParam) ? pageParam[0] : pageParam || "1");
+
+  let lineInfo;
+  lineInfo = await fetchYoastSEO(slug, "categories");
+
+  return {
+    title: `${lineInfo.title}${page === 1 ? "" : ` - Página ${page}`}`,
+    description: lineInfo.description,
+    robots: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+    },
+    openGraph: {
+      title: `${lineInfo.title}${page === 1 ? "" : ` - Página ${page}`}`,
+      description: lineInfo.description,
+      images: [lineInfo.og_image ? lineInfo.og_image[0].url : ""],
+    },
+    alternates: {
+      canonical: `https://gruporealbr.com.br/categoria/${slug}${page === 1 ? "" : `?page=${page}`}`,
+    },
+  };
+}
+
 export default async function CategoryPage({ params, searchParams }) {
-  const page = parseInt(searchParams.page || "1");
+  const page = parseInt((await searchParams).page || "1");
   const postsPerPage = 6;
-  const categorySlug = params.categoria[params.categoria.length - 1];
+  const categorySlug = (await params).categoria[(await params).categoria.length - 1];
   const category = await fetchCategoryId(categorySlug);
   const categoryId = category.categoryId;
   const isArtigos = category.categoryName === "Artigos" ? true : false;
