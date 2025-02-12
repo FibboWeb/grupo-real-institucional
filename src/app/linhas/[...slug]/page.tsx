@@ -1,8 +1,8 @@
 "use server";
-import BannerLines from "@/components/BannerCTA/BannerLines";
+import BannerLines, { BannerLinesFooter } from "@/components/BannerCTA/BannerLines";
 import Breadcrumb from "@/components/BreadCrumb";
 
-import { fetchYoastData } from "@/lib/getSEOLines";
+import { fetchYoastData, getSEOLines2 } from "@/lib/getSEOLines";
 import image01 from "@/public/images/banners/boi-no-pasto.webp";
 import image03 from "@/public/images/banners/cao-e-gato.webp";
 import image02 from "@/public/images/banners/carne-vermelha-cortada.webp";
@@ -44,7 +44,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
     lineInfo = await fetchYoastSEO("linha-saude", "linhas");
   } else if (slug[0] === "homeopet") {
     lineInfo = await fetchYoastSEO("linha-homeo-pet", "linhas");
-  }
+  }  
 
   if (!lineInfo) {
     notFound();
@@ -76,6 +76,9 @@ export default async function PageLinhas({ params, searchParams }) {
   // read query params
   const page = parseInt((await searchParams).page || "1");
 
+  const { banner01, banner02, textBanner01, textBanner02 } = await getSEOLines2(slug[0]);
+  console.log("textos ",textBanner01, textBanner02);
+
   return (
     <section className="relative mt-24">
       <div className="fb_grid-products flex flex-col">
@@ -100,18 +103,20 @@ export default async function PageLinhas({ params, searchParams }) {
           <GridProduct slug={slug} searchParams={page} />
         </div>
         <div className="flex flex-col lg:flex-row lg:flex-nowrap gap-8 mb-20">
-          <BannerLines title="Linha Nutrição" imgBackground={image02.src}>
-            <p>
-              A <strong>Grupo Real</strong>, empresa de <strong>Nutrição e Saúde Animal</strong>
-              há <strong>40 anos</strong> ao lado do produtor
-            </p>
-          </BannerLines>
-          <BannerLines title="Linha Nutrição" imgBackground={image03.src}>
-            <p>
-              A <strong>Grupo Real</strong>, empresa de <strong>Nutrição e Saúde Animal</strong>
-              há <strong>40 anos</strong> ao lado do produtor
-            </p>
-          </BannerLines>
+          <BannerLinesFooter 
+            title={`Conheça os produtos`}
+            hiddenTitle={false}
+            imgBackground={banner01 ? banner01 : image02.src}
+            children={textBanner01} 
+            ctaLink="/linhas/cmr"  
+          />
+          <BannerLinesFooter 
+            title={`Conheça os produtos`}
+            hiddenTitle={false}
+            imgBackground={banner02 ? banner02 : image02.src}
+            children={textBanner02} 
+            ctaLink="/linhas/real-h"  
+          />
         </div>
         <div>
           <Newsletter />
