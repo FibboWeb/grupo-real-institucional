@@ -17,7 +17,7 @@ function GridPost() {
     
     useEffect(() => {
       async function fetchData() {
-        const { data, totalPosts, totalPages } = await search(searchString, parseInt(page));
+        const { data, totalPosts, totalPages } = await search(searchString, page);
         setData(data);
         setTotalPostsFetched(totalPosts);
         setTotalPagesFetched(totalPages);
@@ -73,7 +73,7 @@ function GridPost() {
         </div>
       </div>
       <div className="flex justify-center">
-        <Pagination currentPage={parseInt(page)} totalPages={parseInt(totalPagesFetched)} slug={searchString} blogContext={`/busca?search=`} />
+        <Pagination currentPage={page} totalPages={parseInt(totalPagesFetched)} slug={searchString} blogContext={`/busca?search=`} />
       </div>
     </>
   )
