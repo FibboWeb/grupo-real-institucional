@@ -13,11 +13,6 @@ type Props = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
-export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
-  const slug = (await params).categoria[(await params).categoria.length - 1];
-  const pageParam = (await searchParams).page;
-  const page = parseInt(Array.isArray(pageParam) ? pageParam[0] : pageParam || "1");
-
 export async function generateMetadata(
   { params, searchParams }: Props,
 ): Promise<Metadata> {
@@ -110,3 +105,4 @@ export default async function CategoryPage({ params, searchParams }) {
     </div>
   );
 }
+
