@@ -41,8 +41,8 @@ export const metadata: Metadata = {
     canonical: "https://gruporealbr.com.br/quem-somos",
     languages: {
       pt: "https://gruporealbr.com.br/",
-    }
-  }
+    },
+  },
 };
 
 export default function PageAboutUs() {

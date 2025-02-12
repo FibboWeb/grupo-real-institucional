@@ -71,8 +71,8 @@ export default function SliderTestimonials({ testimonial }: testimonialCardProps
                     </p>
                   </div>
                   <div className="flex min-h-[100px] justify-between">
-                    <div className="w-3/5 sm:w-4/5">
-                      <p className="text-2xl lg:text-2xl font-bold transition-colors group-hover:text-white duration-200">
+                    <div className="w-fit">
+                      <p className="text-xl lg:text-3xl font-bold transition-colors group-hover:text-white duration-200">
                         {item.name}
                       </p>
                       <p className="text-sm lg:text-lg text-fb_blue transition-colors group-hover:text-white duration-200">
@@ -80,7 +80,9 @@ export default function SliderTestimonials({ testimonial }: testimonialCardProps
                       </p>
                     </div>
                     <div className="flex h-auto rounded-full relative">
-                      <Suspense fallback={<div className="w-[100px] h-[100px] bg-gray-700 animated-pulse rounded-full"></div>}>
+                      <Suspense
+                        fallback={<div className="w-[100px] h-[100px] bg-gray-700 animated-pulse rounded-full"></div>}
+                      >
                         <Image
                           alt={`Foto do ${item.name}`}
                           src={item.avatar ? item.avatar : "/author-icon.svg"}
@@ -89,7 +91,6 @@ export default function SliderTestimonials({ testimonial }: testimonialCardProps
                           className="object-cover rounded-full"
                         />
                       </Suspense>
-                      
                     </div>
                   </div>
                 </div>

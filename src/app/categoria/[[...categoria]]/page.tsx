@@ -9,9 +9,9 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 type Props = {
-  params: Promise<{ categoria: string }>
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
-}
+  params: Promise<{ categoria: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
 
 export async function generateMetadata(
   { params, searchParams }: Props,
@@ -35,14 +35,13 @@ export async function generateMetadata(
     openGraph: {
       title: `${lineInfo.title}${page === 1 ? "" : ` - Página ${page}`}`,
       description: lineInfo.description,
-      images: [ lineInfo.og_image ? lineInfo.og_image[0].url : '' ],
+      images: [lineInfo.og_image ? lineInfo.og_image[0].url : ""],
     },
     alternates: {
       canonical: `https://gruporealbr.com.br/linhas/${slug}${(page === 1) ? "" : `?page=${page}`}`,
     },
-  }
+  };
 }
-
 
 export default async function CategoryPage({ params, searchParams }) {
   const page = parseInt((await searchParams).page || "1");
@@ -106,3 +105,4 @@ export default async function CategoryPage({ params, searchParams }) {
     </div>
   );
 }
+

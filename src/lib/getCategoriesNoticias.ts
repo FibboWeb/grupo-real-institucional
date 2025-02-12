@@ -32,7 +32,7 @@ export async function fetchPosts(categoryIds, page = 1, postsPerPage = 6) {
   const res = await fetch(
     `${process.env.WP_URL_API}posts?categories=${categoryIdsString}&per_page=${postsPerPage}&page=${page}&_embed=author,wp:featuredmedia`,
     {
-      next: { revalidate: 6 },
+      next: { revalidate: 3600 },
     },
   );
 

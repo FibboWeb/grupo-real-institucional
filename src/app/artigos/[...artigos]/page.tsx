@@ -12,9 +12,9 @@ import { fetchYoastSEO } from "@/lib/getCategorias";
 import { Metadata } from "next";
 
 type Props = {
-  params: Promise<{ artigos: string }>
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
-}
+  params: Promise<{ artigos: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
 
 /**
  * Generates metadata for a linhas page, including:
@@ -41,9 +41,9 @@ export async function generateMetadata(
   const infos = await fetchYoastSEO(slug, "posts");
 
   if (!infos) {
-    notFound()
+    notFound();
   }
- 
+
   return {
     title: `${infos.title}${page === 1 ? "" : ` - Página ${page}`}`,
     description: infos.description,
@@ -56,12 +56,12 @@ export async function generateMetadata(
     openGraph: {
       title: `${infos.title}${page === 1 ? "" : ` - Página ${page}`}`,
       description: infos.description,
-      images: [ infos.og_image ? infos.og_image[0].url : '' ],
+      images: [infos.og_image ? infos.og_image[0].url : ""],
     },
     alternates: {
-      canonical: `https://gruporealbr.com.br/artigos/${slug[0]}${(page === 1) ? "" : `?page=${page}`}`,
+      canonical: `https://gruporealbr.com.br/artigos/${slug[0]}${page === 1 ? "" : `?page=${page}`}`,
     },
-  }
+  };
 }
 
 export default async function ArtigosPage({ params }) {

@@ -40,8 +40,8 @@ export const metadata: Metadata = {
     canonical: "https://gruporealbr.com.br/social",
     languages: {
       pt: "https://gruporealbr.com.br",
-    }
-  }
+    },
+  },
 };
 
 export default function SocialPage() {
@@ -73,6 +73,15 @@ export default function SocialPage() {
         heroBgImage="bg-bg-ciclos"
         readMore={true}
       />
+      <InfoSection
+        badge="Social"
+        title="Cartão Multibenefícios: Investindo na Qualidade de Vida dos Colaboradores"
+        content="Outro destaque do <strong>Eixo Social</strong> é o <strong>compromisso com o bem-estar</strong> dos colaboradores por meio de iniciativas como o Cartão Multibenefícios, que oferece um bônus mensal a ser investido em <strong>alimentação, saúde, educação, cultura</strong> e outras áreas que contribuem para a qualidade de vida de cada funcionário."
+        imagePath={CartaoMultibeneficioImg}
+        border={false}
+        color="fb_green_button"
+        reverseDesktop={true}
+      />
       <FeatureSection
         backgroundClass="bg-green-featured"
         badge="Integração"
@@ -88,16 +97,6 @@ export default function SocialPage() {
         infoSectionBorder={false}
         infoSectionImageMidFullContainer={true}
         infoSectionReadMore={true}
-      />
-
-      <InfoSection
-        badge="Social"
-        title="Cartão Multibenefícios: Investindo na Qualidade de Vida dos Colaboradores"
-        content="Outro destaque do <strong>Eixo Social</strong> é o <strong>compromisso com o bem-estar</strong> dos colaboradores por meio de iniciativas como o Cartão Multibenefícios, que oferece um bônus mensal a ser investido em <strong>alimentação, saúde, educação, cultura</strong> e outras áreas que contribuem para a qualidade de vida de cada funcionário."
-        imagePath={CartaoMultibeneficioImg}
-        border={false}
-        color="fb_green_button"
-        reverseDesktop={true}
       />
 
       <InfoSection
