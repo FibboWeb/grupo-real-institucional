@@ -114,7 +114,7 @@ function InfoSection({
                 src={imagePath}
                 alt=""
                 className={`${border ? "shadow-shadow_image_info_section" : ""} ${imageMidFullContainer ? "h-full w-full object-cover" : "rounded-2xl"}`}
-              />              
+              />
             </div>
           )}
 

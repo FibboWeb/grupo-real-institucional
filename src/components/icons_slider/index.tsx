@@ -106,7 +106,7 @@ export default function SliderNavigational({ categories, title, text, isNoticias
       },
     ],
   };
-  
+
   return (
     <div>
       <div className="w-full flex flex-col gap-8">

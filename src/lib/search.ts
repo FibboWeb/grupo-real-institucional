@@ -5,8 +5,8 @@ export async function search(search: string, page = 1) {
     const response = await fetch(
       `${process.env.WP_URL_API}posts?search=${encodedString}&per_page=10&page=${page}&_embed=wp:featuredmedia,wp:term=1,author`,
     );
-    console.log(response.url)
-    console.log(response.ok)
+    console.log(response.url);
+    console.log(response.ok);
     const categoriesName = [];
     const totalPages = response.headers.get("X-WP-TotalPages");
     const totalPosts = response.headers.get("X-WP-Total");
@@ -18,6 +18,6 @@ export async function search(search: string, page = 1) {
     });
     return { data, totalPages, totalPosts, categoriesName };
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 }
