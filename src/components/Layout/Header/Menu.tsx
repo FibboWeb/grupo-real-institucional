@@ -232,7 +232,7 @@ export default function Menu() {
                       )}
                     </p>
                   )}
-                  
+
                   {item.node.url && item.node.childItems?.edges && item.node.childItems?.edges.length > 0 && (
                     <>
                       <ul

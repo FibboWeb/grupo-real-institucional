@@ -19,47 +19,33 @@ type BoardCardsProps = {
 };
 
 const settings = {
-  infinite: false,
-  speed: 4500,
+  orientation: "horizontal",
+  speed: 500,
   slidesToShow: 4,
   slidesToScroll: 1,
-  autoplay: false,
-  autoplaySpeed: 0,
-  cssEase: "linear",
-  arrows: false,
-  draggable: false,
-  touchMove: false,
-  focusOnSelect: false,
-  swipe: false,
+  useTransform: true,
+  autoplay: true,
+  autoplaySpeed: 4500,
+  dots: true,
   responsive: [
     {
-      breakpoint: 768,
+      breakpoint: 1360,
       settings: {
-        slidesToShow: 1.25,
+        slidesToShow: 3,
         slidesToScroll: 1,
-        speed: 500,
-        draggable: true,
-        swipe: true,
-        dots: true,
-        touchMove: true,
       },
     },
     {
-      breakpoint: 1024,
+      breakpoint: 830,
       settings: {
         slidesToShow: 2,
         slidesToScroll: 2,
-        speed: 500,
-        draggable: true,
-        swipe: true,
-        dots: true,
-        touchMove: true,
       },
     },
     {
-      breakpoint: 1280,
+      breakpoint: 560,
       settings: {
-        slidesToShow: 4,
+        slidesToShow: 1,
         slidesToScroll: 1,
       },
     },

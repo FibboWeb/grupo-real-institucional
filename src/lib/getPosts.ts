@@ -1,4 +1,4 @@
-'use server';
+"use server";
 import { GET_ALL_POSTS_SLUG } from "@/graphql/posts";
 import { client } from "./apollo-client";
 
@@ -23,15 +23,15 @@ export async function getAllPosts() {
 
       // console.log("Response: ",response.data.posts)
       const { nodes, pageInfo } = response.data.posts;
-      
+
       allPosts = [
         ...allPosts,
-        ...nodes.map(edge => {
+        ...nodes.map((edge) => {
           const categories = edge.categories || [];
           return {
             title: edge.title,
             slug: edge.slug,
-            categories: categories
+            categories: categories,
           };
         }),
       ];
@@ -54,5 +54,3 @@ export async function getAllPosts() {
     };
   }
 }
-
-

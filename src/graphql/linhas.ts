@@ -55,7 +55,7 @@ export const query = gql`
 
 export const GET_ALL_PRODUCTS = gql`
   query GET_ALL_PRODUCTS {
-    produtos (first: 5000){
+    produtos(first: 5000) {
       edges {
         node {
           id
@@ -64,7 +64,7 @@ export const GET_ALL_PRODUCTS = gql`
       }
     }
   }
-`
+`;
 
 export const GET_SEO_LINES = gql`
   query getSEOLines {

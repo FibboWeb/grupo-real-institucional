@@ -34,46 +34,96 @@ import "./index.css";
 const Slider = dynamic(() => import("react-slick"), { ssr: false });
 
 function InfoCardsSlider({ children }: { children: React.ReactNode }) {
+  // const settings = {
+  //   slidesToShow: 4,
+  //   slidesToScroll: 1,
+  //   infinite: false,
+  //   speed: 500,
+  //   dots: true,
+  //   responsive: [
+  //     {
+  //       breakpoint: 1660,
+  //       settings: {
+  //         slidesToShow: 3.5,
+  //         slidesToScroll: 1,
+  //         dots: true,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 1400,
+  //       settings: {
+  //         slidesToShow: 2.75,
+  //         slidesToScroll: 2,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 1200,
+  //       settings: {
+  //         slidesToShow: 2.25,
+  //         slidesToScroll: 2,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 1024,
+  //       settings: {
+  //         slidesToShow: 2,
+  //         slidesToScroll: 2,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 580,
+  //       settings: {
+  //         slidesToShow: 1.2,
+  //         slidesToScroll: 1,
+  //       },
+  //     },
+  //   ],
+  // };
+
   const settings = {
-    slidesToShow: 3.55,
-    slidesToScroll: 1,
-    infinite: false,
+    orientation: "horizontal",
     speed: 500,
+    slidesToShow: 6.25,
+    slidesToScroll: 1,
+    useTransform: true,
+    autoplay: true,
+    autoplaySpeed: 4500,
     dots: true,
     responsive: [
       {
-        breakpoint: 1660,
+        breakpoint: 1920,
         settings: {
-          slidesToShow: 3.5,
+          slidesToShow: 5,
           slidesToScroll: 1,
           dots: true,
         },
       },
       {
-        breakpoint: 1400,
+        breakpoint: 1660,
         settings: {
-          slidesToShow: 2.75,
-          slidesToScroll: 2,
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          dots: true,
         },
       },
       {
-        breakpoint: 1200,
+        breakpoint: 1360,
         settings: {
-          slidesToShow: 2.25,
-          slidesToScroll: 2,
+          slidesToShow: 3,
+          slidesToScroll: 1,
         },
       },
       {
-        breakpoint: 1024,
+        breakpoint: 830,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
         },
       },
       {
-        breakpoint: 580,
+        breakpoint: 480,
         settings: {
-          slidesToShow: 1.2,
+          slidesToShow: 1,
           slidesToScroll: 1,
         },
       },

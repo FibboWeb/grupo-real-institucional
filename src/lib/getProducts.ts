@@ -39,7 +39,6 @@ export async function getAllProducts(): Promise<any> {
     const ProductsBylines = await client.query({
       query: GET_ALL_PRODUCTS,
     });
-    
     return {
       data: ProductsBylines.data.produtos.edges,
       loading: false,

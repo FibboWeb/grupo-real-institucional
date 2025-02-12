@@ -120,6 +120,33 @@ export default function ClaudioMartinsReal() {
                 sociedade campo-grandense - 2013.
               </p>
             </InfoCard>
+            <InfoCard title={"Relevantes Serviços"} svg={"/certified-clean.svg"}>
+              <p>Título concedido pela Sociedade de Veterinária do Distrito Federal – 1998.</p>
+            </InfoCard>
+            <InfoCard title={"Relevantes Serviços"} svg={"/certified-clean.svg"}>
+              <p>Título concedido pela SOVERGS. Sociedade de Veterinária do Rio Grande do Sul – 1999</p>
+            </InfoCard>
+            <InfoCard title={"Precursor da Homeopatia Veterinária Brasileira"} svg={"/certified-clean.svg"}>
+              <p>Título outorgado pela ABMVH. Associação Brasileira dos Médicos veterinários Homeopatas. SP – 2000.</p>
+            </InfoCard>
+            <InfoCard title={"Sócio Honorário"} svg={"/certified-clean.svg"}>
+              <p>Título concedido pela Sociedade de Medicina Veterinária do Rio Grande do Sul, SOVERGS – 2005.</p>
+            </InfoCard>
+            <InfoCard title={"Membro Honorário"} svg={"/certified-clean.svg"}>
+              <p>Título concedido pela Academia de Medicina Veterinária do Rio Grande do Sul – 2007.</p>
+            </InfoCard>
+            <InfoCard title={"Comenda do Mérito Veterinário” no grau de Comendador."} svg={"/certified-clean.svg"}>
+              <p>Título concedido pela Sociedade Brasileira de Medicina Veterinária – 2007.</p>
+            </InfoCard>
+            <InfoCard title={"Prêmio Paulo Dacorso Filho"} svg={"/certified-clean.svg"}>
+              <p>
+                Maior distinção a ser concedida para um Med. Veterinário. O Prêmio foi concedido pelo Conselho Federal
+                de Medicina Veterinária – 2007
+              </p>
+            </InfoCard>
+            <InfoCard title={"Grã Cruz do Mérito Veterinário Brasileiro"} svg={"/certified-clean.svg"}>
+              <p>Título concedido pela Sociedade Brasileira de Medicina Veterinária – 2010</p>
+            </InfoCard>
           </InfoCardsSlider>
         </div>
       </div>
@@ -286,12 +313,14 @@ export default function ClaudioMartinsReal() {
         imagePath={Claudio7}
       />
 
-      <Newsletter
-        sectionTitle={"Inscreva-se na nossa newsletter"}
-        sectionDescription={
-          "Receba novidades e informações exclusivas sobre nossos produtos e novidades diretamente no seu e-mail."
-        }
-      />
+      <div className="fb_container">
+        <Newsletter
+          sectionTitle={"Inscreva-se na nossa newsletter"}
+          sectionDescription={
+            "Receba novidades as informações exclusivas sobre nossos produtos e novidades diretamente no seu e-mail."
+          }
+        />
+      </div>
     </>
   );
 }

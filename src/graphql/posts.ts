@@ -117,22 +117,21 @@ export const GET_LAST_POSTS_EVENTOS = gql`
 `;
 
 export const GET_ALL_POSTS_SLUG = gql`
-query GET_ALL_POSTS_SLUG($first: Int!, $after: String) {
-  posts(first: $first, after: $after) {
-    nodes {
-      categories(first: 1) {
-        nodes {
-          name
-          slug
+  query GET_ALL_POSTS_SLUG($first: Int!, $after: String) {
+    posts(first: $first, after: $after) {
+      nodes {
+        categories(first: 1) {
+          nodes {
+            name
+            slug
+          }
         }
+        slug
       }
-      slug
-    }
-    pageInfo {
-      hasNextPage
-      endCursor
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
     }
   }
-}
-
 `;

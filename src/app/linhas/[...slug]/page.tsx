@@ -31,14 +31,12 @@ type Props = {
  * @returns {Metadata} generated metadata
  */
 
-export async function generateMetadata(
-  { params, searchParams}: Props,
-): Promise<Metadata> {
+export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
   // read route params
-  let slug = (await params).slug
+  let slug = (await params).slug;
   const pageParam = (await searchParams).page;
   const page = parseInt(Array.isArray(pageParam) ? pageParam[0] : pageParam || "1");
-  let lineInfo
+  let lineInfo;
   // fetch data
   if (slug[0] === "real-h") {
     lineInfo = await fetchYoastSEO("linha-nutricao", "linhas");
@@ -67,7 +65,7 @@ export async function generateMetadata(
       images: [lineInfo.og_image ? lineInfo.og_image[0].url : ""],
     },
     alternates: {
-      canonical: `https://gruporealbr.com.br/linhas/${slug[0]}${(page === 1) ? "" : `?page=${page}`}`,
+      canonical: `https://gruporealbr.com.br/linhas/${slug[0]}${page === 1 ? "" : `?page=${page}`}`,
     },
   };
 }
