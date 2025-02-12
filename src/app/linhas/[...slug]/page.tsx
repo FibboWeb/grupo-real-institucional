@@ -44,7 +44,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
     lineInfo = await fetchYoastSEO("linha-saude", "linhas");
   } else if (slug[0] === "homeopet") {
     lineInfo = await fetchYoastSEO("linha-homeo-pet", "linhas");
-  }  
+  }
 
   if (!lineInfo) {
     notFound();
@@ -77,7 +77,7 @@ export default async function PageLinhas({ params, searchParams }) {
   const page = parseInt((await searchParams).page || "1");
 
   const { banner01, banner02, textBanner01, textBanner02 } = await getSEOLines2(slug[0]);
-  console.log("textos ",textBanner01, textBanner02);
+  console.log("textos ", textBanner01, textBanner02);
 
   return (
     <section className="relative mt-24">
@@ -103,19 +103,19 @@ export default async function PageLinhas({ params, searchParams }) {
           <GridProduct slug={slug} searchParams={page} />
         </div>
         <div className="flex flex-col lg:flex-row lg:flex-nowrap gap-8 mb-20">
-          <BannerLinesFooter 
+          <BannerLinesFooter
             title={`Conheça os produtos`}
             hiddenTitle={false}
             imgBackground={banner01 ? banner01 : image02.src}
-            children={textBanner01} 
-            ctaLink="/linhas/cmr"  
+            children={textBanner01}
+            ctaLink="/linhas/cmr"
           />
-          <BannerLinesFooter 
+          <BannerLinesFooter
             title={`Conheça os produtos`}
             hiddenTitle={false}
             imgBackground={banner02 ? banner02 : image02.src}
-            children={textBanner02} 
-            ctaLink="/linhas/real-h"  
+            children={textBanner02}
+            ctaLink="/linhas/real-h"
           />
         </div>
         <div>

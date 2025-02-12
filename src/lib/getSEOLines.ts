@@ -25,7 +25,6 @@ export async function fetchYoastData(slug) {
 }
 
 export async function getInfoLine(slug) {
-
   if (slug !== undefined && slug !== null) {
     const url = `https://realh.com.br/wp-json/wp/v2/categoria_produto?slug=${slug}&_embed=wp:post_type`;
 
@@ -49,7 +48,9 @@ export async function getSEOLines2(context: string) {
     const fetchedLines = await fetch(`
       https://realh.com.br/wp-json/wp/v2/categoria_produto?slug=${context}`);
     const data = await fetchedLines.json();
-    const imgFetched = await fetch(`https://realh.com.br/wp-json/wp/v2/media/${data[0]?.meta?.categoria_produto_imagem}`);
+    const imgFetched = await fetch(
+      `https://realh.com.br/wp-json/wp/v2/media/${data[0]?.meta?.categoria_produto_imagem}`,
+    );
     const imgUrl = await imgFetched.json();
     return {
       props: data,

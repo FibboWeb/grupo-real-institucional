@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import Breadcrumb from "@/components/BreadCrumb";
 import CardBlog from "@/components/Layout/CardBlogAPI";
 import Pagination from "@/components/Pagination";
@@ -62,8 +62,7 @@ function GridPost() {
               }`}
             >
               {/* Skeleton Loader */}
-              {loading &&
-                Array.from({ length: 6 }).map((_, index) => <SkeletonCard key={index} />)}
+              {loading && Array.from({ length: 6 }).map((_, index) => <SkeletonCard key={index} />)}
 
               {/* Renderização dos Posts */}
               {!loading &&
@@ -87,9 +86,7 @@ function GridPost() {
               {!loading && data.length === 0 && (
                 <div className="col-span-1 lg:col-span-2 text-center relative mt-11">
                   <h3 className="text-fb_blue_main font-bold text-2xl">Nenhum resultado encontrado</h3>
-                  <p className="text-fb_text_gray mt-3">
-                    Tente novamente com diferentes palavras ou termos de busca.
-                  </p>
+                  <p className="text-fb_text_gray mt-3">Tente novamente com diferentes palavras ou termos de busca.</p>
                 </div>
               )}
             </div>

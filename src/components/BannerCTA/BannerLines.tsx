@@ -48,7 +48,7 @@ export default async function BannerLines({
   children,
   className,
   id,
-  hiddenTitle = true
+  hiddenTitle = true,
 }: BannerLinesProps) {
   let infos;
   let infos2;
@@ -60,8 +60,9 @@ export default async function BannerLines({
   } else if (slug_context === "homeopet") {
     infos = await getInfoLine(slug_context);
   }
-  
-  const { props, urlImagemHero, text, banner01, banner02, textBanner01, textBanner02 } = await getSEOLines2(slug_context);
+
+  const { props, urlImagemHero, text, banner01, banner02, textBanner01, textBanner02 } =
+    await getSEOLines2(slug_context);
   console.log("infos buscada", urlImagemHero);
 
   return (
@@ -75,8 +76,8 @@ export default async function BannerLines({
         className="w-full h-full object-cover rounded-lg border-none bg-cover"
       />
       <div className="absolute inset-0 flex flex-col gap-6 justify-center mx-auto w-full text-white pl-8">
-        { infos && (
-          <h1 className="text-5xl md:text-4xl font-bold">{ hiddenTitle ? infos.yoast_head_json.title : title}</h1>
+        {infos && (
+          <h1 className="text-5xl md:text-4xl font-bold">{hiddenTitle ? infos.yoast_head_json.title : title}</h1>
         )}
         <div className="w-full md:w-2/5 min-h-[72px]" dangerouslySetInnerHTML={{ __html: text || "" }} />
         <div className="w-fit">
@@ -96,7 +97,7 @@ export async function BannerLinesFooter({
   children,
   className,
   id,
-  hiddenTitle = true
+  hiddenTitle = true,
 }: BannerLinesProps) {
   let infos;
   let infos2;
@@ -108,8 +109,9 @@ export async function BannerLinesFooter({
   } else if (slug_context === "homeopet") {
     infos = await getInfoLine(slug_context);
   }
-  
-  const { props, urlImagemHero, text, banner01, banner02, textBanner01, textBanner02 } = await getSEOLines2(slug_context);
+
+  const { props, urlImagemHero, text, banner01, banner02, textBanner01, textBanner02 } =
+    await getSEOLines2(slug_context);
   console.log("infos buscada", urlImagemHero);
 
   return (
@@ -123,7 +125,7 @@ export async function BannerLinesFooter({
         className="w-full h-full object-cover rounded-lg border-none bg-cover"
       />
       <div className="absolute inset-0 flex flex-col gap-6 justify-center mx-auto w-full text-white pl-8">
-          <h2 className="text-5xl md:text-4xl font-bold">{title}</h2>
+        <h2 className="text-5xl md:text-4xl font-bold">{title}</h2>
         <div className="w-full md:w-2/5 min-h-[72px]" dangerouslySetInnerHTML={{ __html: children || "" }} />
         <div className="w-fit">
           <BtnCallToAction content="Ler mais" color="fb_blue_button" />
