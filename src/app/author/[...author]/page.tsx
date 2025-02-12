@@ -19,7 +19,15 @@ export async function generateMetadata({ params }: Props, searchParams): Promise
   const pageParam = (await searchParams).page;
   const page = parseInt(Array.isArray(pageParam) ? pageParam[0] : pageParam || "1");
 
-  let infos;
+export async function generateMetadata(
+  { params }: Props,
+  searchParams
+): Promise<Metadata> {
+  const slug = (await params).author[(await params).author.length - 1]
+  const pageParam = (await searchParams).page;
+  const page = parseInt(Array.isArray(pageParam) ? pageParam[0] : pageParam || "1");
+
+  let infos
   infos = await fetchYoastSEO(slug, "users");
 
   if (!infos) {

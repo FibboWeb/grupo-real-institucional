@@ -48,7 +48,10 @@ export default function SliderProductsRecommended({ products, currentProductSlug
     <Slider {...settings}>
       {filteredProducts.map((item, index) => (
         <div key={index} className="flex flex-col gap-4">
-          <Link href={`/produtos/${item.slug}`} title={`Ir para a página do produto ${item.title.rendered}`}>
+          <Link
+            href={`/produtos/${item.slug}`}
+            title={`Ir para a página do produto ${item.title.rendered}`}
+          >
             <Image
               src={item._embedded["wp:featuredmedia"][0]?.source_url}
               width={284}
