@@ -30,11 +30,9 @@ type Props = {
  * @returns {Metadata} generated metadata
  */
 
-export async function generateMetadata(
-  { params, searchParams }: Props,
-): Promise<Metadata> {
+export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
   // read route params
-  const slug = (await params).artigos
+  const slug = (await params).artigos;
   const pageParam = (await searchParams).page;
   const page = parseInt(Array.isArray(pageParam) ? pageParam[0] : pageParam || "1");
   // fetch data

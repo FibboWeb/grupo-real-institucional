@@ -145,10 +145,7 @@ export default async function PageProduct({ params }) {
               <hr className="w-20 h-[6px] bg-fb_blue_main rounded-full" />
             </div>
             <div className="w-full my-6 ">
-              <SliderProductsRecommended
-                products={productsRecommendations.products}
-                currentProductSlug={slug}
-              />
+              <SliderProductsRecommended products={productsRecommendations.products} currentProductSlug={slug} />
             </div>
           </div>
         </div>

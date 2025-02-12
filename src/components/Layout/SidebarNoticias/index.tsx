@@ -5,7 +5,7 @@ import PostsMosView from "@/components/PostsMosView";
 
 function SidebarNoticias() {
   return (
-    <div className="sidebar-element p-1">
+    <div className="sidebar-element px-1">
       <SearchBox />
       <CategoryList />
       <PostsMosView />

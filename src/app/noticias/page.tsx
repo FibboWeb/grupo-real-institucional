@@ -12,12 +12,12 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 type Props = {
-  params: Promise<{ slug: string }>
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
-}
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
 
-export async function generateMetadata({ params, searchParams}: Props,) {
-  let infos
+export async function generateMetadata({ params, searchParams }: Props) {
+  let infos;
   infos = await fetchYoastSEO("noticias", "categories");
   const pageParam = (await searchParams).page;
   const page = parseInt(Array.isArray(pageParam) ? pageParam[0] : pageParam || "1");
@@ -41,7 +41,7 @@ export async function generateMetadata({ params, searchParams}: Props,) {
       images: [infos.og_image ? infos.og_image[0].url : ""],
     },
     alternates: {
-      canonical: `https://gruporealbr.com.br/noticias${(page === 1) ? "" : `?page=${page}`}`,
+      canonical: `https://gruporealbr.com.br/noticias${page === 1 ? "" : `?page=${page}`}`,
     },
   };
 }
