@@ -15,8 +15,6 @@
 }
 
 .flip-card {
-  width: 24rem;
-  height: 36rem;
   position: relative;
   overflow: hidden;
   border-radius: 10px;
