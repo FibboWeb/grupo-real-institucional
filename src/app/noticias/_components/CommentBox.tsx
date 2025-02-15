@@ -1,12 +1,13 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import { handleSubmitComment } from "@/lib/getComments";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ChevronDown, ChevronUp, Pencil, UserCircleIcon } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-// Schema de validação com Zod
+// Schema de validação com Zod para comentário e respostas
 const commentSchema = z.object({
   name: z.string().min(3, "O nome deve ter pelo menos 3 caracteres."),
   email: z.string().email("Digite um e-mail válido."),
@@ -15,7 +16,15 @@ const commentSchema = z.object({
 
 type CommentFormData = z.infer<typeof commentSchema>;
 
-function CommentForm({ postId }: { postId: string }) {
+type CommentFormProps = {
+  postId: string;
+  commentId?: string;
+  replyComment?: boolean;
+  authorName?: string;
+  cancelReply?: VoidFunction;
+}
+
+function CommentForm({ postId, commentId, replyComment, authorName, cancelReply }: CommentFormProps) {
   const {
     register,
     handleSubmit,
@@ -31,25 +40,24 @@ function CommentForm({ postId }: { postId: string }) {
   async function onSubmit(data: CommentFormData) {
     console.log("Enviando comentário...", data);
     try {
-      const response = await fetch(
-        `https://www.realh.com.br/wp-json/wp/v2/comments?post=${postId}&content=${data.comment}&author_name=${data.name}&author_email=${data.email}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        },
-      );
+      const response = await handleSubmitComment(data, postId, commentId);
 
-      if (response) {
+      console.log("Response:", response);
+
+      if(response.error) {
+        setErrorMessage("Erro ao enviar o comentário, por favor tente novamente.");
+        setTimeout(() => {
+          setErrorMessage("");
+        }, 1000);
+        return
+      } else {
         setSuccessMessage("Comentário enviado com sucesso!");
         setTimeout(() => {
           setSuccessMessage("");
         }, 1000);
         reset();
-      } else {
-        throw new Error("Erro ao enviar o comentário.");
       }
+
     } catch (err) {
       setErrorMessage(err.message);
       setTimeout(() => {
@@ -60,7 +68,12 @@ function CommentForm({ postId }: { postId: string }) {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4" action={`${process.env.WP_URL_API}comments`}>
+    <form id="comment-form" onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+        { replyComment && (
+          <div className="flex flex-col gap-4 w-full">
+            <p className="text-fb_blue_main text-base">Você está respondendo ao comentário do(a) <span className="font-bold">{authorName}</span> <button className="text-fb_blue" onClick={() => cancelReply()}>Cancelar</button></p>
+          </div>
+        )}
       <div className="flex flex-col gap-4 md:flex-row">
         <div className="flex flex-col gap-4 w-full">
           <label htmlFor="name" className="block text-sm font-medium text-gray-700 mt-2">
@@ -71,7 +84,7 @@ function CommentForm({ postId }: { postId: string }) {
             placeholder="Digite seu nome"
             id="name"
             required
-            className="mt-1 p-2 w-full border border-fb_blue rounded-md"
+            className="mt-1 p-2 w-full border border-fb_blue rounded-md outline-fb_blue"
             {...register("name")}
           />
           {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
@@ -85,7 +98,7 @@ function CommentForm({ postId }: { postId: string }) {
             placeholder="Digite seu email"
             id="email"
             required
-            className="mt-1 p-2 w-full border border-fb_blue rounded-md"
+            className="mt-1 p-2 w-full border border-fb_blue rounded-md outline-fb_blue"
             {...register("email")}
           />
           {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
@@ -101,7 +114,7 @@ function CommentForm({ postId }: { postId: string }) {
           id="comment_content"
           placeholder="Digite seu comentário"
           required
-          className="mt-1 p-2 w-full border border-fb_blue rounded-md"
+          className="mt-1 p-2 w-full border border-fb_blue rounded-md outline-fb_blue"
           {...register("comment")}
         />
         {errors.comment && <p className="text-red-500 text-sm">{errors.comment.message}</p>}
@@ -121,7 +134,10 @@ function CommentForm({ postId }: { postId: string }) {
 
 function CommentBox({ comments, idPost }) {
   const [showReplies, setShowReplies] = useState<{ [key: string]: boolean }>({});
-  const [showReplyInput, setShowReplyInput] = useState<{ [key: string]: boolean }>({});
+  const [commentId, setCommentId] = useState<string | null>(null);
+  const [replyComment, setReplyComment] = useState(false);
+  const [authorComment, setAuthorComment] = useState<string | null>(null);
+
 
   const toggleReplies = (commentId: string) => {
     setShowReplies((prev) => ({
@@ -130,14 +146,22 @@ function CommentBox({ comments, idPost }) {
     }));
   };
 
-  const onToggleReplyComment = (commentId: string) => {
-    setShowReplyInput((prev) => ({
-      ...prev,
-      [commentId]: !prev[commentId],
-    }));
+  const onToggleReplyComment = (commentId: string, authorName: string) => {
+    // levar o usuário para o formulário de comentário
+    const commentForm = document.getElementById("comment-form");
+    if (commentForm) {
+      commentForm.scrollIntoView({ behavior: "smooth" });
+    }
+    console.log(commentId);
+    setCommentId(commentId);
+    setAuthorComment(authorName);
+    setReplyComment(true);
   };
 
-  const [isSubmittingReply, setIsSubmittingReply] = useState<boolean>(false);
+  const onCancelReply = () => {
+    setReplyComment(false);
+    setCommentId(null);
+  }
 
   return (
     <div className="space-y-8 p-4">
@@ -164,37 +188,15 @@ function CommentBox({ comments, idPost }) {
                           <ChevronDown className="ml-1 h-3 w-3" />
                         )}
                       </div>
-                      <div className="flex gap-1">
-                        <p className="relative">
-                          <div className="flex gap-1 cursor-pointer" onClick={() => onToggleReplyComment(comment.id)}>
-                            Responder <Pencil size={16} />
-                          </div>
-                        </p>
-                      </div>
-                    </div>
-                    <div>
-                      {showReplyInput[comment.id] && (
-                        <form action="" method="post" className="flex flex-col">
-                          <textarea
-                            className={`block border border-fb_blue rounded-md p-2 mt-2 w-full ${showReplyInput[comment.id] ? "block opacity-100 visible" : "opacity-0 h-0 invisible overflow-hidden"}`}
-                            name="replyComment"
-                            rows={3}
-                            id={`replyComment-${comment.id}`}
-                            placeholder="Escreva sua resposta..."
-                          ></textarea>
-                          <Button
-                            className="w-fit px-3 py-6 mt-4 bg-fb_blue hover:bg-fb_blue text-white font-bold text-base"
-                            type="submit"
-                            disabled={isSubmittingReply}
-                          >
-                            {isSubmittingReply ? "Enviando..." : "Enviar comentário"}
-                          </Button>
-                        </form>
-                      )}
                     </div>
                   </div>
                 </div>
               )}
+              <div className="relative text-sm">
+                <div className="flex gap-1 cursor-pointer" onClick={() => onToggleReplyComment(comment.databaseId, comment.author.name)}>
+                  Responder <Pencil size={16} />
+                </div>
+              </div>
             </div>
           </div>
           {comment.replies.nodes.length > 0 && showReplies[comment.id] && (
@@ -248,7 +250,13 @@ function CommentBox({ comments, idPost }) {
           )}
         </div>
       ))}
-      <CommentForm postId={idPost} />
+      <CommentForm
+        postId={idPost}
+        commentId={commentId}
+        replyComment={replyComment}
+        cancelReply={onCancelReply}
+        authorName={authorComment}  
+      />
     </div>
   );
 }
