@@ -48,9 +48,9 @@ function InfoCards({ values }: ValuesSectionProps) {
     <div className="w-full max-h-full">
       {values.map((value, index) => (
         <div key={index} className={value.bg_image ? `${value.bg_image} relative bg-top bg-contain` : ""}>
-          {value.bg_image && <div className="absolute top-0 left-0 w-full h-full bg-white opacity-80 z-0"></div>}
+          {value.bg_image && <div className="absolute top-0 left-0 w-full h-full bg-white opacity-90 z-0"></div>}
           <div
-            className={`fb_container flex flex-col justify-between relative gap-24 ${index % 2 === 0 ? "lg:flex-row-reverse" : "lg:flex-row"} items-center py-12`}
+            className={`fb_container flex flex-col-reverse justify-between relative gap-24 ${index % 2 === 0 ? "lg:flex-row-reverse" : "lg:flex-row"} items-center py-12`}
           >
             <div
               className={` ${value.border ? "shadow-custom_image w-full lg:w-1/2 rounded-2xl" : "w-full lg:w-1/2"} `}
