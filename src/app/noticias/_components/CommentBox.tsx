@@ -192,11 +192,11 @@ function CommentBox({ comments, idPost }) {
                   </div>
                 </div>
               )}
-              <div className="relative text-sm">
+              {/* <div className="relative text-sm">
                 <div className="flex gap-1 cursor-pointer" onClick={() => onToggleReplyComment(comment.databaseId, comment.author.name)}>
                   Responder <Pencil size={16} />
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
           {comment.replies.nodes.length > 0 && showReplies[comment.id] && (
