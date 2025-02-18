@@ -56,7 +56,7 @@ export default function Page() {
 
 
   return (
-    <main className='relative mt-32 fb_container'>
+    <main className='relative fb_container'>
       <div className="flex flex-col gap-fb_space-section text-[#333333] text-lg mb-5">
         <div>
           <h1 className="text-3xl font-bold text-center">Atendimento ao Titular</h1>
