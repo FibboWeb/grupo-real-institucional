@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Page() {
   return (
-    <main className="relative mt-32">
+    <main className="relative">
       <div className="fb_container flex flex-col gap-fb_space-section text-[#333333] mb-5">
         <div>
           <h1 className="text-3xl font-bold text-center">Politica de qualidade</h1>

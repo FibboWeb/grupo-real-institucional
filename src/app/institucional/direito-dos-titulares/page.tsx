@@ -2,7 +2,7 @@ import React from "react";
 
 export default function PageDireitoDosTitular() {
   return (
-    <main className="fb_container relative mt-32 gap-fb_space-section mb-5">
+    <main className="fb_container relative gap-fb_space-section mb-5">
       <div className="flex flex-col gap-fb_space-section">
         <div>
           <h1 className="text-3xl font-bold text-center">Lei Geral de Proteção de Dados (LGPD)</h1>

@@ -2,7 +2,7 @@ import React from "react";
 
 export default function PageCookies() {
   return (
-    <main className="fb_container relative mt-32 gap-fb_space-section mb-5">
+    <main className="fb_container relative gap-fb_space-section mb-5">
       <div className="flex flex-col gap-fb_space-section">
         <div>
           <h1 className="text-3xl font-bold text-center">Aviso de Cookies</h1>
@@ -88,21 +88,21 @@ export default function PageCookies() {
             <table className="w-full border border-fb_gray">
               <thead>
                 <tr className="border border-fb_gray">
-                  <th className="border border-fb_gray">Site Base</th>
-                  <th className="border border-fb_gray">Nome</th>
-                  <th className="border border-fb_gray">Domínio</th>
+                  <th className="border border-fb_gray break-words">Site Base</th>
+                  <th className="border border-fb_gray break-words">Nome</th>
+                  <th className="border border-fb_gray break-words">Domínio</th>
                 </tr>
               </thead>
               <tbody>
                 <tr className="border border-fb_gray">
-                  <td className="border border-fb_gray">homeopet.com.br</td>
-                  <td className="border border-fb_gray">_ga</td>
-                  <td className="border border-fb_gray">.homeopet.com.br</td>
+                  <td className="border border-fb_gray break-words">homeopet.com.br</td>
+                  <td className="border border-fb_gray break-words">_ga</td>
+                  <td className="border border-fb_gray break-words">.homeopet.<br/>com.br</td>
                 </tr>
                 <tr className="border border-fb_gray">
-                  <td className="border border-fb_gray">lojavirtual.realh.com.br</td>
-                  <td className="border border-fb_gray">_fbp</td>
-                  <td className="border border-fb_gray">.realh.com.br</td>
+                  <td className="border border-fb_gray break-words">lojavirtual.realh.com.br</td>
+                  <td className="border border-fb_gray break-words">_fbp</td>
+                  <td className="border border-fb_gray break-words">.realh.com.br</td>
                 </tr>
               </tbody>
             </table>
@@ -120,7 +120,7 @@ export default function PageCookies() {
                 <tr className="border border-fb_gray">
                   <td className="border border-fb_gray">realh.com.br</td>
                   <td className="border border-fb_gray">_GRECAPTCHA</td>
-                  <td className="border border-fb_gray">www.google.com</td>
+                  <td className="border border-fb_gray">www.google<br/>.com</td>
                 </tr>
                 <tr className="border border-fb_gray">
                   <td className="border border-fb_gray">realh.com.br</td>
