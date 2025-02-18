@@ -78,9 +78,9 @@ export default async function BannerLines({
       />
       <div className="absolute inset-0 flex flex-col gap-6 justify-center mx-auto w-full text-white pl-8">
         <h2 className="text-5xl md:text-4xl font-bold">{title}</h2>
-        <div className="w-full md:w-2/5 min-h-[72px]" dangerouslySetInnerHTML={{ __html: children || "" }} />
+        <div className="w-full md:w-2/5 min-h-[72px] line-clamp-6" dangerouslySetInnerHTML={{ __html: children || "" }} />
         <div className="w-fit">
-          <BtnCallToAction content="Ler mais" color="fb_blue_button" />
+          <BtnCallToAction content="Ler mais" color="fb_blue_button" ctaLink={ctaLink} showIcon={false}/>
         </div>
       </div>
     </div>
