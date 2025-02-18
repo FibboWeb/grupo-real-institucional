@@ -72,7 +72,7 @@ function CardBlog({
       <div
         className={`post-card relative ${
           isSlider ? "w-[320px] h-[440px]" : "w-full"
-        } rounded-2xl shadow-custom_shadow transform hover:scale-[1.02] duration-300 bg-white`}
+        } rounded-2xl shadow-custom_shadow transform hover:scale-[1.02] duration-300 bg-white mx-auto`}
       >
         <Link href={`${blogContext}/${postLink ? postLink : ""}`}>
           <Image

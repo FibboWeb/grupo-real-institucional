@@ -98,7 +98,7 @@ export const nossasMarcasInfos = [
       link: "/linhas/cmr",
       anchor: "IR PARA A LOJA",
     },
-    bg_image: "fb_gray_background",
+    bg_image: "bg-cmr-saude",
     border: true,
   },
   {
