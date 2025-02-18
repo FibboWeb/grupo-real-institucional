@@ -120,7 +120,7 @@ function Newsletter({
                 </div>
                 <div className="flex gap-1 text-white">
                   <input type="checkbox" name="consent" id="consent" {...register("consent")} onChange={(e) => setConsent(e.target.checked)}/>
-                  <label htmlFor="consent" className="text-sm">Ao enviar a mensagem, você nos autoriza a coletar os seus dados para que possamos contatá-lo e entender melhor seus objetivos com a mensagem, nos termos do nosso <Link href={"/politica-de-privacidade"} className="text-fb_blue hover:text-fb_blue" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "underline" }}>Aviso de Privacidade</Link></label>
+                  <label htmlFor="consent" className="text-sm text-neutral-400">Ao enviar a mensagem, você nos autoriza a coletar os seus dados para que possamos contatá-lo e entender melhor seus objetivos com a mensagem, nos termos do nosso <Link href={"/politica-de-privacidade"} className="text-fb_blue hover:text-fb_blue" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "underline" }}>Aviso de Privacidade</Link></label>
                 </div>
                 <Button
                   className="px-3 py-6 bg-fb_blue hover:bg-fb_blue text-white font-bold text-base"
