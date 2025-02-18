@@ -132,7 +132,7 @@ export default function InstitutionalLayout({
                       <li key={i} className="hover:text-blue-500 my-4 cursor-pointer font-medium">
                         <Link
                           href={`${categoria.itens[i].link}`}
-                          className={``}
+                          className={`${pathName === `${categoria.itens[i].link}` ? "text-fb_blue" : ""}`}
                         >
                           {item.anchor}
                         </Link>
