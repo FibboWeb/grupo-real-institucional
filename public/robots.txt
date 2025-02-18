@@ -1,8 +1,5 @@
 # *
 User-agent: *
-Disallow: /api*
-Disallow: /private*
-Disallow: /server-sitemap.xml
 Allow: /
 
 # Host

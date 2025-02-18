@@ -3,10 +3,10 @@ import Image from "next/image";
 
 export default function PagePrivacidade() {
   return (
-    <main className="fb_container relative mt-32 gap-fb_space-section">
+    <main className="fb_container relative gap-fb_space-section">
       <div className="flex flex-col gap-fb_space-section">
         <div>
-          <h1 className="text-3xl font-bold text-center">Seja bem-vindo ao Portal LGPD do Grupo Real</h1>
+          <h1 className="text-3xl font-bold text-center flex">Seja bem-vindo ao Portal LGPD do Grupo Real</h1>
         </div>
         <div className="flex flex-col gap-4 text-[#333333]">
           <h2 className="text-xl font-semibold text-fb_blue_main text-center">AVISO DE PRIVACIDADE</h2>
@@ -21,12 +21,14 @@ export default function PagePrivacidade() {
           <ol className="flex flex-col gap-3">
             <li className="flex flex-col gap-2">
               <h2 className="text-xl font-semibold text-fb_blue_main">1. DAS INFORMAÇÕES ÚTEIS</h2>
-              <p>
-                A Real H é representada por um grupo de empresas que exercem atividades comerciais voltadas à nutrição e
-                saúde animal e no âmbito da Lei Geral de Proteção de Dados, será qualificada como predominantemente
-                Controladora, na medida que impõe decisões sobre os dados pessoais pela quais têm a obrigação de
-                tratamento:
-              </p>
+              <div>
+                <p>
+                  A Real H é representada por um grupo de empresas que exercem atividades comerciais voltadas à nutrição e
+                  saúde animal e no âmbito da Lei Geral de Proteção de Dados, será qualificada como predominantemente
+                  Controladora, na medida que impõe decisões sobre os dados pessoais pela quais têm a obrigação de
+                  tratamento:
+                </p>
+              </div>
               <div className="h-auto w-full">
                 <Image
                   src="/images/institucional/tabela-real-cia-cmr-laboratorio-cnpj.webp"
@@ -40,23 +42,29 @@ export default function PagePrivacidade() {
             </li>
             <li className="flex flex-col gap-2">
               <h2 className="text-xl font-semibold text-fb_blue_main">2. DO ENCARREGADO DE PROTEÇÃO DE DADOS</h2>
-              <p>
-                O Encarregado de Proteção de Dados é o responsável escolhido pelas empresas REAL H para atuar como canal
-                de comunicação entre o Controlador, os titulares de dados (clientes, representantes, fornecedores e
-                colaboradores) e a Autoridade Nacional de Proteção de Dados (ANPD), quando necessário e será
-                representado por:
-              </p>
-              <p>
-                Encarregado de Proteção de Dados as a service: Deborah Francielle Mesquita Polsaque Alves Sociedade
-                Individual de Advocacia CNPJ 34.283.369/0001-70 E-mail de contato: lgpd@realh.com.br
-              </p>
+              <div>
+                <p>
+                  O Encarregado de Proteção de Dados é o responsável escolhido pelas empresas REAL H para atuar como canal
+                  de comunicação entre o Controlador, os titulares de dados (clientes, representantes, fornecedores e
+                  colaboradores) e a Autoridade Nacional de Proteção de Dados (ANPD), quando necessário e será
+                  representado por:
+                </p>
+              </div>
+              <div>
+                <p>
+                  Encarregado de Proteção de Dados as a service: Deborah Francielle Mesquita Polsaque Alves Sociedade
+                  Individual de Advocacia CNPJ 34.283.369/0001-70 E-mail de contato: lgpd@realh.com.br
+                </p>
+              </div>
             </li>
             <li className="flex flex-col gap-2">
               <h2 className="text-xl font-semibold text-fb_blue_main">3. DAS DEFINIÇÕES.</h2>
-              <p>
-                Para facilitar a leitura e compreensão do presente Aviso de Privacidade, as empresas REAL H apresentam
-                abaixo, algumas definições importantes trazidas pela Lei Geral de Proteção de Dados:
-              </p>
+              <div>
+                <p>
+                  Para facilitar a leitura e compreensão do presente Aviso de Privacidade, as empresas REAL H apresentam
+                  abaixo, algumas definições importantes trazidas pela Lei Geral de Proteção de Dados:
+                </p>
+              </div>
               <div className="flex flex-col gap-2">
                 <div className="h-auto">
                   <Image
@@ -84,11 +92,12 @@ export default function PagePrivacidade() {
               <h2 className="text-xl font-semibold text-fb_blue_main">
                 4. DAS BASES LEGAIS PARA O TRATAMENTO DE DADOS
               </h2>
-              <p>
+              <div>
                 Tendo em vista as atividades desenvolvidas pela Controladora no ramo da nutrição e saúde animal,
                 cumpre-se esclarecer que todas as atividades de tratamento devem estar obrigatoriamente pautadas em uma
                 das bases legais inseridas na Lei Geral de Proteção de Dados. Para o tratamento envolvendo dados
                 pessoais, as bases estão descrita nos artigos 7º:
+              </div>
                 <ol className="flex flex-col gap-3 mt-3 mx-6">
                   <li>
                     <span className="font-bold">I</span>. Mediante o fornecimento de consentimento pelo titular;
@@ -135,7 +144,6 @@ export default function PagePrivacidade() {
                     legislação pertinente.
                   </li>
                 </ol>
-              </p>
             </li>
             <li>
               <p>Para o tratamento envolvendo dados pessoais sensíveis, as bases estão descrita nos artigos 11º:</p>

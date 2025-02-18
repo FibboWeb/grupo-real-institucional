@@ -2,7 +2,7 @@ import BtnCallToAction from "@/components/Layout/Buttons/BtnCallToAction/BtnCall
 
 export default function PageLGPD() {
   return (
-    <main className="fb_container relative mt-24 gap-fb_space-section">
+    <main className="fb_container relative gap-fb_space-section">
       <div className="flex flex-col gap-fb_space-section">
         <div>
           <h1 className="text-3xl font-bold text-center">Política de privacidade</h1>
