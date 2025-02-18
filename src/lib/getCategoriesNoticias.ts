@@ -28,22 +28,22 @@ export async function fetchCategoryId(slug) {
 
 export async function fetchPosts(categoryIds, page = 1, postsPerPage = 6) {
   const categoryIdsString = Array.isArray(categoryIds) ? categoryIds.join(",") : categoryIds;
-
   const res = await fetch(
     `${process.env.WP_URL_API}posts?categories=${categoryIdsString}&per_page=${postsPerPage}&page=${page}&_embed=author,wp:featuredmedia`,
     {
       next: { revalidate: 3600 },
     },
   );
-
+  
   if (!res.ok) {
     throw new Error("Erro ao buscar os posts");
   }
-
+  
   const data = await res.json();
   const totalPosts = res.headers.get("X-WP-Total");
   const totalPages = res.headers.get("X-WP-TotalPages");
-
+  console.log(totalPages)
+  
   const postsWithImages = data.map((post) => {
     const postImage = post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || null;
     const postAuthor = post._embedded?.["author"]?.[0]?.name || null;

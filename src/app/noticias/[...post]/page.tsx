@@ -10,7 +10,8 @@ import { notFound } from "next/navigation";
 import "./post.css";
 import { Metadata } from "next";
 import { fetchYoastSEO } from "@/lib/getCategorias";
-
+import CommentBox from "../_components/CommentBox";
+import { getComments } from "@/lib/getComments";
 type Props = {
   params: Promise<{ post: string }>;
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -65,7 +66,8 @@ export default async function PostPage({ params }) {
   const postSlug = (await params).post[0];
   const fetchedPost = await getPostDetails(postSlug);
   const post = fetchedPost.props.post;
-
+  const postComments = await getComments(post.id);
+  console.log("Comentários do post: ", postComments.props);
   if (!postSlug) {
     return notFound();
   }
@@ -116,6 +118,10 @@ export default async function PostPage({ params }) {
             authorBio={post.author.node?.description || ""}
             isSinglePage
             authorLink={post.author.node.slug}
+          />
+          <CommentBox
+            comments={postComments.props}
+            idPost={post.databaseId}
           />
         </div>
         <div className="sidebar w-full lg:w-1/3">
