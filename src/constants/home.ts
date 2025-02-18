@@ -84,7 +84,7 @@ export const nossasMarcasInfos = [
     badge_text: "NUTRIÇÃO",
     cta: {
       link: "/linhas/real-h",
-      anchor: "IR PARA A LOJA",
+      anchor: "COMPRE ONLINE",
     },
   },
   {
@@ -96,7 +96,7 @@ export const nossasMarcasInfos = [
     badge_text: "SAÚDE",
     cta: {
       link: "/linhas/cmr",
-      anchor: "IR PARA A LOJA",
+      anchor: "COMPRE ONLINE",
     },
     bg_image: "bg-cmr-saude",
     border: true,
@@ -110,7 +110,7 @@ export const nossasMarcasInfos = [
     badge_text: "SAÚDE",
     cta: {
       link: "/linhas/homeopet",
-      anchor: "IR PARA A LOJA",
+      anchor: "COMPRE ONLINE",
     },
   },
 ];

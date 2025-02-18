@@ -60,6 +60,8 @@ export async function getSEOLines2(context: string) {
       banner02: data[0]?.meta.banner_02,
       textBanner01: data[0]?.meta.texto_banner_01,
       textBanner02: data[0]?.meta.texto_banner_02,
+      linkBanner01: data[0]?.meta.link_banner_01,
+      linkBanner02: data[0]?.meta.link_banner_02,
     };
   } catch (error) {
     console.error("Erro ao buscar linhas:", error);
