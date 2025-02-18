@@ -13,3 +13,75 @@
 .slick-dots li.slick-active button:before {
   color: #1986c1 !important;
 }
+
+.flip-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  cursor: pointer;
+  background: linear-gradient(180deg, rgba(3, 29, 58, 0.2) 64.06%, #031d3a 100%);
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+}
+
+.flip-card-inner:active {
+  cursor: grabbing;
+}
+
+/* Imagem de fundo */
+.flip-card-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Overlay inicial - triângulo deitado sobre a imagem */
+.card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(3, 29, 58, 0.6) 64.06%, #031d3a 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: clip-path 0.4s ease-in-out, height 0.4s ease-in-out;
+  /* Triângulo deitado (inicialmente) */
+  clip-path: polygon(
+    0 100%,
+    100% 0,
+    100% 100%,
+    0 100%);
+}
+
+@media (max-width: 768px) {
+  .card-overlay {
+    display: none;
+  }
+}
+
+/* Texto dentro do overlay (inicialmente escondido) */
+.card-overlay h4, 
+.card-overlay p {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Hover: o triângulo vira um retângulo */
+.flip-card:hover .card-overlay {
+  clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+  height: 100%;
+}
+
+/* O texto aparece */
+.flip-card:hover .card-overlay h4, 
+.flip-card:hover .card-overlay p {
+  opacity: 1;
+}

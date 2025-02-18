@@ -22,8 +22,8 @@
   font-size: 12px !important;
 }
 
-@media screen and (max-width:375px){
+@media screen and (max-width: 375px) {
   .post-card {
-    width:269px;
+    width: 269px;
   }
 }

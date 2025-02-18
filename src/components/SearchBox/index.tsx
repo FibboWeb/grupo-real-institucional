@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { Search } from "lucide-react";
 import { useState } from "react";
 
@@ -10,10 +10,9 @@ function SearchBox() {
   };
 
   return (
-    <div className="search-block w-full mb-8 hidden">
+    <div className="search-block w-full mb-8">
       <div className="flex items-center w-full">
         <form className="w-full" action="/busca" method="get">
-
           <input
             id="search"
             name="search"
@@ -24,7 +23,7 @@ function SearchBox() {
             onChange={(e) => handleSearch(e.target.value)}
             // capturar o enter e redicionar o usuário para a página de busca com o resultado da sua pesquisa renderizada
             onKeyDownCapture={(e) => {
-              if (e.key === "Enter" && e.target as HTMLInputElement) {
+              if (e.key === "Enter" && (e.target as HTMLInputElement)) {
                 window.location.href = `/busca?busca=${searchString}`;
               }
             }}

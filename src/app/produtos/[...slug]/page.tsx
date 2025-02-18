@@ -4,7 +4,7 @@ import Accordion from "@/components/Layout/Accordion";
 import Newsletter from "@/components/Layout/Newsletter";
 import { Button } from "@/components/ui/button";
 import { fetchYoastSEO } from "@/lib/getCategorias";
-import { getProductPerSlug } from "@/lib/getProducts";
+import { getProductPerSlug, getProducts } from "@/lib/getProducts";
 import image03 from "@/public/images/banners/cao-e-gato.webp";
 import image02 from "@/public/images/banners/carne-vermelha-cortada.webp";
 import { Metadata } from "next";
@@ -16,18 +16,15 @@ import { FaWhatsapp } from "react-icons/fa";
 import SliderProductsRecommended from "../(componentes)/SliderProductsRecommended";
 
 type Props = {
-  params: Promise<{ slug: string }>
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
-}
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
 
-
-export async function generateMetadata(
-  { params }: Props,
-): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // read route params
-  const slug = (await params).slug
+  const slug = (await params).slug;
   const infos = await fetchYoastSEO(slug, "produtos");
- 
+
   return {
     title: infos.title,
     description: infos.description,
@@ -40,12 +37,12 @@ export async function generateMetadata(
     openGraph: {
       title: infos.title,
       description: infos.description,
-      images: [ infos.og_image ? infos.og_image[0].url : '' ],
+      images: [infos.og_image ? infos.og_image[0].url : ""],
     },
     alternates: {
       canonical: `https://gruporealbr.com.br/produtos/${slug}`,
     },
-  }
+  };
 }
 
 /**
@@ -61,6 +58,8 @@ export async function generateMetadata(
 export default async function PageProduct({ params }) {
   const { slug } = await params;
   const product = await getProductPerSlug(slug);
+  console.log(product[0]);
+  const productsRecommendations = await getProducts(product[0].categoria_produto, 1, 8);
   if (product.length <= 0) {
     return notFound();
   }
@@ -121,38 +120,32 @@ export default async function PageProduct({ params }) {
                 <div>
                   {product[0]?.acf?.modo_de_usar && (
                     <Accordion title="Modo de usar" faqHeading={{ tagName: "h3" }} active={true}>
-                    <p>
-                      {product[0]?.acf?.modo_de_usar}
-                    </p>
-                  </Accordion>
+                      <p>{product[0]?.acf?.modo_de_usar}</p>
+                    </Accordion>
                   )}
                   {product[0]?.acf?.vantagens_do_uso && (
                     <Accordion title="Vantagens de uso" faqHeading={{ tagName: "h3" }} active={true}>
-                    <p>
-                      {product[0]?.acf?.vantagens_do_uso}
-                    </p>
-                  </Accordion>
+                      <p>{product[0]?.acf?.vantagens_do_uso}</p>
+                    </Accordion>
                   )}
                   {product[0]?.acf?.duvidas && (
                     <Accordion title="Dúvidas" faqHeading={{ tagName: "h3" }} active={true}>
-                    <p>
-                      {product[0]?.acf?.duvidas}
-                    </p>
-                  </Accordion>
+                      <p>{product[0]?.acf?.duvidas}</p>
+                    </Accordion>
                   )}
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="hidden">
+        <div className="">
           <div className="w-full flex flex-col gap-8 my-8">
             <div className="flex flex-col gap-4">
               <h2 className="text-3xl font-bold text-fb_blue_main">Produtos similares</h2>
               <hr className="w-20 h-[6px] bg-fb_blue_main rounded-full" />
             </div>
             <div className="w-full my-6 ">
-              <SliderProductsRecommended />
+              <SliderProductsRecommended products={productsRecommendations.products} currentProductSlug={slug} />
             </div>
           </div>
         </div>

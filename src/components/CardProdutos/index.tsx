@@ -8,7 +8,6 @@ import placeholder from "@/public/images/img-teste.jpeg";
 import BtnCallToAction from "../Layout/Buttons/BtnCallToAction/BtnCallToAction";
 import { cn } from "@/lib/utils";
 
-
 type ImageProductProps = {
   src: string | StaticImageData;
   width?: number;
@@ -77,7 +76,7 @@ function DescriptionProduct({ descriptionProduct }: descriptionProductProps) {
 function LinkProduct({ children, link, classLink }: LinkProductProps) {
   return (
     <>
-      <Link target="_self" href={link} className={cn(['', classLink])}>
+      <Link target="_self" href={link} className={cn(["", classLink])}>
         {children}
       </Link>
     </>
@@ -85,7 +84,6 @@ function LinkProduct({ children, link, classLink }: LinkProductProps) {
 }
 
 export default function CardProduct({ product }: { product: any[] }) {
-
   // Ajustar a tipagem da prop
   if (!product || product.length === 0) {
     return <NotFound />;
@@ -103,9 +101,9 @@ export default function CardProduct({ product }: { product: any[] }) {
         const description = item.acf?.pra_que_serve || "";
         const link = item.slug || "#";
         const tags = item.class_list
-                      .filter(item => item.startsWith('tag-')) // Filtra os itens que começam com "tag-"
-                      .map(item => item.replace('tag-', '')) // Remove "tag-" e mantém apenas o conteúdo
-                      .map(tag => tag.charAt(0).toUpperCase() + tag.slice(1));
+          .filter((item) => item.startsWith("tag-")) // Filtra os itens que começam com "tag-"
+          .map((item) => item.replace("tag-", "")) // Remove "tag-" e mantém apenas o conteúdo
+          .map((tag) => tag.charAt(0).toUpperCase() + tag.slice(1));
 
         return (
           <div key={index} className="w-full md:w-64 h-[580px] flex flex-col gap-8 items-center relative">
@@ -114,7 +112,7 @@ export default function CardProduct({ product }: { product: any[] }) {
             </LinkProduct>
             <div className="w-4/5 md:w-full flex flex-col gap-2">
               <LinkProduct link={`/produtos/${link}`}>
-                <BadgeCategorie>{ tags[0] || "Sem categoria"}</BadgeCategorie>
+                <BadgeCategorie>{tags[0] || "Sem categoria"}</BadgeCategorie>
               </LinkProduct>
               <LinkProduct link={`/produtos/${link}`}>
                 <TitleProduct nomeProduto={title} />
@@ -122,7 +120,7 @@ export default function CardProduct({ product }: { product: any[] }) {
               </LinkProduct>
             </div>
             <div className="absolute bottom-0 w-full mx-auto">
-              <BtnCallToAction 
+              <BtnCallToAction
                 key={index}
                 content="Ver detalhes"
                 ctaLink={`/produtos/${link}`}

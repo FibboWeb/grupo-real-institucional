@@ -1,4 +1,4 @@
-import { fetchYoastData, getInfoLine } from "@/lib/getSEOLines";
+import { fetchYoastData, getInfoLine, getSEOLines2 } from "@/lib/getSEOLines";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import React from "react";
@@ -13,8 +13,8 @@ type BannerLinesProps = {
   children: React.ReactNode;
   className?: string;
   id?: string;
+  hiddenTitle?: boolean;
 };
-
 
 /**
  * @description
@@ -48,9 +48,10 @@ export default async function BannerLines({
   children,
   className,
   id,
+  hiddenTitle = true,
 }: BannerLinesProps) {
-
-  let infos
+  let infos;
+  let infos2;
   // fetch data
   if (slug_context === "real-h") {
     infos = await getInfoLine(slug_context);
@@ -60,27 +61,74 @@ export default async function BannerLines({
     infos = await getInfoLine(slug_context);
   }
 
-  console.log("infos buscada",infos)
+  const { props, urlImagemHero, text, banner01, banner02, textBanner01, textBanner02 } =
+    await getSEOLines2(slug_context);
+  console.log("infos buscada", urlImagemHero);
 
   return (
     <div className="relative w-full h-[320px] rounded-lg items-center">
       <div className="absolute inset-0 bg-gradient-to-r from-fb_dark-blue to-fb_light-blue rounded-lg"></div>
       <Image
         alt=""
-        src={infos?.banner ? infos : imgBackground}
+        src={urlImagemHero ? urlImagemHero : imgBackground}
         width={1000}
         height={300}
         className="w-full h-full object-cover rounded-lg border-none bg-cover"
       />
       <div className="absolute inset-0 flex flex-col gap-6 justify-center mx-auto w-full text-white pl-8">
-        <h1 className="text-5xl md:text-4xl font-bold">{infos ? infos.yoast_head_json.title : title}</h1>
-        <div className="w-full md:w-2/5 min-h-[72px]">{infos ? infos.description : children}</div>
+        {infos && (
+          <h1 className="text-5xl md:text-4xl font-bold">{hiddenTitle ? infos.yoast_head_json.title : title}</h1>
+        )}
+        <div className="w-full md:w-2/5 min-h-[72px]" dangerouslySetInnerHTML={{ __html: text || "" }} />
         <div className="w-fit">
-          <BtnCallToAction 
-            content="Ler mais"
-            color="fb_blue_button"
-            ctaLink=""
-          />
+          <BtnCallToAction content="Ler mais" color="fb_blue_button" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export async function BannerLinesFooter({
+  slug_context,
+  title,
+  anchor,
+  ctaLink,
+  imgBackground,
+  children,
+  className,
+  id,
+  hiddenTitle = true,
+}: BannerLinesProps) {
+  let infos;
+  let infos2;
+  // fetch data
+  if (slug_context === "real-h") {
+    infos = await getInfoLine(slug_context);
+  } else if (slug_context === "cmr") {
+    infos = await getInfoLine(slug_context);
+  } else if (slug_context === "homeopet") {
+    infos = await getInfoLine(slug_context);
+  }
+
+  const { props, urlImagemHero, text, banner01, banner02, textBanner01, textBanner02 } =
+    await getSEOLines2(slug_context);
+  console.log("infos buscada", urlImagemHero);
+
+  return (
+    <div className="relative w-full h-[320px] rounded-lg items-center">
+      <div className="absolute inset-0 bg-gradient-to-r from-fb_dark-blue to-fb_light-blue rounded-lg"></div>
+      <Image
+        alt=""
+        src={imgBackground ? imgBackground : urlImagemHero}
+        width={1000}
+        height={300}
+        className="w-full h-full object-cover rounded-lg border-none bg-cover"
+      />
+      <div className="absolute inset-0 flex flex-col gap-6 justify-center mx-auto w-full text-white pl-8">
+        <h2 className="text-5xl md:text-4xl font-bold">{title}</h2>
+        <div className="w-full md:w-2/5 min-h-[72px]" dangerouslySetInnerHTML={{ __html: children || "" }} />
+        <div className="w-fit">
+          <BtnCallToAction content="Ler mais" color="fb_blue_button" />
         </div>
       </div>
     </div>

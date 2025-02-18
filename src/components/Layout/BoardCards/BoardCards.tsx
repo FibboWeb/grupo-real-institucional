@@ -19,47 +19,40 @@ type BoardCardsProps = {
 };
 
 const settings = {
-  infinite: false,
-  speed: 4500,
+  orientation: "horizontal",
+  speed: 500,
   slidesToShow: 4,
   slidesToScroll: 1,
-  autoplay: false,
-  autoplaySpeed: 0,
-  cssEase: "linear",
-  arrows: false,
-  draggable: false,
-  touchMove: false,
-  focusOnSelect: false,
-  swipe: false,
+  useTransform: true,
+  // autoplay: true,
+  // autoplaySpeed: 4500,
+  dots: true,
   responsive: [
     {
-      breakpoint: 768,
+      breakpoint: 1360,
       settings: {
-        slidesToShow: 1.25,
+        slidesToShow: 3,
         slidesToScroll: 1,
-        speed: 500,
-        draggable: true,
-        swipe: true,
-        dots: true,
-        touchMove: true,
       },
     },
     {
       breakpoint: 1024,
       settings: {
         slidesToShow: 2,
-        slidesToScroll: 2,
-        speed: 500,
-        draggable: true,
-        swipe: true,
-        dots: true,
-        touchMove: true,
+        slidesToScroll: 1,
       },
     },
     {
-      breakpoint: 1280,
+      breakpoint: 830,
       settings: {
-        slidesToShow: 4,
+        slidesToShow: 2,
+        slidesToScroll: 2,
+      },
+    },
+    {
+      breakpoint: 560,
+      settings: {
+        slidesToShow: 1,
         slidesToScroll: 1,
       },
     },
@@ -73,21 +66,30 @@ export default function BoardCards({ title, members }: BoardCardsProps) {
         <div>
           <h3 className="text-black font-semibold text-3xl">Diretoria</h3>
         </div>
-        <div>
+        <div className="w-full">
           <Slider {...settings}>
             {members.map((member, index) => (
-              <li className="rounded-2xl overflow-hidden sm:max-w-[90%] max-w-[95%] h-[450px]" key={index}>
-                <a href="" className="h-full">
-                  <div className="relative h-full rounded-2xl">
-                    <div className="absolute h-full w-full flex items-center justify-center rounded-2xl">
-                      <Image src={member.img} alt="" className="object-cover w-full h-full" />
+              <li className="flip-card overflow-hidden sm:max-w-[90%] max-w-[95%] h-[450px]" key={index}>
+                <div className="flip-card-inner w-full">
+                  {/* Frente do Card */}
+                  <div className="absolute h-full w-full flex items-center justify-center rounded-2xl">
+                    <Image src={member.img} alt={member.name} className="object-cover w-full h-full" />
+                  </div>
+              
+                  <div>
+                    {/* Elemento para telas maiores que 768px (md:flex) */}
+                    <div className="hidden md:flex md:flex-col card-overlay bg-content-board text-white">
+                      <h4 className="text-2xl font-bold">{member.name}</h4>
+                      <p className="text-lg font-normal">{member.role}</p>
                     </div>
-                    <div className="relative py-5 px-2 flex flex-col justify-end items-center gap-2 h-full bg-content-board rounded-2xl">
-                      <h4 className="text-2xl text-white font-bold">{member.name}</h4>
-                      <p className="text-white text-lg font-normal">{member.role}</p>
+
+                    {/* Elemento para telas menores que 768px (md:hidden) */}
+                    <div className="md:hidden h-full absolute flex flex-col justify-end text-white bg-content-board px-2 w-full">
+                      <h4 className="text-2xl font-bold">{member.name}</h4>
+                      <p className="text-lg font-normal">{member.role}</p>
                     </div>
                   </div>
-                </a>
+                </div>
               </li>
             ))}
           </Slider>

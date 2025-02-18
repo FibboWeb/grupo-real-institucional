@@ -79,7 +79,7 @@ export default function SliderNavigational({ categories, title, text, isNoticias
     slidesToShow: 5,
     slidesToScroll: 1,
     useTransform: true,
-    autoplay: (isNoticias ? false : true),
+    autoplay: isNoticias ? false : true,
     autoplaySpeed: 4500,
     dots: true,
     responsive: [

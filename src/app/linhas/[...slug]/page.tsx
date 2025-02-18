@@ -1,8 +1,8 @@
 "use server";
-import BannerLines from "@/components/BannerCTA/BannerLines";
+import BannerLines, { BannerLinesFooter } from "@/components/BannerCTA/BannerLines";
 import Breadcrumb from "@/components/BreadCrumb";
 
-import { fetchYoastData } from "@/lib/getSEOLines";
+import { fetchYoastData, getSEOLines2 } from "@/lib/getSEOLines";
 import image01 from "@/public/images/banners/boi-no-pasto.webp";
 import image03 from "@/public/images/banners/cao-e-gato.webp";
 import image02 from "@/public/images/banners/carne-vermelha-cortada.webp";
@@ -13,9 +13,9 @@ import { fetchYoastSEO } from "@/lib/getCategorias";
 import Newsletter from "@/components/Layout/Newsletter";
 
 type Props = {
-  params: Promise<{ slug: string }>
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
-}
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
 
 /**
  * Generates metadata for a linhas page, including:
@@ -31,28 +31,27 @@ type Props = {
  * @returns {Metadata} generated metadata
  */
 
-export async function generateMetadata(
-  { params }: Props,
-): Promise<Metadata> {
+export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
   // read route params
-  let slug = (await params).slug
-  
-  let lineInfo
+  let slug = (await params).slug;
+  const pageParam = (await searchParams).page;
+  const page = parseInt(Array.isArray(pageParam) ? pageParam[0] : pageParam || "1");
+  let lineInfo;
   // fetch data
   if (slug[0] === "real-h") {
-    lineInfo = await fetchYoastSEO("linha-nutricao","linhas");
+    lineInfo = await fetchYoastSEO("linha-nutricao", "linhas");
   } else if (slug[0] === "cmr") {
-    lineInfo = await fetchYoastSEO("linha-saude","linhas");
+    lineInfo = await fetchYoastSEO("linha-saude", "linhas");
   } else if (slug[0] === "homeopet") {
-    lineInfo = await fetchYoastSEO("linha-homeo-pet","linhas"); 
+    lineInfo = await fetchYoastSEO("linha-homeo-pet", "linhas");
   }
 
   if (!lineInfo) {
-    notFound()
+    notFound();
   }
- 
+
   return {
-    title: lineInfo.title,
+    title: `${lineInfo.title}${page === 1 ? "" : ` - Página ${page}`}`,
     description: lineInfo.description,
     robots: {
       index: true,
@@ -61,21 +60,24 @@ export async function generateMetadata(
       "max-image-preview": "large",
     },
     openGraph: {
-      title: lineInfo.title,
+      title: `${lineInfo.title}${page === 1 ? "" : ` - Página ${page}`}`,
       description: lineInfo.description,
-      images: [ lineInfo.og_image ? lineInfo.og_image[0].url : '' ],
+      images: [lineInfo.og_image ? lineInfo.og_image[0].url : ""],
     },
     alternates: {
-      canonical: `https://gruporealbr.com.br/linhas/${slug[0]}`,
+      canonical: `https://gruporealbr.com.br/linhas/${slug[0]}${page === 1 ? "" : `?page=${page}`}`,
     },
-  }
+  };
 }
 
 export default async function PageLinhas({ params, searchParams }) {
   // read route params 'slug'
-  const slug = (await params).slug
+  const slug = (await params).slug;
   // read query params
   const page = parseInt((await searchParams).page || "1");
+
+  const { banner01, banner02, textBanner01, textBanner02 } = await getSEOLines2(slug[0]);
+  console.log("textos ", textBanner01, textBanner02);
 
   return (
     <section className="relative mt-24">
@@ -101,23 +103,23 @@ export default async function PageLinhas({ params, searchParams }) {
           <GridProduct slug={slug} searchParams={page} />
         </div>
         <div className="flex flex-col lg:flex-row lg:flex-nowrap gap-8 mb-20">
-          <BannerLines title="Linha Nutrição" imgBackground={image02.src}>
-            <p>
-              A <strong>Grupo Real</strong>, empresa de <strong>Nutrição e Saúde Animal</strong>
-              há <strong>40 anos</strong> ao lado do produtor
-            </p>
-          </BannerLines>
-          <BannerLines title="Linha Nutrição" imgBackground={image03.src}>
-            <p>
-              A <strong>Grupo Real</strong>, empresa de <strong>Nutrição e Saúde Animal</strong>
-              há <strong>40 anos</strong> ao lado do produtor
-            </p>
-          </BannerLines>
+          <BannerLinesFooter
+            title={`Conheça os produtos`}
+            hiddenTitle={false}
+            imgBackground={banner01 ? banner01 : image02.src}
+            children={textBanner01}
+            ctaLink="/linhas/cmr"
+          />
+          <BannerLinesFooter
+            title={`Conheça os produtos`}
+            hiddenTitle={false}
+            imgBackground={banner02 ? banner02 : image02.src}
+            children={textBanner02}
+            ctaLink="/linhas/real-h"
+          />
         </div>
         <div>
-          <Newsletter
-            
-          />
+          <Newsletter />
         </div>
       </div>
     </section>

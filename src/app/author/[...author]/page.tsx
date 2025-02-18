@@ -10,25 +10,24 @@ import { fetchYoastSEO } from "@/lib/getCategorias";
 import { Metadata } from "next";
 
 type Props = {
-  params: Promise<{ author: string }>
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
-}
+  params: Promise<{ author: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
 
-export async function generateMetadata(
-  { params }: Props,
-  searchParams
-): Promise<Metadata> {
-  const slug = (await params).author[(await params).author.length - 1]
-  
-  let infos
+export async function generateMetadata({ params }: Props, searchParams): Promise<Metadata> {
+  const slug = (await params).author[(await params).author.length - 1];
+  const pageParam = (await searchParams).page;
+  const page = parseInt(Array.isArray(pageParam) ? pageParam[0] : pageParam || "1");
+
+  let infos;
   infos = await fetchYoastSEO(slug, "users");
 
-  if(!infos) {
-    notFound()
+  if (!infos) {
+    notFound();
   }
- 
+
   return {
-    title: infos.title,
+    title: `${infos.title}${page === 1 ? "" : ` - Página ${page}`}`,
     description: infos.description,
     robots: {
       index: true,
@@ -37,20 +36,20 @@ export async function generateMetadata(
       "max-image-preview": "large",
     },
     openGraph: {
-      title: infos.title,
+      title: `${infos.title}${page === 1 ? "" : ` - Página ${page}`}`,
       description: infos.description,
-      images: [ infos.og_image ? infos.og_image[0].url : '' ],
+      images: [infos.og_image ? infos.og_image[0].url : ""],
     },
     alternates: {
-      canonical: `https://gruporealbr.com.br/author/${slug}`,
+      canonical: `https://gruporealbr.com.br/author/${slug}${page === 1 ? "" : `?page=${page}`}`,
     },
-  }
+  };
 }
 
 export default async function AuthorPage({ params, searchParams }) {
-  const page = parseInt(searchParams.page || "1");
+  const page = parseInt((await searchParams).page || "1");
   const postsPerPage = 6;
-  const authorSlug = params.author[0];
+  const authorSlug = (await params).author[0];
   const author = await fetchAuthorData(authorSlug);
   const authorName = author.name;
   const authorBio = author.description || "Biografia não disponível";

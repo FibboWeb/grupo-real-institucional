@@ -5,7 +5,7 @@ export default function Page() {
     <main className='relative mt-32 fb_container'>
       <div className="flex flex-col gap-fb_space-section text-[#333333] text-lg mb-5">
         <div>
-          <h1 className='text-3xl font-bold text-center'>Atendimento ao Titular</h1>
+          <h1 className="text-3xl font-bold text-center">Atendimento ao Titular</h1>
         </div>
         <div className="flex flex-col gap-5">
           <p>Este é o Formulário de Solicitação de Atendimento aos Titulares da REAL H, onde oferecemos a você a oportunidade de exercer um dos seus direitos previstos na Lei Geral de Proteção de Dados nº. 13.709/2018 (LGPD).</p>
