@@ -1,16 +1,15 @@
 "use server";
-import BannerLines, { BannerLinesFooter } from "@/components/BannerCTA/BannerLines";
+import BannerLines from "@/components/BannerCTA/BannerLines";
 import Breadcrumb from "@/components/BreadCrumb";
 
-import { fetchYoastData, getSEOLines2 } from "@/lib/getSEOLines";
+import Newsletter from "@/components/Layout/Newsletter";
+import { fetchYoastSEO } from "@/lib/getCategorias";
+import { getSEOLines2 } from "@/lib/getSEOLines";
 import image01 from "@/public/images/banners/boi-no-pasto.webp";
-import image03 from "@/public/images/banners/cao-e-gato.webp";
 import image02 from "@/public/images/banners/carne-vermelha-cortada.webp";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import GridProduct from "../(componentes)";
-import { fetchYoastSEO } from "@/lib/getCategorias";
-import Newsletter from "@/components/Layout/Newsletter";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -103,14 +102,14 @@ export default async function PageLinhas({ params, searchParams }) {
           <GridProduct slug={slug} searchParams={page} />
         </div>
         <div className="flex flex-col lg:flex-row lg:flex-nowrap gap-8 mb-20">
-          <BannerLinesFooter
+          <BannerLines
             title={`Conheça os produtos`}
             hiddenTitle={false}
             imgBackground={banner01 ? banner01 : image02.src}
             children={textBanner01}
             ctaLink="/linhas/cmr"
           />
-          <BannerLinesFooter
+          <BannerLines
             title={`Conheça os produtos`}
             hiddenTitle={false}
             imgBackground={banner02 ? banner02 : image02.src}
