@@ -12,7 +12,7 @@ import iconMarca03 from "@/public/images/logos/logo-crm-colorido.webp";
 import iconMarca01 from "@/public/images/logos/logo-real-h-colorido.webp";
 import imgMarca01 from "@/public/images/home/brand-section/real_h.webp";
 import imgMarca03 from "@/public/images/home/brand-section/cmr_saude.webp";
-import imgMarca02 from "@/public/images/home-pet.webp";
+import imgMarca02 from "@/public/images/home/brand-section/homeopet.webp";
 
 // Sessões dos valores
 import imgIcon02 from "@/public/images/ciclos_novo.webp";

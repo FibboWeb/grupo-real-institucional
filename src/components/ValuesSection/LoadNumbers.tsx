@@ -40,7 +40,6 @@ const IncrementingCounter = ({ maxNumber, speed = 100 }: { maxNumber: number; sp
 
   // se numero for igual a 2.0 formatar para ficar só 2, caso não exibir as casas decimais exemplo 2.4
   const formattedCount = count.toFixed(1).replace(/\.0\b/g, '');
-  console.log("numero", formattedCount)
 
   return formatNumber(Number(formattedCount));
 };
