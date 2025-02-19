@@ -56,7 +56,7 @@ export default function PageAboutUs() {
         <InfoSection
           title={infoSectionsContents.marcas.title}
           content={infoSectionsContents.marcas.content}
-          youtubeEmbed="https://www.youtube.com/embed/ED_3lipxogY?si=-E2bf9nqCad3h8AV"
+          youtubeEmbed="https://www.youtube.com/embed/ozdbcqp_FOY"
           reverseDesktop={infoSectionsContents.marcas.reverseDesktop}
           reverseMobile={infoSectionsContents.marcas.revereverseMobile}
         />

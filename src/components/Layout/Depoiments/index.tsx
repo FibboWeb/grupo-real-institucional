@@ -1,4 +1,5 @@
 import Image, { StaticImageData } from "next/image";
+import BtnCallToAction from "../Buttons/BtnCallToAction/BtnCallToAction";
 
 interface DepoimentsProps {
   image: StaticImageData;
@@ -15,8 +16,9 @@ export default function Depoiments({ image, content }: DepoimentsProps) {
               <Image src={image} alt="" height={282} className="rounded-2xl shadow-shadow_image_info_section" />
             </div>
           </div>
-          <div className="flex items-center sm:pr-28 sm:py-12">
-            <p className="text-3xl font-semibold">{content}</p>
+          <div className="flex flex-col gap-5 sm:pr-28 sm:py-12">
+            <p className="text-3xl font-semibold mx-auto">{content}</p>
+            <BtnCallToAction classCssForBTN="w-fit" content="Ler mais" ctaLink="/claudio-martins-real-curriculo" />
           </div>
         </div>
       </div>

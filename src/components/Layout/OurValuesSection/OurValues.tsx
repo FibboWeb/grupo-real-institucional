@@ -19,7 +19,7 @@ interface OurValuesProps {
 export default function OurValues({ title, contentPage, values, ctaLink }: OurValuesProps) {
   return (
     <section className="fb_container sm:py-12 py-2">
-      <div className="flex flex-col sm:flex-row gap-10 sm:gap-2 p-5">
+      <div className="flex flex-col md:flex-row gap-10 sm:gap-2 p-5">
         <div className="flex flex-col justify-start flex-1 gap-6">
           <h2 className="font-semibold text-3xl text-[var(--blue-main)]">{title}</h2>
           <div className="text-lg	font-normal	text-[var(--blue-main)]">

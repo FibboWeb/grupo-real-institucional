@@ -27,7 +27,7 @@ export default async function Home() {
   return (
     <div className="flex flex-col gap-fb_space-section">
       <section>
-        <VideoBackground src_video="/video/drone-fabrica.mp4" ctaLinks={ctasLinksHero}>
+        <VideoBackground src_video="/video/DRONE_NOVO_REVERSE.mp4" ctaLinks={ctasLinksHero}>
           <div className="">
             <h1 className="text-3xl md:text-5xl font-bold mb-4 text-center">
               Por um futuro <br className="block md:hidden" />s
@@ -35,7 +35,7 @@ export default async function Home() {
               <span> para todos</span>
             </h1>
             <p className="text-lg md:text-xl mb-6">
-              O Grupo REAL reúne marcas que transformam desafios em oportunidades. Descubra nosso compromisso com a
+              O Grupo REAL reúne marcas que transformam desafios em oportunidades.<br/> Descubra nosso compromisso com a
               qualidade e sustentabilidade.
             </p>
           </div>
@@ -61,8 +61,8 @@ export default async function Home() {
       <section>
         <SliderNavigational
           categories={sliderCategoriasHome}
-          title="Conheça todas as marcas do grupo Real"
-          text="Oferecemos uma ampla gama de produtos de nutrição animal, desenvolvidos para atender às necessidades específicas de cada segmento do mercado."
+          title="Conheça todas as marcas do Grupo REAL"
+          text="Oferecemos uma ampla gama de soluções sustentáveis em saúde e nutrição animal, além de logística e parcerias comerciais."
         />
       </section>
       <section>
@@ -90,7 +90,7 @@ export default async function Home() {
       <section className="fb_container">
         <Newsletter
           sectionTitle="Inscreva-se na nossa newsletter"
-          sectionDescription="Receba novidades e informações exclusivas sobre nossos produtos e novidades diretamente no seu e-mail."
+          sectionDescription="Receba novidades e informações exclusivas sobre nossos produtos diretamente no seu e-mail."
         />
       </section>
     </div>

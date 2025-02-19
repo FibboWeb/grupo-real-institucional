@@ -35,23 +35,23 @@ const infoSectionsContents = {
   grande_animais: {
     title: "Saúde Para Grandes Animais",
     content:
-      "<p>Com relação à saúde animal a Grupo Real é pioneira no uso da Homeopatia Populacional, que tem por objetivo promover ganhos produtivos através da redução do estresse dos animais e também da racionalização do uso de medicamentos químicos nas propriedades rurais, reforçando os compromissos da empresa com as questões ambientais e de preservação.</p>",
+      "<p>Com relação à saúde animal o <strong>Grupo Real</strong> é pioneiro no uso da Homeopatia Populacional, que tem por objetivo promover ganhos produtivos através da redução do estresse dos animais e também da racionalização do uso de medicamentos químicos nas propriedades rurais, reforçando os compromissos da empresa com as questões ambientais e de preservação.</p>",
     img: GrandeAnimaisImg,
     reverseDesktop: true,
     revereverseMobile: false,
   },
   homeo_pet: {
-    title: "Homeo Pet",
+    title: "Homeoet",
     content:
-      "<p>Em 2009 a Grupo Real lançou ao mercado a linha Homeo Pet, específica para o tratamento de cães, gatos e outros animais de companhia, composta por aproximadamente 30 produtos com ausência total de toxidez, sem contraindicações e que não oferecem riscos à saúde em caso de superdosagem.</p>",
+      "<p>Em 2009 o <strong>Grupo Real</strong> lançou ao mercado a linha Homeopet, específica para o tratamento de cães, gatos e outros animais de companhia, composta por produtos com ausência total de toxidez, sem contraindicações e que não oferecem riscos à saúde em caso de superdosagem.</p>",
     img: HomeoPetImg,
     reverseDesktop: false,
     revereverseMobile: false,
   },
   laboratorio: {
-    title: "Laboratório Homeopático",
+    title: "Indústria de Medicamentos",
     content:
-      "<p>A Grupo Real possui uma ampla fábrica de nutrição animal e o maior laboratório homeopático da América Latina, ambos em sua matriz localizada em Campo Grande, MS. A empresa possui ainda outra fábrica de nutrição em Cuiabá (MT), e centros de distribuição em Ji-Paraná (RO) e Hortolândia (SP).  Além disso, conta com uma ampla rede de distribuidores e representantes em todas as regiões do Brasil, Bolívia, Guatemala e Paraguai.</p>",
+      "<p>O <strong>Grupo Real H</strong> é referência na produção de medicamentos homeopáticos, contando com a maior indústria do segmento na América Latina. Localizada em sua matriz, em Campo Grande (MS), a unidade opera com tecnologia de ponta, atendendo aos mais rigorosos padrões de qualidade, produção e envase. Comprometida com a sustentabilidade e a inovação, a indústria abastece todo o Brasil e diversos países, oferecendo soluções eficazes para a saúde e o bem-estar animal.</p>",
     img: LaboratorioImg,
     reverseDesktop: true,
     revereverseMobile: false,
@@ -59,7 +59,7 @@ const infoSectionsContents = {
   redeAtendimento: {
     title: "Rede de Atendimento",
     content:
-      "<p>A equipe da Grupo Real é composta por mais de 300 profissionais. O corpo técnico-comercial da empresa, tanto para as linhas de nutrição, quanto para os produtos destinados à saúde animal é formado por Médicos Veterinários, Zootecnistas e Agrônomos e tem o apoio de uma ampla rede de representantes e distribuidores capacitados, o que possibilita atendimento personalizado aos clientes.</p><p>As preocupações com aqueles que colaboram direta ou indiretamente com a Grupo Real também são constantes. Projetos de valorização dos recursos humanos e de conscientização sobre preservação e convivência, como o Ciclos reciclagem, demonstram o cuidado que a empresa tem com tais questões.</p>",
+      "<p>O <strong>Grupo Real H</strong>s conta com uma equipe altamente qualificada, composta por mais de 330 profissionais. Seu corpo técnico-comercial, especializado em nutrição e saúde animal, é formado por Médicos Veterinários, Zootecnistas e Agrônomos, garantindo suporte técnico de excelência. Além disso, a empresa dispõe de uma ampla rede de representantes e distribuidores capacitados, proporcionando um atendimento personalizado e eficiente a clientes em todo o Brasil.</p>",
     img: RedeAtendimentoImg,
     reverseDesktop: false,
     revereverseMobile: false,

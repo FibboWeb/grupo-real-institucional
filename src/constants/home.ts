@@ -10,9 +10,9 @@ import img06 from "@/public/icons-slider/ciclos-logo.png";
 import iconMarca02 from "@/public/images/logos/homeopet-logo-colorido.webp";
 import iconMarca03 from "@/public/images/logos/logo-crm-colorido.webp";
 import iconMarca01 from "@/public/images/logos/logo-real-h-colorido.webp";
-import imgMarca01 from "@/public/images/home/brand-section/saco-de-nutricao-animal.webp";
-import imgMarca03 from "@/public/images/home/brand-section/bezerro-tomando-dia-100.webp";
-import imgMarca02 from "@/public/images/mulher-segurando-cachorro.webp";
+import imgMarca01 from "@/public/images/home/brand-section/real_h.webp";
+import imgMarca03 from "@/public/images/home/brand-section/cmr_saude.webp";
+import imgMarca02 from "@/public/images/home-pet.webp";
 
 // Sessões dos valores
 import imgIcon02 from "@/public/images/ciclos_novo.webp";
@@ -90,7 +90,7 @@ export const nossasMarcasInfos = [
   {
     title: "Aqui seu ganho é REAL",
     icon: iconMarca03,
-    text: "A CMR é uma marca que homenageia o legado do Prof. Dr. Claudio Martins Real. Com mais de 40 anos de experiência, oferecemos soluções que promovem a saúde e o bem-estar dos animais.",
+    text: "A CMR é uma marca que homenageia o legado do Prof. Dr. Claudio Martins Real. Há 40 anos oferecemos soluções que promovem a saúde, o bem-estar e a produtividade dos animais.",
     ctaLink: "#",
     image: imgMarca03,
     badge_text: "SAÚDE",
@@ -102,9 +102,9 @@ export const nossasMarcasInfos = [
     border: true,
   },
   {
-    title: "Cuidado de verdade pro seu pet é com a HomeoPet",
+    title: "Cuidado de verdade pro seu pet",
     icon: iconMarca02,
-    text: "Com 15 anos de experiência, a Homeopet se destaca por oferecer soluções seguras e eficazes para a saúde dos pequenos animais. Nosso compromisso é promover o bem-estar e a qualidade de vida dos pets.",
+    text: "Há mais de 15 anos no mercado, a Homeopet se destaca por oferecer soluções seguras e eficazes para a saúde dos pequenos animais. Nosso compromisso é promover o bem-estar e a qualidade de vida dos pets.",
     ctaLink: "#",
     image: imgMarca02,
     badge_text: "SAÚDE",
@@ -137,31 +137,35 @@ export const sectionValoresInfo2 = [
     border: false,
     // icon: imgIcon02,
     session_numbers: [
-      { qtde: 1_000, text: "De resíduos retiradosdo meio ambiente" },
-      { qtde: 2_000, text: "de investimento em placas para a geração de energia fotovoltaica" },
-      { qtde: 18, text: "Um projeto que envolve nossos colaboradores e clientes" },
+      { qtde: 1_400, text: "de lixo destinado para a reciclagem." },
+      { qtde: 2_000, text: "de investimentos em energia fotovoltaica. " },
+      { qtde: 18, text: "Anos De atuação do Ciclos Reciclagem" },
     ] as LoadNumbersProps[],
+    cta: {
+      link: "/ambiental",
+      anchor: "Saiba mais",
+    },
   },
 ];
 
 export const testimoniaslInfo = [
   {
     testimonial:
-      "Eu sempre digo para os meus amigos: siga as recomendações de um bom técnico. E quando a gente fala de nutrição a gente está falando da Grupo Real",
+      "\"Eu sempre digo para os meus amigos: siga as recomendações de um bom técnico. E quando a gente fala de nutrição a gente está falando da Grupo Real\".",
     name: "Sr. Claudecir Scarmagnani",
     empresa: "Cliente desde 2001",
     avatar: avatar1,
   },
   {
     testimonial:
-      "Tudo que a gente precisou da Real até hoje, que foi solicitado, o pessoal sempre ajudou a gente, Dr. Claudio, pessoal da parte técnica, principalmente, estão mais amiúde aqui com a gente",
-    name: "Leonardo Pereira",
+      "\"Tudo que a gente precisou da Real até hoje, que foi solicitado, o pessoal sempre ajudou a gente, Dr. Claudio, pessoal da parte técnica, principalmente, estão mais amiúde aqui com a gente",
+    name: "Leonardo Pereira\".",
     empresa: "Grupo ACP filhos e Netos",
     avatar: avatar2,
   },
   {
     testimonial:
-      "Trabalhar na Grupo Real é gratificante, tenho orgulho de fazer parte deste time de alta performance, equipe motivada e unida para superar qualquer desafio",
+      "\"Trabalhar na Grupo Real é gratificante, tenho orgulho de fazer parte deste time de alta performance, equipe motivada e unida para superar qualquer desafio\".",
     name: "Leonardo de Carvalho",
     empresa: "Gerente Comercial - desde 2007 ",
     avatar: avatar3,

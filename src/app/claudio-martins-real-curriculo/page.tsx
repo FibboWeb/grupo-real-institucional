@@ -85,7 +85,7 @@ export default function ClaudioMartinsReal() {
         reverseMobile={false}
         title={"A Fundação da Grupo Real e o Legado em Continuidade"}
         content={
-          "<p>Trabalhou como professor até 1993, quando, após aposentar-se, fundou, junto com os filhos, a Grupo Real. Até hoje o professor dedica-se com entusiasmo ao estudo da Homeopatia e da Medicina Veterinária.</p>"
+          "<p>Trabalhou como professor até 1993, quando, após aposentar-se, fundou, junto com os filhos, o Grupo Real. Até hoje o professor dedica-se com entusiasmo ao estudo da Homeopatia e da Medicina Veterinária.</p>"
         }
         imagePath={Claudio3}
       />
@@ -317,7 +317,7 @@ export default function ClaudioMartinsReal() {
         <Newsletter
           sectionTitle={"Inscreva-se na nossa newsletter"}
           sectionDescription={
-            "Receba novidades as informações exclusivas sobre nossos produtos e novidades diretamente no seu e-mail."
+            "Receba novidades e informações exclusivas sobre nossos produtos diretamente no seu e-mail."
           }
         />
       </div>

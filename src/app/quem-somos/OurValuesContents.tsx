@@ -29,6 +29,6 @@ const OurValuesContent = [
 ];
 
 const content =
-  "<p>Nossa matriz, localizada às margens da BR-163, em Campo Grande, MS,possui uma plataforma industrial com 75.000 m². </p><p>Além disso, contamos com mais uma unidade industrial em Cuiabá e centros de distribuição em Ji-Paraná (RO) e Hortolândia (SP).</p><p>Exportamos nossos produtos para o Paraguai desde 1998, e desde 2019 expandimos para Bolívia e Guatemala. </p><p>Para conhecer o Grupo Real, é fundamental conhecer o seu propósito, que resume muito bem sua missão, visão e valores.</p>";
+  '<p>Nossa matriz, localizada às margens da BR-163, em Campo Grande (MS), possui uma plataforma industrial com 75.000 m².</p><p>Além disso, contamos com mais uma unidade industrial em Cuiabá e centros de distribuição em Ji-Paraná (RO) e Hortolândia (SP).</p><p>Exportamos nossos produtos para o Paraguai desde 1998, e desde 2019 expandimos para Bolívia e Guatemala.</p>';
 
 export { OurValuesContent, content };

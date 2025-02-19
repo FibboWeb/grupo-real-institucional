@@ -59,7 +59,7 @@ export default async function Historia() {
       <CardSection>
         <div className="flex flex-col py-4 lg:py-8">
           <h1 className="text-fb_blue_main text-xl lg:text-3xl font-bold text-center pb-2">
-            Confira em breve todos os acontecimentos do evento
+            Celebre conosco 4 décadas de história.
           </h1>
           <span className="text-[#9A9A9A] font-semibold text-center text-lg w-full">
             Fotos, vídeos, notícias e muito mais...
