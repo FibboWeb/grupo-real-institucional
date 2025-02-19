@@ -9,13 +9,12 @@ function BannerCta() {
         <div className="flex flex-col gap-8 h-auto p-5 lg:p-10">
           <div className="flex flex-col gap-1.5">
             <span className="w-fit bg-fb_blue rounded-full text-sm text-white py-1 px-2">ARTIGOS CIENTÍFICOS</span>
-            <h2 className="font-bold text-3xl text-white">Inovação e Ciência</h2>
+            <h2 className="font-bold text-3xl text-white">Pesquisa e Desenvolvimento</h2>
           </div>
           <hr className="h-1 bg-white w-20" />
           <div className="w-4/5 lg:w-1/2">
             <p className="text-base text-white font-normal">
-              Neste espaço, você encontrará artigos, publicações e estudos que destacam a eficácia dos produtos, o
-              compromisso com a ciência e o impacto positivo na produtividade e no bem-estar dos animais.
+            Neste espaço, você encontrará artigos, publicações e estudos científicos que demonstram a eficácia dos nossos produtos, o compromisso com a ciência e o impacto positivo na produtividade e no bem-estar dos animais.
             </p>
           </div>
           <div className="rounded-sm">

@@ -168,7 +168,7 @@ export default async function PageProduct({ params }) {
         <div>
           <Newsletter
             sectionTitle="Inscreva-se na nossa newsletter"
-            sectionDescription="Receba novidades e informações exclusivas sobre nossos produtos e novidades diretamente no seu e-mail."
+            sectionDescription="Receba novidades e informações exclusivas sobre nossos produtos diretamente no seu e-mail."
           />
         </div>
       </div>
