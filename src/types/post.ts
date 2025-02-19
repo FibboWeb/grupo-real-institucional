@@ -39,4 +39,5 @@ export interface CardBlogProps {
   postCategoryLink?: string;
   customClasses?: string;
   isSlider?: boolean;
+  loading?: boolean;
 }

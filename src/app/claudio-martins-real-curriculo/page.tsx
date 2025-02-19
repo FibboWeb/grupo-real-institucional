@@ -85,7 +85,7 @@ export default function ClaudioMartinsReal() {
         reverseMobile={false}
         title={"A Fundação da Grupo Real e o Legado em Continuidade"}
         content={
-          "<p>Trabalhou como professor até 1993, quando, após aposentar-se, fundou, junto com os filhos, a Grupo Real. Até hoje o professor dedica-se com entusiasmo ao estudo da Homeopatia e da Medicina Veterinária.</p>"
+          "<p>Trabalhou como professor até 1993, quando, após aposentar-se, fundou, junto com os filhos, o Grupo Real. Até hoje o professor dedica-se com entusiasmo ao estudo da Homeopatia e da Medicina Veterinária.</p>"
         }
         imagePath={Claudio3}
       />
@@ -276,26 +276,26 @@ export default function ClaudioMartinsReal() {
         reverseMobile={false}
         title={"Cursos Teses e Orientação de Teses"}
         content="<p>15 cursos frequentados (dois no exterior):</p>
-<ul>
-<li>Thieartzlich Hocshule, Hannover RFA &ndash; 1976.</li>
-<li>Michigan State University, USA &ndash; 1977.</li>
-</ul>
-<p>18 cursos ministrados;</p>
-<p><strong>Teses defendidas:</strong></p>
-<p>Para o Concurso de Doc&ecirc;ncia Livre<br />&ldquo;O F&iacute;gado na Intoxica&ccedil;&atilde;o Aguda pelo Tetracloreto de Carbono&rdquo; &ndash; 1951.</p>
-<p>Para o Concurso de C&aacute;tedra<br />&ldquo;Contribui&ccedil;&atilde;o ao Estudo da Esterilidade da Vaca Leiteira no Rio Grande do Sul&rdquo; &ndash; 1954.</p>
-<p>12 orienta&ccedil;&otilde;es de teses de P&oacute;s Gradua&ccedil;&atilde;o (pesquisas);</p>
-<p>190 confer&ecirc;ncias e Palestras proferidas.</p>
-<p><strong>P&uacute;blico Alvo:</strong></p>
-<p>M&eacute;dicos Veterin&aacute;rios, M&eacute;dicos, Zootecnistas, alunos e pecuaristas.</p>
-<p><strong>Locais:</strong></p>
-<p>Congressos Profissionais, Universidades, Associa&ccedil;&otilde;es de Classe, Semanas acad&ecirc;micas, Associa&ccedil;&otilde;es de Criadores, Sindicatos e Federa&ccedil;&otilde;es.</p>
-<p><strong>Assuntos:</strong></p>
-<p>&Eacute;tica Profissional, Homeopatia Veterin&aacute;ria, Cl&iacute;nica M&eacute;dica, Manejo Reprodutivo, Fertilidade em Gado de Corte e de Leite, Cruzamento Industrial, Desmame Interrompido, Mortandade de Vacas (Centro-Oeste), Doen&ccedil;as Metab&oacute;licas, Doen&ccedil;as Carenciais, Mineraliza&ccedil;&atilde;o de Bovinos, Rela&ccedil;&atilde;o C&aacute;lcio-F&oacute;sforo nos resultados Zoot&eacute;cnicos, Homeopatia Populacional.</p>
-<p><strong>No Exterior:</strong></p>
-<p>Na XXVIII Exposi&ccedil;&atilde;o Internacional do Prado, Uruguay, 1979, sobre o uso da &ldquo;T&eacute;cnica do Desmame Interrompido&rdquo;.</p>
-<p>No II Congresso de Veterin&aacute;rios da L&iacute;ngua Portuguesa, Lisboa, Portugal, 1980, sobre &ldquo;Desmame Interrompido&rdquo;.</p>
-<p>No V Congresso Internacional de M&eacute;dicos Veterin&aacute;rios Homeopatas Paris, Fran&ccedil;a, 1996, sobre &ldquo;Homeopatia Populacional&rdquo;. Congresso promovido pela IAVH.</p>"
+        <ul>
+        <li>Thieartzlich Hocshule, Hannover RFA &ndash; 1976.</li>
+        <li>Michigan State University, USA &ndash; 1977.</li>
+        </ul>
+        <p>18 cursos ministrados;</p>
+        <p><strong>Teses defendidas:</strong></p>
+        <p>Para o Concurso de Doc&ecirc;ncia Livre<br />&ldquo;O F&iacute;gado na Intoxica&ccedil;&atilde;o Aguda pelo Tetracloreto de Carbono&rdquo; &ndash; 1951.</p>
+        <p>Para o Concurso de C&aacute;tedra<br />&ldquo;Contribui&ccedil;&atilde;o ao Estudo da Esterilidade da Vaca Leiteira no Rio Grande do Sul&rdquo; &ndash; 1954.</p>
+        <p>12 orienta&ccedil;&otilde;es de teses de P&oacute;s Gradua&ccedil;&atilde;o (pesquisas);</p>
+        <p>190 confer&ecirc;ncias e Palestras proferidas.</p>
+        <p><strong>P&uacute;blico Alvo:</strong></p>
+        <p>M&eacute;dicos Veterin&aacute;rios, M&eacute;dicos, Zootecnistas, alunos e pecuaristas.</p>
+        <p><strong>Locais:</strong></p>
+        <p>Congressos Profissionais, Universidades, Associa&ccedil;&otilde;es de Classe, Semanas acad&ecirc;micas, Associa&ccedil;&otilde;es de Criadores, Sindicatos e Federa&ccedil;&otilde;es.</p>
+        <p><strong>Assuntos:</strong></p>
+        <p>&Eacute;tica Profissional, Homeopatia Veterin&aacute;ria, Cl&iacute;nica M&eacute;dica, Manejo Reprodutivo, Fertilidade em Gado de Corte e de Leite, Cruzamento Industrial, Desmame Interrompido, Mortandade de Vacas (Centro-Oeste), Doen&ccedil;as Metab&oacute;licas, Doen&ccedil;as Carenciais, Mineraliza&ccedil;&atilde;o de Bovinos, Rela&ccedil;&atilde;o C&aacute;lcio-F&oacute;sforo nos resultados Zoot&eacute;cnicos, Homeopatia Populacional.</p>
+        <p><strong>No Exterior:</strong></p>
+        <p>Na XXVIII Exposi&ccedil;&atilde;o Internacional do Prado, Uruguay, 1979, sobre o uso da &ldquo;T&eacute;cnica do Desmame Interrompido&rdquo;.</p>
+        <p>No II Congresso de Veterin&aacute;rios da L&iacute;ngua Portuguesa, Lisboa, Portugal, 1980, sobre &ldquo;Desmame Interrompido&rdquo;.</p>
+        <p>No V Congresso Internacional de M&eacute;dicos Veterin&aacute;rios Homeopatas Paris, Fran&ccedil;a, 1996, sobre &ldquo;Homeopatia Populacional&rdquo;. Congresso promovido pela IAVH.</p>"
         imagePath={Claudio6}
         readMore={true}
         centerButton={true}
@@ -317,7 +317,7 @@ export default function ClaudioMartinsReal() {
         <Newsletter
           sectionTitle={"Inscreva-se na nossa newsletter"}
           sectionDescription={
-            "Receba novidades as informações exclusivas sobre nossos produtos e novidades diretamente no seu e-mail."
+            "Receba novidades e informações exclusivas sobre nossos produtos diretamente no seu e-mail."
           }
         />
       </div>

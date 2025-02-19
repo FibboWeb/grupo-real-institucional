@@ -36,96 +36,6 @@ interface LastPostsProps {
 }
 
 function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
-  // const settings = {
-  //   slidesToShow: 5.7,
-  //   slidesToScroll: 1,
-  //   infinite: false,
-  //   speed: 500,
-  //   dots: true,
-  //   className: "tester",
-  //   responsive: [
-  //     {
-  //       breakpoint: 2100,
-  //       settings: {
-  //         slidesToShow: 4.5,
-  //         slidesToScroll: 1,
-  //       }
-  //     },
-  //     {
-  //       breakpoint: 1920,
-  //       settings: {
-  //         slidesToShow: 4.2,
-  //         slidesToScroll: 1,
-  //         dots: true,
-  //       }
-  //     },
-  //     {
-  //       breakpoint: 1800,
-  //       settings: {
-  //         slidesToShow: 3.95,
-  //         slidesToScroll: 1,
-  //         dots: true,
-  //       },
-  //     },
-  //     {
-  //       breakpoint: 1660,
-  //       settings: {
-  //         slidesToShow: 4,
-  //         slidesToScroll: 1,
-  //         dots: true,
-  //       },
-  //     },
-  //     {
-  //       breakpoint: 1400,
-  //       settings: {
-  //         slidesToShow: 3.1,
-  //         slidesToScroll: 2,
-  //       },
-  //     },
-  //     {
-  //       breakpoint: 1280,
-  //       settings: {
-  //         slidesToShow: 2.7,
-  //         slidesToScroll: 2,
-  //       },
-  //     },
-  //     {
-  //       breakpoint: 1200,
-  //       settings: {
-  //         slidesToShow: 2,
-  //         slidesToScroll: 2,
-  //       },
-  //     },
-  //     {
-  //       breakpoint: 1024,
-  //       settings: {
-  //         slidesToShow: 2.5,
-  //         slidesToScroll: 2,
-  //       },
-  //     },
-  //     {
-  //       breakpoint: 800,
-  //       settings: {
-  //         slidesToShow: 2.2,
-  //         slidesToScroll: 1,
-  //       },
-  //     },
-  //     {
-  //       breakpoint: 580,
-  //       settings: {
-  //         slidesToShow: 1.2,
-  //         slidesToScroll: 1,
-  //       },
-  //     },
-  //     {
-  //       breakpoint: 320,
-  //       settings: {
-  //         slidesToShow: 1,
-  //         slidesToScroll: 1,
-  //       },
-  //     },
-  //   ],
-  // };
 
   const settings = {
     slidesToShow: 5.7,
@@ -232,7 +142,7 @@ function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
               <div className="content">
                 <h2 className="text-3xl font-bold">Notícias</h2>
                 <p className="pt-6">
-                  Fique por dentro de tudo o que acontece no mundo da pecuária. Notícias, eventos, dicas e muito mais...
+                  Fique por dentro de tudo o que acontece no mundo “Real”. Notícias, eventos, dicas e muito mais...
                 </p>
               </div>
               <div className="w-fit">

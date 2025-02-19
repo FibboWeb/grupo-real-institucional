@@ -1,10 +1,12 @@
 "use client";
-
-import { useState } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
-import { Button } from "../ui/button";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +14,51 @@ const ContactForm = () => {
     email: "",
     mensagem: "",
   });
+
+  const contactSchema = z.object({
+    nome: z.string().min(3, "O nome deve ter pelo menos 3 caracteres."),
+    email: z.string().email("Digite um e-mail válido."),
+    mensagem: z.string().min(10, "A mensagem deve ter pelo menos 10 caracteres."),
+  });
+
+  type ContactFormData = z.infer<typeof contactSchema>;
+
+  const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors, isSubmitting },
+      } = useForm<ContactFormData>({
+        resolver: zodResolver(contactSchema),
+      });
+
+      const [successMessage, setSuccessMessage] = useState("");
+      const [errorMessage, setErrorMessage] = useState("");
+
+      async function onSubmit(data: ContactFormData) {
+        console.log("Enviando comentário...", data);
+        try {
+          // Envia os dados do formulário para a rota personalizada no WP
+          const response = await fetch(`${process.env.NEXT_PUBLIC_WP_URL_API_V1}submit-lead/`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          })
+    
+          // Verifica a resposta da API
+          if (response.status === 200) {
+            setSuccessMessage("Obrigado pelo contato, logo entraremos em contato!")
+            reset();
+          } else {
+            setErrorMessage("Ocorreu um erro ao enviar o formulário. Tente novamente.");
+          }
+        } catch (error) {
+          setStatus("Erro ao enviar o formulário. Tente novamente.");
+          console.error("Erro:", error);
+        }
+      }
 
   const [status, setStatus] = useState("");
 
@@ -24,37 +71,12 @@ const ContactForm = () => {
     }));
   };
 
-  // Função que processa o envio do formulário
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus("Enviando...");
-
-    try {
-      // Envia os dados do formulário para a rota personalizada no WP
-      const response = await axios.post("https://realh.com.br/wp-json/api/v1/submit-lead/", formData, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      // Verifica a resposta da API
-      if (response.status === 200) {
-        setStatus("Formulário enviado com sucesso!");
-        setFormData({ nome: "", email: "", mensagem: "" });
-      } else {
-        setStatus("Ocorreu um erro ao enviar o formulário.");
-      }
-    } catch (error) {
-      setStatus("Erro ao enviar o formulário. Tente novamente.");
-      console.error("Erro:", error);
-    }
-  };
 
   return (
     <div>
       <h1 className="text-3xl font-bold">Entre em contato conosco</h1>
       <p className="text-muted-foreground mb-4">Entre em contato com o Grupo Real.</p>
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         {/* Campo Nome */}
         <div>
           <label htmlFor="nome" className="mb-2 block text-sm font-medium">
@@ -63,11 +85,10 @@ const ContactForm = () => {
           <Input
             id="nome"
             name="nome"
-            value={formData.nome}
-            onChange={handleChange}
             placeholder="Nome"
             required
             className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            {...register("nome")}
           />
         </div>
 
@@ -79,12 +100,11 @@ const ContactForm = () => {
           <Input
             id="email"
             name="email"
-            value={formData.email}
-            onChange={handleChange}
             type="email"
             placeholder="nome@exemplo.com.br"
             required
             className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            {...register("email")}
           />
         </div>
 
@@ -96,12 +116,11 @@ const ContactForm = () => {
           <Textarea
             id="mensagem"
             name="mensagem"
-            value={formData.mensagem}
-            onChange={handleChange}
             placeholder="Digite sua mensagem..."
             required
             rows={4}
             className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            {...register("mensagem")}
           />
         </div>
 

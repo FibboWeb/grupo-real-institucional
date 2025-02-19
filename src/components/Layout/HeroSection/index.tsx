@@ -51,6 +51,8 @@ export default function HeroSection({
           heroCssExtra,
         ])}
       >
+      <div className="absolute inset-0 bg-gradient-to-r from-fb_dark-blue to-fb_light-blue opacity-80 rounded-lg"></div>
+        
         <div className={` ${shadow} absolute top-0 left-0 right-0 bottom-0 w-full h-inherit`}></div>
         <div className={`fb_container mt-32 relative`}>
           <div className={`flex flex-col gap-12 sm:flex-row sm:gap-2`}>
@@ -72,7 +74,7 @@ export default function HeroSection({
                 </div>
                 {imagePath && (
                   <div className="flex-1 flex justify-center items-center">
-                    <Image src={imagePath} alt="imagem hero" height={imageMaxHeight} color={btnColor} />
+                    <Image loading="eager" src={imagePath} alt="imagem hero" height={imageMaxHeight} color={btnColor} />
                   </div>
                 )}
               </div>

@@ -17,11 +17,11 @@ const formatNumber = (num: number): string => {
   } else if (num >= 1_000_000) {
     return `+ ${(num / 1_000_000).toFixed(0)} Milhões${num >= 2_000_000 ? "s" : ""}`;
   } else if (num >= 1_000) {
-    return `+ ${(num / 1_000).toFixed(0)} Mil`;
+    return `+ ${(num / 1_000).toFixed(1)} Mil`;
   } else if (num <= 100) {
     return `${num} Anos`;
   }
-  return num.toString();
+  return num.toString().replace(/\.0\b/g, '');
 };
 
 const IncrementingCounter = ({ maxNumber, speed = 100 }: { maxNumber: number; speed?: number }) => {
@@ -38,7 +38,10 @@ const IncrementingCounter = ({ maxNumber, speed = 100 }: { maxNumber: number; sp
     }
   }, [count, maxNumber, speed]);
 
-  return <>{formatNumber(count)}</>;
+  // se numero for igual a 2.0 formatar para ficar só 2, caso não exibir as casas decimais exemplo 2.4
+  const formattedCount = count.toFixed(1).replace(/\.0\b/g, '');
+
+  return formatNumber(Number(formattedCount));
 };
 
 export default function LoadNumbers({ arrayOfNumbers }: LoadNumbersInterface) {

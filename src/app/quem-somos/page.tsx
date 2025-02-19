@@ -50,13 +50,13 @@ export default function PageAboutUs() {
     "“Aquilo que eu aprendi na juventude, vendo meu pai curar pessoas, hoje nós estamos aplicando nos rebanhos”, Claudio Martins Real, Presidente e Fundador da Grupo Real. ";
   return (
     <section className="flex flex-col">
-      <HeroSection children={childrenHeroSectionContent()} backgroundClass="bg-hero-quem-somos" />
+      <HeroSection children={childrenHeroSectionContent()} backgroundClass="bg-hero-quem-somos bg-bottom" />
       <section className="bg-backgroundPage pb-8 flex flex-col gap-5">
         <Depoiments content={conteudo} image={ClaudioImage} />
         <InfoSection
           title={infoSectionsContents.marcas.title}
           content={infoSectionsContents.marcas.content}
-          youtubeEmbed="https://www.youtube.com/embed/ED_3lipxogY?si=-E2bf9nqCad3h8AV"
+          youtubeEmbed="https://www.youtube.com/embed/ozdbcqp_FOY"
           reverseDesktop={infoSectionsContents.marcas.reverseDesktop}
           reverseMobile={infoSectionsContents.marcas.revereverseMobile}
         />

@@ -87,6 +87,7 @@ export default async function PageProduct({ params }) {
                 sizes="(max-width: 768px) 100vw, 768px"
                 alt={`$Imagem do produto ${product[0]?.title?.rendered}`}
                 className="rounded-lg bg-[#E5E7E9] object-cover mx-auto"
+                loading="eager"
               />
             </Suspense>
           </div>
@@ -168,7 +169,7 @@ export default async function PageProduct({ params }) {
         <div>
           <Newsletter
             sectionTitle="Inscreva-se na nossa newsletter"
-            sectionDescription="Receba novidades e informações exclusivas sobre nossos produtos e novidades diretamente no seu e-mail."
+            sectionDescription="Receba novidades e informações exclusivas sobre nossos produtos diretamente no seu e-mail."
           />
         </div>
       </div>

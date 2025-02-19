@@ -75,7 +75,7 @@ export default async function PageLinhas({ params, searchParams }) {
   // read query params
   const page = parseInt((await searchParams).page || "1");
 
-  const { banner01, banner02, textBanner01, textBanner02 } = await getSEOLines2(slug[0]);
+  const { props, banner01, banner02, textBanner01, textBanner02, linkBanner01, linkBanner02, urlImagemHero } = await getSEOLines2(slug[0]);
   console.log("textos ", textBanner01, textBanner02);
 
   return (
@@ -91,30 +91,27 @@ export default async function PageLinhas({ params, searchParams }) {
           />
         </div>
         <div>
-          <BannerLines slug_context={slug[0]} title="Linha Nutrição" imgBackground={image01.src}>
-            <p>
-              A <strong>Grupo Real</strong>, empresa de <strong>Nutrição e Saúde Animal</strong>
-              há <strong>40 anos</strong> ao lado do produtor
-            </p>
-          </BannerLines>
+          <BannerLines slug_context={slug[0]} title={props[0].name} children={props[0].description} imgBackground={urlImagemHero} />
         </div>
         <div className="my-16 flex justify-center items-center">
           <GridProduct slug={slug} searchParams={page} />
         </div>
         <div className="flex flex-col lg:flex-row lg:flex-nowrap gap-8 mb-20">
           <BannerLines
-            title={`Conheça os produtos`}
+            title={textBanner01}
             hiddenTitle={false}
+            contentBTN={`Conheça o catálogo`}
             imgBackground={banner01 ? banner01 : image02.src}
-            children={textBanner01}
-            ctaLink="/linhas/cmr"
+            // children={textBanner01 ? textBanner01 : ""}
+            ctaLink={linkBanner01 ? linkBanner01 : ""}
           />
           <BannerLines
-            title={`Conheça os produtos`}
+            title={textBanner02}
+            contentBTN={`Conheça o catálogo`}
             hiddenTitle={false}
             imgBackground={banner02 ? banner02 : image02.src}
-            children={textBanner02}
-            ctaLink="/linhas/real-h"
+            // children={textBanner02 ? textBanner02 : ""}
+            ctaLink={linkBanner02 ? linkBanner02 : ""}
           />
         </div>
         <div>
