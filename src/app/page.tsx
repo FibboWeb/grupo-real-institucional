@@ -61,7 +61,7 @@ export default async function Home() {
       <section>
         <SliderNavigational
           categories={sliderCategoriasHome}
-          title="Conheça todas as marcas do Grupo REAL"
+          title="Conheça todas as marcas do Grupo Real"
           text="Oferecemos uma ampla gama de soluções sustentáveis em saúde e nutrição animal, além de logística e parcerias comerciais."
         />
       </section>

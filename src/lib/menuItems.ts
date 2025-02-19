@@ -110,6 +110,14 @@ const menuItems: MenuItems[] = [
               target: "_blank"
             },
           },
+          {
+            node: {
+              id: "3-5",
+              url: "https://www.youtube.com/@PecuariaForte",
+              label: "Canal Pecuária forte",
+              target: "_blank"
+            },
+          },
         ],
       },
     },
