@@ -16,10 +16,12 @@ export interface MenuNode {
         id: string;
         url: string;
         label: string;
+        target?: string
         edges?: {
           id: string;
           url: string;
           label: string;
+          target?: string
         }[];
       };
     }[];
@@ -113,7 +115,8 @@ export default function Menu() {
               {!item.node.url.includes("") || !item.node.url.includes("#") ? (
                 <a
                   href={item.node.url === "#" ? "" : item.node.url}
-                  target={item.node.target || "_self"}
+                  // validação se o dominio for externo abrir em noba
+                  target={item.node.target}
                   title={item.node.label}
                   className="w-full text-fb_blue_main hover:text-fb_blue duration-fb_transition_ease py-3"
                 >
@@ -143,7 +146,7 @@ export default function Menu() {
                   >
                     {item.node.childItems?.edges?.map((subMenu) => (
                       <li key={subMenu.node.id} className="py-2 px-3">
-                        <a className="flex text-fb_blue_main hover:text-fb_blue duration-300" href={subMenu.node.url}>
+                        <a className="flex text-fb_blue_main hover:text-fb_blue duration-300" href={subMenu.node.url} target={subMenu.node.target}>
                           {subMenu.node.label}{" "}
                           {subMenu.node?.edges && subMenu.node?.edges.length > 0 && (
                             <>

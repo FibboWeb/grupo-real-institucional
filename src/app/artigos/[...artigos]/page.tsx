@@ -86,6 +86,7 @@ export default async function ArtigosPage({ params }) {
           width={1250}
           height={320}
           className="rounded-2xl w-full h-60 xl:h-80 object-cover"
+          loading="eager"
         />
       </div>
       <div className="category-content flex flex-col  lg:items-start lg:flex-row  w-full gap-4 xl:gap-24 mb-5">

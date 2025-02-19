@@ -34,6 +34,7 @@ const menuItems: MenuItems[] = [
               id: "5",
               url: "https://realh.gupy.io/",
               label: "Trabalhe Conosco",
+              target: "_blank"
             },
           },
         ],
@@ -98,13 +99,15 @@ const menuItems: MenuItems[] = [
               id: "3-3",
               url: "https://pecuariaforte.com.br/",
               label: "Blog Pecuária Forte",
+              target: "_blank"
             },
           },
           {
             node: {
               id: "3-4",
               url: "https://homeopet.com.br/fique-por-dentro",
-              label: "DR Homeopet",
+              label: "Homeopet",
+              target: "_blank"
             },
           },
         ],

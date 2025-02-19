@@ -99,17 +99,19 @@ export default async function PageLinhas({ params, searchParams }) {
         </div>
         <div className="flex flex-col lg:flex-row lg:flex-nowrap gap-8 mb-20">
           <BannerLines
-            title={`Conheça os produtos`}
+            title={textBanner01}
             hiddenTitle={false}
+            contentBTN={`Conheça o catálogo`}
             imgBackground={banner01 ? banner01 : image02.src}
-            children={textBanner01 ? textBanner01 : ""}
+            // children={textBanner01 ? textBanner01 : ""}
             ctaLink={linkBanner01 ? linkBanner01 : ""}
           />
           <BannerLines
-            title={`Conheça os produtos`}
+            title={textBanner02}
+            contentBTN={`Conheça o catálogo`}
             hiddenTitle={false}
             imgBackground={banner02 ? banner02 : image02.src}
-            children={textBanner02 ? textBanner02 : ""}
+            // children={textBanner02 ? textBanner02 : ""}
             ctaLink={linkBanner02 ? linkBanner02 : ""}
           />
         </div>

@@ -10,10 +10,12 @@ type BannerLinesProps = {
   anchor?: string;
   ctaLink?: string;
   imgBackground?: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
   id?: string;
   hiddenTitle?: boolean;
+  loading?: boolean;
+  contentBTN?: string;
 };
 
 /**
@@ -29,6 +31,8 @@ type BannerLinesProps = {
  * @prop {React.ReactNode} children - Conteúdo do banner.
  * @prop {string} [className] - Nome da classe CSS do banner.
  * @prop {string} [id] - ID do banner.
+ * @prop {boolean} [hiddenTitle] - Se o título do banner deve ser ocultado.
+ * @prop {boolean} [loading] - Defini o modo de carregamento "lazy" ou "eager".
  *
  * @example
  *  <BannerLines
@@ -49,6 +53,8 @@ export default async function BannerLines({
   className,
   id,
   hiddenTitle = true,
+  loading = false,
+  contentBTN = "ler mais"
 }: BannerLinesProps) {
   let infos;
   let infos2;
@@ -74,13 +80,16 @@ export default async function BannerLines({
         src={imgBackground ? imgBackground : urlImagemHero}
         width={1000}
         height={300}
+        loading={loading ? "lazy" : "eager"}
         className="w-full h-full object-cover rounded-lg border-none bg-cover"
       />
-      <div className="absolute inset-0 flex flex-col gap-6 justify-center mx-auto w-full text-white pl-8">
+      <div className={`${children ? "gap-6" : "gap-20"} absolute inset-0 flex flex-col justify-center mx-auto w-full text-white pl-8`}>
         <h2 className="text-5xl md:text-4xl font-bold">{title}</h2>
-        <div className="w-full md:w-2/5 min-h-[72px] line-clamp-6" dangerouslySetInnerHTML={{ __html: children || "" }} />
+        { children  && (
+          <div className="w-full md:w-2/5 min-h-[72px] line-clamp-6" dangerouslySetInnerHTML={{ __html: children || "" }} /> 
+        )}
         <div className="w-fit">
-          <BtnCallToAction content="Ler mais" color="fb_blue_button" ctaLink={ctaLink} showIcon={false}/>
+          <BtnCallToAction content={contentBTN} color="fb_blue_button" ctaLink={ctaLink} showIcon={false}/>
         </div>
       </div>
     </div>

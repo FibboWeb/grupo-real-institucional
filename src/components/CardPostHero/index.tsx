@@ -11,6 +11,7 @@ function CardPostHero({
   postCategoryLink,
   customClasses,
   blogContext,
+  loading = false,
 }: CardBlogProps) {
   return (
     <div className={`relative rounded-2xl ${!customClasses ? "h-full" : customClasses}`}>
@@ -20,6 +21,7 @@ function CardPostHero({
         alt={postImageAlt}
         width={200}
         height={200}
+        loading={loading ? "eager" : "lazy"}
       />
       <Link
         href={blogContext ? `${blogContext}/${postLink}` : `/noticias/${postLink}`}

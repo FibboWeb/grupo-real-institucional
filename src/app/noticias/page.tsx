@@ -84,6 +84,7 @@ export default async function Noticias({ searchParams }) {
                   heroPosts[0].categories.nodes[0].name.toLowerCase() === "artigos" ? "/artigos" : "/noticias"
                 }
                 customClasses="min-h-[340px] lg:min-h-[450px]"
+                loading={true}
               />
             )}
           </div>
@@ -101,6 +102,7 @@ export default async function Noticias({ searchParams }) {
                     postTitle={post.title}
                     customClasses="h-[48.5%]"
                     blogContext={post.categories.nodes[0].name.toLowerCase() === "artigos" ? "/artigos" : "/noticias"}
+                    loading={index < 2 ? true : false}
                   />
                 ))}
               </div>

@@ -38,7 +38,7 @@ export default function DownloadsPage() {
       </div>
       {/* Hero Section */}
       <div className="relative h-[200px] w-full">
-        <Image src={DownloadsBanner} alt="Cattle background" fill className="object-cover brightness-50 rounded-lg" />
+        <Image loading="eager" src={DownloadsBanner} alt="Cattle background" fill className="object-cover brightness-50 rounded-lg" />
         <div className="absolute inset-0 flex items-center justify-center">
           <h1 className="text-4xl font-bold text-white">Downloads</h1>
         </div>

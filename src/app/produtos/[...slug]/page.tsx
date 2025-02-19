@@ -87,6 +87,7 @@ export default async function PageProduct({ params }) {
                 sizes="(max-width: 768px) 100vw, 768px"
                 alt={`$Imagem do produto ${product[0]?.title?.rendered}`}
                 className="rounded-lg bg-[#E5E7E9] object-cover mx-auto"
+                loading="eager"
               />
             </Suspense>
           </div>
