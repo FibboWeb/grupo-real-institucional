@@ -66,6 +66,13 @@ async function Footer() {
               alt={"Selo GPTW"}
             />
             <Image
+              className="max-sm:w-[90px]"
+              src={"/images/selos/selo-isso-27001.webp"}
+              width={193}
+              height={80}
+              alt={"Selo ISO 27001"}
+            />
+            <Image
               className="max-sm:w-12"
               src={"/images/selos/assinatura.png"}
               width={80}
