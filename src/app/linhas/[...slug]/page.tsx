@@ -10,7 +10,6 @@ import image02 from "@/public/images/banners/carne-vermelha-cortada.webp";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import GridProduct from "../(componentes)";
-import { text } from "stream/consumers";
 
 type Props = {
   params: Promise<{ slug: string }>;
