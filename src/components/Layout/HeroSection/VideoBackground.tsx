@@ -4,7 +4,6 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import BtnCallToAction from "../Buttons/BtnCallToAction/BtnCallToAction";
 import ArrowIcon from "@/public/icons/arrow-right.svg";
-import ReactPlayer from 'react-player'
 
 type VideoBackgroundProps = {
   children: React.ReactNode;
