@@ -11,6 +11,7 @@ type Member = {
   img: StaticImageData;
   name: string;
   role: string;
+  description?: string;
 };
 
 type BoardCardsProps = {
@@ -69,25 +70,36 @@ export default function BoardCards({ title, members }: BoardCardsProps) {
         <div className="w-full">
           <Slider {...settings}>
             {members.map((member, index) => (
-              <li className="flip-card overflow-hidden sm:max-w-[90%] max-w-[95%] h-[450px]" key={index}>
-                <div className="flip-card-inner w-full">
+              <li 
+                className="flip-card overflow-hidden sm:max-w-[90%] max-w-[95%] h-[450px]" 
+                key={index}
+                tabIndex={0}
+                role="button"
+                aria-label={`Ver mais informações sobre ${member.name}`}
+              >
+                <div className="flip-card-inner w-full h-full">
                   {/* Frente do Card */}
-                  <div className="absolute h-full w-full flex items-center justify-center rounded-2xl">
-                    <Image src={member.img} alt={member.name} className="object-cover w-full h-full" />
+                  <div className="flip-card-front">
+                    <Image 
+                      src={member.img} 
+                      alt={member.name} 
+                      className="object-cover w-full h-full rounded-2xl"
+                      priority
+                    />
+                    {/* Overlay com nome e cargo */}
+                    <div className="absolute bottom-0 left-0 right-0 p-4 text-white rounded-b-2xl">
+                      <h4 className="text-2xl font-bold">{member.name}</h4>
+                      <p className="text-lg font-normal">{member.role}</p>
+                    </div>
                   </div>
-              
-                  <div>
-                    {/* Elemento para telas maiores que 768px (md:flex) */}
-                    <div className="hidden md:flex md:flex-col card-overlay bg-content-board text-white">
-                      <h4 className="text-2xl font-bold">{member.name}</h4>
-                      <p className="text-lg font-normal">{member.role}</p>
-                    </div>
 
-                    {/* Elemento para telas menores que 768px (md:hidden) */}
-                    <div className="md:hidden h-full absolute flex flex-col justify-end text-white bg-content-board px-2 w-full">
-                      <h4 className="text-2xl font-bold">{member.name}</h4>
-                      <p className="text-lg font-normal">{member.role}</p>
-                    </div>
+                  {/* Verso do Card */}
+                  <div className="flip-card-back text-white bg-fb_blue_main from-fb_dark-blue to-fb_light-blue">
+                    {/* <h4 className="text-2xl font-bold mb-4">{member.name}</h4>
+                    <p className="text-lg font-normal mb-2">{member.role}</p> */}
+                    <p className="text-base">
+                      {member.description}
+                    </p>
                   </div>
                 </div>
               </li>
