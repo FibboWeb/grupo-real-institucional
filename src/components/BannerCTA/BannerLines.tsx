@@ -18,6 +18,7 @@ type BannerLinesProps = {
   loading?: boolean;
   contentBTN?: string;
   showCta?: boolean;
+  enableClick?: boolean;
 };
 
 /**
@@ -37,6 +38,7 @@ type BannerLinesProps = {
  * @prop {boolean} [loading] - Defini o modo de carregamento "lazy" ou "eager".
  * @prop {string} [contentBTN] - Conteúdo do botão de chamada para a ação
  * @prop {boolean} [showCta] - Se o botão de chamada para a ação deve ser exibido
+ * @prop {boolean} [enableClick] - Se o botão de chamada para ação deve ser clicável
  *
  * @example
  *  <BannerLines
@@ -59,7 +61,8 @@ export default async function BannerLines({
   hiddenTitle = true,
   loading = false,
   contentBTN = "ler mais",
-  showCta = true
+  showCta = true,
+  enableClick = false
 }: BannerLinesProps) {
   let infos;
   let infos2;
@@ -96,7 +99,11 @@ export default async function BannerLines({
           <div className="w-full md:w-2/5 min-h-[72px] line-clamp-6" dangerouslySetInnerHTML={{ __html: children || "" }} /> 
         )}
         { showCta && (
-          <ButtonCTA />
+          <ButtonCTA
+            ctaLink={ctaLink}
+            content={contentBTN}
+            enableClick={enableClick}
+          />
         )}
       </div>
     </div>

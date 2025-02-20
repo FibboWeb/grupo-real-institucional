@@ -12,10 +12,15 @@ const handleClick = () => {
   }
 };
 
-function ButtonCTA() {
+function ButtonCTA({ ctaLink, content, enableClick }) {
   return (
     <div className="w-fit">
-      <button onClick={() => handleClick()} className="bg-fb_blue_button btn-container inline-flex items-center gap-4 py-3 px-4 rounded text-base font-semibold uppercase transition-all duration-300">Leia mais</button>
+      { enableClick && (
+        <button onClick={() => handleClick()} className="bg-fb_blue_button btn-container inline-flex items-center gap-4 py-3 px-4 rounded text-base font-semibold uppercase transition-all duration-300">{content ? content : "Leia mais"}</button>
+      )} 
+      { !enableClick && (
+        <button className="bg-fb_blue_button btn-container inline-flex items-center gap-4 py-3 px-4 rounded text-base font-semibold uppercase transition-all duration-300">{content ? content : "Leia mais"}</button>
+      )}
     </div>
   )
 }
