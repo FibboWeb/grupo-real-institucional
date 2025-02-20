@@ -27,7 +27,7 @@ export default async function Home() {
   return (
     <div className="flex flex-col gap-fb_space-section">
       <section>
-        <VideoBackground src_video="/video/DRONE_NOVO_REVERSE.mp4" ctaLinks={ctasLinksHero}>
+        <VideoBackground src_video="/video/DRONE_OTIMIZADO.mp4" ctaLinks={ctasLinksHero}>
           <div className="">
             <h1 className="text-3xl md:text-5xl font-bold mb-4 text-center">
               Por um futuro <br className="block md:hidden" />s
