@@ -1,7 +1,7 @@
 'use client'
 import ArrowIcon from "@/public/icons/arrow-right.svg";
 import { isArray } from "@apollo/client/utilities";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import BtnCallToAction from "../Buttons/BtnCallToAction/BtnCallToAction";
 
 type VideoBackgroundProps = {
@@ -45,12 +45,24 @@ type ctaLinksProps = {
 const VideoBackground = ({ children, src_video, ctaLinks }: VideoBackgroundProps) => {
 
   const videoRef = useRef(null);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.muted = true;
-      videoRef.current.play();
-    }
+    const playVideo = () => {
+      if (videoRef.current) {
+        videoRef.current.muted = true;
+        videoRef.current.play().catch((error) => {
+          console.error("Erro ao iniciar o vídeo:", error);
+        });
+      }
+    };
+
+    // Espera o DOM estar pronto para tentar dar play
+    document.addEventListener("DOMContentLoaded", playVideo);
+
+    return () => {
+      document.removeEventListener("DOMContentLoaded", playVideo);
+    };
   }, []);
 
   return (
