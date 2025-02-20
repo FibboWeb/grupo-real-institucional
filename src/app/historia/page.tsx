@@ -47,7 +47,7 @@ export default async function Historia() {
         <div className={`hero-category bg-no-repeat bg-center bg-cover h-auto xl:h-72`}>
           <Image
             alt="Grupo Real"
-            src="/images/historia/hero-historia.webp"
+            src="/images/historia/banner_40_anos.webp"
             width={1520}
             height={320}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

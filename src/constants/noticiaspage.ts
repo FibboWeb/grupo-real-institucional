@@ -1,8 +1,8 @@
-import img01 from "@/public/icons-slider-noticias/pecuaria-forte-in.webp";
-import img02 from "@/public/icons-slider-noticias/noticias-in.webp";
-import img03 from "@/public/icons-slider-noticias/institucional-in.webp";
-import img04 from "@/public/icons-slider-noticias/ciclos-in-.webp";
-import img05 from "@/public/icons-slider-noticias/40-anos-in.webp";
+import img01 from "@/public/images/noticias/pecuaria_forte.webp";
+import img02 from "@/public/images/noticias/noticias.webp";
+import img03 from "@/public/images/noticias/institucional.webp";
+import img04 from "@/public/images/noticias/ciclos_grupo_real.webp";
+import img05 from "@/public/images/noticias/40_anos.webp";
 
 export const sliderCategoriasNoticias = [
   {

@@ -79,6 +79,7 @@ export default function BoardCards({ title, members }: BoardCardsProps) {
               >
                 <div className="flip-card-inner w-full h-full">
                   {/* Frente do Card */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-fb_dark-blue to-fb_light-blue rounded-lg z-20"></div>
                   <div className="flip-card-front">
                     <Image 
                       src={member.img} 
@@ -87,7 +88,7 @@ export default function BoardCards({ title, members }: BoardCardsProps) {
                       priority
                     />
                     {/* Overlay com nome e cargo */}
-                    <div className="absolute bottom-0 left-0 right-0 p-4 text-white rounded-b-2xl">
+                    <div className="absolute z-50 bottom-0 left-0 right-0 p-4 text-white rounded-b-2xl">
                       <h4 className="text-2xl font-bold">{member.name}</h4>
                       <p className="text-lg font-normal">{member.role}</p>
                     </div>
