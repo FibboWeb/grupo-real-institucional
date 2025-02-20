@@ -43,43 +43,76 @@ type ctaLinksProps = {
  */
 
 const VideoBackground = ({ children, src_video, ctaLinks }: VideoBackgroundProps) => {
-
-  const videoRef = useRef(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    const playVideo = () => {
-      if (videoRef.current) {
+    const playVideo = async () => {
+      if (!videoRef.current) return;
+
+      try {
+        // Garantir que o vídeo está mutado (requisito para autoplay)
         videoRef.current.muted = true;
-        videoRef.current.play().catch((error) => {
-          console.error("Erro ao iniciar o vídeo:", error);
-        });
+        videoRef.current.playsInline = true;
+        
+        // Tenta iniciar o vídeo
+        const playPromise = videoRef.current.play();
+        
+        if (playPromise !== undefined) {
+          await playPromise;
+          setIsLoaded(true);
+        }
+      } catch (error) {
+        console.error("Erro ao iniciar o vídeo:", error);
+        // Tenta reproduzir novamente em caso de erro
+        setTimeout(() => {
+          if (videoRef.current) {
+            videoRef.current.play().catch(e => console.error("Retry failed:", e));
+          }
+        }, 1000);
       }
     };
 
-    // Espera o DOM estar pronto para tentar dar play
-    document.addEventListener("DOMContentLoaded", playVideo);
+    // Executa playVideo imediatamente e também adiciona como listener
+    playVideo();
+
+    // Adiciona listeners para garantir que o vídeo continue rodando
+    const handleVisibilityChange = () => {
+      if (!document.hidden && videoRef.current && videoRef.current.paused) {
+        playVideo();
+      }
+    };
+
+    const handleFocus = () => {
+      if (videoRef.current && videoRef.current.paused) {
+        playVideo();
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    window.addEventListener("focus", handleFocus);
 
     return () => {
-      document.removeEventListener("DOMContentLoaded", playVideo);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      window.removeEventListener("focus", handleFocus);
     };
   }, []);
 
   return (
     <div className="relative h-screen flex items-center justify-center overflow-hidden">
       <video 
-        src={src_video}
         ref={videoRef}
-        autoPlay={true}
-        muted={true}
-        loop={true}
-        playsInline={true}
-        preload="auto"
         className="absolute top-0 left-0 w-full h-full object-cover bg-center bg-no-repeat aspect-video"
-        poster={`/images/noticias/institucional.webp`}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        poster="/images/noticias/institucional.webp"
+        aria-hidden="true"
       >
-        {/* <source src={src_video} type="video/mp4" /> */}
-        Seu navegador não suporta vídeos HTML5.
+        <source src={src_video} type="video/mp4" />
+        <p className="sr-only">Seu navegador não suporta vídeos HTML5.</p>
       </video>
       <div className="absolute inset-0 bg-fb_gradiente_opacity"></div>
       <div className="relative z-10 text-center text-white lg:w-4/5">
