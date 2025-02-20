@@ -1,3 +1,4 @@
+
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import "./index.css";

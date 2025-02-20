@@ -45,7 +45,7 @@ type ctaLinksProps = {
 const VideoBackground = ({ children, src_video, ctaLinks }: VideoBackgroundProps) => {
   return (
     <div className="relative h-screen flex items-center justify-center overflow-hidden">
-      <video autoPlay muted loop className="absolute top-0 left-0 w-full h-full object-cover">
+      <video autoPlay muted loop playsInline className="absolute top-0 left-0 w-full h-full object-cover">
         <source src={src_video} type="video/mp4" />
         Seu navegador não suporta vídeos HTML5.
       </video>
