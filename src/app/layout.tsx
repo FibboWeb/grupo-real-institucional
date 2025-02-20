@@ -42,6 +42,7 @@ export default function RootLayout({
     <html lang="pt-BR" data-lt-installed="true" suppressHydrationWarning={true}>
       <head>
         <GoogleTagHead />
+        <link rel="preload" href="/video/DRONE_NOVO_REVERSE.mp4" as="video" />
       </head>
       <body className={`${poppins.className} antialiased`}>
         <GoogleTagBody />

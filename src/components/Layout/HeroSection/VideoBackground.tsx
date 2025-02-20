@@ -55,8 +55,8 @@ const VideoBackground = ({ children, src_video, ctaLinks }: VideoBackgroundProps
 
   return (
     <div className="relative h-screen flex items-center justify-center overflow-hidden">
-      <video ref={videoRef} autoPlay muted loop playsInline className="absolute top-0 left-0 w-full h-full object-cover bg-center bg-no-repeat aspect-video" poster={`/images/noticias/institucional.webp`}>
-        <source src={src_video} type="video/mp4" />
+      <video src={src_video} ref={videoRef} autoPlay muted loop playsInline className="absolute top-0 left-0 w-full h-full object-cover bg-center bg-no-repeat aspect-video" poster={`/images/noticias/institucional.webp`}>
+        {/* <source src={src_video} type="video/mp4" /> */}
         Seu navegador não suporta vídeos HTML5.
       </video>
       <div className="absolute inset-0 bg-fb_gradiente_opacity"></div>
