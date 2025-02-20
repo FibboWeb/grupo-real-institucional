@@ -5,6 +5,7 @@ import "../styles/globals.css";
 import Header from "../components/Layout/Header";
 import WhatsappButton from "@/components/Layout/WhatsappButton";
 import { GoogleTagHead, GoogleTagBody } from "@/components/GoogleTag";
+import CookieConsent from '@/components/CookieConsent/CookieConsent'
 
 const poppins = Poppins({
   weight: ["300", "400", "500", "600", "700"],
@@ -48,6 +49,7 @@ export default function RootLayout({
         {children}
         <Footer />
         <WhatsappButton />
+        <CookieConsent />
       </body>
     </html>
   );
