@@ -55,6 +55,7 @@ export async function getSEOLines2(context: string) {
     return {
       props: data,
       urlImagemHero: imgUrl.guid?.rendered,
+      textCategoriaProduto: data[0]?.meta.categoria_texto,
       text: data[0]?.meta.categoria_produto_texto,
       banner01: data[0]?.meta.banner_01,
       banner02: data[0]?.meta.banner_02,
