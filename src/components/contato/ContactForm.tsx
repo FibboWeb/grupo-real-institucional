@@ -7,6 +7,7 @@ import { z } from "zod";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
+import Link from "next/link";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -19,6 +20,9 @@ const ContactForm = () => {
     nome: z.string().min(3, "O nome deve ter pelo menos 3 caracteres."),
     email: z.string().email("Digite um e-mail válido."),
     mensagem: z.string().min(10, "A mensagem deve ter pelo menos 10 caracteres."),
+    consentimento: z.preprocess((val) => {
+      return ['true', '1', 'on', 'yes', true].includes(val as string | boolean);
+      }, z.boolean())
   });
 
   type ContactFormData = z.infer<typeof contactSchema>;
@@ -80,7 +84,7 @@ const ContactForm = () => {
         {/* Campo Nome */}
         <div>
           <label htmlFor="nome" className="mb-2 block text-sm font-medium">
-            Nome *
+            Nome <span className="text-red-500">*</span>
           </label>
           <Input
             id="nome"
@@ -95,7 +99,7 @@ const ContactForm = () => {
         {/* Campo E-mail */}
         <div>
           <label htmlFor="email" className="mb-2 block text-sm font-medium">
-            E-mail *
+            E-mail <span className="text-red-500">*</span>
           </label>
           <Input
             id="email"
@@ -111,7 +115,7 @@ const ContactForm = () => {
         {/* Campo Mensagem */}
         <div>
           <label htmlFor="mensagem" className="mb-2 block text-sm font-medium">
-            Mensagem
+            Mensagem <span className="text-red-500">*</span>
           </label>
           <Textarea
             id="mensagem"
@@ -122,6 +126,11 @@ const ContactForm = () => {
             className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             {...register("mensagem")}
           />
+        </div>
+
+        <div className="flex gap-3 text-white">
+          <input type="checkbox" name="consentimento" id="consentimento" required {...register("consentimento")} />
+          <label htmlFor="consent" className="text-sm text-neutral-400">Ao enviar a mensagem, você nos autoriza a coletar os seus dados para que possamos contatá-lo e entender melhor seus objetivos com a mensagem, nos termos do nosso <Link href={"/politica-de-privacidade"} className="text-fb_blue hover:text-fb_blue" target="_blank" style={{ textDecoration: "underline" }}>Aviso de Privacidade</Link></label>
         </div>
 
         {/* Botão de Envio */}

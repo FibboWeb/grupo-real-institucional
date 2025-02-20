@@ -93,7 +93,7 @@ export default async function PageLinhas({ params, searchParams }) {
           />
         </div>
         <div>
-          <BannerLines slug_context={slug[0]} title={props[0].name} children={props[0].description} imgBackground={urlImagemHero} showCta={true} />
+          <BannerLines slug_context={slug[0]} title={props[0].name} children={props[0].description} imgBackground={urlImagemHero} showCta={true} enableClick={true} />
         </div>
         <div className="my-16 flex justify-center items-center">
           <GridProduct slug={slug} searchParams={page} />

@@ -1,8 +1,11 @@
+'use client'
 import { isArray } from "@apollo/client/utilities";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import BtnCallToAction from "../Buttons/BtnCallToAction/BtnCallToAction";
 import ArrowIcon from "@/public/icons/arrow-right.svg";
+import { useRef } from "react";
+import { useEffect } from "react";
 
 type VideoBackgroundProps = {
   children: React.ReactNode;
@@ -43,10 +46,25 @@ type ctaLinksProps = {
  */
 
 const VideoBackground = ({ children, src_video, ctaLinks }: VideoBackgroundProps) => {
+
+  const videoEl = useRef(null);
+
+  const attemptPlay = () => {
+    videoEl &&
+      videoEl.current &&
+      videoEl.current.play().catch(error => {
+        console.error("Error attempting to play", error);
+      });
+  };
+
+  useEffect(() => {
+    attemptPlay();
+  }, []);
+
   return (
     <div className="relative h-screen flex items-center justify-center overflow-hidden">
-      <video autoPlay muted loop className="absolute top-0 left-0 w-full h-full object-cover">
-        <source src={src_video} type="video/mp4" />
+      <video ref={videoEl} muted loop controls playsInline preload="auto" poster="/images/noticias/institucional.webp" className="absolute top-0 left-0 w-full h-full object-cover">
+        <source  src={src_video} type="video/mp4" />
         Seu navegador não suporta vídeos HTML5.
       </video>
       <div className="absolute inset-0 bg-fb_gradiente_opacity"></div>

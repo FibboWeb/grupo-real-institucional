@@ -34,7 +34,7 @@ export default function InstitutionalLayout({
       itens: [
         {
           anchor: "LGPD",
-          link: "/lgpd",
+          link: "/institucional/lgpd",
         },
         {
           anchor: "Política de Cookies",

@@ -5,7 +5,7 @@ import { GET_POSTS_LAST_NOTICIAS_PAGE } from "@/graphql/posts";
 export async function fetchPosts(page = 1, postsPerPage = 6, offset = 3) {
   const nwPage = page + offset;
   const res = await fetch(
-    `${process.env.WP_URL_API}posts?per_page=${postsPerPage}&page=${page}&offset=${offset}&_embed=author,wp:featuredmedia,categories`,
+    `${process.env.NEXT_PUBLIC_WP_URL_API}posts?per_page=${postsPerPage}&page=${page}&offset=${offset}&_embed=author,wp:featuredmedia,categories`,
     {
       next: { revalidate: 3600 },
     },
@@ -46,7 +46,7 @@ export async function getLastPostsNoticias() {
     const fetchedPosts = await client.query({
       query: GET_POSTS_LAST_NOTICIAS_PAGE,
     });
-
+    console.log(fetchedPosts.data.posts);
     return {
       props: fetchedPosts.data.posts,
     };

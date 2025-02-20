@@ -5,6 +5,7 @@ import "../styles/globals.css";
 import Header from "../components/Layout/Header";
 import WhatsappButton from "@/components/Layout/WhatsappButton";
 import { GoogleTagHead, GoogleTagBody } from "@/components/GoogleTag";
+import CookieConsent from '@/components/CookieConsent/CookieConsent'
 
 const poppins = Poppins({
   weight: ["300", "400", "500", "600", "700"],
@@ -41,6 +42,7 @@ export default function RootLayout({
     <html lang="pt-BR" data-lt-installed="true" suppressHydrationWarning={true}>
       <head>
         <GoogleTagHead />
+        <link rel="preload" href="/video/DRONE_NOVO_REVERSE.mp4" as="video" />
       </head>
       <body className={`${poppins.className} antialiased`}>
         <GoogleTagBody />
@@ -48,6 +50,7 @@ export default function RootLayout({
         {children}
         <Footer />
         <WhatsappButton />
+        <CookieConsent />
       </body>
     </html>
   );
