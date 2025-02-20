@@ -14,7 +14,10 @@ interface NewsletterProps {
 const newsletterSchema = z.object({
   nome: z.string().min(3, "O nome deve ter pelo menos 3 caracteres."),
   email: z.string().email("Digite um e-mail válido."),
-  consent: z.preprocess((val) => val === 'true' || val === true, z.boolean())
+  consentimento: z.preprocess((val) => {
+    return ['true', '1', 'on', 'yes', true].includes(val as string | boolean);
+    }, z.boolean())
+
 });
 
 type NewsLetterFormData = z.infer<typeof newsletterSchema>;
@@ -51,15 +54,17 @@ function Newsletter({
     async function onSubmit(data: NewsLetterFormData) {
       console.log("Enviando comentário...", data);
       try {
-        const { email, nome, consent } = data
+        const { email, nome, consentimento } = data
         const response = await fetch(`${process.env.NEXT_PUBLIC_WP_URL_API_V1}subscribe-newsletter/`, {
           method: "POST",
           mode: "cors",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ nome, email, consent }),
+          body: JSON.stringify({ nome, email, consentimento }),
         });
+
+        console.log(consentimento)
     
         const responseData = await response.json();
         console.log(responseData)
@@ -119,7 +124,7 @@ function Newsletter({
                   />
                 </div>
                 <div className="flex gap-3 text-white">
-                  <input type="checkbox" name="consent" id="consent" {...register("consent")} onChange={(e) => setConsent(e.target.checked)}/>
+                  <input type="checkbox" name="consentimento" id="consentimento" required {...register("consentimento")} onChange={(e) => setConsent(e.target.checked)}/>
                   <label htmlFor="consent" className="text-sm text-neutral-400">Ao enviar a mensagem, você nos autoriza a coletar os seus dados para que possamos contatá-lo e entender melhor seus objetivos com a mensagem, nos termos do nosso <Link href={"/politica-de-privacidade"} className="text-fb_blue hover:text-fb_blue" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "underline" }}>Aviso de Privacidade</Link></label>
                 </div>
                 <Button
