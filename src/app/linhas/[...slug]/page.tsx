@@ -11,6 +11,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import GridProduct from "../(componentes)";
 import { text } from "stream/consumers";
+import TextSEO from "@/components/TextSEO";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -76,7 +77,7 @@ export default async function PageLinhas({ params, searchParams }) {
   // read query params
   const page = parseInt((await searchParams).page || "1");
 
-  const { props, banner01, banner02, textBanner01, textBanner02, linkBanner01, linkBanner02, urlImagemHero } = await getSEOLines2(slug[0]);
+  const { props, banner01, banner02, textBanner01, textBanner02, linkBanner01, linkBanner02, urlImagemHero, textCategoriaProduto } = await getSEOLines2(slug[0]);
   console.log("textos ", textBanner01, textBanner02);
 
   return (
@@ -92,11 +93,18 @@ export default async function PageLinhas({ params, searchParams }) {
           />
         </div>
         <div>
-          <BannerLines slug_context={slug[0]} title={props[0].name} children={props[0].description} imgBackground={urlImagemHero} />
+          <BannerLines slug_context={slug[0]} title={props[0].name} children={props[0].description} imgBackground={urlImagemHero} showCta={true} />
         </div>
         <div className="my-16 flex justify-center items-center">
           <GridProduct slug={slug} searchParams={page} />
         </div>
+        { textCategoriaProduto && (
+          <div className="mb-16 flex">
+            <TextSEO 
+              children={textCategoriaProduto}
+            /> 
+          </div>
+        )}
         <div className="flex flex-col lg:flex-row lg:flex-nowrap gap-8 mb-20">
           <BannerLines
             title={textBanner01}

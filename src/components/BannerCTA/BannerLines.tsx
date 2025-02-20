@@ -16,6 +16,7 @@ type BannerLinesProps = {
   hiddenTitle?: boolean;
   loading?: boolean;
   contentBTN?: string;
+  showCta?: boolean;
 };
 
 /**
@@ -33,6 +34,8 @@ type BannerLinesProps = {
  * @prop {string} [id] - ID do banner.
  * @prop {boolean} [hiddenTitle] - Se o título do banner deve ser ocultado.
  * @prop {boolean} [loading] - Defini o modo de carregamento "lazy" ou "eager".
+ * @prop {string} [contentBTN] - Conteúdo do botão de chamada para a ação
+ * @prop {boolean} [showCta] - Se o botão de chamada para a ação deve ser exibido
  *
  * @example
  *  <BannerLines
@@ -54,7 +57,8 @@ export default async function BannerLines({
   id,
   hiddenTitle = true,
   loading = false,
-  contentBTN = "ler mais"
+  contentBTN = "ler mais",
+  showCta = true
 }: BannerLinesProps) {
   let infos;
   let infos2;
@@ -84,13 +88,15 @@ export default async function BannerLines({
         className="w-full h-full object-cover rounded-lg border-none bg-cover"
       />
       <div className={`${children ? "gap-6" : "gap-20"} absolute inset-0 flex flex-col justify-center mx-auto w-full text-white pl-8`}>
-        <h2 className="text-5xl md:text-4xl font-bold">{title}</h2>
+        <h1 className="text-4xl md:text-5xl font-bold break-words">{title}</h1>
         { children  && (
           <div className="w-full md:w-2/5 min-h-[72px] line-clamp-6" dangerouslySetInnerHTML={{ __html: children || "" }} /> 
         )}
-        <div className="w-fit">
-          <BtnCallToAction content={contentBTN} color="fb_blue_button" ctaLink={ctaLink} showIcon={false}/>
-        </div>
+        { showCta && (
+          <div className="w-fit">
+            <BtnCallToAction content={contentBTN} color="fb_blue_button" ctaLink={ctaLink} showIcon={false}/>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -67,7 +67,9 @@ export default function Page() {
           })}
         </div>
       </div>
-      <Newsletter />
+      <section className="fb_container">
+        <Newsletter />
+      </section>
     </>
   );
 }
