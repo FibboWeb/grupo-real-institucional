@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 import BtnCallToAction from "../Layout/Buttons/BtnCallToAction/BtnCallToAction";
+import ButtonCTA from "./ButtonCTA";
 
 type BannerLinesProps = {
   slug_context?: string;
@@ -75,6 +76,8 @@ export default async function BannerLines({
     await getSEOLines2(slug_context);
   console.log("infos buscada", urlImagemHero);
 
+  
+
 
   return (
     <div className="relative w-full h-[320px] rounded-lg items-center">
@@ -93,9 +96,7 @@ export default async function BannerLines({
           <div className="w-full md:w-2/5 min-h-[72px] line-clamp-6" dangerouslySetInnerHTML={{ __html: children || "" }} /> 
         )}
         { showCta && (
-          <div className="w-fit">
-            <BtnCallToAction content={contentBTN} color="fb_blue_button" ctaLink={ctaLink} showIcon={false}/>
-          </div>
+          <ButtonCTA />
         )}
       </div>
     </div>
