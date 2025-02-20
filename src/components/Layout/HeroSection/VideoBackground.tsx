@@ -1,8 +1,8 @@
-import { isArray } from "@apollo/client/utilities";
-import { ArrowRight } from "lucide-react";
-import Link from "next/link";
-import BtnCallToAction from "../Buttons/BtnCallToAction/BtnCallToAction";
+'use client'
 import ArrowIcon from "@/public/icons/arrow-right.svg";
+import { isArray } from "@apollo/client/utilities";
+import { useEffect, useRef } from "react";
+import BtnCallToAction from "../Buttons/BtnCallToAction/BtnCallToAction";
 
 type VideoBackgroundProps = {
   children: React.ReactNode;
@@ -43,9 +43,19 @@ type ctaLinksProps = {
  */
 
 const VideoBackground = ({ children, src_video, ctaLinks }: VideoBackgroundProps) => {
+
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = true;
+      videoRef.current.play();
+    }
+  }, []);
+
   return (
     <div className="relative h-screen flex items-center justify-center overflow-hidden">
-      <video autoPlay muted loop playsInline className="absolute top-0 left-0 w-full h-full object-cover">
+      <video ref={videoRef} autoPlay muted loop playsInline className="absolute top-0 left-0 w-full h-full object-cover bg-center bg-no-repeat aspect-video" poster={`/images/noticias/institucional.webp`}>
         <source src={src_video} type="video/mp4" />
         Seu navegador não suporta vídeos HTML5.
       </video>

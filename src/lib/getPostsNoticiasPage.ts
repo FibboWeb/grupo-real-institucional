@@ -46,7 +46,7 @@ export async function getLastPostsNoticias() {
     const fetchedPosts = await client.query({
       query: GET_POSTS_LAST_NOTICIAS_PAGE,
     });
-
+    console.log(fetchedPosts.data.posts);
     return {
       props: fetchedPosts.data.posts,
     };
