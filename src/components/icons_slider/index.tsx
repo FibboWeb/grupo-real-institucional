@@ -127,7 +127,7 @@ export default function SliderNavigational({ categories, title, text, isNoticias
             {categories.map((category) => (
               <div
                 key={category.id}
-                className={`${!isNoticias ? "w-[140px] min-h-[140px]" : ""}flex flex-col justify-center items-center mx-auto gap-6 px-8`}
+                className={`${!isNoticias ? "w-[140px] min-h-[140px]" : ""}flex flex-col justify-center items-center mx-auto gap-6 px-4`}
               >
                 {category.url && (
                   <Link href={category.url} className="flex justify-center">
