@@ -52,13 +52,13 @@
 
 /* Desktop - hover animation */
 @media (min-width: 1024px) {
-  .flip-card:hover .flip-card-inner {
+  .flipped-card:hover .flip-card-inner {
     transform: rotateY(180deg);
   }
 }
 
 /* Mobile - touch animation */
-.flip-card.flipped .flip-card-inner {
+.flipped-card.flipped .flip-card-inner {
   transform: rotateY(180deg);
 }
 
