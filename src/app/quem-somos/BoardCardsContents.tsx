@@ -8,7 +8,8 @@ const members = [
     img: PresidentImg,
     name: "Claudio Martins Real",
     role: "Presidente",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    description: "",
+    ctaLink: "/claudio-martins-real-curriculo"
   },
   {
     img: DrMarioImg,
@@ -26,8 +27,8 @@ const members = [
     img: DonaClaudiaImg,
     name: "Cláudia Real Leite",
     role: "Diretora Administrativa",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-  },
+    description: "",
+  }
 ];
 
 export { members };

@@ -5,6 +5,7 @@ import { useState } from "react";
 import dynamic from "next/dynamic";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Link from "next/link";
 const Slider = dynamic(() => import("react-slick"), { ssr: false });
 
 type Member = {
@@ -12,6 +13,7 @@ type Member = {
   name: string;
   role: string;
   description?: string;
+  ctaLink?: string;
 };
 
 type BoardCardsProps = {
@@ -65,7 +67,7 @@ export default function BoardCards({ title, members }: BoardCardsProps) {
 
   const handleCardClick = (index: number) => {
     // Apenas executa em dispositivos móveis
-    if (window.innerWidth < 1024) {
+    if (window.innerWidth < 1024 && index >= 1) {
       setFlippedCards(prev => ({
         ...prev,
         [index]: !prev[index]
@@ -74,7 +76,7 @@ export default function BoardCards({ title, members }: BoardCardsProps) {
   };
 
   const handleKeyPress = (e: React.KeyboardEvent, index: number) => {
-    if (e.key === 'Enter' || e.key === ' ') {
+    if (e.key === 'Enter' || e.key === ' ' && index >= 1) {
       e.preventDefault();
       handleCardClick(index);
     }
@@ -97,32 +99,63 @@ export default function BoardCards({ title, members }: BoardCardsProps) {
                 onClick={() => handleCardClick(index)}
                 onKeyDown={(e) => handleKeyPress(e, index)}
                 tabIndex={0}
-                role="button"
+                role={member.ctaLink ? "link" : "button"}
                 aria-label={`Ver mais informações sobre ${member.name}`}
                 aria-pressed={flippedCards[index]}
+                {...(member.ctaLink && { href: member.ctaLink })}
               >
-                <div className="flip-card-inner w-full h-full">
-                  {/* Frente do Card */}
-                  <div className="flip-card-front">
-                    <div className="absolute inset-0 bg-gradient-to-t from-fb_dark-blue to-fb_light-blue rounded-lg z-20"></div>
-                    <Image 
-                      src={member.img} 
-                      alt={member.name} 
-                      className="object-cover w-full h-full rounded-2xl"
-                      priority
-                    />
-                    {/* Overlay com nome e cargo */}
-                    <div className="absolute z-50 bottom-0 left-0 right-0 p-4 text-white rounded-b-2xl">
-                      <h4 className="text-2xl font-bold">{member.name}</h4>
-                      <p className="text-lg font-normal">{member.role}</p>
+                { member.ctaLink ? (
+                  <Link
+                    href={member.ctaLink}
+                    className="flip-card-inner w-full h-full"
+                  >
+                    <div className="flip-card-inner w-full h-full">
+                      {/* Frente do Card */}
+                      <div className="flip-card-front">
+                        <div className="absolute inset-0 bg-gradient-to-t from-fb_dark-blue to-fb_light-blue rounded-lg z-20"></div>
+                        <Image 
+                          src={member.img} 
+                          alt={member.name} 
+                          className="object-cover w-full h-full rounded-2xl"
+                          priority
+                        />
+                        {/* Overlay com nome e cargo */}
+                        <div className="absolute z-50 bottom-0 left-0 right-0 p-4 text-white rounded-b-2xl">
+                          <h4 className="text-2xl font-bold">{member.name}</h4>
+                          <p className="text-lg font-normal">{member.role}</p>
+                        </div>
+                      </div>
+
+                      {/* Verso do Card */}
+                      <div className="flip-card-back text-white bg-fb_blue_main from-fb_dark-blue to-fb_light-blue">
+                        <p className="text-sm sm:text-base" dangerouslySetInnerHTML={{ __html: member.description || "" }} />
+                      </div>
+                    </div>
+                  </Link>
+                ) : (
+                  <div className="flip-card-inner w-full h-full">
+                    {/* Frente do Card */}
+                    <div className="flip-card-front">
+                      <div className="absolute inset-0 bg-gradient-to-t from-fb_dark-blue to-fb_light-blue rounded-lg z-20"></div>
+                      <Image 
+                        src={member.img} 
+                        alt={member.name} 
+                        className="object-cover w-full h-full rounded-2xl"
+                        priority
+                      />
+                      {/* Overlay com nome e cargo */}
+                      <div className="absolute z-50 bottom-0 left-0 right-0 p-4 text-white rounded-b-2xl">
+                        <h4 className="text-2xl font-bold">{member.name}</h4>
+                        <p className="text-lg font-normal">{member.role}</p>
+                      </div>
+                    </div>
+
+                    {/* Verso do Card */}
+                    <div className="flip-card-back text-white bg-fb_blue_main from-fb_dark-blue to-fb_light-blue">
+                      <p className="text-sm sm:text-base" dangerouslySetInnerHTML={{ __html: member.description || "" }} />
                     </div>
                   </div>
-
-                  {/* Verso do Card */}
-                  <div className="flip-card-back text-white bg-fb_blue_main from-fb_dark-blue to-fb_light-blue">
-                    <p className="text-sm sm:text-base" dangerouslySetInnerHTML={{ __html: member.description || "" }} />
-                  </div>
-                </div>
+                )}
               </li>
             ))}
           </Slider>
