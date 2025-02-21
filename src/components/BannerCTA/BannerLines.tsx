@@ -93,8 +93,8 @@ export default async function BannerLines({
         loading={loading ? "lazy" : "eager"}
         className="w-full h-full object-cover rounded-lg border-none bg-cover"
       />
-      <div className={`${children ? "gap-6" : "gap-20"} absolute inset-0 flex flex-col justify-center mx-auto w-full text-white px-8 lg:pl-8`}>
-        <h1 className="text-4xl md:text-5xl font-bold break-words">{title}</h1>
+      <div className={`${children ? "gap-6" : "gap-20"} absolute inset-0 flex flex-col justify-center mx-auto w-full text-white px-2 sm:px-8 lg:px-8`}>
+        <h1 className="text-4xl sm:text-5xl font-bold break-before-column">{title.toLowerCase() === "nutrição funcional real h" ? `NUTRIÇÃO FUNCIONAL`.concat("\n", "REAL H") : title}</h1>
         { children  && (
           <div className="w-full md:w-2/5 min-h-[72px] line-clamp-6" dangerouslySetInnerHTML={{ __html: children || "" }} /> 
         )}
