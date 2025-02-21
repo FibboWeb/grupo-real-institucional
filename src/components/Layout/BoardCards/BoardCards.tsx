@@ -90,7 +90,7 @@ export default function BoardCards({ title, members }: BoardCardsProps) {
           <Slider {...settings}>
             {members.map((member, index) => (
               <li 
-                className={`flip-card overflow-hidden sm:max-w-[90%] max-w-[100%] h-[450px] mx-auto ${
+                className={`flip-card overflow-hidden max-w-[100%] h-[630px] mx-auto ${
                   flippedCards[index] ? 'flipped' : ''
                 }`}
                 key={index}
@@ -120,9 +120,7 @@ export default function BoardCards({ title, members }: BoardCardsProps) {
 
                   {/* Verso do Card */}
                   <div className="flip-card-back text-white bg-fb_blue_main from-fb_dark-blue to-fb_light-blue">
-                    <p className="text-base">
-                      {member.description}
-                    </p>
+                    <p className="text-sm sm:text-base" dangerouslySetInnerHTML={{ __html: member.description || "" }} />
                   </div>
                 </div>
               </li>
