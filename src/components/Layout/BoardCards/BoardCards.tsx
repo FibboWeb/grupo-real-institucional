@@ -96,8 +96,12 @@ export default function BoardCards({ title, members }: BoardCardsProps) {
                   flippedCards[index] ? 'flipped' : ''
                 }`}
                 key={index}
-                onClick={() => handleCardClick(index)}
-                onKeyDown={(e) => handleKeyPress(e, index)}
+                onClick={() => { if (index >= 1 && member.description.length > 0) {
+                  handleCardClick(index)
+                }}}
+                onKeyDown={(e) => { if (index >= 1 && member.description.length > 0) {
+                  handleKeyPress(e, index)
+                }}}
                 tabIndex={0}
                 role={member.ctaLink ? "link" : "button"}
                 aria-label={`Ver mais informações sobre ${member.name}`}
