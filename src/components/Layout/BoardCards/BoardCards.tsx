@@ -167,7 +167,7 @@ export default function BoardCards({ title, members }: BoardCardsProps) {
                       <div className="flip-card-back text-white bg-fb_blue_main from-fb_dark-blue to-fb_light-blue">
                         <p className="text-sm 2xl:text-base" dangerouslySetInnerHTML={{ __html: member.description || "" }} />
                       </div>
-                    )}
+                    )}nt
                   </div>
                 )}
               </li>
