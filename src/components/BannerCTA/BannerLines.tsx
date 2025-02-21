@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 import BtnCallToAction from "../Layout/Buttons/BtnCallToAction/BtnCallToAction";
+import ButtonCTA from "./ButtonCTA";
 
 type BannerLinesProps = {
   slug_context?: string;
@@ -16,6 +17,8 @@ type BannerLinesProps = {
   hiddenTitle?: boolean;
   loading?: boolean;
   contentBTN?: string;
+  showCta?: boolean;
+  enableClick?: boolean;
 };
 
 /**
@@ -33,6 +36,9 @@ type BannerLinesProps = {
  * @prop {string} [id] - ID do banner.
  * @prop {boolean} [hiddenTitle] - Se o título do banner deve ser ocultado.
  * @prop {boolean} [loading] - Defini o modo de carregamento "lazy" ou "eager".
+ * @prop {string} [contentBTN] - Conteúdo do botão de chamada para a ação
+ * @prop {boolean} [showCta] - Se o botão de chamada para a ação deve ser exibido
+ * @prop {boolean} [enableClick] - Se o botão de chamada para ação deve ser clicável
  *
  * @example
  *  <BannerLines
@@ -54,7 +60,9 @@ export default async function BannerLines({
   id,
   hiddenTitle = true,
   loading = false,
-  contentBTN = "ler mais"
+  contentBTN = "ler mais",
+  showCta = true,
+  enableClick = false
 }: BannerLinesProps) {
   let infos;
   let infos2;
@@ -71,6 +79,8 @@ export default async function BannerLines({
     await getSEOLines2(slug_context);
   console.log("infos buscada", urlImagemHero);
 
+  
+
 
   return (
     <div className="relative w-full h-[320px] rounded-lg items-center">
@@ -83,14 +93,18 @@ export default async function BannerLines({
         loading={loading ? "lazy" : "eager"}
         className="w-full h-full object-cover rounded-lg border-none bg-cover"
       />
-      <div className={`${children ? "gap-6" : "gap-20"} absolute inset-0 flex flex-col justify-center mx-auto w-full text-white pl-8`}>
-        <h2 className="text-5xl md:text-4xl font-bold">{title}</h2>
+      <div className={`${children ? "gap-6" : "gap-20"} absolute inset-0 flex flex-col justify-center mx-auto w-full text-white px-8 lg:pl-8`}>
+        <h1 className="text-4xl md:text-5xl font-bold break-words">{title}</h1>
         { children  && (
           <div className="w-full md:w-2/5 min-h-[72px] line-clamp-6" dangerouslySetInnerHTML={{ __html: children || "" }} /> 
         )}
-        <div className="w-fit">
-          <BtnCallToAction content={contentBTN} color="fb_blue_button" ctaLink={ctaLink} showIcon={false}/>
-        </div>
+        { showCta && (
+          <ButtonCTA
+            ctaLink={ctaLink}
+            content={contentBTN}
+            enableClick={enableClick}
+          />
+        )}
       </div>
     </div>
   );

@@ -23,6 +23,7 @@ export function ListCardDownload() {
   useEffect(() => {
     async function fetchDownloads() {
       const downloadsData = await getDownloads();
+      console.log("downloads feitos", downloadsData)
       setDownloads(downloadsData.props);
     }
 
@@ -43,6 +44,8 @@ export function ListCardDownload() {
       resetDownloads();
     }
   }
+
+  console.log("downloads", downloads)
 
   return (
     <div className="flex flex-col md:flex-row gap-6">
@@ -91,7 +94,7 @@ export function ListCardDownload() {
                 />
               </div>
               <div className="flex flex-col min-h-[140px] gap-5 p-4">
-                <a href={item.camposBanners.node.mediaItemUrl} download target="_blank" rel="noopener noreferrer">
+                <a href={item.featuredImage?.node?.sourceUrl || LogoRealH} download target="_blank" rel="noopener noreferrer">
                   <Download color="#1986C1" className="h-10 w-10" />
                   <h3 className="font-medium text-2xl">{item.title}</h3>
                 </a>
