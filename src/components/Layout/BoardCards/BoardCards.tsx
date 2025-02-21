@@ -1,7 +1,7 @@
 "use client";
 import Image, { StaticImageData } from "next/image";
 import "./index.css";
-
+import { useState } from "react";
 import dynamic from "next/dynamic";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -61,6 +61,25 @@ const settings = {
 };
 
 export default function BoardCards({ title, members }: BoardCardsProps) {
+  const [flippedCards, setFlippedCards] = useState<{ [key: number]: boolean }>({});
+
+  const handleCardClick = (index: number) => {
+    // Apenas executa em dispositivos móveis
+    if (window.innerWidth < 1024) {
+      setFlippedCards(prev => ({
+        ...prev,
+        [index]: !prev[index]
+      }));
+    }
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent, index: number) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      handleCardClick(index);
+    }
+  };
+
   return (
     <section className="flex justify-center mb-3">
       <div className="fb_container flex flex-col gap-10 p-5">
@@ -71,16 +90,21 @@ export default function BoardCards({ title, members }: BoardCardsProps) {
           <Slider {...settings}>
             {members.map((member, index) => (
               <li 
-                className="flip-card overflow-hidden sm:max-w-[90%] max-w-[95%] h-[450px]" 
+                className={`flip-card overflow-hidden sm:max-w-[90%] max-w-[100%] h-[450px] mx-auto ${
+                  flippedCards[index] ? 'flipped' : ''
+                }`}
                 key={index}
+                onClick={() => handleCardClick(index)}
+                onKeyDown={(e) => handleKeyPress(e, index)}
                 tabIndex={0}
                 role="button"
                 aria-label={`Ver mais informações sobre ${member.name}`}
+                aria-pressed={flippedCards[index]}
               >
                 <div className="flip-card-inner w-full h-full">
                   {/* Frente do Card */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-fb_dark-blue to-fb_light-blue rounded-lg z-20"></div>
                   <div className="flip-card-front">
+                    <div className="absolute inset-0 bg-gradient-to-t from-fb_dark-blue to-fb_light-blue rounded-lg z-20"></div>
                     <Image 
                       src={member.img} 
                       alt={member.name} 
@@ -96,8 +120,6 @@ export default function BoardCards({ title, members }: BoardCardsProps) {
 
                   {/* Verso do Card */}
                   <div className="flip-card-back text-white bg-fb_blue_main from-fb_dark-blue to-fb_light-blue">
-                    {/* <h4 className="text-2xl font-bold mb-4">{member.name}</h4>
-                    <p className="text-lg font-normal mb-2">{member.role}</p> */}
                     <p className="text-base">
                       {member.description}
                     </p>
