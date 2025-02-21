@@ -39,6 +39,13 @@ const settings = {
       },
     },
     {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 2.5,
+        slidesToScroll: 1,
+      },
+    },
+    {
       breakpoint: 830,
       settings: {
         slidesToShow: 2,
@@ -67,7 +74,7 @@ export default function BoardCards({ title, members }: BoardCardsProps) {
 
   const handleCardClick = (index: number) => {
     // Apenas executa em dispositivos móveis
-    if (window.innerWidth < 1024 && index >= 1) {
+    if (window.innerWidth < 1024 && members[index].description) {
       setFlippedCards(prev => ({
         ...prev,
         [index]: !prev[index]
@@ -76,7 +83,7 @@ export default function BoardCards({ title, members }: BoardCardsProps) {
   };
 
   const handleKeyPress = (e: React.KeyboardEvent, index: number) => {
-    if (e.key === 'Enter' || e.key === ' ' && index >= 1) {
+    if (e.key === 'Enter' || e.key === ' ' && members[index].description) {
       e.preventDefault();
       handleCardClick(index);
     }
@@ -92,17 +99,22 @@ export default function BoardCards({ title, members }: BoardCardsProps) {
           <Slider {...settings}>
             {members.map((member, index) => (
               <li 
-                className={`flip-card overflow-hidden max-w-[100%] h-[630px] mx-auto ${
+                className={`${member.description ? 'flipped-card' : ''} flip-card overflow-hidden max-w-[100%] h-[630px] mx-auto ${
+                  // Se o card não tiver descrição, não pode ser clicado ou virado no hover
                   flippedCards[index] ? 'flipped' : ''
                 }`}
                 key={index}
-                onClick={() => handleCardClick(index)}
-                onKeyDown={(e) => handleKeyPress(e, index)}
+                onClick={() => { if (index >= 1 || 3) {
+                  handleCardClick(index)
+                }}}
+                onKeyDown={(e) => { if (index >= 1 || 3 ) {
+                  handleKeyPress(e, index)
+                }}}
                 tabIndex={0}
-                role={member.ctaLink ? "link" : "button"}
+                role={"button"}
+                aria-disabled={member.description !== "" || index !== 3}
                 aria-label={`Ver mais informações sobre ${member.name}`}
                 aria-pressed={flippedCards[index]}
-                {...(member.ctaLink && { href: member.ctaLink })}
               >
                 { member.ctaLink ? (
                   <Link
@@ -111,7 +123,7 @@ export default function BoardCards({ title, members }: BoardCardsProps) {
                   >
                     <div className="flip-card-inner w-full h-full">
                       {/* Frente do Card */}
-                      <div className="flip-card-front">
+                      <div className={`flip-card-front`}>
                         <div className="absolute inset-0 bg-gradient-to-t from-fb_dark-blue to-fb_light-blue rounded-lg z-20"></div>
                         <Image 
                           src={member.img} 
@@ -127,7 +139,7 @@ export default function BoardCards({ title, members }: BoardCardsProps) {
                       </div>
 
                       {/* Verso do Card */}
-                      <div className="flip-card-back text-white bg-fb_blue_main from-fb_dark-blue to-fb_light-blue">
+                      <div className={`${member.description.length > 0 && index >= 1 ? 'flip-card-back' : ''} text-white bg-fb_blue_main from-fb_dark-blue to-fb_light-blue`}>
                         <p className="text-sm sm:text-base" dangerouslySetInnerHTML={{ __html: member.description || "" }} />
                       </div>
                     </div>
@@ -151,9 +163,11 @@ export default function BoardCards({ title, members }: BoardCardsProps) {
                     </div>
 
                     {/* Verso do Card */}
-                    <div className="flip-card-back text-white bg-fb_blue_main from-fb_dark-blue to-fb_light-blue">
-                      <p className="text-sm 2xl:text-base" dangerouslySetInnerHTML={{ __html: member.description || "" }} />
-                    </div>
+                    {member.description && (
+                      <div className="flip-card-back text-white bg-fb_blue_main from-fb_dark-blue to-fb_light-blue">
+                        <p className="text-sm 2xl:text-base" dangerouslySetInnerHTML={{ __html: member.description || "" }} />
+                      </div>
+                    )}nt
                   </div>
                 )}
               </li>
