@@ -3,8 +3,6 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import BtnCallToAction from "../Buttons/BtnCallToAction/BtnCallToAction";
 import ArrowIcon from "@/public/icons/arrow-right.svg";
-import { useRef } from "react";
-import { useEffect } from "react";
 
 type VideoBackgroundProps = {
   children: React.ReactNode;
@@ -45,21 +43,6 @@ type ctaLinksProps = {
  */
 
 const VideoBackground = ({ children, src_video, ctaLinks }: VideoBackgroundProps) => {
-
-  const videoEl = useRef(null);
-
-  const attemptPlay = () => {
-    videoEl &&
-      videoEl.current &&
-      videoEl.current.play().catch(error => {
-        console.error("Error attempting to play", error);
-      });
-  };
-
-  useEffect(() => {
-    attemptPlay();
-  }, []);
-
   return (
     <div className="relative h-screen flex items-center justify-center overflow-hidden">
       <video autoPlay muted loop className="absolute top-0 left-0 w-full h-full object-cover">
