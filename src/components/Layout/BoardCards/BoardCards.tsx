@@ -1,10 +1,11 @@
 "use client";
 import Image, { StaticImageData } from "next/image";
 import "./index.css";
-
+import { useState } from "react";
 import dynamic from "next/dynamic";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Link from "next/link";
 const Slider = dynamic(() => import("react-slick"), { ssr: false });
 
 type Member = {
@@ -12,6 +13,7 @@ type Member = {
   name: string;
   role: string;
   description?: string;
+  ctaLink?: string;
 };
 
 type BoardCardsProps = {
@@ -33,6 +35,13 @@ const settings = {
       breakpoint: 1360,
       settings: {
         slidesToShow: 3,
+        slidesToScroll: 1,
+      },
+    },
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 2.5,
         slidesToScroll: 1,
       },
     },
@@ -61,6 +70,25 @@ const settings = {
 };
 
 export default function BoardCards({ title, members }: BoardCardsProps) {
+  const [flippedCards, setFlippedCards] = useState<{ [key: number]: boolean }>({});
+
+  const handleCardClick = (index: number) => {
+    // Apenas executa em dispositivos móveis
+    if (window.innerWidth < 1024 && members[index].description) {
+      setFlippedCards(prev => ({
+        ...prev,
+        [index]: !prev[index]
+      }));
+    }
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent, index: number) => {
+    if (e.key === 'Enter' || e.key === ' ' && members[index].description) {
+      e.preventDefault();
+      handleCardClick(index);
+    }
+  };
+
   return (
     <section className="flex justify-center mb-3">
       <div className="fb_container flex flex-col gap-10 p-5">
@@ -71,38 +99,77 @@ export default function BoardCards({ title, members }: BoardCardsProps) {
           <Slider {...settings}>
             {members.map((member, index) => (
               <li 
-                className="flip-card overflow-hidden sm:max-w-[90%] max-w-[95%] h-[450px]" 
+                className={`${member.description ? 'flipped-card' : ''} flip-card overflow-hidden max-w-[100%] h-[630px] mx-auto ${
+                  // Se o card não tiver descrição, não pode ser clicado ou virado no hover
+                  flippedCards[index] ? 'flipped' : ''
+                }`}
                 key={index}
+                onClick={() => { if (index >= 1 || 3) {
+                  handleCardClick(index)
+                }}}
+                onKeyDown={(e) => { if (index >= 1 || 3 ) {
+                  handleKeyPress(e, index)
+                }}}
                 tabIndex={0}
-                role="button"
+                role={"button"}
+                aria-disabled={member.description !== "" || index !== 3}
                 aria-label={`Ver mais informações sobre ${member.name}`}
+                aria-pressed={flippedCards[index]}
               >
-                <div className="flip-card-inner w-full h-full">
-                  {/* Frente do Card */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-fb_dark-blue to-fb_light-blue rounded-lg z-20"></div>
-                  <div className="flip-card-front">
-                    <Image 
-                      src={member.img} 
-                      alt={member.name} 
-                      className="object-cover w-full h-full rounded-2xl"
-                      priority
-                    />
-                    {/* Overlay com nome e cargo */}
-                    <div className="absolute z-50 bottom-0 left-0 right-0 p-4 text-white rounded-b-2xl">
-                      <h4 className="text-2xl font-bold">{member.name}</h4>
-                      <p className="text-lg font-normal">{member.role}</p>
-                    </div>
-                  </div>
+                { member.ctaLink ? (
+                  <Link
+                    href={member.ctaLink}
+                    className="flip-card-inner w-full h-full"
+                  >
+                    <div className="flip-card-inner w-full h-full">
+                      {/* Frente do Card */}
+                      <div className={`flip-card-front`}>
+                        <div className="absolute inset-0 bg-gradient-to-t from-fb_dark-blue to-fb_light-blue rounded-lg z-20"></div>
+                        <Image 
+                          src={member.img} 
+                          alt={member.name} 
+                          className="object-cover w-full h-full rounded-2xl"
+                          priority
+                        />
+                        {/* Overlay com nome e cargo */}
+                        <div className="absolute z-50 bottom-0 left-0 right-0 p-4 text-white rounded-b-2xl">
+                          <h4 className="text-2xl font-bold">{member.name}</h4>
+                          <p className="text-lg font-normal">{member.role}</p>
+                        </div>
+                      </div>
 
-                  {/* Verso do Card */}
-                  <div className="flip-card-back text-white bg-fb_blue_main from-fb_dark-blue to-fb_light-blue">
-                    {/* <h4 className="text-2xl font-bold mb-4">{member.name}</h4>
-                    <p className="text-lg font-normal mb-2">{member.role}</p> */}
-                    <p className="text-base">
-                      {member.description}
-                    </p>
+                      {/* Verso do Card */}
+                      <div className={`${member.description.length > 0 && index >= 1 ? 'flip-card-back' : ''} text-white bg-fb_blue_main from-fb_dark-blue to-fb_light-blue`}>
+                        <p className="text-sm sm:text-base" dangerouslySetInnerHTML={{ __html: member.description || "" }} />
+                      </div>
+                    </div>
+                  </Link>
+                ) : (
+                  <div className="flip-card-inner w-full h-full">
+                    {/* Frente do Card */}
+                    <div className="flip-card-front">
+                      <div className="absolute inset-0 bg-gradient-to-t from-fb_dark-blue to-fb_light-blue rounded-lg z-20"></div>
+                      <Image 
+                        src={member.img} 
+                        alt={member.name} 
+                        className="object-cover w-full h-full rounded-2xl"
+                        priority
+                      />
+                      {/* Overlay com nome e cargo */}
+                      <div className="absolute z-50 bottom-0 left-0 right-0 p-4 text-white rounded-b-2xl">
+                        <h4 className="text-2xl font-bold">{member.name}</h4>
+                        <p className="text-lg font-normal">{member.role}</p>
+                      </div>
+                    </div>
+
+                    {/* Verso do Card */}
+                    {member.description && (
+                      <div className="flip-card-back text-white bg-fb_blue_main from-fb_dark-blue to-fb_light-blue">
+                        <p className="text-sm 2xl:text-base" dangerouslySetInnerHTML={{ __html: member.description || "" }} />
+                      </div>
+                    )}nt
                   </div>
-                </div>
+                )}
               </li>
             ))}
           </Slider>
