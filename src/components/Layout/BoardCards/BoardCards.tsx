@@ -83,7 +83,7 @@ export default function BoardCards({ title, members }: BoardCardsProps) {
   };
 
   const handleKeyPress = (e: React.KeyboardEvent, index: number) => {
-    if (e.key === 'Enter' || e.key === ' ' && members[index].description) {
+    if (e.key === 'Enter' || e.key === ' ' ) {
       e.preventDefault();
       handleCardClick(index);
     }
@@ -99,7 +99,7 @@ export default function BoardCards({ title, members }: BoardCardsProps) {
           <Slider {...settings}>
             {members.map((member, index) => (
               <li 
-                className={`${member.description ? 'flipped-card' : ''} flip-card overflow-hidden max-w-[100%] h-[630px] mx-auto ${
+                className={`${member.description ? 'flipped-card' : ''} flip-card overflow-hidden max-w-[100%] h-[700px] mx-auto ${
                   // Se o card não tiver descrição, não pode ser clicado ou virado no hover
                   flippedCards[index] ? 'flipped' : ''
                 }`}
@@ -165,7 +165,7 @@ export default function BoardCards({ title, members }: BoardCardsProps) {
                     {/* Verso do Card */}
                     {member.description && (
                       <div className="flip-card-back text-white bg-fb_blue_main from-fb_dark-blue to-fb_light-blue">
-                        <p className="text-sm 2xl:text-base" dangerouslySetInnerHTML={{ __html: member.description || "" }} />
+                        <p className="text-sm" dangerouslySetInnerHTML={{ __html: member.description || "" }} />
                       </div>
                     )}nt
                   </div>

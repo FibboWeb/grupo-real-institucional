@@ -1,5 +1,29 @@
-import BtnCallToAction from "@/components/Layout/Buttons/BtnCallToAction/BtnCallToAction";
+import { Metadata } from "next";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "Politica de privacidade - Grupo Real",
+  description: "Politica de privacidade",
+  openGraph: {
+    title: "Politica de privacidade - Grupo Real",
+    description: "Politica de privacidade",
+    images: [
+      { url: "/images/banners/bg-categories.webp" },
+    ],
+    locale: "pt_BR",
+    siteName: "Grupo Real",
+  },
+  alternates: {
+    canonical: "/institucional/politica-de-privacidade",
+    languages: {
+      pt: "https://gruporealbr.com.br/institucional/politica-de-privacidade",
+    },
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 export default function PagePrivacidade() {
   return (

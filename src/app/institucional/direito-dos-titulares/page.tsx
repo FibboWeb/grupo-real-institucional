@@ -5,7 +5,7 @@ export default function PageDireitoDosTitular() {
     <main className="fb_container relative gap-fb_space-section mb-5">
       <div className="flex flex-col gap-fb_space-section">
         <div>
-          <h1 className="text-3xl font-bold text-center">Lei Geral de Proteção de Dados (LGPD)</h1>
+          <h1 className="text-3xl font-bold text-center">Direito dos Titulares</h1>
         </div>
         <div className="flex flex-col gap-4 text-[#333333]">
           <div className="flex flex-col gap-2">

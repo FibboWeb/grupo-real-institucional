@@ -1,4 +1,29 @@
 import React from "react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Politica de qualidade - Grupo Real",
+  description: "Politica de qualidade",
+  openGraph: {
+    title: "Politica de qualidade - Grupo Real",
+    description: "Politica de qualidade",
+    images: [
+      { url: "/images/banners/bg-categories.webp" },
+    ],
+    locale: "pt_BR",
+    siteName: "Grupo Real",
+  },
+  alternates: {
+    canonical: "/institucional/politica-de-qualidade",
+    languages: {
+      pt: "https://gruporealbr.com.br/institucional/politica-de-qualidade",
+    },
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 export default function Page() {
   return (
