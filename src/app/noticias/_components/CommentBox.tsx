@@ -48,13 +48,13 @@ function CommentForm({ postId, commentId, replyComment, authorName, cancelReply 
         setErrorMessage("Erro ao enviar o comentário, por favor tente novamente.");
         setTimeout(() => {
           setErrorMessage("");
-        }, 1000);
+        }, 3000);
         return
       } else {
         setSuccessMessage("Comentário enviado com sucesso!");
         setTimeout(() => {
           setSuccessMessage("");
-        }, 1000);
+        }, 3000);
         reset();
       }
 
