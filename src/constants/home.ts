@@ -156,6 +156,7 @@ export const testimoniaslInfo = [
     name: "Sr. Claudecir Scarmagnani",
     empresa: "Cliente desde 2001",
     avatar: avatar1,
+    videoUrl: "https://www.youtube.com/embed/4PHDPnGO22g?si=rXWJTS68u9bfS6-1"
   },
   {
     testimonial:
@@ -163,6 +164,7 @@ export const testimoniaslInfo = [
     name: "Leonardo Pereira.",
     empresa: "Grupo ACP filhos e Netos",
     avatar: avatar2,
+    videoUrl: "https://www.youtube.com/embed/8XliBVCZXVo?si=_Q05fUQLxpKBqa5p"
   },
   {
     testimonial:
@@ -170,11 +172,13 @@ export const testimoniaslInfo = [
     name: "Leonardo de Carvalho",
     empresa: "Gerente Comercial - desde 2007 ",
     avatar: avatar3,
+    videoUrl: "https://www.youtube.com/embed/hdge1p2ve54?si=KZ5U9xpOXdr4d22A"
   },
   {
     testimonial:"\"A Real H está completando 40 anos e eu conheço à 39. (...) Eu usei e com resultado, então eu posso dar o testemunho como produtor.\"",
     name: "Daniel de Barbosa Ingold",
     empresa: "Diretor-Presidente - Agência Estadual de Defesa Sanitária Animal e Vegetal (Iagro)",
     avatar: avatar4,
+    videoUrl: "",
   }
 ];
