@@ -1,4 +1,29 @@
 import React from "react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Aviso de Cookies - Grupo Real",
+  description: "Aviso de Cookies",
+  openGraph: {
+    title: "Aviso de Cookies - Grupo Real",
+    description: "Aviso de Cookies",
+    images: [
+      { url: "/images/logo-realh.png" },
+    ],
+    locale: "pt_BR",
+    siteName: "Grupo Real",
+  },
+  alternates: {
+    canonical: "/institucional/politica-de-cookies",
+    languages: {
+      pt: "https://gruporealbr.com.br/institucional/politica-de-cookies",
+    },
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 export default function PageCookies() {
   return (

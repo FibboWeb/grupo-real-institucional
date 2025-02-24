@@ -4,6 +4,31 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import "./index.css";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Atendimento ao Titular - Grupo Real",
+  description: "Atendimento ao Titular",
+  openGraph: {
+    title: "Atendimento ao Titular - Grupo Real",
+    description: "Atendimento ao Titular",
+    images: [
+      { url: "/images/logo-realh.png" },
+    ],
+    locale: "pt_BR",
+    siteName: "Grupo Real",
+  },
+  alternates: {
+    canonical: "/institucional/atendimento-ao-titular",
+    languages: {
+      pt: "https://gruporealbr.com.br/institucional/atendimento-ao-titular",
+    },
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 export default function Page() {
 

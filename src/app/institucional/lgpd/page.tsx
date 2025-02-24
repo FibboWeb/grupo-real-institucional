@@ -1,11 +1,36 @@
 import BtnCallToAction from "@/components/Layout/Buttons/BtnCallToAction/BtnCallToAction";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Lei Geral de Proteção de Dados (LGPD) - Grupo Real",
+  description: "Lei Geral de Proteção de Dados (LGPD)",
+  openGraph: {
+    title: "Lei Geral de Proteção de Dados (LGPD) - Grupo Real",
+    description: "Lei Geral de Proteção de Dados (LGPD)",
+    images: [
+      { url: "/images/logo-realh.png" },
+    ],
+    locale: "pt_BR",
+    siteName: "Grupo Real",
+  },
+  alternates: {
+    canonical: "/institucional/lgpd",
+    languages: {
+      pt: "https://gruporealbr.com.br/institucional/lgpd",
+    },
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 export default function PageLGPD() {
   return (
     <main className="fb_container relative gap-fb_space-section">
       <div className="flex flex-col gap-fb_space-section">
         <div>
-          <h1 className="text-3xl font-bold text-center">Política de privacidade</h1>
+          <h1 className="text-3xl font-bold text-center">Lei Geral de Proteção de Dados (LGPD)</h1>
         </div>
         <div className="flex flex-col gap-4 text-[#333333]">
           <p>
