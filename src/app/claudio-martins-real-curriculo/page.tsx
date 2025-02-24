@@ -95,56 +95,56 @@ export default function ClaudioMartinsReal() {
           <h2 className="text-2xl font-semibold text-center">Títulos</h2>
           <InfoCardsSlider>
             <InfoCard
-              title={"Presidente da Academia Sul-mato-grossense de Medicina Veterinária"}
+              title={"I. Presidente da Academia Sul-mato-grossense de Medicina Veterinária"}
               svg={"/certified-clean.svg"}
             >
               <p>Empossado Primeiro Presidente da Academia Sul-mato-grossense de Medicina Veterinária - 2018</p>
             </InfoCard>
-            <InfoCard title={"“Professor Emérito” da UFRGS"} svg={"/certified-clean.svg"}>
+            <InfoCard title={"“II. Professor Emérito” da UFRGS"} svg={"/certified-clean.svg"}>
               <p>
                 A indicação à honraria, iniciativa do diretor da Faculdade de Veterinária, Emerson Contesini, levou em
                 conta a trajetória notável do homenageado como professor, pesquisador, empreendedor e pioneiro em
                 atividades na UFRGS e em sociedades de classe, divulgando a alargando conhecimentos de sua área - 2015.
               </p>
             </InfoCard>
-            <InfoCard title={"“Cidadão Campo-grandense”"} svg={"/certified-clean.svg"}>
+            <InfoCard title={"“III. Cidadão Campo-grandense”"} svg={"/certified-clean.svg"}>
               <p>
                 Concedido pelo Legislativo municipal de Campo Grande em reconhecimento aos relevantes serviços prestados
                 em prol da melhoria da qualidade de vida do povo e do desenvolvimento da cidade - 2015.
               </p>
             </InfoCard>
-            <InfoCard title={"Personalidade Descendente"} svg={"/certified-clean.svg"}>
+            <InfoCard title={"“IV. Personalidade Descendente”"} svg={"/certified-clean.svg"}>
               <p>
                 No Dia da Comunidade Portuguesa (10 de junho) foi homenageado como “
                 <strong>Personalidade Descendente</strong>” em reconhecimento aos relevantes serviços prestados à
                 sociedade campo-grandense - 2013.
               </p>
             </InfoCard>
-            <InfoCard title={"Relevantes Serviços"} svg={"/certified-clean.svg"}>
+            <InfoCard title={"“V. Relevantes Serviços”"} svg={"/certified-clean.svg"}>
               <p>Título concedido pela Sociedade de Veterinária do Distrito Federal – 1998.</p>
             </InfoCard>
-            <InfoCard title={"Relevantes Serviços"} svg={"/certified-clean.svg"}>
+            <InfoCard title={"“VI. Relevantes Serviços”"} svg={"/certified-clean.svg"}>
               <p>Título concedido pela SOVERGS. Sociedade de Veterinária do Rio Grande do Sul – 1999</p>
             </InfoCard>
-            <InfoCard title={"Precursor da Homeopatia Veterinária Brasileira"} svg={"/certified-clean.svg"}>
+            <InfoCard title={"“VII. Precursor da Homeopatia Veterinária Brasileira”"} svg={"/certified-clean.svg"}>
               <p>Título outorgado pela ABMVH. Associação Brasileira dos Médicos veterinários Homeopatas. SP – 2000.</p>
             </InfoCard>
-            <InfoCard title={"Sócio Honorário"} svg={"/certified-clean.svg"}>
+            <InfoCard title={"“VIII. Sócio Honorário”"} svg={"/certified-clean.svg"}>
               <p>Título concedido pela Sociedade de Medicina Veterinária do Rio Grande do Sul, SOVERGS – 2005.</p>
             </InfoCard>
-            <InfoCard title={"Membro Honorário"} svg={"/certified-clean.svg"}>
+            <InfoCard title={"“IX. Membro Honorário”"} svg={"/certified-clean.svg"}>
               <p>Título concedido pela Academia de Medicina Veterinária do Rio Grande do Sul – 2007.</p>
             </InfoCard>
-            <InfoCard title={"Comenda do Mérito Veterinário” no grau de Comendador."} svg={"/certified-clean.svg"}>
+            <InfoCard title={"“X. Comenda do Mérito Veterinário” no grau de Comendador."} svg={"/certified-clean.svg"}>
               <p>Título concedido pela Sociedade Brasileira de Medicina Veterinária – 2007.</p>
             </InfoCard>
-            <InfoCard title={"Prêmio Paulo Dacorso Filho"} svg={"/certified-clean.svg"}>
+            <InfoCard title={"“XI. Prêmio Paulo Dacorso Filho”"} svg={"/certified-clean.svg"}>
               <p>
                 Maior distinção a ser concedida para um Med. Veterinário. O Prêmio foi concedido pelo Conselho Federal
                 de Medicina Veterinária – 2007
               </p>
             </InfoCard>
-            <InfoCard title={"Grã Cruz do Mérito Veterinário Brasileiro"} svg={"/certified-clean.svg"}>
+            <InfoCard title={"“XII. Grã Cruz do Mérito Veterinário Brasileiro”"} svg={"/certified-clean.svg"}>
               <p>Título concedido pela Sociedade Brasileira de Medicina Veterinária – 2010</p>
             </InfoCard>
           </InfoCardsSlider>
