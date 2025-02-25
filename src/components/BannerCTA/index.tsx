@@ -4,7 +4,7 @@ import BtnCallToAction from "../Layout/Buttons/BtnCallToAction/BtnCallToAction";
 function BannerCta() {
   return (
     <section className="relative fb_container rounded-lg h-auto">
-      <div className="bg-banner-cta lg:max-h-96 rounded-2xl bg-center bg-cover">
+      <div className="bg-banner-cta lg:min-h-96 rounded-2xl bg-center bg-cover">
         <div className="absolute top-[calc(max(.8rem, 50% - 52rem))] sm:top-[calc(max(2rem,50%-52rem))] md:top-[calc(max(4rem,50%-52rem))] lg:top-[calc(max(3.5rem,50%-52rem))] left-[max(3.5rem,calc(50%-52rem))] overflow-hidden"></div>
         <div className="flex flex-col gap-8 h-auto p-5 lg:p-10">
           <div className="flex flex-col gap-1.5">
