@@ -5,7 +5,7 @@ const menuItems: MenuItems[] = [
     node: {
       id: "1",
       url: "#",
-      label: "Contato",
+      label: "Institucional",
       childItems: {
         edges: [
           {
@@ -27,14 +27,6 @@ const menuItems: MenuItems[] = [
               id: "1-3",
               url: "/downloads",
               label: "Downloads",
-            },
-          },
-          {
-            node: {
-              id: "5",
-              url: "https://realh.gupy.io/",
-              label: "Trabalhe Conosco",
-              target: "_blank"
             },
           },
         ],
@@ -127,7 +119,18 @@ const menuItems: MenuItems[] = [
       id: "4",
       url: "/contato",
       label: "Contato",
-      childItems: null,
+      childItems: {
+        edges: [
+          {
+            node: {
+              id: "5",
+              url: "https://realh.gupy.io/",
+              label: "Trabalhe Conosco",
+              target: "_blank"
+            },
+          },
+        ]
+      }
     },
   },
 ];
