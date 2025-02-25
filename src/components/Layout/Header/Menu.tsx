@@ -53,6 +53,7 @@ export default function Menu() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
   const handleMouseEnter = (id: string | SetStateAction<null>) => {
+    console.log("Chamou a função handleMouseEnter");
     if (activeMenu === null) {
       return setActiveMenu(id as string);
     } else {
@@ -113,15 +114,22 @@ export default function Menu() {
               onMouseLeave={handleMouseLeave}
             >
               {!item.node.url.includes("") || !item.node.url.includes("#") ? (
+                <>
                 <a
-                  href={item.node.url === "#" ? "" : item.node.url}
-                  // validação se o dominio for externo abrir em noba
-                  target={item.node.target}
-                  title={item.node.label}
-                  className="w-full text-fb_blue_main hover:text-fb_blue duration-fb_transition_ease py-3"
+                    href={item.node.url === "#" ? "" : item.node.url}
+                    // validação se o dominio for externo abrir em noba
+                    target={item.node.target}
+                    title={item.node.label}
+                    className="w-full text-fb_blue_main hover:text-fb_blue duration-fb_transition_ease py-3"
+                  >
+                    {item.node.label}
+                  </a>
+                  <span
+                  className={`flex items-center transition-all duration-300 ${activeMenu === item.node.id ? "rotate-180 " : ""}`}
                 >
-                  {item.node.label}
-                </a>
+                  <ChevronDown />
+                </span>
+              </>
               ) : (
                 <p
                   className="flex text-fb_blue_main hover:text-fb_blue duration-300"
@@ -213,20 +221,28 @@ export default function Menu() {
               {menuItems.map((item) => (
                 <li className="flex w-full items-center text-center justify-center relative gap-2" key={item.node.id}>
                   {!item.node.url.includes("") || !item.node.url.includes("#") ? (
-                    <a
+                    <div className="flex items-center justify-center gap-2">
+                      <a
                       href={item.node.url === "#" ? "" : item.node.url}
                       target={item.node.target || "_self"}
-                      className="w-full inline-block text-fb_blue_main hover:text-fb_blue duration-fb_transition_ease px-10 py-3"
-                    >
-                      {item.node.label}
-                    </a>
+                      className="w-full text-fb_blue_main hover:text-fb_blue duration-fb_transition_ease py-3 flex items-center justify-center"
+                      >
+                        {item.node.label}
+                      </a>
+                        <span
+                          onClick={() => handleMouseEnter(item.node.id)}
+                          className={`flex items-center cursor-pointer transition-all duration-300 ${activeMenu === item.node.id ? "rotate-180 " : ""}`}
+                        >
+                          <ChevronDown />
+                        </span>
+                    </div>
                   ) : (
                     <p
                       className="w-full flex justify-center text-center text-fb_blue_main hover:text-fb_blue duration-fb_transition_ease px-10 py-3"
                       onClick={() => handleMouseEnter(item.node.id)}
                     >
                       {item.node.label}
-                      {(item.node.label === "Nossas Marcas" || "Institucional" || "Informações ") && (
+                      {(item.node.label === "Nossas Marcas" || "Institucional" || "Informações " || "Contato") && (
                         <span
                           className={`flex items-center cursor-pointer transition-all duration-300 ${activeMenu === item.node.id ? "rotate-180 " : ""}`}
                         >
