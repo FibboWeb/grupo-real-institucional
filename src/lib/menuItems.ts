@@ -5,7 +5,7 @@ const menuItems: MenuItems[] = [
     node: {
       id: "1",
       url: "#",
-      label: "Institucional",
+      label: "Contato",
       childItems: {
         edges: [
           {
