@@ -19,6 +19,7 @@ import imgIcon02 from "@/public/images/ciclos_novo.webp";
 import imgValor01 from "@/public/images/home/40-anos-de-historia.png";
 import imgValor02 from "@/public/images/home/value-section/nova-imagem-ciclos.webp";
 
+import avatar4 from "@/public/images/home/testimonials/avatar-daniel-barbosa.webp";
 import avatar3 from "@/public/images/avatar/leonardo-de-carvalho.jpg";
 import avatar2 from "@/public/images/avatar/leonardo-pereira.jpg";
 import avatar1 from "@/public/images/avatar/sr-claudecir.jpg";
@@ -155,13 +156,15 @@ export const testimoniaslInfo = [
     name: "Sr. Claudecir Scarmagnani",
     empresa: "Cliente desde 2001",
     avatar: avatar1,
+    videoUrl: "4PHDPnGO22g"
   },
   {
     testimonial:
-      "\"Tudo que a gente precisou da Real até hoje, que foi solicitado, o pessoal sempre ajudou a gente, Dr. Claudio, pessoal da parte técnica, principalmente, estão mais amiúde aqui com a gente",
-    name: "Leonardo Pereira\".",
+      "\"Tudo que a gente precisou da Real até hoje, que foi solicitado, o pessoal sempre ajudou a gente, Dr. Claudio, pessoal da parte técnica, principalmente, estão mais amiúde aqui com a gente.\"",
+    name: "Leonardo Pereira.",
     empresa: "Grupo ACP filhos e Netos",
     avatar: avatar2,
+    videoUrl: "8XliBVCZXVo"
   },
   {
     testimonial:
@@ -169,5 +172,13 @@ export const testimoniaslInfo = [
     name: "Leonardo de Carvalho",
     empresa: "Gerente Comercial - desde 2007 ",
     avatar: avatar3,
+    videoUrl: "hdge1p2ve54"
   },
+  {
+    testimonial:"\"A Real H está completando 40 anos e eu conheço à 39. (...) Eu usei e com resultado, então eu posso dar o testemunho como produtor.\"",
+    name: "Daniel de Barbosa Ingold",
+    empresa: "Diretor-Presidente Agência Estadual Defesa Sanitária Animal e Vegetal (Iagro)",
+    avatar: avatar4,
+    videoUrl: "",
+  }
 ];

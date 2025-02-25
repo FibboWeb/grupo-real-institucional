@@ -119,10 +119,12 @@ export default async function PostPage({ params }) {
             isSinglePage
             authorLink={post.author.node.slug}
           />
-          <CommentBox
-            comments={postComments.props}
-            idPost={post.databaseId}
-          />
+          <div className="my-12">
+            <CommentBox
+              comments={postComments.props}
+              idPost={post.databaseId}
+            />
+          </div>
         </div>
         <div className="sidebar w-full lg:w-1/3">
           <SidebarNoticias />

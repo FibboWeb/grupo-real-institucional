@@ -29,14 +29,6 @@ const menuItems: MenuItems[] = [
               label: "Downloads",
             },
           },
-          {
-            node: {
-              id: "5",
-              url: "https://realh.gupy.io/",
-              label: "Trabalhe Conosco",
-              target: "_blank"
-            },
-          },
         ],
       },
     },
@@ -127,7 +119,18 @@ const menuItems: MenuItems[] = [
       id: "4",
       url: "/contato",
       label: "Contato",
-      childItems: null,
+      childItems: {
+        edges: [
+          {
+            node: {
+              id: "5",
+              url: "https://realh.gupy.io/",
+              label: "Trabalhe Conosco",
+              target: "_blank"
+            },
+          },
+        ]
+      }
     },
   },
 ];
