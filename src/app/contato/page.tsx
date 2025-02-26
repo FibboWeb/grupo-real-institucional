@@ -37,20 +37,27 @@ export default function Page() {
 
           {/* Right Column - Service Info */}
           <div>
-            <h2 className="mb-6 text-3xl font-bold text-navy-900">Atendimento</h2>
+            <div>
+              <h2 className="mb-6 text-3xl font-bold text-navy-900">Atendimento</h2>
 
-            <div className="mb-6">
-              <h3 className="mb-2 text-lg font-semibold text-blue-600">Atendimento Comercial</h3>
-              <p className="text-xl font-bold">(67) 3028-9000</p>
-              <p className="text-gray-600">de segunda à sexta-feira, das 8h às 18h</p>
-            </div>
-
-            <Button className="mb-8 h-[48px] px-10 bg-green-600 hover:bg-green-700">
+              <div className="mb-6">
+                <h3 className="mb-2 text-lg font-semibold text-fb_blue">Atendimento Comercial</h3>
+                <p className="text-xl font-bold">(67) 3028-9000</p>
+                <p className="text-gray-600">de segunda à sexta-feira, das 8h às 18h</p>
+              </div>
+              <Button className="mb-8 h-[48px] px-10 bg-green-600 hover:bg-green-700">
               <Link href="https://wa.me/558001009000" className="flex" target="_blank">
                 <FaWhatsapp className="mr-2 h-5 w-5" />
                 SOLICITE UM ORÇAMENTO
               </Link>
             </Button>
+            </div>
+            <div>
+              <h2 className="mb-6 text-3xl font-bold text-navy-900">SAC</h2>
+              <Link href="https://www.contatoseguro.com.br/pt/gruporealh/canais_de_acesso" rel="noreferrer nofollow" className="flex text-fb_blue" target="_blank">
+                <p className="text-xl font-bold">Contato Seguro</p>
+              </Link>
+            </div>
           </div>
         </div>
         <div className="flex flex-col gap-4">
