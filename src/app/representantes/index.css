@@ -1,0 +1,9 @@
+[data-state="open"] {
+  display: block;
+}
+
+[data-state="closed"] {
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
+}
