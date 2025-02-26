@@ -3,7 +3,7 @@ import Breadcrumb from "@/components/BreadCrumb";
 import Newsletter from "@/components/Layout/Newsletter";
 import { Button } from "@/components/ui/button";
 import { getRepresentantes } from "@/lib/getRepresentantes";
-import RepresentantesBanner from "@/public/representantes/homem-andando-no-celeiro.webp"; // Fixed import statement
+import RepresentantesBanner from "@/public/representantes/representantes-list-banner.webp"; // Fixed import statement
 import { ChevronDownIcon } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -64,10 +64,10 @@ export default function RepresentantesPage() {
         />
       </div>
       {/* Hero Section */}
-      <div className="relative h-[200px] w-full">
-        <Image loading="eager" src={RepresentantesBanner} alt="Cattle background" fill className="object-cover brightness-50 rounded-lg" />
-        <div className="absolute inset-0 flex items-center justify-center bg-fb_blue_main opacity-85 rounded-lg">
-          <h1 className="text-4xl font-bold text-white">Representantes</h1>
+      <div className="relative h-[300px] w-full">
+        <Image loading="eager" src={RepresentantesBanner} alt="Cattle background" fill className="object-cover brightness-50 rounded-lg bg-top" />
+        <div className="absolute inset-0 flex items-center justify-center bg-fb_blue_main opacity-75 rounded-lg">
+          <h1 className="text-4xl font-bold text-white break-all">Representantes</h1>
         </div>
       </div>
 
