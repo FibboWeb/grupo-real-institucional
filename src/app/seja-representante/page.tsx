@@ -10,7 +10,7 @@ export default function Page() {
       <main>
         {/* Forms Section */}
         <div className="">
-          <HeroSection heroCssExtra={"pt-10 md:pt-20 lg:pt-32 bg-top"} cssExtra={"mt-12"} backgroundClass={"bg-seja-representante"} imageMaxHeight={580} imageOnBottom={true} boxShadow={"bg-[rgba(3,29,58,0.65)]"}>
+          <HeroSection heroCssExtra={"pt-10 md:pt-20 lg:pt-32 bg-top"} cssExtra={"mt-12"} backgroundClass={"bg-seja-representante"} imageMaxHeight={580} imageOnBottom={true} boxShadow={"bg-[rgba(3,29,58,0.5)]"}>
             <div className="flex flex-wrap md:flex-nowrap items-start w-full md:gap-10 lg:gap-44 pb-16">
                 {/* Left Column */}
                 <div className="text-white w-full mb-8">

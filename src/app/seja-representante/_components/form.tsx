@@ -10,8 +10,13 @@ import { z } from "zod";
 // Define the schema for form validation using Zod
 const FormSchema = z.object({
   name: z.string().min(1, "Nome é obrigatório"),
-  email: z.string().email("Email inválido"),
+  email_do_representante: z.string().email("Email inválido"),
   mensagem: z.string().optional(),
+  telefone_principal_do_representante: z.string().min(1, "Telefone é obrigatório"),
+  estado: z.string().min(1, "Estado é obrigatório"),
+  cidade: z.string().min(1, "Cidade é obrigatório"),
+  endereco: z.string().min(1, "Endereço é obrigatório"),
+  cep: z.string().min(1, "CEP é obrigatório"),
   consentimento: z.preprocess((val) => {
     return ['true', '1', 'on', 'yes', true].includes(val as string | boolean);
     }, z.boolean())
@@ -76,18 +81,95 @@ export default function FormRepresentante() {
               disabled={isSubmitting}
             />
           </div>
-          <div className="flex flex-col gap-1 text-sm">
-            <label htmlFor="email" className="text-white">Email <span className="text-red-500">*</span></label>
-            <Input
-              id="email"
-              name="email"
-              placeholder="Email"
-              type="email"
-              className="bg-white/80"
-              required
-              {...register('email')}
-              disabled={isSubmitting}
-            />
+          <div className="flex flex-row gap-1 text-sm">
+            <div className="flex w-full gap-4">
+              <div className="flex flex-col w-full">
+                <label htmlFor="email_do_representante" className="text-white">Email <span className="text-red-500">*</span></label>
+                <Input
+                  id="email_do_representante"
+                  name="email_do_representante"
+                  placeholder="Email"
+                  type="email"
+                  className="bg-white/80"
+                  required
+                  {...register('email_do_representante')}
+                  disabled={isSubmitting}
+                /> 
+              </div>
+              <div className="flex flex-col w-full">
+                <label htmlFor="telefone_principal_do_representante" className="text-white">Telefone <span className="text-red-500">*</span></label>
+                <Input
+                  id="telefone_principal_do_representante"
+                  name="telefone_principal_do_representante"
+                  placeholder="(99) 99999-9999"
+                  type="tel"
+                  className="bg-white/80"
+                  required
+                  {...register('telefone_principal_do_representante')}
+                  disabled={isSubmitting}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-row gap-1 text-sm">
+            <div className="flex w-full gap-4">
+              <div className="flex flex-col w-full">
+                <label htmlFor="estado" className="text-white">Estado <span className="text-red-500">*</span></label>
+                <Input
+                  id="estado"
+                  name="estado"
+                  placeholder="Estado"
+                  type="text"
+                  className="bg-white/80"
+                  required
+                  {...register('estado')}
+                  disabled={isSubmitting}
+                />
+              </div>
+              <div className="flex flex-col w-full">
+                <label htmlFor="cidade" className="text-white">Cidade <span className="text-red-500">*</span></label>
+                <Input
+                  id="cidade"
+                  name="cidade"
+                  placeholder="Cidade"
+                  type="text"
+                  className="bg-white/80"
+                  required
+                  {...register('cidade')}
+                  disabled={isSubmitting}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-row gap-1 text-sm">
+            <div className="flex w-full gap-4">
+              <div className="flex flex-col w-full">
+                <label htmlFor="endereco" className="text-white">Endereço <span className="text-red-500">*</span></label>
+                <Input
+                  id="endereco"
+                  name="endereco"
+                  placeholder="Endereço"
+                  type="text"
+                  className="bg-white/80"
+                  required
+                  {...register('endereco')}
+                  disabled={isSubmitting}
+                />
+              </div>
+              <div className="flex flex-col w-full">
+                <label htmlFor="cep" className="text-white">CEP <span className="text-red-500">*</span></label>
+                <Input
+                  id="cep"
+                  name="cep"
+                  placeholder="CEP"
+                  type="text"
+                  className="bg-white/80"
+                  required
+                  {...register('cep')}
+                  disabled={isSubmitting}
+                />
+              </div>
+            </div>
           </div>
           <div className="flex flex-col gap-1 text-sm">
             <label htmlFor="mensagem" className="text-white">Mensagem</label>
