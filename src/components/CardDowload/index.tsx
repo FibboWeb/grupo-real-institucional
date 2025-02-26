@@ -10,10 +10,10 @@ import { Download } from "lucide-react";
 export function ListCardDownload() {
   const categories = [
     "CMR Saúde Animal",
-    "Grupo Real (Institucional)",
+    "Grupo Real",
     "Homeopet",
-    "Institucional",
-    "Grupo Real Nutrição e Saúde Animal",
+    "Batoque",
+    "CMR Distribuidora",
     // "Grupo Real Nutrição e Saúde Animal",
   ];
 
@@ -34,7 +34,8 @@ export function ListCardDownload() {
     setSelectedCategory(category);
     if (category) {
       const clearDownloads = await getDownloads();
-      const filteredDownloads = clearDownloads.props.filter((item) => item.categories.includes(category));
+      console.log("clearDownloads: ",clearDownloads, "category: ", category)
+      const filteredDownloads = clearDownloads.props.filter((item) => item.categoria.includes(category));
       setDownloads(filteredDownloads);
     } else {
       async function resetDownloads() {
@@ -90,7 +91,7 @@ export function ListCardDownload() {
                   src={item.featuredImage?.node?.sourceUrl || LogoRealH}
                   alt={item.title}
                   fill
-                  className="object-cover"
+                  className="object-contain aspect-square"
                 />
               </div>
               <div className="flex flex-col min-h-[140px] gap-5 p-4">
