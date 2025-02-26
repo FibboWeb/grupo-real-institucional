@@ -100,7 +100,7 @@ export default {
   			'hero-page-historia': 'url("/images/historia/hero-historia.webp")',
   			'hero-quem-somos': 'url("/images/quem-somos/foto_de_cima_da_fabrica.webp")',
   			'new-hero-quem-somos': 'url("/images/quem-somos/foto_de_cima_da_fabrica.webp")',
-				'seja-representante': 'url("/representantes/seja-representante.webp")'
+				'seja-representante': 'url("/representantes/pessoas-apertando-as-maos.webp")'
   		},
   		boxShadow: {
   			custom_image: '0 0 10px rgba(0, 0, 0, 0.5)',

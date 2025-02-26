@@ -42,8 +42,6 @@ async function sendFormData(data: FormData) {
   }
 }
 
-
-
 export default function FormRepresentante() {
   const {
     register,
@@ -56,7 +54,7 @@ export default function FormRepresentante() {
   return (
     <div className="w-full">
       <div className="flex flex-col gap-3 mb-6">
-        <h2 className="text-white text-[45px] font-semibold">
+        <h2 className="text-white text-2xl md:text-[45px] font-semibold break-all">
           Seja um representante
         </h2>
         <p className="text-white text-lg">
