@@ -26,6 +26,7 @@ interface HeroSectionProps {
   btnIcon?: StaticImageData;
   btnContent?: string;
   heroCssExtra?: string;
+  cssExtra?: string;
 }
 
 export default function HeroSection({
@@ -40,6 +41,7 @@ export default function HeroSection({
   btnIcon,
   btnContent,
   heroCssExtra,
+  cssExtra = ""
 }: HeroSectionProps) {
   const shadow = boxShadow || backgroundClass == "bg-hero-image" ? "bg-[rgba(3,29,58,0.90)]" : "bg-[rgba(0,0,0,0.2)]";
 
@@ -51,10 +53,10 @@ export default function HeroSection({
           heroCssExtra,
         ])}
       >
-      <div className="absolute inset-0 bg-gradient-to-r from-fb_dark-blue to-fb_light-blue opacity-80 rounded-lg"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-fb_dark-blue to-fb_light-blue opacity-80"></div>
         
         <div className={` ${shadow} absolute top-0 left-0 right-0 bottom-0 w-full h-inherit`}></div>
-        <div className={`fb_container mt-32 relative`}>
+        <div className={cn([`fb_container mt-32 relative`, cssExtra])}>
           <div className={`flex flex-col gap-12 sm:flex-row sm:gap-2`}>
             <div className={`${imageOnBottom ? "mb-0" : "mb-12"} w-full`}>
               <div

@@ -55,9 +55,14 @@ export default function FormRepresentante() {
 
   return (
     <div className="w-full">
-      <h2 className="text-white text-2xl font-semibold mb-6">
-        Seja um representante
-      </h2>
+      <div className="flex flex-col gap-3 mb-6">
+        <h2 className="text-white text-[45px] font-semibold">
+          Seja um representante
+        </h2>
+        <p className="text-white text-lg">
+          Junte-se à nossa equipe e faça parte de uma empresa líder no setor de saúde e nutrição animal.
+        </p>
+      </div>
       <form className="space-y-4" onSubmit={handleSubmit(sendFormData)}>
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-1 text-sm">
