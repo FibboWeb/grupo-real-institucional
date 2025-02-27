@@ -132,7 +132,7 @@ const menuItems: MenuItems[] = [
     node: {
       id: "4",
       url: "#",
-      label: "Contato",
+      label: "Contatos",
       childItems: {
         edges: [
           {
