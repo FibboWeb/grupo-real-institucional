@@ -21,7 +21,7 @@ async function Footer() {
                 <Link className="inline-block" href={"https://www.facebook.com/gruporealh"}>
                   <Image src={"/facebook-logo.svg"} width={20} height={20} alt="Facebook" />
                 </Link>
-                <Link className="inline-block" href={"https://instagram.com/gruporealh/"}>
+                <Link className="inline-block" href={"https://www.instagram.com/gruporealbr/"}>
                   <Image src={"/instagram-logo.svg"} width={20} height={20} alt="Instagram" />
                 </Link>
                 <Link
@@ -30,15 +30,20 @@ async function Footer() {
                 >
                   <Image src={"/linkedin-logo.svg"} width={20} height={20} alt="Linkedin" />
                 </Link>
-                <Link className="inline-flex h-5" href={"https://www.youtube.com/@marketingrealh"}>
+                <Link className="inline-flex h-5" href={"https://www.youtube.com/@PecuariaForte"}>
                   <Image src={"/youtube-logo.svg"} width={20} height={20} alt="Youtube" />
                 </Link>
               </div>
               <div className="inline-block font-bold py-4 px-8 bg-[rgba(1,1,1,0.35)] rounded-md">
                 <p className="text-xl text-fb_blue ">Atendimento Comercial</p>
+               <div className="flex flex-col">
                 <Link className="text-lg text-white hover:text-fb_blue duration-300" href={"tel:(67) 3028-9000"}>
-                  (67) 3028-9000
-                </Link>
+                    (67) 3028-9000
+                  </Link>
+                  <Link className="text-lg text-white hover:text-fb_blue duration-300" href={"mailto:sac@realh.com.br"}>
+                    sac@realh.com.br
+                  </Link>
+               </div>
                 <p className="text-lg text-white">de segunda à sexta-feira, das 8h às 18h</p>
               </div>
             </div>
