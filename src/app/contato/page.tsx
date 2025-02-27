@@ -52,14 +52,6 @@ export default function Page() {
               </Link>
             </Button>
             </div>
-            {/* <div>
-            <div>
-              <h2 className="mb-6 text-3xl font-bold text-navy-900">SAC</h2>
-              <Link href="https://www.contatoseguro.com.br/pt/gruporealh/canais_de_acesso" rel="noreferrer nofollow" className="flex text-fb_blue" target="_blank">
-                <p className="text-xl font-bold">Contato Seguro</p>
-              </Link>
-            </div> */}
-            </div>
           </div>
         </div>
         <div className="flex flex-col gap-4">
