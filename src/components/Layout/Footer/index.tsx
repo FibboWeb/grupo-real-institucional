@@ -18,7 +18,7 @@ async function Footer() {
           <div className="container flex flex-col gap-6 lg:gap-0 lg:flex-row items-center justify-between mx-auto mt-16 mb-8">
             <div className="flex flex-col items-center lg:items-start">
               <div className="social-icons flex-row justify-center space-x-4 items-center mb-1">
-                <Link className="inline-block" href={"https://www.facebook.com/gruporealh"}>
+                <Link className="inline-block" href={"https://www.facebook.com/gruporealbr.oficial/"}>
                   <Image src={"/facebook-logo.svg"} width={20} height={20} alt="Facebook" />
                 </Link>
                 <Link className="inline-block" href={"https://www.instagram.com/gruporealbr/"}>
