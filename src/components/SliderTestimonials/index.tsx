@@ -1,6 +1,6 @@
 "use client";
 import Image, { StaticImageData } from "next/image";
-import { Suspense, useMemo, useRef, useState } from "react";
+import { Suspense, useMemo, useRef, useState, useCallback, useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
@@ -78,6 +78,9 @@ export default function SliderTestimonials({ testimonial }: testimonialCardProps
   };
 
   const handlePlayerReady = (event: YouTubeEvent) => {
+    if (event.target !== player) {
+      handleCloseModal();
+    }
     setPlayer(event.target);
   };
 
@@ -98,11 +101,23 @@ export default function SliderTestimonials({ testimonial }: testimonialCardProps
     setSelectedVideo(null);
   };
 
-  const handleClickOutside = (event: React.MouseEvent<HTMLDivElement>) => {
+  const handleClickOutside = useCallback((event: MouseEvent) => {
     if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
       handleCloseModal();
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    if (selectedVideo) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.body.style.overflow = 'hidden';
+      
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+        document.body.style.overflow = 'unset';
+      };
+    }
+  }, [selectedVideo, handleClickOutside]);
 
   const opts: YouTubeProps['opts'] = {
     height: '515',
@@ -177,22 +192,11 @@ export default function SliderTestimonials({ testimonial }: testimonialCardProps
         </div>
       )}
       {selectedVideo && (
-        <div 
-          className="fixed inset-0 pt-14 bottom-0 z-50 flex items-center justify-center bg-black/80"
-          onClick={handleClickOutside}
-        >
+        <div className="fixed inset-0 pt-14 bottom-0 z-50 flex items-center justify-center bg-black/80">
           <div 
             ref={modalRef}
             className="relative w-full max-w-4xl mx-4"
-          >
-            <button 
-              onClick={handleCloseModal}
-              className="absolute right-0 text-white hover:text-fb_green transition-colors"
-              aria-label="Fechar vídeo"
-            >
-              <XIcon size={24} />
-            </button>
-            
+          >            
             <div className="bg-gray-800 rounded-lg overflow-hidden">
               <div className="relative">
                 {isPlaying ? (
@@ -222,7 +226,9 @@ export default function SliderTestimonials({ testimonial }: testimonialCardProps
                         className="transform transition-transform hover:scale-110"
                         aria-label="Reproduzir vídeo"
                       >
-                        <PlayIcon className="text-fb_green" size={64} />
+                        <div className="bg-white rounded-full p-2">
+                          <PlayIcon className="text-fb_blue" size={48} />
+                        </div>
                       </button>
                     </div>
                   </div>
