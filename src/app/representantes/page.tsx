@@ -41,6 +41,9 @@ export default function RepresentantesPage() {
     if (category) {
       setOpenCategory(category);
       setSelectedCategory(category);
+    } else {
+      setOpenCategory(null);
+      setSelectedCategory("");
     }
     return;
   }  
@@ -73,7 +76,7 @@ export default function RepresentantesPage() {
               <li>
                 <Button
                   variant="ghost"
-                  className={`w-full justify-start text-gray-600 hover:text-gray-900 ${selectedCategory !== "" ? "font-bold" : ""}`}
+                  className={`w-full justify-start text-gray-600 hover:text-gray-900 ${selectedCategory === "" ? "font-bold" : ""}`}
                   onClick={() => handleFilter("")}
                 >
                   Todas
