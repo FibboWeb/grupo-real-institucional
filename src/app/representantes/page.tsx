@@ -30,7 +30,9 @@ export default function RepresentantesPage() {
   useEffect(() => {
     async function fetchRepresentantes() {
       const representantesList = await getRepresentantes();
-      setRepresentantes(representantesList.props);
+      const ordered = representantesList.props.sort((a, b) => a.title.localeCompare(b.title));
+      console.log("ordered", ordered);
+      setRepresentantes(ordered);
     }
 
     fetchRepresentantes();
