@@ -27,7 +27,6 @@ export default function RepresentantesPage() {
     async function fetchRepresentantes() {
       const representantesList = await getRepresentantes();
       setRepresentantes(representantesList.props);
-      console.log(representantesList);
     }
 
     fetchRepresentantes();
@@ -38,18 +37,20 @@ export default function RepresentantesPage() {
     const representantesList = await getRepresentantes();
     const allRepresentantes = representantesList;
     if (category) {
-      const filteredRepresentantes = allRepresentantes.props.filter((item) => item.categoria.includes(category));
+      const filteredRepresentantes = allRepresentantes.props.filter((item) => item.categoriaName.includes(category));
       setRepresentantes(filteredRepresentantes);
     } else {
       setRepresentantes(allRepresentantes.props);
     }
   }
   
-  console.log(representantes);
+  
   const handleOpen = (category) => {
     // Se a categoria já estiver aberta, fecha; caso contrário, abre
     setOpenCategory(openCategory === category ? null : category);
   };
+
+  console.log(representantes);
 
   return (
     <div className="fb_container mt-[96px] min-h-screen mb-10">

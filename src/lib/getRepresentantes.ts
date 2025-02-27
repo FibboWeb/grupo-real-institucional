@@ -38,7 +38,7 @@ const getCachedRepresentantes = unstable_cache(
 
 export async function getRepresentantes() {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_WP_URL_API}representante?per_page=100`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_WP_URL_API}representante?per_page=100&_embed=wp:term`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -51,9 +51,11 @@ export async function getRepresentantes() {
 
     const data = await response.json();
 
+    console.log("wp:term",data[0]._embedded['wp:term']?.[0]?.[0].name);
+
     // Mapeia os representantes para pegar apenas os campos necessários
-    const representantes = await Promise.all(data.map(async (representante) => {
-      const categoriaName = await getCategorieName(representante.linha[0]);
+    const representantes = data.map((representante) => {
+      const categoriaName = representante._embedded['wp:term']?.[0]?.[0].name || ""; // Obtendo o nome da categoria diretamente do wp:term
       return {
         id: representante.id, // Adicionando o ID do representante
         title: representante.title.rendered, // Nome do representante
@@ -64,7 +66,7 @@ export async function getRepresentantes() {
         email: representante.meta?.email_do_representante || "",
         categoriaId: categoriaName
       };
-    }));
+    });
     return { props: representantes };
   } catch (error) {
     console.error("Erro ao buscar representantes:", error);
