@@ -16,8 +16,6 @@ const getCachedRepresentantes = unstable_cache(
   
       const data = await response.json();
   
-      console.log("wp:term",data[0]._embedded['wp:term']?.[0]?.[0].name);
-  
       // Mapeia os representantes para pegar apenas os campos necessários
       const representantes = data.map((representante) => {
         const categoriaName = representante._embedded['wp:term']?.[0]?.[0].name || ""; // Obtendo o nome da categoria diretamente do wp:term
@@ -63,7 +61,6 @@ export async function getRepresentantes() {
       const categoriaNames = representante._embedded?.['wp:term']?.map(terms => {
         return terms.map(term => term.name); // Mapeia cada array interno para pegar o nome
       }).flat() || []; // Use .flat() para transformar o array de arrays em um único array
-       console.log(categoriaNames);
       return {
         id: representante.id, // Adicionando o ID do representante
         title: representante.title.rendered, // Nome do representante

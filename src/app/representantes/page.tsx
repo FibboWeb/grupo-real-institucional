@@ -31,7 +31,6 @@ export default function RepresentantesPage() {
     async function fetchRepresentantes() {
       const representantesList = await getRepresentantes();
       const ordered = representantesList.props.sort((a, b) => a.title.localeCompare(b.title));
-      console.log("ordered", ordered);
       setRepresentantes(ordered);
     }
 
@@ -48,8 +47,6 @@ export default function RepresentantesPage() {
   const handleOpen = (category) => {
     setOpenCategory(openCategory === category ? null : category);
   };
-
-  console.log(representantes);
 
   return (
     <div className="fb_container mt-[96px] min-h-screen mb-10">
