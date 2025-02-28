@@ -1,6 +1,6 @@
 export async function fetchPosts(authorId, page = 1, postsPerPage = 6) {
   const res = await fetch(
-    `${process.env.WP_URL_API}posts?author=${authorId}&per_page=${postsPerPage}&page=${page}&_embed=wp:featuredmedia`,
+    `${process.env.NEXT_PUBLIC_WP_URL_API}posts?author=${authorId}&per_page=${postsPerPage}&page=${page}&_embed=wp:featuredmedia`,
     {
       next: { revalidate: 3600 },
     },
@@ -30,7 +30,7 @@ export async function fetchPosts(authorId, page = 1, postsPerPage = 6) {
 }
 
 export async function fetchAuthorData(authorSlug) {
-  const authorRes = await fetch(`${process.env.WP_URL_API}users?slug=${authorSlug}`);
+  const authorRes = await fetch(`${process.env.NEXT_PUBLIC_WP_URL_API}users?slug=${authorSlug}`);
   const authorData = await authorRes.json();
   return authorData.length > 0 ? authorData[0] : null;
 }
