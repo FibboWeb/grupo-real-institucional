@@ -41,13 +41,13 @@ function AuthorBox({ authorName, authorBio, isSinglePage, authorLink }: AuthorBo
       <div className="rounded-lg h-12 bg-fb_blue_button flex items-center justify-end gap-4 px-4">
         <Link
           className="bg-white rounded-xl w-7 h-7 flex items-center justify-center"
-          href={"https://www.facebook.com/gruporealh"}
+          href={"https://www.facebook.com/gruporealbr.oficial/"}
         >
           <Image src={"/facebook-icon-rh.svg"} width={20} height={20} alt="Facebook Icon" />
         </Link>
         <Link
           className="bg-white rounded-xl w-7 h-7 flex items-center justify-center"
-          href={"https://instagram.com/gruporealh/"}
+          href={"https://www.instagram.com/gruporealbr/"}
         >
           <Image src={"/instagram-icon-rh.svg"} width={20} height={20} alt="Instagram Icon" />
         </Link>
@@ -59,7 +59,7 @@ function AuthorBox({ authorName, authorBio, isSinglePage, authorLink }: AuthorBo
         </Link>
         <Link
           className="bg-white rounded-xl w-7 h-7 flex items-center justify-center"
-          href={"https://www.youtube.com/@marketingrealh"}
+          href={"https://www.youtube.com/@PecuariaForte"}
         >
           <Image src={"/youtube-icon-rh.svg"} width={20} height={20} alt="Linkedin Icon" />
         </Link>
