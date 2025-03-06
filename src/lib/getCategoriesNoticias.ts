@@ -1,5 +1,5 @@
 export async function fetchCategoryId(slug) {
-  const res = await fetch(`${process.env.WP_URL_API}categories?slug=${slug}`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_WP_URL_API}categories?slug=${slug}`);
 
   if (!res.ok) {
     throw new Error("Erro ao buscar o ID da categoria");
@@ -8,7 +8,7 @@ export async function fetchCategoryId(slug) {
   const data = await res.json();
   if (data.length > 0) {
     const parentCategory = data[0];
-    const subcategoriesRes = await fetch(`${process.env.WP_URL_API}categories?parent=${parentCategory.id}`);
+    const subcategoriesRes = await fetch(`${process.env.NEXT_PUBLIC_WP_URL_API}categories?parent=${parentCategory.id}`);
 
     if (!subcategoriesRes.ok) {
       throw new Error("Erro ao buscar subcategorias");
@@ -29,7 +29,7 @@ export async function fetchCategoryId(slug) {
 export async function fetchPosts(categoryIds, page = 1, postsPerPage = 6) {
   const categoryIdsString = Array.isArray(categoryIds) ? categoryIds.join(",") : categoryIds;
   const res = await fetch(
-    `${process.env.WP_URL_API}posts?categories=${categoryIdsString}&per_page=${postsPerPage}&page=${page}&_embed=author,wp:featuredmedia`,
+    `${process.env.NEXT_PUBLIC_WP_URL_API}posts?categories=${categoryIdsString}&per_page=${postsPerPage}&page=${page}&_embed=author,wp:featuredmedia`,
     {
       next: { revalidate: 3600 },
     },
