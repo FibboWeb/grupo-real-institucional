@@ -48,6 +48,10 @@ export default function InstitutionalLayout({
           anchor: "Política de Qualidade",
           link: "/institucional/politica-de-qualidade",
         },
+        {
+          anchor: "Política de privacidade do Candidato",
+          link: "/institucional/politica-de-privacidade-candidato",
+        }
       ],
     },
   ];
