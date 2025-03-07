@@ -13,7 +13,6 @@ export const GET_DOWNLOADS = gql`
             sourceUrl
           }
         }
-        
       }
     }
   }

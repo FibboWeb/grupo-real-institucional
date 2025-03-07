@@ -72,7 +72,8 @@ export async function getRepresentantes() {
         categoriaId: categoriaNames // Armazenando todas as categorias
       };
     });
-    return { props: representantes };
+    const ordered = representantes.sort((a, b) => a.title.localeCompare(b.title));
+    return { props: ordered };
   } catch (error) {
     console.error("Erro ao buscar representantes:", error);
     return { props: [] };

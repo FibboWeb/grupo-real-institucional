@@ -7,7 +7,7 @@ import { getDownloads } from "@/lib/getDownloads";
 import { Card, CardContent } from "../ui/card";
 import { Download } from "lucide-react";
 
-export function ListCardDownload() {
+export function ListCardDownload({ downloadsData }) {
   const categories = [
     "CMR Saúde Animal",
     "Grupo Real",
@@ -20,15 +20,15 @@ export function ListCardDownload() {
   const [downloads, setDownloads] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
 
-  useEffect(() => {
-    async function fetchDownloads() {
-      const downloadsData = await getDownloads();
-      console.log("downloads feitos", downloadsData)
-      setDownloads(downloadsData.props);
-    }
+  // useEffect(() => {
+  //   async function fetchDownloads() {
+  //     const downloadsData = await getDownloads();
+  //     console.log("downloads feitos", downloadsData)
+  //     setDownloads(downloadsData.props);
+  //   }
 
-    fetchDownloads();
-  }, []);
+  //   fetchDownloads();
+  // }, []);
 
   async function handleFilter(category) {
     setSelectedCategory(category);
@@ -83,7 +83,7 @@ export function ListCardDownload() {
 
       {/* Downloads Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {downloads.map((item) => (
+        {downloadsData.map((item) => (
           <Card key={item.id} className="overflow-hidden">
             <CardContent className="p-0">
               <div className="relative h-[140px]">
