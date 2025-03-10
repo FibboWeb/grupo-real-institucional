@@ -1,11 +1,11 @@
 "use client";
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import LogoRealH from "@/public/logo-real-h.png";
-import { Button } from "../ui/button";
 import { getDownloads } from "@/lib/getDownloads";
-import { Card, CardContent } from "../ui/card";
+import LogoRealH from "@/public/logo-real-h.png";
 import { Download } from "lucide-react";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import { Button } from "../ui/button";
+import { Card, CardContent } from "../ui/card";
 
 export function ListCardDownload({ downloadsData }) {
   const categories = [
@@ -20,22 +20,14 @@ export function ListCardDownload({ downloadsData }) {
   const [downloads, setDownloads] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
 
-  // useEffect(() => {
-  //   async function fetchDownloads() {
-  //     const downloadsData = await getDownloads();
-  //     console.log("downloads feitos", downloadsData)
-  //     setDownloads(downloadsData.props);
-  //   }
-
-  //   fetchDownloads();
-  // }, []);
-
   async function handleFilter(category) {
     setSelectedCategory(category);
     if (category) {
       const clearDownloads = await getDownloads();
-      console.log("clearDownloads: ",clearDownloads, "category: ", category)
-      const filteredDownloads = clearDownloads.props.filter((item) => item.categoria.includes(category));
+      console.log("clearDownloads: ",clearDownloads.props, "category: ", category)
+      const filteredDownloads = clearDownloads.props.filter((item) => 
+        Array.isArray(item.category) && item.category.includes(category)
+      );
       setDownloads(filteredDownloads);
     } else {
       async function resetDownloads() {
@@ -46,7 +38,8 @@ export function ListCardDownload({ downloadsData }) {
     }
   }
 
-  console.log("downloads", downloads)
+  useEffect(()=> {
+  }, [downloads])
 
   return (
     <div className="flex flex-col md:flex-row gap-6">
@@ -83,7 +76,7 @@ export function ListCardDownload({ downloadsData }) {
 
       {/* Downloads Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {downloadsData.map((item) => (
+        {downloads.map((item) => (
           <Card key={item.id} className="overflow-hidden">
             <CardContent className="p-0">
               <div className="relative h-[140px]">

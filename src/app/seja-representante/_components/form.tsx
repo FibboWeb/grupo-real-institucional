@@ -25,13 +25,11 @@ const FormSchema = z.object({
 
 type FormData = z.infer<typeof FormSchema>;
 
-
-
 export default function FormRepresentante() {
   const [successMessage, setSuccessMessage] = useState("");
   const [showForm, setShowForm] = useState(true);
-
   const [errorMessage, setErrorMessage] = useState("");
+
   const {
     register,
     handleSubmit,
@@ -52,6 +50,7 @@ export default function FormRepresentante() {
       });
 
       if (!response.ok) {
+        setErrorMessage('Ocorreu um erro ao enviar os dados, por favor verifique os campos e tente novamente.');
         throw new Error('Erro ao enviar os dados');
       }
 
@@ -196,13 +195,19 @@ export default function FormRepresentante() {
         </div>
       </form>
 
-      <div className={`text-fb_blue_main text-center w-full bg-slate-200/70 p-4 rounded-md ${showForm ? 'hidden' : 'block'}`}>
+      {successMessage ? (
+        <div className={`text-fb_blue_main text-center w-full bg-slate-200/70 p-4 rounded-md ${showForm ? 'hidden' : 'block'}`}>
         <p className="text-lg font-semibold flex flex-col gap-4">
           { successMessage }
           <Link href="/" className="text-fb_blue hover:text-fb_blue">Voltar para a página inicial
           </Link>
         </p>
       </div>
+      ): (
+        <div className={`text-red-500 text-center w-full bg-slate-200/70 p-4 rounded-md ${showForm ? 'hidden' : 'block'}`}>
+          { errorMessage }
+        </div>
+      )}
     </div>
   )
 }

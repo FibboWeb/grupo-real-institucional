@@ -8,6 +8,7 @@ export const GET_DOWNLOADS = gql`
         slug
         id
         title
+        category
         featuredImage {
           node {
             sourceUrl
