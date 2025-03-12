@@ -203,11 +203,11 @@ export default function SliderTestimonials({ testimonial }: testimonialCardProps
                     onReady={handlePlayerReady}
                     onStateChange={handlePlayerStateChange}
                     className="w-full rounded-lg"
-                    iframeClassName="w-full h-[515px] rounded-lg"
+                    iframeClassName="w-full h-[400px] rounded-lg"
                   />
                 ) : (
                   <div 
-                    className="relative h-[515px] cursor-pointer" 
+                    className="relative h-[400px] cursor-pointer" 
                     onClick={() => setIsPlaying(true)}
                   >
                     <Image
