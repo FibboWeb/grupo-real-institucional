@@ -78,9 +78,6 @@ export default function SliderTestimonials({ testimonial }: testimonialCardProps
   };
 
   const handlePlayerReady = (event: YouTubeEvent) => {
-    if (event.target !== player) {
-      handleCloseModal();
-    }
     setPlayer(event.target);
   };
 
