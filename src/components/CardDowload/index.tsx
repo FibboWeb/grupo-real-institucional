@@ -76,7 +76,7 @@ export function ListCardDownload({ downloadsData }) {
 
       {/* Downloads Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {downloads.map((item) => (
+        {downloadsData.map((item) => (
           <Card key={item.id} className="overflow-hidden">
             <CardContent className="p-0">
               <div className="relative h-[140px]">
