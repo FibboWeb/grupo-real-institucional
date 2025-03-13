@@ -21,8 +21,8 @@ export async function fetchPosts(page = 1, postsPerPage = 6, offset = 3) {
 
   const postsWithImages = data.map((post) => {
     const postImage = post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || null;
-    const postAuthor = post._embedded?.["author"]?.[0]?.name || null;
-    const postAuthorLink = post._embedded?.["author"]?.[0]?.slug || null;
+    const postAuthor = post._embedded?.["author"]?.[0]?.name || "Marketing Grupo Real";
+    const postAuthorLink = post._embedded?.["author"]?.[0]?.slug || "realh";
     const postCategories = post._embedded?.["categories"] || [];
 
     const isArtigos = postCategories.some((category) => category.name === "Artigos");
@@ -46,7 +46,6 @@ export async function getLastPostsNoticias() {
     const fetchedPosts = await client.query({
       query: GET_POSTS_LAST_NOTICIAS_PAGE,
     });
-    console.log(fetchedPosts.data.posts);
     return {
       props: fetchedPosts.data.posts,
     };

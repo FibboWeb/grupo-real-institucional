@@ -1,12 +1,12 @@
 "use client";
+import { PlayIcon } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
-import { Suspense, useMemo, useRef, useState, useCallback, useEffect } from "react";
+import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Slider from "react-slick";
+import YouTube, { YouTubeEvent, YouTubeProps } from 'react-youtube';
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import "./slider.css";
-import { PlayIcon, XIcon } from "lucide-react";
-import YouTube, { YouTubeProps, YouTubeEvent } from 'react-youtube';
 
 type testimonialProps = {
   testimonial: string;
@@ -66,11 +66,8 @@ export default function SliderTestimonials({ testimonial }: testimonialCardProps
   const thumbnailUrl = `/images/quem-somos/foto_de_cima_da_fabrica.webp`;
 
   const handleVideoOpen = (videoUrl: string) => {
-    console.log(isPlaying);
     if (selectedVideo === videoUrl) {
-      setSelectedVideo(null);
-      setIsPlaying(false);
-      // how to control the iframe?
+      handleCloseModal();
     } else {
       setSelectedVideo(videoUrl);
       setIsPlaying(false);
@@ -91,7 +88,8 @@ export default function SliderTestimonials({ testimonial }: testimonialCardProps
   };
 
   const handleCloseModal = () => {
-    if (player) {
+    console.log(player)
+    if (player && selectedVideo) {
       player.pauseVideo();
     }
     setIsPlaying(false);
@@ -106,10 +104,14 @@ export default function SliderTestimonials({ testimonial }: testimonialCardProps
 
   useEffect(() => {
     if (selectedVideo) {
-      document.addEventListener('mousedown', handleClickOutside);
+      const timeout = setTimeout(() => {
+        document.addEventListener('mousedown', handleClickOutside);
+      }, 500); // Tempo suficiente para evitar conflito com o clique inicial
+  
       document.body.style.overflow = 'hidden';
-      
+  
       return () => {
+        clearTimeout(timeout);
         document.removeEventListener('mousedown', handleClickOutside);
         document.body.style.overflow = 'unset';
       };
@@ -120,14 +122,13 @@ export default function SliderTestimonials({ testimonial }: testimonialCardProps
     height: '515',
     width: '100%',
     playerVars: {
-      autoplay: isPlaying ? 1 : 0,
+      autoplay: 1, // Força o autoplay ao abrir o modal,
       controls: 1,
       rel: 0,
       modestbranding: 1,
+      origin: 'http://localhost:3001'
     },
   };
-
-  const memoizedTestimonials = useMemo(() => testimonial, [testimonial]);
 
   return (
     <div className="fb_container ">
@@ -198,7 +199,7 @@ export default function SliderTestimonials({ testimonial }: testimonialCardProps
               <div className="relative">
                 {isPlaying ? (
                   <YouTube
-                    videoId={selectedVideo} // Extract video ID from URL
+                    videoId={selectedVideo}
                     opts={opts}
                     onReady={handlePlayerReady}
                     onStateChange={handlePlayerStateChange}
