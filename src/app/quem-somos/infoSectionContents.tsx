@@ -10,7 +10,7 @@ const infoSectionsContents = {
   marcas: {
     title: "Nossas Marcas",
     content:
-      "<p>O Grupo Real é formado pelas marcas <a href='https://homeopet.com.br/' >Homeopet</a>, CMR e <a href='https://realh.com.br/'>Grupo Real.</a> Todas carregam em seu DNA o pioneirismo na homeopatia veterinária.</p>",
+      "<p>O Grupo Real é formado pelas marcas <a href='https://homeopet.com.br/' >Homeopet</a>, CMR e <a href='https://realh.com.br/'>Real H.</a> Todas carregam em seu DNA o pioneirismo na homeopatia veterinária.</p>",
     img: NossasMarcasImg,
     reverseDesktop: true,
     revereverseMobile: false,
@@ -59,7 +59,7 @@ const infoSectionsContents = {
   redeAtendimento: {
     title: "Rede de Atendimento",
     content:
-      "<p>O <strong>Grupo Real H</strong>s conta com uma equipe altamente qualificada, composta por mais de 330 profissionais. Seu corpo técnico-comercial, especializado em nutrição e saúde animal, é formado por Médicos Veterinários, Zootecnistas e Agrônomos, garantindo suporte técnico de excelência. Além disso, a empresa dispõe de uma ampla rede de representantes e distribuidores capacitados, proporcionando um atendimento personalizado e eficiente a clientes em todo o Brasil.</p>",
+      "<p>O <strong>Grupo Real H</strong> conta com uma equipe altamente qualificada, composta por mais de 330 profissionais. Seu corpo técnico-comercial, especializado em nutrição e saúde animal, é formado por Médicos Veterinários, Zootecnistas e Agrônomos, garantindo suporte técnico de excelência. Além disso, a empresa dispõe de uma ampla rede de representantes e distribuidores capacitados, proporcionando um atendimento personalizado e eficiente a clientes em todo o Brasil.</p>",
     img: RedeAtendimentoImg,
     reverseDesktop: false,
     revereverseMobile: false,
