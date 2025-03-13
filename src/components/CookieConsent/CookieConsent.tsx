@@ -31,7 +31,7 @@ const CookieConsent = () => {
     <div 
       role="dialog"
       aria-labelledby="cookie-title"
-      className="fixed bottom-0 left-0 max-w-3xl right-0 bg-white shadow-lg p-6 md:p-8 z-50 rounded-2xl"
+      className="fixed fb_container bottom-4 left-4 max-w-3xl bg-white shadow-lg p-6 md:p-8 z-50 rounded-2xl"
     >
       <div className="max-w-7xl mx-auto">
         <h2 id="cookie-title" className="text-xl font-semibold mb-4">
