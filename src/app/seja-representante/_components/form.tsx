@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -24,30 +25,11 @@ const FormSchema = z.object({
 
 type FormData = z.infer<typeof FormSchema>;
 
-// Function to send form data to the WordPress API
-async function sendFormData(data: FormData) {
-  try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}representante`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
-
-    if (!response.ok) {
-      throw new Error('Erro ao enviar os dados');
-    }
-
-    const result = await response.json();
-    return result;
-  } catch (error) {
-    console.error('Erro:', error);
-    throw error;
-  }
-}
-
 export default function FormRepresentante() {
+  const [successMessage, setSuccessMessage] = useState("");
+  const [showForm, setShowForm] = useState(true);
+  const [errorMessage, setErrorMessage] = useState("");
+
   const {
     register,
     handleSubmit,
@@ -56,10 +38,38 @@ export default function FormRepresentante() {
     resolver: zodResolver(FormSchema),
   });
 
+   // Function to send form data to the WordPress API
+   async function sendFormData(data: FormData) {
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_WP_URL_API_V1}representante/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        setErrorMessage('Ocorreu um erro ao enviar os dados, por favor verifique os campos e tente novamente.');
+        throw new Error('Erro ao enviar os dados');
+      }
+
+      const result = await response.json();
+      if (result) {
+        setShowForm(false);
+        setSuccessMessage("Obrigado pelo interesse em ser representante, logo entraremos em contato!");
+      }
+      return result;
+    } catch (error) {
+      console.error('Erro:', error);
+      throw error;
+    }
+  }
+
   return (
     <div className="w-full">
       
-      <form className="space-y-4" onSubmit={handleSubmit(sendFormData)}>
+      <form className={`space-y-4 ${showForm ? 'block' : 'hidden'}`} onSubmit={handleSubmit(sendFormData)}>
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-1 text-sm">
             <label htmlFor="name" className="text-white">Nome <span className="text-red-500">*</span></label>
@@ -184,6 +194,20 @@ export default function FormRepresentante() {
           <BtnCallToAction content={isSubmitting ? "Enviando..." : "Enviar"} color="fb_blue_button" classCssForBTN="py-6"/>
         </div>
       </form>
+
+      {successMessage ? (
+        <div className={`text-fb_blue_main text-center w-full bg-slate-200/70 p-4 rounded-md ${showForm ? 'hidden' : 'block'}`}>
+        <p className="text-lg font-semibold flex flex-col gap-4">
+          { successMessage }
+          <Link href="/" className="text-fb_blue hover:text-fb_blue">Voltar para a página inicial
+          </Link>
+        </p>
+      </div>
+      ): (
+        <div className={`text-red-500 text-center w-full bg-slate-200/70 p-4 rounded-md ${showForm ? 'hidden' : 'block'}`}>
+          { errorMessage }
+        </div>
+      )}
     </div>
   )
 }

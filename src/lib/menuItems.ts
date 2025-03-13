@@ -31,14 +31,14 @@ const menuItems: MenuItems[] = [
           },
           {
             node: {
-              id: "1-3",
+              id: "1-4",
               url: "/representantes",
               label: "Representantes",
             },
           },
           {
             node: {
-              id: "1-3",
+              id: "1-5",
               url: "/seja-representante",
               label: "Seja Representante",
             },

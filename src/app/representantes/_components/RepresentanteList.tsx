@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function RepresentanteList({representanteList, openCategory, categoriasColors, category}) {
   return (
-    <div className={`flex flex-wrap border-b border-gray-300 ${openCategory === category ? 'animate-fade-in' : ''}`}>
+    <div className={`flex flex-wrap border-b border-gray-300 ${openCategory === category ? 'animate-fade-in' : ''} pt-4`}>
       {representanteList
         // se a categoria for linha saude renderizar dentro de saúde animal
         .filter((representante) => (representante.categoriaId.includes(category) || (representante.categoriaId.includes("Linha Saúde") && category === "Saúde Animal"))) 
