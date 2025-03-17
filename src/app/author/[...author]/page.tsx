@@ -23,8 +23,6 @@ export async function generateMetadata({ params }: Props, searchParams): Promise
   let infos;
   infos =  await fetchAuthorData(slug);
 
-  console.log(infos)
-
   if (!infos) {
     notFound();
   }
@@ -54,9 +52,7 @@ export default async function AuthorPage({ params, searchParams }) {
   const postsPerPage = 6;
   const authorSlug = (await params).author[0];
   const author = await fetchAuthorData(authorSlug);
-  console.log("author", author.name)
   const authorName = author.name;
-  // console.log(authorName)
   const authorBio = author.description || "Biografia não disponível";
   const authorId = author.id;
 

@@ -58,7 +58,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function PageProduct({ params }) {
   const { slug } = await params;
   const product = await getProductPerSlug(slug);
-  console.log(product[0]);
   const productsRecommendations = await getProducts(product[0].categoria_produto, 1, 8);
   if (product.length <= 0) {
     return notFound();

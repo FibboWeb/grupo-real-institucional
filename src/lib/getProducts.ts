@@ -25,8 +25,6 @@ export async function getProducts(id_categoria: number, page, productsPerPage = 
   const totalPosts = res.headers.get("X-WP-Total");
   const totalPages = res.headers.get("X-WP-TotalPages");
 
-  // console.log(products, totalPosts, totalPages)
-
   return {
     products,
     totalPages,

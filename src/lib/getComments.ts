@@ -2,7 +2,6 @@ import { GET_COMMENTS_FOR_POST } from "@/graphql/comments";
 import { client } from "./apollo-client";
 
 export async function getComments(slug) {
-  console.log(slug)
   try {
     const { data } = await client.query({
       query: GET_COMMENTS_FOR_POST,
@@ -30,10 +29,8 @@ export async function handleSubmitComment(data, postId, commentId = null) {
   try {
     let url;
     if (commentId) {
-      console.log("respondendo comentário", commentId)
       url = `${process.env.NEXT_PUBLIC_WP_URL_API}comments/${commentId}?content=${data.comment}&author_name=${data.name}&author_email=${data.email}`;
     } else {
-      console.log("comentando no post", postId)
       url = `${process.env.NEXT_PUBLIC_WP_URL_API}comments?post=${postId}&content=${data.comment}&author_name=${data.name}&author_email=${data.email}`;
     }
     const response = await fetch(url,{

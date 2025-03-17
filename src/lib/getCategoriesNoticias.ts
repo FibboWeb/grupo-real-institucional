@@ -42,7 +42,6 @@ export async function fetchPosts(categoryIds, page = 1, postsPerPage = 6) {
   const data = await res.json();
   const totalPosts = res.headers.get("X-WP-Total");
   const totalPages = res.headers.get("X-WP-TotalPages");
-  console.log(totalPages)
   
   const postsWithImages = data.map((post) => {
     const postImage = post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || null;
