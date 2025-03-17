@@ -15,14 +15,25 @@ import {
   sliderCategoriasHome,
   testimoniaslInfo,
 } from "@/constants/home";
-import { getLastPostsNoticias } from "@/lib/getLastPostsNoticias";
+import { getLastPostsHomeopet, getLastPostsNoticias } from "@/lib/getLastPostsNoticias";
 import LastPostsNoticias from "../components/Layout/LastPostsNoticias";
 import BtnCallToAction from "@/components/Layout/Buttons/BtnCallToAction/BtnCallToAction";
 import WhiteLeafIcon from "@/public/icons/white-leaf.svg";
 
 export default async function Home() {
   const queriedLastPostsNoticias = await getLastPostsNoticias();
+  const postsHomeoPet = await getLastPostsHomeopet();
   const fetchedLastPostsNoticias = queriedLastPostsNoticias.props.nodes;
+
+  const postsMesclados = [
+    ...postsHomeoPet.props.nodes,
+    ...fetchedLastPostsNoticias
+  ].sort((a, b) => {
+    // Supondo que a data esteja em uma propriedade chamada 'date'
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  });
+
+  console.log(postsHomeoPet.props.nodes)
 
   return (
     <div className="flex flex-col gap-fb_space-section">
@@ -46,7 +57,7 @@ export default async function Home() {
       </section>
       <section className="max-w-full">
         <div className="fb_container overflow-hidden">
-          <LastPostsNoticias fetchedLastPosts={fetchedLastPostsNoticias} />
+          <LastPostsNoticias fetchedLastPosts={postsMesclados} />
         </div>
       </section>
       <section className="">
