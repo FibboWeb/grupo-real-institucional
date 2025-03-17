@@ -32,9 +32,6 @@ export default async function Home() {
     // Supondo que a data esteja em uma propriedade chamada 'date'
     return new Date(b.date).getTime() - new Date(a.date).getTime();
   });
-
-  console.log(postsHomeoPet.props.nodes)
-
   return (
     <div className="flex flex-col gap-fb_space-section">
       <section>

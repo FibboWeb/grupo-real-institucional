@@ -11,7 +11,6 @@ export async function getDownloads() {
       // Desestruturação direta
       query: GET_DOWNLOADS,
     });
-    console.log(data);
     return { props: data.downloads.nodes };
   } catch (error) {
     console.error("Erro ao buscar arquivos:", error);

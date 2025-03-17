@@ -67,7 +67,6 @@ export default async function PostPage({ params }) {
   const fetchedPost = await getPostDetails(postSlug);
   const post = fetchedPost.props.post;
   const postComments = await getComments(post.id);
-  console.log("Comentários do post: ", postComments.props);
   if (!postSlug) {
     return notFound();
   }

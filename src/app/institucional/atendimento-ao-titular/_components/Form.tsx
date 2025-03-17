@@ -36,7 +36,6 @@ export function Form() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
       });
-      console.log(response);
       if (!response.ok) throw new Error('Erro ao enviar formulário.');
       setSuccessMessage('Formulário enviado com sucesso!');
       setTimeout(() => {

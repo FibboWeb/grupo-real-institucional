@@ -43,6 +43,14 @@ export default function RootLayout({
       <head>
         <GoogleTagHead />
         <link rel="preload" href="/video/DRONE_NOVO_REVERSE.mp4" as="video" />
+        {/* Preconnect para melhorar o tempo de conexão */}
+        <link rel="preconnect" href="https://www.youtube.com" />
+        <link rel="preconnect" href="https://www.jnn-pa.googleapis.com" />
+        <link rel="preconnect" href="https://i.ytimg.com" />
+        <link rel="preconnect" href="https://s.ytimg.com" />
+
+        {/* Prefetch para carregar recursos importantes mais cedo */}
+        <link rel="prefetch" href="https://www.youtube.com/iframe_api" />
       </head>
       <body className={`${poppins.className} antialiased`}>
         <GoogleTagBody />

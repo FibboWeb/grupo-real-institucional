@@ -52,7 +52,6 @@ function Newsletter({
  */
 
     async function onSubmit(data: NewsLetterFormData) {
-      console.log("Enviando comentário...", data);
       try {
         const { email, nome, consentimento } = data
         const response = await fetch(`${process.env.NEXT_PUBLIC_WP_URL_API_V1}subscribe-newsletter/`, {
@@ -63,11 +62,8 @@ function Newsletter({
           },
           body: JSON.stringify({ nome, email, consentimento }),
         });
-
-        console.log(consentimento)
     
         const responseData = await response.json();
-        console.log(responseData)
         if(!response) {
            setErrorMessage("Erro ao enviar o formulário, por favor tente novamente.");
            setTimeout(() => {

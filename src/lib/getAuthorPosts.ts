@@ -37,7 +37,6 @@ export async function fetchAuthorPosts(slug: string, page = 1, postsPerPage = 6)
   const data = await res.json();
   const totalPosts = res.headers.get("X-WP-Total");
   const totalPages = res.headers.get("X-WP-TotalPages");
-  console.log("data", data)
   return { posts: data, totalPosts: Number(totalPosts), totalPages: Number(totalPages) };
 }
 
@@ -52,8 +51,6 @@ export async function fetchAuthorData(authorSlug: string): Promise<any | null> {
       query: GET_AUTHOR_BY_SLUG,
       variables: { slug: authorSlug },
     });
-  
-    console.log(data)
   
     return data.user; 
   } catch (error) {
