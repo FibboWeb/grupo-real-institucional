@@ -76,11 +76,7 @@ export default async function BannerLines({
   }
 
   const { props, urlImagemHero, text, banner01, banner02, textBanner01, textBanner02 } =
-    await getSEOLines2(slug_context);
-  console.log("infos buscada", urlImagemHero);
-
-  
-
+  await getSEOLines2(slug_context);
 
   return (
     <div className="relative w-full h-[320px] rounded-lg items-center">

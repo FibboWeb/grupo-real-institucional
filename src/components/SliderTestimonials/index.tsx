@@ -88,7 +88,6 @@ export default function SliderTestimonials({ testimonial }: testimonialCardProps
   };
 
   const handleCloseModal = () => {
-    console.log(player)
     if (player && selectedVideo) {
       player.pauseVideo();
     }

@@ -21,7 +21,6 @@ export async function getAllPosts() {
         throw new Error("Nenhum dado retornado da API.");
       }
 
-      // console.log("Response: ",response.data.posts)
       const { nodes, pageInfo } = response.data.posts;
 
       allPosts = [

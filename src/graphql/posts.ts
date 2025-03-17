@@ -1,8 +1,9 @@
 import { gql } from "@apollo/client";
+import { gql as gql_homepet } from "@apollo/client";
 
 export const GET_LAST_POSTS_NOTICIAS = gql`
   query GET_LAST_POSTS_NOTICIAS {
-    posts(first: 6, where: { orderby: { field: DATE, order: DESC } }) {
+    posts(first: 4, where: { orderby: { field: DATE, order: DESC } }) {
       nodes {
         id
         title
@@ -30,6 +31,41 @@ export const GET_LAST_POSTS_NOTICIAS = gql`
     }
   }
 `;
+
+export const GET_LAST_POSTS_NOTICIAS_HOMEOPET = gql_homepet`
+query GET_LAST_POSTS_NOTICIAS_HOMEOPET {
+  posts(
+    first: 4
+    where: {orderby: {field: DATE, order: DESC}, categoryName: "Notícias"}
+  ) {
+    nodes {
+      id
+      title
+      slug
+      link
+      date
+      content
+      featuredImage {
+        node {
+          sourceUrl
+        }
+      }
+      author {
+        node {
+          name
+          slug
+        }
+      }
+      categories(first: 1) {
+        nodes {
+          name
+          slug
+        }
+      }
+    }
+  }
+}
+`
 
 export const GET_POSTS_NOTICIAS_MOST_VIEWED = gql`
   query GET_POSTS_MOST_VIEWED {

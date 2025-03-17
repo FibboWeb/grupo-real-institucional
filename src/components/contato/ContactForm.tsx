@@ -40,7 +40,6 @@ const ContactForm = () => {
       const [errorMessage, setErrorMessage] = useState("");
 
       async function onSubmit(data: ContactFormData) {
-        console.log("Enviando comentário...", data);
         try {
           // Envia os dados do formulário para a rota personalizada no WP
           const response = await fetch(`${process.env.NEXT_PUBLIC_WP_URL_API_V1}submit-lead/`, {

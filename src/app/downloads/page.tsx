@@ -26,7 +26,6 @@ export const metadata: Metadata = {
 
 export default async function DownloadsPage() {
   const downloadsData = await getDownloads();
-  console.log("first downloadsData", downloadsData);
   return (
     <div className="fb_container mt-[96px] min-h-screen mb-10">
       {/* Breadcrumb */}

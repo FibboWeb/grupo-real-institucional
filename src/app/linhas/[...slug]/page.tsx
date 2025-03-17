@@ -72,13 +72,10 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
 }
 
 export default async function PageLinhas({ params, searchParams }) {
-  // read route params 'slug'
   const slug = (await params).slug;
-  // read query params
   const page = parseInt((await searchParams).page || "1");
 
   const { props, banner01, banner02, textBanner01, textBanner02, linkBanner01, linkBanner02, urlImagemHero, textCategoriaProduto } = await getSEOLines2(slug[0]);
-  console.log("textos ", textBanner01, textBanner02);
 
   return (
     <section className="relative mt-24">

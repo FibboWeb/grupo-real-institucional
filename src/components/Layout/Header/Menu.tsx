@@ -53,7 +53,6 @@ export default function Menu() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
   const handleMouseEnter = (id: string | SetStateAction<null>) => {
-    console.log("Chamou a função handleMouseEnter");
     if (activeMenu === null) {
       return setActiveMenu(id as string);
     } else {

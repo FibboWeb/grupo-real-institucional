@@ -24,7 +24,6 @@ export function ListCardDownload({ downloadsData }) {
     setSelectedCategory(category);
     if (category) {
       const clearDownloads = await getDownloads();
-      console.log("clearDownloads: ",clearDownloads.props, "category: ", category)
       const filteredDownloads = clearDownloads.props.filter((item) => 
         Array.isArray(item.category) && item.category.includes(category)
       );
