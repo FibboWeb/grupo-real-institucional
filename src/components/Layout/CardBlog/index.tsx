@@ -114,7 +114,9 @@ function CardBlog({
           <Link href={fullLink} target={`${fullLink.includes('http') ? "_blank" : "_self"}`} className="post-link">
             <p className="text-lg leading-5 font-bold mt-4 text-fb_blue_main line-clamp-3 min-h-[60px]">{postTitle}</p>
             <div className="post-description mt-2 text-[15px] min-h-16 leading-5 text-fb_gray">
-              {postDescription && <p>{truncateDescription(postDescription.__html, 100)}</p>}
+              {postDescription && (
+                <p dangerouslySetInnerHTML={{ __html: truncateDescription(postDescription.__html, 100) }} />
+              )}
             </div>
           </Link>
         </div>
