@@ -49,10 +49,9 @@ export default async function RepresentantesPage() {
         />
       </div>
       <div className="w-full h-full flex flex-col gap-12">
-        <h4 className="text-2xl text-center font-bold">Encontre o representante mais próximo de você</h4>
-        { typeof window !== 'undefined' && (
-          <MapRepresentantes representantes={representantes.props ?? []} />
-        )}
+        {/* <h4 className="text-2xl text-center font-bold">Encontre o representante mais próximo de você</h4> */}
+          {/* <MapRepresentantes representantes={representantes.props} /> */}
+      
       </div>
       <Newsletter />
     </div>

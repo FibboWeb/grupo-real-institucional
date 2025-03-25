@@ -30,15 +30,15 @@ export default function MapRepresentantes({ representantes }: { representantes: 
       setMyIcon(myIcon)
     }
   }, []);
-if (typeof window !== 'undefined') {
 
   return (
     <div className='w-full h-full flex justify-center items-center mx-auto'>
-      <Map 
-        zoom={3}
-        maxZoom={18}
-        center={[-16.4677196,-70.9921217]}  
-        scrollWheelZoom={true}
+      {typeof window !== 'undefined' && (
+        <Map 
+          zoom={3}
+          maxZoom={18}
+          center={[-16.4677196,-70.9921217]}  
+          scrollWheelZoom={true}
         className='w-[calc(100vw-10vw)] h-[calc(100vh-35vh)] md:w-[80vw] md:h-[90vh] z-0'
       >
         <TileLayer
@@ -57,7 +57,7 @@ if (typeof window !== 'undefined') {
           ))}
         </MarkerClusterGroup>
       </Map>
+      )}
     </div>
   )
-}
 }
