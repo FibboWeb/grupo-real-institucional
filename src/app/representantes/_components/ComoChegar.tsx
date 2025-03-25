@@ -43,19 +43,7 @@ export default function ComoChegar({ endereco, cidade, estado, latitude, longitu
     width: "90vw",
     height: 'calc(100vh - 20vh)' // Compensa espaço do header
   });
-  
-  useEffect(() => {
-    const updateDimensions = () => {
-      const isMobile = window.innerWidth < 768;
-      setDimensions({
-        width: isMobile ? "85vw" : "min(90vw, 800px)",
-        height: isMobile ? "calc(90vh - 80px)" : "calc(80vh - 120px)"
-      });
-    };
-  
-    window.addEventListener('resize', updateDimensions);
-    return () => window.removeEventListener('resize', updateDimensions);
-  }, []);
+
 
   return (
     <div className=''>

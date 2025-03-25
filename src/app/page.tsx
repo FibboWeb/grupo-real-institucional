@@ -2,6 +2,7 @@
 import BannerCta from "@/components/BannerCTA";
 import SliderNavigational from "@/components/icons_slider";
 import InfoCards from "@/components/InfoCards";
+import BtnCallToAction from "@/components/Layout/Buttons/BtnCallToAction/BtnCallToAction";
 import VideoBackground from "@/components/Layout/HeroSection/VideoBackground";
 import Newsletter from "@/components/Layout/Newsletter";
 import SliderTestimonials from "@/components/SliderTestimonials";
@@ -16,21 +17,19 @@ import {
   testimoniaslInfo,
 } from "@/constants/home";
 import { getLastPostsHomeopet, getLastPostsNoticias } from "@/lib/getLastPostsNoticias";
-import LastPostsNoticias from "../components/Layout/LastPostsNoticias";
-import BtnCallToAction from "@/components/Layout/Buttons/BtnCallToAction/BtnCallToAction";
-import WhiteLeafIcon from "@/public/icons/white-leaf.svg";
 import { ArrowRight } from "lucide-react";
+import LastPostsNoticias from "../components/Layout/LastPostsNoticias";
 
 export default async function Home() {
-  const queriedLastPostsNoticias = await getLastPostsNoticias();
-  const postsHomeoPet = await getLastPostsHomeopet();
-  const fetchedLastPostsNoticias = queriedLastPostsNoticias.props.nodes;
+  const queriedLastPostsNoticias = (await getLastPostsNoticias()) || { props: { nodes: [] } };
+  const postsHomeoPet = (await getLastPostsHomeopet()) || { props: { nodes: [] } };
+  const fetchedLastPostsNoticias = queriedLastPostsNoticias.props.nodes ?? [];
+  const fetchedLastPostsHomeoPet = postsHomeoPet.props?.nodes ?? [];
 
   const postsMesclados = [
-    ...postsHomeoPet.props.nodes,
+    ...fetchedLastPostsHomeoPet,
     ...fetchedLastPostsNoticias
   ].sort((a, b) => {
-    // Supondo que a data esteja em uma propriedade chamada 'date'
     return new Date(b.date).getTime() - new Date(a.date).getTime();
   });
   return (
@@ -55,7 +54,7 @@ export default async function Home() {
       </section>
       <section className="max-w-full">
         <div className="fb_container overflow-hidden">
-          <LastPostsNoticias fetchedLastPosts={postsMesclados} />
+          <LastPostsNoticias fetchedLastPosts={postsMesclados ?? []} />
         </div>
       </section>
       <section className="">

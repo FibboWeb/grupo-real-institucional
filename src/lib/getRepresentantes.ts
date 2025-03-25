@@ -61,12 +61,15 @@ export async function fetchAllRepresentantes() {
 
       const data = await response.json();
 
+      if (!data || !Array.isArray(data)) {
+        console.error("Invalid data structure:", data);
+        return { props: [] }; // Return empty props if data is invalid
+      }
+
       if (page === 1) {
-        // Captura o total de páginas na primeira requisição
         totalPages = parseInt(response.headers.get("X-WP-TotalPages") || "1", 10);
       }
 
-      // Mapeia os representantes para pegar apenas os campos necessários
       const representantes = data.map((representante: any) => {
         const categoriaNames =
           representante._embedded?.["wp:term"]?.flatMap((terms: any) =>
@@ -92,12 +95,11 @@ export async function fetchAllRepresentantes() {
       page++;
     }
 
-    // Ordena os representantes por título
     const ordered = allRepresentantes.sort((a, b) => a.title.localeCompare(b.title));
     return { props: ordered };
   } catch (error) {
     console.error("Erro ao buscar representantes:", error);
-    return { props: [] };
+    return { props: [] }; // Return empty props on error
   }
 }
 

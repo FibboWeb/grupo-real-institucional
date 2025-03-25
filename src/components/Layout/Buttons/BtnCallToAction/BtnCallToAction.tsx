@@ -33,9 +33,6 @@ export default function BtnCallToAction({
   let bgHover;
   let border;
 
-  console.log("tipo: ", typeof icon)
-  console.log("icon: ", icon)
-
   if (color == "white") {
     text = "text-fb_blue_button";
     textHover = "hover:text-white";
