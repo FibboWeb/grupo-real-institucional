@@ -1,8 +1,9 @@
 import Breadcrumb from "@/components/BreadCrumb";
 import Newsletter from "@/components/Layout/Newsletter";
-import { getRepresentantes } from "@/lib/getRepresentantes";
+import { fetchAllRepresentantes } from "@/lib/getRepresentantes";
 import RepresentantesBanner from "@/public/representantes/representantes-list-banner.webp"; // Fixed import statement
 import Image from "next/image";
+import MapRepresentantes from "./_components/map";
 import RepresentanteWrapper from "./_components/RepresentanteWrapper";
 import "./index.css";
 
@@ -19,7 +20,7 @@ const categoriasColors = {
 }
 
 export default async function RepresentantesPage() {
-  const representantes = await getRepresentantes();
+  const representantes = await fetchAllRepresentantes();
 
   return (
     <div className="fb_container mt-[96px] min-h-screen mb-10">
@@ -44,6 +45,10 @@ export default async function RepresentantesPage() {
           representantes={representantes.props}
           categoriasColors={categoriasColors}
         />
+      </div>
+      <div className="w-full h-full flex flex-col gap-12">
+        <h4 className="text-2xl text-center font-bold">Encontre o representante mais próximo de você</h4>
+        <MapRepresentantes representantes={representantes.props} />
       </div>
       <Newsletter />
     </div>
