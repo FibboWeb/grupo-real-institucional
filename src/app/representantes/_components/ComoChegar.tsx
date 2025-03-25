@@ -69,7 +69,7 @@ export default function ComoChegar({ endereco, cidade, estado, latitude, longitu
             </Link>
             { iframe ? (
               <div 
-                className="min-h-[29rem] h-full"
+                className="min-h-[21rem] h-full"
                 dangerouslySetInnerHTML={{ __html: iframe }} />
             ) : (
               <p>Não localizamos o endereço desse representante</p>
