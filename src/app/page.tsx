@@ -2,6 +2,7 @@
 import BannerCta from "@/components/BannerCTA";
 import SliderNavigational from "@/components/icons_slider";
 import InfoCards from "@/components/InfoCards";
+import BtnCallToAction from "@/components/Layout/Buttons/BtnCallToAction/BtnCallToAction";
 import VideoBackground from "@/components/Layout/HeroSection/VideoBackground";
 import Newsletter from "@/components/Layout/Newsletter";
 import SliderTestimonials from "@/components/SliderTestimonials";
@@ -16,20 +17,19 @@ import {
   testimoniaslInfo,
 } from "@/constants/home";
 import { getLastPostsHomeopet, getLastPostsNoticias } from "@/lib/getLastPostsNoticias";
+import { ArrowRight } from "lucide-react";
 import LastPostsNoticias from "../components/Layout/LastPostsNoticias";
-import BtnCallToAction from "@/components/Layout/Buttons/BtnCallToAction/BtnCallToAction";
-import WhiteLeafIcon from "@/public/icons/white-leaf.svg";
 
 export default async function Home() {
-  const queriedLastPostsNoticias = await getLastPostsNoticias();
-  const postsHomeoPet = await getLastPostsHomeopet();
-  const fetchedLastPostsNoticias = queriedLastPostsNoticias.props.nodes;
+  const queriedLastPostsNoticias = (await getLastPostsNoticias()) || { props: { nodes: [] } };
+  const postsHomeoPet = (await getLastPostsHomeopet()) || { props: { nodes: [] } };
+  const fetchedLastPostsNoticias = queriedLastPostsNoticias.props.nodes ?? [];
+  const fetchedLastPostsHomeoPet = postsHomeoPet.props?.nodes ?? [];
 
   const postsMesclados = [
-    ...postsHomeoPet.props.nodes,
+    ...fetchedLastPostsHomeoPet,
     ...fetchedLastPostsNoticias
   ].sort((a, b) => {
-    // Supondo que a data esteja em uma propriedade chamada 'date'
     return new Date(b.date).getTime() - new Date(a.date).getTime();
   });
   return (
@@ -54,7 +54,7 @@ export default async function Home() {
       </section>
       <section className="max-w-full">
         <div className="fb_container overflow-hidden">
-          <LastPostsNoticias fetchedLastPosts={postsMesclados} />
+          <LastPostsNoticias fetchedLastPosts={postsMesclados ?? []} />
         </div>
       </section>
       <section className="">
@@ -85,6 +85,7 @@ export default async function Home() {
         <h2 className="text-center text-fb_blue_main text-4xl font-bold">Depoimentos</h2>
         <SliderTestimonials testimonial={testimoniaslInfo} />
       </section>
+      <section className="fb_container flex justify-around my-2">
       <div className="fb_container flex flex-col justify-center items-center my-2 gap-4">
         <h3 className="text-xl md:text-3xl font-bold text-center">Acesse nosso CMR de vendas</h3>
         <BtnCallToAction
@@ -95,6 +96,18 @@ export default async function Home() {
           showIcon={false}
         />
       </div>
+      <div className="fb_container flex flex-col justify-center items-center my-2 gap-4">
+        <h3 className="text-xl md:text-3xl font-bold text-center">INTREGRA - Universidade corporativa Grupo Real</h3>
+        <BtnCallToAction
+          ctaLink="https://integra.realh.com.br/login/"
+          content="Acesso Restrito"
+          classCssForBTN="text-white w-fit hover:text-black bg-red-500 hover:bg-red-600 hover:text-white border-transparent"
+          showIcon={false}
+          color="red-500"
+          icon={<ArrowRight className="bg-white text-red-500 rounded-full p-1" strokeWidth={3}/>}
+        />
+      </div>
+      </section>
       <section className="fb_container">
         <Newsletter
           sectionTitle="Inscreva-se na nossa newsletter"

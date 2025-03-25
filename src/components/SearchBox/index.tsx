@@ -24,7 +24,9 @@ function SearchBox() {
             // capturar o enter e redicionar o usuário para a página de busca com o resultado da sua pesquisa renderizada
             onKeyDownCapture={(e) => {
               if (e.key === "Enter" && (e.target as HTMLInputElement)) {
-                window.location.href = `/busca?busca=${searchString}`;
+                if (typeof window !== "undefined") {
+                  window.location.href = `/busca?busca=${searchString}`;
+                }
               }
             }}
           />

@@ -80,11 +80,13 @@ export default function BoardCards({ title, members }: BoardCardsProps) {
 
   const handleCardClick = (index: number) => {
     // Apenas executa em dispositivos móveis
-    if (window.innerWidth < 1024 && members[index].description) {
-      setFlippedCards(prev => ({
-        ...prev,
-        [index]: !prev[index]
-      }));
+    if (typeof window !== "undefined") {
+      if (window.innerWidth < 1024 && members[index].description) {
+        setFlippedCards(prev => ({
+          ...prev,
+          [index]: !prev[index]
+        }));
+      }
     }
   };
 

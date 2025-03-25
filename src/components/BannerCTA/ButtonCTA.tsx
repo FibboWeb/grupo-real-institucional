@@ -7,10 +7,12 @@ const handleClick = () => {
   const textSeo = document.getElementById("text-seo");
   if (textSeo) {
     const yPosition = textSeo.getBoundingClientRect().top - 250;
-    window.scrollTo({
-      top: yPosition,
-      behavior: "smooth",
-    });
+    if (typeof window !== "undefined") {
+      window.scrollTo({
+        top: yPosition,
+        behavior: "smooth",
+      });
+    }
   }
 };
 

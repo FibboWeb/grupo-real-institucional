@@ -9,11 +9,12 @@ import { cn } from "@/lib/utils";
 interface BtnCallToActionProps {
   ctaLink?: string;
   content: string;
-  icon?: StaticImageData;
-  color?: "fb_blue_button" | "fb_green_button" | "white";
+  icon?: StaticImageData | React.ReactNode;
+  color?: "fb_blue_button" | "fb_green_button" | "white" | "red-500";
   onClick?: () => void;
   classCssForBTN?: string;
   showIcon?: boolean;
+  colorIcon?: string;
 }
 
 export default function BtnCallToAction({
@@ -23,6 +24,7 @@ export default function BtnCallToAction({
   color = "fb_blue_button",
   onClick,
   classCssForBTN,
+  colorIcon = "fb_blue_button",
   showIcon = true,
 }: BtnCallToActionProps) {
   let text;
@@ -71,13 +73,17 @@ export default function BtnCallToAction({
         >
           <span>{content}</span>
           <div className="shrink-0">
-            <Image
-              src={iconBtn}
-              alt="Arrow Icon"
-              width={24}
-              height={24}
-              className={`btn-logo ${color == "white" ? "bg-[#cccccc] group-hover:bg-white" : "filter-image"} ${color == "fb_blue_button" ? "bg-white group-hover:bg-[#cccccc]" : "filter-image"} rounded-full p-1 transition-all duration-300`}
-            />
+            { iconBtn.src ? (
+                <Image
+                  src={iconBtn}
+                  alt="Arrow Icon"
+                  width={24}
+                  height={24}
+                  className={cn([`btn-logo ${color == "white" ? "bg-[#cccccc] group-hover:bg-white" : "filter-image"} ${color == "fb_blue_button" ? "bg-white group-hover:bg-[#cccccc]" : "filter-image"} ${ color === 'red-500' ? 'bg-white text-red-500 group-hover:bg-red-500' : 'filter-image'}  rounded-full p-1 transition-all duration-300`])}
+                />
+              ) : (
+                iconBtn
+              )}
           </div>
         </Link>
       ) : (
@@ -88,13 +94,17 @@ export default function BtnCallToAction({
           <span>{content}</span>
           {showIcon && (
             <div className="shrink-0">
-              <Image
-                src={iconBtn}
-                alt="Arrow Icon"
-                width={24}
-                height={24}
-                className={`btn-logo ${color == "white" ? "bg-[#cccccc] group-hover:bg-white" : "filter-image"} ${color == "fb_blue_button" ? "bg-white group-hover:bg-[#cccccc]" : "filter-image"}  rounded-full p-1 transition-all duration-300`}
-              />
+              { typeof iconBtn === "object" ? (
+                <Image
+                  src={iconBtn}
+                  alt="Arrow Icon"
+                  width={24}
+                  height={24}
+                  className={cn([`btn-logo ${color == "white" ? "bg-[#cccccc] group-hover:bg-white" : "filter-image"} ${color == "fb_blue_button" ? "bg-white group-hover:bg-[#cccccc]" : "filter-image"} ${ color === 'red-500' ? 'bg-white text-red-500 group-hover:bg-red-500' : 'filter-image'}  rounded-full p-1 transition-all duration-300`])}
+                />
+              ) : (
+                iconBtn
+              )}
             </div>
           )}
         </button>
