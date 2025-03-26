@@ -85,7 +85,7 @@ export default async function Home() {
         <h2 className="text-center text-fb_blue_main text-4xl font-bold">Depoimentos</h2>
         <SliderTestimonials testimonial={testimoniaslInfo} />
       </section>
-      <section className="fb_container flex flex-col md:flex-row justify-around items-center gap-5 md:gap-0 my-2">
+      <section className="fb_container flex flex-col md:flex-row justify-between items-center gap-5 md:gap-0 my-2">
         <div className="flex flex-col justify-start items-center my-2 gap-4">
           <h3 className="text-xl md:text-3xl font-bold text-center">Acesse nosso CMR de vendas</h3>
           <BtnCallToAction
@@ -96,7 +96,7 @@ export default async function Home() {
             showIcon={false}
           />
         </div>
-        <div className="flex flex-col justify-items-start items-center my-2 pl-4 gap-4">
+        <div className="flex flex-col justify-items-start items-center my-2 md:pl-4 gap-4">
           <h3 className="text-xl md:text-3xl font-bold text-center">INTREGRA - Universidade corporativa Grupo Real</h3>
           <BtnCallToAction
             ctaLink="https://integra.realh.com.br/login/"
