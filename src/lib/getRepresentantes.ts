@@ -40,45 +40,69 @@ const getCachedRepresentantes = unstable_cache(
   { revalidate: 86400 } // Revalidar a cada 24 horas
 );
 
-export async function getRepresentantes() {
+export async function fetchAllRepresentantes() {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_WP_URL_API}representante?per_page=100&_embed=wp:term`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const baseUrl = `${process.env.NEXT_PUBLIC_WP_URL_API}representante?per_page=100&_embed=wp:term`;
+    let page = 1;
+    let totalPages = 1;
+    let allRepresentantes: any[] = [];
 
-    if (!response.ok) {
-      throw new Error(`Erro na requisição: ${response.statusText}`);
+    while (page <= totalPages) {
+      const response = await fetch(`${baseUrl}&page=${page}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`Erro na requisição: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+
+      if (!data || !Array.isArray(data)) {
+        console.error("Invalid data structure:", data);
+        return { props: [] }; // Return empty props if data is invalid
+      }
+
+      if (page === 1) {
+        totalPages = parseInt(response.headers.get("X-WP-TotalPages") || "1", 10);
+      }
+
+      const representantes = data.map((representante: any) => {
+        const categoriaNames =
+          representante._embedded?.["wp:term"]?.flatMap((terms: any) =>
+            terms.map((term: any) => term.name)
+          ) || [];
+
+        return {
+          id: representante.id,
+          title: representante.title.rendered,
+          estado: representante.meta?.estado_do_representante || "",
+          endereco: representante.meta?.endereco_do_representante || "",
+          pais: representante.meta?.pais_do_representante || "",
+          cidade: representante.meta?.cidade_do_representante || "",
+          email: representante.meta?.email_do_representante || "",
+          latitude: representante.meta?.latitude_representante,
+          longitude: representante.meta?.longitude_representante,
+          iframeMap: representante.meta?.iframe_map,
+          categoriaId: categoriaNames,
+        };
+      });
+
+      allRepresentantes = [...allRepresentantes, ...representantes];
+      page++;
     }
 
-    const data = await response.json();
-
-    // Mapeia os representantes para pegar apenas os campos necessários
-    const representantes = data.map((representante) => {
-      // Pega todas as categorias do representante, pois ele pode vender mais de uma linha
-      const categoriaNames = representante._embedded?.['wp:term']?.map(terms => {
-        return terms.map(term => term.name); // Mapeia cada array interno para pegar o nome
-      }).flat() || []; // Use .flat() para transformar o array de arrays em um único array
-      return {
-        id: representante.id, // Adicionando o ID do representante
-        title: representante.title.rendered, // Nome do representante
-        estado: representante.meta?.estado_do_representante || "",
-        endereco: representante.meta?.endereco_do_representante || "",
-        pais: representante.meta?.pais_do_representante || "",
-        cidade: representante.meta?.cidade_do_representante || "",
-        email: representante.meta?.email_do_representante || "",
-        categoriaId: categoriaNames // Armazenando todas as categorias
-      };
-    });
-    const ordered = representantes.sort((a, b) => a.title.localeCompare(b.title));
+    const ordered = allRepresentantes.sort((a, b) => a.title.localeCompare(b.title));
     return { props: ordered };
   } catch (error) {
     console.error("Erro ao buscar representantes:", error);
-    return { props: [] };
+    return { props: [] }; // Return empty props on error
   }
 }
+
 
 async function getCategorieName(id: number) {
   try {

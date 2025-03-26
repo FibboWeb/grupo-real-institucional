@@ -1,0 +1,52 @@
+# Add directories or file patterns to ignore during indexing (e.g. foo/ or *.csv)
+
+.git
+.gitignore
+.cursorignore
+.cursorrules
+.cursorconfig
+./node_modules
+./dist
+./build
+./coverage
+./logs
+./temp
+./cache
+./backup
+
+#ignore all images
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.tiff
+*.webp
+*.ico
+*.svg
+*.ico
+*.webp
+
+#ignore all videos
+*.mp4
+*.avi
+*.mov
+*.wmv
+*.flv
+*.mpeg
+
+#ignore all audio
+*.mp3
+*.wav
+*.ogg
+*.m4a
+*.aac
+*.flac
+
+#ignore all documents
+*.doc
+*.docx
+*.pdf
+*.txt
+*.rtf
+*.odt
