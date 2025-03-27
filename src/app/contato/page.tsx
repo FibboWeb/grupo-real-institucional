@@ -46,7 +46,7 @@ export default function Page() {
                 <p className="text-gray-600">de segunda à sexta-feira, das 8h às 18h</p>
               </div>
               <Button className="mb-8 h-[48px] px-10 bg-green-600 hover:bg-green-700">
-              <Link href="https://wa.me/558001009000" className="flex" target="_blank">
+              <Link href="https://wa.me/556799655174" className="flex" target="_blank">
                 <FaWhatsapp className="mr-2 h-5 w-5" />
                 SOLICITE UM ORÇAMENTO
               </Link>
