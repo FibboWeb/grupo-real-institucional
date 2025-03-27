@@ -43,7 +43,7 @@ const SocialShare = ({ postTitle, postUrl, postImage, blogContext }) => {
           <Image src="/icons/linkedin-icon-sh.svg" width={32} height={32} alt="Linkedin icon" />
         </Link>
         <Link
-          href={`https://wa.me/?text=${encodedTitle}%20${encodedUrl}`}
+          href={`https://wa.me/+556799655174?text=${encodedTitle}%20${encodedUrl}`}
           target="_blank"
           className="social-button whatsapp"
         >
