@@ -42,7 +42,7 @@ export default function Page() {
 
               <div className="mb-6">
                 <h3 className="mb-2 text-lg font-semibold text-fb_blue">Atendimento Comercial</h3>
-                <p className="text-xl font-bold">(67) 3028-9000</p>
+                <p className="text-xl font-bold">(67) 9965-5174</p>
                 <p className="text-gray-600">de segunda à sexta-feira, das 8h às 18h</p>
               </div>
               <Button className="mb-8 h-[48px] px-10 bg-green-600 hover:bg-green-700">
