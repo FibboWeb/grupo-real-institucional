@@ -102,7 +102,7 @@ function CardBlog({
           </div>
           ) : (
           <Link
-            href={`/author/${postAuthorLink ? postAuthorLink : "#"}`}
+            href={`/author/${!postAuthorLink ? postAuthorLink : "#"}`}
             className="author-info flex gap-2 text-sm font-medium text-fb_gray"
           >
             <Image src={"/author-icon.svg"} alt={"Post author link"} width={16} height={16} className="w-5 h-5" />
