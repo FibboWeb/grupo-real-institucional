@@ -26,7 +26,11 @@ export default async function Home() {
   const fetchedLastPostsNoticias = queriedLastPostsNoticias.props.nodes ?? [];
   const fetchedLastPostsHomeoPet = postsHomeoPet.props?.nodes ?? [];
 
-  const postsMesclados = [...fetchedLastPostsHomeoPet, ...fetchedLastPostsNoticias].sort((a, b) => {
+  const postsMesclados = [
+    ...fetchedLastPostsHomeoPet,
+    ...fetchedLastPostsHomeoPet,
+    ...fetchedLastPostsNoticias
+  ].sort((a, b) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime();
   });
   return (
@@ -50,7 +54,7 @@ export default async function Home() {
         <ValuesSection values={sectionValoresInfo1} />
       </section>
       <section className="max-w-full">
-        <div className="fb_container overflow-hidden">
+        <div className="fb_container overflow-hidden" id="last-posts-noticias">
           <LastPostsNoticias fetchedLastPosts={postsMesclados ?? []} />
         </div>
       </section>
@@ -94,7 +98,7 @@ export default async function Home() {
           />
         </div>
         <div className="flex flex-col justify-items-start items-center my-2 md:pl-4 gap-4">
-          <h3 className="text-xl md:text-3xl font-bold text-center">INTREGRA - Universidade corporativa Grupo Real</h3>
+          <h3 className="text-xl md:text-3xl font-bold text-center">Universidade de negócios Grupo Real</h3>
           <BtnCallToAction
             ctaLink="https://integra.realh.com.br/login/"
             content="Acesso Restrito"
