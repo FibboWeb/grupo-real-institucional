@@ -11,7 +11,7 @@ export const nossasMarcasInfos = [
   {
     title: "Seu resultado é o nosso compromisso",
     icon: iconMarca01,
-    text: "O máximo desempenho é alcançado através da Nutrição Funcional da Real H. Seu portfólio de produtos é criteriosamente formulado e fabricado com matérias-primas de excelência. Por meio de um atendimento personalizado, a empresa adota as melhores estratégias nutricionais para alcançar os objetivos de seus clientes.",
+    text: "A Nutrição Funcional da Real H combina tecnologia, matérias-primas de excelência e atendimento personalizado para potencializar o desempenho animal. Com equilíbrio nutricional, aditivos e homeopatias funcionais, melhora a eficiência alimentar e os resultados zootécnicos, com foco em sustentabilidade.",
     ctaLink: "#",
     image: imgMarca01,
     badge_text: "NUTRIÇÃO",
@@ -23,7 +23,7 @@ export const nossasMarcasInfos = [
   {
     title: "Aqui seu ganho é REAL",
     icon: iconMarca03,
-    text: "A CMR Saúde Animal oferece um portfólio amplo de soluções para a pecuária nacional, visando eficiência e excelência. Seus produtos resolvem desafios do campo, com objetivos específicos, excelentes resultados e retorno sobre investimento, reduzindo a necessidade de manejo e otimizando a mão de obra.",
+    text: "A CMR Saúde Animal oferece soluções eficazes para a pecuária, com foco em resultados, bem-estar animal e retorno sobre investimento. Seus produtos previnem e tratam doenças, sem riscos de intoxicação ou resíduos, e não causam resistência nos patógenos. Tudo com segurança e eficiência no campo.",
     ctaLink: "#",
     image: imgMarca03,
     badge_text: "SAÚDE",

@@ -11,12 +11,12 @@ const ComoParticipar = () => {
 
         <div className="grid md:grid-cols-2 gap-8">
           {/* Passo 1 */}
-          <div className="bg-white p-8 rounded-lg shadow-sm">
+          <div className="bg-white p-8 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105">
             <div className="flex flex-col items-center">
-              <div className="w-12 h-12 bg-[#0093D9] text-white rounded-full flex items-center justify-center text-2xl font-bold mb-4">
+              <div className="w-12 h-12 bg-[#69bde4] text-white rounded-full flex items-center justify-center text-2xl font-bold mb-4">
                 1
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-center">Siga as nossas redes sociais</h3>
+              <h3 className="text-xl font-semibold mb-4 text-center text-fb_blue">Siga as nossas redes sociais</h3>
               <p className="text-center text-gray-600 mb-6">
                 Nas páginas da Real H e CMR você encontra muita informação e tecnologia para fortalecer a sua pecuária.
               </p>
@@ -40,12 +40,12 @@ const ComoParticipar = () => {
           </div>
 
           {/* Passo 2 */}
-          <div className="bg-white p-8 rounded-lg shadow-sm">
+          <div className="bg-white p-8 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105">
             <div className="flex flex-col items-center">
               <div className="w-12 h-12 bg-[#0093D9] text-white rounded-full flex items-center justify-center text-2xl font-bold mb-4">
                 2
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-center">Preencha o Formulário</h3>
+              <h3 className="text-xl font-semibold mb-4 text-center text-fb_blue">Preencha o Formulário</h3>
               <p className="text-center text-gray-600 mb-6">
                 Complete suas informações no formulário abaixo para concluir sua participação.
               </p>

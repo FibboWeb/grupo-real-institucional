@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import ImgPromocional from "@/public/images/lp-promocional/img-premios.png";
 
 const phoneRegex = /^\(\d{2}\) \d{5}-\d{4}$/;
 
@@ -119,7 +120,7 @@ const FormularioParticipacao = () => {
           {/* Banner */}
           <div className="bg-gray-300 rounded-lg overflow-hidden">
             <div className="aspect-[580/380] relative">
-              <Image src="/banner-expo.jpg" alt="Banner Expo Grande 2025" fill className="object-cover" />
+              <Image src={ImgPromocional.src} alt="Banner Expo Grande 2025" fill className="object-cover" />
             </div>
           </div>
 

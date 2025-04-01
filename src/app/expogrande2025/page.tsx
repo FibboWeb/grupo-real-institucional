@@ -7,10 +7,7 @@ import FormularioParticipacao from "@/components/FormularioParticipacao";
 export default function Page() {
   return (
     <div>
-      <div
-        style={{ backgroundImage: "url('/images/bg-hero-section.webp')" }}
-        className="bg-cover bg-center h-[420px]"
-      ></div>
+      <div className="bg-cover bg-center h-[420px] md:bg-[url('/images/bg-hero-section.webp')] bg-[url('/images/bg-hero-section-mobile.webp')]"></div>
       <ComoParticipar />
       <FormularioParticipacao />
       <section>
