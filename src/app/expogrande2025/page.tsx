@@ -3,11 +3,33 @@ import ValuesSection from "@/components/ValuesSection";
 import { nossasMarcasInfos, sectionValoresInfoCiclos } from "@/constants/expogrande2025";
 import ComoParticipar from "@/components/ComoParticipar";
 import FormularioParticipacao from "@/components/FormularioParticipacao";
+import Image from "next/image";
 
 export default function Page() {
   return (
-    <div>
-      <div className="bg-cover bg-center h-[420px] md:bg-[url('/images/bg-hero-section.webp')] bg-[url('/images/bg-hero-section-mobile.webp')]"></div>
+    <>
+      <div className="relative w-full bg-[#001B3A]">
+        <div className="relative w-screen">
+          <Image
+            src="/images/lp-promocional/expograndebanner.png"
+            alt="Banner Expo Grande"
+            width={1920}
+            height={620}
+            className="hidden md:block w-full h-auto"
+            priority
+            quality={100}
+          />
+          <Image
+            src="/images/lp-promocional/expograndebannermobile.png"
+            alt="Banner Expo Grande"
+            width={1920}
+            height={620}
+            className="block md:hidden w-full h-auto"
+            priority
+            quality={100}
+          />
+        </div>
+      </div>
       <ComoParticipar />
       <FormularioParticipacao />
       <section>
@@ -16,6 +38,6 @@ export default function Page() {
       <section className="my-12">
         <ValuesSection values={sectionValoresInfoCiclos} />
       </section>
-    </div>
+    </>
   );
 }

@@ -22,14 +22,16 @@ const ComoParticipar = () => {
               </p>
               <div className="flex flex-col gap-3 w-full max-w-sm justify-center items-center">
                 <Link
-                  href="https://www.instagram.com/grealhoficial"
+                  href="https://www.instagram.com/realhoficial"
+                  target="_blank"
                   className="flex items-center gap-2 p-3 border rounded-md hover:bg-gray-50 w-full justify-center"
                 >
                   <Image src="/instagram-color.svg" alt="Instagram" width={24} height={24} />
-                  <span>@grealhoficial</span>
+                  <span>@realhoficial</span>
                 </Link>
                 <Link
                   href="https://www.instagram.com/cmrsaudeanimal"
+                  target="_blank"
                   className="flex items-center gap-2 p-3 border rounded-md hover:bg-gray-50 w-full justify-center"
                 >
                   <Image src="/instagram-color.svg" alt="Instagram" width={24} height={24} />
