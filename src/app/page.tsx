@@ -97,7 +97,7 @@ export default async function Home() {
           />
         </div>
         <div className="flex flex-col justify-items-start items-center my-2 md:pl-4 gap-4">
-          <h3 className="text-xl md:text-3xl font-bold text-center">INTREGRA - Universidade corporativa Grupo Real</h3>
+          <h3 className="text-xl md:text-3xl font-bold text-center">Universidade de negócios Grupo Real</h3>
           <BtnCallToAction
             ctaLink="https://integra.realh.com.br/login/"
             content="Acesso Restrito"
