@@ -28,6 +28,7 @@ export default async function Home() {
 
   const postsMesclados = [
     ...fetchedLastPostsHomeoPet,
+    ...fetchedLastPostsHomeoPet,
     ...fetchedLastPostsNoticias
   ].sort((a, b) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime();
@@ -54,6 +55,7 @@ export default async function Home() {
       </section>
       <section className="max-w-full">
         <div className="fb_container overflow-hidden">
+          <LastPostsNoticias fetchedLastPosts={postsMesclados ?? []} />
           <LastPostsNoticias fetchedLastPosts={postsMesclados ?? []} />
         </div>
       </section>
