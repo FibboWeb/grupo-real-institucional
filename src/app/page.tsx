@@ -56,7 +56,6 @@ export default async function Home() {
       <section className="max-w-full">
         <div className="fb_container overflow-hidden" id="last-posts-noticias">
           <LastPostsNoticias fetchedLastPosts={postsMesclados ?? []} />
-          <LastPostsNoticias fetchedLastPosts={postsMesclados ?? []} />
         </div>
       </section>
       <section className="">
