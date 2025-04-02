@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "../ui/button";
 import BtnCallToAction from "../Layout/Buttons/BtnCallToAction/BtnCallToAction";
 
 const ComoParticipar = () => {
@@ -63,7 +62,7 @@ const ComoParticipar = () => {
         </div>
 
         <p className="text-sm text-gray-500 text-center mt-6">
-          *Sorte válida para o sorteio apenas quem estiver seguindo as duas contas e preencheu o formulário
+          *Serão válidos para o sorteio apenas quem estiver seguindo as duas contas e preenchido o formulário
         </p>
       </div>
     </div>

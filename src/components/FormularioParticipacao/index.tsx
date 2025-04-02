@@ -12,7 +12,6 @@ const phoneRegex = /^\(\d{2}\) \d{5}-\d{4}$/;
 const formularioSchema = z.object({
   nome: z.string().min(3, "O nome deve ter pelo menos 3 caracteres."),
   whatsapp: z.string().regex(phoneRegex, "Digite um número de WhatsApp válido"),
-  cidade: z.string().min(2, "Digite uma cidade válida"),
   local_qrcode: z.string().min(1, "Selecione onde você escaneou o QR Code"),
 });
 
@@ -70,7 +69,6 @@ const FormularioParticipacao = () => {
         body: JSON.stringify({
           nome: data.nome,
           whatsapp: data.whatsapp,
-          cidade: data.cidade,
           local_qrcode: data.local_qrcode,
         }),
       });
@@ -152,19 +150,6 @@ const FormularioParticipacao = () => {
               </div>
 
               <div>
-                <label htmlFor="cidade" className="block mb-1">
-                  Cidade *
-                </label>
-                <input
-                  type="text"
-                  id="cidade"
-                  {...register("cidade")}
-                  className="w-full p-2 rounded bg-white text-black"
-                />
-                {errors.cidade && <span className="text-red-400 text-sm">{errors.cidade.message}</span>}
-              </div>
-
-              <div>
                 <label htmlFor="local_qrcode" className="block mb-1">
                   Onde você escaneou o QR Code? *
                 </label>
@@ -174,9 +159,9 @@ const FormularioParticipacao = () => {
                   className="w-full p-2 rounded bg-white text-black"
                 >
                   <option value="">Informe o local...</option>
-                  <option value="radio_difusora">Rádio Difusora Pantanal</option>
+                  <option value="radio_difusora_pantanal">Rádio Difusora Pantanal</option>
                   <option value="radio_cidade">Rádio Cidade</option>
-                  <option value="estande">Estande Grupo Real</option>
+                  <option value="estande_grupo_real">Estande Grupo Real</option>
                 </select>
                 {errors.local_qrcode && <span className="text-red-400 text-sm">{errors.local_qrcode.message}</span>}
               </div>
