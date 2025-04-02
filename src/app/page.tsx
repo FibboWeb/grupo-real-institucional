@@ -26,7 +26,10 @@ export default async function Home() {
   const fetchedLastPostsNoticias = queriedLastPostsNoticias.props.nodes ?? [];
   const fetchedLastPostsHomeoPet = postsHomeoPet.props?.nodes ?? [];
 
-  const postsMesclados = [...fetchedLastPostsHomeoPet, ...fetchedLastPostsNoticias].sort((a, b) => {
+  const postsMesclados = [
+    ...fetchedLastPostsHomeoPet,
+    ...fetchedLastPostsNoticias
+  ].sort((a, b) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime();
   });
   return (
