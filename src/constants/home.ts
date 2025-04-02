@@ -138,7 +138,7 @@ export const sectionValoresInfo2 = [
     border: false,
     // icon: imgIcon02,
     session_numbers: [
-      { qtde: 1_400, text: "de lixo destinado para a reciclagem." },
+      { qtde: 1_400_000, text: "de lixo destinado para a reciclagem." },
       { qtde: 2_000, text: "de investimentos em energia fotovoltaica. " },
       { qtde: 18, text: "Anos De atuação do Ciclos Reciclagem" },
     ] as LoadNumbersProps[],
@@ -152,33 +152,34 @@ export const sectionValoresInfo2 = [
 export const testimoniaslInfo = [
   {
     testimonial:
-      "\"Eu sempre digo para os meus amigos: siga as recomendações de um bom técnico. E quando a gente fala de nutrição a gente está falando da Grupo Real\".",
+      '"Eu sempre digo para os meus amigos: siga as recomendações de um bom técnico. E quando a gente fala de nutrição a gente está falando da Grupo Real".',
     name: "Sr. Claudecir Scarmagnani",
     empresa: "Cliente desde 2001",
     avatar: avatar1,
-    videoUrl: "4PHDPnGO22g"
+    videoUrl: "4PHDPnGO22g",
   },
   {
     testimonial:
-      "\"Tudo que a gente precisou da Real até hoje, que foi solicitado, o pessoal sempre ajudou a gente, Dr. Claudio, pessoal da parte técnica, principalmente, estão mais amiúde aqui com a gente.\"",
+      '"Tudo que a gente precisou da Real até hoje, que foi solicitado, o pessoal sempre ajudou a gente, Dr. Claudio, pessoal da parte técnica, principalmente, estão mais amiúde aqui com a gente."',
     name: "Leonardo Pereira.",
     empresa: "Grupo ACP filhos e Netos",
     avatar: avatar2,
-    videoUrl: "8XliBVCZXVo"
+    videoUrl: "8XliBVCZXVo",
   },
   {
     testimonial:
-      "\"Trabalhar na Grupo Real é gratificante, tenho orgulho de fazer parte deste time de alta performance, equipe motivada e unida para superar qualquer desafio\".",
+      '"Trabalhar na Grupo Real é gratificante, tenho orgulho de fazer parte deste time de alta performance, equipe motivada e unida para superar qualquer desafio".',
     name: "Leonardo de Carvalho",
     empresa: "Gerente Comercial - desde 2007 ",
     avatar: avatar3,
-    videoUrl: "hdge1p2ve54"
+    videoUrl: "hdge1p2ve54",
   },
   {
-    testimonial:"\"A Real H está completando 40 anos e eu conheço à 39. (...) Eu usei e com resultado, então eu posso dar o testemunho como produtor.\"",
+    testimonial:
+      '"A Real H está completando 40 anos e eu conheço à 39. (...) Eu usei e com resultado, então eu posso dar o testemunho como produtor."',
     name: "Daniel de Barbosa Ingold",
     empresa: "Diretor-Presidente Agência Estadual Defesa Sanitária Animal e Vegetal (Iagro)",
     avatar: avatar4,
     videoUrl: "",
-  }
+  },
 ];
