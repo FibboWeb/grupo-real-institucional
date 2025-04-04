@@ -43,8 +43,8 @@ export default async function Home() {
               <span> para todos</span>
             </h1>
             <p className="text-lg md:text-xl mb-6">
-              O Grupo REAL reúne marcas que transformam desafios em oportunidades.<br/> Descubra nosso compromisso com a
-              qualidade e sustentabilidade.
+              O Grupo REAL reúne marcas que transformam desafios em oportunidades.
+              <br /> Descubra nosso compromisso com a qualidade e sustentabilidade.
             </p>
           </div>
         </VideoBackground>
@@ -78,7 +78,7 @@ export default async function Home() {
           <BannerCta />
         </div>
       </section>
-      <section className="fb_container">
+      <section>
         <ValuesSection values={sectionValoresInfo2} />
       </section>
       <section className="flex flex-col gap-4">
@@ -104,7 +104,7 @@ export default async function Home() {
             classCssForBTN="text-white w-fit hover:text-black bg-red-500 hover:bg-red-600 hover:text-white border-transparent"
             showIcon={false}
             color="red-500"
-            icon={<ArrowRight className="bg-white text-red-500 rounded-full p-1" strokeWidth={3}/>}
+            icon={<ArrowRight className="bg-white text-red-500 rounded-full p-1" strokeWidth={3} />}
           />
         </div>
       </section>
