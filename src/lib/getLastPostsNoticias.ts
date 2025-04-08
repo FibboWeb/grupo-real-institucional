@@ -6,6 +6,7 @@ export async function getLastPostsNoticias() {
   try {
     const fetchedPosts = await client.query({
       query: GET_LAST_POSTS_NOTICIAS,
+      fetchPolicy: "network-only", //
     });
 
     return {
@@ -25,6 +26,7 @@ export async function getLastPostsHomeopet() {
   try {
     const fetchedPosts = await clientHomeopet.query({
       query: GET_LAST_POSTS_NOTICIAS_HOMEOPET,
+      fetchPolicy: "network-only", //
     });
 
     return {

@@ -1,35 +1,21 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 
-export const client = new ApolloClient({
+export const clientHomeopet = new ApolloClient({
   uri: process.env.NEXT_PUBLIC_WP_URL_GRAPH_HOMEOPET,
   cache: new InMemoryCache({
     typePolicies: {
       Query: {
         fields: {
-          myQueryField: {
-            read(existingData, { args, toReference }) {
-              if (!existingData) return;
-              
-              // Tempo limite do cache em milissegundos (2 horas)
-              const CACHE_LIFETIME = 2 * 60 * 60 * 1000;
-              const now = Date.now();
-  
-              // Verifica se o cache é recente
-              if (existingData.__cacheTimestamp && now - existingData.__cacheTimestamp < CACHE_LIFETIME) {
-                return existingData; // Retorna o cache válido
-              }
-  
-              return undefined; // Força uma nova requisição se o cache expirou
-            },
-            merge(existing, incoming) {
-              return {
-                ...incoming,
-                __cacheTimestamp: Date.now(), // Adiciona um timestamp ao cache
-              };
+          posts: {
+            // keyArgs false significa que todos os argumentos serão ignorados para a chave do cache
+            keyArgs: false,
+            // Função merge para concatenar as entradas
+            merge(existing = [], incoming) {
+              return [...existing, ...incoming];
             },
           },
         },
       },
     },
-  }),
+  })
 });
