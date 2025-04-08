@@ -36,6 +36,7 @@ export async function getAllProducts(): Promise<any> {
   try {
     const ProductsBylines = await client.query({
       query: GET_ALL_PRODUCTS,
+      fetchPolicy: 'no-cache',
     });
     return {
       data: ProductsBylines.data.produtos.edges,

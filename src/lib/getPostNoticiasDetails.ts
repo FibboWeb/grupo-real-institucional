@@ -7,6 +7,7 @@ export async function getPostDetails(postSlug) {
     const fetchedPostDetail = await client.query({
       query: GET_POST_DETAILS,
       variables: { slug: postSlug },
+      fetchPolicy: 'no-cache',
     });
     return {
       props: fetchedPostDetail.data,

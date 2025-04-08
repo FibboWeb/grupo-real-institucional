@@ -6,7 +6,7 @@ export async function getLastPostsEventos() {
   try {
     const fetchedPosts = await client.query({
       query: GET_LAST_POSTS_EVENTOS,
-      fetchPolicy: "network-only",
+      fetchPolicy: "no-cache",
     });
 
     return {
