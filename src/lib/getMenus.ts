@@ -7,6 +7,7 @@ export async function getMenus(menuName) {
     const fetchedMenus = await client.query({
       query: GET_MENU_BY_NAME,
       variables: { menuName },
+      fetchPolicy: 'no-cache',
     });
 
     return {

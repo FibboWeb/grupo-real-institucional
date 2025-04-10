@@ -10,6 +10,7 @@ export async function getDownloads() {
     const { data } = await client.query({
       // Desestruturação direta
       query: GET_DOWNLOADS,
+      fetchPolicy: 'no-cache',
     });
     return { props: data.downloads.nodes };
   } catch (error) {

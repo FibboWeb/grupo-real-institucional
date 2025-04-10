@@ -15,6 +15,7 @@ export async function getAllPosts() {
           first: 100,
           after: afterCursor,
         },
+        fetchPolicy: 'no-cache',
       });
 
       if (!response.data || !response.data.posts) {

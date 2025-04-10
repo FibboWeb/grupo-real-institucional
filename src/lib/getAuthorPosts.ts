@@ -50,6 +50,7 @@ export async function fetchAuthorData(authorSlug: string): Promise<any | null> {
     const { data } = await client.query({
       query: GET_AUTHOR_BY_SLUG,
       variables: { slug: authorSlug },
+      fetchPolicy: 'no-cache',
     });
   
     return data.user; 

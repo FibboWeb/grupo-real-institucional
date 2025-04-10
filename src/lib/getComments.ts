@@ -6,6 +6,7 @@ export async function getComments(slug) {
     const { data } = await client.query({
       query: GET_COMMENTS_FOR_POST,
       variables: { id: slug },
+      fetchPolicy: 'no-cache',
     });
 
     const comments = data.post.comments.nodes || [];
