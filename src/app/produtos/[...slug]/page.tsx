@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: infos.description,
     robots: {
       index: false,
-      follow: false,
+      follow: true,
       "max-snippet": -1,
       "max-image-preview": "large",
     },
@@ -108,7 +108,7 @@ export default async function PageProduct({ params }) {
                     title="Solicite um orçamento pelo whatsapp"
                     className="flex gap-4"
                   >
-                    COMPRE ONLINE
+                    CLIQUE AQUI E COMPRE ONLINE
                   </Link>
                 </Button>
               </div>
