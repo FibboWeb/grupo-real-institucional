@@ -51,7 +51,7 @@ const infoSectionsContents = {
   laboratorio: {
     title: "Indústria de Medicamentos",
     content:
-      "<p>O <strong>Grupo Real H</strong> é referência na produção de medicamentos homeopáticos, contando com a maior indústria do segmento na América Latina. Localizada em sua matriz, em Campo Grande (MS), a unidade opera com tecnologia de ponta, atendendo aos mais rigorosos padrões de qualidade, produção e envase. Comprometida com a sustentabilidade e a inovação, a indústria abastece todo o Brasil e diversos países, oferecendo soluções eficazes para a saúde e o bem-estar animal.</p>",
+      "<p>O <strong>Grupo Real</strong> é referência na produção de medicamentos homeopáticos, contando com a maior indústria do segmento na América Latina. Localizada em sua matriz, em Campo Grande (MS), a unidade opera com tecnologia de ponta, atendendo aos mais rigorosos padrões de qualidade, produção e envase. Comprometida com a sustentabilidade e a inovação, a indústria abastece todo o Brasil e diversos países, oferecendo soluções eficazes para a saúde e o bem-estar animal.</p>",
     img: LaboratorioImg,
     reverseDesktop: true,
     revereverseMobile: false,
@@ -59,7 +59,7 @@ const infoSectionsContents = {
   redeAtendimento: {
     title: "Rede de Atendimento",
     content:
-      "<p>O <strong>Grupo Real H</strong> conta com uma equipe altamente qualificada, composta por mais de 330 profissionais. Seu corpo técnico-comercial, especializado em nutrição e saúde animal, é formado por Médicos Veterinários, Zootecnistas e Agrônomos, garantindo suporte técnico de excelência. Além disso, a empresa dispõe de uma ampla rede de representantes e distribuidores capacitados, proporcionando um atendimento personalizado e eficiente a clientes em todo o Brasil.</p>",
+      "<p>O <strong>Grupo Real</strong> conta com uma equipe altamente qualificada, composta por mais de 330 profissionais. Seu corpo técnico-comercial, especializado em nutrição e saúde animal, é formado por Médicos Veterinários, Zootecnistas e Agrônomos, garantindo suporte técnico de excelência. Além disso, a empresa dispõe de uma ampla rede de representantes e distribuidores capacitados, proporcionando um atendimento personalizado e eficiente a clientes em todo o Brasil.</p>",
     img: RedeAtendimentoImg,
     reverseDesktop: false,
     revereverseMobile: false,

@@ -77,7 +77,7 @@ function GridPost() {
                     postTitle={<span dangerouslySetInnerHTML={{ __html: post.title.rendered }} />}
                     postDescription={{ __html: post.content.rendered }}
                     postDate={post.date}
-                    postAuthor={post._embedded?.["author"]?.[0]?.name}
+                    postAuthor={post._embedded?.["author"]?.[0]?.name || "Comunicação Grupo Real"}
                     postAuthorLink={`/author/${post._embedded?.["author"]?.[0]?.slug}`}
                   />
                 ))}

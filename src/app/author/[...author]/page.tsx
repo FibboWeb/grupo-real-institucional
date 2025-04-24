@@ -52,7 +52,7 @@ export default async function AuthorPage({ params, searchParams }) {
   const postsPerPage = 6;
   const authorSlug = (await params).author[0];
   const author = await fetchAuthorData(authorSlug);
-  const authorName = author.name;
+  const authorName = author.name || "Comunicação Grupo Real";
   const authorBio = author.description || "Biografia não disponível";
   const authorId = author.id;
 
