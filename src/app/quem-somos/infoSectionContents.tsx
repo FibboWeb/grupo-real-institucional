@@ -41,7 +41,7 @@ const infoSectionsContents = {
     revereverseMobile: false,
   },
   homeo_pet: {
-    title: "Homeoet",
+    title: "Homeopet",
     content:
       "<p>Em 2009 o <strong>Grupo Real</strong> lançou ao mercado a linha Homeopet, específica para o tratamento de cães, gatos e outros animais de companhia, composta por produtos com ausência total de toxidez, sem contraindicações e que não oferecem riscos à saúde em caso de superdosagem.</p>",
     img: HomeoPetImg,
