@@ -143,12 +143,12 @@ export default function PageCookies() {
               </thead>
               <tbody>
                 <tr className="border border-fb_gray">
-                  <td className="border border-fb_gray">realh.com.br</td>
+                  <td className="border border-fb_gray">gruporeal.com.br</td>
                   <td className="border border-fb_gray">_GRECAPTCHA</td>
                   <td className="border border-fb_gray">www.google<br/>.com</td>
                 </tr>
                 <tr className="border border-fb_gray">
-                  <td className="border border-fb_gray">realh.com.br</td>
+                  <td className="border border-fb_gray">gruporeal.com.br</td>
                   <td className="border border-fb_gray">fr</td>
                   <td className="border border-fb_gray">facebook.com</td>
                 </tr>
