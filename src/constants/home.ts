@@ -96,8 +96,9 @@ export const nossasMarcasInfos = [
     image: imgMarca03,
     badge_text: "SAÚDE",
     cta: {
-      link: "/linhas/cmr",
+      link: "https://www.cmrsaude.com.br/",
       anchor: "COMPRE ONLINE",
+      target: "_blank",
     },
     bg_image: "bg-cmr-saude",
     border: true,

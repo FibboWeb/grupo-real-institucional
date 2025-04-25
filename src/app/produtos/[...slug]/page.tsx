@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: infos.title,
     description: infos.description,
     robots: {
-      index: true,
+      index: false,
       follow: true,
       "max-snippet": -1,
       "max-image-preview": "large",
@@ -63,6 +63,7 @@ export default async function PageProduct({ params }) {
     return notFound();
   }
 
+  console.log(product[0])
   return (
     <div className="relative mt-24">
       <div className="fb_container gap-fb_space-section flex flex-col">
@@ -101,14 +102,13 @@ export default async function PageProduct({ params }) {
               <div>
                 <Button className="w-full lg:w-auto h-12 px-10 bg-fb_green hover:bg-green-700">
                   <Link
-                    href={`https://wa.me/556799655174?text=Ol%C3%A1%20estou%20entrando%20em%20contato%20para%20falar%20referente%20ao%20produto%20${product[0]?.title?.rendered}%2C%20que%20vi%20no%20site.%20Link%20do%20produto%20 https://gruporealbr.com.br/produtos/${product[0]?.slug}  `}
+                    href={`${product[0]?.acf?.link_do_produto}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     title="Solicite um orçamento pelo whatsapp"
                     className="flex gap-4"
                   >
-                    <FaWhatsapp className="mr-2 h-5 w-5" />
-                    SOLICITE UM ORÇAMENTO
+                    CLIQUE AQUI E COMPRE ONLINE
                   </Link>
                 </Button>
               </div>

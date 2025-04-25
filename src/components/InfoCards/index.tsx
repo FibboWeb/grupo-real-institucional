@@ -17,6 +17,7 @@ type ValuesSectionProps = {
     cta: {
       link: string;
       anchor: string;
+      target?: string;
     };
     bg_image?: string;
   }[];
@@ -78,7 +79,7 @@ function InfoCards({ values }: ValuesSectionProps) {
               </div>
               {value.cta && (
                 <div className="w-fit">
-                  <BtnCallToAction content={value.cta.anchor} ctaLink={value.cta.link} icon={ArrowIcon} />
+                  <BtnCallToAction content={value.cta.anchor} ctaLink={value.cta.link} icon={ArrowIcon} target={value.cta.target} />
                 </div>
               )}
             </div>

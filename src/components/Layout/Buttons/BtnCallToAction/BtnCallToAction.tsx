@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 interface BtnCallToActionProps {
   ctaLink?: string;
   content: string;
+  target?: string;
   icon?: StaticImageData | React.ReactNode;
   color?: "fb_blue_button" | "fb_green_button" | "white" | "red-500";
   onClick?: () => void;
@@ -19,6 +20,7 @@ interface BtnCallToActionProps {
 
 export default function BtnCallToAction({
   ctaLink,
+  target,
   content,
   icon,
   color = "fb_blue_button",
@@ -66,6 +68,7 @@ export default function BtnCallToAction({
       {ctaLink ? (
         <Link
           href={ctaLink}
+          target={target}
           className={cn([
             `${text} ${textHover} ${bg} ${bgHover} ${border} group btn-container inline-flex items-center gap-4 py-3 px-4 rounded text-base font-semibold uppercase border border-solid transition-all duration-300`,
             `${classCssForBTN}`,
