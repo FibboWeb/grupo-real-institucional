@@ -80,7 +80,7 @@ export function ListCardDownload() {
         {tabsCategories.map((category) => (
           <div 
             onClick={() => handleFilter(category.name, category.id)}
-            key={category.id } className={cn([`flex flex-col cursor-pointer items-center justify-center gap-2 border rounded-2xl p-8 h-44 hover:drop-shadow-lg duration-300`, activeTab === category.id && category.name === selectedCategory ? "bg-gray-100" : "bg-white"])}>
+            key={category.id } className={cn([`flex flex-col cursor-pointer items-center justify-center gap-2 border rounded-2xl py-4 px-6 h-44 hover:drop-shadow-lg duration-300`, activeTab === category.id && category.name === selectedCategory ? "bg-gray-100" : "bg-white"])}>
             <Image src={category.image.src} alt={category.name} className="h-40 object-contain" width={100} height={100} />
             <button className="w-full h-10">
               <span className={cn([`text-gray-600`, activeTab === category.id && category.name === selectedCategory ? "font-bold" : ""])}>{category.name}</span>
@@ -88,7 +88,7 @@ export function ListCardDownload() {
           </div>
         ))}
       </div>
-      <div className="flex flex-col md:flex-row gap-16">
+      <div className="flex flex-col md:flex-row gap-8">
         {/* Categories Sidebar */}
         <div className="col-span-1 space-y-4 w-fit">
           <h2 className="text-xl font-semibold">Categorias</h2>
@@ -122,9 +122,9 @@ export function ListCardDownload() {
         </div>
 
         {/* Downloads Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="w-full flex flex-wrap gap-12">
           {filteredDownloads.map((item, index) => (
-            <Card key={item.node.id} className="overflow-hidden drop-shadow-lg w-full col-span-1">
+            <Card key={item.node.id} className="overflow-hidden drop-shadow-lg w-full md:w-[300px]">
               <CardContent className="p-0">
                 <div className="relative h-[140px] flex items-center justify-center">
                   <Image
@@ -138,7 +138,7 @@ export function ListCardDownload() {
                   />
                 </div>
                 <div className="flex flex-col min-h-[115px] max-h-[100px] gap-5 p-4 bg-gray-200">
-                  <Link className="flex items-center gap-2" href={item.node.featuredImage?.node?.sourceUrl || LogoRealH} download target="_blank" rel="noopener noreferrer">
+                  <Link className="flex items-center gap-2" href={item.node.featuredImage?.node?.sourceUrl || LogoRealH} download={item.node.title} target="_blank" rel="noopener noreferrer">
                     <Download color="#1986C1" className="h-10 w-10" />
                     <h3 className="font-medium text-xl flex-1">{item.node.title}</h3>
                   </Link>
