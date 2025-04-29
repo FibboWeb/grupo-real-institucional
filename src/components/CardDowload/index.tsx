@@ -83,6 +83,7 @@ export function ListCardDownload() {
                 <Image
                   src={item.node.featuredImage?.node?.sourceUrl || LogoRealH}
                   alt={item.node.title}
+                  title={item.node.title}
                   width={230}
                   height={200}
                   loading={index <= 2 ? "eager" : "lazy"}
