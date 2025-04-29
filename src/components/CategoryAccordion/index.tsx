@@ -13,10 +13,12 @@ export default function CategoryAccordion({ categories = [] }) {
     }));
   };
 
+  const filteredCategories = categories.filter((category) => category.slug !== "nao-categorizado" && category.slug !== "pecuaria-forte");
+
   return (
     <ul className="ml-5">
       {categories.length > 0 ? (
-        categories.map((category) => (
+        filteredCategories.map((category) => (
           <li key={category.databaseId} className="category-item mb-[2px]">
             <div
               className="flex items-center justify-between cursor-pointer"
