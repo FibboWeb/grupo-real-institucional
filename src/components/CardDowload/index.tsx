@@ -1,52 +1,44 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import Image from "next/image";
 import LogoRealH from "@/public/logo-real-h.png";
 import { Button } from "../ui/button";
 import { getDownloads } from "@/lib/getDownloads";
 import { Card, CardContent } from "../ui/card";
 import { Download } from "lucide-react";
+import Link from "next/link";
 
 export function ListCardDownload() {
   const categories = [
-    "CMR Saúde Animal",
+    "CMR Saúde",
     "Grupo Real",
     "Homeopet",
-    "Batoque",
-    "CMR Distribuidora",
-    // "Grupo Real Nutrição e Saúde Animal",
+    "Real H",
   ];
 
-  const [downloads, setDownloads] = useState([]);
+  const [allDownloads, setAllDownloads] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
 
   useEffect(() => {
     async function fetchDownloads() {
-      const downloadsData = await getDownloads();
-      console.log("downloads feitos", downloadsData)
-      setDownloads(downloadsData.props);
+      const { props } = await getDownloads();
+      setAllDownloads(props.edges);
     }
-
     fetchDownloads();
   }, []);
 
-  async function handleFilter(category) {
+  const filteredDownloads = useMemo(() => {
+    if (!selectedCategory) return allDownloads;
+    return allDownloads.filter((item) => 
+      item.node.category.includes(selectedCategory)
+    );
+  }, [selectedCategory, allDownloads]);
+
+  function handleFilter(category: string) {
     setSelectedCategory(category);
-    if (category) {
-      const clearDownloads = await getDownloads();
-      console.log("clearDownloads: ",clearDownloads, "category: ", category)
-      const filteredDownloads = clearDownloads.props.filter((item) => item.categoria.includes(category));
-      setDownloads(filteredDownloads);
-    } else {
-      async function resetDownloads() {
-        const downloadsData = await getDownloads();
-        setDownloads(downloadsData.props);
-      }
-      resetDownloads();
-    }
   }
 
-  console.log("downloads", downloads)
+  console.log("downloads", filteredDownloads)
 
   return (
     <div className="flex flex-col md:flex-row gap-6">
@@ -62,7 +54,7 @@ export function ListCardDownload() {
               }`}
               onClick={() => handleFilter("")}
             >
-              Todas
+              Todas ({allDownloads.length})
             </Button>
           </li>
           {categories.map((category) => (
@@ -73,8 +65,9 @@ export function ListCardDownload() {
                   selectedCategory === category ? "font-bold" : ""
                 }`}
                 onClick={() => handleFilter(category)}
+                disabled={allDownloads.filter((item) => item.node.category.includes(category)).length === 0}
               >
-                {category}
+                {category} ({allDownloads.filter((item) => item.node.category.includes(category)).length})
               </Button>
             </li>
           ))}
@@ -82,23 +75,25 @@ export function ListCardDownload() {
       </div>
 
       {/* Downloads Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {downloads.map((item) => (
-          <Card key={item.id} className="overflow-hidden">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {filteredDownloads.map((item, index) => (
+          <Card key={item.node.id} className="overflow-hidden drop-shadow-lg">
             <CardContent className="p-0">
-              <div className="relative h-[140px]">
+              <div className="relative h-[140px] flex items-center justify-center">
                 <Image
-                  src={item.featuredImage?.node?.sourceUrl || LogoRealH}
-                  alt={item.title}
-                  fill
-                  className="object-contain aspect-square"
+                  src={item.node.featuredImage?.node?.sourceUrl || LogoRealH}
+                  alt={item.node.title}
+                  width={230}
+                  height={200}
+                  loading={index <= 2 ? "eager" : "lazy"}
+                  className="object-contain aspect-square items-center justify-center p-4"
                 />
               </div>
-              <div className="flex flex-col min-h-[140px] gap-5 p-4">
-                <a href={item.featuredImage?.node?.sourceUrl || LogoRealH} download target="_blank" rel="noopener noreferrer">
+              <div className="flex flex-col min-h-[110px] max-h-[100px] gap-5 p-4 bg-gray-200">
+                <Link className="flex items-center gap-2" href={item.node.featuredImage?.node?.sourceUrl || LogoRealH} download target="_blank" rel="noopener noreferrer">
                   <Download color="#1986C1" className="h-10 w-10" />
-                  <h3 className="font-medium text-2xl">{item.title}</h3>
-                </a>
+                  <h3 className="font-medium text-xl flex-1">{item.node.title}</h3>
+                </Link>
               </div>
             </CardContent>
           </Card>
