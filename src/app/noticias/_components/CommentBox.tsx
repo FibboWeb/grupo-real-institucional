@@ -38,11 +38,8 @@ function CommentForm({ postId, commentId, replyComment, authorName, cancelReply 
   const [errorMessage, setErrorMessage] = useState("");
 
   async function onSubmit(data: CommentFormData) {
-    console.log("Enviando comentário...", data);
     try {
       const response = await handleSubmitComment(data, postId, commentId);
-
-      console.log("Response:", response);
 
       if(response.error) {
         setErrorMessage("Erro ao enviar o comentário, por favor tente novamente.");
@@ -152,7 +149,6 @@ function CommentBox({ comments, idPost }) {
     if (commentForm) {
       commentForm.scrollIntoView({ behavior: "smooth" });
     }
-    console.log(commentId);
     setCommentId(commentId);
     setAuthorComment(authorName);
     setReplyComment(true);

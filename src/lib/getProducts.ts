@@ -12,7 +12,7 @@ import { client } from "./apollo-client";
  */
 export async function getProducts(id_categoria: number, page, productsPerPage = 12): Promise<any> {
   const res = await fetch(
-    `${process.env.WP_URL_API}produtos?categoria_produto=${id_categoria}&per_page=${productsPerPage}&page=${page}&_embed=wp:featuredmedia`,
+    `${process.env.NEXT_PUBLIC_WP_URL_API}produtos?categoria_produto=${id_categoria}&per_page=${productsPerPage}&page=${page}&_embed=wp:featuredmedia`,
     {
       next: { revalidate: 3600 },
     },
@@ -25,8 +25,6 @@ export async function getProducts(id_categoria: number, page, productsPerPage = 
   const totalPosts = res.headers.get("X-WP-Total");
   const totalPages = res.headers.get("X-WP-TotalPages");
 
-  // console.log(products, totalPosts, totalPages)
-
   return {
     products,
     totalPages,
@@ -38,6 +36,7 @@ export async function getAllProducts(): Promise<any> {
   try {
     const ProductsBylines = await client.query({
       query: GET_ALL_PRODUCTS,
+      fetchPolicy: 'no-cache',
     });
     return {
       data: ProductsBylines.data.produtos.edges,
@@ -56,7 +55,7 @@ export async function getAllProducts(): Promise<any> {
 
 export async function getProductPerSlug(slug: string): Promise<any> {
   try {
-    const res = await fetch(`${process.env.WP_URL_API}produtos?slug=${slug}&_embed=wp:featuredmedia`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_WP_URL_API}produtos?slug=${slug}&_embed=wp:featuredmedia`, {
       cache: "no-store", // Use 'force-cache' ou 'no-store' dependendo do comportamento desejado
     });
     const product = await res.json();

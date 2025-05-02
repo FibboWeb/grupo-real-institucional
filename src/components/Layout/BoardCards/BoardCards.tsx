@@ -27,6 +27,7 @@ const settings = {
   slidesToShow: 4,
   slidesToScroll: 1,
   useTransform: true,
+  draggable: false,
   // autoplay: true,
   // autoplaySpeed: 4500,
   dots: true,
@@ -36,6 +37,7 @@ const settings = {
       settings: {
         slidesToShow: 3,
         slidesToScroll: 1,
+        draggable: true
       },
     },
     {
@@ -43,6 +45,7 @@ const settings = {
       settings: {
         slidesToShow: 2.5,
         slidesToScroll: 1,
+        draggable: true
       },
     },
     {
@@ -50,6 +53,7 @@ const settings = {
       settings: {
         slidesToShow: 2,
         slidesToScroll: 1,
+        draggable: true
       },
     },
     {
@@ -57,6 +61,7 @@ const settings = {
       settings: {
         slidesToShow: 2,
         slidesToScroll: 2,
+        draggable: true
       },
     },
     {
@@ -64,6 +69,7 @@ const settings = {
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,
+        draggable: true
       },
     },
   ],
@@ -74,11 +80,13 @@ export default function BoardCards({ title, members }: BoardCardsProps) {
 
   const handleCardClick = (index: number) => {
     // Apenas executa em dispositivos móveis
-    if (window.innerWidth < 1024 && members[index].description) {
-      setFlippedCards(prev => ({
-        ...prev,
-        [index]: !prev[index]
-      }));
+    if (typeof window !== "undefined") {
+      if (window.innerWidth < 1024 && members[index].description) {
+        setFlippedCards(prev => ({
+          ...prev,
+          [index]: !prev[index]
+        }));
+      }
     }
   };
 

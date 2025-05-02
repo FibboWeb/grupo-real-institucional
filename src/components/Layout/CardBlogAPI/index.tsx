@@ -31,7 +31,7 @@ function CardBlog({
     if (type === "day") {
       return dateObj.getDate();
     } else if (type === "month") {
-      return dateObj.toLocaleString("default", { month: "short" }).replace(/\.$/, "");
+      return dateObj.toLocaleString("pt-BR", { month: "short" }).replace(/\.$/, "");
     }
   };
 

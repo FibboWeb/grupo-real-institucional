@@ -87,7 +87,7 @@ export default async function CategoryPage({ params, searchParams }) {
                   postTitle={<span dangerouslySetInnerHTML={{ __html: post.title.rendered }} />}
                   postDescription={{ __html: post.content.rendered }}
                   postDate={post.date}
-                  postAuthor={post.author_post_details.name}
+                  postAuthor={post.author_post_details.name || "Comunicação Grupo Real"}
                   postAuthorLink={`${post.author_post_details.slug}`}
                 />
               ))

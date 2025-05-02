@@ -3,11 +3,12 @@ import Newsletter from "@/components/Layout/Newsletter";
 import SidebarNoticias from "@/components/Layout/SidebarNoticias";
 import CardBlog from "@/components/Layout/CardBlogAPI";
 import AuthorBox from "@/components/Layout/AuthorBox";
-import { fetchPosts, fetchAuthorData } from "@/lib/getAuthorPosts";
+import { fetchPosts, fetchAuthorData, fetchAuthorPosts } from "@/lib/getAuthorPosts";
 import Pagination from "@/components/Pagination";
 import { notFound } from "next/navigation";
 import { fetchYoastSEO } from "@/lib/getCategorias";
 import { Metadata } from "next";
+import { getPostDetails } from "@/lib/getPostNoticiasDetails";
 
 type Props = {
   params: Promise<{ author: string }>;
@@ -20,14 +21,14 @@ export async function generateMetadata({ params }: Props, searchParams): Promise
   const page = parseInt(Array.isArray(pageParam) ? pageParam[0] : pageParam || "1");
 
   let infos;
-  infos = await fetchYoastSEO(slug, "users");
+  infos =  await fetchAuthorData(slug);
 
   if (!infos) {
     notFound();
   }
 
   return {
-    title: `${infos.title}${page === 1 ? "" : ` - Página ${page}`}`,
+    title: `${infos.name}${page === 1 ? "" : ` - Página ${page}`}`,
     description: infos.description,
     robots: {
       index: true,
@@ -51,7 +52,7 @@ export default async function AuthorPage({ params, searchParams }) {
   const postsPerPage = 6;
   const authorSlug = (await params).author[0];
   const author = await fetchAuthorData(authorSlug);
-  const authorName = author.name;
+  const authorName = author.name || "Comunicação Grupo Real";
   const authorBio = author.description || "Biografia não disponível";
   const authorId = author.id;
 
@@ -59,7 +60,7 @@ export default async function AuthorPage({ params, searchParams }) {
     return notFound();
   }
 
-  const { posts, totalPages } = await fetchPosts(authorId, page, postsPerPage);
+  const { posts, totalPages } = await fetchAuthorPosts(authorId, page, postsPerPage);
   return (
     <div className="fb_container px-2 mb-12 mt-24">
       <Breadcrumb
@@ -83,8 +84,8 @@ export default async function AuthorPage({ params, searchParams }) {
                 <CardBlog
                   key={index}
                   blogContext={post.isArtigos ? "/artigos" : "/noticias"}
-                  postImage={post.featured_media}
-                  postImageAlt={post.featured_media?.alt_text || "Imagem do post"}
+                  postImage={post._embedded?.["wp:featuredmedia"]?.[0]?.source_url}
+                  postImageAlt={post._embedded?.["wp:featuredmedia"]?.[0]?.alt_text || "Imagem do post"}
                   postLink={post.slug}
                   postTitle={<span dangerouslySetInnerHTML={{ __html: post.title.rendered }} />}
                   postDescription={{ __html: post.excerpt.rendered }}

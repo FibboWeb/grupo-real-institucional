@@ -4,6 +4,7 @@ import Newsletter from "@/components/Layout/Newsletter";
 import Breadcrumb from "@/components/BreadCrumb";
 import { ListCardDownload } from "@/components/CardDowload";
 import { Metadata } from "next";
+import { getDownloads } from "@/lib/getDownloads";
 
 export const metadata: Metadata = {
   title: "Downloads de catálogo e logos - Grupo Real",
@@ -23,7 +24,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function DownloadsPage() {
+export default async function DownloadsPage() {
+  const downloadsData = await getDownloads();
   return (
     <div className="fb_container mt-[96px] min-h-screen mb-10">
       {/* Breadcrumb */}
@@ -45,7 +47,7 @@ export default function DownloadsPage() {
       </div>
 
       {/* Main Content */}
-      <div className="mx-auto py-8">
+      <div className="container mx-auto py-8">
         <ListCardDownload />
       </div>
       <Newsletter />

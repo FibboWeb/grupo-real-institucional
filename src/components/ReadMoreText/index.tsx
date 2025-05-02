@@ -34,10 +34,12 @@ const ReadMoreText: React.FC<ReadMoreTextProps> = ({ htmlContent, readMore = fal
 
   const toggleReadMore = () => {
     if (isExpanded && elementYPosition != null) {
-      window.scrollTo({
-        top: elementYPosition - 250,
-        behavior: "auto",
-      });
+      if (typeof window !== "undefined") {
+        window.scrollTo({
+          top: elementYPosition - 250,
+          behavior: "auto",
+        });
+      }
     }
 
     setIsExpanded(!isExpanded);

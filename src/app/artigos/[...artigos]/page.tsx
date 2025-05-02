@@ -114,7 +114,7 @@ export default async function ArtigosPage({ params }) {
             blogContext={"artigos/"}
           />
           <AuthorBox
-            authorName={post.author.node.name || "RealH"}
+            authorName={post.author.node.name || "Comunicação Grupo Real"}
             authorBio={post.author.node?.description || ""}
             isSinglePage
             authorLink={post.author.node.slug}

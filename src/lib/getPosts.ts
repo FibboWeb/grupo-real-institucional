@@ -15,13 +15,13 @@ export async function getAllPosts() {
           first: 100,
           after: afterCursor,
         },
+        fetchPolicy: 'no-cache',
       });
 
       if (!response.data || !response.data.posts) {
         throw new Error("Nenhum dado retornado da API.");
       }
 
-      // console.log("Response: ",response.data.posts)
       const { nodes, pageInfo } = response.data.posts;
 
       allPosts = [

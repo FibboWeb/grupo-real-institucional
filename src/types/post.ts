@@ -9,6 +9,7 @@ export type Post = {
   };
   slug: string;
   title: string;
+  link: string;
   content: string;
   date: string;
   author: {
@@ -29,6 +30,7 @@ export interface CardBlogProps {
   postImage?: string;
   postImageAlt?: string;
   postLink?: string;
+  postUrlFull?: string;
   postTitle?: string | ReactNode;
   postDescription?: { __html: string };
   postDate?: string;

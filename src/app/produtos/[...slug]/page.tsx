@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: infos.title,
     description: infos.description,
     robots: {
-      index: true,
+      index: false,
       follow: true,
       "max-snippet": -1,
       "max-image-preview": "large",
@@ -58,12 +58,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function PageProduct({ params }) {
   const { slug } = await params;
   const product = await getProductPerSlug(slug);
-  console.log(product[0]);
   const productsRecommendations = await getProducts(product[0].categoria_produto, 1, 8);
   if (product.length <= 0) {
     return notFound();
   }
 
+  console.log(product[0])
   return (
     <div className="relative mt-24">
       <div className="fb_container gap-fb_space-section flex flex-col">

@@ -55,7 +55,7 @@ export function ListCardDownload() {
   useEffect(() => {
     async function fetchDownloads() {
       const { props } = await getDownloads();
-      setAllDownloads(props.edges);
+      setAllDownloads(props);
     }
     fetchDownloads();
   }, []);
@@ -76,7 +76,10 @@ export function ListCardDownload() {
 
   return (
     <>
-      <div className="flex flex-wrap gap-5 items-center justify-center pb-10">
+      <div className="flex flex-wrap gap-7 items-center justify-center pb-10">
+      <div className="flex w-full items-center justify-center gap-4 px-2">
+        <h2 className="text-xl font-semibold text-center ">Clique abaixo para encontrar o material<br/> sobre cada marca!</h2>
+      </div>
         {tabsCategories.map((category) => (
           <div 
             onClick={() => handleFilter(category.name, category.id)}
@@ -88,66 +91,73 @@ export function ListCardDownload() {
           </div>
         ))}
       </div>
-      <div className="flex flex-col md:flex-row gap-8">
-        {/* Categories Sidebar */}
-        <div className="col-span-1 space-y-4 w-fit">
-          <h2 className="text-xl font-semibold">Categorias</h2>
-          <ul className="space-y-2">
-            <li>
-              <Button
-                variant="ghost"
-                className={`w-full justify-start text-gray-600 hover:text-gray-900 ${
-                  selectedCategory === "" ? "font-bold" : ""
-                }`}
-                onClick={() => handleFilter("", 0)}
-              >
-                Todas ({allDownloads.length})
-              </Button>
-            </li>
-            {categories.map((category) => (
-              <li key={category}>
+      { selectedCategory !== "" && (
+      <>  
+      <div className="flex w-full items-center justify-center gap-4 py-8">
+        <h2 className="text-xl font-semibold text-center ">Confira os catálogos e logos de cada marca!</h2>
+      </div>
+        <div className="flex flex-col md:flex-row gap-8">
+          {/* Categories Sidebar */}
+          {/* <div className="col-span-1 space-y-4 w-fit">
+            <h2 className="text-xl font-semibold">Categorias</h2>
+            <ul className="space-y-2">
+              <li>
                 <Button
                   variant="ghost"
-                  className={`w-fit justify-start text-gray-600 hover:text-gray-900 ${
-                    selectedCategory === category ? "font-bold" : ""
+                  className={`w-full justify-start text-gray-600 hover:text-gray-900 ${
+                    selectedCategory === "" ? "font-bold" : ""
                   }`}
-                  onClick={() => handleFilter(category, 0)}
-                  disabled={allDownloads.filter((item) => item.node.category.includes(category)).length === 0}
+                  onClick={() => handleFilter("", 0)}
                 >
-                  {category} ({allDownloads.filter((item) => item.node.category.includes(category)).length})
+                  Todas ({allDownloads.length})
                 </Button>
               </li>
-            ))}
-          </ul>
-        </div>
+              {categories.map((category) => (
+                <li key={category}>
+                  <Button
+                    variant="ghost"
+                    className={`w-fit justify-start text-gray-600 hover:text-gray-900 ${
+                      selectedCategory === category ? "font-bold" : ""
+                    }`}
+                    onClick={() => handleFilter(category, 0)}
+                    disabled={allDownloads.filter((item) => item.node.category.includes(category)).length === 0}
+                  >
+                    {category} ({allDownloads.filter((item) => item.node.category.includes(category)).length})
+                  </Button>
+                </li>
+              ))}
+            </ul>
+          </div> */}
 
-        {/* Downloads Grid */}
-        <div className="w-full flex flex-wrap gap-12">
-          {filteredDownloads.map((item, index) => (
-            <Card key={item.node.id} className="overflow-hidden drop-shadow-lg w-full md:w-[300px]">
-              <CardContent className="p-0">
-                <div className="relative h-[140px] flex items-center justify-center">
-                  <Image
-                    src={item.node.featuredImage?.node?.sourceUrl || LogoRealH}
-                    alt={item.node.title}
-                    title={item.node.title}
-                    width={230}
-                    height={200}
-                    loading={index <= 2 ? "eager" : "lazy"}
-                    className="object-contain aspect-square items-center justify-center p-4"
-                  />
-                </div>
-                <div className="flex flex-col min-h-[115px] max-h-[100px] gap-5 p-4 bg-gray-200">
-                  <Link className="flex items-center gap-2" href={item.node.featuredImage?.node?.sourceUrl || LogoRealH} download={item.node.title} target="_blank" rel="noopener noreferrer">
-                    <Download color="#1986C1" className="h-10 w-10" />
-                    <h3 className="font-medium text-xl flex-1">{item.node.title}</h3>
-                  </Link>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+          {/* Downloads Grid */}
+            <div className="w-full flex flex-wrap gap-8 mx-auto items-center justify-center">
+            {filteredDownloads.map((item, index) => (
+              <Card key={item.node.id} className="overflow-hidden drop-shadow-lg w-full md:w-[300px] lg:w-[400px]">
+                <CardContent className="p-0">
+                  <div className="relative h-[140px] flex items-center justify-center">
+                    <Image
+                      src={item.node.featuredImage?.node?.sourceUrl || LogoRealH}
+                      alt={item.node.title}
+                      title={item.node.title}
+                      width={230}
+                      height={200}
+                      loading={index <= 2 ? "eager" : "lazy"}
+                      className="object-contain aspect-square items-center justify-center p-4"
+                    />
+                  </div>
+                  <div className="flex flex-col min-h-[115px] max-h-[100px] gap-5 p-4 bg-gray-200">
+                    <Link className="flex items-center gap-2" href={item.node.featuredImage?.node?.sourceUrl || LogoRealH} download={item.node.title} target="_blank" rel="noopener noreferrer">
+                      <Download color="#1986C1" className="h-10 w-10" />
+                      <h3 className="font-medium text-xl flex-1">{item.node.title}</h3>
+                    </Link>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
-      </div>
+        </>
+      )}
     </>
   );
 }

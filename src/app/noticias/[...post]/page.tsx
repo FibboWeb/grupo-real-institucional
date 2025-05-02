@@ -67,7 +67,6 @@ export default async function PostPage({ params }) {
   const fetchedPost = await getPostDetails(postSlug);
   const post = fetchedPost.props.post;
   const postComments = await getComments(post.id);
-  console.log("Comentários do post: ", postComments.props);
   if (!postSlug) {
     return notFound();
   }
@@ -87,6 +86,7 @@ export default async function PostPage({ params }) {
           width={1250}
           height={320}
           className="rounded-2xl w-full h-60 xl:h-80 object-cover"
+          loading="eager"
         />
       </div>
       <div className="category-content flex flex-col  lg:items-start lg:flex-row  w-full gap-4 xl:gap-24 mb-5">

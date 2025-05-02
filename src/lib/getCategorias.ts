@@ -1,5 +1,5 @@
 export async function fetchYoastSEO(slug, context) {
-  const url = `https://realh.com.br/wp-json/wp/v2/${context}?slug=${slug}`;
+  const url = `${process.env.NEXT_PUBLIC_WP_URL_API}${context}?slug=${slug}`;
   try {
     const response = await fetch(url);
     if (!response.ok) {
