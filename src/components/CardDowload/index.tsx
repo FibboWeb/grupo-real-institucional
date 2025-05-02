@@ -74,6 +74,15 @@ export function ListCardDownload() {
 
   console.log("downloads", filteredDownloads)
 
+  function downloadFile(fileName) {
+    const link = document.createElement('a');
+    link.href = `/api/download?fileName=${fileName}`;
+    link.setAttribute('download', fileName);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
   return (
     <>
       <div className="flex flex-wrap gap-7 items-center justify-center pb-10">
@@ -146,10 +155,14 @@ export function ListCardDownload() {
                     />
                   </div>
                   <div className="flex flex-col min-h-[115px] max-h-[100px] gap-5 p-4 bg-gray-200">
-                    <Link className="flex items-center gap-2" href={item.node.featuredImage?.node?.sourceUrl || LogoRealH} download={item.node.title} target="_blank" rel="noopener noreferrer">
+                    <a
+                      className="flex items-center gap-2"
+                      href={`/api/download?file=${encodeURIComponent(item.node.featuredImage?.node?.sourceUrl || LogoRealH)}`}
+                      rel="noopener noreferrer"
+                    >
                       <Download color="#1986C1" className="h-10 w-10" />
                       <h3 className="font-medium text-xl flex-1">{item.node.title}</h3>
-                    </Link>
+                    </a>
                   </div>
                 </CardContent>
               </Card>
