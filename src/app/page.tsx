@@ -19,12 +19,17 @@ import {
 import { getLastPostsHomeopet, getLastPostsNoticias } from "@/lib/getLastPostsNoticias";
 import { ArrowRight } from "lucide-react";
 import LastPostsNoticias from "../components/Layout/LastPostsNoticias";
+import BannerHome from "@/components/BannerHome";
+import Link from "next/link";
+import { getBanners } from "@/lib/getBanners";
 
 export default async function Home() {
   const queriedLastPostsNoticias = (await getLastPostsNoticias()) || { props: { nodes: [] } };
   const postsHomeoPet = (await getLastPostsHomeopet()) || { props: { nodes: [] } };
   const fetchedLastPostsNoticias = queriedLastPostsNoticias.props.nodes ?? [];
   const fetchedLastPostsHomeoPet = postsHomeoPet.props?.nodes ?? [];
+
+  const banners = await getBanners()
 
   const postsMesclados = [
     ...fetchedLastPostsHomeoPet,
@@ -48,6 +53,11 @@ export default async function Home() {
             </p>
           </div>
         </VideoBackground>
+      </section>
+      <section className="fb_container rounded-lg hidden">
+        <Link href={banners.mobile.url_link ?? ""} target={banners.mobile.target ?? "_blank"} title={banners.mobile.title ?? ""}>
+          <BannerHome banner={banners} />
+        </Link>
       </section>
       <section>
         <ValuesSection values={sectionValoresInfo1} />

@@ -100,17 +100,32 @@ export default async function PageProduct({ params }) {
                 <h2 className="text-xl font-bold leading-7">{product[0]?.acf?.subtitulo}</h2>
               </div>
               <div>
-                <Button className="w-full lg:w-auto h-12 px-10 bg-fb_green hover:bg-green-700">
-                  <Link
-                    href={`${product[0]?.acf?.link_do_produto}`}
+                { product[0]?.acf?.link_do_produto ? (
+                  <Button className="w-full lg:w-auto h-12 px-10 bg-fb_green hover:bg-green-700">
+                    <Link
+                      href={`${product[0]?.acf?.link_do_produto}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="Solicite um orçamento pelo whatsapp"
+                      className="flex gap-4"
+                    >
+                      CLIQUE AQUI E COMPRE ONLINE
+                    </Link>
+                </Button>
+                ) : (
+                  <Button className="w-full lg:w-auto h-12 px-10 bg-fb_green hover:bg-green-700">
+                    <Link
+                    href={`https://wa.me/5508001009000?text=Ol%C3%A1%20estou%20entrando%20em%20contato%20para%20falar%20referente%20ao%20produto%20${product[0]?.title?.rendered}%2C%20que%20vi%20no%20site.%20Link%20do%20produto%20 https://gruporealbr.com.br/produtos/${product[0]?.slug}  `}
                     target="_blank"
                     rel="noopener noreferrer"
                     title="Solicite um orçamento pelo whatsapp"
                     className="flex gap-4"
                   >
-                    CLIQUE AQUI E COMPRE ONLINE
-                  </Link>
-                </Button>
+                    <FaWhatsapp className="mr-2 h-5 w-5" />
+                    SOLICITE UM ORÇAMENTO
+                    </Link>
+                  </Button>
+                )}
               </div>
               <div className="flex flex-col gap-4">
                 <div className="flex flex-col gap-4">

@@ -48,7 +48,7 @@ export default async function DownloadsPage() {
 
       {/* Main Content */}
       <div className="container mx-auto py-8">
-        <ListCardDownload downloadsData={downloadsData.props}/>
+        <ListCardDownload />
       </div>
       <Newsletter />
     </div>
