@@ -13,7 +13,5 @@ export const getBanners = async () => {
     desktop: bannerDesktop
   }
 
-  console.log(banners.mobile)
-
   return banners
 }

@@ -137,7 +137,7 @@ const menuItems: MenuItems[] = [
         edges: [
           {
             node: {
-              id: "5",
+              id: "4-1",
               url: "/contato",
               label: "Fale conosco",
               target: "_blank"
@@ -145,7 +145,7 @@ const menuItems: MenuItems[] = [
           },
           {
             node: {
-              id: "6",
+              id: "4-2",
               url: "https://realh.gupy.io/",
               label: "Trabalhe Conosco",
               target: "_blank"
