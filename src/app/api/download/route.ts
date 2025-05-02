@@ -26,12 +26,15 @@ export async function GET(req) {
       return new Response("Failed to fetch file", { status: file.status });
     }
 
-    const contentType = file.headers.get("content-type");
+    const contentType = file.headers.get("content-type") || "application/octet-stream";
+
+    // Encode the filename using RFC 5987
+    const encodedFileName = encodeURIComponent(fileName).replace(/['()]/g, escape).replace(/\*/g, '%2A');
 
     return new Response(file.body, {
       headers: {
         "Content-Type": contentType,
-        "Content-Disposition": `attachment; filename="${fileName}.${contentType.split("/")[1]}"`,
+        "Content-Disposition": `attachment; filename*=UTF-8''${encodedFileName}.${contentType.split("/")[1]}`,
       },
     });
   } catch (error) {
