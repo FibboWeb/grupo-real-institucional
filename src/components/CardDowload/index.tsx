@@ -157,7 +157,7 @@ export function ListCardDownload() {
                   <div className="flex flex-col min-h-[115px] max-h-[100px] gap-5 p-4 bg-gray-200">
                     <a
                       className="flex items-center gap-2"
-                      href={`/api/download?file=${encodeURIComponent(item.node.featuredImage?.node?.sourceUrl || LogoRealH)}`}
+                      href={`/api/download?file=${encodeURIComponent(item.node.downloadId)}&fileName=${item.node.title}`}
                       rel="noopener noreferrer"
                     >
                       <Download color="#1986C1" className="h-10 w-10" />
