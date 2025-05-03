@@ -6,9 +6,9 @@ export async function fetchPosts(page = 1, postsPerPage = 6, offset = 3) {
   console.log("fetchPosts", page, postsPerPage, offset);
   const nwPage = page + offset;
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_WP_URL_API}posts?per_page=${postsPerPage}&page=${page}&_embed=author,wp:featuredmedia,categories`,   
+    `${process.env.NEXT_PUBLIC_WP_URL_API}posts?per_page=${postsPerPage}&page=${page}&_embed=author,wp:featuredmedia,categories`,    
   );
-  console.log("res", res.url);
+
   if (!res.ok) {
     throw new Error("Erro ao buscar os posts");
   }

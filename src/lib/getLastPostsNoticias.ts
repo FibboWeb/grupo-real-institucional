@@ -25,8 +25,8 @@ export async function getLastPostsNoticias() {
 export async function getLastPostsHomeopet() {
   try {
     const fetchedPosts = await clientHomeopet.query({
-      query: GET_LAST_POSTS_NOTICIAS_HOMEOPET,
-      fetchPolicy: "no-cache",
+        query: GET_LAST_POSTS_NOTICIAS_HOMEOPET,
+        fetchPolicy: "no-cache",
     });
 
     return {
