@@ -64,7 +64,8 @@ const menuItems: MenuItems[] = [
           {
             node: {
               id: "2-2",
-              url: "/linhas/cmr",
+              url: "https://www.cmrsaude.com.br/",
+              target: "_blank",
               label: "CMR Saúde",
             },
           },
