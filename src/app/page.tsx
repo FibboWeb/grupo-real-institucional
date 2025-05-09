@@ -31,6 +31,8 @@ export default async function Home() {
 
   const banners = await getBanners()
 
+  console.log(banners)
+
   const postsMesclados = [
     ...fetchedLastPostsHomeoPet,
     ...fetchedLastPostsNoticias
@@ -55,7 +57,7 @@ export default async function Home() {
         </VideoBackground>
       </section>
       <section className="fb_container rounded-lg">
-        <Link href={banners.mobile.url_link ?? ""} target={banners.mobile.target ?? "_blank"} title={banners.mobile.title ?? ""}>
+        <Link href={banners.mobile.link ? banners.mobile.link : ""} target={banners.mobile.target ?? "_blank"} title={banners.mobile.title ?? ""}>
           <BannerHome banner={banners} />
         </Link>
       </section>
