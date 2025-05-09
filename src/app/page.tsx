@@ -54,7 +54,7 @@ export default async function Home() {
           </div>
         </VideoBackground>
       </section>
-      <section className="fb_container rounded-lg hidden">
+      <section className="fb_container rounded-lg">
         <Link href={banners.mobile.url_link ?? ""} target={banners.mobile.target ?? "_blank"} title={banners.mobile.title ?? ""}>
           <BannerHome banner={banners} />
         </Link>
