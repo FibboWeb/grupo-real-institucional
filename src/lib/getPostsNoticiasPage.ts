@@ -3,7 +3,6 @@ import { client } from "@/lib/apollo-client";
 import { GET_POSTS_LAST_NOTICIAS_PAGE } from "@/graphql/posts";
 
 export async function fetchPosts(page = 1, postsPerPage = 6, offset = 3) {
-  console.log("fetchPosts", page, postsPerPage, offset);
   const nwPage = page + offset;
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_WP_URL_API}posts?per_page=${postsPerPage}&page=${page}&_embed=author,wp:featuredmedia,categories`,    
@@ -19,8 +18,8 @@ export async function fetchPosts(page = 1, postsPerPage = 6, offset = 3) {
 
   const postsWithImages = data.map((post) => {
     const postImage = post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || null;
-    const postAuthor = post._embedded?.["author"]?.[0]?.name || "Comunicação Grupo Real";
-    const postAuthorLink = post._embedded?.["author"]?.[0]?.slug || "realh";
+    const postAuthor = "Comunicação Grupo Real";
+    const postAuthorLink = "realh";
     const postCategories = post._embedded?.["categories"] || [];
 
     const isArtigos = postCategories.some((category) => category.name === "Artigos");

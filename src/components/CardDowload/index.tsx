@@ -72,8 +72,6 @@ export function ListCardDownload() {
     setSelectedCategory(category);
   }
 
-  console.log("downloads", filteredDownloads)
-
   function downloadFile(fileName) {
     const link = document.createElement('a');
     link.href = `/api/download?fileName=${fileName}`;

@@ -57,10 +57,6 @@ const FormularioParticipacao = () => {
       const baseUrl = "https://realh.com.br";
       const apiUrl = `${baseUrl}/wp-json/real/v1/submit-participacao`;
 
-      // Log da URL e dados sendo enviados
-      console.log("Enviando para:", apiUrl);
-      console.log("Dados:", data);
-
       const response = await fetch(apiUrl, {
         method: "POST",
         headers: {
@@ -73,19 +69,13 @@ const FormularioParticipacao = () => {
         }),
       });
 
-      // Log do status da resposta
-      console.log("Status da resposta:", response.status);
-      console.log("Headers:", Object.fromEntries(response.headers.entries()));
 
       // Tenta ler a resposta como texto primeiro
       const responseText = await response.text();
-      console.log("Resposta como texto:", responseText);
-
       let responseData;
       try {
         // Tenta converter o texto em JSON
         responseData = JSON.parse(responseText);
-        console.log("Resposta como JSON:", responseData);
       } catch (e) {
         console.error("Erro ao converter resposta para JSON:", e);
         throw new Error("O servidor retornou uma resposta inválida. Por favor, tente novamente.");

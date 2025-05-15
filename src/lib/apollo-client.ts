@@ -38,5 +38,6 @@ export const clientHomeopet = new ApolloClient({
         },
       },
     },
+    resultCaching: true,
   }),
 });

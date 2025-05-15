@@ -63,7 +63,6 @@ export default async function PageProduct({ params }) {
     return notFound();
   }
 
-  console.log(product[0])
   return (
     <div className="relative mt-24">
       <div className="fb_container gap-fb_space-section flex flex-col">

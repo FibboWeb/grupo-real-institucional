@@ -8,7 +8,6 @@ export async function GET(req) {
     }
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_WP_URL_API}media?parent=${fileId}`);
-    console.log("response", response.url);
     if (!response.ok) {
       return new Response("Failed to fetch file metadata", { status: response.status });
     }
