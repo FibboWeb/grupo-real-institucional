@@ -48,16 +48,16 @@ async function Footer() {
               </div>
             </div>
             <div className="flex items-center justify-center lg:flex-row lg:px-6">
-              <Link className="inline-block border-r-2 pr-4" href={"#"}>
+              <Link className="inline-block border-r-2 pr-4" href={"/"}>
                 <Image src={"/images/logo-grupo-real.webp"} width={120} height={48} alt="GrupoReal" />
               </Link>
-              <Link className="inline-block" href={"#"}>
+              <Link className="inline-block" href={"/"}>
                 <Image src={"/images/logo-realh.webp"} width={120} height={48} alt="GrupoReal" />
               </Link>
-              <Link className="inline-block" href={"#"}>
+              <Link className="inline-block" href={"https://www.cmrsaude.com.br/"} target="_blank">
                 <Image src={"/images/logo-cmr.webp"} width={120} height={48} alt="GrupoReal" />
               </Link>
-              <Link className="inline-block" href={"#"}>
+              <Link className="inline-block" href={"https://www.homeopet.com.br/"} target="_blank">
                 <Image src={"/images/logo-homeopet.webp"} width={160} height={64} alt="GrupoReal" />
               </Link>
             </div>

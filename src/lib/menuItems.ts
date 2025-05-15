@@ -72,7 +72,8 @@ const menuItems: MenuItems[] = [
           {
             node: {
               id: "2-3",
-              url: "/linhas/homeopet",
+              url: "https://www.homeopet.com.br/",
+              target: "_blank",
               label: "Homeopet",
             },
           },
