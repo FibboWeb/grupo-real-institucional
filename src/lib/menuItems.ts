@@ -112,7 +112,7 @@ const menuItems: MenuItems[] = [
           {
             node: {
               id: "3-4",
-              url: "https://homeopet.com.br/fique-por-dentro",
+              url: "https://blog.homeopet.com.br",
               label: "Homeopet",
               target: "_blank"
             },
