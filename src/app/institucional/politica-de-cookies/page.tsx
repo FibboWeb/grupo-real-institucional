@@ -120,9 +120,9 @@ export default function PageCookies() {
               </thead>
               <tbody>
                 <tr className="border border-fb_gray">
-                  <td className="border border-fb_gray break-words">homeopet.com.br</td>
+                  <td className="border border-fb_gray break-words">www.homeopet.com.br</td>
                   <td className="border border-fb_gray break-words">_ga</td>
-                  <td className="border border-fb_gray break-words">.homeopet.<br/>com.br</td>
+                  <td className="border border-fb_gray break-words">www.homeopet.<br/>com.br</td>
                 </tr>
                 <tr className="border border-fb_gray">
                   <td className="border border-fb_gray break-words">www.cmrsaude.com.br</td>
