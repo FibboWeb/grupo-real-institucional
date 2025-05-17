@@ -31,6 +31,8 @@ export default async function Home() {
 
   const banners = await getBanners()
 
+  console.log(banners)
+
   const postsMesclados = [
     ...fetchedLastPostsHomeoPet,
     ...fetchedLastPostsNoticias
@@ -55,7 +57,7 @@ export default async function Home() {
         </VideoBackground>
       </section>
       <section className="fb_container rounded-lg">
-        <Link href={banners.mobile.url_link ?? ""} target={banners.mobile.target ?? "_blank"} title={banners.mobile.title ?? ""}>
+        <Link href={banners.mobile.link ? banners.mobile.link : ""} target={banners.mobile.target ?? "_blank"} title={banners.mobile.title ?? ""}>
           <BannerHome banner={banners} />
         </Link>
       </section>
@@ -107,7 +109,7 @@ export default async function Home() {
           />
         </div>
         <div className="flex flex-col justify-items-start items-center my-2 md:pl-4 gap-4">
-          <h3 className="text-xl md:text-3xl font-bold text-center">Universidade de negócios Grupo Real</h3>
+          <h3 className="text-xl md:text-3xl font-bold text-center">Escola de negócios Grupo Real</h3>
           <BtnCallToAction
             ctaLink="https://integra.realh.com.br/login/"
             content="Acesso Restrito"

@@ -64,14 +64,16 @@ const menuItems: MenuItems[] = [
           {
             node: {
               id: "2-2",
-              url: "/linhas/cmr",
+              url: "https://www.cmrsaude.com.br/",
+              target: "_blank",
               label: "CMR Saúde",
             },
           },
           {
             node: {
               id: "2-3",
-              url: "/linhas/homeopet",
+              url: "https://www.homeopet.com.br/",
+              target: "_blank",
               label: "Homeopet",
             },
           },
@@ -111,7 +113,7 @@ const menuItems: MenuItems[] = [
           {
             node: {
               id: "3-4",
-              url: "https://homeopet.com.br/fique-por-dentro",
+              url: "https://blog.homeopet.com.br",
               label: "Homeopet",
               target: "_blank"
             },

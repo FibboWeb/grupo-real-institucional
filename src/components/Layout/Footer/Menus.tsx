@@ -59,7 +59,11 @@ export function Menus({ menusList }: MenusProps) {
             >
               {menuItems.map((item) => (
                 <li className="mb-2 px-5 lg:px-0" key={item.node.id}>
-                  <Link className="text-lg text-white font-bold hover:text-fb_blue duration-300" href={item.node.url}>
+                  <Link
+                    className="text-lg text-white font-bold hover:text-fb_blue duration-300"
+                    href={item.node.url}
+                    target={item.node.url.includes("http") ? "_blank" : "_self"}
+                  >
                     {item.node.label}
                   </Link>
                 </li>

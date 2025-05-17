@@ -111,7 +111,8 @@ export const nossasMarcasInfos = [
     image: imgMarca02,
     badge_text: "SAÚDE",
     cta: {
-      link: "/linhas/homeopet",
+      link: "https://www.homeopet.com.br/",
+      target: "_blank",
       anchor: "COMPRE ONLINE",
     },
   },

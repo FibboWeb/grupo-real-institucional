@@ -10,7 +10,7 @@ const infoSectionsContents = {
   marcas: {
     title: "Nossas Marcas",
     content:
-      "<p>O Grupo Real é formado pelas marcas <a href='https://homeopet.com.br/' >Homeopet</a>, CMR e <a href='https://realh.com.br/'>Real H.</a> Todas carregam em seu DNA o pioneirismo na homeopatia veterinária.</p>",
+      "<p>O Grupo Real é formado pelas marcas <a href='https://www.homeopet.com.br/' >Homeopet</a>, CMR e <a href='https://realh.com.br/'>Real H.</a> Todas carregam em seu DNA o pioneirismo na homeopatia veterinária.</p>",
     img: NossasMarcasImg,
     reverseDesktop: true,
     revereverseMobile: false,
