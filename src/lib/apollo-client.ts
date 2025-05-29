@@ -25,5 +25,6 @@ export const clientHomeopet = new ApolloClient({
     query: {
       fetchPolicy: 'no-cache',
     },
-  },
+    resultCaching: true,
+  }),
 });
