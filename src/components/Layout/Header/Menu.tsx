@@ -16,12 +16,14 @@ export interface MenuNode {
         id: string;
         url: string;
         label: string;
+        subtitle?: string;
         target?: string
         edges?: {
           id: string;
           url: string;
           label: string;
           target?: string
+          subtitle?: string
         }[];
       };
     }[];
@@ -153,8 +155,13 @@ export default function Menu() {
                   >
                     {item.node.childItems?.edges?.map((subMenu) => (
                       <li key={subMenu.node.id} className="py-2 px-3">
-                        <a className="flex text-fb_blue_main hover:text-fb_blue duration-300" href={subMenu.node.url} target={subMenu.node.target}>
+                        <a className="flex flex-col text-fb_blue_main hover:text-fb_blue duration-300" href={subMenu.node.url} target={subMenu.node.target}>
                           {subMenu.node.label}{" "}
+                          {subMenu.node.subtitle && (
+                            <span className="text-[12px] md:text-base text-left font-light text-slate-950">
+                              {subMenu.node.subtitle}
+                            </span>
+                          )}
                           {subMenu.node?.edges && subMenu.node?.edges.length > 0 && (
                             <>
                               <span
@@ -166,13 +173,16 @@ export default function Menu() {
                                 className={`sub-sub-menu ${activeMenu === subMenu.node.id ? "block opacity-100 visible" : "opacity-0 height-0 invisible overflow-hidden"} transition-opacity duration-300`}
                               >
                                 {subMenu.node?.edges?.map((subSubMenu) => (
-                                  <li key={subSubMenu.id} className="py-2 px-3">
+                                  <li key={subSubMenu.id} className="py-2 px-3 flex flex-col">
                                     <a
                                       className="text-fb_blue_main hover:text-fb_blue duration-300"
                                       href={subSubMenu.url}
                                     >
                                       {subSubMenu.label}
                                     </a>
+                                    <span className="text-sm md:text-xs text-gray-700">
+                                      {subSubMenu.subtitle}
+                                    </span>
                                   </li>
                                 ))}
                               </ul>
@@ -220,7 +230,8 @@ export default function Menu() {
               {menuItems.map((item) => (
                 <li className="flex w-full items-center text-center justify-center relative gap-2" key={item.node.id}>
                   {!item.node.url.includes("") || !item.node.url.includes("#") ? (
-                    <div className="flex items-center justify-center gap-2">
+                    <div className="flex flex-col">
+                      <div className="flex items-center justify-center gap-2">
                       <a
                       href={item.node.url === "#" ? "" : item.node.url}
                       target={item.node.target || "_self"}
@@ -234,6 +245,8 @@ export default function Menu() {
                         >
                           <ChevronDown />
                         </span>
+                        
+                    </div>
                     </div>
                   ) : (
                     <p
@@ -259,10 +272,15 @@ export default function Menu() {
                         } bg-accent-neutral transition-all duration-300 transform left-1/2 -translate-x-2/4 rounded-md`}
                       >
                         {item.node.childItems?.edges?.map((subMenu) => (
-                          <li key={subMenu.node.id} className="px-5 py-3">
+                          <li key={subMenu.node.id} className="px-5 py-3 flex flex-col">
                             <a className="text-fb_blue_main hover:text-fb_blue duration-300" href={subMenu.node.url}>
                               {subMenu.node.label}
                             </a>
+                            { subMenu.node.subtitle && (
+                              <span className="text-sm font-light text-slate-900">
+                                {subMenu.node.subtitle}
+                              </span>
+                            )}
                           </li>
                         ))}
                       </ul>
