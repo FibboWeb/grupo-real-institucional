@@ -59,6 +59,7 @@ const menuItems: MenuItems[] = [
               id: "2-1",
               url: "/linhas/real-h",
               label: "Real H Nutrição Animal",
+              subtitle: "Nutrição para animais de produção",
             },
           },
           {
@@ -67,6 +68,7 @@ const menuItems: MenuItems[] = [
               url: "https://www.cmrsaude.com.br/",
               target: "_blank",
               label: "CMR Saúde",
+              subtitle: "Saúde para animais de produção",
             },
           },
           {
@@ -75,6 +77,7 @@ const menuItems: MenuItems[] = [
               url: "https://www.homeopet.com.br/",
               target: "_blank",
               label: "Homeopet",
+              subtitle: "Saúde para seu Pet",
             },
           },
         ],
