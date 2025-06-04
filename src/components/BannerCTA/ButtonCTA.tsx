@@ -3,6 +3,13 @@
 
 import Link from "next/link";
 
+
+type buttonCTAProps = {
+  ctaLink?: string;
+  content?: string;
+  enableClick?: boolean
+}
+
 const handleClick = () => {
   const textSeo = document.getElementById("text-seo");
   if (textSeo) {
@@ -16,7 +23,7 @@ const handleClick = () => {
   }
 };
 
-function ButtonCTA({ ctaLink, content, enableClick }) {
+function ButtonCTA({ ctaLink, content, enableClick }: buttonCTAProps) {
   return (
     <div className="w-fit">
       { enableClick && (
@@ -24,7 +31,7 @@ function ButtonCTA({ ctaLink, content, enableClick }) {
       )} 
       { !enableClick && ctaLink && (
         <button className="bg-fb_blue_button btn-container inline-flex items-center gap-4 py-3 px-4 rounded text-base font-semibold uppercase transition-all duration-300">
-          <Link href={ctaLink}>{content ? content : "Leia mais"}</Link>
+          <Link href={ctaLink} target={ctaLink.includes("http") ? "_blank" : "_self"}>{content ? content : "Leia mais"}</Link>
         </button>
       )}
       { !enableClick && !ctaLink && (
