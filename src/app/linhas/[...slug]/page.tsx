@@ -106,14 +106,14 @@ export default async function PageLinhas({ params, searchParams }) {
           <BannerLines
             title={textBanner01}
             hiddenTitle={false}
-            contentBTN={`Conheça o catálogo`}
+            contentBTN={`Conheça nosso E-Commerce`}
             imgBackground={banner01 ? banner01 : image02.src}
             // children={textBanner01 ? textBanner01 : ""}
             ctaLink={linkBanner01 ? linkBanner01 : ""}
           />
           <BannerLines
             title={textBanner02}
-            contentBTN={`Conheça o catálogo`}
+            contentBTN={`Conheça nosso E-Commerce`}
             hiddenTitle={false}
             imgBackground={banner02 ? banner02 : image02.src}
             // children={textBanner02 ? textBanner02 : ""}
