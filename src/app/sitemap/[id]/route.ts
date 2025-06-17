@@ -5,13 +5,10 @@ import { unstable_cache } from "next/cache";
 import { getAllPosts } from "@/lib/getPosts";
 import { getAllProducts } from "@/lib/getProducts";
 
-const urlHost = process.env.NEXT_PUBLIC_URL_HOST;
-
 export async function generateStaticParams() {
   return [{ id: "produtos.xml" }, { id: "posts.xml" }];
 }
 
-// Cache dos dados...
 const getCachedProducts = unstable_cache(
   async () => {
       const { data } = await getAllProducts();
