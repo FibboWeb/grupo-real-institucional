@@ -5,8 +5,8 @@ import Newsletter from "@/components/Layout/Newsletter";
 import { Button } from "@/components/ui/button";
 import { fetchYoastSEO } from "@/lib/getCategorias";
 import { getProductPerSlug, getProducts } from "@/lib/getProducts";
-import image03 from "@/public/images/banners/cao-e-gato.webp";
-import image02 from "@/public/images/banners/carne-vermelha-cortada.webp";
+import image03 from "@/public/banners/BANNER_INFERIOR_HOMEOPET.webp";
+import image02 from "@/public/banners/BANNER_INFERIOR_CMR_SAUDE.webp";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -63,7 +63,6 @@ export default async function PageProduct({ params }) {
     return notFound();
   }
 
-  console.log(product[0])
   return (
     <div className="relative mt-24">
       <div className="fb_container gap-fb_space-section flex flex-col">
@@ -166,17 +165,9 @@ export default async function PageProduct({ params }) {
         </div>
         <div>
           <div className="flex flex-col lg:flex-row lg:flex-nowrap gap-8 mb-20">
-            <BannerLines title="Linha Nutrição" imgBackground={image02.src}>
-              <p>
-                A <strong>Grupo Real</strong>, empresa de <strong>Nutrição e Saúde Animal</strong>
-                há <strong>40 anos</strong> ao lado do produtor
-              </p>
+            <BannerLines title="CMR saúde" imgBackground={image02.src} showCta={true} contentBTN="Conheça nosso E-Commerce" ctaLink="https://www.cmrsaude.com.br/" >
             </BannerLines>
-            <BannerLines title="Linha Nutrição" imgBackground={image03.src}>
-              <p>
-                A <strong>Grupo Real</strong>, empresa de <strong>Nutrição e Saúde Animal</strong>
-                há <strong>40 anos</strong> ao lado do produtor
-              </p>
+            <BannerLines title="Homeopet" imgBackground={image03.src} showCta={true} contentBTN="Conheça nosso E-Commerce" ctaLink="https://www.homeopet.com.br/">
             </BannerLines>
           </div>
         </div>

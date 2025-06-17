@@ -91,8 +91,8 @@ export default async function BannerLines({
       />
       <div className={`${children ? "gap-6" : "gap-20"} absolute inset-0 flex flex-col justify-center mx-auto w-full text-white px-2 sm:px-8 lg:px-8`}>
         <h1 className="text-4xl sm:text-5xl font-bold break-before-column">{title.toLocaleLowerCase() === "nutrição funcional real h" ? `NUTRIÇÃO FUNCIONAL`.concat("\n", "REAL H") : title}</h1>
-        { children  && (
-          <div className="w-full md:w-2/5 min-h-[72px] line-clamp-6" dangerouslySetInnerHTML={{ __html: children || "" }} /> 
+        { children && (
+          <div className="w-full md:w-2/5 min-h-[72px] line-clamp-6" dangerouslySetInnerHTML={{ __html: children }} /> 
         )}
         { showCta && (
           <ButtonCTA

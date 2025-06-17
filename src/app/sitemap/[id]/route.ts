@@ -9,12 +9,11 @@ export async function generateStaticParams() {
   return [{ id: "produtos.xml" }, { id: "posts.xml" }];
 }
 
-// Cache dos dados...
 const getCachedProducts = unstable_cache(
   async () => {
       const { data } = await getAllProducts();
       return data.map(product => ({
-          url: `${process.env.URL_HOST}produtos/${product.node.slug}`,
+          url: `https://gruporeal.com.br/produtos/${product.node.slug}`,
           lastModified: new Date().toISOString(),
           changeFrequency: "daily" as const,
       }));
@@ -27,7 +26,7 @@ const getCachedPosts = unstable_cache(
   async () => {
       const { data } = await getAllPosts();
       return data.map(post => ({
-          url: `${process.env.URL_HOST}${post.categories.nodes[0]?.slug !== "artigos" ? "noticias" : "artigos"}/${post.slug}`,
+            url: `https://gruporeal.com.br/${post.categories.nodes[0]?.slug !== "artigos" ? "noticias" : "artigos"}/${post.slug}`,
           lastModified: new Date().toISOString(),
           changeFrequency: "daily" as const,
       }));
