@@ -31,8 +31,6 @@ export default async function Home() {
 
   const banners = await getBanners()
 
-  console.log(banners)
-
   const postsMesclados = [
     ...fetchedLastPostsHomeoPet,
     ...fetchedLastPostsNoticias

@@ -8,7 +8,7 @@ import InfoCard from "@/components/Layout/InfoCardsSlider/InfoCard";
 import HeroSection from "@/components/Layout/HeroSection";
 import BtnCallToAction from "@/components/Layout/Buttons/BtnCallToAction/BtnCallToAction";
 
-import Claudio1 from "@/public/images/claudio-martins-real-curriculo/claudio-1.webp";
+import Claudio1 from "@/public/images/claudio-martins-real-curriculo/claudio-martins.webp";
 import Claudio2 from "@/public/images/claudio-martins-real-curriculo/claudio-2.webp";
 import Claudio3 from "@/public/images/claudio-martins-real-curriculo/claudio-3.webp";
 import Claudio4 from "@/public/images/claudio-martins-real-curriculo/claudio-4.webp";
