@@ -59,7 +59,7 @@ export async function getLastPostsNoticiasRealhAPI() {
         }
       }
     })
-
+    console.log(customData)
     return customData;
   } catch (error) {
     console.error("Erro ao buscar posts:", error);
