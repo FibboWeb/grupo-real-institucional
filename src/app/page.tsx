@@ -16,7 +16,7 @@ import {
   sliderCategoriasHome,
   testimoniaslInfo,
 } from "@/constants/home";
-import { getLastPostsHomeopet, getLastPostsNoticias } from "@/lib/getLastPostsNoticias";
+import { getLastPostsHomeopet, getLastPostsNoticias, getLastPostsNoticiasHomeoPetAPI, getLastPostsNoticiasRealhAPI } from "@/lib/getLastPostsNoticias";
 import { ArrowRight } from "lucide-react";
 import LastPostsNoticias from "../components/Layout/LastPostsNoticias";
 import BannerHome from "@/components/BannerHome";
@@ -24,19 +24,18 @@ import Link from "next/link";
 import { getBanners } from "@/lib/getBanners";
 
 export default async function Home() {
-  const queriedLastPostsNoticias = (await getLastPostsNoticias()) || { props: { nodes: [] } };
-  const postsHomeoPet = (await getLastPostsHomeopet()) || { props: { nodes: [] } };
-  const fetchedLastPostsNoticias = queriedLastPostsNoticias.props.nodes ?? [];
-  const fetchedLastPostsHomeoPet = postsHomeoPet.props?.nodes ?? [];
+  // const queriedLastPostsNoticias = (await getLastPostsNoticias()) || { props: { nodes: [] } };
+  const queriedLastPostsNoticiasAPI = (await getLastPostsNoticiasRealhAPI()) || { props: { nodes: [] } };
+  const queriedLastPostsNoticiasHomeoPetAPI = (await getLastPostsNoticiasHomeoPetAPI()) || [];
+  // const postsHomeoPet = (await getLastPostsHomeopet()) || { props: { nodes: [] } };
+  // const fetchedLastPostsNoticias = queriedLastPostsNoticias.props.nodes ?? [];
+  // const fetchedLastPostsHomeoPet = postsHomeoPet.props?.nodes ?? [];
 
   const banners = await getBanners()
-
   const postsMesclados = [
-    ...fetchedLastPostsHomeoPet,
-    ...fetchedLastPostsNoticias
-  ].sort((a, b) => {
-    return new Date(b.date).getTime() - new Date(a.date).getTime();
-  });
+    ...queriedLastPostsNoticiasAPI,
+    ...queriedLastPostsNoticiasHomeoPetAPI
+  ].filter((item) => item !== null && item !== undefined)
   return (
     <div className="flex flex-col gap-fb_space-section">
       <section>
@@ -62,8 +61,13 @@ export default async function Home() {
       <section>
         <ValuesSection values={sectionValoresInfo1} />
       </section>
-      <section className="max-w-full">
+      {/* <section className="max-w-full">
         <div className="fb_container overflow-hidden" id="last-posts-noticias">
+          <LastPostsNoticias fetchedLastPosts={postsMesclados ?? []} />
+        </div>
+      </section> */}
+      <section className="max-w-full">
+        <div className="fb_container overflow-hidden" id="last-posts-noticias-api">
           <LastPostsNoticias fetchedLastPosts={postsMesclados ?? []} />
         </div>
       </section>

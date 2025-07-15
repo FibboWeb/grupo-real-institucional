@@ -45,6 +45,7 @@ function CardBlog({
   isSlider,
 }: CardBlogProps) {
   const truncateDescription = (description: string, limit: number = 100) => {
+    if (!description || description === "") return "";
     const plainText = description.replace(/<\/?[^>]+(>|$)/g, "");
     const cleanedText = plainText.replace(/\n/g, " ").replace(/\s+/g, " ").trim();
     if (cleanedText.length > limit) {

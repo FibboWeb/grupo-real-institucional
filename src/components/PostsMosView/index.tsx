@@ -11,7 +11,7 @@ export async function PostsMosView() {
           posts.map((post, index) => (
             <li key={index + 3} className="mb-8">
               <CardSmBlog
-                blogContext={post.categories.nodes[0].name == "Artigos" ? "/artigos/" : "/noticias/"}
+                blogContext={post.categories.nodes[0]?.name !== '' ? post.categories.nodes[0]?.name == "Artigos" ? "/artigos/" : "/noticias/" : "/noticias/"}
                 postImage={post.featuredImage?.node?.sourceUrl}
                 postImageAlt={post.featuredImage?.node?.altText}
                 postLink={`${post.slug}`}

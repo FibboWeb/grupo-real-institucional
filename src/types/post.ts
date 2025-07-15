@@ -23,6 +23,19 @@ export type Post = {
       name: string;
     }[];
   };
+  _embedded?: {
+    "wp:featuredmedia": {
+      source_url: string;
+      alt_text: string;
+    }[];
+    author: {
+      name: string;
+      slug: string;
+    };
+    "wp:term": {
+      name: string;
+    }[];
+  };
 };
 
 export interface CardBlogProps {

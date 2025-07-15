@@ -22,6 +22,94 @@ export async function getLastPostsNoticias() {
   }
 }
 
+export async function getLastPostsNoticiasRealhAPI() {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_WP_URL_API}posts?per_page=4&orderby=date&order=desc&_embed=wp:featuredmedia,wp:term,author`);
+
+    if (!response.ok) {
+      return [
+        {
+          status: response.status,
+          message: response.statusText,
+        },
+      ];
+    }
+
+    const data = await response.json();
+
+    const customData = data.map(post => {
+      return {
+        ...post,
+        title: post.title.rendered,
+        content: post.content.rendered,
+        categories: {
+          nodes: post._embedded["wp:term"][0],
+        },
+        featuredImage: {
+          node: {
+            sourceUrl: post._embedded["wp:featuredmedia"][0].source_url,
+            altText: post._embedded["wp:featuredmedia"][0].alt_text,
+          }
+        },
+        author: {
+          node: {
+            name: 'Comunicação Grupo Real',
+            slug: 'realh',
+          }
+        }
+      }
+    })
+
+    return customData;
+  } catch (error) {
+    console.error("Erro ao buscar posts:", error);
+  }
+}
+
+export async function getLastPostsNoticiasHomeoPetAPI() {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_WP_URL_GRAPH_HOMEOPET}posts?per_page=4&orderby=date&order=desc&_embed=wp:featuredmedia,wp:term,author`);
+
+    if (!response.ok) {
+      console.log("data", response)
+      return [
+        {
+          status: response.status,
+          message: response.statusText,
+        },
+      ];
+    }
+
+    const data = await response.json();
+    const customData = data.map(post => {
+      return {
+        ...post,
+        title: post.title.rendered,
+        content: post.content.rendered,
+        categories: {
+          nodes: post._embedded["wp:term"][0],
+        },
+        featuredImage: {
+          node: {
+            sourceUrl: post._embedded["wp:featuredmedia"][0].source_url,
+            altText: post._embedded["wp:featuredmedia"][0].alt_text,
+          }
+        },
+        author: {
+          node: {
+            name: 'Comunicação Grupo Real',
+            slug: 'realh',
+          }
+        }
+      }
+    })
+    console.log("customData", customData)
+    return customData;
+  } catch (error) {
+    console.error("Erro ao buscar posts:", error);
+  }
+}
+
 export async function getLastPostsHomeopet() {
   try {
     const fetchedPosts = await clientHomeopet.query({

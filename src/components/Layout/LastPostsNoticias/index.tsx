@@ -36,6 +36,7 @@ interface LastPostsProps {
 }
 
 function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
+  console.log(fetchedLastPosts.length)
 
   const settings = {
     slidesToShow: 5.7,
@@ -151,18 +152,20 @@ function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
             </div>
           </div>
           {fetchedLastPosts &&
+            fetchedLastPosts.length > 0 &&
             fetchedLastPosts.map((post: Post) => (
+              
               <CardBlog
-                key={post.id}
-                blogContext={post.categories.nodes[0].name.toLowerCase() === "artigos" ? "/artigos" : "/noticias"}
-                postImage={post.featuredImage.node.sourceUrl}
-                postImageAlt={post.featuredImage.node.altText}
+                key={post.id || Math.random().toString()}
+                blogContext={post.categories?.nodes[0]?.name.toLowerCase() === "artigos" ? "/artigos" : "/noticias"}
+                postImage={post.featuredImage?.node.sourceUrl}
+                postImageAlt={post.featuredImage?.node.altText}
                 postLink={post.link? post.link : post.slug}
                 postTitle={post.title}
                 postDescription={{ __html: post.content }}
                 postDate={post.date}
-                postAuthor={post.author.node.name}
-                postAuthorLink={post.author.node.slug}
+                postAuthor={post.author?.node.name}
+                postAuthorLink={post.author?.node.slug}
                 isSlider
               />
             ))}
