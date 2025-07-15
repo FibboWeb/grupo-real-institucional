@@ -26,7 +26,7 @@ import { getBanners } from "@/lib/getBanners";
 export default async function Home() {
   // const queriedLastPostsNoticias = (await getLastPostsNoticias()) || { props: { nodes: [] } };
   const queriedLastPostsNoticiasAPI = (await getLastPostsNoticiasRealhAPI()) || { props: { nodes: [] } };
-  // const queriedLastPostsNoticiasHomeoPetAPI = (await getLastPostsNoticiasHomeoPetAPI()) || [];
+  const queriedLastPostsNoticiasHomeoPetAPI = (await getLastPostsNoticiasHomeoPetAPI()) || [];
   // const postsHomeoPet = (await getLastPostsHomeopet()) || { props: { nodes: [] } };
   // const fetchedLastPostsNoticias = queriedLastPostsNoticias.props.nodes ?? [];
   // const fetchedLastPostsHomeoPet = postsHomeoPet.props?.nodes ?? [];
@@ -34,7 +34,7 @@ export default async function Home() {
   const banners = await getBanners()
   const postsMesclados = [
     ...queriedLastPostsNoticiasAPI,
-    // ...queriedLastPostsNoticiasHomeoPetAPI
+    ...queriedLastPostsNoticiasHomeoPetAPI
   ].filter((item) => item !== null && item !== undefined)
   return (
     <div className="flex flex-col gap-fb_space-section">

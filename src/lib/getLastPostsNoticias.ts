@@ -68,7 +68,7 @@ export async function getLastPostsNoticiasRealhAPI() {
 
 export async function getLastPostsNoticiasHomeoPetAPI() {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_WP_URL_GRAPH_HOMEOPET}posts?per_page=4&orderby=date&order=desc&_embed=wp:featuredmedia,wp:term,author`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_WP_URL_HOMEOPET_API}posts?per_page=4&orderby=date&order=desc&_embed=wp:featuredmedia,wp:term,author`);
 
     if (!response.ok) {
       console.log("data", response)
