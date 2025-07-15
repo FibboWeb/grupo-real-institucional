@@ -67,9 +67,9 @@ function CardBlog({
   };
 
   blogContext = blogContext ? blogContext : "/noticias";
-
+  console.log(postLink)
   // Verifica se o link é uma URL completa ou um caminho relativo
-  const fullLink = postLink.startsWith('http') ? postLink : `${blogContext}/${postLink ? postLink : ""}`;
+  const fullLink = postLink ? (postLink.startsWith('http') ? postLink : `${blogContext}/${postLink}`) : "";
 
   return (
     <div className="p-2">

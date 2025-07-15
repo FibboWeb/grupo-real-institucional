@@ -36,7 +36,6 @@ interface LastPostsProps {
 }
 
 function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
-  console.log(fetchedLastPosts.length)
 
   const settings = {
     slidesToShow: 5.7,

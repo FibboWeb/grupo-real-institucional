@@ -59,7 +59,7 @@ export async function getLastPostsNoticiasRealhAPI() {
         }
       }
     })
-    console.log(customData)
+    
     return customData;
   } catch (error) {
     console.error("Erro ao buscar posts:", error);
@@ -103,7 +103,6 @@ export async function getLastPostsNoticiasHomeoPetAPI() {
         }
       }
     })
-    console.log("customData", customData)
     return customData;
   } catch (error) {
     console.error("Erro ao buscar posts:", error);
