@@ -69,14 +69,13 @@ function CardBlog({
   blogContext = blogContext ? blogContext : "/noticias";
   console.log(postLink)
   // Verifica se o link é uma URL completa ou um caminho relativo
-  const fullLink = postLink ? (postLink.startsWith('http') ? postLink : `${blogContext}/${postLink}`) : "";
+  const fullLink = postLink && typeof postLink !== undefined ? (postLink.startsWith('http') ? postLink : `${blogContext}/${postLink}`) : "";
 
   return (
     <div className="p-2">
       <div
-        className={`post-card relative ${
-          isSlider ? "w-[320px] h-[440px]" : "w-full"
-        } rounded-2xl shadow-custom_shadow transform hover:scale-[1.02] duration-300 bg-white mx-auto`}
+        className={`post-card relative ${isSlider ? "w-[320px] h-[440px]" : "w-full"
+          } rounded-2xl shadow-custom_shadow transform hover:scale-[1.02] duration-300 bg-white mx-auto`}
       >
         <Link href={fullLink} target={`${fullLink.includes('http') ? "_blank" : "_self"}`}>
           <Image
@@ -94,21 +93,21 @@ function CardBlog({
           </div>
         </Link>
         <div className="card-post-content p-6">
-          { postAuthorLink.includes('ivan') ? (
-          <div
-            className="author-info flex gap-2 text-sm font-medium text-fb_gray"
-          >
-            <Image src={"/author-icon.svg"} alt={"Post author link"} width={16} height={16} className="w-5 h-5" />
-            <p className="author-name">{postAuthor}</p>
-          </div>
+          {postAuthorLink.includes('ivan') ? (
+            <div
+              className="author-info flex gap-2 text-sm font-medium text-fb_gray"
+            >
+              <Image src={"/author-icon.svg"} alt={"Post author link"} width={16} height={16} className="w-5 h-5" />
+              <p className="author-name">{postAuthor}</p>
+            </div>
           ) : (
-          <Link
-            href={`/author/${!postAuthorLink ? postAuthorLink : "#"}`}
-            className="author-info flex gap-2 text-sm font-medium text-fb_gray"
-          >
-            <Image src={"/author-icon.svg"} alt={"Post author link"} width={16} height={16} className="w-5 h-5" />
-            <p className="author-name">{postAuthor}</p>
-          </Link>
+            <Link
+              href={`/author/${!postAuthorLink ? postAuthorLink : "#"}`}
+              className="author-info flex gap-2 text-sm font-medium text-fb_gray"
+            >
+              <Image src={"/author-icon.svg"} alt={"Post author link"} width={16} height={16} className="w-5 h-5" />
+              <p className="author-name">{postAuthor}</p>
+            </Link>
           )}
           <Link href={fullLink} target={`${fullLink.includes('http') ? "_blank" : "_self"}`} className="post-link">
             <p className="text-lg leading-5 font-bold mt-4 text-fb_blue_main line-clamp-3 min-h-[60px]">{postTitle}</p>

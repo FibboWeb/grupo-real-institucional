@@ -8,7 +8,6 @@ import Pagination from "@/components/Pagination";
 import { sliderCategoriasNoticias } from "@/constants/noticiaspage";
 import { fetchYoastSEO } from "@/lib/getCategorias";
 import { fetchPosts, getLastPostsNoticias } from "@/lib/getPostsNoticiasPage";
-import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 type Props = {
