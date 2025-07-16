@@ -24,7 +24,11 @@ export async function getLastPostsNoticias() {
 
 export async function getLastPostsNoticiasRealhAPI() {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_WP_URL_API}posts?per_page=4&orderby=date&order=desc&_embed=wp:featuredmedia,wp:term,author`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_WP_URL_API}posts?per_page=4&orderby=date&order=desc&_embed=wp:featuredmedia,wp:term,author`,{
+      next: {
+        revalidate: 60,
+      },
+    });
 
     if (!response.ok) {
       return [
@@ -68,7 +72,11 @@ export async function getLastPostsNoticiasRealhAPI() {
 
 export async function getLastPostsNoticiasHomeoPetAPI() {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_WP_URL_HOMEOPET_API}posts?per_page=4&orderby=date&order=desc&_embed=wp:featuredmedia,wp:term,author`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_WP_URL_HOMEOPET_API}posts?per_page=4&orderby=date&order=desc&_embed=wp:featuredmedia,wp:term,author`,{
+      next: {
+        revalidate: 60,
+      },
+    });
 
     if (!response.ok) {
       console.log("data", response)
