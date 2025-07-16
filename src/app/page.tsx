@@ -1,5 +1,6 @@
 "use server";
 import BannerCta from "@/components/BannerCTA";
+import BannerHome from "@/components/BannerHome";
 import SliderNavigational from "@/components/icons_slider";
 import InfoCards from "@/components/InfoCards";
 import BtnCallToAction from "@/components/Layout/Buttons/BtnCallToAction/BtnCallToAction";
@@ -16,20 +17,16 @@ import {
   sliderCategoriasHome,
   testimoniaslInfo,
 } from "@/constants/home";
-import { getLastPostsHomeopet, getLastPostsNoticias, getLastPostsNoticiasHomeoPetAPI, getLastPostsNoticiasRealhAPI } from "@/lib/getLastPostsNoticias";
-import { ArrowRight } from "lucide-react";
-import LastPostsNoticias from "../components/Layout/LastPostsNoticias";
-import BannerHome from "@/components/BannerHome";
-import Link from "next/link";
 import { getBanners } from "@/lib/getBanners";
+import { getLastPostsNoticiasHomeoPetAPI, getLastPostsNoticiasRealhAPI } from "@/lib/getLastPostsNoticias";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
+import LastPostsNoticias from "../components/Layout/LastPostsNoticias";
 
 export default async function Home() {
-  // const queriedLastPostsNoticias = (await getLastPostsNoticias()) || { props: { nodes: [] } };
-  const queriedLastPostsNoticiasAPI = (await getLastPostsNoticiasRealhAPI()) || { props: { nodes: [] } };
+  const queriedLastPostsNoticiasAPI = (await getLastPostsNoticiasRealhAPI()) || [];
   const queriedLastPostsNoticiasHomeoPetAPI = (await getLastPostsNoticiasHomeoPetAPI()) || [];
-  // const postsHomeoPet = (await getLastPostsHomeopet()) || { props: { nodes: [] } };
-  // const fetchedLastPostsNoticias = queriedLastPostsNoticias.props.nodes ?? [];
-  // const fetchedLastPostsHomeoPet = postsHomeoPet.props?.nodes ?? [];
+
 
   const banners = await getBanners()
   const postsMesclados = [
