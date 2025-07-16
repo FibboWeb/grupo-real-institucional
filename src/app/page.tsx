@@ -27,7 +27,6 @@ export default async function Home() {
   const queriedLastPostsNoticiasAPI = (await getLastPostsNoticiasRealhAPI()) || [];
   const queriedLastPostsNoticiasHomeoPetAPI = (await getLastPostsNoticiasHomeoPetAPI()) || [];
 
-
   const banners = await getBanners()
   const postsMesclados = [
     ...queriedLastPostsNoticiasAPI,
