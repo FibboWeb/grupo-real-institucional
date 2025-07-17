@@ -57,9 +57,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
  */
 export default async function PageProduct({ params }) {
   const numberWhatsapp = await fetch(`${process.env.NEXT_PUBLIC_WP_URL_API_V1}info/whatsapp`);
-  console.log(numberWhatsapp);
   const numberWhatsappData = await numberWhatsapp.json();
-  console.log(numberWhatsappData.whatsapp_number);
 
   const { slug } = await params;
   const product = await getProductPerSlug(slug);
