@@ -56,6 +56,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
  * <PageProduct />
  */
 export default async function PageProduct({ params }) {
+  const numberWhatsapp = await fetch(`${process.env.NEXT_PUBLIC_WP_URL_API_V1}info/whatsapp`);
+  const numberWhatsappData = await numberWhatsapp.json();
+
   const { slug } = await params;
   const product = await getProductPerSlug(slug);
   const productsRecommendations = await getProducts(product[0].categoria_produto, 1, 8);
@@ -114,7 +117,7 @@ export default async function PageProduct({ params }) {
                 ) : (
                   <Button className="w-full lg:w-auto h-12 px-10 bg-fb_green hover:bg-green-700">
                     <Link
-                    href={`https://wa.me/5508001009000?text=Ol%C3%A1%20estou%20entrando%20em%20contato%20para%20falar%20referente%20ao%20produto%20${product[0]?.title?.rendered}%2C%20que%20vi%20no%20site.%20Link%20do%20produto%20 https://gruporealbr.com.br/produtos/${product[0]?.slug}  `}
+                    href={`https://wa.me/${numberWhatsappData.whatsapp_number}?text=Ol%C3%A1%20estou%20entrando%20em%20contato%20para%20falar%20referente%20ao%20produto%20${product[0]?.title?.rendered}%2C%20que%20vi%20no%20site.%20Link%20do%20produto%20 https://gruporealbr.com.br/produtos/${product[0]?.slug}  `}
                     target="_blank"
                     rel="noopener noreferrer"
                     title="Solicite um orçamento pelo whatsapp"
