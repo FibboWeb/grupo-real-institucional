@@ -51,7 +51,7 @@ export default function PartnerSection({
           <div className="flex flex-col sm:flex-row gap-5 sm:gap-20 items-center sm:justify-around">
             {partnesImages.map((partner, index) => (
               <div key={index}>
-                <Image src={partner} alt="" key={index} />
+                <Image src={partner} alt="" key={index} className={`${index === 2 ? "max-w-full h-40 rounded-2xl" : ""}`} />
               </div>
             ))}
           </div>
