@@ -48,7 +48,7 @@ export default function PartnerSection({
             <BtnCallToAction ctaLink={btnLink} content={btnContent} icon={btnIcon} color={btnColor} />
           </div> */}
 
-          <div className="flex flex-col sm:flex-row gap-5 sm:gap-8 lg:gap-20 items-center justify-center">
+          <div className="flex flex-col sm:flex-row gap-5 sm:gap-8 lg:gap-20 items-center justify-around">
             {partnesImages.map((partner, index) => (
               <div 
                 key={index} 

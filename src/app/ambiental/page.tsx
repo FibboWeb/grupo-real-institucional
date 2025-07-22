@@ -122,8 +122,12 @@ export default function PageAmbiental() {
         border={false}
         reverseDesktop={true}
       />
-
-      <Newsletter />
+      <section className="fb_container">
+        <Newsletter
+          sectionTitle="Inscreva-se na nossa newsletter"
+          sectionDescription="Receba novidades e informações exclusivas sobre nossos produtos diretamente no seu e-mail."
+        />
+      </section>
     </>
   );
 }
