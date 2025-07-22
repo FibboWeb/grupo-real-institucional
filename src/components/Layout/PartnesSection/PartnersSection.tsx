@@ -48,10 +48,28 @@ export default function PartnerSection({
             <BtnCallToAction ctaLink={btnLink} content={btnContent} icon={btnIcon} color={btnColor} />
           </div> */}
 
-          <div className="flex flex-col sm:flex-row gap-5 sm:gap-20 items-center sm:justify-around">
+          <div className="flex flex-col sm:flex-row gap-5 sm:gap-8 lg:gap-20 items-center justify-center">
             {partnesImages.map((partner, index) => (
-              <div key={index}>
-                <Image src={partner} alt="" key={index} className={`${index === 2 ? "max-w-full h-40 rounded-2xl" : ""}`} />
+              <div 
+                key={index} 
+                className={`rounded-2xl w-[280px] h-[135px] sm:w-[306px] sm:h-[148px] ${
+                  index !== 2 
+                    ? "bg-white p-4 shadow-lg flex items-center justify-center" 
+                    : "overflow-hidden"
+                }`}
+              >
+                <Image 
+                  src={partner} 
+                  alt="" 
+                  className={`rounded-2xl ${
+                    index === 2 
+                      ? "w-full h-full" 
+                      : "max-w-full max-h-full object-contain"
+                  }`}
+                  width={306}
+                  height={148}
+                  priority={index < 3}
+                />
               </div>
             ))}
           </div>
