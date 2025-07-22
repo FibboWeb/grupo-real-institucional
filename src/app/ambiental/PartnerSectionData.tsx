@@ -1,8 +1,8 @@
 import { StaticImageData } from "next/image";
 import LeafIcon from "@/public/icons/LeafIcon.svg";
-import FazendoPiriquitoLogo from "@/public/images/fazenda-piriquitos.webp";
-import GeneticaAditivaLogo from "@/public/images/genetica-aditiva.webp";
-import FazendaSantaFe from "@/public/images/fazenda-santa-fe.webp";
+import FazendoPiriquitoLogo from "@/public/images/periquitos.webp";
+import GeneticaAditivaLogo from "@/public/images/genetica.webp";
+import FazendaSantaFe from "@/public/images/REALH_bannerSANTAFEDOCORIXINHO.jpg";
 
 interface PartnerDataType {
   title: string;
