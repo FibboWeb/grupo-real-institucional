@@ -94,6 +94,7 @@ export async function getLastPostsNoticiasHomeoPetAPI() {
         ...post,
         title: post.title.rendered,
         content: post.content.rendered,
+        slug: post.link,
         categories: {
           nodes: post._embedded["wp:term"][0],
         },
