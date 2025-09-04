@@ -27,7 +27,7 @@ export default async function Home() {
   const queriedLastPostsNoticiasAPI = (await getLastPostsNoticiasRealhAPI()) || [];
   const queriedLastPostsNoticiasHomeoPetAPI = (await getLastPostsNoticiasHomeoPetAPI()) || [];
 
-  const banners = await getBanners()
+  const { banners, configs } = await getBanners()
   const postsMesclados = [
     ...queriedLastPostsNoticiasAPI,
     ...queriedLastPostsNoticiasHomeoPetAPI
@@ -50,9 +50,7 @@ export default async function Home() {
         </VideoBackground>
       </section>
       <section className="fb_container rounded-lg">
-        <Link href={banners.mobile.link ? banners.mobile.link : ""} target={banners.mobile.target ?? "_blank"} title={banners.mobile.title ?? ""}>
-          <BannerHome banner={banners} />
-        </Link>
+        <BannerHome banners={banners} configs={configs} />
       </section>
       <section>
         <ValuesSection values={sectionValoresInfo1} />
