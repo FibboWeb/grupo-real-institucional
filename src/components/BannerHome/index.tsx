@@ -38,6 +38,9 @@ interface BannerHomeProps {
 
 export default function BannerHome({ banners, configs }: BannerHomeProps) {
 
+// Limpa items vazios do array
+const bannersFiltered = banners.filter(banner => banner.mobile.url_imagem !== "" && banner.desktop.url_imagem !== "");
+console.log(bannersFiltered);
 
   // Se não há banners ou array vazio, não renderiza nada
   if (!banners || banners.length === 0) {
@@ -55,15 +58,15 @@ export default function BannerHome({ banners, configs }: BannerHomeProps) {
   const sliderConfigs = configs || defaultConfigs;
 
   const settings = {
-    dots: banners.length > 1,
-    infinite: banners.length > 1,
+    dots: bannersFiltered.length > 1,
+    infinite: bannersFiltered.length > 1,
     speed: sliderConfigs.speed,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: banners.length > 1 ? sliderConfigs.autoplay : false,
+    autoplay: bannersFiltered.length > 1 ? sliderConfigs.autoplay : false,
     autoplaySpeed: sliderConfigs.autoplaySpeed,
     pauseOnHover: sliderConfigs.pauseOnHover,
-    arrows: banners.length > 1,
+    arrows: bannersFiltered.length > 1,
     responsive: [
       {
         breakpoint: 768,
@@ -75,8 +78,8 @@ export default function BannerHome({ banners, configs }: BannerHomeProps) {
   };
 
   // Se há apenas um banner, renderiza sem slider
-  if (banners.length === 1) {
-    const banner = banners[0];
+  if (bannersFiltered.length === 1) {
+    const banner = bannersFiltered[0];
     return (
       <div className="relative w-full">
         {banner.mobile.link ? (
@@ -148,7 +151,7 @@ export default function BannerHome({ banners, configs }: BannerHomeProps) {
   return (
     <div className="relative w-full">
       <Slider {...settings}>
-        {banners.map((banner, index) => (
+        {bannersFiltered.map((banner, index) => (
           <div key={index} className="relative">
             {banner.mobile.link ? (
               <Link 
