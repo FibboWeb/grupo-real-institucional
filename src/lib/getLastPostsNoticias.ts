@@ -79,7 +79,6 @@ export async function getLastPostsNoticiasHomeoPetAPI() {
     });
 
     if (!response.ok) {
-      console.log("data", response)
       return [
         {
           status: response.status,

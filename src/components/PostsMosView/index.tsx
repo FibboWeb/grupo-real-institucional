@@ -4,7 +4,6 @@ import { GetPostMostViewedAPI } from "@/graphql/posts";
 
 export async function PostsMosView() {
   const postsAPI = await GetPostMostViewedAPI();
-  console.log(postsAPI);
 
   return (
     <div>
