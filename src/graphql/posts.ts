@@ -102,7 +102,6 @@ export const GetPostMostViewedAPI = async () => {
       revalidate: 60,
     },
   });
-  console.log(response);
   if (!response.ok) {
     throw new Error("Failed to fetch posts");
   }

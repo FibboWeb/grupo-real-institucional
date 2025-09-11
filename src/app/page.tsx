@@ -20,7 +20,6 @@ import {
 import { getBanners } from "@/lib/getBanners";
 import { getLastPostsNoticiasHomeoPetAPI, getLastPostsNoticiasRealhAPI } from "@/lib/getLastPostsNoticias";
 import { ArrowRight } from "lucide-react";
-import Link from "next/link";
 import LastPostsNoticias from "../components/Layout/LastPostsNoticias";
 
 export default async function Home() {

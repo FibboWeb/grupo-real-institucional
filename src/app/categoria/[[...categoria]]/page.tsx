@@ -46,6 +46,7 @@ export default async function CategoryPage({ params, searchParams }) {
   const postsPerPage = 6;
   const categorySlug = (await params).categoria[(await params).categoria.length - 1];
   const category = await fetchCategoryId(categorySlug);
+  console.log(category);
   const categoryId = category.categoryId;
   const isArtigos = category.categoryName === "Artigos" ? true : false;
 

@@ -6,7 +6,7 @@ const SocialShare = ({ postTitle, postUrl, postImage, blogContext }) => {
   const encodedUrl = encodeURIComponent(postUrl);
   const encodedImage = encodeURIComponent(postImage);
 
-  const fullUrl = "https://realh.com.br/" + blogContext + encodedUrl;
+  const fullUrl = "https://gruporealbr.com.br/" + blogContext + encodedUrl;
   return (
     <div className="social-share-container flex flex-col justify-center items-center my-8">
       <p className="text-slate-600 mb-3">Compartilhe:</p>
