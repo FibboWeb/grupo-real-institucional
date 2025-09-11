@@ -1,9 +1,11 @@
 import { GET_SEO_LINES } from "@/graphql/linhas";
 import { client } from "./apollo-client";
 
+const API_URL = process.env.NEXT_PUBLIC_WP_URL_API;
+
 export async function fetchYoastData(slug) {
   if (slug !== undefined && slug !== null) {
-    const url = `https://realh.com.br/wp-json/wp/v2/linhas?slug=${slug}`;
+    const url = `${API_URL}linhas?slug=${slug}`;
 
     try {
       const response = await fetch(url);
@@ -26,7 +28,7 @@ export async function fetchYoastData(slug) {
 
 export async function getInfoLine(slug) {
   if (slug !== undefined && slug !== null) {
-    const url = `https://realh.com.br/wp-json/wp/v2/categoria_produto?slug=${slug}&_embed=wp:post_type`;
+    const url = `${API_URL}categoria_produto?slug=${slug}&_embed=wp:post_type`;
 
     try {
       const response = await fetch(url);
@@ -44,10 +46,10 @@ export async function getInfoLine(slug) {
 export async function getSEOLines2(context: string) {
   try {
     const fetchedLines = await fetch(`
-      https://realh.com.br/wp-json/wp/v2/categoria_produto?slug=${context}`);
+      ${API_URL}categoria_produto?slug=${context}`);
     const data = await fetchedLines.json();
     const imgFetched = await fetch(
-      `https://realh.com.br/wp-json/wp/v2/media/${data[0]?.meta?.categoria_produto_imagem}`,
+      `${API_URL}media/${data[0]?.meta?.categoria_produto_imagem}`,
     );
     const imgUrl = await imgFetched.json();
     return {

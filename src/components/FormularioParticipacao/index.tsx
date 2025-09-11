@@ -54,7 +54,7 @@ const FormularioParticipacao = () => {
   const onSubmit = async (data: FormularioData) => {
     try {
       // Construindo a URL correta
-      const baseUrl = "https://realh.com.br";
+      const baseUrl = "https://conteudo.realh.com.br";
       const apiUrl = `${baseUrl}/wp-json/real/v1/submit-participacao`;
 
       const response = await fetch(apiUrl, {

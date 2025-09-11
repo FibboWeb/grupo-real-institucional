@@ -1,6 +1,6 @@
 const nextConfig = {
   images: {
-    domains: ["placehold.jp", "realh.com.br"],
+    domains: ["placehold.jp", "realh.com.br", "conteudo.realh.com.br"],
     unoptimized: true,
   },
   poweredByHeader: false,

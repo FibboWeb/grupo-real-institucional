@@ -311,7 +311,7 @@ export default function PagePrivacidade() {
                     <span className="font-bold">a)</span> Da Navegação no Website – Aba “Seja Representante”
                   </p>
                   <p>
-                    Disponibiliza-se no website institucional da REAL H (https://realh.com.br/seja-representante/ ) um
+                    Disponibiliza-se no website institucional da REAL H (https://gruporealbr.com.br/seja-representante/ ) um
                     formulário de cadastro para qualquer pessoa se candidatar a trabalhar como um representante
                     comercial, mediante a coleta dos dados pessoais:
                   </p>
