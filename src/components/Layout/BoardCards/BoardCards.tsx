@@ -24,7 +24,7 @@ type BoardCardsProps = {
 const settings = {
   orientation: "horizontal",
   speed: 500,
-  slidesToShow: 4,
+  slidesToShow: 3,
   slidesToScroll: 1,
   useTransform: true,
   draggable: false,
@@ -107,7 +107,7 @@ export default function BoardCards({ title, members }: BoardCardsProps) {
           <Slider {...settings}>
             {members.map((member, index) => (
               <li 
-                className={`${member.description ? 'flipped-card' : ''} flip-card overflow-hidden max-w-[100%] h-[700px] mx-auto ${
+                className={`${member.description ? 'flipped-card' : ''} flip-card max-w-[100%] h-[700px] mx-auto ${
                   // Se o card não tiver descrição, não pode ser clicado ou virado no hover
                   flippedCards[index] ? 'flipped' : ''
                 }`}
