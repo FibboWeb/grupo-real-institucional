@@ -15,7 +15,7 @@
 }
 
 .flip-card {
-  padding-bottom: 4rem;
+  padding-bottom: 4.5rem;
   transform: scale(0.9);
   perspective: 800px;
   user-select: text;
