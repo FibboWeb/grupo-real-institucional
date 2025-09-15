@@ -4,13 +4,13 @@ import DrMarceloImg from "@/public/images/dr-marcelo.webp";
 import DonaClaudiaImg from "@/public/images/dona-claudia.webp";
 
 const members = [
-  {
-    img: PresidentImg,
-    name: "Claudio Martins Real",
-    role: "Presidente",
-    description: "",
-    ctaLink: "/claudio-martins-real-curriculo"
-  },
+  // {
+  //   img: PresidentImg,
+  //   name: "Claudio Martins Real",
+  //   role: "Presidente",
+  //   description: "",
+  //   ctaLink: "/claudio-martins-real-curriculo"
+  // },
   {
     img: DrMarioImg,
     name: "Mário Renck Real",
