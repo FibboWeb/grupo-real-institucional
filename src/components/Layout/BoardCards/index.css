@@ -15,7 +15,7 @@
 }
 
 .flip-card {
-  padding-block: 2.5rem;
+  padding-bottom: 4rem;
   transform: scale(0.9);
   perspective: 800px;
   user-select: text;
@@ -23,7 +23,7 @@
 
 .flip-card-inner {
   position: relative;
-  transition: transform 1s ease;
+  transition: transform 2s ease;
   transform-style: preserve-3d;
 }
 
