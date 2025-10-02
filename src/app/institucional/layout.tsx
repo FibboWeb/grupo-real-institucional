@@ -37,6 +37,11 @@ export default function InstitutionalLayout({
           link: "/institucional/lgpd",
         },
         {
+          anchor: "Canal de Ética",
+          link: "https://www.contatoseguro.com.br/pt/gruporealh/",
+          target: "_blank"
+        },
+        {
           anchor: "Política de Cookies",
           link: "/institucional/politica-de-cookies",
         },
@@ -136,6 +141,7 @@ export default function InstitutionalLayout({
                       <li key={i} className="hover:text-blue-500 my-4 cursor-pointer font-medium">
                         <Link
                           href={`${categoria.itens[i].link}`}
+                          target={categoria.itens[i].target ? categoria.itens[i].target : ''}
                           className={`${pathName === `${categoria.itens[i].link}` ? "text-fb_blue" : ""}`}
                         >
                           {item.anchor}
@@ -162,7 +168,7 @@ export default function InstitutionalLayout({
                       <ul className="text-gray-600 flex flex-col gap-3">
                         {categoria.itens.map((item, i) => (
                           <li key={i} className="transition duration-300 hover:text-blue-500 font-medium cursor-pointer">
-                            <Link href={`${categoria.itens[i].link}`} className={`${pathName === `${categoria.itens[i].link}` ? "text-fb_blue" : ""}`}>
+                            <Link target={categoria.itens[i].target ? categoria.itens[i].target : ''} href={`${categoria.itens[i].link}`} className={`${pathName === `${categoria.itens[i].link}` ? "text-fb_blue" : ""}`}>
                               {item.anchor}
                             </Link>
                           </li>
