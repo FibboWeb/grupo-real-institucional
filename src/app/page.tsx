@@ -31,6 +31,7 @@ export default async function Home() {
     ...queriedLastPostsNoticiasAPI,
     ...queriedLastPostsNoticiasHomeoPetAPI
   ].filter((item) => item !== null && item !== undefined)
+  console.log(postsMesclados[7])
   return (
     <div className="flex flex-col gap-fb_space-section">
       <section>

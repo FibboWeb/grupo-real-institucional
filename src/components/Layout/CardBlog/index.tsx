@@ -92,7 +92,7 @@ function CardBlog({
           </div>
         </Link>
         <div className="card-post-content p-6">
-          {postAuthorLink.includes('ivan') ? (
+          {postAuthorLink && postAuthorLink.includes('ivan') ? (
             <div
               className="author-info flex gap-2 text-sm font-medium text-fb_gray"
             >
