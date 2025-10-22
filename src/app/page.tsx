@@ -76,7 +76,7 @@ export default async function Home() {
           <LastPostsNoticias fetchedLastPosts={postsMesclados ?? []} />
         </div>
       </section>
-      <section className=""> 
+      <section className="">
         {/* Nossas marcas */}
         <div className="w-full">
           <h2 className="text-center text-fb_blue_main text-4xl font-bold py-12">Nossas marcas</h2>
