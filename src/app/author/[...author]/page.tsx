@@ -52,6 +52,7 @@ export default async function AuthorPage({ params, searchParams }) {
   const postsPerPage = 6;
   const authorSlug = (await params).author[0];
   const author = await fetchAuthorData(authorSlug);
+  console.log(author)
   const authorName = author.name || "Comunicação Grupo Real";
   const authorBio = author.description || "Biografia não disponível";
   const authorId = author.id;
@@ -71,7 +72,11 @@ export default async function AuthorPage({ params, searchParams }) {
         capitalizeLinks
       />
       <div className="author-hero mb-8">
-        <AuthorBox authorName={authorName} authorBio={authorBio} />
+        <AuthorBox 
+          authorName={authorName} 
+          authorAvatar={author.avatar?.url || "/logo-real-h.png"}
+          authorBio={authorBio} 
+        />
       </div>
       <div className="category-content flex flex-col lg:items-start lg:flex-row w-full gap-4 xl:gap-24 mb-5">
         <div className="content-cards w-full lg:w-9/12 mb-7">

@@ -66,7 +66,6 @@ export default async function ArtigosPage({ params }) {
   const postSlug = (await params).artigos[0];
   const fetchedPost = await getPostDetails(postSlug);
   const post = fetchedPost.props.post;
-
   if (!postSlug) {
     return notFound();
   }
@@ -115,6 +114,7 @@ export default async function ArtigosPage({ params }) {
           />
           <AuthorBox
             authorName={post.author.node.name || "Comunicação Grupo Real"}
+            authorAvatar={post.author.node.avatar?.url || "/logo-real-h.png"}
             authorBio={post.author.node?.description || ""}
             isSinglePage
             authorLink={post.author.node.slug}
