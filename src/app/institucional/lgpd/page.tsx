@@ -46,34 +46,41 @@ export default function PageLGPD() {
         </div>
         <div>
           {/* Links para as outras páginas. */}
-          <div className="flex flex-col md:flex-row gap-4 w-fit mx-auto lg:mx-0 mb-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:columns-auto flex-col md:flex-row gap-4 w-fit mx-auto lg:mx-0 mb-4 flex-wrap">
             <BtnCallToAction
               ctaLink="/institucional/politica-de-privacidade"
               content="Política de privacidade"
               color="fb_blue_button"
               key="politica_de_privacidade"
-              classCssForBTN="justify-between"
+              classCssForBTN="justify-between flex-1"
             />
             <BtnCallToAction
               ctaLink="/institucional/politica-de-cookies"
               content="Política de cookies"
               color="fb_blue_button"
               key="politica_de_cookies"
-              classCssForBTN="justify-between"
+              classCssForBTN="justify-between flex-1"
             />
             <BtnCallToAction
               ctaLink="/institucional/direito-dos-titulares"
               content="Direito dos titulares"
               color="fb_blue_button"
               key="direito_dos_titulares"
-              classCssForBTN="justify-between"
+              classCssForBTN="justify-between flex-1"
             />
             <BtnCallToAction
               ctaLink="/institucional/atendimento-ao-titular"
               content="Atendimento ao titular"
               color="fb_blue_button"
               key="atendimento_ao_titulares"
-              classCssForBTN="justify-between"
+              classCssForBTN="justify-between flex-1"
+            />
+            <BtnCallToAction
+              ctaLink="https://www.contatoseguro.com.br/pt/gruporealh/"
+              content="Canal de Ética"
+              color="fb_blue_button"
+              key="canal_de_etica"
+              classCssForBTN="justify-between flex-1"
             />
           </div>
         </div>
