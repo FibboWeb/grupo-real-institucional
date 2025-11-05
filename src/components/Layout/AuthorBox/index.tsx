@@ -3,12 +3,13 @@ import Image from "next/image";
 
 interface AuthorBoxProps {
   authorName: string;
+  authorAvatar: string;
   authorBio: string;
   isSinglePage?: boolean;
   authorLink?: string;
 }
 
-function AuthorBox({ authorName, authorBio, isSinglePage, authorLink }: AuthorBoxProps) {
+function AuthorBox({ authorName, authorBio, isSinglePage, authorLink, authorAvatar }: AuthorBoxProps) {
   return (
     <>
       <div className="author-card bg-white p-6 rounded-lg border border-fb_blue_button mb-2 min-h-44">
@@ -17,7 +18,7 @@ function AuthorBox({ authorName, authorBio, isSinglePage, authorLink }: AuthorBo
             className={`flex items-center rounded-full border border-fb_blue_button  ${isSinglePage ? "h-[130px] lg:h-28 lg:w-[300px] p-2" : "p-3 h-[80px]"} aspect-square lg:h-[95px]`}
           >
             <Image
-              src={"/logo-real-h.png"}
+              src={authorAvatar}
               width={180}
               height={100}
               alt={authorName}
