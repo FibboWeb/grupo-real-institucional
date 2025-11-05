@@ -115,6 +115,7 @@ export default async function PostPage({ params }) {
           />
           <AuthorBox
             authorName={post.author.node.name || "RealH"}
+            authorAvatar={post.author.node.avatar?.url || "/logo-real-h.png"}
             authorBio={post.author.node?.description || ""}
             isSinglePage
             authorLink={post.author.node.slug}
