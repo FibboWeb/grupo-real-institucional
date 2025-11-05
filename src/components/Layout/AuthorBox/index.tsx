@@ -15,14 +15,14 @@ function AuthorBox({ authorName, authorBio, isSinglePage, authorLink, authorAvat
       <div className="author-card bg-white p-6 rounded-lg border border-fb_blue_button mb-2 min-h-44">
         <div className="flex flex-col lg:flex-row items-center gap-5">
           <div
-            className={`flex items-center rounded-full border border-fb_blue_button  ${isSinglePage ? "h-[130px] lg:h-28 lg:w-[300px] p-2" : "p-3 h-[80px]"} aspect-square lg:h-[95px]`}
+            className={`flex items-center rounded-full border border-fb_blue_button  ${isSinglePage ? "h-[130px] lg:h-28 p-2" : "p-3 h-[80px]"} aspect-square lg:h-[95px]`}
           >
             <Image
               src={authorAvatar}
               width={180}
               height={100}
               alt={authorName}
-              className={`h-9 rounded-full object-contain ${isSinglePage ? "lg:w-[300px] aspect-square" : "w-[80px] lg:w-[180px]"} `}
+              className={`h-9 rounded-full object-contain w-[80px] lg:w-[180px]`}
             />
           </div>
           <div className="flex flex-col">
