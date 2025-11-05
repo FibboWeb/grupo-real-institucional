@@ -5,7 +5,13 @@ import { GET_POSTS_LAST_NOTICIAS_PAGE } from "@/graphql/posts";
 export async function fetchPosts(page = 1, postsPerPage = 6, offset = 3) {
   const nwPage = page + offset;
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_WP_URL_API}posts?per_page=${postsPerPage}&page=${page}&_embed=author,wp:featuredmedia,categories`,    
+    `${process.env.NEXT_PUBLIC_WP_URL_API}posts?per_page=${postsPerPage}&page=${page}&_embed=author,wp:featuredmedia,categories`, 
+    {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${process.env.NEXT_PUBLIC_WP_AUTH_TOKEN}`,
+      },
+    }   
   );
 
   if (!res.ok) {
@@ -18,9 +24,10 @@ export async function fetchPosts(page = 1, postsPerPage = 6, offset = 3) {
 
   const postsWithImages = data.map((post) => {
     const postImage = post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || null;
-    const postAuthor = "Comunicação Grupo Real";
+    const postAuthor = post.yoast_head_json?.author || "Comunicação Grupo Real";
     const postAuthorLink = "realh";
     const postCategories = post._embedded?.["categories"] || [];
+    
 
     const isArtigos = postCategories.some((category) => category.name === "Artigos");
 

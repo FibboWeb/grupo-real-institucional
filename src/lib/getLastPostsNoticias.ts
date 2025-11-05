@@ -57,8 +57,15 @@ export async function getLastPostsNoticiasRealhAPI() {
         },
         author: {
           node: {
-            name: 'Comunicação Grupo Real',
-            slug: 'realh',
+            name: post.yoast_head_json?.author || 'Comunicação Grupo Real',
+            slug: post.yoast_head_json?.author
+              ? post.yoast_head_json.author
+                  .toLowerCase()
+                  .normalize("NFD")
+                  .replace(/[\u0300-\u036f]/g, "") // Remove acentos
+                  .replace(/[^a-z0-9]+/g, "-")    // Substitui não alfa-numérico por hífens
+                  .replace(/^-+|-+$/g, "")        // Remove hífens iniciais/finais
+              : 'realh',
           }
         }
       }
@@ -105,8 +112,15 @@ export async function getLastPostsNoticiasHomeoPetAPI() {
         },
         author: {
           node: {
-            name: 'Comunicação Grupo Real',
-            slug: 'realh',
+            name: post.yoast_head_json?.author || 'Comunicação Grupo Real',
+            slug: post.yoast_head_json?.author
+              ? post.yoast_head_json.author
+                  .toLowerCase()
+                  .normalize("NFD")
+                  .replace(/[\u0300-\u036f]/g, "") // Remove acentos
+                  .replace(/[^a-z0-9]+/g, "-")    // Substitui não alfa-numérico por hífens
+                  .replace(/^-+|-+$/g, "")        // Remove hífens iniciais/finais
+              : 'realh',
           }
         }
       }
