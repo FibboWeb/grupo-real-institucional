@@ -23,7 +23,6 @@ type Props = {
  * - robots (index, follow, max-snippet, max-image-preview)
  * - openGraph (images)
  * - alternates (canonical)
- *
  * Extends parent metadata with openGraph images and alternates canonical URL
  *
  * @param {Props} _props - not used
