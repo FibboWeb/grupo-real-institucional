@@ -23,7 +23,6 @@ type Props = {
  * - robots (index, follow, max-snippet, max-image-preview)
  * - openGraph (images)
  * - alternates (canonical)
- *
  * Extends parent metadata with openGraph images and alternates canonical URL
  *
  * @param {Props} _props - not used
@@ -35,7 +34,6 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
   const slug = (await params).artigos;
   const pageParam = (await searchParams).page;
   const page = parseInt(Array.isArray(pageParam) ? pageParam[0] : pageParam || "1");
-  // fetch data
   const infos = await fetchYoastSEO(slug, "posts");
 
   if (!infos) {
