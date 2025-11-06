@@ -60,13 +60,3 @@ export async function fetchAuthorData(authorSlug: string): Promise<any | null> {
 
   }
 }
-
-//   const authorRes = await fetch(`${process.env.NEXT_PUBLIC_WP_URL_API}users?slug=${authorSlug}`);
-
-//   if (!authorRes.ok) {
-//     throw new Error("Failed to fetch author data. Check permissions and author slug.");
-//   }
-
-//   const authorData = await authorRes.json();
-//   return authorData.length > 0 ? authorData[0] : null;
-// }
