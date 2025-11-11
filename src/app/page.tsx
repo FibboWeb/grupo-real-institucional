@@ -29,7 +29,7 @@ export default async function Home() {
   const queriedLastPostsNoticiasHomeoPetAPI = (await getLastPostsNoticiasHomeoPetAPI()) || [];
   const naMidiaData = await getNaMidiaPosts();
   const queriedNaMidiaPosts = naMidiaData?.posts || [];
-  const naMidiaMetadata = naMidiaData?.metadata || { exibir_sessao: false, titulo_da_sessao: "Grupo Real na Mídia" };
+  const naMidiaMetadata = naMidiaData?.metadata || { exibir_sessao: false, titulo_da_sessao: "Grupo Real na Mídia", texto_apoio: "" };
 
   const { banners, configs } = await getBanners()
   const postsMesclados = [
@@ -76,6 +76,7 @@ export default async function Home() {
             <NaMidiaSlider 
               fetchedPosts={queriedNaMidiaPosts ?? []} 
               sectionTitle={naMidiaMetadata.titulo_da_sessao}
+              textoApoio={naMidiaMetadata.texto_apoio || ""}
             />
           </div>
         </section>

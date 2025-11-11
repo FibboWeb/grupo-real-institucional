@@ -40,6 +40,8 @@ export async function getLastPostsNoticiasRealhAPI() {
     }
 
     const data = await response.json();
+    // -1 é o último elemento do array
+    console.log(data[0].author.author_link.split('/').pop())
 
     const customData = data.map(post => {
       return {
@@ -57,15 +59,8 @@ export async function getLastPostsNoticiasRealhAPI() {
         },
         author: {
           node: {
-            name: post.yoast_head_json?.author || 'Comunicação Grupo Real',
-            slug: post.yoast_head_json?.author
-              ? post.yoast_head_json.author
-                  .toLowerCase()
-                  .normalize("NFD")
-                  .replace(/[\u0300-\u036f]/g, "") // Remove acentos
-                  .replace(/[^a-z0-9]+/g, "-")    // Substitui não alfa-numérico por hífens
-                  .replace(/^-+|-+$/g, "")        // Remove hífens iniciais/finais
-              : 'realh',
+            name: post.author?.author_name || 'Comunicação Grupo Real',
+            slug: post.author?.author_link.split('/')[-1] || 'realh',
           }
         }
       }

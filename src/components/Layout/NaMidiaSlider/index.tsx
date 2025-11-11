@@ -34,9 +34,10 @@ const Slider = dynamic(() => import("react-slick"), { ssr: false });
 interface NaMidiaSliderProps {
   fetchedPosts: Post[];
   sectionTitle?: string;
+  textoApoio?: any;
 }
 
-function NaMidiaSlider({ fetchedPosts, sectionTitle = "Grupo Real na Mídia" }: NaMidiaSliderProps) {
+function NaMidiaSlider({ fetchedPosts, sectionTitle = "Grupo Real na Mídia", textoApoio = {} }: NaMidiaSliderProps) {
   const settings = {
     slidesToShow: 5.7,
     slidesToScroll: 1,
@@ -136,9 +137,18 @@ function NaMidiaSlider({ fetchedPosts, sectionTitle = "Grupo Real na Mídia" }: 
 
   return (
     <div className="flex flex-col gap-6">
-      <h2 className="text-center text-fb_blue_main text-4xl font-bold py-8">
+      <h2 className="text-center text-fb_blue_main text-4xl font-bold py-2">
         {sectionTitle}
       </h2>
+      {textoApoio && (
+        <div className="text-center text-fb_blue_main">
+          { textoApoio.includes("<") ? (
+            <p dangerouslySetInnerHTML={{ __html: textoApoio }} />
+          ) : (
+            <p>{textoApoio}</p>
+          )}
+        </div>
+      )}
       <div className="na-midia-slider" style={{ width: "100%" }}>
         <Slider {...settings}>
           {fetchedPosts &&

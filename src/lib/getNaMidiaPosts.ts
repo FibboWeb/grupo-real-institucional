@@ -17,6 +17,7 @@ export async function getNaMidiaPosts() {
         metadata: {
           exibir_sessao: false,
           titulo_da_sessao: "Grupo Real na Mídia",
+          texto_apoio: "",
         },
       };
     }
@@ -28,6 +29,7 @@ export async function getNaMidiaPosts() {
     const metadata = {
       exibir_sessao: firstPost?.metadata?.exibir_sessao ?? false,
       titulo_da_sessao: firstPost?.metadata?.titulo_da_sessao || "Grupo Real na Mídia",
+      texto_apoio: firstPost?.metadata?.texto_apoio || "",
     };
 
     const customData = data.map((post) => {
@@ -47,15 +49,8 @@ export async function getNaMidiaPosts() {
         },
         author: {
           node: {
-            name: post.yoast_head_json?.author || "Comunicação Grupo Real",
-            slug: post.yoast_head_json?.author
-              ? post.yoast_head_json.author
-                  .toLowerCase()
-                  .normalize("NFD")
-                  .replace(/[\u0300-\u036f]/g, "") // Remove acentos
-                  .replace(/[^a-z0-9]+/g, "-") // Substitui não alfa-numérico por hífens
-                  .replace(/^-+|-+$/g, "") // Remove hífens iniciais/finais
-              : "realh",
+            name: post.author?.author_name || "Comunicação Grupo Real",
+            slug: post.author?.author_link.split('/').pop() || "realh",
           },
         },
       };
@@ -72,6 +67,7 @@ export async function getNaMidiaPosts() {
       metadata: {
         exibir_sessao: false,
         titulo_da_sessao: "Grupo Real na Mídia",
+        texto_apoio: "",
       },
     };
   }
