@@ -142,10 +142,14 @@ function NaMidiaSlider({ fetchedPosts, sectionTitle = "Grupo Real na Mídia", te
       </h2>
       {textoApoio && (
         <div className="text-center text-fb_blue_main">
-          { textoApoio.includes("<") ? (
-            <p dangerouslySetInnerHTML={{ __html: textoApoio }} />
-          ) : (
-            <p>{textoApoio}</p>
+          { textoApoio && (
+            <div className="max-w-2xl mx-auto">
+              {textoApoio.includes("<") ? (
+                <p dangerouslySetInnerHTML={{ __html: textoApoio }} />
+              ) : (
+                <p>{textoApoio}</p>
+              )}
+            </div>
           )}
         </div>
       )}
