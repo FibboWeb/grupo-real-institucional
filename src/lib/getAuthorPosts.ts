@@ -42,7 +42,6 @@ export async function fetchAuthorPosts(slug: string, page = 1, postsPerPage = 6)
 
 export async function fetchAuthorData(authorSlug: string): Promise<any | null> {
 
-
   try {
     const { data } = await client.query({
       query: GET_AUTHOR_BY_SLUG,

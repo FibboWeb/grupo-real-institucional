@@ -19,12 +19,17 @@ import {
 } from "@/constants/home";
 import { getBanners } from "@/lib/getBanners";
 import { getLastPostsNoticiasHomeoPetAPI, getLastPostsNoticiasRealhAPI } from "@/lib/getLastPostsNoticias";
+import { getNaMidiaPosts } from "@/lib/getNaMidiaPosts";
 import { ArrowRight } from "lucide-react";
 import LastPostsNoticias from "../components/Layout/LastPostsNoticias";
+import NaMidiaSlider from "../components/Layout/NaMidiaSlider";
 
 export default async function Home() {
   const queriedLastPostsNoticiasAPI = (await getLastPostsNoticiasRealhAPI()) || [];
   const queriedLastPostsNoticiasHomeoPetAPI = (await getLastPostsNoticiasHomeoPetAPI()) || [];
+  const naMidiaData = await getNaMidiaPosts();
+  const queriedNaMidiaPosts = naMidiaData?.posts || [];
+  const naMidiaMetadata = naMidiaData?.metadata || { exibir_sessao: false, titulo_da_sessao: "Grupo Real na Mídia" };
 
   const { banners, configs } = await getBanners()
   const postsMesclados = [
@@ -65,6 +70,16 @@ export default async function Home() {
           <LastPostsNoticias fetchedLastPosts={postsMesclados ?? []} />
         </div>
       </section>
+      {naMidiaMetadata.exibir_sessao && (
+        <section className="max-w-full">
+          <div className="fb_container overflow-hidden" id="na-midia-slider">
+            <NaMidiaSlider 
+              fetchedPosts={queriedNaMidiaPosts ?? []} 
+              sectionTitle={naMidiaMetadata.titulo_da_sessao}
+            />
+          </div>
+        </section>
+      )}
       <section className="">
         {/* Nossas marcas */}
         <div className="w-full">

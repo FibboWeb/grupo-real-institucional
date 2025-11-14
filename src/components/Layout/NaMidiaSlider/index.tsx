@@ -1,18 +1,18 @@
 /**
- * @description Componente que renderiza um slider com as últimas postagens do blog
- * @param {LastPostsProps} props
- * @prop {Post[]} fetchedLastPosts - Array de posts
+ * @description Componente que renderiza um slider com posts do CPT "Na Mídia"
+ * @param {NaMidiaSliderProps} props
+ * @prop {Post[]} fetchedPosts - Array de posts
  * @returns {JSX.Element}
  * @example
- *  <LastPosts fetchedLastPosts={fetchedLastPosts} />
+ *  <NaMidiaSlider fetchedPosts={fetchedPosts} />
  */
 /**
- * @typedef {Object} LastPostsProps
- * @property {Post[]} fetchedLastPosts - Array de posts
+ * @typedef {Object} NaMidiaSliderProps
+ * @property {Post[]} fetchedPosts - Array de posts
  * @typedef {Object} Post
  * @property {string} id - ID do post
- * @property {string} title - T tulo do post
- * @property {string} content - Conte do do post
+ * @property {string} title - Título do post
+ * @property {string} content - Conteúdo do post
  * @property {string} date - Data do post
  * @property {string} slug - Slug do post
  * @property {string} featuredImage.node.sourceUrl - URL da imagem do post
@@ -26,18 +26,17 @@ import type { Post } from "@/types/post";
 import dynamic from "next/dynamic";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
-import BtnCallToAction from "../Buttons/BtnCallToAction/BtnCallToAction";
 import CardBlog from "../CardBlog";
-import "./lastPost.css";
+import "./naMidiaSlider.css";
 
 const Slider = dynamic(() => import("react-slick"), { ssr: false });
-interface LastPostsProps {
-  fetchedLastPosts: Post[];
+
+interface NaMidiaSliderProps {
+  fetchedPosts: Post[];
+  sectionTitle?: string;
 }
 
-
-function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
-
+function NaMidiaSlider({ fetchedPosts, sectionTitle = "Grupo Real na Mídia" }: NaMidiaSliderProps) {
   const settings = {
     slidesToShow: 5.7,
     slidesToScroll: 1,
@@ -134,30 +133,20 @@ function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
       },
     ],
   };
+
   return (
-    <div className="flex flex-col lg:flex-row gap-6 xl:gap-10">
-      <div className="last-post-slider sm:w-3/4" style={{ width: "98%" }}>
+    <div className="flex flex-col gap-6">
+      <h2 className="text-center text-fb_blue_main text-4xl font-bold py-8">
+        {sectionTitle}
+      </h2>
+      <div className="na-midia-slider" style={{ width: "100%" }}>
         <Slider {...settings}>
-          <div className="py-2 md:hidden">
-            <div className="flex flex-col justify-between w-full lg:w-80 min-h-[440px] rounded-2xl bg-fb_gradient text-white p-12">
-              <div className="content">
-                <h2 className="text-3xl font-bold">Notícias</h2>
-                <p className="pt-6">
-                  Fique por dentro de tudo o que acontece no mundo “Real”. Notícias, eventos, dicas e muito mais...
-                </p>
-              </div>
-              <div className="w-fit">
-                <BtnCallToAction ctaLink="/noticias" content="IR PARA O BLOG" color="fb_blue_button" />
-              </div>
-            </div>
-          </div>
-          {fetchedLastPosts &&
-            fetchedLastPosts.length > 0 &&
-            fetchedLastPosts.map((post: Post) => (
-              
+          {fetchedPosts &&
+            fetchedPosts.length > 0 &&
+            fetchedPosts.map((post: Post) => (
               <CardBlog
                 key={post.id || Math.random().toString()}
-                blogContext={post.categories?.nodes[0]?.name.toLowerCase() === "artigos" ? "/artigos" : "/noticias"}
+                blogContext="/na-midia"
                 postImage={post.featuredImage?.node.sourceUrl}
                 postImageAlt={post.featuredImage?.node.altText}
                 postLink={post.slug}
@@ -175,4 +164,5 @@ function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
   );
 }
 
-export default LastPostsNoticias;
+export default NaMidiaSlider;
+

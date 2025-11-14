@@ -1,0 +1,30 @@
+@media (max-width: 1200px) {
+  .na-midia-slider {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .na-midia-slider {
+    width: 100% !important;
+  }
+}
+
+.na-midia-slider {
+  margin-bottom: 30px;
+}
+
+.na-midia-slider .slick-dots {
+  bottom: -35px;
+}
+
+.na-midia-slider .slick-dots li button:before {
+  font-size: 12px !important;
+}
+
+@media screen and (max-width: 375px) {
+  .post-card {
+    width: 269px;
+  }
+}
+
