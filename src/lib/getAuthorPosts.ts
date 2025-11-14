@@ -1,5 +1,5 @@
 import { GET_AUTHOR_BY_SLUG } from "@/graphql/author";
-import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { client } from "./apollo-client";
 
 export async function fetchPosts(authorId, page = 1, postsPerPage = 6) {
   const res = await fetch(
@@ -41,10 +41,6 @@ export async function fetchAuthorPosts(slug: string, page = 1, postsPerPage = 6)
 }
 
 export async function fetchAuthorData(authorSlug: string): Promise<any | null> {
-  const client = new ApolloClient({
-    uri: `${process.env.NEXT_PUBLIC_WP_URL_GRAPH}`,
-    cache: new InMemoryCache(),
-  });
 
   try {
     const { data } = await client.query({
@@ -60,13 +56,3 @@ export async function fetchAuthorData(authorSlug: string): Promise<any | null> {
 
   }
 }
-
-//   const authorRes = await fetch(`${process.env.NEXT_PUBLIC_WP_URL_API}users?slug=${authorSlug}`);
-
-//   if (!authorRes.ok) {
-//     throw new Error("Failed to fetch author data. Check permissions and author slug.");
-//   }
-
-//   const authorData = await authorRes.json();
-//   return authorData.length > 0 ? authorData[0] : null;
-// }

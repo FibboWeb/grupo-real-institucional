@@ -46,8 +46,15 @@ export async function fetchPosts(categoryIds, page = 1, postsPerPage = 6) {
   
   const postsWithImages = data.map((post) => {
     const postImage = post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || null;
-    const postAuthor = post._embedded?.["author"]?.[0]?.name || null;
-    const postAuthorLink = post._embedded?.["author"]?.[0]?.slug || null;
+    const postAuthor = post.yoast_head_json?.author || null;
+    const postAuthorLink = post.yoast_head_json?.author ? post.yoast_head_json.author !== "Comunicação Grupo Real" ? post.yoast_head_json.author
+                  .toLowerCase()
+                  .normalize("NFD")
+                  .replace(/[\u0300-\u036f]/g, "")
+                  .replace(/[^a-z0-9]+/g, "-")
+                  .replace(/^-+|-+$/g, "")
+                : 'realh'
+              : 'realh';
     return {
       ...post,
       featured_media: postImage,

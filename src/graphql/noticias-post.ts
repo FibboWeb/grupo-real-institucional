@@ -7,6 +7,19 @@ export const GET_POST_DETAILS = gql`
         node {
           id
           name
+          avatar {
+            default
+            extraAttr
+            forceDefault
+            foundAvatar
+            height
+            isRestricted
+            rating
+            scheme
+            size
+            url
+            width
+          }
           slug
           description
           databaseId

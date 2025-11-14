@@ -23,7 +23,6 @@ type Props = {
  * - robots (index, follow, max-snippet, max-image-preview)
  * - openGraph (images)
  * - alternates (canonical)
- *
  * Extends parent metadata with openGraph images and alternates canonical URL
  *
  * @param {Props} _props - not used
@@ -35,7 +34,6 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
   const slug = (await params).artigos;
   const pageParam = (await searchParams).page;
   const page = parseInt(Array.isArray(pageParam) ? pageParam[0] : pageParam || "1");
-  // fetch data
   const infos = await fetchYoastSEO(slug, "posts");
 
   if (!infos) {
@@ -66,7 +64,6 @@ export default async function ArtigosPage({ params }) {
   const postSlug = (await params).artigos[0];
   const fetchedPost = await getPostDetails(postSlug);
   const post = fetchedPost.props.post;
-
   if (!postSlug) {
     return notFound();
   }
@@ -115,6 +112,7 @@ export default async function ArtigosPage({ params }) {
           />
           <AuthorBox
             authorName={post.author.node.name || "Comunicação Grupo Real"}
+            authorAvatar={post.author.node.avatar?.url || "/logo-real-h.png"}
             authorBio={post.author.node?.description || ""}
             isSinglePage
             authorLink={post.author.node.slug}
