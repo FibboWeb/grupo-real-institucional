@@ -40,7 +40,7 @@ export async function getLastPostsNoticiasRealhAPI() {
     }
 
     const data = await response.json();
-
+    console.log("data realh", data);
     const customData = data.map(post => {
       return {
         ...post,
@@ -57,15 +57,8 @@ export async function getLastPostsNoticiasRealhAPI() {
         },
         author: {
           node: {
-            name: post.yoast_head_json?.author || 'Comunicação Grupo Real',
-            slug: post.yoast_head_json?.author
-              ? post.yoast_head_json.author
-                  .toLowerCase()
-                  .normalize("NFD")
-                  .replace(/[\u0300-\u036f]/g, "") // Remove acentos
-                  .replace(/[^a-z0-9]+/g, "-")    // Substitui não alfa-numérico por hífens
-                  .replace(/^-+|-+$/g, "")        // Remove hífens iniciais/finais
-              : 'realh',
+            name: post.author.node.author_name || 'Comunicação Grupo Real',
+            slug: post.author.node.author_link || 'realh',
           }
         }
       }
@@ -95,6 +88,7 @@ export async function getLastPostsNoticiasHomeoPetAPI() {
     }
 
     const data = await response.json();
+    console.log("data", data);
     const customData = data.map(post => {
       return {
         ...post,
@@ -112,15 +106,8 @@ export async function getLastPostsNoticiasHomeoPetAPI() {
         },
         author: {
           node: {
-            name: post.yoast_head_json?.author || 'Comunicação Grupo Real',
-            slug: post.yoast_head_json?.author
-              ? post.yoast_head_json.author
-                  .toLowerCase()
-                  .normalize("NFD")
-                  .replace(/[\u0300-\u036f]/g, "") // Remove acentos
-                  .replace(/[^a-z0-9]+/g, "-")    // Substitui não alfa-numérico por hífens
-                  .replace(/^-+|-+$/g, "")        // Remove hífens iniciais/finais
-              : 'realh',
+            name: post.author.node.author_name || 'Comunicação Grupo Real',
+            slug: post.author.node.author_link || 'realh',
           }
         }
       }

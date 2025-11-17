@@ -35,6 +35,7 @@ interface LastPostsProps {
   fetchedLastPosts: Post[];
 }
 
+
 function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
 
   const settings = {

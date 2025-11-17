@@ -47,15 +47,8 @@ export async function getNaMidiaPosts() {
         },
         author: {
           node: {
-            name: post.yoast_head_json?.author || "Comunicação Grupo Real",
-            slug: post.yoast_head_json?.author
-              ? post.yoast_head_json.author
-                  .toLowerCase()
-                  .normalize("NFD")
-                  .replace(/[\u0300-\u036f]/g, "") // Remove acentos
-                  .replace(/[^a-z0-9]+/g, "-") // Substitui não alfa-numérico por hífens
-                  .replace(/^-+|-+$/g, "") // Remove hífens iniciais/finais
-              : "realh",
+            name: post.author.author_name || "Comunicação Grupo Real",
+            slug: post.author.author_link || "realh",
           },
         },
       };
