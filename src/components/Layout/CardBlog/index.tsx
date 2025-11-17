@@ -92,7 +92,7 @@ function CardBlog({
           </div>
         </Link>
         <div className="card-post-content p-6">
-          {postAuthorLink && postAuthorLink.includes('ivan') ? (
+          {postAuthorLink && postAuthorLink.includes('ivan') || postAuthorLink.includes('dener-jornalismo')  ? (
             <div
               className="author-info flex gap-2 text-sm font-medium text-fb_gray"
             >
@@ -101,7 +101,7 @@ function CardBlog({
             </div>
           ) : (
             <Link
-              href={`/author/realh`}
+              href={`author/${postAuthorLink}`}
               className="author-info flex gap-2 text-sm font-medium text-fb_gray"
             >
               <Image src={"/author-icon.svg"} alt={"Post author link"} width={16} height={16} className="w-5 h-5" />
