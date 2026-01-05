@@ -36,7 +36,6 @@ export default async function Home() {
     ...queriedLastPostsNoticiasAPI,
     ...queriedLastPostsNoticiasHomeoPetAPI
   ].filter((item) => item !== null && item !== undefined)
-  console.log(postsMesclados[7])
   return (
     <div className="flex flex-col gap-fb_space-section">
       <section>
@@ -57,9 +56,7 @@ export default async function Home() {
       <section className="fb_container rounded-lg">
         <BannerHome banners={banners} configs={configs} />
       </section>
-      <section>
-        <ValuesSection values={sectionValoresInfo1} />
-      </section>
+
       {/* <section className="max-w-full">
         <div className="fb_container overflow-hidden" id="last-posts-noticias">
           <LastPostsNoticias fetchedLastPosts={postsMesclados ?? []} />

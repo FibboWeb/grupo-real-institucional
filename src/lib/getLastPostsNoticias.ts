@@ -40,7 +40,6 @@ export async function getLastPostsNoticiasRealhAPI() {
     }
 
     const data = await response.json();
-    console.log("data realh", data);
     const customData = data.map(post => {
       return {
         ...post,
@@ -88,7 +87,6 @@ export async function getLastPostsNoticiasHomeoPetAPI() {
     }
 
     const data = await response.json();
-    console.log("data", data);
     const customData = data.map(post => {
       return {
         ...post,

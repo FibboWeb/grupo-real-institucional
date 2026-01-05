@@ -40,7 +40,6 @@ export default function BannerHome({ banners, configs }: BannerHomeProps) {
 
 // Limpa items vazios do array
 const bannersFiltered = banners.filter(banner => banner.mobile.url_imagem !== "" && banner.desktop.url_imagem !== "");
-console.log(bannersFiltered);
 
   // Se não há banners ou array vazio, não renderiza nada
   if (!banners || banners.length === 0) {
