@@ -1,6 +1,5 @@
 export async function fetchCategoryId(slug) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_WP_URL_API}categories?slug=${slug}`);
-  console.log(res.url);
 
   if (!res.ok) {
     throw new Error("Erro ao buscar o ID da categoria");
