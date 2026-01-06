@@ -7,24 +7,24 @@ const OurValuesContent = [
   {
     img: PropositoIcon,
     title: "Propósito",
-    content: "Gerar resultados, saúde e bem-estar a todos, através de soluções inovadoras e sustentáveis.",
+    content: "Transformar o mundo em um lugar mais sustentável e saudável.",
   },
   {
     img: MissaoIcon,
     title: "Missão",
     content:
-      "Atuar de forma inovadora e sustentável na nutrição e saúde animal, agregando valor e bem-estar a sociedade.",
+      "Alcançar a excelência em todos os nossos negócios, valorizando as pessoas e priorizando os resultados, por meio das melhores soluções, parcerias sólidas e com a criação de oportunidades para um futuro melhor para todos.",
   },
   {
     img: VisaoIcon,
     title: "Visão",
     content:
-      "Ser reconhecida como uma organização brasileira com alcance internacional na nutrição e saúde integral, ágil, inovadora, competitiva, com parcerias sólidas e equipe focada nos resultados e na lucratividade.",
+      "Consolidar as marcas do grupo como referências em seus segmentos de atuação, comprometendo-se a gerar resultados positivos e promover a sustentabilidade para clientes e parceiros.",
   },
   {
     img: ValoresIcon,
     title: "Valores",
-    content: "Honestidade, Lucratividade, Inovação, Competitividade, Sustentabilidade, Fraternidade.",
+    content: "Honestidade; Lucratividade; Inovação; Competitividade; Sustentabilidade; Fraternidade.",
   },
 ];
 
