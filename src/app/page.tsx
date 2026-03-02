@@ -35,7 +35,19 @@ export default async function Home() {
   const postsMesclados = [
     ...queriedLastPostsNoticiasAPI,
     ...queriedLastPostsNoticiasHomeoPetAPI
-  ].filter((item) => item !== null && item !== undefined)
+  ]
+    .filter((item) => item !== null && item !== undefined)
+    .sort((a, b) => {
+      const dateA = new Date(a.date);
+      const dateB = new Date(b.date);
+
+      if (isNaN(dateA.getTime()) || isNaN(dateB.getTime())) {
+        return 0;
+      }
+
+      return dateB.getTime() - dateA.getTime();
+    })
+    .slice(0, 8)
   return (
     <div className="flex flex-col gap-fb_space-section">
       <section>
