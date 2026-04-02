@@ -85,6 +85,7 @@ export const nossasMarcasInfos = [
     badge_text: "NUTRIÇÃO",
     cta: {
       link: "https://www.realh.com.br/",
+      target: "_blank",
       anchor: "COMPRE ONLINE",
     },
   },

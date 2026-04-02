@@ -58,6 +58,7 @@ const menuItems: MenuItems[] = [
             node: {
               id: "2-1",
               url: "https://www.realh.com.br/",
+              target: "_blank",
               label: "Real H Nutrição Animal",
               subtitle: "Nutrição para animais de produção",
             },

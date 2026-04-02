@@ -17,7 +17,8 @@ export const nossasMarcasInfos = [
     badge_text: "NUTRIÇÃO",
     cta: {
       link: "https://www.realh.com.br/",
-      anchor: "Veja noso catálogo",
+      anchor: "Veja nosso catálogo",
+      target: "_blank",
     },
   },
   {
@@ -29,7 +30,8 @@ export const nossasMarcasInfos = [
     badge_text: "SAÚDE",
     cta: {
       link: "https://www.cmrsaude.com.br/",
-      anchor: "Veja noso catálogo",
+      anchor: "Veja nosso catálogo",
+      target: "_blank",
     },
     bg_image: "bg-cmr-saude",
     border: true,
