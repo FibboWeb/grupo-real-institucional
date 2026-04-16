@@ -110,7 +110,7 @@ export default async function Home() {
           <BannerCta />
         </div>
       </section>
-      <section>
+      <section id="home-valores-natureza">
         <ValuesSection values={sectionValoresInfo2} />
       </section>
       <section className="flex flex-col gap-4">

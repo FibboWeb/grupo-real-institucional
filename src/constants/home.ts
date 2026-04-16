@@ -141,9 +141,9 @@ export const sectionValoresInfo2 = [
     border: false,
     // icon: imgIcon02,
     session_numbers: [
-      { qtde: 1_400_000, text: "de lixo destinado para a reciclagem." },
-      { qtde: 2_000, text: "de investimentos em energia fotovoltaica. " },
-      { qtde: 18, text: "Anos De atuação do Ciclos Reciclagem" },
+      { qtde: 1_600_000, text: "de lixo destinado para a reciclagem." },
+      { qtde: 2_000_000, text: "de investimentos em energia fotovoltaica. " },
+      { qtde: 19, text: "Anos De atuação do Ciclos Reciclagem" },
     ] as LoadNumbersProps[],
     cta: {
       link: "/ambiental",
