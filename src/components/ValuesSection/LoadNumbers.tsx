@@ -13,9 +13,9 @@ type LoadNumbersInterface = {
 // Função para formatar o número
 const formatNumber = (num: number): string => {
   if (num >= 1_000_000_000) {
-    return `+ ${(num / 1_000_000_000).toFixed(0)} Bi${num >= 2_000_000_000 ? "s" : ""}`;
+    return `+ ${(num / 1_000_000_000).toFixed(0)} Bi`;
   } else if (num >= 1_000_000) {
-    return `+ ${(num / 1_000_000).toFixed(1)} Mi${num >= 2_000_000 ? "s" : ""}`;
+    return `+ ${(num / 1_000_000).toFixed(1)} Mi`;
   } else if (num >= 1_000) {
     return `+ ${(num / 1_000).toFixed(1)} Mil`;
   } else if (num <= 100 && num >= 20) {
