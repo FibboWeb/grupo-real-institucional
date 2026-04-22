@@ -5,8 +5,8 @@ import colaboradoreClientesIcon from "@/public/icons/colaboradores-e-clientes.sv
 const BigNumbersItems = [
   {
     icon: residuosIcon,
-    title: "1.315.980 Kg",
-    content: "De resíduos retiradosdo meio ambiente",
+    title: "1.600.000 Kg",
+    content: "De resíduos retirados do meio ambiente",
   },
   {
     icon: energiaIcon,
@@ -15,7 +15,7 @@ const BigNumbersItems = [
   },
   {
     icon: colaboradoreClientesIcon,
-    title: "18 Anos",
+    title: "19 Anos",
     content: "Um projeto que envolve nossos colaboradores e clientes",
   },
 ];
