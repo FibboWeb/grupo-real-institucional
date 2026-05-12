@@ -25,6 +25,21 @@ interface PostsByCategoryProps {
   clampPostContent?: boolean;
 }
 
+/** Caixa única para selos/logos — altura fixa + object-fit para não distorcer. */
+function PostFeaturedImage({ src, alt }: { src: StaticImageData; alt: string }) {
+  return (
+    <div className="relative h-[200px] w-full shrink-0 overflow-hidden rounded-lg bg-white shadow-sm ring-1 ring-neutral-900/5 sm:h-[228px]">
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes="(max-width: 768px) min(92vw, 400px), (max-width: 1024px) 42vw, 31vw"
+        className="object-contain p-4 sm:p-5"
+      />
+    </div>
+  );
+}
+
 const settings = {
   infinite: true,
   speed: 1000,
@@ -95,9 +110,7 @@ export default function PostsByCategory({
                       <Image src={post.icon} alt="" className="bg-fb_green p-4 rounded-full" width={80} />
                     </div>
                   ) : (
-                    <div>
-                      <Image src={post.img} alt="" className="rounded-lg w-full" />
-                    </div>
+                    <PostFeaturedImage src={post.img} alt="" />
                   )}
                   <div className="pt-4">
                     <h3 className="text-[#373737] font-bold text-[28px]">{post.title}</h3>
@@ -109,11 +122,7 @@ export default function PostsByCategory({
                     </p>
                   </div>
                 </div>
-                {post.icon && (
-                  <div>
-                    <Image src={post.img} alt="" className="rounded-lg w-full" />
-                  </div>
-                )}
+                {post.icon && <PostFeaturedImage src={post.img} alt="" />}
               </div>
             </a>
           ))}
