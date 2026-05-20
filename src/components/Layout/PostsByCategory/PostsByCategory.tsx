@@ -25,6 +25,95 @@ interface PostsByCategoryProps {
   clampPostContent?: boolean;
 }
 
+/** Impede o Slick de capturar o gesto quando o usuário interage com texto (seleção/cópia). */
+function SelectableTextZone({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  const stopCarouselDrag = (e: React.MouseEvent | React.TouchEvent) => {
+    e.stopPropagation();
+  };
+
+  return (
+    <div
+      className={className}
+      onMouseDown={stopCarouselDrag}
+      onTouchStart={stopCarouselDrag}
+    >
+      {children}
+    </div>
+  );
+}
+
+function PostContent({
+  content,
+  className,
+}: {
+  content: string;
+  className?: string;
+}) {
+  const paragraphs = content.split(/\n+/).filter((p) => p.trim());
+
+  const selectClass = "select-text";
+
+  if (paragraphs.length <= 1) {
+    return <p className={`${selectClass} ${className ?? ""}`}>{paragraphs[0] ?? content}</p>;
+  }
+
+  return (
+    <div className={className}>
+      {paragraphs.map((paragraph, index) => (
+        <p key={index} className={`${selectClass} ${index > 0 ? "mt-4" : ""}`}>
+          {paragraph}
+        </p>
+      ))}
+    </div>
+  );
+}
+
+function PostCard({
+  post,
+  clampPostContent,
+}: {
+  post: Post;
+  clampPostContent: boolean;
+}) {
+  const contentClass = `text-[#666] font-medium text-lg leading-[27px] ${clampPostContent ? "line-clamp-5" : ""} overflow-hidden`;
+
+  const card = (
+    <div className="flex flex-col gap-7 border border-[#F7F6EE] border-t-[5px] border-t-fb_green rounded-2xl bg-[#F7F6EE] py-6 px-5 hover:border hover:border-t-[5px] hover:border-fb_green select-text">
+      <div>
+        {post.icon ? (
+          <div>
+            <Image src={post.icon} alt="" className="bg-fb_green p-4 rounded-full" width={80} />
+          </div>
+        ) : (
+          <PostFeaturedImage src={post.img} alt="" />
+        )}
+        <SelectableTextZone className="pt-4">
+          <h3 className="select-text text-[#373737] font-bold text-[28px]">{post.title}</h3>
+          <div className="h-1 w-20 bg-fb_green mt-4 mb-4" />
+          <PostContent content={post.content} className={contentClass} />
+        </SelectableTextZone>
+      </div>
+      {post.icon && <PostFeaturedImage src={post.img} alt="" />}
+    </div>
+  );
+
+  if (post.link) {
+    return (
+      <a href={post.link} className="max-w-[95%] block h-full">
+        {card}
+      </a>
+    );
+  }
+
+  return <div className="max-w-[95%] h-full">{card}</div>;
+}
+
 /** Caixa única para selos/logos — altura fixa + object-fit para não distorcer. */
 function PostFeaturedImage({ src, alt }: { src: StaticImageData; alt: string }) {
   return (
@@ -102,29 +191,7 @@ export default function PostsByCategory({
 
         <Slider {...settings}>
           {posts.map((post, index) => (
-            <a href={post.link} key={index} className="max-w-[95%]">
-              <div className="flex flex-col gap-7 border border-[#F7F6EE] border-t-[5px] border-t-fb_green rounded-2xl bg-[#F7F6EE] py-6 px-5 hover:border hover:border-t-[5px] hover:border-fb_green">
-                <div>
-                  {post.icon ? (
-                    <div>
-                      <Image src={post.icon} alt="" className="bg-fb_green p-4 rounded-full" width={80} />
-                    </div>
-                  ) : (
-                    <PostFeaturedImage src={post.img} alt="" />
-                  )}
-                  <div className="pt-4">
-                    <h3 className="text-[#373737] font-bold text-[28px]">{post.title}</h3>
-                    <div className={`h-1 w-20 bg-fb_green mt-4 mb-4`}></div>
-                    <p
-                      className={`text-[#666] font-medium text-lg leading-[27px] ${clampPostContent ? "line-clamp-5" : ""} overflow-hidden`}
-                    >
-                      {post.content}
-                    </p>
-                  </div>
-                </div>
-                {post.icon && <PostFeaturedImage src={post.img} alt="" />}
-              </div>
-            </a>
+            <PostCard key={index} post={post} clampPostContent={clampPostContent} />
           ))}
         </Slider>
       </div>

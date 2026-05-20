@@ -29,9 +29,14 @@
   display: flex;
   height: auto;
 }
-.slick-track .slick-slide a {
+.slick-track .slick-slide > div {
   height: 100%;
 }
-.slick-track .slick-slide a > div {
+.slick-track .slick-slide > div > a,
+.slick-track .slick-slide > div > div {
   height: 100%;
+}
+.slick-track .slick-slide .select-text {
+  user-select: text;
+  -webkit-user-select: text;
 }
