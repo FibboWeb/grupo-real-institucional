@@ -118,7 +118,7 @@ export default async function Home() {
         <SliderTestimonials testimonial={testimoniaslInfo} />
       </section>
       <section className="fb_container">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 mt-8 -mb-4 lg:my-2">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 mt-8 -mb-4 lg:mb-2">
           <div className="flex flex-col items-center gap-6 text-center">
             <h3 className="text-xl md:text-2xl font-bold flex items-center justify-center px-2">
               CRM Comercial
