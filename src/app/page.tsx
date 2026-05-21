@@ -117,36 +117,44 @@ export default async function Home() {
         <h2 className="text-center text-fb_blue_main text-4xl font-bold">Depoimentos</h2>
         <SliderTestimonials testimonial={testimoniaslInfo} />
       </section>
-      <section className="fb_container flex flex-col md:flex-row justify-around items-center gap-5 md:gap-0 mt-2 -mb-4 lg:my-2">
-        <div className="flex flex-col justify-start items-center mt-4 gap-6">
-          <h3 className="text-xl md:text-2xl font-bold text-center">Acesse nosso CRM Comercial</h3>
-          <BtnCallToAction
-            ctaLink="https://realh-crmagro.viasoftcloud.com.br/crm-web/login.xhtml"
-            content="Acesso Restrito"
-            color="fb_blue_button"
-            classCssForBTN="text-white w-fit hover:text-black text-sm lg:text-md"
-            showIcon={false}
-          />
-        </div>
-        <div className="flex flex-col justify-start items-center mt-4 gap-6">
-          <h3 className="text-xl md:text-2xl font-bold text-center">Acesse nosso Portal de Gestão e Indicadores</h3>
-          <BtnCallToAction
-            ctaLink="https://bi.realh.com.br/"
-            content="Acesso Restrito"
-            color="fb_blue_button"
-            classCssForBTN="text-white w-fit hover:text-black text-sm lg:text-md"
-            showIcon={false}
-          />
-        </div>
-        <div className="flex flex-col justify-start items-center mt-4 gap-6">
-          <h3 className="text-xl md:text-2xl font-bold text-center">Escola de negócios Grupo Real</h3>
-          <BtnCallToAction
-            ctaLink="https://integra.realh.com.br/login/"
-            content="Acesso Restrito"
-            color="fb_blue_button"
-            classCssForBTN="text-white w-fit hover:text-black text-sm lg:text-md"
-            showIcon={false}
-          />
+      <section className="fb_container">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 mt-8 -mb-4 lg:my-2">
+          <div className="flex flex-col items-center gap-6 text-center">
+            <h3 className="text-xl md:text-2xl font-bold flex items-center justify-center px-2">
+              CRM Comercial
+            </h3>
+            <BtnCallToAction
+              ctaLink="https://realh-crmagro.viasoftcloud.com.br/crm-web/login.xhtml"
+              content="Acesso Restrito"
+              color="fb_blue_button"
+              classCssForBTN="text-white w-fit hover:text-black text-sm lg:text-md"
+              showIcon={false}
+            />
+          </div>
+          <div className="flex flex-col items-center gap-6 text-center">
+            <h3 className="text-xl md:text-2xl font-bold flex items-center justify-center px-2">
+              Dashboard Comercial (B.I.)
+            </h3>
+            <BtnCallToAction
+              ctaLink="https://bi.realh.com.br/"
+              content="Acesso Restrito"
+              color="fb_blue_button"
+              classCssForBTN="text-white w-fit hover:text-black text-sm lg:text-md"
+              showIcon={false}
+            />
+          </div>
+          <div className="flex flex-col items-center gap-6 text-center">
+            <h3 className="text-xl md:text-2xl font-bold flex items-center justify-center px-2">
+              Escola de negócios Grupo Real
+            </h3>
+            <BtnCallToAction
+              ctaLink="https://integra.realh.com.br/login/"
+              content="Acesso Restrito"
+              color="fb_blue_button"
+              classCssForBTN="text-white w-fit hover:text-black text-sm lg:text-md"
+              showIcon={false}
+            />
+          </div>
         </div>
       </section>
       <section className="fb_container">
