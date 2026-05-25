@@ -65,8 +65,8 @@ async function Footer() {
           <div className="flex flex-row flex-wrap justify-center items-center mb-8 gap-5 lg:gap-10">
             <Image
               className="max-sm:w-16"
-              src={"/images/selos/selo-gptw.webp"}
-              width={102}
+              src={"/images/selos/selo-gptw.png"}
+              width={50}
               height={80}
               alt={"Selo GPTW"}
             />

@@ -1,29 +1,24 @@
-import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
+
+const cacheOptions = {
+  watchQuery: {
+    fetchPolicy: "no-cache" as const,
+  },
+  query: {
+    fetchPolicy: "no-cache" as const,
+  },
+};
 
 // Cliente para o GraphQL padrão
 export const client = new ApolloClient({
-  uri: process.env.NEXT_PUBLIC_WP_URL_GRAPH,
-  cache: new InMemoryCache({}), // remover cache do cliente
-  defaultOptions: {
-    watchQuery: {
-      fetchPolicy: 'no-cache',
-    },
-    query: {
-      fetchPolicy: 'no-cache',
-    },
-  },
+  link: new HttpLink({ uri: process.env.NEXT_PUBLIC_WP_URL_GRAPH }),
+  cache: new InMemoryCache({}),
+  defaultOptions: cacheOptions,
 });
 
 // Cliente para o GraphQL do Homeopet
 export const clientHomeopet = new ApolloClient({
-  uri: process.env.NEXT_PUBLIC_WP_URL_GRAPH_HOMEOPET,
+  link: new HttpLink({ uri: process.env.NEXT_PUBLIC_WP_URL_GRAPH_HOMEOPET }),
   cache: new InMemoryCache({}),
-  defaultOptions: {
-    watchQuery: {
-      fetchPolicy: 'no-cache',
-    },
-    query: {
-      fetchPolicy: 'no-cache',
-    },
-  },
+  defaultOptions: cacheOptions,
 });
