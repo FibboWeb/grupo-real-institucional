@@ -16,8 +16,8 @@ function CardSmBlog(CardBlogProps: CardBlogProps) {
         <Link className="w-full" href={CardBlogProps.postLink || ""}>
           <Image
             className="min-w-[154px] h-[110px] object-cover rounded-2xl"
-            src={CardBlogProps.postImage || ""}
-            alt={CardBlogProps.postImageAlt || ""}
+            src={CardBlogProps.postImage || "/images/capa-post-test.webp"}
+            alt={CardBlogProps.postImageAlt || CardBlogProps.postTitle || "Imagem do post"}
             width={154}
             height={110}
           />

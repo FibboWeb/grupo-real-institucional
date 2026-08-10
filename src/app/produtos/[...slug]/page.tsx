@@ -7,6 +7,7 @@ import { fetchYoastSEO } from "@/lib/getCategorias";
 import { getProductPerSlug, getProducts } from "@/lib/getProducts";
 import image03 from "@/public/banners/BANNER_INFERIOR_HOMEOPET.webp";
 import image02 from "@/public/banners/BANNER_INFERIOR_CMR_SAUDE.webp";
+import placeholder from "@/public/images/img-teste.jpeg";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -83,11 +84,11 @@ export default async function PageProduct({ params }) {
           <div className="w-full">
             <Suspense fallback={<div className="w-full h-full bg-gray-300 animated-pulse rounded-lg"></div>}>
               <Image
-                src={product[0]._embedded["wp:featuredmedia"][0].link}
+                src={product[0]?._embedded?.["wp:featuredmedia"]?.[0]?.source_url || placeholder}
                 width={500}
                 height={500}
                 sizes="(max-width: 768px) 100vw, 768px"
-                alt={`$Imagem do produto ${product[0]?.title?.rendered}`}
+                alt={`Imagem do produto ${product[0]?.title?.rendered}`}
                 className="rounded-lg bg-[#E5E7E9] object-cover mx-auto"
                 loading="eager"
               />

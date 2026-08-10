@@ -99,14 +99,14 @@ function LastPostsEventos({ fetchedLastPosts }: LastPostsProps) {
             fetchedLastPosts.map((post: Post) => (
               <CardBlog
                 key={post.id}
-                postImage={post.featuredImage.node.sourceUrl}
-                postImageAlt={post.featuredImage.node.altText}
+                postImage={post.featuredImage?.node?.sourceUrl}
+                postImageAlt={post.featuredImage?.node?.altText}
                 postLink={post.slug}
                 postTitle={post.title}
                 postDescription={{ __html: post.content }}
                 postDate={post.date}
-                postAuthor={post.author.node.name}
-                postAuthorLink={post.author.node.slug}
+                postAuthor={post.author?.node?.name}
+                postAuthorLink={post.author?.node?.slug}
                 isSlider
               />
             ))}
