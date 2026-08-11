@@ -37,7 +37,7 @@ function CardSmBlog({
           <Image
             className="min-w-[154px] h-[110px] object-cover rounded-2xl"
             src={postImage || "/images/capa-post-test.webp"}
-            alt={postImageAlt || postTitle || "Imagem do post"}
+            alt={postImageAlt || (typeof postTitle === "string" ? postTitle : undefined) || "Imagem do post"}
             width={154}
             height={110}
           />
