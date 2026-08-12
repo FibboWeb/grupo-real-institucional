@@ -9,15 +9,35 @@ interface CardBlogProps {
   postTitle?: string;
 }
 
-function CardSmBlog(CardBlogProps: CardBlogProps) {
+function buildPostHref(blogContext?: string, postLink?: string) {
+  if (!postLink) return "#";
+
+  // Já veio como URL absoluta ou caminho completo
+  if (postLink.startsWith("http") || postLink.startsWith("/")) {
+    return postLink;
+  }
+
+  const base = (blogContext || "/noticias").replace(/\/$/, "");
+  return `${base}/${postLink}`;
+}
+
+function CardSmBlog({
+  blogContext,
+  postImage,
+  postImageAlt,
+  postLink,
+  postTitle,
+}: CardBlogProps) {
+  const href = buildPostHref(blogContext, postLink);
+
   return (
     <div className="card-sm-post flex flex-row flex-nowrap gap-3">
       <div className="image-sm">
-        <Link className="w-full" href={CardBlogProps.postLink || ""}>
+        <Link className="w-full" href={href}>
           <Image
             className="min-w-[154px] h-[110px] object-cover rounded-2xl"
-            src={CardBlogProps.postImage || ""}
-            alt={CardBlogProps.postImageAlt || ""}
+            src={postImage || "/images/capa-post-test.webp"}
+            alt={postImageAlt || (typeof postTitle === "string" ? postTitle : undefined) || "Imagem do post"}
             width={154}
             height={110}
           />
@@ -26,9 +46,9 @@ function CardSmBlog(CardBlogProps: CardBlogProps) {
       <div className="content-sm">
         <Link
           className="text-fb_gray_bread hover:text-fb_blue duration-300 font-semibold"
-          href={(CardBlogProps.blogContext || "") + (CardBlogProps.postLink || "")}
+          href={href}
         >
-          <p className="line-clamp-4 min-h-[70px]">{CardBlogProps.postTitle || ""}</p>
+          <p className="line-clamp-4 min-h-[70px]">{postTitle || ""}</p>
         </Link>
       </div>
     </div>

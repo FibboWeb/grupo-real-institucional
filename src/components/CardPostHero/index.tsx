@@ -17,8 +17,8 @@ function CardPostHero({
     <div className={`relative rounded-2xl ${!customClasses ? "h-full" : customClasses}`}>
       <Image
         className={`h-full w-full rounded-2xl object-cover ${!customClasses ? "h-full" : customClasses}`}
-        src={postImage}
-        alt={postImageAlt}
+        src={postImage || "/images/capa-post-test.webp"}
+        alt={postImageAlt || (typeof postTitle === "string" ? postTitle : undefined) || "Imagem do post"}
         width={200}
         height={200}
         loading={loading ? "eager" : "lazy"}

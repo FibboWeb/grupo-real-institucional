@@ -108,18 +108,22 @@ export const GetPostMostViewedAPI = async () => {
 
   const data = await response.json();
 
+  const FALLBACK_POST_IMAGE = "/images/capa-post-test.webp";
+
   const customData = data.map((post) => {
+    const featuredMedia = post._embedded?.["wp:featuredmedia"]?.[0];
+
     return {
       ...post,
       title: post.title.rendered,
       content: post.content.rendered,
       categories: {
-        nodes: post._embedded["wp:term"][0],
+        nodes: post._embedded?.["wp:term"]?.[0] ?? [],
       },
       featuredImage: {
         node: {
-          sourceUrl: post._embedded["wp:featuredmedia"][0].source_url,
-          altText: post._embedded["wp:featuredmedia"][0].alt_text,
+          sourceUrl: featuredMedia?.source_url || FALLBACK_POST_IMAGE,
+          altText: featuredMedia?.alt_text || post.title.rendered,
         }
       },
       author: {

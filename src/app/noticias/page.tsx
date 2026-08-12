@@ -37,7 +37,9 @@ export async function generateMetadata({ params, searchParams }: Props) {
     openGraph: {
       title: `${infos.title}${page === 1 ? "" : ` - Página ${page}`}`,
       description: infos.description,
-      images: [infos.og_image ? infos.og_image[0].url : ""],
+      ...(infos.og_image?.[0]?.url
+        ? { images: [infos.og_image[0].url] }
+        : {}),
     },
     alternates: {
       canonical: `https://gruporealbr.com.br/noticias${page === 1 ? "" : `?page=${page}`}`,
@@ -93,7 +95,7 @@ export default async function Noticias({ searchParams }) {
                 {heroPosts.slice(1).map((post, index) => (
                   <CardPostHero
                     key={index}
-                    postImage={post.featuredImage?.node?.sourceUrl}
+                    postImage={post.featuredImage?.node?.sourceUrl || "/images/capa-post-test.webp"}
                     postImageAlt={post.featured_media?.alt_text || "Imagem do post"}
                     postLink={post.slug}
                     postCategory={post.categories.nodes[0].name}

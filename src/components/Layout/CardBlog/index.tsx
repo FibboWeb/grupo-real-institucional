@@ -30,6 +30,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { CardBlogProps } from "@/types/post";
+import { truncateHtmlText } from "@/lib/utils";
 import "./index.css";
 
 function CardBlog({
@@ -44,19 +45,6 @@ function CardBlog({
   postAuthorLink,
   isSlider,
 }: CardBlogProps) {
-  const truncateDescription = (description: string, limit: number = 100) => {
-    if (!description || description === "") return "";
-    const plainText = description.replace(/<\/?[^>]+(>|$)/g, "");
-    const cleanedText = plainText.replace(/\n/g, " ").replace(/\s+/g, " ").trim();
-    if (cleanedText.length > limit) {
-      const truncatedText = cleanedText.substring(0, limit);
-      const lastSpaceIndex = truncatedText.lastIndexOf(" ");
-      return truncatedText.substring(0, lastSpaceIndex) + "...";
-    }
-
-    return cleanedText;
-  };
-
   const formatDate = (date: string, type: "day" | "month") => {
     const dateObj = new Date(date);
     if (type === "day") {
@@ -111,9 +99,7 @@ function CardBlog({
           <Link href={fullLink} target={`${fullLink.includes('http') ? "_blank" : "_self"}`} className="post-link">
             <p className="text-lg leading-5 font-bold mt-4 text-fb_blue_main line-clamp-3 min-h-[60px]">{postTitle}</p>
             <div className="post-description mt-2 text-[15px] min-h-16 leading-5 text-fb_gray">
-              {postDescription && (
-                <p dangerouslySetInnerHTML={{ __html: truncateDescription(postDescription.__html, 100) }} />
-              )}
+              {postDescription && <p>{truncateHtmlText(postDescription.__html, 100)}</p>}
             </div>
           </Link>
         </div>
