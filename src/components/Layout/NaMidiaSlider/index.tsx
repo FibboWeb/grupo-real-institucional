@@ -6,24 +6,11 @@
  * @example
  *  <NaMidiaSlider fetchedPosts={fetchedPosts} />
  */
-/**
- * @typedef {Object} NaMidiaSliderProps
- * @property {Post[]} fetchedPosts - Array de posts
- * @typedef {Object} Post
- * @property {string} id - ID do post
- * @property {string} title - Título do post
- * @property {string} content - Conteúdo do post
- * @property {string} date - Data do post
- * @property {string} slug - Slug do post
- * @property {string} featuredImage.node.sourceUrl - URL da imagem do post
- * @property {string} featuredImage.node.altText - Texto alternativo da imagem do post
- * @property {string} author.node.name - Nome do autor do post
- * @property {string} author.node.slug - Slug do autor do post
- */
 
 "use client";
 import type { Post } from "@/types/post";
 import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import CardBlog from "../CardBlog";
@@ -36,7 +23,31 @@ interface NaMidiaSliderProps {
   sectionTitle?: string;
 }
 
+function renderMidiaCard(post: Post) {
+  return (
+    <CardBlog
+      key={post.id || post.slug || `midia-${post.date}`}
+      blogContext="/na-midia"
+      postImage={post.featuredImage?.node.sourceUrl}
+      postImageAlt={post.featuredImage?.node.altText}
+      postLink={post.slug}
+      postTitle={post.title}
+      postDescription={{ __html: post.content }}
+      postDate={post.date}
+      postAuthor={post.author?.node.name}
+      postAuthorLink={post.author?.node.slug}
+      isSlider
+    />
+  );
+}
+
 function NaMidiaSlider({ fetchedPosts, sectionTitle = "Grupo Real na Mídia" }: NaMidiaSliderProps) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const settings = {
     slidesToShow: 5.7,
     slidesToScroll: 1,
@@ -134,35 +145,22 @@ function NaMidiaSlider({ fetchedPosts, sectionTitle = "Grupo Real na Mídia" }: 
     ],
   };
 
+  const posts = fetchedPosts?.length > 0 ? fetchedPosts : [];
+
   return (
     <div className="flex flex-col gap-6">
-      <h2 className="text-center text-fb_blue_main text-4xl font-bold py-8">
-        {sectionTitle}
-      </h2>
+      <h2 className="text-center text-fb_blue_main text-4xl font-bold py-8">{sectionTitle}</h2>
       <div className="na-midia-slider" style={{ width: "100%" }}>
-        <Slider {...settings}>
-          {fetchedPosts &&
-            fetchedPosts.length > 0 &&
-            fetchedPosts.map((post: Post) => (
-              <CardBlog
-                key={post.id || Math.random().toString()}
-                blogContext="/na-midia"
-                postImage={post.featuredImage?.node.sourceUrl}
-                postImageAlt={post.featuredImage?.node.altText}
-                postLink={post.slug}
-                postTitle={post.title}
-                postDescription={{ __html: post.content }}
-                postDate={post.date}
-                postAuthor={post.author?.node.name}
-                postAuthorLink={post.author?.node.slug}
-                isSlider
-              />
-            ))}
-        </Slider>
+        {!mounted ? (
+          <div className="flex gap-2 overflow-hidden">
+            {posts.map(renderMidiaCard)}
+          </div>
+        ) : (
+          <Slider {...settings}>{posts.map(renderMidiaCard)}</Slider>
+        )}
       </div>
     </div>
   );
 }
 
 export default NaMidiaSlider;
-
