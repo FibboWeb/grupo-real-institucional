@@ -99,7 +99,9 @@ export async function getLastPostsNoticiasHomeoPetAPI() {
         ...post,
         title: post.title.rendered,
         content: post.content.rendered,
-        slug: post.link,
+        slug: post.link
+          ?.replace("conteudo.homeopet.com.br", "blog.homeopet.com.br")
+          ?.replace(/\/$/, ""),
         date: post.date,
         categories: {
           nodes: post._embedded?.["wp:term"]?.[0] ?? [],

@@ -160,7 +160,9 @@ function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
                 blogContext={post.categories?.nodes[0]?.name.toLowerCase() === "artigos" ? "/artigos" : "/noticias"}
                 postImage={post.featuredImage?.node.sourceUrl}
                 postImageAlt={post.featuredImage?.node.altText}
-                postLink={post.slug}
+                postLink={post.slug
+                  ?.replace("conteudo.homeopet.com.br", "blog.homeopet.com.br")
+                  ?.replace(/\/$/, "")}
                 postTitle={post.title}
                 postDescription={{ __html: post.content }}
                 postDate={post.date}
