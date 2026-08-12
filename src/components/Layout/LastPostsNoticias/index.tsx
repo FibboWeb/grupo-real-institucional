@@ -156,7 +156,7 @@ function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
             fetchedLastPosts.map((post: Post) => (
               
               <CardBlog
-                key={post.id || Math.random().toString()}
+                key={post.id ?? post.slug ?? `post-${post.date}`}
                 blogContext={post.categories?.nodes[0]?.name.toLowerCase() === "artigos" ? "/artigos" : "/noticias"}
                 postImage={post.featuredImage?.node.sourceUrl}
                 postImageAlt={post.featuredImage?.node.altText}
