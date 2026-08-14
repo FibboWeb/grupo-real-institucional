@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Grupo Real — Next Config
  * Description: Configurador central do headless Next.js (ACF free, templates institucionais, menus, REST).
- * Version: 1.1.2
+ * Version: 1.3.3
  * Author: Grupo Real / Agência
  * Text Domain: grupo-real-next-config
  * Requires Plugins: advanced-custom-fields
@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('GRNC_VERSION', '1.1.2');
+define('GRNC_VERSION', '1.3.3');
 define('GRNC_PLUGIN_FILE', __FILE__);
 define('GRNC_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('GRNC_PLUGIN_URL', plugin_dir_url(__FILE__));

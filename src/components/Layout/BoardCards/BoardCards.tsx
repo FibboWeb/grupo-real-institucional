@@ -9,12 +9,20 @@ import Link from "next/link";
 const Slider = dynamic(() => import("react-slick"), { ssr: false });
 
 type Member = {
-  img: StaticImageData;
+  img?: StaticImageData | string;
   name: string;
   role: string;
   description?: string;
   ctaLink?: string;
 };
+
+function hasSrc(src: StaticImageData | string | undefined): src is StaticImageData | string {
+  if (!src) {
+    return false;
+  }
+
+  return typeof src !== "string" || src.trim() !== "";
+}
 
 type BoardCardsProps = {
   title?: string;
@@ -101,7 +109,7 @@ export default function BoardCards({ title, members }: BoardCardsProps) {
     <section className="flex justify-center mb-3">
       <div className="fb_container flex flex-col gap-10 p-5">
         <div>
-          <h3 className="text-black font-semibold text-3xl">Diretoria</h3>
+          <h3 className="text-black font-semibold text-3xl">{title ?? "Diretoria"}</h3>
         </div>
         <div className="w-full">
           <Slider {...settings}>
@@ -133,12 +141,16 @@ export default function BoardCards({ title, members }: BoardCardsProps) {
                       {/* Frente do Card */}
                       <div className={`flip-card-front`}>
                         <div className="absolute inset-0 bg-gradient-to-t from-fb_dark-blue to-fb_light-blue rounded-lg z-20"></div>
-                        <Image 
-                          src={member.img} 
-                          alt={member.name} 
-                          className="object-cover w-full h-full rounded-2xl"
-                          priority
-                        />
+                        {hasSrc(member.img) ? (
+                          <Image
+                            src={member.img}
+                            alt={member.name}
+                            fill
+                            sizes="(max-width: 560px) 90vw, 400px"
+                            className="object-cover rounded-2xl"
+                            priority
+                          />
+                        ) : null}
                         {/* Overlay com nome e cargo */}
                         <div className="absolute z-50 bottom-0 left-0 right-0 p-4 text-white rounded-b-2xl">
                           <h4 className="text-2xl font-bold">{member.name}</h4>
@@ -157,12 +169,16 @@ export default function BoardCards({ title, members }: BoardCardsProps) {
                     {/* Frente do Card */}
                     <div className="flip-card-front">
                       <div className="absolute inset-0 bg-gradient-to-t from-fb_dark-blue to-fb_light-blue rounded-lg z-20"></div>
-                      <Image 
-                        src={member.img} 
-                        alt={member.name} 
-                        className="object-cover w-full h-full rounded-2xl"
-                        priority
-                      />
+                      {hasSrc(member.img) ? (
+                        <Image
+                          src={member.img}
+                          alt={member.name}
+                          fill
+                          sizes="(max-width: 560px) 90vw, 400px"
+                          className="object-cover rounded-2xl"
+                          priority
+                        />
+                      ) : null}
                       {/* Overlay com nome e cargo */}
                       <div className="absolute z-50 bottom-0 left-0 right-0 p-4 text-white rounded-b-2xl">
                         <h4 className="text-2xl font-bold">{member.name}</h4>
@@ -175,7 +191,7 @@ export default function BoardCards({ title, members }: BoardCardsProps) {
                       <div className="flip-card-back text-white bg-fb_blue_main from-fb_dark-blue to-fb_light-blue">
                         <p className="text-sm" dangerouslySetInnerHTML={{ __html: member.description || "" }} />
                       </div>
-                    )}nt
+                    )}
                   </div>
                 )}
               </li>

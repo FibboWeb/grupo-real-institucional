@@ -1,12 +1,20 @@
-export default function Timeline() {
+type Props = {
+  title?: string;
+  embedUrl?: string;
+};
+
+const DEFAULT_EMBED =
+  "https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=v2:2PACX-1vRQGZD9puZ73tfwMncf7lMfCq4aLJAdJUt-NLBvT08HAOSVjz7YbSKb-HfTiPLDR2p0Nf6NyRLdH49Q&font=Poppins&lang=en&initial_zoom=2&height=650";
+
+export default function Timeline({ title = "A História do Grupo Real", embedUrl = DEFAULT_EMBED }: Props) {
   return (
     <section className="flex gap-6 flex-col">
       <div className="fb_container">
-        <h3 className="text-3xl font-semibold">A História do Grupo Real</h3>
+        <h3 className="text-3xl font-semibold">{title}</h3>
       </div>
       <div>
         <iframe
-          src="https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=v2:2PACX-1vRQGZD9puZ73tfwMncf7lMfCq4aLJAdJUt-NLBvT08HAOSVjz7YbSKb-HfTiPLDR2p0Nf6NyRLdH49Q&font=Poppins&lang=en&initial_zoom=2&height=650"
+          src={embedUrl}
           width="100%"
           height="650"
           allowFullScreen

@@ -67,8 +67,8 @@ final class StatusPage
         echo '<table class="widefat striped" style="max-width:720px;margin-top:1rem">';
         echo $this->row('ACF (free) ativo', $acfActive ? 'Sim' : 'Não — instale Advanced Custom Fields', $acfActive);
         echo $this->row(
-            'ACF Pro (Repeater de CTAs)',
-            $acfPro ? 'Sim' : 'Não — o campo Repeater CTAs não aparece sem o Pro',
+            'ACF Pro (Repeater + Flexible Content)',
+            $acfPro ? 'Sim' : 'Não — CTAs (Repeater) e seções da landing (Flexible Content) exigem o Pro',
             $acfPro
         );
         echo $this->row(

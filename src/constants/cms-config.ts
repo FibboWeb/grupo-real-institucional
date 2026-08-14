@@ -9,12 +9,14 @@ export const CMS_CONFIG = {
   REST_SIDEBAR_ROUTE: "institutional-sidebar",
   /** Pai agrupador no WP. Não é rota de conteúdo no Next. */
   SLUG_PARENT: "institucional",
-  /** Landing Grupo Real H no Next — permanece TSX até a fase 3. */
+  /** Landing Grupo Real H no Next — template B (ACF seções). */
   SLUG_QUEM_SOMOS: "quem-somos",
   TEMPLATE_DOCUMENTO: "institucional-documento",
+  TEMPLATE_LANDING: "institucional-landing",
   ACF_CONTEUDO: "conteudo",
   ACF_EXIBIR_FORMULARIO: "exibir_formulario",
   ACF_CTAS: "ctas",
+  ACF_SECOES: "secoes",
   ACF_MENU_ICONE: "icone",
   ACF_MENU_ICONE_IMAGEM: "icone_imagem",
 } as const;
@@ -32,6 +34,14 @@ export function isDocumentoTemplate(template: unknown): boolean {
   }
 
   return template.replace(/\.php$/, "") === CMS_CONFIG.TEMPLATE_DOCUMENTO;
+}
+
+export function isLandingTemplate(template: unknown): boolean {
+  if (typeof template !== "string" || !template) {
+    return false;
+  }
+
+  return template.replace(/\.php$/, "") === CMS_CONFIG.TEMPLATE_LANDING;
 }
 
 /** Ícones Lucide permitidos no ACF (menu pai). */

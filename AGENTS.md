@@ -68,12 +68,12 @@ fetch(`${process.env.NEXT_PUBLIC_WP_URL_API}posts?per_page=10`)
 - **REST v1 custom:** só formulários/utilitários — `submit-lead/`, `subscribe-newsletter/`, `representante/`, `atendimento-titular/`, `info/whatsapp`.
 - **REST custom (plugin Next):** sidebar institucional — `NEXT_PUBLIC_WP_URL_API_CUSTOM` + `institutional-sidebar` (`getInstitutionalSidebarMenu`).
 - SEO de páginas WP: Yoast (`yoast_head_json`) via helpers como `fetchYoastSEO` / `getSEOLines2`.
-- **Páginas institucionais (CMS):** plugin `wordpress/grupo-real-next-config/` + contrato `src/constants/cms-config.ts`. Qualquer page WP com template `institucional-documento` é pública em `/institucional/{slug}` (`getPage`); sidebar via `GET ${NEXT_PUBLIC_WP_URL_API_CUSTOM}institutional-sidebar`. Template documento = Wysiwyg `acf.conteudo` + Repeater `acf.ctas`. A landing Grupo Real H é `/quem-somos` (TSX); no WP o slug histórico `institucional` deve virar `quem-somos` antes de criar o pai agrupador. Ver [docs/cms-institucional.md](docs/cms-institucional.md).
+- **Páginas institucionais (CMS):** plugin `wordpress/grupo-real-next-config/` + contrato `src/constants/cms-config.ts`. Qualquer page WP com template `institucional-documento` é pública em `/institucional/{slug}` (`getPage`). Landing Quem Somos: template `institucional-landing` em `/quem-somos` (`getQuemSomosPage`). Sidebar via `GET ${NEXT_PUBLIC_WP_URL_API_CUSTOM}institutional-sidebar`. Ver [docs/cms-institucional.md](docs/cms-institucional.md).
 
 ## Estrutura
 
 - `src/app/` — rotas: home, `noticias`, `artigos`, `busca`, `categoria`, `author`, `produtos`, `linhas`, `representantes`, `contato`, `downloads`, institucional (LGPD), campanhas (`ambiental`, `social`, `ciclos-transparencia`)
-- `src/lib/` — Apollo, fetch WordPress, cache. **Reutilize** `get*` existentes; não busque WP direto no JSX. Institucional CMS: `getPage`, `getInstitutionalSidebarMenu`.
+- `src/lib/` — Apollo, fetch WordPress, cache. **Reutilize** `get*` existentes; não busque WP direto no JSX. Institucional CMS: `getPage`, `getQuemSomosPage`, `getInstitutionalSidebarMenu`.
 - `src/components/Layout/` — header, footer, seções da home
 - `src/constants/` — copy e dados estáticos (não é CMS)
 - `src/types/` — tipos compartilhados (`Post`, etc.)

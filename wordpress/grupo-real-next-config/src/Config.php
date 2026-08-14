@@ -34,6 +34,14 @@ final class Config
 
     public const TEMPLATE_DOCUMENTO_LABEL = 'Documento institucional (Next)';
 
+    public const TEMPLATE_LANDING = 'institucional-landing';
+
+    public const TEMPLATE_LANDING_LABEL = 'Landing institucional (Next)';
+
+    public const ACF_GROUP_LANDING = 'group_page_landing';
+
+    public const ACF_SECOES = 'secoes';
+
     /**
      * Templates registrados pelo plugin. Nessas pages o editor nativo do WP some —
      * o cliente só edita ACF (Wysiwyg / campos).
@@ -42,7 +50,7 @@ final class Config
      */
     public static function pluginTemplates(): array
     {
-        return [self::TEMPLATE_DOCUMENTO];
+        return [self::TEMPLATE_DOCUMENTO, self::TEMPLATE_LANDING];
     }
 
     public static function isPluginTemplate(?string $slug): bool
@@ -94,6 +102,10 @@ final class Config
 
         if ($template === self::TEMPLATE_DOCUMENTO) {
             return '/institucional/' . $slug;
+        }
+
+        if ($template === self::TEMPLATE_LANDING) {
+            return '/' . $slug;
         }
 
         return null;

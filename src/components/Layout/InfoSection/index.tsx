@@ -10,7 +10,7 @@ interface InfoSectionProps {
   title?: string;
   content: string;
   ctaLink?: string;
-  imagePath?: StaticImageData;
+  imagePath?: StaticImageData | string;
   imageMidFullContainer?: boolean;
   youtubeEmbed?: string;
   reverseMobile?: boolean;
@@ -106,16 +106,20 @@ function InfoSection({
                 allowFullScreen
               ></iframe>
             </div>
-          ) : (
+          ) : imagePath && (typeof imagePath !== "string" || imagePath.trim() !== "") ? (
             <div
               className={`sticky w-full md:flex-1 flex ${reverseDesktop ? "justify-start" : "justify-end"} items-center rounded-2xl ${!imageMidFullContainer ? "p-2" : "h-inherit w-full"}`}
             >
               <Image
                 src={imagePath}
                 alt=""
-                className={`${border ? "shadow-shadow_image_info_section" : ""} ${imageMidFullContainer ? "h-full w-full object-cover" : "rounded-2xl"}`}
+                width={720}
+                height={480}
+                className={`${border ? "shadow-shadow_image_info_section" : ""} ${imageMidFullContainer ? "h-full w-full object-cover" : "rounded-2xl h-auto w-full"}`}
               />
             </div>
+          ) : (
+            <div className="flex-1" />
           )}
 
           <div

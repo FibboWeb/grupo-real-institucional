@@ -5,7 +5,7 @@ Plugin headless que centraliza o contrato entre **conteudo.realh** e o front **N
 ## Requisitos
 
 - WordPress 6.x+
-- [Advanced Custom Fields](https://wordpress.org/plugins/advanced-custom-fields/) **Pro** (Repeater de CTAs)
+- [Advanced Custom Fields](https://wordpress.org/plugins/advanced-custom-fields/) **Pro** (Repeater e Flexible Content)
 - Yoast SEO (recomendado para metadata)
 
 ## Instalação
@@ -19,12 +19,12 @@ Plugin headless que centraliza o contrato entre **conteudo.realh** e o front **N
 
 **Conflito de slug:** a landing Grupo Real H no WP usa `institucional`, mas no Next é `/quem-somos`. Siga a ordem:
 
-1. Renomeie essa page para slug **`quem-somos`** (sem template Documento)
+1. Renomeie essa page para slug **`quem-somos`**
 2. Crie uma **nova** página mãe **Institucional** (slug `institucional`) só como agrupadora
-3. Crie páginas **filhas** com o template **Documento institucional (Next)** (o editor nativo some; use só o Wysiwyg ACF). O slug da page vira a URL `/institucional/{slug}` — não há lista fixa no Next.
-4. Preencha o campo **Conteúdo** (Wysiwyg ACF)
-5. Inclua a page no menu **Institucional Sidebar**
-6. LGPD: Repeater **CTAs** | Atendimento: **Exibir formulário**
+3. Nas filhas (políticas), template **Documento institucional (Next)** — o slug vira `/institucional/{slug}`
+4. Em **Quem Somos**, template **Landing institucional (Next)** — seções ACF (hero, depoimento, blocos…). Newsletter permanece no Next
+5. Preencha os campos ACF e publique
+6. Inclua as políticas no menu **Institucional Sidebar**
 
 ## Menu sidebar (estrutura sugerida)
 
@@ -57,8 +57,9 @@ Espelhado em `src/constants/cms-config.ts`:
 |-----------|--------|
 | Menu sidebar | `Institucional Sidebar` |
 | Slug pai (agrupador) | `institucional` |
-| Landing Grupo Real H | slug WP `quem-somos` → Next `/quem-somos` (TSX) |
-| Template | `institucional-documento` |
+| Landing Grupo Real H | slug WP `quem-somos` → Next `/quem-somos` (template Landing) |
+| Template documento | `institucional-documento` |
+| Template landing | `institucional-landing` (Flexible Content `secoes`) |
 | Conteúdo | `acf.conteudo` |
 | Formulário | `acf.exibir_formulario` |
 | CTAs | `acf.ctas` (Repeater: rotulo, url/path, target) — requer ACF Pro |

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace GrupoReal\NextConfig;
 
 use GrupoReal\NextConfig\Acf\JsonLoader;
+use GrupoReal\NextConfig\Admin\FlexibleThumbnails;
 use GrupoReal\NextConfig\Admin\StatusPage;
 use GrupoReal\NextConfig\Menus\Locations;
 use GrupoReal\NextConfig\Rest\PageFields;
@@ -33,6 +34,7 @@ final class Plugin
         (new Locations())->register();
         (new PageFields())->register();
         (new SidebarMenu())->register();
+        (new FlexibleThumbnails())->register();
         (new StatusPage())->register();
     }
 }

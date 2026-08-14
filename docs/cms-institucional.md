@@ -43,7 +43,7 @@ No WordPress, a landing **Grupo Real H** hoje usa o slug `institucional`. No Nex
 
 | Onde | Slug WP | Rota Next | O que fazer |
 |------|---------|-----------|-------------|
-| Landing Grupo Real H | **renomear/criar `quem-somos`** | `/quem-somos` | Manter TSX. Não usar template Documento. |
+| Landing Grupo Real H | slug WP `quem-somos` | `/quem-somos` | Template **Landing institucional (Next)** |
 | Pai agrupador | **nova** page `institucional` | `/institucional` redireciona para `/quem-somos` | Sem Wysiwyg. Só pai das políticas. |
 | Políticas e documentos | filhas com template Documento | `/institucional/{slug}` | Qualquer slug. Sem lista no Next. |
 
@@ -55,13 +55,43 @@ Ordem no painel (não quebra o `npm run dev`):
 
 O catch-all Next ignora os slugs reservados `institucional` e `quem-somos`. **Nova página institucional:** template Documento + publicar + (opcional) item no menu Sidebar. Não precisa alterar código.
 
-## Páginas
+## Template B — Landing (Quem Somos)
+
+Sem Gutenberg. Layout composto no Next; o cliente edita seções no ACF. Newsletter e formulários continuam React.
+
+Template WP: **Landing institucional (Next)** (`institucional-landing`). Campo único **Seções** = Flexible Content (ACF Pro): o cliente escolhe o bloco (com skeleton), arrasta para reordenar e reutiliza o mesmo template em qualquer landing.
+
+Não usar Documento — senão a page cairia em `/institucional/quem-somos`.
+
+| Bloco (`acf_fc_layout`) | Uso |
+|-------------------------|-----|
+| `hero` | Banner com título, texto e fundo |
+| `depoimento` | Citação + foto + CTA |
+| `info_video` | Texto + YouTube |
+| `info_imagem` | Texto + imagem (inverter / ler mais) |
+| `atividades` | Intro + cards (missão, visão…) |
+| `diretoria` | Cards de pessoas |
+| `timeline` | Embed Knight Lab |
+| `texto` | Wysiwyg livre |
+| `newsletter` | Componente React do site |
+
+Se `secoes` estiver vazio no Quem Somos, o Next usa o fallback TSX (não quebra a página).
+
+### WordPress (Quem Somos)
+
+1. Atualizar o plugin para **1.3.3**
+2. Page slug `quem-somos` → template **Landing institucional (Next)**
+3. Clique na área tracejada ou em **Adicionar seção** — o popup mostra o esqueleto de cada bloco; arraste para mudar a ordem
+4. Yoast canonical: `https://gruporealbr.com.br/quem-somos`
+5. Recarregar `/quem-somos`
+
+Claudio Martins Real continua TSX até usar o mesmo template Landing.
 
 ## Páginas
 
 | Slug | Rota Next | Fonte atual | CMS |
 |------|-----------|-------------|-----|
-| `quem-somos` | `/quem-somos` | TSX (`src/app/quem-somos`) | Page WP criada; front ainda TSX |
+| `quem-somos` | `/quem-somos` | TSX + ACF (template Landing) | **Sim** (fallback TSX se ACF vazio) |
 | `politica-de-privacidade` | `/institucional/politica-de-privacidade` | `[slug]/page.tsx` | **Sim** |
 | `politica-de-cookies` | `/institucional/politica-de-cookies` | `[slug]/page.tsx` | **Sim** |
 | `lgpd` | `/institucional/lgpd` | `[slug]/page.tsx` | **Sim** |
@@ -71,7 +101,7 @@ O catch-all Next ignora os slugs reservados `institucional` e `quem-somos`. **No
 | `atendimento-ao-titular` | `[slug]/page.tsx` + form React | **Sim** (Wysiwyg + `exibir_formulario`) |
 | Canal de Ética | link externo no menu | — |
 
-Quem Somos e Claudio Martins Real = **Template B** (fase 3). Quem Somos já ganha a page WP `quem-somos`; o layout composto continua no Next até a fase 3.
+Claudio Martins Real continua TSX (`/claudio-martins-real-curriculo`).
 
 ## Setup WordPress (checklist)
 

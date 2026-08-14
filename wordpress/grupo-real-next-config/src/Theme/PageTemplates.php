@@ -18,6 +18,7 @@ final class PageTemplates
     public function addTemplate(array $templates): array
     {
         $templates[Config::TEMPLATE_DOCUMENTO] = Config::TEMPLATE_DOCUMENTO_LABEL;
+        $templates[Config::TEMPLATE_LANDING] = Config::TEMPLATE_LANDING_LABEL;
 
         return $templates;
     }
@@ -32,6 +33,14 @@ final class PageTemplates
 
         if ($slug === Config::TEMPLATE_DOCUMENTO) {
             $pluginTemplate = GRNC_PLUGIN_DIR . 'templates/institucional-documento.php';
+
+            if (is_readable($pluginTemplate)) {
+                return $pluginTemplate;
+            }
+        }
+
+        if ($slug === Config::TEMPLATE_LANDING) {
+            $pluginTemplate = GRNC_PLUGIN_DIR . 'templates/institucional-landing.php';
 
             if (is_readable($pluginTemplate)) {
                 return $pluginTemplate;
