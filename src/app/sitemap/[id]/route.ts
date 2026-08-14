@@ -1,12 +1,13 @@
 import { NextRequest } from "next/server";
-import type { MetadataRoute } from "next";
 import { notFound } from "next/navigation";
 import { unstable_cache } from "next/cache";
 import { getAllPosts } from "@/lib/getPosts";
 import { getAllProducts } from "@/lib/getProducts";
+import { listInstitutionalDocumentPages } from "@/lib/getPage";
+import { publicSiteOrigin } from "@/lib/institutional-metadata";
 
 export async function generateStaticParams() {
-  return [{ id: "produtos.xml" }, { id: "posts.xml" }];
+  return [{ id: "produtos.xml" }, { id: "posts.xml" }, { id: "institucional.xml" }];
 }
 
 const getCachedProducts = unstable_cache(
@@ -35,6 +36,21 @@ const getCachedPosts = unstable_cache(
   { revalidate: 86400 },
 );
 
+const getCachedInstitutional = unstable_cache(
+  async () => {
+    const origin = publicSiteOrigin();
+    const pages = await listInstitutionalDocumentPages();
+
+    return pages.map((page) => ({
+      url: `${origin}/institucional/${page.slug}`,
+      lastModified: page.lastModified ?? new Date().toISOString(),
+      changeFrequency: "weekly" as const,
+    }));
+  },
+  ["sitemap-institutional"],
+  { revalidate: 3600 },
+);
+
 export async function GET(req :NextRequest,{ params }: { params: Promise<{ id: string }>}) {
   let sitemapData;
   
@@ -45,6 +61,9 @@ export async function GET(req :NextRequest,{ params }: { params: Promise<{ id: s
    }
    else if( id === 'posts.xml'){
        sitemapData= await getCachedPosts();
+   }
+   else if( id === 'institucional.xml'){
+       sitemapData= await getCachedInstitutional();
    }
    else{
        return notFound();

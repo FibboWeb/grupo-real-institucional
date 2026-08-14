@@ -6,6 +6,7 @@ import {
   toFrontInstitutionalSlug,
 } from "@/constants/cms-config";
 import { InstitutionalCta, InstitutionalPage, InstitutionalPageAcf } from "@/types/institutional-page";
+import { cache } from "react";
 
 const REVALIDATE_SECONDS = 300;
 
@@ -81,7 +82,7 @@ export function extractCtasFromAcf(acf: InstitutionalPageAcf): InstitutionalCta[
   return acf.ctas ?? [];
 }
 
-export async function getPage(slug: string): Promise<InstitutionalPage | null> {
+export const getPage = cache(async (slug: string): Promise<InstitutionalPage | null> => {
   if (isReservedInstitutionalSlug(slug)) {
     return null;
   }
@@ -103,17 +104,22 @@ export async function getPage(slug: string): Promise<InstitutionalPage | null> {
   }
 
   return null;
-}
+});
 
-/** Slugs de pages com template Documento — usado no SSG, não é whitelist de rotas. */
-export async function listInstitutionalDocumentSlugs(): Promise<string[]> {
+export type InstitutionalDocumentRef = {
+  slug: string;
+  lastModified?: string;
+};
+
+/** Pages com template Documento — usado no SSG e no sitemap. Não é whitelist de rotas. */
+export async function listInstitutionalDocumentPages(): Promise<InstitutionalDocumentRef[]> {
   const apiUrl = process.env.NEXT_PUBLIC_WP_URL_API;
 
   if (!apiUrl) {
     return [];
   }
 
-  const slugs = new Set<string>();
+  const pages = new Map<string, InstitutionalDocumentRef>();
 
   try {
     let pageNum = 1;
@@ -140,23 +146,42 @@ export async function listInstitutionalDocumentSlugs(): Promise<string[]> {
           continue;
         }
 
-        const page = item as { slug?: unknown; template?: unknown };
+        const page = item as {
+          slug?: unknown;
+          template?: unknown;
+          modified_gmt?: unknown;
+          modified?: unknown;
+        };
         const wpSlug = typeof page.slug === "string" ? page.slug : "";
 
         if (!wpSlug || !isDocumentoTemplate(page.template) || isReservedInstitutionalSlug(wpSlug)) {
           continue;
         }
 
-        slugs.add(toFrontInstitutionalSlug(wpSlug));
+        const slug = toFrontInstitutionalSlug(wpSlug);
+        const lastModified =
+          typeof page.modified_gmt === "string"
+            ? page.modified_gmt
+            : typeof page.modified === "string"
+              ? page.modified
+              : undefined;
+
+        pages.set(slug, { slug, lastModified });
       }
 
       pageNum += 1;
     } while (pageNum <= totalPages);
   } catch (error) {
-    console.error("listInstitutionalDocumentSlugs:", error);
+    console.error("listInstitutionalDocumentPages:", error);
   }
 
-  return [...slugs];
+  return [...pages.values()];
+}
+
+export async function listInstitutionalDocumentSlugs(): Promise<string[]> {
+  const pages = await listInstitutionalDocumentPages();
+
+  return pages.map((page) => page.slug);
 }
 
 function wpSlugCandidates(frontSlug: string): string[] {

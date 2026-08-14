@@ -11,7 +11,7 @@ type BreadCrumbProps = {
   activeClasses?: string;
   capitalizeLinks?: boolean;
   excludePaths?: string[];
-  itemName?: string[];
+  itemName?: string | string[];
 };
 
 function Breadcrumb({

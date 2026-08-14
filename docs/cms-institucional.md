@@ -135,6 +135,7 @@ Não há whitelist de slugs no Next. O contrato é o **template**.
 5. Yoast: canonical `https://gruporealbr.com.br/institucional/{slug}`
 6. Incluir no menu **Institucional Sidebar** (item do tipo Página)
 7. Publicar — a rota existe no Next no próximo request (`dynamicParams`)
+8. Sitemap: entra em `/sitemap/institucional.xml` (pages com template Documento; cache 1h)
 
 ## Alterar contrato
 

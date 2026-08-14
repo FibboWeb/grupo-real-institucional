@@ -42,7 +42,7 @@ export default function InstitutionalPageContent({ page }: Props) {
   const useWpTitle = Boolean(page.title) && !acfContentHasTitle(conteudo);
 
   return (
-    <main className="fb_container relative gap-fb_space-section">
+    <div className="relative w-full min-w-0 gap-fb_space-section">
       <div className="flex flex-col gap-fb_space-section">
         {useWpTitle ? (
           <div>
@@ -78,6 +78,6 @@ export default function InstitutionalPageContent({ page }: Props) {
           </div>
         ) : null}
       </div>
-    </main>
+    </div>
   );
 }

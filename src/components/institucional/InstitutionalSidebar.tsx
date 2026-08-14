@@ -43,7 +43,7 @@ export default function InstitutionalSidebar({ categorias }: Props) {
 
   return (
     <>
-      <aside className="hidden md:block w-80 p-4 h-full">
+      <aside className="hidden md:block w-80 min-w-80 shrink-0 p-4 h-full">
         {categorias.map((categoria, index) => (
           <div key={index} className="mb-4">
             {categoria.titulo ? (

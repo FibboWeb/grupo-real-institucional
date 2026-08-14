@@ -80,4 +80,4 @@ fetch(`${process.env.NEXT_PUBLIC_WP_URL_API}posts?per_page=10`)
 
 Linhas de produto no front: `real-h` → `linha-nutricao`, `cmr` → `linha-saude`, `homeopet` → `linha-homeo-pet`.
 
-Sitemap: `next-sitemap.config.js` + `src/app/sitemap/[id]/route.ts` (`produtos.xml`, `posts.xml`).
+Sitemap: `next-sitemap.config.js` + `src/app/sitemap/[id]/route.ts` (`produtos.xml`, `posts.xml`, `institucional.xml`).
