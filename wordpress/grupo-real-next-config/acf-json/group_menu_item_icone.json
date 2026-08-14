@@ -1,0 +1,49 @@
+{
+  "key": "group_menu_item_icone",
+  "title": "Ícone do item de menu (Next)",
+  "fields": [
+    {
+      "key": "field_grnc_menu_icone",
+      "label": "Ícone (Lucide)",
+      "name": "icone",
+      "type": "select",
+      "instructions": "Use em itens pai do menu Institucional Sidebar (agrupadores).",
+      "choices": {
+        "phone": "Telefone (Atendimento)",
+        "shield": "Escudo (Políticas)",
+        "file-text": "Documento",
+        "scale": "Balança / Legal"
+      },
+      "allow_null": 1,
+      "ui": 1
+    },
+    {
+      "key": "field_grnc_menu_icone_imagem",
+      "label": "Ícone personalizado (imagem)",
+      "name": "icone_imagem",
+      "type": "image",
+      "instructions": "Opcional. Se preenchido, substitui o ícone Lucide no Next.",
+      "return_format": "url",
+      "preview_size": "thumbnail",
+      "library": "all"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "nav_menu_item",
+        "operator": "==",
+        "value": "all"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true,
+  "description": "Ícones para o menu lateral institucional no Next.js.",
+  "show_in_rest": 1,
+  "modified": 1735689600
+}

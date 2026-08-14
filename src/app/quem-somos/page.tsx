@@ -27,6 +27,12 @@ import Timeline from "@/components/Layout/Timeline/Timeline";
 import Newsletter from "@/components/Layout/Newsletter";
 import { Metadata } from "next";
 
+/**
+ * Landing Grupo Real H. A rota pública permanece /quem-somos (este TSX).
+ * No WP o slug histórico era "institucional" — criar/renomear a page para quem-somos
+ * sem apontar esta rota para o catch-all /institucional/[slug].
+ */
+
 export const metadata: Metadata = {
   title: "Quem Somos - Grupo Real",
   description: "40 anos construindo gerações reais.",

@@ -1,0 +1,89 @@
+{
+  "key": "group_page_institucional",
+  "title": "Página institucional (Next)",
+  "fields": [
+    {
+      "key": "field_grnc_conteudo",
+      "label": "Conteúdo",
+      "name": "conteudo",
+      "type": "wysiwyg",
+      "instructions": "Texto principal da página. Use H2/H3 (o H1 vem do título da página no site). Imagens, listas e tabelas são permitidas.",
+      "required": 1,
+      "tabs": "all",
+      "toolbar": "full",
+      "media_upload": 1,
+      "delay": 0
+    },
+    {
+      "key": "field_grnc_exibir_formulario",
+      "label": "Exibir formulário de atendimento ao titular",
+      "name": "exibir_formulario",
+      "type": "true_false",
+      "instructions": "Ative apenas na página Atendimento ao titular.",
+      "default_value": 0,
+      "ui": 1
+    },
+    {
+      "key": "field_grnc_ctas",
+      "label": "CTAs",
+      "name": "ctas",
+      "type": "repeater",
+      "instructions": "Botões de chamada (LGPD e outras páginas). Adicione quantos precisar. Linha vazia é ignorada.",
+      "required": 0,
+      "layout": "block",
+      "button_label": "Adicionar CTA",
+      "min": 0,
+      "max": 0,
+      "collapsed": "field_grnc_cta_rotulo",
+      "sub_fields": [
+        {
+          "key": "field_grnc_cta_rotulo",
+          "label": "Rótulo",
+          "name": "rotulo",
+          "type": "text",
+          "parent_repeater": "field_grnc_ctas"
+        },
+        {
+          "key": "field_grnc_cta_url",
+          "label": "URL",
+          "name": "url",
+          "type": "text",
+          "instructions": "Path interno (/institucional/politica-de-cookies) ou URL absoluta (https://...).",
+          "placeholder": "/institucional/politica-de-cookies",
+          "parent_repeater": "field_grnc_ctas"
+        },
+        {
+          "key": "field_grnc_cta_target",
+          "label": "Abrir em",
+          "name": "target",
+          "type": "select",
+          "choices": {
+            "_self": "Mesma aba",
+            "_blank": "Nova aba"
+          },
+          "default_value": "_self",
+          "parent_repeater": "field_grnc_ctas"
+        }
+      ]
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "page_template",
+        "operator": "==",
+        "value": "institucional-documento"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": ["the_content", "excerpt", "discussion", "comments", "revisions", "slug", "author", "format", "featured_image", "categories", "tags", "send-trackbacks"],
+  "active": true,
+  "description": "Campos para páginas institucionais consumidas pelo Next.js. Repeater de CTAs requer ACF Pro.",
+  "show_in_rest": 1,
+  "modified": 1735689600
+}
