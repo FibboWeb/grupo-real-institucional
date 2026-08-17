@@ -17,7 +17,7 @@ import { cn } from "@/lib/utils";
 interface HeroSectionProps {
   children: React.ReactNode;
   ctaLink?: string;
-  imagePath?: StaticImageData;
+  imagePath?: StaticImageData | string;
   imageMaxHeight?: number;
   imageOnBottom?: boolean;
   backgroundClass?: string;
@@ -80,7 +80,14 @@ export default function HeroSection({
                 </div>
                 {imagePath && (
                   <div className="flex-1 flex justify-center items-center">
-                    <Image loading="eager" src={imagePath} alt="imagem hero" height={imageMaxHeight} color={btnColor} />
+                    <Image
+                      loading="eager"
+                      src={imagePath}
+                      alt="imagem hero"
+                      width={720}
+                      height={imageMaxHeight ?? 580}
+                      className="h-auto w-auto max-h-[580px] object-contain"
+                    />
                   </div>
                 )}
               </div>

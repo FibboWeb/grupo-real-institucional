@@ -11,6 +11,8 @@ export const CMS_CONFIG = {
   SLUG_PARENT: "institucional",
   /** Landing Grupo Real H no Next — template B (ACF seções). */
   SLUG_QUEM_SOMOS: "quem-somos",
+  /** Currículo Claudio Martins — template B (ACF seções). */
+  SLUG_CLAUDIO_MARTINS: "claudio-martins-real-curriculo",
   TEMPLATE_DOCUMENTO: "institucional-documento",
   TEMPLATE_LANDING: "institucional-landing",
   ACF_CONTEUDO: "conteudo",
@@ -64,4 +66,13 @@ export const INSTITUTIONAL_SLUG_ALIASES: Record<string, string> = {
 
 export function toFrontInstitutionalSlug(wpSlug: string): string {
   return INSTITUTIONAL_SLUG_ALIASES[wpSlug] ?? wpSlug;
+}
+
+/** Path público no Next para landing (template B). Espelha Config::frontPathForPage(). */
+export function toFrontLandingPath(wpSlug: string): string | null {
+  if (wpSlug === CMS_CONFIG.SLUG_PARENT) {
+    return null;
+  }
+
+  return `/${wpSlug}`;
 }

@@ -5,8 +5,12 @@ export type CmsImage = string | StaticImageData;
 export type LandingHeroSection = {
   type: "hero";
   titulo: string;
+  tituloLinha2?: string;
+  subtitulo?: string;
   texto: string;
   fundo?: CmsImage;
+  imagem?: CmsImage;
+  imagemAbaixo?: boolean;
 };
 
 export type LandingDepoimentoSection = {
@@ -32,6 +36,7 @@ export type LandingInfoImagemSection = {
   imagem?: CmsImage;
   inverterDesktop: boolean;
   lerMais: boolean;
+  centralizarBotao: boolean;
 };
 
 export type LandingAtividadeCard = {
@@ -83,6 +88,38 @@ export type LandingNewsletterSection = {
   type: "newsletter";
 };
 
+export type LandingCardIconItem = {
+  icone: CmsImage;
+  titulo: string;
+  texto: string;
+};
+
+export type LandingCardsSliderSection = {
+  type: "cards_slider";
+  titulo: string;
+  cards: LandingCardIconItem[];
+};
+
+export type LandingCardsListaSection = {
+  type: "cards_lista";
+  titulo: string;
+  intro: string;
+  itens: LandingCardIconItem[];
+};
+
+export type LandingAccordionItem = {
+  titulo: string;
+  conteudo: string;
+  aberto: boolean;
+};
+
+export type LandingAccordionSection = {
+  type: "accordion";
+  titulo: string;
+  intro: string;
+  itens: LandingAccordionItem[];
+};
+
 export type LandingSection =
   | LandingHeroSection
   | LandingDepoimentoSection
@@ -92,11 +129,15 @@ export type LandingSection =
   | LandingDiretoriaSection
   | LandingTimelineSection
   | LandingTextoSection
+  | LandingCardsSliderSection
+  | LandingCardsListaSection
+  | LandingAccordionSection
   | LandingNewsletterSection;
 
 export type LandingPageContent = {
   secoes: LandingSection[];
   yoast_head_json?: Record<string, unknown> | null;
+  title?: string;
 };
 
 /** @deprecated use LandingPageContent */

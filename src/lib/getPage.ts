@@ -2,8 +2,10 @@ import {
   CMS_CONFIG,
   INSTITUTIONAL_SLUG_ALIASES,
   isDocumentoTemplate,
+  isLandingTemplate,
   isReservedInstitutionalSlug,
   toFrontInstitutionalSlug,
+  toFrontLandingPath,
 } from "@/constants/cms-config";
 import { InstitutionalCta, InstitutionalPage, InstitutionalPageAcf } from "@/types/institutional-page";
 import { cache } from "react";
@@ -111,15 +113,34 @@ export type InstitutionalDocumentRef = {
   lastModified?: string;
 };
 
-/** Pages com template Documento — usado no SSG e no sitemap. Não é whitelist de rotas. */
-export async function listInstitutionalDocumentPages(): Promise<InstitutionalDocumentRef[]> {
+export type InstitutionalLandingRef = {
+  path: string;
+  lastModified?: string;
+};
+
+type WpPageListItem = {
+  slug?: unknown;
+  template?: unknown;
+  modified_gmt?: unknown;
+  modified?: unknown;
+};
+
+function parseLastModified(page: WpPageListItem): string | undefined {
+  return typeof page.modified_gmt === "string"
+    ? page.modified_gmt
+    : typeof page.modified === "string"
+      ? page.modified
+      : undefined;
+}
+
+const fetchAllWpPages = cache(async (): Promise<WpPageListItem[]> => {
   const apiUrl = process.env.NEXT_PUBLIC_WP_URL_API;
 
   if (!apiUrl) {
     return [];
   }
 
-  const pages = new Map<string, InstitutionalDocumentRef>();
+  const pages: WpPageListItem[] = [];
 
   try {
     let pageNum = 1;
@@ -142,37 +163,56 @@ export async function listInstitutionalDocumentPages(): Promise<InstitutionalDoc
       }
 
       for (const item of data) {
-        if (!item || typeof item !== "object") {
-          continue;
+        if (item && typeof item === "object") {
+          pages.push(item as WpPageListItem);
         }
-
-        const page = item as {
-          slug?: unknown;
-          template?: unknown;
-          modified_gmt?: unknown;
-          modified?: unknown;
-        };
-        const wpSlug = typeof page.slug === "string" ? page.slug : "";
-
-        if (!wpSlug || !isDocumentoTemplate(page.template) || isReservedInstitutionalSlug(wpSlug)) {
-          continue;
-        }
-
-        const slug = toFrontInstitutionalSlug(wpSlug);
-        const lastModified =
-          typeof page.modified_gmt === "string"
-            ? page.modified_gmt
-            : typeof page.modified === "string"
-              ? page.modified
-              : undefined;
-
-        pages.set(slug, { slug, lastModified });
       }
 
       pageNum += 1;
     } while (pageNum <= totalPages);
   } catch (error) {
-    console.error("listInstitutionalDocumentPages:", error);
+    console.error("fetchAllWpPages:", error);
+  }
+
+  return pages;
+});
+
+/** Pages com template Documento — usado no SSG e no sitemap. Não é whitelist de rotas. */
+export async function listInstitutionalDocumentPages(): Promise<InstitutionalDocumentRef[]> {
+  const pages = new Map<string, InstitutionalDocumentRef>();
+
+  for (const item of await fetchAllWpPages()) {
+    const wpSlug = typeof item.slug === "string" ? item.slug : "";
+
+    if (!wpSlug || !isDocumentoTemplate(item.template) || isReservedInstitutionalSlug(wpSlug)) {
+      continue;
+    }
+
+    const slug = toFrontInstitutionalSlug(wpSlug);
+    pages.set(slug, { slug, lastModified: parseLastModified(item) });
+  }
+
+  return [...pages.values()];
+}
+
+/** Pages com template Landing no WP (não filtra seções — use listPublishableLandingPages). */
+export async function listInstitutionalLandingPages(): Promise<InstitutionalLandingRef[]> {
+  const pages = new Map<string, InstitutionalLandingRef>();
+
+  for (const item of await fetchAllWpPages()) {
+    const wpSlug = typeof item.slug === "string" ? item.slug : "";
+
+    if (!wpSlug || !isLandingTemplate(item.template)) {
+      continue;
+    }
+
+    const path = toFrontLandingPath(wpSlug);
+
+    if (!path) {
+      continue;
+    }
+
+    pages.set(path, { path, lastModified: parseLastModified(item) });
   }
 
   return [...pages.values()];

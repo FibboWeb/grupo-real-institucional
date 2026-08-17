@@ -31,4 +31,20 @@ final class SlugMap
 
         return $institucional instanceof WP_Post && !($quemSomos instanceof WP_Post);
     }
+
+    public static function registerAdminNotices(): void
+    {
+        add_action('admin_notices', [self::class, 'renderParentSlugConflictNotice']);
+    }
+
+    public static function renderParentSlugConflictNotice(): void
+    {
+        if (!current_user_can('manage_options') || !self::parentSlugConflictsWithQuemSomos()) {
+            return;
+        }
+
+        echo '<div class="notice notice-warning"><p><strong>Grupo Real — Next Config:</strong> a página com slug <code>institucional</code> ainda é a landing Grupo Real H. ';
+        echo 'Renomeie o slug para <code>quem-somos</code> (Páginas → edição rápida) e só então crie uma <em>nova</em> página pai <code>institucional</code> para as políticas. ';
+        echo 'O front Next continua em <code>/quem-somos</code> — não altere essa rota agora.</p></div>';
+    }
 }

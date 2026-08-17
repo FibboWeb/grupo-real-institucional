@@ -12,8 +12,7 @@ Plugin headless que centraliza o contrato entre **conteudo.realh** e o front **N
 
 1. Copie a pasta `grupo-real-next-config` para `wp-content/plugins/` no **conteudo.realh.com.br**
 2. Ative o plugin **Grupo Real — Next Config**
-3. Abra **Grupo Real / Next** no menu admin e siga o checklist
-4. Crie o menu **Institucional Sidebar** em Aparência → Menus e atribua à location homônima
+3. Crie o menu **Institucional Sidebar** em Aparência → Menus e atribua à location homônima
 
 ## Páginas institucionais
 
@@ -71,3 +70,30 @@ Espelhado em `src/constants/cms-config.ts`:
 2. Colar o HTML atual no Wysiwyg (copiar do site ou do TSX legado)
 3. Yoast: title, description, canonical `https://gruporealbr.com.br/institucional/politica-de-privacidade`
 4. Publicar e validar no Next (View Source com texto completo)
+
+## Landings — importação (desenvolvimento)
+
+Pacotes em `imports/` (conteúdo + imagens em `imports/assets/`). A UI de importação no admin foi removida na v1.5.3; use o importador PHP pela equipe de integração.
+
+**Claudio Martins Real** (`claudio-martins-real-curriculo`):
+
+```php
+(new \GrupoReal\NextConfig\Import\LandingImporter())->import('claudio-martins-real-curriculo');
+```
+
+Ex.: WP-CLI `wp eval` ou script one-off no ambiente de staging.
+
+1. A page é criada/atualizada com template **Landing institucional (Next)** e todas as seções ACF
+2. Imagens vão para a Mídia automaticamente
+3. Valide `/claudio-martins-real-curriculo` no Next
+
+Arquivos de referência (mesmo conteúdo):
+
+| Arquivo | Uso |
+|---------|-----|
+| `imports/claudio-martins-real-curriculo.php` | Fonte usada pelo importador |
+| `imports/claudio-martins-real-curriculo.json` | Espelho JSON (espelha o fallback Next em `src/lib/claudio-martins-fallback.ts`) |
+| `imports/assets/claudio-martins-real-curriculo/` | Fotos `.webp` |
+| `imports/assets/icons/` | SVGs dos cards |
+
+Para novas landings: copie o `.php`, ajuste `secoes` e registre assets em `imports/assets/`.

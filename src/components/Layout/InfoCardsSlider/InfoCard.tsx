@@ -44,9 +44,7 @@ function InfoCard({
         )}
       >
         <Image src={svg} width={58} height={58} alt="" />
-        <strong className="text-2xl text-fb_blue">
-          <TagName>{title}</TagName>
-        </strong>
+        <TagName className="text-2xl font-bold text-fb_blue">{title}</TagName>
         <div>{children}</div>
       </div>
     </div>

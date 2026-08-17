@@ -88,6 +88,9 @@ final class FlexibleThumbnails
             'diretoria' => 'Diretoria / cards',
             'timeline' => 'Linha do tempo',
             'texto' => 'Texto livre',
+            'cards_slider' => 'Cards em slider',
+            'cards_lista' => 'Intro + lista de cards',
+            'accordion' => 'Intro + accordion',
             'newsletter' => 'Newsletter',
         ];
 

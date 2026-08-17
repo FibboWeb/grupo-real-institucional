@@ -52,6 +52,7 @@ export function quemSomosFallbackSections(): LandingSection[] {
       imagem: bloco.img,
       inverterDesktop: bloco.reverseDesktop,
       lerMais: "readMore" in bloco ? Boolean(bloco.readMore) : false,
+      centralizarBotao: false,
     })),
     {
       type: "diretoria",

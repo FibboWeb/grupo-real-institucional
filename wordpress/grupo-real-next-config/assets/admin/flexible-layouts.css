@@ -91,9 +91,9 @@
 .acf-fc-popup a::before {
   content: "";
   display: block;
-  height: 72px;
+  height: 80px;
   margin-bottom: 8px;
-  background: #f4f6f8 center / contain no-repeat;
+  background: #fff center / 92% no-repeat;
   border-bottom: 1px solid #dcdcde;
 }
 
@@ -127,6 +127,18 @@
 
 .acf-fc-popup a[data-layout="texto"]::before {
   background-image: url("../blocks/texto.svg");
+}
+
+.acf-fc-popup a[data-layout="cards_slider"]::before {
+  background: linear-gradient(135deg, #e8f4fc 0%, #cfe8f7 100%);
+}
+
+.acf-fc-popup a[data-layout="cards_lista"]::before {
+  background: linear-gradient(135deg, #f0f4e8 0%, #dce8cf 100%);
+}
+
+.acf-fc-popup a[data-layout="accordion"]::before {
+  background: linear-gradient(135deg, #f4eef8 0%, #e4d4f0 100%);
 }
 
 .acf-fc-popup a[data-layout="newsletter"]::before {

@@ -30,6 +30,9 @@ final class Config
      */
     public const SLUG_QUEM_SOMOS = 'quem-somos';
 
+    /** Currículo Claudio Martins — landing Next (/claudio-martins-real-curriculo). */
+    public const SLUG_CLAUDIO_MARTINS = 'claudio-martins-real-curriculo';
+
     public const TEMPLATE_DOCUMENTO = 'institucional-documento';
 
     public const TEMPLATE_DOCUMENTO_LABEL = 'Documento institucional (Next)';

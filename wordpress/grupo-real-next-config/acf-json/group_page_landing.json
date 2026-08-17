@@ -45,7 +45,39 @@
               "name": "fundo",
               "type": "image",
               "return_format": "url",
-              "preview_size": "medium"
+              "preview_size": "medium",
+              "instructions": "Fundo em tela cheia (ex.: Quem Somos). Deixe vazio se usar imagem ao lado."
+            },
+            {
+              "key": "field_grnc_lay_hero_titulo_linha2",
+              "label": "Título — linha 2 (opcional)",
+              "name": "titulo_linha2",
+              "type": "text",
+              "instructions": "Segunda linha do H1, ex.: nome completo abaixo de \"Professor Doutor\"."
+            },
+            {
+              "key": "field_grnc_lay_hero_subtitulo",
+              "label": "Subtítulo (opcional)",
+              "name": "subtitulo",
+              "type": "text",
+              "instructions": "Texto abaixo do título principal, ex.: \"Fundador do Grupo Real\"."
+            },
+            {
+              "key": "field_grnc_lay_hero_imagem",
+              "label": "Imagem ao lado",
+              "name": "imagem",
+              "type": "image",
+              "return_format": "url",
+              "preview_size": "medium",
+              "instructions": "Imagem destacada ao lado ou abaixo do texto (ex.: currículo Claudio Martins)."
+            },
+            {
+              "key": "field_grnc_lay_hero_imagem_abaixo",
+              "label": "Imagem abaixo no mobile",
+              "name": "imagem_abaixo",
+              "type": "true_false",
+              "ui": 1,
+              "default_value": 0
             }
           ]
         },
@@ -168,6 +200,23 @@
               "type": "true_false",
               "ui": 1,
               "default_value": 0
+            },
+            {
+              "key": "field_grnc_lay_img_centralizar_botao",
+              "label": "Centralizar botão Ler mais",
+              "name": "centralizar_botao",
+              "type": "true_false",
+              "ui": 1,
+              "default_value": 0,
+              "conditional_logic": [
+                [
+                  {
+                    "field": "field_grnc_lay_img_ler_mais",
+                    "operator": "==",
+                    "value": "1"
+                  }
+                ]
+              ]
             }
           ]
         },
@@ -374,6 +423,179 @@
             }
           ]
         },
+        "cards_slider": {
+          "key": "layout_grnc_cards_slider",
+          "name": "cards_slider",
+          "label": "Cards em slider",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_grnc_lay_csl_titulo",
+              "label": "Título da seção",
+              "name": "titulo",
+              "type": "text",
+              "default_value": "Títulos"
+            },
+            {
+              "key": "field_grnc_lay_csl_cards",
+              "label": "Cards",
+              "name": "cards",
+              "type": "repeater",
+              "layout": "block",
+              "button_label": "Adicionar card",
+              "collapsed": "field_grnc_lay_csl_card_titulo",
+              "sub_fields": [
+                {
+                  "key": "field_grnc_lay_csl_card_icone",
+                  "label": "Ícone",
+                  "name": "icone",
+                  "type": "image",
+                  "return_format": "url",
+                  "preview_size": "thumbnail",
+                  "parent_repeater": "field_grnc_lay_csl_cards"
+                },
+                {
+                  "key": "field_grnc_lay_csl_card_titulo",
+                  "label": "Título",
+                  "name": "titulo",
+                  "type": "text",
+                  "parent_repeater": "field_grnc_lay_csl_cards"
+                },
+                {
+                  "key": "field_grnc_lay_csl_card_texto",
+                  "label": "Texto",
+                  "name": "texto",
+                  "type": "wysiwyg",
+                  "tabs": "all",
+                  "toolbar": "basic",
+                  "media_upload": 0,
+                  "parent_repeater": "field_grnc_lay_csl_cards"
+                }
+              ]
+            }
+          ]
+        },
+        "cards_lista": {
+          "key": "layout_grnc_cards_lista",
+          "name": "cards_lista",
+          "label": "Intro + lista de cards",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_grnc_lay_cl_titulo",
+              "label": "Título",
+              "name": "titulo",
+              "type": "text",
+              "default_value": "Diplomas"
+            },
+            {
+              "key": "field_grnc_lay_cl_intro",
+              "label": "Texto introdutório",
+              "name": "intro",
+              "type": "wysiwyg",
+              "tabs": "all",
+              "toolbar": "basic",
+              "media_upload": 0
+            },
+            {
+              "key": "field_grnc_lay_cl_itens",
+              "label": "Itens",
+              "name": "itens",
+              "type": "repeater",
+              "layout": "block",
+              "button_label": "Adicionar item",
+              "collapsed": "field_grnc_lay_cl_item_titulo",
+              "sub_fields": [
+                {
+                  "key": "field_grnc_lay_cl_item_icone",
+                  "label": "Ícone",
+                  "name": "icone",
+                  "type": "image",
+                  "return_format": "url",
+                  "preview_size": "thumbnail",
+                  "parent_repeater": "field_grnc_lay_cl_itens"
+                },
+                {
+                  "key": "field_grnc_lay_cl_item_titulo",
+                  "label": "Título",
+                  "name": "titulo",
+                  "type": "text",
+                  "parent_repeater": "field_grnc_lay_cl_itens"
+                },
+                {
+                  "key": "field_grnc_lay_cl_item_texto",
+                  "label": "Texto",
+                  "name": "texto",
+                  "type": "wysiwyg",
+                  "tabs": "all",
+                  "toolbar": "basic",
+                  "media_upload": 0,
+                  "parent_repeater": "field_grnc_lay_cl_itens"
+                }
+              ]
+            }
+          ]
+        },
+        "accordion": {
+          "key": "layout_grnc_accordion",
+          "name": "accordion",
+          "label": "Intro + accordion",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_grnc_lay_acc_titulo",
+              "label": "Título",
+              "name": "titulo",
+              "type": "text"
+            },
+            {
+              "key": "field_grnc_lay_acc_intro",
+              "label": "Texto introdutório",
+              "name": "intro",
+              "type": "wysiwyg",
+              "tabs": "all",
+              "toolbar": "basic",
+              "media_upload": 0
+            },
+            {
+              "key": "field_grnc_lay_acc_itens",
+              "label": "Itens",
+              "name": "itens",
+              "type": "repeater",
+              "layout": "block",
+              "button_label": "Adicionar item",
+              "collapsed": "field_grnc_lay_acc_item_titulo",
+              "sub_fields": [
+                {
+                  "key": "field_grnc_lay_acc_item_titulo",
+                  "label": "Título",
+                  "name": "titulo",
+                  "type": "text",
+                  "parent_repeater": "field_grnc_lay_acc_itens"
+                },
+                {
+                  "key": "field_grnc_lay_acc_item_conteudo",
+                  "label": "Conteúdo",
+                  "name": "conteudo",
+                  "type": "wysiwyg",
+                  "tabs": "all",
+                  "toolbar": "full",
+                  "media_upload": 0,
+                  "parent_repeater": "field_grnc_lay_acc_itens"
+                },
+                {
+                  "key": "field_grnc_lay_acc_item_aberto",
+                  "label": "Aberto por padrão",
+                  "name": "aberto",
+                  "type": "true_false",
+                  "ui": 1,
+                  "default_value": 0,
+                  "parent_repeater": "field_grnc_lay_acc_itens"
+                }
+              ]
+            }
+          ]
+        },
         "newsletter": {
           "key": "layout_grnc_newsletter",
           "name": "newsletter",
@@ -410,5 +632,5 @@
   "active": true,
   "description": "Landing reutilizável: Flexible Content (ACF Pro). Arraste para reordenar. Preview skeleton no seletor de bloco.",
   "show_in_rest": 1,
-  "modified": 1735689700
+  "modified": 1737120000
 }

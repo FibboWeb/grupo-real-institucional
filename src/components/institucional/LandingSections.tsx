@@ -5,6 +5,9 @@ import InfoSection from "@/components/Layout/InfoSection";
 import Newsletter from "@/components/Layout/Newsletter";
 import OurValues from "@/components/Layout/OurValuesSection/OurValues";
 import Timeline from "@/components/Layout/Timeline/Timeline";
+import LandingAccordionSection from "@/components/institucional/LandingAccordionSection";
+import LandingCardsLista from "@/components/institucional/LandingCardsLista";
+import LandingCardsSlider from "@/components/institucional/LandingCardsSlider";
 import { LandingSection } from "@/types/quem-somos-page";
 import "./institutional-content.css";
 
@@ -17,19 +20,43 @@ function renderSection(secao: LandingSection, index: number, heroBackgroundClass
   switch (secao.type) {
     case "hero": {
       const fundo = typeof secao.fundo === "string" ? secao.fundo : undefined;
+      const imagem = secao.imagem;
+      const isSideImageHero = Boolean(imagem);
 
       return (
         <HeroSection
           key={`hero-${index}`}
           backgroundClass={heroBackgroundClass ?? "bg-hero-image"}
           backgroundImageUrl={fundo}
+          imagePath={imagem}
+          imageMaxHeight={isSideImageHero ? 580 : undefined}
+          imageOnBottom={secao.imagemAbaixo ?? false}
         >
-          <div className="flex flex-col gap-6 my-4 w-full md:w-2/5 min-h-[72px]">
-            {secao.titulo ? <h1 className="text-[42px] text-white font-bold">{secao.titulo}</h1> : null}
-            {secao.texto ? (
-              <div className="text-white" dangerouslySetInnerHTML={{ __html: secao.texto }} />
-            ) : null}
-          </div>
+          {isSideImageHero ? (
+            <div className="flex flex-col items-start gap-10">
+              {(secao.titulo || secao.tituloLinha2) && (
+                <h1 className="flex flex-col text-white">
+                  {secao.titulo ? <strong className="text-2xl lg:text-4xl">{secao.titulo}</strong> : null}
+                  {secao.tituloLinha2 ? (
+                    <strong className="text-4xl lg:text-6xl">{secao.tituloLinha2}</strong>
+                  ) : null}
+                </h1>
+              )}
+              {secao.subtitulo ? (
+                <strong className="text-2xl lg:text-4xl text-white">{secao.subtitulo}</strong>
+              ) : null}
+              {secao.texto ? (
+                <div className="text-white" dangerouslySetInnerHTML={{ __html: secao.texto }} />
+              ) : null}
+            </div>
+          ) : (
+            <div className="flex flex-col gap-6 my-4 w-full md:w-2/5 min-h-[72px]">
+              {secao.titulo ? <h1 className="text-[42px] text-white font-bold">{secao.titulo}</h1> : null}
+              {secao.texto ? (
+                <div className="text-white" dangerouslySetInnerHTML={{ __html: secao.texto }} />
+              ) : null}
+            </div>
+          )}
         </HeroSection>
       );
     }
@@ -66,7 +93,26 @@ function renderSection(secao: LandingSection, index: number, heroBackgroundClass
             reverseDesktop={secao.inverterDesktop}
             reverseMobile={false}
             readMore={secao.lerMais}
+            centerButton={secao.centralizarBotao}
           />
+        </div>
+      );
+    case "cards_slider":
+      return (
+        <div key={`cards-slider-${index}`} className="bg-backgroundPage">
+          <LandingCardsSlider titulo={secao.titulo} cards={secao.cards} />
+        </div>
+      );
+    case "cards_lista":
+      return (
+        <div key={`cards-lista-${index}`} className="bg-backgroundPage">
+          <LandingCardsLista titulo={secao.titulo} intro={secao.intro} itens={secao.itens} />
+        </div>
+      );
+    case "accordion":
+      return (
+        <div key={`accordion-${index}`} className="bg-backgroundPage">
+          <LandingAccordionSection titulo={secao.titulo} intro={secao.intro} itens={secao.itens} />
         </div>
       );
     case "atividades":

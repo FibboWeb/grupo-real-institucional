@@ -72,18 +72,38 @@ final class JsonLoader
     }
 
     /**
-     * ACF Pro 6.5 espera layouts indexados pela key (`layout_*`), min/max vazios = ilimitado.
-     * `max: 0` no JSON pode ser lido como “máximo zero seções” e some o botão Adicionar.
+     * Normaliza repeaters/flexible e garante Wysiwyg sem wpautop (`new_lines` vazio).
      *
      * @param array<string, mixed> $field
      * @return array<string, mixed>
      */
     private function prepareField(array $field): array
     {
-        if (($field['type'] ?? '') !== 'flexible_content') {
-            return $field;
+        if (($field['type'] ?? '') === 'wysiwyg') {
+            $field['new_lines'] = '';
         }
 
+        if (($field['type'] ?? '') === 'flexible_content') {
+            return $this->prepareFlexibleContent($field);
+        }
+
+        if (!empty($field['sub_fields']) && is_array($field['sub_fields'])) {
+            $field['sub_fields'] = array_map(function ($subField) {
+                return is_array($subField) ? $this->prepareField($subField) : $subField;
+            }, $field['sub_fields']);
+        }
+
+        return $field;
+    }
+
+    /**
+     * ACF Pro 6.5 espera layouts indexados pela key (`layout_*`), min/max vazios = ilimitado.
+     *
+     * @param array<string, mixed> $field
+     * @return array<string, mixed>
+     */
+    private function prepareFlexibleContent(array $field): array
+    {
         if (($field['min'] ?? null) === 0 || ($field['min'] ?? null) === '0') {
             $field['min'] = '';
         }
@@ -121,13 +141,17 @@ final class JsonLoader
                         continue;
                     }
 
-                    $layout['sub_fields'][$i]['parent'] = $field['key'] ?? '';
-                    $layout['sub_fields'][$i]['parent_layout'] = $layout['key'];
-                    $layout['sub_fields'][$i]['menu_order'] = $i;
+                    $sub = $this->prepareField($sub);
+
+                    $sub['parent'] = $field['key'] ?? '';
+                    $sub['parent_layout'] = $layout['key'];
+                    $sub['menu_order'] = $i;
 
                     if (($sub['name'] ?? null) === '') {
-                        $layout['sub_fields'][$i]['name'] = 'aviso';
+                        $sub['name'] = 'aviso';
                     }
+
+                    $layout['sub_fields'][$i] = $sub;
                 }
             }
 

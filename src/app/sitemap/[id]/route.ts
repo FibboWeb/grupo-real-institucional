@@ -4,6 +4,7 @@ import { unstable_cache } from "next/cache";
 import { getAllPosts } from "@/lib/getPosts";
 import { getAllProducts } from "@/lib/getProducts";
 import { listInstitutionalDocumentPages } from "@/lib/getPage";
+import { listPublishableLandingPages } from "@/lib/getLandingPage";
 import { publicSiteOrigin } from "@/lib/institutional-metadata";
 
 export async function generateStaticParams() {
@@ -39,15 +40,26 @@ const getCachedPosts = unstable_cache(
 const getCachedInstitutional = unstable_cache(
   async () => {
     const origin = publicSiteOrigin();
-    const pages = await listInstitutionalDocumentPages();
+    const [landings, documents] = await Promise.all([
+      listPublishableLandingPages(),
+      listInstitutionalDocumentPages(),
+    ]);
 
-    return pages.map((page) => ({
+    const landingEntries = landings.map((page) => ({
+      url: `${origin}${page.path}`,
+      lastModified: page.lastModified ?? new Date().toISOString(),
+      changeFrequency: "weekly" as const,
+    }));
+
+    const documentEntries = documents.map((page) => ({
       url: `${origin}/institucional/${page.slug}`,
       lastModified: page.lastModified ?? new Date().toISOString(),
       changeFrequency: "weekly" as const,
     }));
+
+    return [...landingEntries, ...documentEntries];
   },
-  ["sitemap-institutional"],
+  ["sitemap-institutional-v2"],
   { revalidate: 3600 },
 );
 
