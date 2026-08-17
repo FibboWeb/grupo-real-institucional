@@ -20,6 +20,9 @@ type Props = {
 const TRACK_PADDING = 96;
 const TRACK_TAIL_PADDING = 160;
 const LABEL_ROW_HEIGHT = 40;
+const AXIS_BAND_GAP_PX = 12;
+const DOT_TOP_PX = 7;
+const DOT_CENTER_PX = DOT_TOP_PX + 7;
 const YEARS_PER_SCREEN_DESKTOP = 16;
 const YEARS_PER_SCREEN_MOBILE = 8;
 const DESKTOP_BREAKPOINT = 1024;
@@ -176,15 +179,22 @@ export default function Timeline({ title = "A História do Grupo Real", eventos 
   const layout = useMemo(() => buildTimelineLayout(eventos, viewportWidth), [eventos, viewportWidth]);
   const { yearColumns, axisYears, trackWidthPx, yearStepPx, firstYear, lastYear } = layout;
 
-  const activeColumn = yearColumns.find((column) => column.items.some((item) => item.index === safeIndex));
-  const activeLeft = activeColumn?.left ?? TRACK_PADDING;
-
   const axisLineLeft = TRACK_PADDING;
   const axisLineWidth = Math.max(0, (lastYear - firstYear) * yearStepPx);
 
   const maxStack = Math.max(1, ...yearColumns.map((column) => column.items.length));
   const labelsHeight = maxStack * LABEL_ROW_HEIGHT;
   const axisHeight = 52;
+
+  const activeColumn = yearColumns.find((column) => column.items.some((item) => item.index === safeIndex));
+  const activeConnector =
+    activeColumn === undefined
+      ? null
+      : {
+          left: activeColumn.left,
+          top: labelsHeight,
+          height: AXIS_BAND_GAP_PX + DOT_CENTER_PX,
+        };
 
   useEffect(() => {
     const update = () => setViewportWidth(window.innerWidth);
@@ -251,6 +261,11 @@ export default function Timeline({ title = "A História do Grupo Real", eventos 
       return;
     }
 
+    const target = event.target as HTMLElement;
+    if (target.closest("button")) {
+      return;
+    }
+
     const container = scrollRef.current;
     if (!container) {
       return;
@@ -297,9 +312,17 @@ export default function Timeline({ title = "A História do Grupo Real", eventos 
       }
 
       stopDragging();
+
+      window.setTimeout(() => {
+        didDragRef.current = false;
+      }, 0);
     },
     [stopDragging],
   );
+
+  const handleYearPointerDown = useCallback((event: PointerEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+  }, []);
 
   const handleYearSelect = useCallback(
     (index: number) => {
@@ -312,6 +335,18 @@ export default function Timeline({ title = "A História do Grupo Real", eventos 
     [goTo],
   );
 
+  const handleYearDotSelect = useCallback(
+    (column: YearColumn) => {
+      const firstIndex = column.items[0]?.index;
+      if (firstIndex === undefined) {
+        return;
+      }
+
+      handleYearSelect(firstIndex);
+    },
+    [handleYearSelect],
+  );
+
   if (eventos.length === 0 || !activeEvent) {
     return null;
   }
@@ -320,12 +355,12 @@ export default function Timeline({ title = "A História do Grupo Real", eventos 
   const showImageColumn = hasSrc(activeEvent.imagem);
 
   return (
-    <section className="flex flex-col overflow-hidden">
+    <section className="flex flex-col overflow-hidden bg-white">
       <div className="fb_container py-8">
         <h2 className="text-3xl font-semibold text-[var(--blue-main)]">{title}</h2>
       </div>
 
-      <div className="relative bg-white">
+      <div className="relative">
         <div className="fb_container relative flex min-h-[320px] items-center py-10 sm:min-h-[380px] sm:py-14">
           <button
             type="button"
@@ -415,7 +450,19 @@ export default function Timeline({ title = "A História do Grupo Real", eventos 
           onPointerCancel={handlePointerUp}
         >
           <div className="relative" style={{ width: trackWidthPx, minHeight: labelsHeight + axisHeight + 16 }}>
-            <div className="relative" style={{ height: labelsHeight }}>
+            {activeConnector ? (
+              <div
+                className={styles["year-connector"]}
+                style={{
+                  left: activeConnector.left,
+                  top: activeConnector.top,
+                  height: activeConnector.height,
+                }}
+                aria-hidden
+              />
+            ) : null}
+
+            <div className="relative z-[1]" style={{ height: labelsHeight }}>
               {yearColumns.map((column) => (
                 <div
                   key={`year-${column.year}`}
@@ -429,6 +476,7 @@ export default function Timeline({ title = "A História do Grupo Real", eventos 
                       <button
                         key={`label-${evento.ano}-${index}`}
                         type="button"
+                        onPointerDown={handleYearPointerDown}
                         onClick={() => handleYearSelect(index)}
                         className={`${styles["year-button"]} ${isActive ? styles["year-button-active"] : ""}`}
                         aria-label={`Ver fato de ${evento.ano}: ${evento.titulo}`}
@@ -442,47 +490,40 @@ export default function Timeline({ title = "A História do Grupo Real", eventos 
               ))}
             </div>
 
-            <div className={styles["axis-band"]} style={{ height: axisHeight }}>
-              <div
-                className={styles["axis-active-marker"]}
-                style={{ left: activeLeft }}
-                aria-hidden
-              />
-
+            <div className={`${styles["axis-band"]} relative z-[1]`} style={{ height: axisHeight }}>
               <div
                 className={styles["axis-line"]}
                 style={{ left: axisLineLeft, width: axisLineWidth }}
                 aria-hidden
               />
 
-              {yearColumns.map((column) => (
-                <div
-                  key={`event-dot-${column.year}`}
-                  className="absolute top-[7px] flex -translate-x-1/2 flex-col items-center gap-1"
-                  style={{ left: column.left }}
-                >
-                  {column.items.map(({ index, evento }) => {
-                    const isActive = index === safeIndex;
+              {yearColumns.map((column) => {
+                const isColumnActive = column.items.some((item) => item.index === safeIndex);
+                const factCount = column.items.length;
 
-                    return (
-                      <button
-                        key={`dot-${evento.ano}-${index}`}
-                        type="button"
-                        onClick={() => handleYearSelect(index)}
-                        className="rounded-full p-0.5 outline-none"
-                        aria-label={`Ver fato de ${evento.ano}: ${evento.titulo}`}
-                        aria-current={isActive ? "true" : undefined}
-                      >
-                        <span
-                          className={`${styles["year-dot"]} ${
-                            isActive ? styles["year-dot-active"] : styles["year-dot-inactive"]
-                          }`}
-                        />
-                      </button>
-                    );
-                  })}
-                </div>
-              ))}
+                return (
+                  <button
+                    key={`event-dot-${column.year}`}
+                    type="button"
+                    onPointerDown={handleYearPointerDown}
+                    onClick={() => handleYearDotSelect(column)}
+                    className="absolute top-[7px] z-[1] -translate-x-1/2 rounded-full p-0.5 outline-none"
+                    style={{ left: column.left }}
+                    aria-label={
+                      factCount > 1
+                        ? `Ver fatos de ${column.year} (${factCount} marcos)`
+                        : `Ver fato de ${column.year}`
+                    }
+                    aria-current={isColumnActive ? "true" : undefined}
+                  >
+                    <span
+                      className={`${styles["year-dot"]} ${
+                        isColumnActive ? styles["year-dot-active"] : styles["year-dot-inactive"]
+                      }`}
+                    />
+                  </button>
+                );
+              })}
 
               {axisYears.map((tick) => (
                 <div
