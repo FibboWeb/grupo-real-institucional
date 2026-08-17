@@ -61,7 +61,7 @@ function parseIconCards(raw: unknown): LandingCardIconItem[] {
   }
 
   return raw
-    .map((item) => {
+    .map((item): LandingCardIconItem | null => {
       if (!item || typeof item !== "object") {
         return null;
       }
@@ -112,7 +112,7 @@ function parseCards(raw: unknown): LandingAtividadeCard[] {
   }
 
   return raw
-    .map((item) => {
+    .map((item): LandingAtividadeCard | null => {
       if (!item || typeof item !== "object") {
         return null;
       }
@@ -136,7 +136,7 @@ function parseEventos(raw: unknown): LandingTimelineEvento[] {
   }
 
   return raw
-    .map((item) => {
+    .map((item): LandingTimelineEvento | null => {
       if (!item || typeof item !== "object") {
         return null;
       }
@@ -168,7 +168,7 @@ function parseMembros(raw: unknown): LandingDiretor[] {
   }
 
   return raw
-    .map((item) => {
+    .map((item): LandingDiretor | null => {
       if (!item || typeof item !== "object") {
         return null;
       }

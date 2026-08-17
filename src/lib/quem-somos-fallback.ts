@@ -62,7 +62,7 @@ export function quemSomosFallbackSections(): LandingSection[] {
         nome: member.name,
         cargo: member.role,
         bio: member.description ?? "",
-        ctaUrl: member.ctaLink,
+        ctaUrl: "ctaLink" in member && typeof member.ctaLink === "string" ? member.ctaLink : undefined,
       })),
     },
     {
