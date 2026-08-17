@@ -92,7 +92,7 @@ Arquivos de referência (mesmo conteúdo):
 | Arquivo | Uso |
 |---------|-----|
 | `imports/claudio-martins-real-curriculo.php` | Fonte usada pelo importador |
-| `imports/claudio-martins-real-curriculo.json` | Espelho JSON (espelha o fallback Next em `src/lib/claudio-martins-fallback.ts`) |
+| `imports/claudio-martins-real-curriculo.json` | Espelho JSON do pacote de importação |
 | `imports/assets/claudio-martins-real-curriculo/` | Fotos `.webp` |
 | `imports/assets/icons/` | SVGs dos cards |
 

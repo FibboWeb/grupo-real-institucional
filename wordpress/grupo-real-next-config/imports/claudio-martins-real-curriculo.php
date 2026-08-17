@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 /**
  * Pacote de importação — Claudio Martins Real (currículo).
- * Espelha src/lib/claudio-martins-fallback.ts do repositório Next.js.
+ * Pacote de importação da landing Claudio Martins Real.
  *
  * Imagens em imports/assets/ (copiadas do public/ do front).
  * Importar via LandingImporter (ver README do plugin).

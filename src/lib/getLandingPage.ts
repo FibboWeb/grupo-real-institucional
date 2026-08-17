@@ -1,8 +1,5 @@
 import { cache } from "react";
 import { CMS_CONFIG, isLandingTemplate } from "@/constants/cms-config";
-import { QUEM_SOMOS_TIMELINE_EVENTOS } from "@/constants/quem-somos-timeline";
-import { quemSomosFallback } from "@/lib/quem-somos-fallback";
-import { claudioMartinsFallback } from "@/lib/claudio-martins-fallback";
 import {
   LandingAtividadeCard,
   LandingAccordionItem,
@@ -18,18 +15,6 @@ const REVALIDATE_SECONDS = 300;
 
 function stripHtml(title: string): string {
   return title.replace(/<[^>]*>/g, "").trim();
-}
-
-function landingFallback(slug: string): LandingPageContent | null {
-  if (slug === CMS_CONFIG.SLUG_QUEM_SOMOS) {
-    return quemSomosFallback();
-  }
-
-  if (slug === CMS_CONFIG.SLUG_CLAUDIO_MARTINS) {
-    return claudioMartinsFallback();
-  }
-
-  return null;
 }
 
 function asString(value: unknown): string {
@@ -318,26 +303,11 @@ function parseSecoes(raw: unknown): LandingSection[] {
   return secoes;
 }
 
-function enrichTimelineFallback(secoes: LandingSection[], slug: string): LandingSection[] {
-  if (slug !== CMS_CONFIG.SLUG_QUEM_SOMOS) {
-    return secoes;
-  }
-
-  return secoes.map((secao) => {
-    if (secao.type === "timeline" && secao.eventos.length === 0) {
-      return { ...secao, eventos: QUEM_SOMOS_TIMELINE_EVENTOS };
-    }
-
-    return secao;
-  });
-}
-
 export const getLandingPage = cache(async (slug: string): Promise<LandingPageContent | null> => {
-  const fallback = landingFallback(slug);
   const apiUrl = process.env.NEXT_PUBLIC_WP_URL_API;
 
   if (!apiUrl) {
-    return fallback;
+    return null;
   }
 
   try {
@@ -346,31 +316,27 @@ export const getLandingPage = cache(async (slug: string): Promise<LandingPageCon
     });
 
     if (!response.ok) {
-      return fallback;
+      return null;
     }
 
     const data = await response.json();
 
     if (!Array.isArray(data) || data.length === 0) {
-      return fallback;
+      return null;
     }
 
     const page = data[0];
 
     if (!isLandingTemplate(page.template)) {
-      return fallback;
+      return null;
     }
 
     const title = stripHtml(page.title?.rendered ?? page.title ?? "");
     const acf = page.acf && typeof page.acf === "object" ? (page.acf as Record<string, unknown>) : {};
-    const secoes = enrichTimelineFallback(parseSecoes(acf[CMS_CONFIG.ACF_SECOES]), slug);
+    const secoes = parseSecoes(acf[CMS_CONFIG.ACF_SECOES]);
     const yoast_head_json = page.yoast_head_json ?? null;
 
     if (secoes.length === 0) {
-      if (fallback) {
-        return { ...fallback, yoast_head_json, title: title || fallback.title };
-      }
-
       return null;
     }
 
@@ -381,37 +347,24 @@ export const getLandingPage = cache(async (slug: string): Promise<LandingPageCon
     };
   } catch (error) {
     console.error("getLandingPage:", error);
-    return fallback;
+    return null;
   }
 });
-
-const LANDING_FALLBACK_SLUGS = [CMS_CONFIG.SLUG_QUEM_SOMOS, CMS_CONFIG.SLUG_CLAUDIO_MARTINS] as const;
 
 /** Landings publicáveis: template Landing + ao menos uma seção renderizável (mesma regra da rota). */
 export async function listPublishableLandingPages(): Promise<InstitutionalLandingRef[]> {
   const fromWp = await listInstitutionalLandingPages();
-  const byPath = new Map(fromWp.map((page) => [page.path, page]));
-
-  const slugs = new Set([
-    ...fromWp.map(({ path }) => path.replace(/^\//, "")),
-    ...LANDING_FALLBACK_SLUGS,
-  ]);
-
   const publishable: InstitutionalLandingRef[] = [];
 
-  for (const slug of slugs) {
+  for (const item of fromWp) {
+    const slug = item.path.replace(/^\//, "");
     const page = await getLandingPage(slug);
 
     if (!page || page.secoes.length === 0) {
       continue;
     }
 
-    const path = `/${slug}`;
-
-    publishable.push({
-      path,
-      lastModified: byPath.get(path)?.lastModified,
-    });
+    publishable.push(item);
   }
 
   return publishable;
