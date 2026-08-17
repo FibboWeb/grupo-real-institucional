@@ -100,8 +100,8 @@ function renderSection(secao: LandingSection, index: number, heroBackgroundClass
       );
     case "timeline":
       return (
-        <section key={`timeline-${index}`} className="py-8">
-          <Timeline title={secao.titulo} embedUrl={secao.url} />
+        <section key={`timeline-${index}`} className="py-8 bg-backgroundPage">
+          <Timeline title={secao.titulo} eventos={secao.eventos} />
         </section>
       );
     case "texto":

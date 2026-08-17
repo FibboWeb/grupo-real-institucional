@@ -61,10 +61,17 @@ export type LandingDiretoriaSection = {
   membros: LandingDiretor[];
 };
 
+export type LandingTimelineEvento = {
+  ano: string;
+  titulo: string;
+  texto?: string;
+  imagem?: CmsImage;
+};
+
 export type LandingTimelineSection = {
   type: "timeline";
   titulo: string;
-  url: string;
+  eventos: LandingTimelineEvento[];
 };
 
 export type LandingTextoSection = {

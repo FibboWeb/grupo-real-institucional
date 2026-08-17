@@ -310,10 +310,50 @@
               "default_value": "A História do Grupo Real"
             },
             {
-              "key": "field_grnc_lay_tl_url",
-              "label": "URL do embed (Knight Lab)",
-              "name": "url",
-              "type": "text"
+              "key": "field_grnc_lay_tl_eventos",
+              "label": "Fatos",
+              "name": "eventos",
+              "type": "repeater",
+              "instructions": "Adicione cada marco na ordem cronológica. Arraste para reordenar.",
+              "layout": "block",
+              "button_label": "Adicionar fato",
+              "collapsed": "field_grnc_lay_tl_ano",
+              "sub_fields": [
+                {
+                  "key": "field_grnc_lay_tl_ano",
+                  "label": "Ano",
+                  "name": "ano",
+                  "type": "text",
+                  "instructions": "Ex.: 1985 ou 1985–1989",
+                  "required": 1,
+                  "parent_repeater": "field_grnc_lay_tl_eventos"
+                },
+                {
+                  "key": "field_grnc_lay_tl_evt_titulo",
+                  "label": "Título do fato",
+                  "name": "titulo",
+                  "type": "text",
+                  "required": 1,
+                  "parent_repeater": "field_grnc_lay_tl_eventos"
+                },
+                {
+                  "key": "field_grnc_lay_tl_evt_texto",
+                  "label": "Descrição",
+                  "name": "texto",
+                  "type": "textarea",
+                  "rows": 4,
+                  "parent_repeater": "field_grnc_lay_tl_eventos"
+                },
+                {
+                  "key": "field_grnc_lay_tl_evt_imagem",
+                  "label": "Imagem (opcional)",
+                  "name": "imagem",
+                  "type": "image",
+                  "return_format": "url",
+                  "preview_size": "medium",
+                  "parent_repeater": "field_grnc_lay_tl_eventos"
+                }
+              ]
             }
           ]
         },

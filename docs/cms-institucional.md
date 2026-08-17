@@ -71,7 +71,7 @@ Não usar Documento — senão a page cairia em `/institucional/quem-somos`.
 | `info_imagem` | Texto + imagem (inverter / ler mais) |
 | `atividades` | Intro + cards (missão, visão…) |
 | `diretoria` | Cards de pessoas |
-| `timeline` | Embed Knight Lab |
+| `timeline` | Linha do tempo (repeater: ano, título, descrição, imagem opcional) |
 | `texto` | Wysiwyg livre |
 | `newsletter` | Componente React do site |
 
@@ -79,11 +79,12 @@ Se `secoes` estiver vazio no Quem Somos, o Next usa o fallback TSX (não quebra 
 
 ### WordPress (Quem Somos)
 
-1. Atualizar o plugin para **1.3.3**
+1. Atualizar o plugin para **1.4.0**
 2. Page slug `quem-somos` → template **Landing institucional (Next)**
 3. Clique na área tracejada ou em **Adicionar seção** — o popup mostra o esqueleto de cada bloco; arraste para mudar a ordem
-4. Yoast canonical: `https://gruporealbr.com.br/quem-somos`
-5. Recarregar `/quem-somos`
+4. **Linha do tempo:** bloco `timeline` → **Adicionar fato** (ano, título, descrição, imagem opcional). Ordem = cronologia no site
+5. Yoast canonical: `https://gruporealbr.com.br/quem-somos`
+6. Recarregar `/quem-somos`
 
 Claudio Martins Real continua TSX até usar o mesmo template Landing.
 

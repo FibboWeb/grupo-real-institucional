@@ -1,11 +1,9 @@
+import { QUEM_SOMOS_TIMELINE_EVENTOS } from "@/constants/quem-somos-timeline";
 import ClaudioImage from "@/public/images/claudio-martins-real-curriculo/claudio-1.webp";
 import { members } from "@/app/quem-somos/BoardCardsContents";
 import { infoSectionsContents } from "@/app/quem-somos/infoSectionContents";
 import { OurValuesContent, content as atividadesTexto } from "@/app/quem-somos/OurValuesContents";
 import { LandingPageContent, LandingSection } from "@/types/quem-somos-page";
-
-export const DEFAULT_TIMELINE =
-  "https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=v2:2PACX-1vRQGZD9puZ73tfwMncf7lMfCq4aLJAdJUt-NLBvT08HAOSVjz7YbSKb-HfTiPLDR2p0Nf6NyRLdH49Q&font=Poppins&lang=en&initial_zoom=2&height=650";
 
 export function quemSomosFallbackSections(): LandingSection[] {
   return [
@@ -69,7 +67,7 @@ export function quemSomosFallbackSections(): LandingSection[] {
     {
       type: "timeline",
       titulo: "A História do Grupo Real",
-      url: DEFAULT_TIMELINE,
+      eventos: QUEM_SOMOS_TIMELINE_EVENTOS,
     },
     { type: "newsletter" },
   ];

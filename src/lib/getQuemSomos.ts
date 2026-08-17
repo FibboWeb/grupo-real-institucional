@@ -1,11 +1,13 @@
 import { cache } from "react";
 import { CMS_CONFIG, isLandingTemplate } from "@/constants/cms-config";
+import { QUEM_SOMOS_TIMELINE_EVENTOS } from "@/constants/quem-somos-timeline";
 import { quemSomosFallback } from "@/lib/quem-somos-fallback";
 import {
   LandingAtividadeCard,
   LandingDiretor,
   LandingPageContent,
   LandingSection,
+  LandingTimelineEvento,
 } from "@/types/quem-somos-page";
 
 const REVALIDATE_SECONDS = 300;
@@ -55,6 +57,38 @@ function parseCards(raw: unknown): LandingAtividadeCard[] {
       return { icone: acfImageUrl(row.icone), titulo, texto };
     })
     .filter((item): item is LandingAtividadeCard => item !== null);
+}
+
+function parseEventos(raw: unknown): LandingTimelineEvento[] {
+  if (!Array.isArray(raw)) {
+    return [];
+  }
+
+  return raw
+    .map((item) => {
+      if (!item || typeof item !== "object") {
+        return null;
+      }
+
+      const row = item as Record<string, unknown>;
+      const ano = asString(row.ano);
+      const titulo = asString(row.titulo);
+
+      if (!ano || !titulo) {
+        return null;
+      }
+
+      const texto = asString(row.texto);
+      const imagem = acfImageUrl(row.imagem);
+
+      return {
+        ano,
+        titulo,
+        texto: texto || undefined,
+        imagem: imagem || undefined,
+      };
+    })
+    .filter((item): item is LandingTimelineEvento => item !== null);
 }
 
 function parseMembros(raw: unknown): LandingDiretor[] {
@@ -146,7 +180,7 @@ function parseSection(raw: unknown): LandingSection | null {
       return {
         type,
         titulo: asString(row.titulo) || "A História do Grupo Real",
-        url: asString(row.url),
+        eventos: parseEventos(row.eventos),
       };
     case "texto":
       return { type, conteudo: asString(row.conteudo) };
@@ -163,6 +197,20 @@ function parseSecoes(raw: unknown): LandingSection[] {
   }
 
   return raw.map(parseSection).filter((item): item is LandingSection => item !== null);
+}
+
+function enrichTimelineFallback(secoes: LandingSection[], slug: string): LandingSection[] {
+  if (slug !== CMS_CONFIG.SLUG_QUEM_SOMOS) {
+    return secoes;
+  }
+
+  return secoes.map((secao) => {
+    if (secao.type === "timeline" && secao.eventos.length === 0) {
+      return { ...secao, eventos: QUEM_SOMOS_TIMELINE_EVENTOS };
+    }
+
+    return secao;
+  });
 }
 
 export const getLandingPage = cache(async (slug: string): Promise<LandingPageContent> => {
@@ -195,7 +243,7 @@ export const getLandingPage = cache(async (slug: string): Promise<LandingPageCon
     }
 
     const acf = page.acf && typeof page.acf === "object" ? (page.acf as Record<string, unknown>) : {};
-    const secoes = parseSecoes(acf[CMS_CONFIG.ACF_SECOES]);
+    const secoes = enrichTimelineFallback(parseSecoes(acf[CMS_CONFIG.ACF_SECOES]), slug);
 
     if (secoes.length === 0) {
       return { ...fallback, yoast_head_json: page.yoast_head_json ?? null };
