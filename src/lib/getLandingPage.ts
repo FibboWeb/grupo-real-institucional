@@ -60,23 +60,25 @@ function parseIconCards(raw: unknown): LandingCardIconItem[] {
     return [];
   }
 
-  return raw
-    .map((item): LandingCardIconItem | null => {
-      if (!item || typeof item !== "object") {
-        return null;
-      }
+  const cards: LandingCardIconItem[] = [];
 
-      const row = item as Record<string, unknown>;
-      const titulo = asString(row.titulo);
-      const texto = asString(row.texto);
+  for (const item of raw) {
+    if (!item || typeof item !== "object") {
+      continue;
+    }
 
-      if (!titulo && !texto) {
-        return null;
-      }
+    const row = item as Record<string, unknown>;
+    const titulo = asString(row.titulo);
+    const texto = asString(row.texto);
 
-      return { icone: acfImageUrl(row.icone), titulo, texto };
-    })
-    .filter((item): item is LandingCardIconItem => item !== null);
+    if (!titulo && !texto) {
+      continue;
+    }
+
+    cards.push({ icone: acfImageUrl(row.icone), titulo, texto });
+  }
+
+  return cards;
 }
 
 function parseAccordionItens(raw: unknown): LandingAccordionItem[] {
@@ -84,26 +86,28 @@ function parseAccordionItens(raw: unknown): LandingAccordionItem[] {
     return [];
   }
 
-  return raw
-    .map((item) => {
-      if (!item || typeof item !== "object") {
-        return null;
-      }
+  const itens: LandingAccordionItem[] = [];
 
-      const row = item as Record<string, unknown>;
-      const titulo = asString(row.titulo);
+  for (const item of raw) {
+    if (!item || typeof item !== "object") {
+      continue;
+    }
 
-      if (!titulo) {
-        return null;
-      }
+    const row = item as Record<string, unknown>;
+    const titulo = asString(row.titulo);
 
-      return {
-        titulo,
-        conteudo: asString(row.conteudo),
-        aberto: asBool(row.aberto),
-      };
-    })
-    .filter((item): item is LandingAccordionItem => item !== null);
+    if (!titulo) {
+      continue;
+    }
+
+    itens.push({
+      titulo,
+      conteudo: asString(row.conteudo),
+      aberto: asBool(row.aberto),
+    });
+  }
+
+  return itens;
 }
 
 function parseCards(raw: unknown): LandingAtividadeCard[] {
@@ -111,23 +115,25 @@ function parseCards(raw: unknown): LandingAtividadeCard[] {
     return [];
   }
 
-  return raw
-    .map((item): LandingAtividadeCard | null => {
-      if (!item || typeof item !== "object") {
-        return null;
-      }
+  const cards: LandingAtividadeCard[] = [];
 
-      const row = item as Record<string, unknown>;
-      const titulo = asString(row.titulo);
-      const texto = asString(row.texto);
+  for (const item of raw) {
+    if (!item || typeof item !== "object") {
+      continue;
+    }
 
-      if (!titulo && !texto) {
-        return null;
-      }
+    const row = item as Record<string, unknown>;
+    const titulo = asString(row.titulo);
+    const texto = asString(row.texto);
 
-      return { icone: acfImageUrl(row.icone), titulo, texto };
-    })
-    .filter((item): item is LandingAtividadeCard => item !== null);
+    if (!titulo && !texto) {
+      continue;
+    }
+
+    cards.push({ icone: acfImageUrl(row.icone), titulo, texto });
+  }
+
+  return cards;
 }
 
 function parseEventos(raw: unknown): LandingTimelineEvento[] {
@@ -135,31 +141,33 @@ function parseEventos(raw: unknown): LandingTimelineEvento[] {
     return [];
   }
 
-  return raw
-    .map((item): LandingTimelineEvento | null => {
-      if (!item || typeof item !== "object") {
-        return null;
-      }
+  const eventos: LandingTimelineEvento[] = [];
 
-      const row = item as Record<string, unknown>;
-      const ano = asString(row.ano);
-      const titulo = asString(row.titulo);
+  for (const item of raw) {
+    if (!item || typeof item !== "object") {
+      continue;
+    }
 
-      if (!ano || !titulo) {
-        return null;
-      }
+    const row = item as Record<string, unknown>;
+    const ano = asString(row.ano);
+    const titulo = asString(row.titulo);
 
-      const texto = asString(row.texto);
-      const imagem = acfImageUrl(row.imagem);
+    if (!ano || !titulo) {
+      continue;
+    }
 
-      return {
-        ano,
-        titulo,
-        texto: texto || undefined,
-        imagem: imagem || undefined,
-      };
-    })
-    .filter((item): item is LandingTimelineEvento => item !== null);
+    const texto = asString(row.texto);
+    const imagem = acfImageUrl(row.imagem);
+
+    eventos.push({
+      ano,
+      titulo,
+      texto: texto || undefined,
+      imagem: imagem || undefined,
+    });
+  }
+
+  return eventos;
 }
 
 function parseMembros(raw: unknown): LandingDiretor[] {
@@ -167,30 +175,32 @@ function parseMembros(raw: unknown): LandingDiretor[] {
     return [];
   }
 
-  return raw
-    .map((item): LandingDiretor | null => {
-      if (!item || typeof item !== "object") {
-        return null;
-      }
+  const membros: LandingDiretor[] = [];
 
-      const row = item as Record<string, unknown>;
-      const nome = asString(row.nome);
+  for (const item of raw) {
+    if (!item || typeof item !== "object") {
+      continue;
+    }
 
-      if (!nome) {
-        return null;
-      }
+    const row = item as Record<string, unknown>;
+    const nome = asString(row.nome);
 
-      const ctaUrl = asString(row.cta_url);
+    if (!nome) {
+      continue;
+    }
 
-      return {
-        foto: acfImageUrl(row.foto),
-        nome,
-        cargo: asString(row.cargo),
-        bio: asString(row.bio),
-        ctaUrl: ctaUrl || undefined,
-      };
-    })
-    .filter((item): item is LandingDiretor => item !== null);
+    const ctaUrl = asString(row.cta_url);
+
+    membros.push({
+      foto: acfImageUrl(row.foto),
+      nome,
+      cargo: asString(row.cargo),
+      bio: asString(row.bio),
+      ctaUrl: ctaUrl || undefined,
+    });
+  }
+
+  return membros;
 }
 
 function parseSection(raw: unknown): LandingSection | null {
@@ -295,7 +305,17 @@ function parseSecoes(raw: unknown): LandingSection[] {
     return [];
   }
 
-  return raw.map(parseSection).filter((item): item is LandingSection => item !== null);
+  const secoes: LandingSection[] = [];
+
+  for (const item of raw) {
+    const secao = parseSection(item);
+
+    if (secao) {
+      secoes.push(secao);
+    }
+  }
+
+  return secoes;
 }
 
 function enrichTimelineFallback(secoes: LandingSection[], slug: string): LandingSection[] {
