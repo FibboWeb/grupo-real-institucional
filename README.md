@@ -44,6 +44,7 @@ O script de desenvolvimento usa [Turbopack](https://nextjs.org/docs/app/api-refe
 | `NEXT_PUBLIC_WP_URL` | URL base do WordPress exposta ao cliente (conteúdo). |
 | `NEXT_PUBLIC_WP_URL_API` | Base da REST API usada no código: posts, produtos, representantes, categorias, comentários, mídia, páginas, busca etc. |
 | `NEXT_PUBLIC_WP_URL_API_V1` | Base dos endpoints customizados (`.../wp-json/api/v1/`): leads, newsletter, representante, WhatsApp, atendimento ao titular. |
+| `NEXT_PUBLIC_WP_URL_API_CUSTOM` | Base REST do plugin Next Config (`.../wp-json/custom/`): menu da sidebar institucional (`institutional-sidebar`). |
 | `NEXT_PUBLIC_WP_AUTH_TOKEN` | (Opcional no exemplo comentado.) Token Bearer para `getPostsNoticiasPage`. |
 
 ## Instalação e execução

@@ -1,9 +1,105 @@
-.slick-track {
+.info-cards-slider {
+  position: relative;
+  padding-bottom: 2.75rem;
+  overflow: visible;
+}
+
+.info-cards-ssr-track {
+  display: flex;
+  overflow: hidden;
+}
+
+.info-cards-ssr-slide {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.info-cards-slider .slick-list {
+  overflow: hidden;
+}
+
+.info-cards-slider .slick-track {
   display: flex !important;
 }
 
-.slick-slide {
+.info-cards-slider .slick-slide {
   height: inherit !important;
   display: flex !important;
   justify-content: center;
+}
+
+.info-cards-slider .slick-slide > div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.info-cards-slider .info-cards-dots {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex !important;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.35rem 0.5rem;
+  width: 100%;
+  margin: 0;
+  padding: 0 0.75rem;
+  list-style: none;
+  overflow: visible;
+}
+
+.info-cards-slider .info-cards-dots li {
+  position: relative;
+  display: inline-flex;
+  margin: 0;
+  width: auto;
+  height: auto;
+}
+
+.info-cards-slider .info-cards-dots li button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  cursor: pointer;
+  border: 0;
+  outline: none;
+  background: transparent;
+}
+
+.info-cards-slider .info-cards-dots li button:before {
+  content: none !important;
+}
+
+.info-cards-slider .info-cards-dot {
+  display: block;
+  width: 11px;
+  height: 11px;
+  border-radius: 9999px;
+  background-color: var(--gray-bread, #8e8e8e);
+  opacity: 0.45;
+  transition: background-color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+}
+
+.info-cards-slider .info-cards-dots li.slick-active .info-cards-dot {
+  background-color: var(--blue, #1986c1);
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+.info-cards-slider .info-cards-dots li.slick-active button:hover .info-cards-dot,
+.info-cards-slider .info-cards-dots li.slick-active button:focus .info-cards-dot {
+  background-color: var(--blue, #1986c1);
+  opacity: 1;
+}
+
+.info-cards-slider .info-cards-dots li:not(.slick-active) button:hover .info-cards-dot,
+.info-cards-slider .info-cards-dots li:not(.slick-active) button:focus .info-cards-dot {
+  opacity: 0.75;
 }

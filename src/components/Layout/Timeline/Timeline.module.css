@@ -1,0 +1,198 @@
+.timeline-slide-in-right {
+  animation: timeline-slide-in-right 0.45s ease-out both;
+}
+
+.timeline-slide-in-left {
+  animation: timeline-slide-in-left 0.45s ease-out both;
+}
+
+@keyframes timeline-slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes timeline-slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.timeline-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.timeline-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.timeline-scroll-dragging {
+  cursor: grabbing;
+}
+
+.timeline-scroll-dragging .year-button,
+.timeline-scroll-dragging .year-dot {
+  pointer-events: none;
+}
+
+.slide-image-visible {
+  position: relative;
+}
+
+.slide-image-hidden {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.year-button {
+  display: block;
+  min-width: 3.5rem;
+  cursor: pointer;
+  white-space: nowrap;
+  border-radius: 0.5rem;
+  border: 1px solid #c8c8c8;
+  background: #fff;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #555;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 8%);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+@media (min-width: 640px) {
+  .year-button {
+    min-width: 4rem;
+    padding: 0.45rem 0.9rem;
+    font-size: 1rem;
+  }
+}
+
+.year-button:hover {
+  transform: translateY(-1px);
+  border-color: #1986c1;
+  color: var(--blue-main);
+  box-shadow: 0 4px 10px rgb(3 29 58 / 12%);
+}
+
+.year-button:focus-visible {
+  outline: 2px solid #1986c1;
+  outline-offset: 2px;
+}
+
+.year-button-active {
+  transform: scale(1.05);
+  border-color: var(--blue-main);
+  background: #fff;
+  color: var(--blue-main);
+  box-shadow: 0 4px 14px rgb(3 29 58 / 16%);
+}
+
+.year-dot {
+  display: block;
+  cursor: pointer;
+  border-radius: 999px;
+  border: 2px solid #fff;
+  background: #bdbdbd;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.year-dot:hover {
+  transform: scale(1.15);
+  background: #1986c1;
+  box-shadow: 0 0 0 3px rgb(25 134 193 / 25%);
+}
+
+.year-dot-active {
+  width: 0.85rem;
+  height: 0.85rem;
+  background: var(--blue-main);
+  box-shadow: 0 0 0 4px rgb(25 134 193 / 22%);
+}
+
+.year-dot-inactive {
+  width: 0.65rem;
+  height: 0.65rem;
+}
+
+.axis-band {
+  position: relative;
+  margin-top: 0.75rem;
+}
+
+.axis-line {
+  position: absolute;
+  top: 11px;
+  height: 1px;
+  background: #bdbdbd;
+}
+
+.year-connector {
+  position: absolute;
+  z-index: 0;
+  width: 2px;
+  transform: translateX(-50%);
+  background: var(--blue-main);
+  pointer-events: none;
+}
+
+.axis-year {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(-50%);
+}
+
+.axis-tick-mark {
+  width: 1px;
+  height: 8px;
+  margin-top: 7px;
+  background: #bdbdbd;
+}
+
+.axis-year-label {
+  margin-top: 1.2rem;
+  font-size: 0.6875rem;
+  line-height: 1;
+  color: #777;
+  user-select: none;
+}
+
+@media (min-width: 640px) {
+  .axis-year-label {
+    font-size: 0.75rem;
+  }
+}

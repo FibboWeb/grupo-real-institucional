@@ -1,0 +1,99 @@
+# Grupo Real — Next Config (WordPress)
+
+Plugin headless que centraliza o contrato entre **conteudo.realh** e o front **Next.js**.
+
+## Requisitos
+
+- WordPress 6.x+
+- [Advanced Custom Fields](https://wordpress.org/plugins/advanced-custom-fields/) **Pro** (Repeater e Flexible Content)
+- Yoast SEO (recomendado para metadata)
+
+## Instalação
+
+1. Copie a pasta `grupo-real-next-config` para `wp-content/plugins/` no **conteudo.realh.com.br**
+2. Ative o plugin **Grupo Real — Next Config**
+3. Crie o menu **Institucional Sidebar** em Aparência → Menus e atribua à location homônima
+
+## Páginas institucionais
+
+**Conflito de slug:** a landing Grupo Real H no WP usa `institucional`, mas no Next é `/quem-somos`. Siga a ordem:
+
+1. Renomeie essa page para slug **`quem-somos`**
+2. Crie uma **nova** página mãe **Institucional** (slug `institucional`) só como agrupadora
+3. Nas filhas (políticas), template **Documento institucional (Next)** — o slug vira `/institucional/{slug}`
+4. Em **Quem Somos**, template **Landing institucional (Next)** — seções ACF (hero, depoimento, blocos…). Newsletter permanece no Next
+5. Preencha os campos ACF e publique
+6. Inclua as políticas no menu **Institucional Sidebar**
+
+## Menu sidebar (estrutura sugerida)
+
+```
+Atendimento (# ou vazio)     → ícone: phone
+  Direito dos titulares      → /institucional/direito-dos-titulares
+  Atendimento ao titular     → /institucional/atendimento-ao-titular
+Nossas políticas             → ícone: shield
+  LGPD
+  Canal de Ética             → URL externa, nova aba
+  Política de Cookies
+  Política de Privacidade
+  Política de Qualidade
+  Política de privacidade do Candidato
+```
+
+URLs internas podem ser path relativo (`/institucional/...`) ou URL completa do front.
+
+## ACF JSON
+
+Field groups versionados em `acf-json/`. Carregados via `acf_add_local_field_group()` — **sem** Local JSON do Pro.
+
+Para alterar campos: edite o JSON neste repositório, faça deploy do plugin e recarregue o WP.
+
+## Contrato com o Next
+
+Espelhado em `src/constants/cms-config.ts`:
+
+| Constante | Valor |
+|-----------|--------|
+| Menu sidebar | `Institucional Sidebar` |
+| Slug pai (agrupador) | `institucional` |
+| Landing Grupo Real H | slug WP `quem-somos` → Next `/quem-somos` (template Landing) |
+| Template documento | `institucional-documento` |
+| Template landing | `institucional-landing` (Flexible Content `secoes`) |
+| Conteúdo | `acf.conteudo` |
+| Formulário | `acf.exibir_formulario` |
+| CTAs | `acf.ctas` (Repeater: rotulo, url/path, target) — requer ACF Pro |
+| Ícone menu | `acf.icone`, `acf.icone_imagem` |
+
+## Política de Privacidade — importação
+
+1. Subir para a Mídia: `tabela-real-cia-cmr-laboratorio-cnpj.webp`, `infografico-1.webp`, `infografico-2.webp`
+2. Colar o HTML atual no Wysiwyg (copiar do site ou do TSX legado)
+3. Yoast: title, description, canonical `https://gruporealbr.com.br/institucional/politica-de-privacidade`
+4. Publicar e validar no Next (View Source com texto completo)
+
+## Landings — importação (desenvolvimento)
+
+Pacotes em `imports/` (conteúdo + imagens em `imports/assets/`). A UI de importação no admin foi removida na v1.5.3; use o importador PHP pela equipe de integração.
+
+**Claudio Martins Real** (`claudio-martins-real-curriculo`):
+
+```php
+(new \GrupoReal\NextConfig\Import\LandingImporter())->import('claudio-martins-real-curriculo');
+```
+
+Ex.: WP-CLI `wp eval` ou script one-off no ambiente de staging.
+
+1. A page é criada/atualizada com template **Landing institucional (Next)** e todas as seções ACF
+2. Imagens vão para a Mídia automaticamente
+3. Valide `/claudio-martins-real-curriculo` no Next
+
+Arquivos de referência (mesmo conteúdo):
+
+| Arquivo | Uso |
+|---------|-----|
+| `imports/claudio-martins-real-curriculo.php` | Fonte usada pelo importador |
+| `imports/claudio-martins-real-curriculo.json` | Espelho JSON do pacote de importação |
+| `imports/assets/claudio-martins-real-curriculo/` | Fotos `.webp` |
+| `imports/assets/icons/` | SVGs dos cards |
+
+Para novas landings: copie o `.php`, ajuste `secoes` e registre assets em `imports/assets/`.

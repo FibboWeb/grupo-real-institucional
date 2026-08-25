@@ -1,0 +1,636 @@
+{
+  "key": "group_page_landing",
+  "title": "Landing institucional (Next)",
+  "fields": [
+    {
+      "key": "field_grnc_qs_secoes",
+      "label": "Seções",
+      "name": "secoes",
+      "type": "flexible_content",
+      "instructions": "Adicione, arraste para reordenar e escolha o tipo de bloco. O preview mostra o esqueleto de cada seção. Newsletter e formulários são componentes do site.",
+      "required": 0,
+      "button_label": "Adicionar seção",
+      "min": "",
+      "max": "",
+      "wrapper": {
+        "width": "",
+        "class": "grnc-landing-secoes",
+        "id": ""
+      },
+      "layouts": {
+        "hero": {
+          "key": "layout_grnc_hero",
+          "name": "hero",
+          "label": "Hero (banner)",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_grnc_lay_hero_titulo",
+              "label": "Título",
+              "name": "titulo",
+              "type": "text"
+            },
+            {
+              "key": "field_grnc_lay_hero_texto",
+              "label": "Texto",
+              "name": "texto",
+              "type": "wysiwyg",
+              "tabs": "all",
+              "toolbar": "basic",
+              "media_upload": 0
+            },
+            {
+              "key": "field_grnc_lay_hero_fundo",
+              "label": "Imagem de fundo",
+              "name": "fundo",
+              "type": "image",
+              "return_format": "url",
+              "preview_size": "medium",
+              "instructions": "Fundo em tela cheia (ex.: Quem Somos). Deixe vazio se usar imagem ao lado."
+            },
+            {
+              "key": "field_grnc_lay_hero_titulo_linha2",
+              "label": "Título — linha 2 (opcional)",
+              "name": "titulo_linha2",
+              "type": "text",
+              "instructions": "Segunda linha do H1, ex.: nome completo abaixo de \"Professor Doutor\"."
+            },
+            {
+              "key": "field_grnc_lay_hero_subtitulo",
+              "label": "Subtítulo (opcional)",
+              "name": "subtitulo",
+              "type": "text",
+              "instructions": "Texto abaixo do título principal, ex.: \"Fundador do Grupo Real\"."
+            },
+            {
+              "key": "field_grnc_lay_hero_imagem",
+              "label": "Imagem ao lado",
+              "name": "imagem",
+              "type": "image",
+              "return_format": "url",
+              "preview_size": "medium",
+              "instructions": "Imagem destacada ao lado ou abaixo do texto (ex.: currículo Claudio Martins)."
+            },
+            {
+              "key": "field_grnc_lay_hero_imagem_abaixo",
+              "label": "Imagem abaixo no mobile",
+              "name": "imagem_abaixo",
+              "type": "true_false",
+              "ui": 1,
+              "default_value": 0
+            }
+          ]
+        },
+        "depoimento": {
+          "key": "layout_grnc_depoimento",
+          "name": "depoimento",
+          "label": "Depoimento",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_grnc_lay_dep_texto",
+              "label": "Citação",
+              "name": "texto",
+              "type": "textarea",
+              "rows": 4
+            },
+            {
+              "key": "field_grnc_lay_dep_imagem",
+              "label": "Foto",
+              "name": "imagem",
+              "type": "image",
+              "return_format": "url",
+              "preview_size": "medium"
+            },
+            {
+              "key": "field_grnc_lay_dep_cta_rotulo",
+              "label": "Rótulo do botão",
+              "name": "cta_rotulo",
+              "type": "text",
+              "default_value": "Ler mais"
+            },
+            {
+              "key": "field_grnc_lay_dep_cta_url",
+              "label": "URL do botão",
+              "name": "cta_url",
+              "type": "text",
+              "default_value": "/claudio-martins-real-curriculo"
+            }
+          ]
+        },
+        "info_video": {
+          "key": "layout_grnc_info_video",
+          "name": "info_video",
+          "label": "Texto + vídeo",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_grnc_lay_video_titulo",
+              "label": "Título",
+              "name": "titulo",
+              "type": "text"
+            },
+            {
+              "key": "field_grnc_lay_video_conteudo",
+              "label": "Texto",
+              "name": "conteudo",
+              "type": "wysiwyg",
+              "tabs": "all",
+              "toolbar": "full",
+              "media_upload": 0
+            },
+            {
+              "key": "field_grnc_lay_video_youtube",
+              "label": "YouTube (embed)",
+              "name": "youtube",
+              "type": "text",
+              "instructions": "URL de embed, ex.: https://www.youtube.com/embed/VIDEO_ID"
+            },
+            {
+              "key": "field_grnc_lay_video_inverter",
+              "label": "Inverter no desktop",
+              "name": "inverter_desktop",
+              "type": "true_false",
+              "ui": 1,
+              "default_value": 1
+            }
+          ]
+        },
+        "info_imagem": {
+          "key": "layout_grnc_info_imagem",
+          "name": "info_imagem",
+          "label": "Texto + imagem",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_grnc_lay_img_titulo",
+              "label": "Título",
+              "name": "titulo",
+              "type": "text"
+            },
+            {
+              "key": "field_grnc_lay_img_conteudo",
+              "label": "Texto",
+              "name": "conteudo",
+              "type": "wysiwyg",
+              "tabs": "all",
+              "toolbar": "full",
+              "media_upload": 1
+            },
+            {
+              "key": "field_grnc_lay_img_imagem",
+              "label": "Imagem",
+              "name": "imagem",
+              "type": "image",
+              "return_format": "url",
+              "preview_size": "medium"
+            },
+            {
+              "key": "field_grnc_lay_img_inverter",
+              "label": "Inverter no desktop (texto à esquerda)",
+              "name": "inverter_desktop",
+              "type": "true_false",
+              "ui": 1,
+              "default_value": 0
+            },
+            {
+              "key": "field_grnc_lay_img_ler_mais",
+              "label": "Botão Ler mais (texto longo)",
+              "name": "ler_mais",
+              "type": "true_false",
+              "ui": 1,
+              "default_value": 0
+            },
+            {
+              "key": "field_grnc_lay_img_centralizar_botao",
+              "label": "Centralizar botão Ler mais",
+              "name": "centralizar_botao",
+              "type": "true_false",
+              "ui": 1,
+              "default_value": 0,
+              "conditional_logic": [
+                [
+                  {
+                    "field": "field_grnc_lay_img_ler_mais",
+                    "operator": "==",
+                    "value": "1"
+                  }
+                ]
+              ]
+            }
+          ]
+        },
+        "atividades": {
+          "key": "layout_grnc_atividades",
+          "name": "atividades",
+          "label": "Cards (missão / valores)",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_grnc_lay_atv_titulo",
+              "label": "Título da seção",
+              "name": "titulo",
+              "type": "text",
+              "default_value": "Nossas Atividades"
+            },
+            {
+              "key": "field_grnc_lay_atv_texto",
+              "label": "Texto introdutório",
+              "name": "texto",
+              "type": "wysiwyg",
+              "tabs": "all",
+              "toolbar": "basic",
+              "media_upload": 0
+            },
+            {
+              "key": "field_grnc_lay_atv_cards",
+              "label": "Cards",
+              "name": "cards",
+              "type": "repeater",
+              "layout": "block",
+              "button_label": "Adicionar card",
+              "collapsed": "field_grnc_lay_atv_card_titulo",
+              "sub_fields": [
+                {
+                  "key": "field_grnc_lay_atv_card_icone",
+                  "label": "Ícone",
+                  "name": "icone",
+                  "type": "image",
+                  "return_format": "url",
+                  "preview_size": "thumbnail",
+                  "parent_repeater": "field_grnc_lay_atv_cards"
+                },
+                {
+                  "key": "field_grnc_lay_atv_card_titulo",
+                  "label": "Título",
+                  "name": "titulo",
+                  "type": "text",
+                  "parent_repeater": "field_grnc_lay_atv_cards"
+                },
+                {
+                  "key": "field_grnc_lay_atv_card_texto",
+                  "label": "Texto",
+                  "name": "texto",
+                  "type": "textarea",
+                  "rows": 3,
+                  "parent_repeater": "field_grnc_lay_atv_cards"
+                }
+              ]
+            }
+          ]
+        },
+        "diretoria": {
+          "key": "layout_grnc_diretoria",
+          "name": "diretoria",
+          "label": "Diretoria / cards de pessoas",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_grnc_lay_dir_titulo",
+              "label": "Título da seção",
+              "name": "titulo",
+              "type": "text",
+              "default_value": "Diretoria"
+            },
+            {
+              "key": "field_grnc_lay_dir_membros",
+              "label": "Membros",
+              "name": "membros",
+              "type": "repeater",
+              "layout": "block",
+              "button_label": "Adicionar membro",
+              "collapsed": "field_grnc_lay_dir_nome",
+              "sub_fields": [
+                {
+                  "key": "field_grnc_lay_dir_foto",
+                  "label": "Foto",
+                  "name": "foto",
+                  "type": "image",
+                  "return_format": "url",
+                  "preview_size": "medium",
+                  "parent_repeater": "field_grnc_lay_dir_membros"
+                },
+                {
+                  "key": "field_grnc_lay_dir_nome",
+                  "label": "Nome",
+                  "name": "nome",
+                  "type": "text",
+                  "parent_repeater": "field_grnc_lay_dir_membros"
+                },
+                {
+                  "key": "field_grnc_lay_dir_cargo",
+                  "label": "Cargo",
+                  "name": "cargo",
+                  "type": "text",
+                  "parent_repeater": "field_grnc_lay_dir_membros"
+                },
+                {
+                  "key": "field_grnc_lay_dir_bio",
+                  "label": "Biografia",
+                  "name": "bio",
+                  "type": "wysiwyg",
+                  "tabs": "all",
+                  "toolbar": "basic",
+                  "media_upload": 0,
+                  "parent_repeater": "field_grnc_lay_dir_membros"
+                },
+                {
+                  "key": "field_grnc_lay_dir_cta",
+                  "label": "Link (opcional)",
+                  "name": "cta_url",
+                  "type": "text",
+                  "parent_repeater": "field_grnc_lay_dir_membros"
+                }
+              ]
+            }
+          ]
+        },
+        "timeline": {
+          "key": "layout_grnc_timeline",
+          "name": "timeline",
+          "label": "Linha do tempo",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_grnc_lay_tl_titulo",
+              "label": "Título",
+              "name": "titulo",
+              "type": "text",
+              "default_value": "A História do Grupo Real"
+            },
+            {
+              "key": "field_grnc_lay_tl_eventos",
+              "label": "Fatos",
+              "name": "eventos",
+              "type": "repeater",
+              "instructions": "Adicione cada marco na ordem cronológica. Arraste para reordenar.",
+              "layout": "block",
+              "button_label": "Adicionar fato",
+              "collapsed": "field_grnc_lay_tl_ano",
+              "sub_fields": [
+                {
+                  "key": "field_grnc_lay_tl_ano",
+                  "label": "Ano",
+                  "name": "ano",
+                  "type": "text",
+                  "instructions": "Ex.: 1985 ou 1985–1989",
+                  "required": 1,
+                  "parent_repeater": "field_grnc_lay_tl_eventos"
+                },
+                {
+                  "key": "field_grnc_lay_tl_evt_titulo",
+                  "label": "Título do fato",
+                  "name": "titulo",
+                  "type": "text",
+                  "required": 1,
+                  "parent_repeater": "field_grnc_lay_tl_eventos"
+                },
+                {
+                  "key": "field_grnc_lay_tl_evt_texto",
+                  "label": "Descrição",
+                  "name": "texto",
+                  "type": "textarea",
+                  "rows": 4,
+                  "parent_repeater": "field_grnc_lay_tl_eventos"
+                },
+                {
+                  "key": "field_grnc_lay_tl_evt_imagem",
+                  "label": "Imagem (opcional)",
+                  "name": "imagem",
+                  "type": "image",
+                  "return_format": "url",
+                  "preview_size": "medium",
+                  "parent_repeater": "field_grnc_lay_tl_eventos"
+                }
+              ]
+            }
+          ]
+        },
+        "texto": {
+          "key": "layout_grnc_texto",
+          "name": "texto",
+          "label": "Texto livre",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_grnc_lay_texto_conteudo",
+              "label": "Conteúdo",
+              "name": "conteudo",
+              "type": "wysiwyg",
+              "tabs": "all",
+              "toolbar": "full",
+              "media_upload": 1
+            }
+          ]
+        },
+        "cards_slider": {
+          "key": "layout_grnc_cards_slider",
+          "name": "cards_slider",
+          "label": "Cards em slider",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_grnc_lay_csl_titulo",
+              "label": "Título da seção",
+              "name": "titulo",
+              "type": "text",
+              "default_value": "Títulos"
+            },
+            {
+              "key": "field_grnc_lay_csl_cards",
+              "label": "Cards",
+              "name": "cards",
+              "type": "repeater",
+              "layout": "block",
+              "button_label": "Adicionar card",
+              "collapsed": "field_grnc_lay_csl_card_titulo",
+              "sub_fields": [
+                {
+                  "key": "field_grnc_lay_csl_card_icone",
+                  "label": "Ícone",
+                  "name": "icone",
+                  "type": "image",
+                  "return_format": "url",
+                  "preview_size": "thumbnail",
+                  "parent_repeater": "field_grnc_lay_csl_cards"
+                },
+                {
+                  "key": "field_grnc_lay_csl_card_titulo",
+                  "label": "Título",
+                  "name": "titulo",
+                  "type": "text",
+                  "parent_repeater": "field_grnc_lay_csl_cards"
+                },
+                {
+                  "key": "field_grnc_lay_csl_card_texto",
+                  "label": "Texto",
+                  "name": "texto",
+                  "type": "wysiwyg",
+                  "tabs": "all",
+                  "toolbar": "basic",
+                  "media_upload": 0,
+                  "parent_repeater": "field_grnc_lay_csl_cards"
+                }
+              ]
+            }
+          ]
+        },
+        "cards_lista": {
+          "key": "layout_grnc_cards_lista",
+          "name": "cards_lista",
+          "label": "Intro + lista de cards",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_grnc_lay_cl_titulo",
+              "label": "Título",
+              "name": "titulo",
+              "type": "text",
+              "default_value": "Diplomas"
+            },
+            {
+              "key": "field_grnc_lay_cl_intro",
+              "label": "Texto introdutório",
+              "name": "intro",
+              "type": "wysiwyg",
+              "tabs": "all",
+              "toolbar": "basic",
+              "media_upload": 0
+            },
+            {
+              "key": "field_grnc_lay_cl_itens",
+              "label": "Itens",
+              "name": "itens",
+              "type": "repeater",
+              "layout": "block",
+              "button_label": "Adicionar item",
+              "collapsed": "field_grnc_lay_cl_item_titulo",
+              "sub_fields": [
+                {
+                  "key": "field_grnc_lay_cl_item_icone",
+                  "label": "Ícone",
+                  "name": "icone",
+                  "type": "image",
+                  "return_format": "url",
+                  "preview_size": "thumbnail",
+                  "parent_repeater": "field_grnc_lay_cl_itens"
+                },
+                {
+                  "key": "field_grnc_lay_cl_item_titulo",
+                  "label": "Título",
+                  "name": "titulo",
+                  "type": "text",
+                  "parent_repeater": "field_grnc_lay_cl_itens"
+                },
+                {
+                  "key": "field_grnc_lay_cl_item_texto",
+                  "label": "Texto",
+                  "name": "texto",
+                  "type": "wysiwyg",
+                  "tabs": "all",
+                  "toolbar": "basic",
+                  "media_upload": 0,
+                  "parent_repeater": "field_grnc_lay_cl_itens"
+                }
+              ]
+            }
+          ]
+        },
+        "accordion": {
+          "key": "layout_grnc_accordion",
+          "name": "accordion",
+          "label": "Intro + accordion",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_grnc_lay_acc_titulo",
+              "label": "Título",
+              "name": "titulo",
+              "type": "text"
+            },
+            {
+              "key": "field_grnc_lay_acc_intro",
+              "label": "Texto introdutório",
+              "name": "intro",
+              "type": "wysiwyg",
+              "tabs": "all",
+              "toolbar": "basic",
+              "media_upload": 0
+            },
+            {
+              "key": "field_grnc_lay_acc_itens",
+              "label": "Itens",
+              "name": "itens",
+              "type": "repeater",
+              "layout": "block",
+              "button_label": "Adicionar item",
+              "collapsed": "field_grnc_lay_acc_item_titulo",
+              "sub_fields": [
+                {
+                  "key": "field_grnc_lay_acc_item_titulo",
+                  "label": "Título",
+                  "name": "titulo",
+                  "type": "text",
+                  "parent_repeater": "field_grnc_lay_acc_itens"
+                },
+                {
+                  "key": "field_grnc_lay_acc_item_conteudo",
+                  "label": "Conteúdo",
+                  "name": "conteudo",
+                  "type": "wysiwyg",
+                  "tabs": "all",
+                  "toolbar": "full",
+                  "media_upload": 0,
+                  "parent_repeater": "field_grnc_lay_acc_itens"
+                },
+                {
+                  "key": "field_grnc_lay_acc_item_aberto",
+                  "label": "Aberto por padrão",
+                  "name": "aberto",
+                  "type": "true_false",
+                  "ui": 1,
+                  "default_value": 0,
+                  "parent_repeater": "field_grnc_lay_acc_itens"
+                }
+              ]
+            }
+          ]
+        },
+        "newsletter": {
+          "key": "layout_grnc_newsletter",
+          "name": "newsletter",
+          "label": "Newsletter",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_grnc_lay_news_msg",
+              "label": "Newsletter",
+              "name": "aviso",
+              "type": "message",
+              "message": "Renderiza o formulário de newsletter do site. Não há campos para editar."
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "page_template",
+        "operator": "==",
+        "value": "institucional-landing"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": ["the_content", "excerpt", "discussion", "comments", "revisions", "author", "format", "featured_image", "categories", "tags", "send-trackbacks"],
+  "active": true,
+  "description": "Landing reutilizável: Flexible Content (ACF Pro). Arraste para reordenar. Preview skeleton no seletor de bloco.",
+  "show_in_rest": 1,
+  "modified": 1737120000
+}

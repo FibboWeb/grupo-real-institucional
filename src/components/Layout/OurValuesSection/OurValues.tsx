@@ -4,10 +4,18 @@ import BtnCallToAction from "../Buttons/BtnCallToAction/BtnCallToAction";
 import ArrowRightSVG from "@/public/icons/arrow-right.svg";
 
 type Value = {
-  img: StaticImageData;
+  img?: StaticImageData | string;
   title: string;
   content: string;
 };
+
+function hasSrc(src: StaticImageData | string | undefined): src is StaticImageData | string {
+  if (!src) {
+    return false;
+  }
+
+  return typeof src !== "string" || src.trim() !== "";
+}
 
 interface OurValuesProps {
   title: string;
@@ -38,9 +46,11 @@ export default function OurValues({ title, contentPage, values, ctaLink }: OurVa
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-4">
             {values.map((value, index) => (
               <div key={index} className=" h-full flex flex-col gap-4 px-4">
-                <div>
-                  <Image src={value.img} alt="" />
-                </div>
+                {hasSrc(value.img) ? (
+                  <div>
+                    <Image src={value.img} alt="" width={80} height={80} className="h-20 w-auto" />
+                  </div>
+                ) : null}
                 <div>
                   <h3 className="text-xl font-semibold text-textDark">{value.title}</h3>
                 </div>

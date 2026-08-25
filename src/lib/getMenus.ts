@@ -7,11 +7,12 @@ export async function getMenus(menuName) {
     const fetchedMenus = await client.query({
       query: GET_MENU_BY_NAME,
       variables: { menuName },
-      fetchPolicy: 'no-cache',
+      fetchPolicy: "no-cache",
+      errorPolicy: "all",
     });
 
     return {
-      props: fetchedMenus.data.menu,
+      props: fetchedMenus.data?.menu ?? null,
     };
   } catch (error) {
     console.error("Erro ao buscar menus:", error);
