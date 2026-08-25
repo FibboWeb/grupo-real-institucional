@@ -17,10 +17,11 @@ import { cn } from "@/lib/utils";
 interface HeroSectionProps {
   children: React.ReactNode;
   ctaLink?: string;
-  imagePath?: StaticImageData;
+  imagePath?: StaticImageData | string;
   imageMaxHeight?: number;
   imageOnBottom?: boolean;
   backgroundClass?: string;
+  backgroundImageUrl?: string;
   boxShadow?: string;
   btnColor?: "fb_blue_button" | "fb_green_button";
   btnIcon?: StaticImageData;
@@ -36,6 +37,7 @@ export default function HeroSection({
   imageMaxHeight,
   imageOnBottom = false,
   backgroundClass = "bg-hero-image",
+  backgroundImageUrl,
   boxShadow,
   btnColor,
   btnIcon,
@@ -49,9 +51,11 @@ export default function HeroSection({
     <>
       <div
         className={cn([
-          `flex justify-center w-full h-full bg-no-repeat bg-cover bg-center relative ${backgroundClass}`,
+          `flex justify-center w-full h-full bg-no-repeat bg-cover bg-center relative`,
+          backgroundImageUrl ? "" : backgroundClass,
           heroCssExtra,
         ])}
+        style={backgroundImageUrl ? { backgroundImage: `url(${backgroundImageUrl})` } : undefined}
       >
       <div className="absolute inset-0 bg-gradient-to-r from-fb_dark-blue to-fb_light-blue opacity-80"></div>
         
@@ -76,7 +80,14 @@ export default function HeroSection({
                 </div>
                 {imagePath && (
                   <div className="flex-1 flex justify-center items-center">
-                    <Image loading="eager" src={imagePath} alt="imagem hero" height={imageMaxHeight} color={btnColor} />
+                    <Image
+                      loading="eager"
+                      src={imagePath}
+                      alt="imagem hero"
+                      width={720}
+                      height={imageMaxHeight ?? 580}
+                      className="h-auto w-auto max-h-[580px] object-contain"
+                    />
                   </div>
                 )}
               </div>
