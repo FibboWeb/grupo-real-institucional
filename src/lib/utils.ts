@@ -46,3 +46,28 @@ export function truncateHtmlText(html: string, limit: number = 100): string {
 
   return `${truncatedText.substring(0, lastSpaceIndex > 0 ? lastSpaceIndex : limit)}...`;
 }
+
+type WpFeaturedMedia = {
+  source_url?: string;
+  media_details?: {
+    sizes?: Record<string, { source_url?: string }>;
+  };
+};
+
+/** Prefere tamanhos gerados pelo WP (padrao_post, medium…) em vez da imagem full. */
+export function getWpFeaturedImageUrl(
+  featuredMedia: WpFeaturedMedia | undefined | null,
+  fallback: string
+): string {
+  if (!featuredMedia) return fallback;
+
+  const sizes = featuredMedia.media_details?.sizes;
+  const preferredSizes = ["padrao_post", "medium_large", "medium", "thumbnail"];
+
+  for (const size of preferredSizes) {
+    const url = sizes?.[size]?.source_url;
+    if (url) return url;
+  }
+
+  return featuredMedia.source_url || fallback;
+}

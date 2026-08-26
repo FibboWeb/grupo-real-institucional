@@ -1,10 +1,11 @@
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
-import React, { Suspense } from "react";
+import React from "react";
 import { Button } from "../ui/button";
 import { ArrowRightCircle } from "lucide-react";
 import BtnCallToAction from "../Layout/Buttons/BtnCallToAction/BtnCallToAction";
 import ArrowIcon from "@/public/icons/arrow-right.svg";
+import { cn } from "@/lib/utils";
 
 type ValuesSectionProps = {
   values: {
@@ -48,23 +49,27 @@ function InfoCards({ values }: ValuesSectionProps) {
   return (
     <div className="w-full max-h-full">
       {values.map((value, index) => (
-        <div key={index} className={value.bg_image ? `${value.bg_image} relative bg-top bg-contain` : ""}>
+        <div
+          key={index}
+          className={cn("relative", value.bg_image && `${value.bg_image} bg-top bg-contain`)}
+        >
           {value.bg_image && <div className="absolute top-0 left-0 w-full h-full bg-white opacity-90 z-0"></div>}
           <div
             className={`fb_container flex flex-col-reverse justify-between relative gap-24 ${index % 2 === 0 ? "lg:flex-row-reverse" : "lg:flex-row"} items-center py-12`}
           >
             <div
-              className={` ${value.border ? "shadow-custom_image w-full lg:w-1/2 rounded-2xl" : "w-full lg:w-1/2"} `}
+              className={cn(
+                "w-full lg:w-1/2",
+                value.border && "shadow-custom_image rounded-2xl"
+              )}
             >
-              <Suspense fallback={<div className="w-full h-full bg-gray-300 animated-pulse rounded-2xl"></div>}>
-                <Image
-                  src={value.image}
-                  alt={value.title}
-                  width={600}
-                  height={475}
-                  className="rounded-lg h-auto object-scale-down md:object-cover object-center w-full"
-                />
-              </Suspense>
+              <Image
+                src={value.image}
+                alt={value.title}
+                width={600}
+                height={475}
+                className="rounded-lg h-auto object-scale-down md:object-cover object-center w-full"
+              />
             </div>
             <div className="w-full flex flex-col gap-6 lg:w-1/2">
               {value.icon && (

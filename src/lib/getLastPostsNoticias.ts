@@ -1,6 +1,7 @@
 "use server";
 import { client, clientHomeopet } from "@/lib/apollo-client";
 import { GET_LAST_POSTS_NOTICIAS, GET_LAST_POSTS_NOTICIAS_HOMEOPET } from "@/graphql/posts";
+import { getWpFeaturedImageUrl } from "@/lib/utils";
 
 export async function getLastPostsNoticias() {
   try {
@@ -54,7 +55,7 @@ export async function getLastPostsNoticiasRealhAPI() {
         },
         featuredImage: {
           node: {
-            sourceUrl: featuredMedia?.source_url || FALLBACK_POST_IMAGE,
+            sourceUrl: getWpFeaturedImageUrl(featuredMedia, FALLBACK_POST_IMAGE),
             altText: featuredMedia?.alt_text || post.title.rendered,
           }
         },
@@ -99,14 +100,16 @@ export async function getLastPostsNoticiasHomeoPetAPI() {
         ...post,
         title: post.title.rendered,
         content: post.content.rendered,
-        slug: post.link,
+        slug: post.link
+          ?.replace("conteudo.homeopet.com.br", "blog.homeopet.com.br")
+          ?.replace(/\/$/, ""),
         date: post.date,
         categories: {
           nodes: post._embedded?.["wp:term"]?.[0] ?? [],
         },
         featuredImage: {
           node: {
-            sourceUrl: featuredMedia?.source_url || FALLBACK_POST_IMAGE,
+            sourceUrl: getWpFeaturedImageUrl(featuredMedia, FALLBACK_POST_IMAGE),
             altText: featuredMedia?.alt_text || post.title.rendered,
           }
         },
