@@ -51,7 +51,7 @@ async function Footer() {
               <Link className="inline-block border-r-2 pr-4" href={"/"}>
                 <Image src={"/images/logo-grupo-real.webp"} width={120} height={48} alt="GrupoReal" />
               </Link>
-              <Link className="inline-block" href={"/"}>
+              <Link className="inline-block" href={"https://www.realh.com.br/"} target="_blank">
                 <Image src={"/images/logo-realh.webp"} width={120} height={48} alt="GrupoReal" />
               </Link>
               <Link className="inline-block" href={"https://www.cmrsaude.com.br/"} target="_blank">

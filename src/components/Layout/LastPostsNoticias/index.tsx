@@ -6,24 +6,11 @@
  * @example
  *  <LastPosts fetchedLastPosts={fetchedLastPosts} />
  */
-/**
- * @typedef {Object} LastPostsProps
- * @property {Post[]} fetchedLastPosts - Array de posts
- * @typedef {Object} Post
- * @property {string} id - ID do post
- * @property {string} title - T tulo do post
- * @property {string} content - Conte do do post
- * @property {string} date - Data do post
- * @property {string} slug - Slug do post
- * @property {string} featuredImage.node.sourceUrl - URL da imagem do post
- * @property {string} featuredImage.node.altText - Texto alternativo da imagem do post
- * @property {string} author.node.name - Nome do autor do post
- * @property {string} author.node.slug - Slug do autor do post
- */
 
 "use client";
 import type { Post } from "@/types/post";
 import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import BtnCallToAction from "../Buttons/BtnCallToAction/BtnCallToAction";
@@ -31,12 +18,53 @@ import CardBlog from "../CardBlog";
 import "./lastPost.css";
 
 const Slider = dynamic(() => import("react-slick"), { ssr: false });
+
 interface LastPostsProps {
   fetchedLastPosts: Post[];
 }
 
+function NewsIntroCard() {
+  return (
+    <div className="flex flex-col justify-between w-full lg:w-80 min-h-[440px] rounded-2xl bg-fb_gradient text-white p-12">
+      <div className="content">
+        <h2 className="text-3xl font-bold">Notícias</h2>
+        <p className="pt-6">
+          Fique por dentro de tudo o que acontece no mundo “Real”. Notícias, eventos, dicas e muito mais...
+        </p>
+      </div>
+      <div className="w-fit">
+        <BtnCallToAction ctaLink="/noticias" content="IR PARA O BLOG" color="fb_blue_button" />
+      </div>
+    </div>
+  );
+}
+
+function renderPostCard(post: Post) {
+  return (
+    <CardBlog
+      key={post.id ?? post.slug ?? `post-${post.date}`}
+      blogContext={post.categories?.nodes[0]?.name.toLowerCase() === "artigos" ? "/artigos" : "/noticias"}
+      postImage={post.featuredImage?.node.sourceUrl}
+      postImageAlt={post.featuredImage?.node.altText}
+      postLink={post.slug
+        ?.replace("conteudo.homeopet.com.br", "blog.homeopet.com.br")
+        ?.replace(/\/$/, "")}
+      postTitle={post.title}
+      postDescription={{ __html: post.content }}
+      postDate={post.date}
+      postAuthor={post.author?.node.name}
+      postAuthorLink={post.author?.node.slug}
+      isSlider
+    />
+  );
+}
 
 function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const settings = {
     slidesToShow: 5.7,
@@ -134,42 +162,28 @@ function LastPostsNoticias({ fetchedLastPosts }: LastPostsProps) {
       },
     ],
   };
+
+  const posts = fetchedLastPosts?.length > 0 ? fetchedLastPosts : [];
+
   return (
     <div className="flex flex-col lg:flex-row gap-6 xl:gap-10">
       <div className="last-post-slider sm:w-3/4" style={{ width: "98%" }}>
-        <Slider {...settings}>
-          <div className="py-2 md:hidden">
-            <div className="flex flex-col justify-between w-full lg:w-80 min-h-[440px] rounded-2xl bg-fb_gradient text-white p-12">
-              <div className="content">
-                <h2 className="text-3xl font-bold">Notícias</h2>
-                <p className="pt-6">
-                  Fique por dentro de tudo o que acontece no mundo “Real”. Notícias, eventos, dicas e muito mais...
-                </p>
-              </div>
-              <div className="w-fit">
-                <BtnCallToAction ctaLink="/noticias" content="IR PARA O BLOG" color="fb_blue_button" />
-              </div>
+        {/* SSR: links e cards no HTML inicial para crawlers */}
+        {!mounted ? (
+          <div className="flex gap-2 overflow-hidden py-2">
+            <div className="py-2 md:hidden shrink-0">
+              <NewsIntroCard />
             </div>
+            {posts.map(renderPostCard)}
           </div>
-          {fetchedLastPosts &&
-            fetchedLastPosts.length > 0 &&
-            fetchedLastPosts.map((post: Post) => (
-              
-              <CardBlog
-                key={post.id || Math.random().toString()}
-                blogContext={post.categories?.nodes[0]?.name.toLowerCase() === "artigos" ? "/artigos" : "/noticias"}
-                postImage={post.featuredImage?.node.sourceUrl}
-                postImageAlt={post.featuredImage?.node.altText}
-                postLink={post.slug}
-                postTitle={post.title}
-                postDescription={{ __html: post.content }}
-                postDate={post.date}
-                postAuthor={post.author?.node.name}
-                postAuthorLink={post.author?.node.slug}
-                isSlider
-              />
-            ))}
-        </Slider>
+        ) : (
+          <Slider {...settings}>
+            <div className="py-2 md:hidden">
+              <NewsIntroCard />
+            </div>
+            {posts.map(renderPostCard)}
+          </Slider>
+        )}
       </div>
     </div>
   );
