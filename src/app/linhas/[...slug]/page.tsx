@@ -1,16 +1,13 @@
-"use server";
 import BannerLines from "@/components/BannerCTA/BannerLines";
 import Breadcrumb from "@/components/BreadCrumb";
 
 import Newsletter from "@/components/Layout/Newsletter";
 import { fetchYoastSEO } from "@/lib/getCategorias";
 import { getSEOLines2 } from "@/lib/getSEOLines";
-import image01 from "@/public/images/banners/boi-no-pasto.webp";
 import image02 from "@/public/images/banners/carne-vermelha-cortada.webp";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import GridProduct from "../(componentes)";
-import { text } from "stream/consumers";
 import TextSEO from "@/components/TextSEO";
 
 export const dynamic = "force-dynamic";
