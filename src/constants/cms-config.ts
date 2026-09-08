@@ -21,7 +21,27 @@ export const CMS_CONFIG = {
   ACF_SECOES: "secoes",
   ACF_MENU_ICONE: "icone",
   ACF_MENU_ICONE_IMAGEM: "icone_imagem",
+  PATH_REPRESENTANTES: "/representantes",
+  PATH_DOWNLOADS: "/downloads",
+  FRONT_ITEM_QUERY: "item",
+  CPT_DOWNLOAD: "download",
+  PATH_PRODUTOS: "/produtos",
+  PATH_LINHAS: "/linhas",
+  CPT_PRODUTO: "produto",
+  CPT_LINHAS: "linhas",
+  TAX_LINHA: "linha",
+  TAX_CATEGORIA_PRODUTO: "categoria_produto",
+  PATH_NOTICIAS: "/noticias",
+  PATH_ARTIGOS: "/artigos",
+  PATH_CATEGORIA: "/categoria",
+  SLUG_CATEGORY_ARTIGOS: "artigos",
 } as const;
+
+export function readFrontItem(searchParams?: { item?: string | string[] } | null): string {
+  const raw = searchParams?.[CMS_CONFIG.FRONT_ITEM_QUERY];
+  const value = Array.isArray(raw) ? raw[0] : raw;
+  return typeof value === "string" ? value.trim() : "";
+}
 
 /** Slugs que o catch-all /institucional/[slug] não deve tratar como documento. */
 export const RESERVED_INSTITUTIONAL_SLUGS = [CMS_CONFIG.SLUG_PARENT, CMS_CONFIG.SLUG_QUEM_SOMOS] as const;

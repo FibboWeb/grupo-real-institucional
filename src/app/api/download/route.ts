@@ -7,7 +7,9 @@ export async function GET(req) {
       return new Response("File ID is missing", { status: 400 });
     }
 
-    const response = await fetch(`${process.env.NEXT_PUBLIC_WP_URL_API}media?parent=${fileId}`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_WP_URL_API}media?parent=${fileId}`, {
+      cache: "no-store",
+    });
     if (!response.ok) {
       return new Response("Failed to fetch file metadata", { status: response.status });
     }

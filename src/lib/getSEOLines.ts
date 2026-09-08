@@ -45,11 +45,14 @@ export async function getInfoLine(slug) {
 
 export async function getSEOLines2(context: string) {
   try {
-    const fetchedLines = await fetch(`
-      ${API_URL}categoria_produto?slug=${context}`);
+    const fetchedLines = await fetch(
+      `${API_URL}categoria_produto?slug=${context}`,
+      { cache: "no-store" },
+    );
     const data = await fetchedLines.json();
     const imgFetched = await fetch(
       `${API_URL}media/${data[0]?.meta?.categoria_produto_imagem}`,
+      { cache: "no-store" },
     );
     const imgUrl = await imgFetched.json();
     return {

@@ -1,12 +1,8 @@
+'use client';
+
 import BtnCallToAction from '@/components/Layout/Buttons/BtnCallToAction/BtnCallToAction';
-import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { useCallback, useEffect, useRef, useState } from 'react';
-
-// Importando componentes do react-leaflet de forma dinâmica
-const MapContainer = dynamic(() => import('react-leaflet').then((mod) => mod.MapContainer), { ssr: false });
-const TileLayer = dynamic(() => import('react-leaflet').then((mod) => mod.TileLayer), { ssr: false });
-const Marker = dynamic(() => import('react-leaflet').then((mod) => mod.Marker), { ssr: false });
 
 type Props = {
   endereco: string,
@@ -15,6 +11,10 @@ type Props = {
   latitude: string,
   longitude: string,
   iframe: string
+}
+
+function hasValue(value?: string) {
+  return Boolean(value && String(value).trim());
 }
 
 export default function ComoChegar({ endereco, cidade, estado, latitude, longitude, iframe }: Props) {
@@ -39,38 +39,56 @@ export default function ComoChegar({ endereco, cidade, estado, latitude, longitu
     };
   }, [showModal, handleClickOutside]);
 
-  const [dimensions, setDimensions] = useState({
-    width: "90vw",
-    height: 'calc(100vh - 20vh)' // Compensa espaço do header
-  });
-
+  const query = [endereco, cidade, estado].filter(hasValue).join(', ');
+  const mapsPlaceUrl = hasValue(latitude) && hasValue(longitude)
+    ? `https://www.google.com/maps/place/${encodeURIComponent(query)}/@${latitude},${longitude},17z`
+    : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+  const mapsEmbedUrl = hasValue(latitude) && hasValue(longitude)
+    ? `https://maps.google.com/maps?q=${latitude},${longitude}&z=16&output=embed`
+    : `https://maps.google.com/maps?q=${encodeURIComponent(query)}&z=16&output=embed`;
 
   return (
-    <div className=''>
-      <BtnCallToAction 
-        content='Como chegar'
-        classCssForBTN='p-2 text-sm'
+    <div className="">
+      <BtnCallToAction
+        content="Como chegar"
+        classCssForBTN="p-2 text-sm"
         showIcon={false}
         onClick={() => setShowModal(!showModal)}
       />
       {showModal && (
         <div className="fixed inset-0 pt-14 bottom-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div ref={modalRef} className="flex flex-col gap-2 bg-white w-fit rounded-md p-4" style={{
-        width: dimensions.width,
-        height: dimensions.height
-      }}>
+          <div
+            ref={modalRef}
+            className="flex flex-col gap-2 bg-white w-fit rounded-md p-4"
+            style={{
+              width: '90vw',
+              height: 'calc(100vh - 20vh)',
+            }}
+          >
             <h2 className="text-2xl font-semibold">Como chegar</h2>
             <p className="text-base">{cidade} - {estado}</p>
             <p className="text-base">{endereco}</p>
-            <Link href={`https://www.google.com/maps/place/${encodeURIComponent(endereco)},+${encodeURIComponent(cidade)}+-+${encodeURIComponent(estado)}/@${latitude},${longitude},17z`} 
-              target="_blank" rel="noopener noreferrer" 
-              className="text-blue-500 underline">
+            <Link
+              href={mapsPlaceUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 underline"
+            >
               Ver no Google Maps
             </Link>
-            { iframe ? (
-              <div 
-                className="min-h-[21rem] h-full"
-                dangerouslySetInnerHTML={{ __html: iframe }} />
+            {hasValue(iframe) ? (
+              <div
+                className="min-h-[21rem] h-full [&_iframe]:h-full [&_iframe]:w-full"
+                dangerouslySetInnerHTML={{ __html: iframe }}
+              />
+            ) : query ? (
+              <iframe
+                title={`Mapa de ${query}`}
+                src={mapsEmbedUrl}
+                className="min-h-[21rem] h-full w-full border-0 rounded-md"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             ) : (
               <p>Não localizamos o endereço desse representante</p>
             )}

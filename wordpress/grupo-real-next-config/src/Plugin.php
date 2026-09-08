@@ -7,7 +7,11 @@ namespace GrupoReal\NextConfig;
 use GrupoReal\NextConfig\Acf\JsonLoader;
 use GrupoReal\NextConfig\Admin\AcfAdminUi;
 use GrupoReal\NextConfig\Admin\FlexibleThumbnails;
+use GrupoReal\NextConfig\Admin\FrontLinkTarget;
+use GrupoReal\NextConfig\Admin\UnpublishedView;
 use GrupoReal\NextConfig\Admin\WysiwygConfig;
+use GrupoReal\NextConfig\Cpt\FrontPermalink;
+use GrupoReal\NextConfig\Front\RedirectHosts;
 use GrupoReal\NextConfig\Menus\Locations;
 use GrupoReal\NextConfig\Pages\SlugMap;
 use GrupoReal\NextConfig\Rest\PageFields;
@@ -31,6 +35,10 @@ final class Plugin
     public function boot(): void
     {
         (new JsonLoader())->register();
+        (new RedirectHosts())->register();
+        (new FrontPermalink())->register();
+        (new UnpublishedView())->register();
+        (new FrontLinkTarget())->register();
         (new PageTemplates())->register();
         (new Editor())->register();
         (new Locations())->register();

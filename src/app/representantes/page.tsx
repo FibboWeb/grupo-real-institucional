@@ -1,13 +1,13 @@
-'use server'
 import Breadcrumb from "@/components/BreadCrumb";
 import Newsletter from "@/components/Layout/Newsletter";
 import { fetchAllRepresentantes } from "@/lib/getRepresentantes";
-import RepresentantesBanner from "@/public/representantes/representantes-list-banner.webp"; // Fixed import statement
+import RepresentantesBanner from "@/public/representantes/representantes-list-banner.webp";
 import Image from "next/image";
-import dynamic from "next/dynamic";
 import RepresentanteWrapper from "./_components/RepresentanteWrapper";
 import "./index.css";
-import MapRepresentantes from "./_components/map";
+import { readFrontItem } from "@/constants/cms-config";
+
+export const dynamic = "force-dynamic";
 
 const categories = [
   "Nutrição Animal",
@@ -18,11 +18,16 @@ const categories = [
 const categoriasColors = {
   "Nutrição Animal": "text-red-500",
   "Saúde Animal": "text-blue-500",
-  "Homeopet": "text-purple-500",
-}
+  Homeopet: "text-purple-500",
+};
 
-export default async function RepresentantesPage() {
-  const representantes = await fetchAllRepresentantes() ?? { props: [] };
+export default async function RepresentantesPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ item?: string | string[] }>;
+}) {
+  const representantes = (await fetchAllRepresentantes()) ?? { props: [] };
+  const initialItem = readFrontItem(await searchParams);
 
   return (
     <div className="fb_container mt-[96px] min-h-screen mb-10">
@@ -42,18 +47,14 @@ export default async function RepresentantesPage() {
         </div>
       </div>
       <div className="flex flex-col md:flex-row gap-8 my-12">
-        <RepresentanteWrapper 
+        <RepresentanteWrapper
           categories={categories}
           representantes={representantes.props ?? []}
           categoriasColors={categoriasColors}
+          initialItem={initialItem}
         />
-      </div>
-      <div className="w-full h-full flex flex-col gap-12">
-        {/* <h4 className="text-2xl text-center font-bold">Encontre o representante mais próximo de você</h4> */}
-          {/* <MapRepresentantes representantes={representantes.props} /> */}
-      
       </div>
       <Newsletter />
     </div>
-  )
+  );
 }
