@@ -1,0 +1,14 @@
+.grnc-view-notice {
+  display: block;
+  margin: 6px 0 0;
+  max-width: 42rem;
+  color: #646970;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.row-actions .grnc-view-notice {
+  display: inline;
+  margin: 0;
+  color: #646970;
+}

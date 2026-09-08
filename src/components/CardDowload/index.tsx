@@ -6,64 +6,89 @@ import LogoCMR from "@/public/images/logos/logo-crm-colorido.webp";
 import LogoGrupoReal from "@/public/images/logos/logo-real-h.png";
 import LogoHomeopet from "@/public/images/logos/homeopet-logo-colorido.webp";
 import { Button } from "../ui/button";
-import { getDownloads } from "@/lib/getDownloads";
 import { Card, CardContent } from "../ui/card";
 import { Download } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-export function ListCardDownload() {
-  const categories = [
-    "CMR Saúde",
-    "Grupo Real",
-    "Homeopet",
-    "Real H",
-  ];
+const TABS_DOWNLOAD = [
+  { id: 1, name: "CMR Saúde", slug: "cmr-saude", image: LogoCMR },
+  { id: 2, name: "Grupo Real", slug: "grupo-real", image: LogoGrupoReal },
+  { id: 3, name: "Homeopet", slug: "homeopet", image: LogoHomeopet },
+  { id: 4, name: "Real H", slug: "real-h", image: LogoRealH },
+];
 
-  const [activeTab, setActiveTab] = useState(1);
-
-  const handleActiveTab = (id: number) => {
-    setActiveTab(id);
+function textoCategoria(category: unknown): string {
+  if (typeof category === "string") {
+    return category;
   }
+  if (Array.isArray(category)) {
+    return category
+      .map((item) => (typeof item === "string" ? item : item?.name ?? ""))
+      .join(" ");
+  }
+  return "";
+}
 
-  const tabsCategories = [
-    {
-      id: 1,
-      name: "CMR Saúde",
-      image: LogoCMR,
-    },
-    {
-      id: 2,
-      name: "Grupo Real",
-      image: LogoGrupoReal,
-    },
-    {
-      id: 3,
-      name: "Homeopet",
-      image: LogoHomeopet,
-    },
-    {
-      id: 4,
-      name: "Real H",
-      image: LogoRealH,
-    }
-  ]
+function tabDoItem(itemSlug: string, downloads: any[]) {
+  if (!itemSlug) {
+    return null;
+  }
+  const bySlug = TABS_DOWNLOAD.find(
+    (tab) => tab.slug === itemSlug || tab.name.toLowerCase() === itemSlug.toLowerCase()
+  );
+  if (bySlug) {
+    return bySlug;
+  }
+  const file = downloads.find((entry) => entry?.node?.slug === itemSlug);
+  if (!file) {
+    return null;
+  }
+  const texto = textoCategoria(file.node?.category);
+  return TABS_DOWNLOAD.find((tab) => texto.includes(tab.name)) ?? null;
+}
 
-  const [allDownloads, setAllDownloads] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("");
+export function ListCardDownload({
+  downloads = [],
+  initialItem = "",
+}: {
+  downloads?: any[];
+  initialItem?: string;
+}) {
+  const tabInicial = tabDoItem(initialItem, downloads);
+  const [activeTab, setActiveTab] = useState(tabInicial?.id ?? 1);
+  const [selectedCategory, setSelectedCategory] = useState(tabInicial?.name ?? "");
+
+  const allDownloads = downloads;
 
   useEffect(() => {
-    async function fetchDownloads() {
-      const { props } = await getDownloads();
-      setAllDownloads(props);
-    }
-    fetchDownloads();
-  }, []);
+    const aplicar = () => {
+      const hash =
+        typeof window !== "undefined"
+          ? decodeURIComponent(window.location.hash.replace(/^#/, "")).trim()
+          : "";
+      const slug = initialItem || hash;
+      const tab = tabDoItem(slug, downloads);
+      if (!tab) {
+        return;
+      }
+      setActiveTab(tab.id);
+      setSelectedCategory(tab.name);
+      window.setTimeout(() => {
+        const el = document.querySelector(`[data-download-slug="${CSS.escape(slug)}"]`);
+        el?.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 200);
+    };
+
+    aplicar();
+    window.addEventListener("hashchange", aplicar);
+    return () => window.removeEventListener("hashchange", aplicar);
+  }, [downloads, initialItem]);
 
   const filteredDownloads = useMemo(() => {
     if (!selectedCategory) return allDownloads;
-    return allDownloads.filter((item) => 
-      item.node.category.includes(selectedCategory)
+    return allDownloads.filter((item) =>
+      textoCategoria(item.node?.category).includes(selectedCategory)
     );
   }, [selectedCategory, allDownloads]);
 
@@ -88,7 +113,7 @@ export function ListCardDownload() {
       <div className="flex w-full items-center justify-center gap-4 px-2">
         <h2 className="text-xl font-semibold text-center ">Clique abaixo para encontrar o material<br/> sobre cada marca!</h2>
       </div>
-        {tabsCategories.map((category) => (
+        {TABS_DOWNLOAD.map((category) => (
           <div 
             onClick={() => handleFilter(category.name, category.id)}
             key={category.id } className={cn([`flex flex-col cursor-pointer items-center justify-center gap-2 border rounded-2xl py-4 px-6 h-44 hover:drop-shadow-lg duration-300`, activeTab === category.id && category.name === selectedCategory ? "bg-gray-100" : "bg-white"])}>
@@ -140,7 +165,7 @@ export function ListCardDownload() {
           {/* Downloads Grid */}
             <div className="w-full flex flex-wrap gap-8 mx-auto items-center justify-center">
             {filteredDownloads.map((item, index) => (
-              <Card key={item.node.id} className="overflow-hidden drop-shadow-lg w-full md:w-[300px] lg:w-[400px]">
+              <Card key={item.node.id} data-download-slug={item.node.slug} className="overflow-hidden drop-shadow-lg w-full md:w-[300px] lg:w-[400px]">
                 <CardContent className="p-0">
                   <div className="relative h-[140px] flex items-center justify-center">
                     <Image
