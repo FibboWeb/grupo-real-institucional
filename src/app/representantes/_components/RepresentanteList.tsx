@@ -4,14 +4,22 @@ import { ChevronDown } from 'lucide-react'
 import React from 'react'
 import ComoChegar from './ComoChegar'
 
+export function representanteNaCategoria(representante, category: string) {
+  const cats = representante?.categoriaId ?? [];
+  return cats.includes(category) || (cats.includes("Linha Saúde") && category === "Saúde Animal");
+}
+
 export default function RepresentanteList({representanteList, openCategory, categoriasColors, category}) {
   return (
     <div className={`flex flex-wrap border-b border-gray-300 ${openCategory === category ? 'animate-fade-in' : ''} pt-4`}>
       {representanteList
-        // se a categoria for linha saude renderizar dentro de saúde animal
-        .filter((representante) => (representante.categoriaId.includes(category) || (representante.categoriaId.includes("Linha Saúde") && category === "Saúde Animal"))) 
+        .filter((representante) => representanteNaCategoria(representante, category))
         .map((representante) => (
-          <div key={representante.id} className="w-full lg:w-1/2 2xl:w-1/3 p-4 border-b border-gray-300">
+          <div
+            key={representante.id}
+            data-representante-slug={representante.slug}
+            className="w-full lg:w-1/2 2xl:w-1/3 p-4 border-b border-gray-300"
+          >
             <div className="flex flex-col min-h-[250px] justify-between">
               <h3 className="text-2xl font-semibold mb-2">{representante.title.replace("&#038;", "&").replace("&#8211;", ".")}</h3>
               <div className="inline-block">

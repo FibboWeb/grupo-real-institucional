@@ -1,45 +1,3 @@
-import { unstable_cache } from "next/cache";
-
-const getCachedRepresentantes = unstable_cache(
-  async () => {
-    try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_WP_URL_API}representante?per_page=100&_embed=wp:term`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-  
-      if (!response.ok) {
-        throw new Error(`Erro na requisição: ${response.statusText}`);
-      }
-  
-      const data = await response.json();
-  
-      // Mapeia os representantes para pegar apenas os campos necessários
-      const representantes = data.map((representante) => {
-        const categoriaName = representante._embedded['wp:term']?.[0]?.[0].name || ""; // Obtendo o nome da categoria diretamente do wp:term
-        return {
-          id: representante.id, // Adicionando o ID do representante
-          title: representante.title.rendered, // Nome do representante
-          estado: representante.meta?.estado_do_representante || "",
-          endereco: representante.meta?.endereco_do_representante || "",
-          pais: representante.meta?.pais_do_representante || "",
-          cidade: representante.meta?.cidade_do_representante || "",
-          email: representante.meta?.email_do_representante || "",
-          categoriaId: categoriaName
-        };
-      });
-      return representantes;
-    } catch (error) {
-      console.error("Erro ao buscar representantes:", error);
-      return { props: [] };
-    }
-  },
-  ["representantes-cache"],
-  { revalidate: 86400 } // Revalidar a cada 24 horas
-);
-
 export async function fetchAllRepresentantes() {
   try {
     const baseUrl = `${process.env.NEXT_PUBLIC_WP_URL_API}representante?per_page=100&_embed=wp:term`;
@@ -53,6 +11,7 @@ export async function fetchAllRepresentantes() {
         headers: {
           "Content-Type": "application/json",
         },
+        cache: "no-store",
       });
 
       if (!response.ok) {
@@ -63,7 +22,7 @@ export async function fetchAllRepresentantes() {
 
       if (!data || !Array.isArray(data)) {
         console.error("Invalid data structure:", data);
-        return { props: [] }; // Return empty props if data is invalid
+        return { props: [] };
       }
 
       if (page === 1) {
@@ -81,12 +40,16 @@ export async function fetchAllRepresentantes() {
           title: representante.title.rendered,
           estado: representante.meta?.estado_do_representante || "",
           endereco: representante.meta?.endereco_do_representante || "",
-          pais: representante.meta?.pais_do_representante || "",
+          pais:
+            representante.meta?.pais_representante ||
+            representante.meta?.pais_do_representante ||
+            "",
           cidade: representante.meta?.cidade_do_representante || "",
           email: representante.meta?.email_do_representante || "",
           latitude: representante.meta?.latitude_representante,
           longitude: representante.meta?.longitude_representante,
           iframeMap: representante.meta?.iframe_map,
+          slug: representante.slug,
           categoriaId: categoriaNames,
         };
       });
@@ -99,28 +62,6 @@ export async function fetchAllRepresentantes() {
     return { props: ordered };
   } catch (error) {
     console.error("Erro ao buscar representantes:", error);
-    return { props: [] }; // Return empty props on error
-  }
-}
-
-
-async function getCategorieName(id: number) {
-  try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_WP_URL_API}linha/${id}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error(`Erro na requisição: ${response.statusText}`);
-    }
-
-    const data = await response.json();
-    return data.name;
-  } catch (error) {
-    console.error("Erro ao buscar categoria:", error);
-    return "";
+    return { props: [] };
   }
 }

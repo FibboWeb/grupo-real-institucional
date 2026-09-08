@@ -13,6 +13,8 @@ import GridProduct from "../(componentes)";
 import { text } from "stream/consumers";
 import TextSEO from "@/components/TextSEO";
 
+export const dynamic = "force-dynamic";
+
 type Props = {
   params: Promise<{ slug: string }>;
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;

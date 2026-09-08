@@ -14,7 +14,7 @@ export async function getProducts(id_categoria: number, page, productsPerPage = 
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_WP_URL_API}produtos?categoria_produto=${id_categoria}&per_page=${productsPerPage}&page=${page}&_embed=wp:featuredmedia`,
     {
-      next: { revalidate: 3600 },
+      cache: "no-store",
     },
   );
   if (!res.ok) {

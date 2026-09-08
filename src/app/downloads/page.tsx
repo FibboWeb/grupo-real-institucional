@@ -5,6 +5,9 @@ import Breadcrumb from "@/components/BreadCrumb";
 import { ListCardDownload } from "@/components/CardDowload";
 import { Metadata } from "next";
 import { getDownloads } from "@/lib/getDownloads";
+import { readFrontItem } from "@/constants/cms-config";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Downloads de catálogo e logos - Grupo Real",
@@ -24,8 +27,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function DownloadsPage() {
+export default async function DownloadsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ item?: string | string[] }>;
+}) {
   const downloadsData = await getDownloads();
+  const initialItem = readFrontItem(await searchParams);
   return (
     <div className="fb_container mt-[96px] min-h-screen mb-10">
       {/* Breadcrumb */}
@@ -48,7 +56,7 @@ export default async function DownloadsPage() {
 
       {/* Main Content */}
       <div className="container mx-auto py-8">
-        <ListCardDownload />
+        <ListCardDownload downloads={downloadsData.props ?? []} initialItem={initialItem} />
       </div>
       <Newsletter />
     </div>

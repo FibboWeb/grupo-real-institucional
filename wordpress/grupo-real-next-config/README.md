@@ -14,6 +14,20 @@ Plugin headless que centraliza o contrato entre **conteudo.realh** e o front **N
 2. Ative o plugin **Grupo Real — Next Config**
 3. Crie o menu **Institucional Sidebar** em Aparência → Menus e atribua à location homônima
 
+Permalink no front (plugin 1.6.0): só com status **publicado**. Rascunho, privado, lixeira e agendado mostram um aviso único — sem tooltip. Links do Next abrem em nova aba.
+
+| WP | URL Next |
+|----|----------|
+| Post (sem categoria artigos) | `/noticias/{slug}` |
+| Post categoria `artigos` | `/artigos/{slug}` |
+| Page institucional (templates do plugin) | `/quem-somos`, `/institucional/{slug}`, landings |
+| Representante | `/representantes?item={slug}` |
+| Taxonomia `linha` | `/representantes?item={slug}` |
+| Download / `categoria_download` | `/downloads?item={slug}` |
+| Produto | `/produtos/{slug}` |
+| `categoria_produto` | `/linhas/{slug}` (`real-h`, `cmr`, `homeopet`) |
+| CPT `linhas` | `/linhas/real-h` ← `linha-nutricao`, `/linhas/cmr` ← `linha-saude`, `/linhas/homeopet` ← `linha-homeo-pet` |
+
 ## Páginas institucionais
 
 **Conflito de slug:** a landing Grupo Real H no WP usa `institucional`, mas no Next é `/quem-somos`. Siga a ordem:

@@ -75,6 +75,234 @@ final class Config
 
     public const ACF_MENU_ICONE_IMAGEM = 'icone_imagem';
 
+    /** CPT já registrado no WP (CPT UI). Só usamos o slug para permalink/redirect. */
+    public const CPT_REPRESENTANTE = 'representante';
+
+    public const PATH_REPRESENTANTES = '/representantes';
+
+    public const CPT_DOWNLOAD = 'download';
+
+    public const TAX_CATEGORIA_DOWNLOAD = 'categoria_download';
+
+    public const PATH_DOWNLOADS = '/downloads';
+
+    public const FRONT_ITEM_QUERY = 'item';
+
+    public const CPT_PRODUTO = 'produto';
+
+    public const TAX_CATEGORIA_PRODUTO = 'categoria_produto';
+
+    public const PATH_PRODUTOS = '/produtos';
+
+    public const PATH_LINHAS = '/linhas';
+
+    public const CPT_LINHAS = 'linhas';
+
+    public const TAX_LINHA = 'linha';
+
+    /**
+     * Origem do site público. Filtro: grnc_front_origin.
+     */
+    public static function frontOrigin(): string
+    {
+        $origin = apply_filters('grnc_front_origin', 'https://gruporealbr.com.br');
+
+        return is_string($origin) && $origin !== '' ? rtrim($origin, '/') : 'https://gruporealbr.com.br';
+    }
+
+    public static function representanteFrontUrl(string $slug): string
+    {
+        return self::frontUrlWithItem(self::PATH_REPRESENTANTES, $slug);
+    }
+
+    public static function downloadFrontUrl(string $slug): string
+    {
+        return self::frontUrlWithItem(self::PATH_DOWNLOADS, $slug);
+    }
+
+    /**
+     * Query ?item= sobrevive ao redirect do WP (o # é descartado pelo wp_safe_redirect).
+     */
+    public static function frontUrlWithItem(string $path, string $slug): string
+    {
+        $slug = ltrim($slug, '#/');
+
+        return self::frontOrigin() . $path . '?' . self::FRONT_ITEM_QUERY . '=' . rawurlencode($slug) . '#' . $slug;
+    }
+
+    public static function produtoFrontUrl(string $slug): string
+    {
+        return self::frontOrigin() . self::PATH_PRODUTOS . '/' . trim($slug, '/');
+    }
+
+    public static function categoriaProdutoFrontUrl(\WP_Term $term): string
+    {
+        return self::frontOrigin() . self::PATH_LINHAS . '/' . $term->slug;
+    }
+
+    /**
+     * @return list<string>
+     */
+    public static function frontLinkedCpts(): array
+    {
+        return [
+            'post',
+            'page',
+            self::CPT_REPRESENTANTE,
+            self::CPT_DOWNLOAD,
+            self::CPT_PRODUTO,
+            self::CPT_LINHAS,
+        ];
+    }
+
+    /**
+     * @return list<string>
+     */
+    public static function frontLinkedTaxonomies(): array
+    {
+        return [
+            'category',
+            self::TAX_CATEGORIA_DOWNLOAD,
+            self::TAX_CATEGORIA_PRODUTO,
+            self::TAX_LINHA,
+        ];
+    }
+
+    public static function isPublicFrontStatus(string $status): bool
+    {
+        return $status === 'publish';
+    }
+
+    /**
+     * Slug WP do CPT linhas → path /linhas/{slug} no Next.
+     *
+     * @return array<string, string>
+     */
+    public static function linhaCptToFrontSlug(): array
+    {
+        return [
+            'linha-nutricao' => 'real-h',
+            'linha-saude' => 'cmr',
+            'linha-homeo-pet' => 'homeopet',
+        ];
+    }
+
+    public static function frontUrlForPost(\WP_Post $post): ?string
+    {
+        if (!self::isPublicFrontStatus((string) $post->post_status) || $post->post_name === '') {
+            return null;
+        }
+
+        switch ($post->post_type) {
+            case 'post':
+                return self::postFrontUrl($post->post_name, self::postIsArtigos((int) $post->ID));
+            case 'page':
+                $path = self::frontPathForPage((int) $post->ID);
+
+                return $path !== null ? self::frontOrigin() . $path : null;
+            case self::CPT_REPRESENTANTE:
+                return self::representanteFrontUrl($post->post_name);
+            case self::CPT_DOWNLOAD:
+                return self::downloadFrontUrl($post->post_name);
+            case self::CPT_PRODUTO:
+                return self::produtoFrontUrl($post->post_name);
+            case self::CPT_LINHAS:
+                $map = self::linhaCptToFrontSlug();
+
+                return isset($map[$post->post_name])
+                    ? self::frontOrigin() . self::PATH_LINHAS . '/' . $map[$post->post_name]
+                    : null;
+            default:
+                return null;
+        }
+    }
+
+    public static function frontUrlForTerm(\WP_Term $term): ?string
+    {
+        if ((int) $term->count < 1 || $term->slug === '') {
+            return null;
+        }
+
+        switch ($term->taxonomy) {
+            case 'category':
+                return self::categoryFrontUrl($term);
+            case self::TAX_CATEGORIA_DOWNLOAD:
+                return self::downloadFrontUrl($term->slug);
+            case self::TAX_CATEGORIA_PRODUTO:
+                return self::categoriaProdutoFrontUrl($term);
+            case self::TAX_LINHA:
+                return self::representanteFrontUrl($term->slug);
+            default:
+                return null;
+        }
+    }
+
+    public const SLUG_CATEGORY_ARTIGOS = 'artigos';
+
+    public const PATH_NOTICIAS = '/noticias';
+
+    public const PATH_ARTIGOS = '/artigos';
+
+    public const PATH_CATEGORIA = '/categoria';
+
+    public const POST_VIEW_UNPUBLISHED_HINT = 'Só é possível visualizar ao publicar o post';
+
+    public const CATEGORY_VIEW_EMPTY_HINT = 'Só é possível visualizar ao publicar posts nesta categoria';
+
+    public static function categoryFrontUrl(\WP_Term $term): string
+    {
+        $slugs = [];
+        $current = $term;
+        $guard = 0;
+
+        while ($current instanceof \WP_Term && $guard < 10) {
+            array_unshift($slugs, $current->slug);
+            if ((int) $current->parent === 0) {
+                break;
+            }
+            $parent = get_term((int) $current->parent, 'category');
+            $current = $parent instanceof \WP_Term ? $parent : null;
+            $guard++;
+        }
+
+        return self::frontOrigin() . self::PATH_CATEGORIA . '/' . implode('/', $slugs);
+    }
+
+    public static function categoryHasPublishedPosts(\WP_Term $term): bool
+    {
+        return (int) $term->count > 0;
+    }
+
+    public static function postIsArtigos(int $postId): bool
+    {
+        $terms = get_the_category($postId);
+
+        if (!is_array($terms)) {
+            return false;
+        }
+
+        foreach ($terms as $term) {
+            if (isset($term->slug) && $term->slug === self::SLUG_CATEGORY_ARTIGOS) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public static function postFrontUrl(string $slug, bool $isArtigos): string
+    {
+        $slug = trim($slug, '/');
+        $path = $isArtigos ? self::PATH_ARTIGOS : self::PATH_NOTICIAS;
+
+        return self::frontOrigin() . $path . '/' . $slug;
+    }
+
+    public static function postIsPublicOnFront(\WP_Post $post): bool
+    {
+        return self::frontUrlForPost($post) !== null;
+    }
+
     /**
      * Slugs que o catch-all /institucional/[slug] do Next NÃO deve renderizar.
      *
