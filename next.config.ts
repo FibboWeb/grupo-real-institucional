@@ -1,5 +1,5 @@
 import type { NextConfig } from "next";
-import { getProductLineRedirects } from "./src/lib/product-line-redirects";
+import { getProductLineRedirects, toNextConfigRedirects } from "./src/lib/product-line-redirects";
 
 /** Sitemaps removidos → índice principal (301). */
 const legacySitemapRedirects = [
@@ -17,7 +17,7 @@ const nextConfig: NextConfig = {
   },
   poweredByHeader: false,
   async redirects() {
-    const productLineRedirects = await getProductLineRedirects();
+    const productLineRedirects = toNextConfigRedirects(await getProductLineRedirects());
     return [...legacySitemapRedirects, ...productLineRedirects];
   },
 };

@@ -6,6 +6,7 @@ export type ProductLineRedirect = {
   source: string;
   destination: string;
   permanent: boolean;
+  regex?: boolean;
   has?: Array<{ type: "query"; key: string; value: string }>;
 };
 
@@ -13,6 +14,7 @@ type WpFrontRedirect = {
   source: string;
   destination: string;
   permanent: boolean;
+  regex?: boolean;
 };
 
 type WpFrontRedirectsResponse = {
@@ -39,12 +41,26 @@ const LINE_REDIRECTS: ProductLineRedirect[] = [
 function toNextRedirect(row: WpFrontRedirect): ProductLineRedirect | null {
   const source = row.source?.trim();
   const destination = row.destination?.trim();
+  const regex = Boolean(row.regex);
 
-  if (!source?.startsWith("/") || !destination?.startsWith("http")) {
+  if (!source || !destination) {
+    return null;
+  }
+
+  if (!regex && !source.startsWith("/")) {
+    return null;
+  }
+
+  if (!destination.startsWith("http") && !destination.startsWith("/")) {
     return null;
   }
 
   const permanent = Boolean(row.permanent);
+
+  if (regex) {
+    return { source, destination, permanent, regex: true };
+  }
+
   const queryIndex = source.indexOf("?");
 
   if (queryIndex === -1) {
@@ -63,8 +79,8 @@ function toNextRedirect(row: WpFrontRedirect): ProductLineRedirect | null {
 }
 
 /**
- * Busca redirects de produtos/linhas no WordPress (plugin Redirection via REST custom).
- * Usado em `next.config.ts` no build/deploy do gruporealbr.com.br.
+ * Busca todos os redirects do plugin Redirection (REST custom).
+ * Usado no middleware e em `next.config.ts` (regras sem regex).
  */
 export async function getProductLineRedirects(): Promise<ProductLineRedirect[]> {
   const base = customApiBase();
@@ -107,10 +123,16 @@ function mergeRedirects(...lists: ProductLineRedirect[][]): ProductLineRedirect[
 
   for (const list of lists) {
     for (const item of list) {
-      const key = item.has ? `${item.source}?${item.has.map((h) => `${h.key}=${h.value}`).join("&")}` : item.source;
+      const queryKey = item.has ? `?${item.has.map((h) => `${h.key}=${h.value}`).join("&")}` : "";
+      const key = `${item.regex ? "re:" : ""}${item.source}${queryKey}`;
       bySource.set(key, item);
     }
   }
 
   return Array.from(bySource.values());
+}
+
+/** `redirects()` do Next não entende regex PCRE do plugin Redirection. */
+export function toNextConfigRedirects(rows: ProductLineRedirect[]): ProductLineRedirect[] {
+  return rows.filter((row) => !row.regex);
 }

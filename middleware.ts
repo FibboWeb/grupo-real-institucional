@@ -1,12 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getProductLineRedirects } from "./src/lib/product-line-redirects";
+import { getProductLineRedirects, type ProductLineRedirect } from "./src/lib/product-line-redirects";
 
 const REDIRECT_CACHE_MS = 5 * 60 * 1000;
 
-let redirectCache: {
+type CachedRedirects = {
   expires: number;
-  byPath: Map<string, { destination: string; permanent: boolean }>;
-} | null = null;
+  exact: Map<string, ProductLineRedirect[]>;
+  regex: ProductLineRedirect[];
+};
+
+let redirectCache: CachedRedirects | null = null;
 
 function stripTrailingSlash(pathname: string): string {
   if (pathname.length > 1 && pathname.endsWith("/")) {
@@ -16,44 +19,129 @@ function stripTrailingSlash(pathname: string): string {
   return pathname;
 }
 
-async function lookupProductLineRedirect(pathname: string) {
-  const path = stripTrailingSlash(pathname);
+function shouldSkipRedirectLookup(pathname: string): boolean {
+  return pathname.startsWith("/_next") || pathname.startsWith("/api/");
+}
 
-  if (!path.startsWith("/produtos") && !path.startsWith("/linhas")) {
+async function loadRedirects(): Promise<CachedRedirects> {
+  const now = Date.now();
+
+  if (redirectCache && now <= redirectCache.expires) {
+    return redirectCache;
+  }
+
+  const rows = await getProductLineRedirects();
+  const exact = new Map<string, ProductLineRedirect[]>();
+  const regex: ProductLineRedirect[] = [];
+
+  for (const row of rows) {
+    if (row.regex) {
+      regex.push(row);
+      continue;
+    }
+
+    const path = stripTrailingSlash(row.source);
+    const list = exact.get(path) ?? [];
+    list.push(row);
+    exact.set(path, list);
+  }
+
+  redirectCache = { expires: now + REDIRECT_CACHE_MS, exact, regex };
+  return redirectCache;
+}
+
+function queryMatches(request: NextRequest, row: ProductLineRedirect): boolean {
+  if (!row.has?.length) {
+    return true;
+  }
+
+  return row.has.every(({ key, value }) => request.nextUrl.searchParams.get(key) === value);
+}
+
+function resolveDestination(request: NextRequest, destination: string, pathname: string): string | null {
+  const resolved = destination.startsWith("http")
+    ? destination
+    : new URL(destination, request.nextUrl.origin).toString();
+
+  try {
+    const destUrl = new URL(resolved);
+    const samePath =
+      destUrl.origin === request.nextUrl.origin && stripTrailingSlash(destUrl.pathname) === stripTrailingSlash(pathname);
+
+    if (samePath) {
+      return null;
+    }
+  } catch {
     return null;
   }
 
-  const now = Date.now();
+  return resolved;
+}
 
-  if (!redirectCache || now > redirectCache.expires) {
-    const rows = await getProductLineRedirects();
-    const byPath = new Map<string, { destination: string; permanent: boolean }>();
+function applyRegex(pathname: string, search: string, row: ProductLineRedirect): string | null {
+  try {
+    const pattern = row.source.startsWith("^") ? row.source : `^${row.source}`;
+    const re = new RegExp(pattern);
+    const input = `${pathname}${search}`;
 
-    for (const row of rows) {
-      if (row.has?.length) {
-        continue;
-      }
-
-      byPath.set(stripTrailingSlash(row.source), {
-        destination: row.destination,
-        permanent: row.permanent,
-      });
+    if (!re.test(input) && !re.test(pathname)) {
+      return null;
     }
 
-    redirectCache = { expires: now + REDIRECT_CACHE_MS, byPath };
+    const source = re.test(input) ? input : pathname;
+    return source.replace(re, row.destination);
+  } catch {
+    return null;
+  }
+}
+
+async function lookupFrontRedirect(request: NextRequest) {
+  const pathname = stripTrailingSlash(request.nextUrl.pathname);
+
+  if (shouldSkipRedirectLookup(pathname)) {
+    return null;
   }
 
-  return redirectCache.byPath.get(path) ?? null;
+  const cache = await loadRedirects();
+  const exactRows = cache.exact.get(pathname) ?? [];
+  const withQuery = exactRows.filter((row) => row.has?.length);
+  const withoutQuery = exactRows.filter((row) => !row.has?.length);
+  const exactMatch = [...withQuery, ...withoutQuery].find((row) => queryMatches(request, row));
+
+  if (exactMatch) {
+    const destination = resolveDestination(request, exactMatch.destination, pathname);
+
+    if (!destination) {
+      return null;
+    }
+
+    return { destination, permanent: exactMatch.permanent };
+  }
+
+  for (const row of cache.regex) {
+    const replaced = applyRegex(pathname, request.nextUrl.search, row);
+
+    if (!replaced) {
+      continue;
+    }
+
+    const destination = resolveDestination(request, replaced, pathname);
+
+    if (!destination) {
+      continue;
+    }
+
+    return { destination, permanent: row.permanent };
+  }
+
+  return null;
 }
 
 export async function middleware(request: NextRequest) {
-  const productLineRedirect = await lookupProductLineRedirect(request.nextUrl.pathname);
+  const frontRedirect = await lookupFrontRedirect(request);
 
-  if (productLineRedirect) {
-    return NextResponse.redirect(
-      productLineRedirect.destination,
-      productLineRedirect.permanent ? 301 : 302,
-    );
+  if (frontRedirect) {
+    return NextResponse.redirect(frontRedirect.destination, frontRedirect.permanent ? 301 : 302);
   }
 
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
@@ -69,7 +157,6 @@ export async function middleware(request: NextRequest) {
     frame-ancestors 'none';
     upgrade-insecure-requests;
 `;
-  // Substituir caracteres de nova linha e espaços
   const contentSecurityPolicyHeaderValue = cspHeader.replace(/\s{2,}/g, " ").trim();
 
   const requestHeaders = new Headers(request.headers);

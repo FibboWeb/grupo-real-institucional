@@ -9,12 +9,11 @@ use WP_REST_Request;
 use WP_REST_Response;
 
 /**
- * GET público dos redirects do front (produtos/linhas) cadastrados no plugin Redirection.
+ * GET público de todas as regras ativas do plugin Redirection para o front Next.
  *
  *   GET /wp-json/custom/front-redirects
  *
- * O Next.js lê este endpoint no middleware (e no next.config no build).
- * No CMS, cadastre a origem como path relativo (/produtos/…) ou URL do front.
+ * Origem: path relativo (/noticias/…) ou URL do front / do CMS (o path é extraído).
  */
 final class FrontRedirects
 {
@@ -47,7 +46,7 @@ final class FrontRedirects
     }
 
     /**
-     * @return list<array{source: string, destination: string, permanent: bool}>
+     * @return list<array{source: string, destination: string, permanent: bool, regex: bool}>
      */
     private function collectFromRedirectionPlugin(): array
     {
@@ -143,7 +142,7 @@ final class FrontRedirects
 
     /**
      * @param array<string, mixed> $item
-     * @return array{source: string, destination: string, permanent: bool}|null
+     * @return array{source: string, destination: string, permanent: bool, regex: bool}|null
      */
     private function mapRedirectionItem(array $item): ?array
     {
@@ -153,18 +152,11 @@ final class FrontRedirects
             return null;
         }
 
-        if (!empty($item['regex'])) {
-            return null;
-        }
-
+        $isRegex = !empty($item['regex']);
         $rawSource = (string) ($item['url'] ?? $item['match_url'] ?? '');
-        $source = $this->normalizeFrontSource($rawSource);
+        $source = $this->normalizeFrontSource($rawSource, $isRegex);
 
         if ($source === null) {
-            return null;
-        }
-
-        if (!$this->isProductOrLinePath($source)) {
             return null;
         }
 
@@ -180,10 +172,11 @@ final class FrontRedirects
             'source' => $source,
             'destination' => $destination,
             'permanent' => $code === 301 || $code === 308,
+            'regex' => $isRegex,
         ];
     }
 
-    private function normalizeFrontSource(string $raw): ?string
+    private function normalizeFrontSource(string $raw, bool $isRegex = false): ?string
     {
         $raw = trim($raw);
 
@@ -194,9 +187,8 @@ final class FrontRedirects
         if (preg_match('#^https?://#i', $raw)) {
             $parsed = wp_parse_url($raw);
             $host = isset($parsed['host']) ? strtolower((string) $parsed['host']) : '';
-            $frontHost = wp_parse_url(Config::frontOrigin(), PHP_URL_HOST);
 
-            if (!is_string($frontHost) || $frontHost === '' || strtolower($frontHost) !== $host) {
+            if (!$this->isAllowedSourceHost($host)) {
                 return null;
             }
 
@@ -206,6 +198,10 @@ final class FrontRedirects
             return $path . $query;
         }
 
+        if ($isRegex) {
+            return $raw;
+        }
+
         if ($raw[0] !== '/') {
             $raw = '/' . $raw;
         }
@@ -213,14 +209,45 @@ final class FrontRedirects
         return $raw;
     }
 
-    private function isProductOrLinePath(string $source): bool
+    private function isAllowedSourceHost(string $host): bool
     {
-        $path = strtok($source, '?') ?: $source;
+        $host = strtolower(preg_replace('/^www\./', '', $host) ?? $host);
 
-        return str_starts_with($path, Config::PATH_PRODUTOS . '/')
-            || $path === rtrim(Config::PATH_PRODUTOS, '/')
-            || str_starts_with($path, Config::PATH_LINHAS . '/')
-            || $path === rtrim(Config::PATH_LINHAS, '/');
+        $candidates = [
+            Config::frontOrigin(),
+            home_url(),
+            site_url(),
+        ];
+
+        $allowed = [];
+
+        foreach ($candidates as $origin) {
+            $parsedHost = wp_parse_url($origin, PHP_URL_HOST);
+
+            if (is_string($parsedHost) && $parsedHost !== '') {
+                $allowed[] = strtolower(preg_replace('/^www\./', '', $parsedHost) ?? $parsedHost);
+            }
+        }
+
+        $allowed = apply_filters('grnc_front_redirect_source_hosts', array_values(array_unique($allowed)));
+
+        if (!is_array($allowed)) {
+            return false;
+        }
+
+        foreach ($allowed as $allowedHost) {
+            if (!is_string($allowedHost) || $allowedHost === '') {
+                continue;
+            }
+
+            $normalized = strtolower(preg_replace('/^www\./', '', $allowedHost) ?? $allowedHost);
+
+            if ($normalized === $host) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
