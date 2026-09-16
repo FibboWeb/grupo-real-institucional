@@ -81,7 +81,7 @@ Garanta que `.env.local` está correto antes do `build`: várias rotas fazem `fe
 
 ## Estrutura do repositório
 
-- **`src/app/`** — Rotas do App Router: home, `noticias`, `artigos`, `busca`, `categoria`, `author`, `produtos`, `linhas`, `representantes`, `seja-representante`, `contato`, `downloads`, `quem-somos`, `historia`, campanhas (`ambiental`, `social`, `expogrande2025`, `ciclos-transparencia`), páginas `institucional` (LGPD, políticas de privacidade/cookies, atendimento ao titular) e rotas em `api/` (ex.: download).
+- **`src/app/`** — Rotas do App Router: home, `noticias`, `artigos`, `busca`, `categoria`, `author`, `representantes`, `seja-representante`, `contato`, `downloads`, `quem-somos`, `historia`, campanhas (`ambiental`, `social`, `expogrande2025`, `ciclos-transparencia`), páginas `institucional` (LGPD, políticas de privacidade/cookies, atendimento ao titular) e rotas em `api/` (ex.: download). Produtos e linhas foram removidos (redirect 301 para os e-commerces).
 - **`src/components/`** — Componentes reutilizáveis: `Layout` (header, footer, seções da home), `ui/` (primitivos), banners, formulários, sliders e blocos de conteúdo.
 - **`src/lib/`** — Clientes Apollo, funções de fetch, cache (`unstable_cache` onde aplicável) e integração com WordPress.
 - **`src/graphql/`** — Queries e fragmentos GraphQL.
@@ -116,7 +116,7 @@ Imagens remotas permitidas estão configuradas em `next.config.ts` (domínios co
 ## SEO e sitemap
 
 - **`next-sitemap.config.js`:** gera `sitemap.xml` e `robots.txt` na build, com `siteUrl` de produção e referência a sitemaps adicionais.
-- **`src/app/sitemap/[id]/route.ts`:** gera XML dinâmico para `produtos.xml` e `posts.xml` (URLs de produtos e posts/notícias), com cache e revalidação diária.
+- **`src/app/sitemap/[id]/route.ts`:** gera XML dinâmico para `posts.xml` e `institucional.xml`, com cache e revalidação.
 
 Após alterar rotas ou domínio, revise `next-sitemap.config.js` e as URLs fixas nos geradores de sitemap.
 

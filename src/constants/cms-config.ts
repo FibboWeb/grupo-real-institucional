@@ -7,6 +7,7 @@ export const CMS_CONFIG = {
   MENU_SIDEBAR_LOCATION: "grnc_institutional_sidebar",
   REST_NAMESPACE: "custom",
   REST_SIDEBAR_ROUTE: "institutional-sidebar",
+  REST_FRONT_REDIRECTS_ROUTE: "front-redirects",
   /** Pai agrupador no WP. Não é rota de conteúdo no Next. */
   SLUG_PARENT: "institucional",
   /** Landing Grupo Real H no Next — template B (ACF seções). */

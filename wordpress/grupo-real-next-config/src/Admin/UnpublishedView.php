@@ -51,13 +51,13 @@ final class UnpublishedView
             'grnc-post-view',
             GRNC_PLUGIN_URL . 'assets/admin/post-view.css',
             [],
-            defined('GRNC_VERSION') ? GRNC_VERSION : '1.6.0'
+            defined('GRNC_VERSION') ? GRNC_VERSION : '1.7.0'
         );
         wp_enqueue_script(
             'grnc-post-view',
             GRNC_PLUGIN_URL . 'assets/admin/post-view.js',
             [],
-            defined('GRNC_VERSION') ? GRNC_VERSION : '1.6.0',
+            defined('GRNC_VERSION') ? GRNC_VERSION : '1.7.0',
             true
         );
         wp_localize_script('grnc-post-view', 'grncPostView', [
