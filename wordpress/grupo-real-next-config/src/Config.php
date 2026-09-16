@@ -21,6 +21,9 @@ final class Config
 
     public const REST_ROUTE_SIDEBAR = '/institutional-sidebar';
 
+    /** Redirects do front (plugin Redirection) para o Next — GET /wp-json/custom/front-redirects */
+    public const REST_ROUTE_FRONT_REDIRECTS = '/front-redirects';
+
     /** Página agrupadora no WP. Sem conteúdo público no Next (filhas usam /institucional/{slug}). */
     public const SLUG_PARENT = 'institucional';
 

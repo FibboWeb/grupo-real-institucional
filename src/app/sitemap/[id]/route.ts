@@ -2,27 +2,13 @@ import { NextRequest } from "next/server";
 import { notFound } from "next/navigation";
 import { unstable_cache } from "next/cache";
 import { getAllPosts } from "@/lib/getPosts";
-import { getAllProducts } from "@/lib/getProducts";
 import { listInstitutionalDocumentPages } from "@/lib/getPage";
 import { listPublishableLandingPages } from "@/lib/getLandingPage";
-import { publicSiteOrigin } from "@/lib/institutional-metadata";
+const SITEMAP_SITE_ORIGIN = "https://gruporealbr.com.br";
 
 export async function generateStaticParams() {
-  return [{ id: "produtos.xml" }, { id: "posts.xml" }, { id: "institucional.xml" }];
+  return [{ id: "posts.xml" }, { id: "institucional.xml" }];
 }
-
-const getCachedProducts = unstable_cache(
-  async () => {
-      const { data } = await getAllProducts();
-      return data.map(product => ({
-          url: `https://gruporealbr.com.br/produtos/${product.node.slug}`,
-          lastModified: new Date().toISOString(),
-          changeFrequency: "daily" as const,
-      }));
-  },
-  ["sitemap-products"],
-  { revalidate: 86400 },
-);
 
 const getCachedPosts = unstable_cache(
   async () => {
@@ -39,20 +25,19 @@ const getCachedPosts = unstable_cache(
 
 const getCachedInstitutional = unstable_cache(
   async () => {
-    const origin = publicSiteOrigin();
     const [landings, documents] = await Promise.all([
       listPublishableLandingPages(),
       listInstitutionalDocumentPages(),
     ]);
 
     const landingEntries = landings.map((page) => ({
-      url: `${origin}${page.path}`,
+      url: `${SITEMAP_SITE_ORIGIN}${page.path}`,
       lastModified: page.lastModified ?? new Date().toISOString(),
       changeFrequency: "weekly" as const,
     }));
 
     const documentEntries = documents.map((page) => ({
-      url: `${origin}/institucional/${page.slug}`,
+      url: `${SITEMAP_SITE_ORIGIN}/institucional/${page.slug}`,
       lastModified: page.lastModified ?? new Date().toISOString(),
       changeFrequency: "weekly" as const,
     }));
@@ -68,10 +53,7 @@ export async function GET(req :NextRequest,{ params }: { params: Promise<{ id: s
   
   try {
     const { id } = await params
-   if( id === 'produtos.xml'){
-       sitemapData= await getCachedProducts();
-   }
-   else if( id === 'posts.xml'){
+   if( id === 'posts.xml'){
        sitemapData= await getCachedPosts();
    }
    else if( id === 'institucional.xml'){

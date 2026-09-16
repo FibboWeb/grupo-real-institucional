@@ -67,17 +67,15 @@ fetch(`${process.env.NEXT_PUBLIC_WP_URL_API}posts?per_page=10`)
 - **REST v2:** CPTs e taxonomias — `posts`, `produtos`, `representante`, `na-midia`, `downloads`, `linhas`, `pages`, `categoria_produto`, `comments`. Fetchers em `src/lib/get*.ts` (revalidate / `unstable_cache` quando já existir).
 - **REST v1 custom:** só formulários/utilitários — `submit-lead/`, `subscribe-newsletter/`, `representante/`, `atendimento-titular/`, `info/whatsapp`.
 - **REST custom (plugin Next):** sidebar institucional — `NEXT_PUBLIC_WP_URL_API_CUSTOM` + `institutional-sidebar` (`getInstitutionalSidebarMenu`).
-- SEO de páginas WP: Yoast (`yoast_head_json`) via helpers como `fetchYoastSEO` / `getSEOLines2`.
+- SEO de páginas WP: Yoast (`yoast_head_json`) via helpers como `fetchYoastSEO`.
 - **Páginas institucionais (CMS):** plugin `wordpress/grupo-real-next-config/` + contrato `src/constants/cms-config.ts`. Qualquer page WP com template `institucional-documento` é pública em `/institucional/{slug}` (`getPage`). Landing Quem Somos: template `institucional-landing` em `/quem-somos` (`getQuemSomosPage`). Sidebar via `GET ${NEXT_PUBLIC_WP_URL_API_CUSTOM}institutional-sidebar`. Ver [docs/cms-institucional.md](docs/cms-institucional.md).
 
 ## Estrutura
 
-- `src/app/` — rotas: home, `noticias`, `artigos`, `busca`, `categoria`, `author`, `produtos`, `linhas`, `representantes`, `contato`, `downloads`, institucional (LGPD), campanhas (`ambiental`, `social`, `ciclos-transparencia`)
+- `src/app/` — rotas: home, `noticias`, `artigos`, `busca`, `categoria`, `author`, `representantes`, `contato`, `downloads`, institucional (LGPD), campanhas (`ambiental`, `social`, `ciclos-transparencia`). Produtos/linhas saíram do Next (301 para e-commerces via `next.config` + Redirection no WP).
 - `src/lib/` — Apollo, fetch WordPress, cache. **Reutilize** `get*` existentes; não busque WP direto no JSX. Institucional CMS: `getPage`, `getQuemSomosPage`, `getInstitutionalSidebarMenu`.
 - `src/components/Layout/` — header, footer, seções da home
 - `src/constants/` — copy e dados estáticos (não é CMS)
 - `src/types/` — tipos compartilhados (`Post`, etc.)
 
-Linhas de produto no front: `real-h` → `linha-nutricao`, `cmr` → `linha-saude`, `homeopet` → `linha-homeo-pet`.
-
-Sitemap: `next-sitemap.config.js` + `src/app/sitemap/[id]/route.ts` (`produtos.xml`, `posts.xml`, `institucional.xml`).
+Sitemap: `next-sitemap.config.js` + `src/app/sitemap/[id]/route.ts` (`posts.xml`, `institucional.xml`).
