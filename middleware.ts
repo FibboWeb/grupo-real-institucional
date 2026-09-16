@@ -1,6 +1,61 @@
 import { NextRequest, NextResponse } from "next/server";
+import { getProductLineRedirects } from "./src/lib/product-line-redirects";
 
-export function middleware(request: NextRequest) {
+const REDIRECT_CACHE_MS = 5 * 60 * 1000;
+
+let redirectCache: {
+  expires: number;
+  byPath: Map<string, { destination: string; permanent: boolean }>;
+} | null = null;
+
+function stripTrailingSlash(pathname: string): string {
+  if (pathname.length > 1 && pathname.endsWith("/")) {
+    return pathname.slice(0, -1);
+  }
+
+  return pathname;
+}
+
+async function lookupProductLineRedirect(pathname: string) {
+  const path = stripTrailingSlash(pathname);
+
+  if (!path.startsWith("/produtos") && !path.startsWith("/linhas")) {
+    return null;
+  }
+
+  const now = Date.now();
+
+  if (!redirectCache || now > redirectCache.expires) {
+    const rows = await getProductLineRedirects();
+    const byPath = new Map<string, { destination: string; permanent: boolean }>();
+
+    for (const row of rows) {
+      if (row.has?.length) {
+        continue;
+      }
+
+      byPath.set(stripTrailingSlash(row.source), {
+        destination: row.destination,
+        permanent: row.permanent,
+      });
+    }
+
+    redirectCache = { expires: now + REDIRECT_CACHE_MS, byPath };
+  }
+
+  return redirectCache.byPath.get(path) ?? null;
+}
+
+export async function middleware(request: NextRequest) {
+  const productLineRedirect = await lookupProductLineRedirect(request.nextUrl.pathname);
+
+  if (productLineRedirect) {
+    return NextResponse.redirect(
+      productLineRedirect.destination,
+      productLineRedirect.permanent ? 301 : 302,
+    );
+  }
+
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
   const cspHeader = `
     default-src 'self';

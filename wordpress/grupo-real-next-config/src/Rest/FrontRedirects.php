@@ -13,7 +13,7 @@ use WP_REST_Response;
  *
  *   GET /wp-json/custom/front-redirects
  *
- * O Next.js lê este endpoint em next.config → redirects() (gruporealbr.com.br).
+ * O Next.js lê este endpoint no middleware (e no next.config no build).
  * No CMS, cadastre a origem como path relativo (/produtos/…) ou URL do front.
  */
 final class FrontRedirects
@@ -57,7 +57,7 @@ final class FrontRedirects
 
         $groupId = apply_filters('grnc_front_redirect_group_id', null);
         $out = [];
-        $page = 1;
+        $page = 0;
         $perPage = 200;
 
         while ($page < 50) {
@@ -67,9 +67,12 @@ final class FrontRedirects
                 $filterBy['group'] = $groupId;
             }
 
+            $offset = $page * $perPage;
             $result = \Red_Item::get_filtered([
                 'per_page' => $perPage,
                 'page' => $page,
+                'offset' => $offset,
+                'limit' => $perPage,
                 'filterBy' => $filterBy,
             ]);
 
@@ -110,13 +113,28 @@ final class FrontRedirects
             if (method_exists($item, 'to_json')) {
                 $json = $item->to_json();
 
-                return is_array($json) ? $json : [];
+                if (is_array($json) && $json !== []) {
+                    return $json;
+                }
             }
 
             if (method_exists($item, 'to_api')) {
                 $api = $item->to_api();
 
-                return is_array($api) ? $api : [];
+                if (is_array($api) && $api !== []) {
+                    return $api;
+                }
+            }
+
+            if (method_exists($item, 'get_url')) {
+                return [
+                    'url' => (string) $item->get_url(),
+                    'match_url' => method_exists($item, 'get_match_url') ? (string) $item->get_match_url() : '',
+                    'action_type' => method_exists($item, 'get_action_type') ? (string) $item->get_action_type() : 'url',
+                    'action_code' => method_exists($item, 'get_action_code') ? (int) $item->get_action_code() : 301,
+                    'action_data' => method_exists($item, 'get_action_data') ? $item->get_action_data() : '',
+                    'regex' => method_exists($item, 'is_regex') && $item->is_regex(),
+                ];
             }
         }
 
@@ -129,7 +147,9 @@ final class FrontRedirects
      */
     private function mapRedirectionItem(array $item): ?array
     {
-        if (($item['action_type'] ?? '') !== 'url') {
+        $actionType = (string) ($item['action_type'] ?? 'url');
+
+        if ($actionType !== '' && $actionType !== 'url') {
             return null;
         }
 
@@ -208,18 +228,60 @@ final class FrontRedirects
      */
     private function destinationUrl(array $item): ?string
     {
-        $data = $item['action_data'] ?? null;
+        $candidates = [
+            $item['action_data'] ?? null,
+            $item['action_url'] ?? null,
+            $item['target'] ?? null,
+        ];
 
+        foreach ($candidates as $candidate) {
+            $url = $this->extractUrl($candidate);
+
+            if ($url !== null) {
+                return $url;
+            }
+        }
+
+        return null;
+    }
+
+    private function extractUrl(mixed $data): ?string
+    {
         if (is_string($data)) {
-            $decoded = json_decode($data, true);
-            $data = is_array($decoded) ? $decoded : [];
+            $trimmed = trim($data);
+
+            if ($trimmed === '') {
+                return null;
+            }
+
+            if (preg_match('#^https?://#i', $trimmed) || str_starts_with($trimmed, '/')) {
+                return $trimmed;
+            }
+
+            $decoded = json_decode($trimmed, true);
+
+            if (is_array($decoded)) {
+                return $this->extractUrl($decoded);
+            }
+
+            if (function_exists('is_serialized') && is_serialized($trimmed)) {
+                $unserialized = @unserialize($trimmed, ['allowed_classes' => false]);
+
+                return $this->extractUrl($unserialized);
+            }
+
+            return null;
         }
 
         if (!is_array($data)) {
             return null;
         }
 
-        $url = $data['url'] ?? null;
+        $url = $data['url'] ?? $data['target'] ?? null;
+
+        if (is_array($url)) {
+            return $this->extractUrl($url);
+        }
 
         return is_string($url) && $url !== '' ? $url : null;
     }

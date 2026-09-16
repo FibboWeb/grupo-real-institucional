@@ -14,7 +14,9 @@ Plugin headless que centraliza o contrato entre **conteudo.realh** e o front **N
 2. Ative o plugin **Grupo Real — Next Config**
 3. Crie o menu **Institucional Sidebar** em Aparência → Menus e atribua à location homônima
 
-Permalink no front (plugin 1.6.0): só com status **publicado**. Rascunho, privado, lixeira e agendado mostram um aviso único — sem tooltip. Links do Next abrem em nova aba.
+Permalink no front (plugin 1.6.0+): só com status **publicado**. Rascunho, privado, lixeira e agendado mostram um aviso único — sem tooltip. Links do Next abrem em nova aba.
+
+**1.6.1:** `GET /wp-json/custom/front-redirects` pagina o plugin Redirection a partir da página 0 (antes a lista saía vazia) e lê o destino mesmo quando `action_data` vem serializado.
 
 | WP | URL Next |
 |----|----------|
