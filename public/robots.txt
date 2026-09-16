@@ -7,5 +7,5 @@ Host: https://gruporealbr.com.br
 
 # Sitemaps
 Sitemap: https://gruporealbr.com.br/sitemap.xml
-Sitemap: https://gruporealbr.com.br/sitemap/produtos.xml
 Sitemap: https://gruporealbr.com.br/sitemap/posts.xml
+Sitemap: https://gruporealbr.com.br/sitemap/institucional.xml

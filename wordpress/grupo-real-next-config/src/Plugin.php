@@ -15,6 +15,7 @@ use GrupoReal\NextConfig\Front\RedirectHosts;
 use GrupoReal\NextConfig\Menus\Locations;
 use GrupoReal\NextConfig\Pages\SlugMap;
 use GrupoReal\NextConfig\Rest\PageFields;
+use GrupoReal\NextConfig\Rest\FrontRedirects;
 use GrupoReal\NextConfig\Rest\SidebarMenu;
 use GrupoReal\NextConfig\Theme\Editor;
 use GrupoReal\NextConfig\Theme\PageTemplates;
@@ -44,6 +45,7 @@ final class Plugin
         (new Locations())->register();
         (new PageFields())->register();
         (new SidebarMenu())->register();
+        (new FrontRedirects())->register();
         (new FlexibleThumbnails())->register();
         (new AcfAdminUi())->register();
         (new WysiwygConfig())->register();

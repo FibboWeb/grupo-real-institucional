@@ -7,10 +7,13 @@ module.exports = {
     "/sitemap/*",
     "/institucional",
     "/institucional/*",
+    "/produtos",
+    "/produtos/*",
+    "/linhas",
+    "/linhas/*",
   ],
   robotsTxtOptions: {
     additionalSitemaps: [
-      `https://gruporealbr.com.br/sitemap/produtos.xml`,
       `https://gruporealbr.com.br/sitemap/posts.xml`,
       `https://gruporealbr.com.br/sitemap/institucional.xml`,
     ],
