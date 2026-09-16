@@ -1,7 +1,6 @@
 import type { NextConfig } from "next";
-import { getProductLineRedirects, toNextConfigRedirects } from "./src/lib/product-line-redirects";
 
-/** Sitemaps removidos → índice principal (301). */
+/** Sitemaps removidos → índice principal (301). Regras do WP ficam no middleware (limite da Vercel: 1024 redirects no next.config). */
 const legacySitemapRedirects = [
   {
     source: "/sitemap/produtos.xml",
@@ -17,8 +16,7 @@ const nextConfig: NextConfig = {
   },
   poweredByHeader: false,
   async redirects() {
-    const productLineRedirects = toNextConfigRedirects(await getProductLineRedirects());
-    return [...legacySitemapRedirects, ...productLineRedirects];
+    return legacySitemapRedirects;
   },
 };
 

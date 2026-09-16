@@ -32,7 +32,7 @@ function customApiBase(): string | null {
 }
 
 /** Ticket 15237 — sempre aplicados no Next, independente do plugin Redirection. */
-const LINE_REDIRECTS: ProductLineRedirect[] = [
+export const LINE_REDIRECTS: ProductLineRedirect[] = [
   { source: "/linhas/real-h", destination: "https://www.realh.com.br/", permanent: true },
   { source: "/linhas/cmr", destination: "https://www.cmrsaude.com.br/", permanent: true },
   { source: "/linhas/homeopet", destination: "https://www.homeopet.com.br/", permanent: true },
@@ -80,7 +80,7 @@ function toNextRedirect(row: WpFrontRedirect): ProductLineRedirect | null {
 
 /**
  * Busca todos os redirects do plugin Redirection (REST custom).
- * Usado no middleware e em `next.config.ts` (regras sem regex).
+ * Aplicados no middleware — não no next.config (a Vercel limita a 1024 rotas custom).
  */
 export async function getProductLineRedirects(): Promise<ProductLineRedirect[]> {
   const base = customApiBase();
@@ -95,7 +95,6 @@ export async function getProductLineRedirects(): Promise<ProductLineRedirect[]> 
   try {
     const response = await fetch(url, {
       headers: { Accept: "application/json" },
-      cache: "no-store",
     });
 
     if (!response.ok) {
@@ -132,7 +131,111 @@ function mergeRedirects(...lists: ProductLineRedirect[][]): ProductLineRedirect[
   return Array.from(bySource.values());
 }
 
-/** `redirects()` do Next não entende regex PCRE do plugin Redirection. */
-export function toNextConfigRedirects(rows: ProductLineRedirect[]): ProductLineRedirect[] {
-  return rows.filter((row) => !row.regex);
+export function stripRedirectPath(pathname: string): string {
+  if (pathname.length > 1 && pathname.endsWith("/")) {
+    return pathname.slice(0, -1);
+  }
+
+  return pathname;
+}
+
+export function matchRedirect(
+  rows: ProductLineRedirect[],
+  pathname: string,
+  searchParams: URLSearchParams,
+): ProductLineRedirect | null {
+  const path = stripRedirectPath(pathname);
+  const exact: ProductLineRedirect[] = [];
+  const regex: ProductLineRedirect[] = [];
+
+  for (const row of rows) {
+    if (row.regex) {
+      regex.push(row);
+      continue;
+    }
+
+    if (stripRedirectPath(row.source) === path) {
+      exact.push(row);
+    }
+  }
+
+  const withQuery = exact.filter((row) => row.has?.length);
+  const withoutQuery = exact.filter((row) => !row.has?.length);
+  const exactMatch = [...withQuery, ...withoutQuery].find((row) => {
+    if (!row.has?.length) {
+      return true;
+    }
+
+    return row.has.every(({ key, value }) => searchParams.get(key) === value);
+  });
+
+  if (exactMatch) {
+    return exactMatch;
+  }
+
+  const input = `${path}${searchParams.toString() ? `?${searchParams.toString()}` : ""}`;
+
+  for (const row of regex) {
+    try {
+      const pattern = row.source.startsWith("^") ? row.source : `^${row.source}`;
+      const re = new RegExp(pattern);
+
+      if (re.test(input) || re.test(path)) {
+        const source = re.test(input) ? input : path;
+        const destination = source.replace(re, row.destination);
+
+        return { ...row, destination };
+      }
+    } catch {
+      continue;
+    }
+  }
+
+  return null;
+}
+
+function hostnameWithoutWww(hostname: string): string {
+  return hostname.replace(/^www\./i, "").toLowerCase();
+}
+
+function isOwnFrontHost(hostname: string): boolean {
+  const host = hostnameWithoutWww(hostname);
+
+  if (host === "localhost" || host.endsWith(".localhost")) {
+    return true;
+  }
+
+  const envHost = process.env.NEXT_PUBLIC_URL_HOST;
+
+  if (envHost) {
+    try {
+      const configured = hostnameWithoutWww(new URL(envHost).hostname);
+
+      if (configured && configured === host) {
+        return true;
+      }
+    } catch {
+      // ignore invalid env
+    }
+  }
+
+  return host === "gruporealbr.com.br";
+}
+
+/** Destino absoluto; URL do próprio front vira path no origin atual (evita loop e bounce em localhost). */
+export function resolveRedirectUrl(requestUrl: URL, destination: string): URL | null {
+  try {
+    const raw = destination.startsWith("http") ? new URL(destination) : new URL(destination, requestUrl.origin);
+    const url = isOwnFrontHost(raw.hostname)
+      ? new URL(`${raw.pathname}${raw.search}${raw.hash}`, requestUrl.origin)
+      : raw;
+
+    if (stripRedirectPath(url.pathname) === stripRedirectPath(requestUrl.pathname) && url.origin === requestUrl.origin) {
+      return null;
+    }
+
+    return url;
+  } catch {
+    return null;
+  }
 }
