@@ -136,7 +136,7 @@ export default async function Home() {
               Dashboard Comercial (B.I.)
             </h3>
             <BtnCallToAction
-              ctaLink="https://bi.realh.com.br/"
+              ctaLink="https://inteligencia.realh.com.br/"
               content="Acesso Restrito"
               color="fb_blue_button"
               classCssForBTN="text-white w-fit hover:text-black text-sm lg:text-md"
